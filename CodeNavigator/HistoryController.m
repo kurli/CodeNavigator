@@ -11,6 +11,8 @@
 
 @implementation HistoryController
 
+@synthesize historyStack;
+
 -(void) pushUrl:(NSString *)url
 {
     if (historyStack == nil)

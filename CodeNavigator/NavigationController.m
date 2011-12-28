@@ -12,9 +12,10 @@
 
 @implementation NavigationController
 
-@synthesize detailViewController = _detailViewController;
 @synthesize searchBar;
 @synthesize currentSearchProject;
+@synthesize selectionList;
+@synthesize searchKeyword;
 
 - (void)didReceiveMemoryWarning
 {
@@ -49,12 +50,20 @@
 
 - (void)viewDidUnload
 {
+    [self setSearchKeyword:nil];
     [self setSearchBar:nil];
-    [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-    selectionList = nil;
-    self.detailViewController = nil;
+    [self setSelectionList:nil];
+    [self setCurrentSearchProject:nil];
+    [super viewDidUnload];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if ([searchKeyword length] != 0)
+        [self setSearchItemText:searchKeyword];
+    [super viewWillAppear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -105,111 +114,29 @@
 -(void) searchBarSearchButtonClicked:(UISearchBar *)_searchBar
 {
     [_searchBar resignFirstResponder];
-    [self.detailViewController dismissNavigationManager];
+    [[Utils getInstance].detailViewController dismissNavigationManager];
+    [[Utils getInstance].detailViewController releaseAllPopOver];
     
     NSString* searchText = _searchBar.text;
     if ([searchText length] <= 0)
         return;
     
-    [self cscopeSearch:searchText];
+    [[Utils getInstance] cscopeSearch:searchText andPath:self.currentSearchProject andType:selectedItem];
 }
 
 -(void) searchBarCancelButtonClicked:(UISearchBar *)_searchBar
 {
-    [self.detailViewController dismissNavigationManager];
+    [[Utils getInstance].detailViewController dismissNavigationManager];
+    [[Utils getInstance].detailViewController releaseAllPopOver];
     
     NSString* searchText = _searchBar.text;
     if ([searchText length] <= 0)
         return;
     
-    [self cscopeSearch:searchText];
+    [[Utils getInstance] cscopeSearch:searchText andPath:self.currentSearchProject andType:selectedItem];
 }
 
-#pragma cscope
-
--(void) cscopeSearch:(NSString *)text
-{
-    if ([Utils getInstance].analyzeThread.isExecuting == YES)
-    {
-        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Project Analyzing is in progress, Please wait untile analyze finished"];
-        return;
-    }
-    
-    NSString* fileList = nil;
-    NSString* dbFile = nil;
-    BOOL isExist = NO;
-
-    if ([currentSearchProject length] == 0)
-    {
-        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please select a project"];
-        return;
-    }
-    
-    fileList = [currentSearchProject stringByAppendingPathComponent:@"db_files.lgz_proj_files"];
-    dbFile = [currentSearchProject stringByAppendingPathComponent:@"project.lgz_db"];
-    
-    isExist = [[NSFileManager defaultManager] fileExistsAtPath:fileList];
-    if (isExist == NO)
-    {
-        [[Utils getInstance] analyzeProject:currentSearchProject andForceCreate:YES];
-        isExist = [[NSFileManager defaultManager] fileExistsAtPath:fileList];
-        if (isExist == NO)
-            [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please select a project"];
-        return;
-    }
-    isExist = [[NSFileManager defaultManager] fileExistsAtPath:dbFile];
-    if (isExist == NO)
-    {
-        [[Utils getInstance] analyzeProject:currentSearchProject andForceCreate:YES];
-        isExist = [[NSFileManager defaultManager] fileExistsAtPath:dbFile];
-        if (isExist == NO)
-            [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please select a project"];
-        return;
-    }
-    char* _result = 0;
-    NSString* result = @"";
-    cscope_set_base_dir([currentSearchProject UTF8String]);
-    switch (selectedItem) {
-        case 0:
-            _result = cscope_find_this_symble([text UTF8String], [dbFile UTF8String], [fileList UTF8String]);
-            break;
-        case 1:
-            _result = cscope_find_global([text UTF8String], [dbFile UTF8String], [fileList UTF8String]);
-            break;
-        case 2:
-            _result = cscope_find_called_functions([text UTF8String], [dbFile UTF8String], [fileList UTF8String]);
-            break;
-        case 3:
-            _result = cscope_find_functions_calling_a_function([text UTF8String], [dbFile UTF8String], [fileList UTF8String]);
-            break;
-        case 4:
-            _result = cscope_find_text_string([text UTF8String], [dbFile UTF8String], [fileList UTF8String]);
-            break;
-        case 5:
-            _result = cscope_find_a_file([text UTF8String], [dbFile UTF8String], [fileList UTF8String]);
-            break;
-        case 6:
-            _result = cscope_find_files_including_a_file([text UTF8String], [dbFile UTF8String], [fileList UTF8String]);
-            break;
-            
-        default:
-            break;
-    }
-    if (_result != 0)
-    {
-        result = [NSString stringWithCString:_result encoding:NSUTF8StringEncoding];
-        free(_result);
-        _result = 0;
-        NSArray* lines = [result componentsSeparatedByString:@"\n"];
-        [self.detailViewController setResultListAndAnalyze:lines andKeyword:text];
-    }
-    else
-    {
-        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Low Memorry!"];
-    }
-}
-
--(void)setSearchKeyword:(NSString *)keyword
+-(void)setSearchItemText:(NSString *)keyword
 {
     [searchBar setText:keyword];
     for (UIView *subview in [searchBar subviews]) {

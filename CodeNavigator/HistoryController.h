@@ -14,6 +14,8 @@
     int index;
 }
 
+@property (retain, nonatomic) NSMutableArray* historyStack;
+
 -(void) pushUrl:(NSString*) url;
 
 -(NSString*) popUrl;

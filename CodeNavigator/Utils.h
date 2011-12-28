@@ -13,6 +13,11 @@
 
 #define MAX_HISTORY_STACK 20
 
+typedef enum _TableViewMode{
+    TABLEVIEW_FILE,
+    TABLEVIEW_CONTENT
+} TableViewMode;
+
 @interface BuildThreadData : NSObject {
     BOOL force;
 }
@@ -23,10 +28,18 @@
 -(BOOL)getForce;
 @end
 
+@interface ResultFile : NSObject {
+}
+@property (retain, nonatomic) NSString* fileName;
 
+@property (retain, nonatomic) NSMutableArray* contents;
+@end
 
 @interface Utils : NSObject
 {
+    //for result view controller table contrel
+    TableViewMode resultTableviewMode;
+    int resultCurrentFileIndex;
 }
 
 @property (nonatomic, strong) DetailViewController* detailViewController;
@@ -38,6 +51,10 @@
 @property (nonatomic, strong) NSThread* analyzeThread;
 
 @property (nonatomic, strong) NSString* analyzePath;
+
+@property (retain, nonatomic) NSMutableArray* resultFileList;
+
+@property (retain, nonatomic) NSString* searchKeyword;
 
 +(Utils*)getInstance;
 
@@ -68,5 +85,19 @@
 -(void) analyzeThread:(id)data;
 
 -(void) pauseAnalyze;
+
+-(void) cscopeSearch:(NSString*)keyword andPath:(NSString*)path andType:(int) type;
+
+-(BOOL) setResultListAndAnalyze: (NSArray*) list andKeyword:keyword;
+
+-(int) fileExistInResultFileList: (NSString*) file;
+
+-(void) setResultViewTableViewMode:(TableViewMode) mode;
+
+-(void) setResultViewFileIndex:(int)index;
+
+-(TableViewMode) getResultViewTableViewMode;
+
+-(int) getResultViewFileIndex;
 
 @end

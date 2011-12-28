@@ -45,29 +45,6 @@
 
 - (void)viewDidLoad
 {
-    _codeNavigationController= [[NavigationController alloc] init];
-    _codeNavigationController.detailViewController = self;
-    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:_codeNavigationController];
-    _codeNavigationController.title = @"Code Navigator";
-    // Setup the popover for use from the navigation bar.
-	_codeNavigationPopover = [[UIPopoverController alloc] initWithContentViewController:controller];
-	_codeNavigationPopover.popoverContentSize = CGSizeMake(320., 320.);
-    
-    self.resultViewController = [[ResultViewController alloc] init];
-    self.resultViewController.detailViewController = self;
-    UINavigationController *result_controller = [[UINavigationController alloc] initWithRootViewController:self.resultViewController];
-    self.resultViewController.title = @"Result";
-    _resultPopover = [[UIPopoverController alloc] initWithContentViewController:result_controller];
-    CGSize size = self.splitViewController.view.frame.size;
-    size.height = size.height/3;
-    size.width = size.width;
-	_resultPopover.popoverContentSize = size;
-    
-    _gotoLineViewController = [[GotoLineViewController alloc] init];
-    _gotoLineViewController.detailViewController = self;
-    _gotoLinePopover = [[UIPopoverController alloc] initWithContentViewController:_gotoLineViewController];
-    _gotoLinePopover.popoverContentSize = CGSizeMake(250., 45.);
-
 	//_navigationManagerPopover.delegate = self;
     jsState = JS_NONE;
     jsGotoLine = 0;
@@ -79,6 +56,8 @@
 {
     [self setWebView:nil];
     [self setCountTextField:nil];
+    [self.historyController.historyStack removeAllObjects];
+    [self.historyController setHistoryStack:nil];
     [self setHistoryController:nil];
     [self setSearchWord:nil];
     [self setHistoryBar:nil];
@@ -91,6 +70,10 @@
     [self setGotoLineViewController:nil];
     [self setNavigateBarButtonItem:nil];
     [self setAnalyzeInfoBarButton:nil];
+    [self setFilePathInfopopover:nil];
+    [self setFilePathInfoController:nil];
+    [self setJsGotoLineKeyword:nil];
+    [self setTitleTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -146,6 +129,8 @@
     return self;
 }
 
+
+#pragma detailviewcontroller interface for others
 - (void)setTitle:(NSString *)title andPath:(NSString*)path andContent:(NSString *)content
 {
     int location = [self getCurrentScrollLocation];
@@ -206,7 +191,7 @@
         NSString* currentDisplayFile = [self getCurrentDisplayFile];
         [self.historyController updateCurrentScrollLocation:location];
         [self.historyController pushUrl:displayPath];
-        if (!([currentDisplayFile compare:displayPath] == NSOrderedSame))
+        if (currentDisplayFile == nil || !([currentDisplayFile compare:displayPath] == NSOrderedSame))
         {
             [self.webView loadHTMLString:html baseURL:nil];
 //            jsState = JS_HISTORY_MODE;
@@ -232,34 +217,6 @@
         }
     }
  }
-
-- (IBAction)upSelectButton:(id)sender {
-
-    if (currentSearchFocusLine == 0)
-        return;
-    currentSearchFocusLine--;
-    NSString* js = [NSString stringWithFormat:@"gotoLine(%d)", currentSearchFocusLine];
-    [self.webView stringByEvaluatingJavaScriptFromString:js];
-    NSString* show = [NSString stringWithFormat:@"%d/%d", currentSearchFocusLine, searchLineTotal];
-    [self.countTextField setText:show];
-}
-
-- (IBAction)downSelectButton:(id)sender {
-    if (currentSearchFocusLine == searchLineTotal-1)
-        return;
-    currentSearchFocusLine++;
-    NSString* js = [NSString stringWithFormat:@"gotoLine(%d)", currentSearchFocusLine];
-    [self.webView stringByEvaluatingJavaScriptFromString:js];
-    NSString* show = [NSString stringWithFormat:@"%d/%d", currentSearchFocusLine, searchLineTotal];
-    [self.countTextField setText:show];
-}
-
-- (IBAction)infoButtonClicked:(id)sender {
-    if ([Utils getInstance].analyzeInfoPopover.isPopoverVisible == YES)
-        [[Utils getInstance] showAnalyzeInfoPopOver:NO];
-    else
-        [[Utils getInstance] showAnalyzeInfoPopOver:YES];
-}
 
 -(int) getCurrentScrollLocation
 {
@@ -378,6 +335,101 @@
     [masterViewController gotoFile:url];
 }
 
+
+-(void) dismissNavigationManager
+{
+    [_codeNavigationPopover dismissPopoverAnimated:YES];
+}
+
+-(NSString*) getCurrentDisplayFile
+{
+    NSString* path = [self.historyController pickTopLevelUrl];
+    NSArray* array = [path componentsSeparatedByString:@"::"];
+    if ([array count] > 1)
+        return [array objectAtIndex:0];
+    return path;
+}
+
+-(void) reloadCurrentPage
+{
+    NSError *error;
+    NSString* html;
+    NSString* currentDisplayFile = [self getCurrentDisplayFile];
+    NSStringEncoding encoding = NSUTF8StringEncoding;
+    html = [NSString stringWithContentsOfFile: currentDisplayFile usedEncoding:&encoding error: &error];
+    [self.webView loadHTMLString:html baseURL:nil];
+}
+
+- (void)navigationManagerPopUpWithKeyword:(NSString*)keyword andProject:(NSString*)path {
+    if (_codeNavigationPopover.isPopoverVisible == YES)
+    {
+        [_codeNavigationPopover dismissPopoverAnimated:YES];
+        [self releaseAllPopOver];
+        return;
+    }
+    [self releaseAllPopOver];
+    
+    _codeNavigationController= [[NavigationController alloc] init];
+    [_codeNavigationController setSearchKeyword:keyword];
+    [_codeNavigationController setCurrentSearchProject:path];
+    
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:_codeNavigationController];
+    _codeNavigationController.title = @"Code Navigator";
+    // Setup the popover for use from the navigation bar.
+	_codeNavigationPopover = [[UIPopoverController alloc] initWithContentViewController:controller];
+	_codeNavigationPopover.popoverContentSize = CGSizeMake(320., 320.);
+    
+    [_codeNavigationPopover presentPopoverFromBarButtonItem:self.navigateBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+-(void) releaseAllPopOver
+{
+    [self.codeNavigationPopover dismissPopoverAnimated:YES];
+    [self setCodeNavigationPopover:nil];
+    [self setCodeNavigationController:nil];
+    
+    [self.resultPopover dismissPopoverAnimated:YES];
+    [self setResultPopover:nil];
+    [self setResultViewController:nil];
+    
+    [self.gotoLinePopover dismissPopoverAnimated:YES];
+    [self setGotoLinePopover:nil];
+    [self setGotoLineViewController:nil];
+    
+    [self.filePathInfopopover dismissPopoverAnimated:YES];
+    [self setFilePathInfopopover:nil];
+    [self setFilePathInfoController:nil];
+}
+
+#pragma Bar Button action
+- (IBAction)upSelectButton:(id)sender {
+
+    if (currentSearchFocusLine == 0)
+        return;
+    currentSearchFocusLine--;
+    NSString* js = [NSString stringWithFormat:@"gotoLine(%d)", currentSearchFocusLine];
+    [self.webView stringByEvaluatingJavaScriptFromString:js];
+    NSString* show = [NSString stringWithFormat:@"%d/%d", currentSearchFocusLine, searchLineTotal];
+    [self.countTextField setText:show];
+}
+
+- (IBAction)downSelectButton:(id)sender {
+    if (currentSearchFocusLine == searchLineTotal-1)
+        return;
+    currentSearchFocusLine++;
+    NSString* js = [NSString stringWithFormat:@"gotoLine(%d)", currentSearchFocusLine];
+    [self.webView stringByEvaluatingJavaScriptFromString:js];
+    NSString* show = [NSString stringWithFormat:@"%d/%d", currentSearchFocusLine, searchLineTotal];
+    [self.countTextField setText:show];
+}
+
+- (IBAction)infoButtonClicked:(id)sender {
+    if ([Utils getInstance].analyzeInfoPopover.isPopoverVisible == YES)
+        [[Utils getInstance] showAnalyzeInfoPopOver:NO];
+    else
+        [[Utils getInstance] showAnalyzeInfoPopOver:YES];
+}
+
 - (IBAction)historyClicked:(id)sender {
     UISegmentedControl* controller = sender;
     int index = [controller selectedSegmentIndex];
@@ -388,13 +440,21 @@
 }
 
 - (IBAction)titleTouched:(id)sender {
+    if ([self.filePathInfopopover isPopoverVisible] == YES)
+    {
+        [self.filePathInfopopover dismissPopoverAnimated:YES];
+        [self releaseAllPopOver];
+        return;
+    }
+    [self releaseAllPopOver];
+    
     NSString* currentFile = [self getCurrentDisplayFile];
     if (currentFile == nil)
         return;
-    MasterViewController* masterViewController = nil;
-    NSArray* controllers = [self.splitViewController viewControllers];
-    masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
-    [masterViewController gotoFile:currentFile];
+//    MasterViewController* masterViewController = nil;
+//    NSArray* controllers = [self.splitViewController viewControllers];
+//    masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
+//    [masterViewController gotoFile:currentFile];
     
     self.filePathInfoController = [[FilePathInfoPopupController alloc] init];
     self.filePathInfopopover = [[UIPopoverController alloc] initWithContentViewController:self.filePathInfoController];
@@ -406,70 +466,81 @@
     [self.filePathInfopopover presentPopoverFromRect:((UIButton*)sender).bounds inView:(UIButton*)sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
-- (void)navigationManagerPopUp:(id)sender {
-    UIBarButtonItem* barButton = (UIBarButtonItem*)sender;
-       
-    if (_gotoLinePopover.popoverVisible == YES)
-        [_gotoLinePopover dismissPopoverAnimated:YES];
-    
-    if (_resultPopover.popoverVisible == YES)
-        [_resultPopover dismissPopoverAnimated:YES];
-    
-    // Present the popover from the button that was tapped in the detail view.
-	if (_codeNavigationPopover.popoverVisible == NO) {
-		[_codeNavigationPopover presentPopoverFromBarButtonItem:barButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-	}
-	else {
-		[_codeNavigationPopover dismissPopoverAnimated:YES];
-	}
-}
-
 - (IBAction)navigationButtonClicked:(id)sender
 {
 //    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
 //    NSString *pastedText = pasteboard.string;
+    if ([_codeNavigationPopover isPopoverVisible] == YES)
+    {
+        [_codeNavigationPopover dismissPopoverAnimated:YES];
+        [self releaseAllPopOver];
+        return;
+    }
+    [self releaseAllPopOver];
+    
     MasterViewController* masterViewController = nil;
     NSArray* controllers = [self.splitViewController viewControllers];
     masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
     NSString* projectPath = [[Utils getInstance] getProjectFolder:masterViewController.currentLocation];
+    
+    _codeNavigationController= [[NavigationController alloc] init];
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:_codeNavigationController];
+    _codeNavigationController.title = @"Code Navigator";
+    // Setup the popover for use from the navigation bar.
+	_codeNavigationPopover = [[UIPopoverController alloc] initWithContentViewController:controller];
+	_codeNavigationPopover.popoverContentSize = CGSizeMake(320., 320.);
+    
     [_codeNavigationController setCurrentSearchProject:projectPath];
     [_codeNavigationController setSearchKeyword:@""];
-    [self navigationManagerPopUp:sender];
+    [_codeNavigationPopover presentPopoverFromBarButtonItem:(UIBarButtonItem*)sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 -(void) resultPopUp:(id)sender
 {
+    if ([_resultPopover isPopoverVisible] == YES)
+    {
+        [_resultPopover dismissPopoverAnimated:YES];
+        [self releaseAllPopOver];
+        return;
+    }
+    [self releaseAllPopOver];
+    if ([[Utils getInstance].resultFileList count] == 0)
+    {
+        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"No result"];
+        return;
+    }
     UIBarButtonItem* barButton = (UIBarButtonItem*)sender;
     
-    if (_gotoLinePopover.popoverVisible == YES)
-        [_gotoLinePopover dismissPopoverAnimated:YES];
+    self.resultViewController = [[ResultViewController alloc] init];
+    self.resultViewController.detailViewController = self;
+    UINavigationController *result_controller = [[UINavigationController alloc] initWithRootViewController:self.resultViewController];
+    self.resultViewController.title = @"Result";
+    _resultPopover = [[UIPopoverController alloc] initWithContentViewController:result_controller];
+    CGSize size = self.splitViewController.view.frame.size;
+    size.height = size.height/3;
+    size.width = size.width;
+	_resultPopover.popoverContentSize = size;
     
-    if (_codeNavigationPopover.popoverVisible == YES)
-        [_codeNavigationPopover dismissPopoverAnimated:YES];
-    
-    // Present the popover from the button that was tapped in the detail view.
-	if (_resultPopover.popoverVisible == NO) {
-		[_resultPopover presentPopoverFromBarButtonItem:barButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-	}
-	else {
-		[_resultPopover dismissPopoverAnimated:YES];
-	}
+    [_resultPopover presentPopoverFromBarButtonItem:barButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 -(void) gotoLinePopUp:(id)sender
 {
+    if ([_gotoLinePopover isPopoverVisible] == YES)
+    {
+        [_gotoLinePopover dismissPopoverAnimated:YES];
+        [self releaseAllPopOver];
+        return;
+    }
+    [self releaseAllPopOver];
     UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
     
-    if (_resultPopover.popoverVisible == YES)
-        [_resultPopover dismissPopoverAnimated:YES];
-    
-    if (_codeNavigationPopover.popoverVisible == YES)
-        [_codeNavigationPopover dismissPopoverAnimated:YES];
-        
-    if (_gotoLinePopover.popoverVisible == NO)
-        [_gotoLinePopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    else
-        [_gotoLinePopover dismissPopoverAnimated:YES];
+    _gotoLineViewController = [[GotoLineViewController alloc] init];
+    _gotoLineViewController.detailViewController = self;
+    _gotoLinePopover = [[UIPopoverController alloc] initWithContentViewController:_gotoLineViewController];
+    _gotoLinePopover.popoverContentSize = CGSizeMake(250., 45.);
+
+    [_gotoLinePopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 #pragma mark - Split view
@@ -521,10 +592,9 @@
     NSArray* array = [tmp componentsSeparatedByString:@"lgz_redirect:"];
     if ([array count] == 2)
     {
-        [_codeNavigationController setSearchKeyword:[array objectAtIndex:1]];
         NSString* projectFolder = [[Utils getInstance] getProjectFolder:[self getCurrentDisplayFile]];
-        [_codeNavigationController setCurrentSearchProject:projectFolder];
-        [self navigationManagerPopUp:self.navigateBarButtonItem];
+
+        [self navigationManagerPopUpWithKeyword:[array objectAtIndex:1] andProject:projectFolder];
         return NO;
     }
     return YES;
@@ -571,40 +641,6 @@
     self.searchWord = searchText;
     [searchBar setShowsCancelButton:NO animated:YES];
     [searchBar resignFirstResponder];
-}
-
-#pragma interface for navigation controller
-
--(void) dismissNavigationManager
-{
-    [_codeNavigationPopover dismissPopoverAnimated:YES];
-}
-
--(NSString*) getCurrentDisplayFile
-{
-    NSString* path = [self.historyController pickTopLevelUrl];
-    NSArray* array = [path componentsSeparatedByString:@"::"];
-    if ([array count] > 1)
-        return [array objectAtIndex:0];
-    return path;
-}
-
--(void) setResultListAndAnalyze:(NSArray *)lines andKeyword:(NSString *)keyword
-{
-    BOOL pop = NO;
-    pop = [_resultViewController setResultListAndAnalyze:lines andKeyword:keyword];
-    if (pop)
-        [self resultPopUp:self.resultBarButton];
-}
-
--(void) reloadCurrentPage
-{
-    NSError *error;
-    NSString* html;
-    NSString* currentDisplayFile = [self getCurrentDisplayFile];
-    NSStringEncoding encoding = NSUTF8StringEncoding;
-    html = [NSString stringWithContentsOfFile: currentDisplayFile usedEncoding:&encoding error: &error];
-    [self.webView loadHTMLString:html baseURL:nil];
 }
 
 @end

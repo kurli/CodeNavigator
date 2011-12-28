@@ -116,12 +116,16 @@
 
 - (void)viewDidUnload
 {
-    [self setCurrentLocation:nil];
     [self setCurrentProjectPath:nil];
+    [self setCurrentLocation:nil];
+    [self.currentFiles removeAllObjects];
+    [self setCurrentProjectPath:nil];
+    [self.currentDirectories removeAllObjects];
     [self setCurrentDirectories:nil];
     [self setCurrentFiles: nil];
     [self setMasterViewController:nil];
     [self setWebServiceController:nil];
+    [self setWebServicePopOverController:nil];
     [self setTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.

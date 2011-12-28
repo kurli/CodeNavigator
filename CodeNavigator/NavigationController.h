@@ -13,18 +13,17 @@
 
 @interface NavigationController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 {
-    NSArray* selectionList;
     int selectedItem;
 }
-
-@property (retain, nonatomic) DetailViewController* detailViewController;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (retain, nonatomic) NSString* currentSearchProject;
 
--(void) cscopeSearch: (NSString*)text;
+@property (retain, nonatomic) NSArray* selectionList;
 
--(void) setSearchKeyword:(NSString*)keyword;
+@property (retain, nonatomic) NSString* searchKeyword;
+
+-(void) setSearchItemText:(NSString*)keyword;
 
 @end

@@ -48,27 +48,27 @@ typedef enum _JSState {
 
 @property (unsafe_unretained, nonatomic) IBOutlet UISegmentedControl *historyBar;
 
-@property (retain, nonatomic) NSString *searchWord;
+@property (strong, nonatomic) NSString *searchWord;
 
-@property (retain, nonatomic) HistoryController* historyController;
+@property (strong, nonatomic) HistoryController* historyController;
 
-@property (retain, nonatomic) NavigationController* codeNavigationController;
+@property (strong, nonatomic) NavigationController* codeNavigationController;
 
-@property (retain, nonatomic) UIPopoverController *codeNavigationPopover;
+@property (strong, nonatomic) UIPopoverController *codeNavigationPopover;
 
-@property (retain, nonatomic) ResultViewController *resultViewController;
+@property (strong, nonatomic) ResultViewController *resultViewController;
 
-@property (retain, nonatomic) UIPopoverController *resultPopover;
+@property (strong, nonatomic) UIPopoverController *resultPopover;
 
-@property (retain, nonatomic) GotoLineViewController *gotoLineViewController;
+@property (strong, nonatomic) GotoLineViewController *gotoLineViewController;
 
-@property (retain, nonatomic) UIPopoverController *gotoLinePopover;
+@property (strong, nonatomic) UIPopoverController *gotoLinePopover;
 
-@property (retain, nonatomic) FilePathInfoPopupController* filePathInfoController;
+@property (strong, nonatomic) FilePathInfoPopupController* filePathInfoController;
 
-@property (retain, nonatomic) UIPopoverController* filePathInfopopover;
+@property (strong, nonatomic) UIPopoverController* filePathInfopopover;
 
-@property (retain, nonatomic) NSString* jsGotoLineKeyword;
+@property (strong, nonatomic) NSString* jsGotoLineKeyword;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *analyzeInfoBarButton;
 
@@ -92,8 +92,7 @@ typedef enum _JSState {
 
 - (IBAction)navigationButtonClicked:(id)sender;
 
-- (void)navigationManagerPopUp:(id)sender;
-
+- (void)navigationManagerPopUpWithKeyword:(NSString*)keyword andProject:(NSString*)path;
 - (IBAction)resultPopUp:(id)sender;
 
 - (IBAction)gotoLinePopUp:(id)sender;
@@ -102,9 +101,9 @@ typedef enum _JSState {
 
 - (NSString*) getCurrentDisplayFile;
 
-- (void) setResultListAndAnalyze: (NSArray*) lines andKeyword:(NSString*)keyword;
-
 - (void) gotoFile: (NSString*)filePath andLine:(NSString*)line andKeyword:(NSString*) __keyword;
 
 - (void) reloadCurrentPage;
+
+- (void) releaseAllPopOver;
 @end

@@ -64,6 +64,10 @@
     [self setTextView:nil];
     [self setWebServiceSwitcher:nil];
     [self setProgressView:nil];
+    [self.zipFiles removeAllObjects];
+    [self setZipFiles:nil];
+    [self setMasterViewController:nil];
+    [self setUploadToPath:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

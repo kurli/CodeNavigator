@@ -27,7 +27,13 @@
 
 @end
 
+@implementation ResultFile
 
+@synthesize fileName = _fileName;
+
+@synthesize contents = _contents;
+
+@end
 
 @implementation Utils
 
@@ -38,6 +44,8 @@ static Utils *static_utils;
 @synthesize analyzeInfoController;
 @synthesize analyzeThread;
 @synthesize analyzePath;
+@synthesize resultFileList = _resultFileList;
+@synthesize searchKeyword = _searchKeyword;
 
 +(Utils*)getInstance
 {
@@ -322,5 +330,192 @@ static Utils *static_utils;
     return;
 }
 
+
+-(BOOL) setResultListAndAnalyze:(NSArray *)list andKeyword:(NSString *)keyword
+{
+    if (_resultFileList == nil)
+        _resultFileList = [[NSMutableArray alloc] init];
+    else
+        [_resultFileList removeAllObjects];
+    
+    for (int i=0; i<[list count]; i++)
+    {
+        NSArray* array = [[list objectAtIndex:i] componentsSeparatedByString:@" "];
+        if ([array count] < 2)
+            continue;
+        int index = [self fileExistInResultFileList:[array objectAtIndex:0]];
+        if (index == -1)
+        {
+            ResultFile* element = [[ResultFile alloc] init];
+            element.fileName = [array objectAtIndex:0];
+            element.contents = [[NSMutableArray alloc] init];
+            NSString* tmp = @"";
+            tmp = [tmp stringByAppendingString:[array objectAtIndex:1]];
+            for (int j = 2; j<[array count]; j++)
+            {
+                tmp = [tmp stringByAppendingFormat:@" %@", [array objectAtIndex:j]];
+            }
+            [element.contents addObject:tmp];
+            [_resultFileList addObject:element];
+        }
+        else
+        {
+            if ([_resultFileList count] > 30)
+                continue;
+            ResultFile* element = [_resultFileList objectAtIndex:index];
+            NSString* tmp = @"";
+            tmp = [tmp stringByAppendingString:[array objectAtIndex:1]];
+            for (int j = 2; j<[array count]; j++)
+            {
+                tmp = [tmp stringByAppendingFormat:@" %@", [array objectAtIndex:j]];
+            }
+            [element.contents addObject:tmp];
+        }
+    }
+    _searchKeyword = keyword;
+//    [self.tableView reloadData];
+//    [self setTitle:[NSString stringWithFormat:@"Result files for \"%@\"", _keyword]];
+//    [self.navigationController popViewControllerAnimated:NO];
+    if ([list count] == 2)
+    {
+        NSString* content = [((ResultFile*)[_resultFileList objectAtIndex:0]).contents objectAtIndex:0];
+        NSArray* components = [content componentsSeparatedByString:@" "];
+        if ([components count] < 3)
+            return NO;
+        NSString* line = [components objectAtIndex:1];
+        NSString* filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+        filePath = [filePath stringByAppendingPathComponent:((ResultFile*)[_resultFileList objectAtIndex:0]).fileName];
+        [self.detailViewController gotoFile:filePath andLine:line andKeyword:keyword];
+        return NO;
+    }
+    else if ([list count] == 1)
+    {
+        [[Utils getInstance] alertWithTitle:@"Result" andMessage:@"No Result Found"];
+        return NO;
+    }
+    return YES;
+}
+
+-(void) cscopeSearch:(NSString*)keyword andPath:(NSString*)path andType:(int) type
+{
+    if ([Utils getInstance].analyzeThread.isExecuting == YES)
+    {
+        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Project Analyzing is in progress, Please wait untile analyze finished"];
+        return;
+    }
+    
+    NSString* fileList = nil;
+    NSString* dbFile = nil;
+    BOOL isExist = NO;
+    
+    if ([path length] == 0)
+    {
+        [self alertWithTitle:@"CodeNavigator" andMessage:@"Please select a project"];
+        return;
+    }
+    
+    fileList = [path stringByAppendingPathComponent:@"db_files.lgz_proj_files"];
+    dbFile = [path stringByAppendingPathComponent:@"project.lgz_db"];
+    
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:fileList];
+    if (isExist == NO)
+    {
+        [self analyzeProject:path andForceCreate:YES];
+//        isExist = [[NSFileManager defaultManager] fileExistsAtPath:fileList];
+//        if (isExist == NO)
+//            [self alertWithTitle:@"CodeNavigator" andMessage:@"Please select a project"];
+        return;
+    }
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:dbFile];
+    if (isExist == NO)
+    {
+        [self analyzeProject:path andForceCreate:YES];
+//        isExist = [[NSFileManager defaultManager] fileExistsAtPath:dbFile];
+//        if (isExist == NO)
+//            [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please select a project"];
+        return;
+    }
+    char* _result = 0;
+    NSString* result = @"";
+    cscope_set_base_dir([path UTF8String]);
+    switch (type) {
+        case 0:
+            _result = cscope_find_this_symble([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
+            break;
+        case 1:
+            _result = cscope_find_global([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
+            break;
+        case 2:
+            _result = cscope_find_called_functions([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
+            break;
+        case 3:
+            _result = cscope_find_functions_calling_a_function([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
+            break;
+        case 4:
+            _result = cscope_find_text_string([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
+            break;
+        case 5:
+            _result = cscope_find_a_file([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
+            break;
+        case 6:
+            _result = cscope_find_files_including_a_file([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
+            break;
+            
+        default:
+            break;
+    }
+    if (_result != 0)
+    {
+        result = [NSString stringWithCString:_result encoding:NSUTF8StringEncoding];
+        free(_result);
+        _result = 0;
+        NSArray* lines = [result componentsSeparatedByString:@"\n"];
+
+        BOOL pop = NO;
+        pop = [self setResultListAndAnalyze:lines andKeyword:keyword];
+        //TODO when poped up already, what to do?
+        resultTableviewMode = TABLEVIEW_FILE;
+        resultCurrentFileIndex = 0;
+        if (pop)
+           [self.detailViewController resultPopUp:self.detailViewController.resultBarButton];
+    }
+    else
+    {
+        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Low Memorry!"];
+    }
+}
+
+-(int) fileExistInResultFileList:(NSString *)_file
+{
+    for (int i=0; i<[_resultFileList count]; i++)
+    {
+        ResultFile* file = [_resultFileList objectAtIndex:i];
+        if ([file.fileName compare:_file] == NSOrderedSame)
+            return i;
+    }
+    return -1;
+}
+
+#pragma ResultViewController storage
+
+-(void) setResultViewFileIndex:(int)index
+{
+    resultCurrentFileIndex = index;
+}
+
+-(void) setResultViewTableViewMode:(TableViewMode)mode
+{
+    resultTableviewMode = mode;
+}
+
+-(TableViewMode) getResultViewTableViewMode
+{
+    return resultTableviewMode;
+}
+
+-(int) getResultViewFileIndex
+{
+    return resultCurrentFileIndex;
+}
 
 @end
