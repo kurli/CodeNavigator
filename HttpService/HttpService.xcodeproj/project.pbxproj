@@ -177,7 +177,6 @@
 				94B4031714A0D5EA00E3A636 /* Sources */,
 				94B4031814A0D5EA00E3A636 /* Frameworks */,
 				94B4031914A0D5EA00E3A636 /* Headers */,
-				94158A8A14A790200099FE09 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -212,22 +211,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		94158A8A14A790200099FE09 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export CODESIGN_ALLOCATE=/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate\nif [ \"${PLATFORM_NAME}\" == \"ipads\" ]; then\n/Developer/iphoneentitlements401/gen_entitlements.py \"my.company.${PROJECT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\";\ncodesign -f -s \"iPhone Developer\" --entitlements \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/\"\nfi";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		94B4031714A0D5EA00E3A636 /* Sources */ = {
