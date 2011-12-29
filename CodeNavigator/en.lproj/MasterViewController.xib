@@ -40,7 +40,7 @@
 					<object class="IBUITableView" id="286511803">
 						<reference key="NSNextResponder" ref="380900777"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrameSize">{781, 936}</string>
+						<string key="NSFrameSize">{781, 253}</string>
 						<reference key="NSSuperview" ref="380900777"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="785694725"/>
@@ -85,9 +85,10 @@
 					<object class="IBUIToolbar" id="785694725">
 						<reference key="NSNextResponder" ref="380900777"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{0, 936}, {768, 44}}</string>
+						<string key="NSFrame">{{0, 253}, {768, 44}}</string>
 						<reference key="NSSuperview" ref="380900777"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:372</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -102,7 +103,7 @@
 						</array>
 					</object>
 				</array>
-				<string key="NSFrame">{{0, 44}, {768, 980}}</string>
+				<string key="NSFrame">{{0, 44}, {768, 297}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="286511803"/>
@@ -116,6 +117,10 @@
 				</object>
 				<object class="IBUISimulatedNavigationBarMetrics" key="IBUISimulatedTopBarMetrics">
 					<bool key="IBUIPrompted">NO</bool>
+				</object>
+				<object class="IBUISimulatedSizeMetrics" key="IBUISimulatedDestinationMetrics">
+					<string key="IBUISimulatedSizeMetricsClass">IBUISimulatedFreeformSizeMetricsSentinel</string>
+					<string key="IBUIDisplayName">Freeform</string>
 				</object>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>

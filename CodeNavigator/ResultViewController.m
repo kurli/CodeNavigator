@@ -39,8 +39,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if (tableviewMode == TABLEVIEW_FILE) 
+        [self setTitle:[NSString stringWithFormat:@"Result files for \"%@\"", [Utils getInstance].searchKeyword]];
     // Do any additional setup after loading the view from its nib.
-    
+    if ([[Utils getInstance] getResultViewTableViewMode] != tableviewMode)
+    {
+        currentFileIndex = [[Utils getInstance] getResultViewFileIndex];
+        if (self.lineModeViewController == nil)
+            self.lineModeViewController = [[ResultViewController alloc] initWithNibName:@"ResultViewController" bundle:nil];
+        [self.lineModeViewController setTableViewMode:TABLEVIEW_CONTENT];
+        [self.lineModeViewController setDetailViewController:self.detailViewController];
+        [self.lineModeViewController setFileIndex:currentFileIndex];
+        [self.lineModeViewController.tableView reloadData];
+        [self.lineModeViewController setTitle:((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:currentFileIndex]).fileName];
+        [self.navigationController pushViewController:self.lineModeViewController animated:NO];
+    }
 }
 
 - (void)viewDidUnload
@@ -66,20 +79,11 @@
     size.height = size.height/3;
     size.width = size.width;
     self.contentSizeForViewInPopover = size;
-    if (tableviewMode == TABLEVIEW_FILE) 
-        [self setTitle:[NSString stringWithFormat:@"Result files for \"%@\"", [Utils getInstance].searchKeyword]];
-    if ([[Utils getInstance] getResultViewTableViewMode] != tableviewMode)
-    {
-//        currentFileIndex = [[Utils getInstance] getResultViewFileIndex];
-//        if (self.lineModeViewController == nil)
-//            self.lineModeViewController = [[ResultViewController alloc] initWithNibName:@"ResultViewController" bundle:nil];
-//        [self.lineModeViewController setTableViewMode:TABLEVIEW_CONTENT];
-//        [self.lineModeViewController setDetailViewController:self.detailViewController];
-//        [self.lineModeViewController setFileIndex:currentFileIndex];
-//        [self.lineModeViewController.tableView reloadData];
-//        [self.lineModeViewController setTitle:((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:currentFileIndex]).fileName];
-//        [self.navigationController pushViewController:self.lineModeViewController animated:NO];
-    }
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[Utils getInstance] setResultViewTableViewMode:tableviewMode];
 }
 
 #pragma TableView delegate

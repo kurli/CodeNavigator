@@ -7,7 +7,6 @@
 //
 
 #import "DetailViewController.h"
-#import "Parser.h"
 #import "Utils.h"
 #import "FilePathInfoPopupController.h"
 
@@ -140,6 +139,7 @@
     [self.webView loadHTMLString:content baseURL:nil];
     [self.historyController updateCurrentScrollLocation:location];
     [self.historyController pushUrl:path];
+    content = nil;
 //    jsState = JS_HISTORY_MODE;
 //    jsHistoryModeScrollY = 0;
 }
@@ -153,7 +153,6 @@
     NSString* displayPath;
     BOOL isFolder = NO;
     NSString* html;
-    NSError *error;
     NSString* title = [[filePath pathComponents] lastObject];
     
     //check whether file exist
@@ -167,24 +166,8 @@
     
     if ([[Utils getInstance] isSupportedType:filePath] == YES)
     {
-        displayPath = [filePath stringByDeletingPathExtension];
-        displayPath = [displayPath stringByAppendingFormat:@"_%@",[filePath pathExtension]];
-        displayPath = [displayPath stringByAppendingPathExtension:@"display"];
-        if (![[NSFileManager defaultManager] fileExistsAtPath:displayPath isDirectory:&isFolder])
-        {
-            Parser* parser = [[Parser alloc] init];
-            [parser setParserType:CPLUSPLUS];
-            //TODO
-            [parser setFile: filePath andProjectBase:nil];
-            [parser startParse];
-            html = [parser getHtml];
-            [html writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
-        }
-        else
-        {
-            NSStringEncoding encoding = NSUTF8StringEncoding;
-            html = [NSString stringWithContentsOfFile: displayPath usedEncoding:&encoding error: &error];
-        }
+        html = [[Utils getInstance] getDisplayFile:filePath andProjectBase:nil];
+        displayPath = [[Utils getInstance] getDisplayPath:filePath];
         int location = [self getCurrentScrollLocation];
         [self.titleTextField setTitle:title forState:UIControlStateNormal];
         
@@ -483,6 +466,12 @@
     masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
     NSString* projectPath = [[Utils getInstance] getProjectFolder:masterViewController.currentLocation];
     
+    if (projectPath == nil)
+    {
+        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please select a project"];
+        return;
+    }
+    
     _codeNavigationController= [[NavigationController alloc] init];
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:_codeNavigationController];
     _codeNavigationController.title = @"Code Navigator";
@@ -517,7 +506,7 @@
     self.resultViewController.title = @"Result";
     _resultPopover = [[UIPopoverController alloc] initWithContentViewController:result_controller];
     CGSize size = self.splitViewController.view.frame.size;
-    size.height = size.height/3;
+    size.height = size.height/3+39;
     size.width = size.width;
 	_resultPopover.popoverContentSize = size;
     

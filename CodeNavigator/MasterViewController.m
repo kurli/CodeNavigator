@@ -11,7 +11,6 @@
 #import "DetailViewController.h"
 #import "WebServiceController.h"
 #import "cscope.h"
-#import "Parser.h"
 
 @implementation MasterViewController
 @synthesize tableView = _tableView;
@@ -277,7 +276,6 @@
     NSString *selectedItem;
     NSString *path;
     NSString *displayPath;
-    BOOL isFolder;
     NSError *error;
     NSString* html;
         
@@ -310,39 +308,16 @@
     {
         selectedItem = [self.currentFiles objectAtIndex:indexPath.row-[self.currentDirectories count]];
         path = [self.currentLocation stringByAppendingPathComponent:selectedItem];
-        if ([[Utils getInstance] isSupportedType:selectedItem] == YES)
+        html = [[Utils getInstance] getDisplayFile:path andProjectBase:self.currentProjectPath];
+        displayPath = [[Utils getInstance] getDisplayPath:path];
+        if (html != nil)
         {
-            displayPath = [path stringByDeletingPathExtension];
-            displayPath = [displayPath stringByAppendingFormat:@"_%@",[path pathExtension]];
-            displayPath = [displayPath stringByAppendingPathExtension:@"display"];
-            if (![[NSFileManager defaultManager] fileExistsAtPath:displayPath isDirectory:&isFolder])
-            {
-                Parser* parser = [[Parser alloc] init];
-                [parser setParserType:CPLUSPLUS];
-                [parser setFile: path andProjectBase:self.currentProjectPath];
-                [parser startParse];
-                html = [parser getHtml];
-                [html writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
-            }
-            else
-            {
-                NSStringEncoding encoding = NSUTF8StringEncoding;
-                html = [NSString stringWithContentsOfFile: displayPath usedEncoding:&encoding error: &error];
-            }
             NSArray* controllerArray = [self.splitViewController viewControllers];
             DetailViewController* controller = [controllerArray objectAtIndex:1];
             [controller setTitle:selectedItem andPath:displayPath andContent:html];
-
-//            NSArray* controllerArray = [self.splitViewController viewControllers];
-//            UINavigationController* controller = [controllerArray objectAtIndex:1];
-//            DetailViewController* detailViewController = (DetailViewController*)[controller visibleViewController];
-//            [detailViewController setTitle:title andContent:html];
         }
         else
         {
-//            NSArray* controllerArray = [self.splitViewController viewControllers];
-//            UINavigationController* controller = [controllerArray objectAtIndex:1];
-//            DetailViewController* detailViewController = (DetailViewController*)[controller visibleViewController];
             NSArray* controllerArray = [self.splitViewController viewControllers];
             DetailViewController* controller = [controllerArray objectAtIndex:1];
 

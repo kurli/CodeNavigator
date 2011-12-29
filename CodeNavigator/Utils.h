@@ -100,4 +100,10 @@ typedef enum _TableViewMode{
 
 -(int) getResultViewFileIndex;
 
+-(NSString*)HloveyRC4:(NSString*)aInput key:(NSString*)aKey;
+
+-(NSString*) getDisplayFile:(NSString*) path andProjectBase:(NSString*) projectPath;
+
+-(NSString*) getDisplayPath:(NSString*) path;
+
 @end
