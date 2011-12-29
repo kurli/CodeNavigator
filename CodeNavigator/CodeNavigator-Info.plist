@@ -15,7 +15,7 @@
 		<string>Icon-Small.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>LGZ.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.guangzhen.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
