@@ -2,6 +2,8 @@
 
 @implementation Parser
 
+@synthesize parser;
+
 -(void) setParserType: (ParserType) type
 {
 	parserType = type;
@@ -9,10 +11,19 @@
     {
 		parser = [[CPlusPlusParser alloc] init];
     }
+    else if( UNKNOWN == type )
+    {
+        parser = [[UnSupportedParser alloc] init];
+    }
 	else
     {
 		parser = nil;
     }
+}
+
+-(void)dealloc
+{
+    [self setParser:nil];
 }
 
 -(void) setFile: (NSString*) name andProjectBase:(NSString *)base

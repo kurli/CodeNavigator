@@ -1,17 +1,20 @@
 #import <Foundation/NSObject.h>
 #import "CPlusPlusParser.h"
+#import "UnSupportedParser.h"
 
 typedef enum _ParserType
 {
-	CPLUSPLUS
+	CPLUSPLUS,
+    UNKNOWN
 } ParserType;
 
 @interface Parser: NSObject
 {
 	ParserType parserType;
-	CodeParser* codeParser;
 	CodeParser* parser;
 }
+
+@property (nonatomic, retain) CodeParser* parser;
 
 -(void) setFile:(NSString*) name andProjectBase:(NSString*) base;
 

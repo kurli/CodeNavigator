@@ -203,13 +203,20 @@ static Utils *static_utils;
 -(BOOL)isSupportedType:(NSString *)file
 {
     NSString *extension = [file pathExtension];
+    extension = [extension lowercaseString];
     if (nil == extension)
         return NO;
-    else if ([extension isEqualToString:@"c"] || [extension isEqualToString:@"C"])
+    else if ([extension isEqualToString:@"h"])
         return YES;
-    else if ([extension isEqualToString:@"cpp"] || [extension isEqualToString:@"CPP"])
+    else if ([extension isEqualToString:@"c"])
         return YES;
-    else if ([extension isEqualToString:@"h"] || [extension isEqualToString:@"H"])
+    else if ([extension isEqualToString:@"s"])
+        return YES;
+    else if ([extension isEqualToString:@"cpp"])
+        return YES;
+    else if ([extension isEqualToString:@"m"])
+        return YES;
+    else if ([extension isEqualToString:@"java"])
         return YES;
     return NO;
 }
@@ -670,27 +677,28 @@ static Utils *static_utils;
     NSString* html;
     NSError *error;
     //NSString* rc4Result;
-    if ([[Utils getInstance] isSupportedType:path] == YES)
+
+    displayPath = [self getDisplayPath:path];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:displayPath isDirectory:&isFolder])
     {
-        displayPath = [self getDisplayPath:path];
-        if (![[NSFileManager defaultManager] fileExistsAtPath:displayPath isDirectory:&isFolder])
-        {
-            Parser* parser = [[Parser alloc] init];
+        Parser* parser = [[Parser alloc] init];
+        if ([[Utils getInstance] isSupportedType:path] == YES)
             [parser setParserType:CPLUSPLUS];
-            [parser setFile: path andProjectBase:projectPath];
-            [parser startParse];
-            html = [parser getHtml];
-            //rc4Result = [self HloveyRC4:html key:@"lgz"];
-            [html writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
-        }
         else
-        {
-            NSStringEncoding encoding = NSUTF8StringEncoding;
-            html = [NSString stringWithContentsOfFile: displayPath usedEncoding:&encoding error: &error];
-            //html = [self HloveyRC4:rc4Result key:@"lgz"];
-        }
-        return html;
+            [parser setParserType:UNKNOWN];
+        [parser setFile: path andProjectBase:projectPath];
+        [parser startParse];
+        html = [parser getHtml];
+        //rc4Result = [self HloveyRC4:html key:@"lgz"];
+        [html writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
     }
+    else
+    {
+        NSStringEncoding encoding = NSUTF8StringEncoding;
+        html = [NSString stringWithContentsOfFile: displayPath usedEncoding:&encoding error: &error];
+        //html = [self HloveyRC4:rc4Result key:@"lgz"];
+    }
+    return html;
     return nil;
 }
 

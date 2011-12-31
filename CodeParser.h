@@ -38,6 +38,8 @@
 -(void) addLinkEnd;
 
 -(void) addString: (NSString*)content addEnter: (BOOL)addEnter;
+
+-(void) addUnknownLine: (NSString*)content;
                                                        
 -(void) lineStart: (int)num;
                                                       

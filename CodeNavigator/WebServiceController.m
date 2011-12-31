@@ -408,9 +408,10 @@
                         [self performSelectorOnMainThread:@selector(log:) withObject:[NSString stringWithFormat:@"Unzip: %@", info.name] waitUntilDone:YES];
                         continue;
                     }
-                                        
-                    if (![[Utils getInstance] isSupportedType:info.name])
-                         continue;
+
+                    // Upload all kinds of files
+//                    if (![[Utils getInstance] isSupportedType:info.name])
+//                         continue;
                     
                     fileWritePath = [NSString stringWithFormat:@"%@/%@", projectFolder, info.name];
                     NSFileHandle *file = [NSFileHandle fileHandleForWritingAtPath:fileWritePath];
@@ -447,11 +448,17 @@
                 [self performSelectorOnMainThread:@selector(log:) withObject:@"Caught a ZipException (see logs), terminating..." waitUntilDone:YES];
                 
                 NSLog(@"ZipException caught: %d - %@", ze.error, [ze reason]);
+                NSError *error;
+                [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+                return;
                 
             } @catch (id e) {
                 [self performSelectorOnMainThread:@selector(log:) withObject:@"Caught a generic exception (see logs), terminating..." waitUntilDone:YES];
                 
                 NSLog(@"Exception caught: %@ - %@", [[e class] description], [e description]);
+                NSError *error;
+                [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+                return;
             }
             
             [zipFiles removeObjectAtIndex:0];

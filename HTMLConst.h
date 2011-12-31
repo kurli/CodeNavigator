@@ -95,6 +95,8 @@ table.code td {\n\
 
 #define HTML_OTHER_WORD @"<span onmousedown=\"mousedown(this);\">"
 
+#define HTML_UNKNOWN_LINE @"<span>%@</span>"
+
 #define HTML_SPAN_END @"</span>"
 
 #define HTML_ENTER @"\n"

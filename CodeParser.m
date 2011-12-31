@@ -9,6 +9,10 @@
     NSError *error;
     NSStringEncoding encoding = NSUTF8StringEncoding;
     fileContent = [NSString stringWithContentsOfFile: name usedEncoding:&encoding error: &error];
+    if (error.code == 264)
+    {
+        fileContent = @"File Format not supported yet!";
+    }
 	htmlContent = [[NSMutableString alloc] init];
     projectBase = base;
 }
@@ -136,6 +140,11 @@
 -(void) otherWordStart
 {
     [htmlContent appendString:HTML_OTHER_WORD];
+}
+
+-(void) addUnknownLine:(NSString *)content
+{
+    [htmlContent appendFormat:HTML_UNKNOWN_LINE, content];
 }
 
 -(void) lineStart: (int)line
