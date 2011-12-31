@@ -75,7 +75,7 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    CGSize size =  self.detailViewController.splitViewController.view.frame.size;
+    CGSize size =  self.detailViewController.view.frame.size;
     size.height = size.height/3;
     size.width = size.width;
     self.contentSizeForViewInPopover = size;

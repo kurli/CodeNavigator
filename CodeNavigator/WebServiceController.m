@@ -136,6 +136,7 @@
         [_httpServer start:&error];
         [textView setText:@"Please Wait..."];
         [localhostAddresses performSelectorInBackground:@selector(list) withObject:nil];
+        [[[Utils getInstance] getBannerViewController] showBannerView];
     } else {
         [_httpServer stop];
         [textView setText:@"Please turn on \"Web Upload Service\" to upload files"];

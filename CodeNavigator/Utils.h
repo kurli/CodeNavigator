@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BannerViewController.h"
 
 @class DetailViewController;
 @class AnalyzeInfoController;
@@ -18,7 +19,7 @@ typedef enum _TableViewMode{
     TABLEVIEW_CONTENT
 } TableViewMode;
 
-@interface BuildThreadData : NSObject {
+@interface BuildThreadData : NSObject <UIAlertViewDelegate> {
     BOOL force;
 }
 @property (retain, nonatomic) NSString* path;
@@ -40,9 +41,12 @@ typedef enum _TableViewMode{
     //for result view controller table contrel
     TableViewMode resultTableviewMode;
     int resultCurrentFileIndex;
+    BOOL storedForceAnalyze;
+    BannerViewController *_bannerViewController;
+    ADBannerView* _bannerView;
 }
 
-@property (nonatomic, strong) DetailViewController* detailViewController;
+@property (nonatomic, assign) DetailViewController* detailViewController;
 
 @property (nonatomic, strong) AnalyzeInfoController* analyzeInfoController;
 
@@ -52,11 +56,19 @@ typedef enum _TableViewMode{
 
 @property (nonatomic, strong) NSString* analyzePath;
 
-@property (retain, nonatomic) NSMutableArray* resultFileList;
+@property (strong, nonatomic) NSMutableArray* resultFileList;
 
-@property (retain, nonatomic) NSString* searchKeyword;
+@property (strong, nonatomic) NSString* searchKeyword;
+
+@property (strong, nonatomic) NSString* storedAnalyzePath;
 
 +(Utils*)getInstance;
+
+-(void) initBanner:(UISplitViewController*)view;
+
+-(ADBannerView*) getBannerView;
+
+-(BannerViewController*) getBannerViewController;
 
 -(void) showAnalyzeInfoPopOver:(BOOL) show;
 
@@ -73,6 +85,8 @@ typedef enum _TableViewMode{
 -(void) deleteDisplayFileForSource:(NSString*)source;
 
 -(void) analyzeProject:(NSString*)path andForceCreate:(BOOL)forceCreate;
+
+-(void) analyzeProjectConfirmed:(NSString*)path andForceCreate:(BOOL)forceCreate;
 
 -(void) createFileList:(NSString*)projPath andWriteTo:(NSMutableString*) cache;
 

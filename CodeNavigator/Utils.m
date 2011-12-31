@@ -47,6 +47,7 @@ static Utils *static_utils;
 @synthesize analyzePath;
 @synthesize resultFileList = _resultFileList;
 @synthesize searchKeyword = _searchKeyword;
+@synthesize storedAnalyzePath;
 
 +(Utils*)getInstance
 {
@@ -54,6 +55,37 @@ static Utils *static_utils;
         static_utils = [[Utils alloc] init];
     }
     return static_utils;
+}
+
+-(void) initBanner:(UISplitViewController *)view
+{
+    _bannerViewController = [[BannerViewController alloc] initWithContentViewController:view];
+    _bannerView =  [[ADBannerView alloc] init];
+    _bannerView.requiredContentSizeIdentifiers = [NSSet setWithObjects: ADBannerContentSizeIdentifierPortrait, ADBannerContentSizeIdentifierLandscape, nil];
+    [_bannerViewController showBannerView];
+}
+
+-(BannerViewController*) getBannerViewController
+{
+    return _bannerViewController;
+}
+
+-(ADBannerView*) getBannerView
+{
+    return _bannerView;
+}
+
+-(void) dealloc
+{
+    [self setDetailViewController:nil];
+    [self setAnalyzeInfoController:nil];
+    [self setAnalyzeInfoPopover:nil];
+    [self setAnalyzeThread:nil];
+    [self setAnalyzePath:nil];
+    [self.resultFileList removeAllObjects];
+    [self setResultFileList:nil];
+    [self setSearchKeyword:nil];
+    [self setStoredAnalyzePath:nil];
 }
 
 -(NSString*)getProjectFolder:(NSString *)path
@@ -277,6 +309,8 @@ static Utils *static_utils;
     NSMutableString *db_content = [[NSMutableString alloc] init];
     NSString* projectFolder = [[Utils getInstance] getProjectFolder:path];
     [self setAnalyzePath:[projectFolder lastPathComponent]];
+    [((BuildThreadData*)data) setPath:nil];
+    data = nil;
     
     //check whether analyzed
     databaseFile = [projectFolder stringByAppendingPathComponent:@"db_files.lgz_proj_files"];
@@ -290,7 +324,15 @@ static Utils *static_utils;
         });
         [[Utils getInstance] createFileList:projectFolder andWriteTo:db_content];
         if (db_content == nil || [db_content length] == 0)
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                {
+                    [self.analyzeInfoController finishAnalyze];
+                    [self alertWithTitle:@"CodeNavigator" andMessage:@"No source file found, stop analyzing"];
+                }
+            });
             return;
+        }
         [db_content writeToFile:databaseFile atomically:YES encoding:NSUTF8StringEncoding error:&error];
         
         //build cscope files
@@ -308,6 +350,32 @@ static Utils *static_utils;
     }
 }
 
+-(void) analyzeProjectConfirmed:(NSString *)path andForceCreate:(BOOL)forceCreate
+{
+    BuildThreadData* data = [[BuildThreadData alloc]init];
+    [data setPath:path];
+    [data setForce:forceCreate];
+    self.analyzeThread = nil;
+    self.analyzeThread = [[NSThread alloc] initWithTarget:self selector:@selector(analyzeThread:) object:data];
+    [self.analyzeThread start];
+    return;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [self analyzeProjectConfirmed:storedAnalyzePath andForceCreate:storedForceAnalyze];
+        storedForceAnalyze = NO;
+        self.storedAnalyzePath = nil;
+    }
+    else
+    {
+        storedForceAnalyze = NO;
+        self.storedAnalyzePath = nil;
+    }
+}
+
 -(void) analyzeProject:(NSString *)path andForceCreate:(BOOL)forceCreate
 {
     if (self.analyzeThread.isExecuting == YES)
@@ -322,13 +390,21 @@ static Utils *static_utils;
         else
             return;
     }
-    BuildThreadData* data = [[BuildThreadData alloc]init];
-    [data setPath:path];
-    [data setForce:forceCreate];
-    self.analyzeThread = nil;
-    self.analyzeThread = [[NSThread alloc] initWithTarget:self selector:@selector(analyzeThread:) object:data];
-    [self.analyzeThread start];
-    return;
+    NSString *databaseFile;
+    BOOL isFolder;
+    BOOL isExist;
+    NSString* projectFolder = [[Utils getInstance] getProjectFolder:path];
+    databaseFile = [projectFolder stringByAppendingPathComponent:@"db_files.lgz_proj_files"];
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:databaseFile isDirectory:&isFolder];
+    
+    if (forceCreate || isExist == NO || (isExist == YES && isFolder == YES))
+    {
+        NSString* project = [projectFolder lastPathComponent];
+        storedAnalyzePath = path;
+        storedForceAnalyze = forceCreate;
+        UIAlertView *confirmAlert = [[UIAlertView alloc] initWithTitle:@"CodeNavigator" message:[NSString stringWithFormat:@"Would you like to analyze \"%@\" for code navigation?",project] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
+        [confirmAlert show];
+    }
 }
 
 

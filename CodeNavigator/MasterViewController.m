@@ -13,8 +13,8 @@
 #import "cscope.h"
 
 @implementation MasterViewController
-@synthesize tableView = _tableView;
 
+@synthesize tableView = _tableView;
 @synthesize masterViewController = _masterViewController;
 @synthesize currentLocation = _currentLocation;
 @synthesize currentDirectories = _currentDirectories;
@@ -22,6 +22,7 @@
 @synthesize currentProjectPath = _currentProjectPath;
 @synthesize webServiceController = _webServiceController;
 @synthesize webServicePopOverController = _webServicePopOverController;
+@synthesize analyzeButton = _analyzeButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -126,6 +127,7 @@
     [self setWebServiceController:nil];
     [self setWebServicePopOverController:nil];
     [self setTableView:nil];
+    [self setAnalyzeButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -134,6 +136,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    if (isProjectFolder)
+        [self.analyzeButton setEnabled:NO];
+    else
+        [self.analyzeButton setEnabled:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -244,7 +250,8 @@
         }
         [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        [[Utils getInstance] analyzeProject:path andForceCreate:YES];
+        if (!isProjectFolder)
+            [[Utils getInstance] analyzeProject:path andForceCreate:YES];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }   
@@ -408,6 +415,10 @@
     }
     if (founded == YES)
         [targetViewController.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+}
+
+- (IBAction)analyzeButtonClicked:(id)sender {
+    [[Utils getInstance] analyzeProject:self.currentProjectPath andForceCreate:YES];
 }
 
 - (IBAction)addFileToolBarClicked:(id)sender {

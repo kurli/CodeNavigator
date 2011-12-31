@@ -31,6 +31,8 @@
 
 @property (strong, nonatomic) UIPopoverController *webServicePopOverController;
 
+@property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *analyzeButton;
+
 - (IBAction)addFileToolBarClicked:(id)sender;
 
 - (void) reloadData;
@@ -38,6 +40,8 @@
 - (void) setIsProjectFolder:(BOOL) _isProjectFolder;
 
 - (void) gotoFile:(NSString*) filePath;
+
+- (IBAction)analyzeButtonClicked:(id)sender;
 
 @end
 

@@ -9,8 +9,13 @@
 #import "DetailViewController.h"
 #import "Utils.h"
 #import "FilePathInfoPopupController.h"
+#import "BannerViewController.h"
 
 @implementation DetailViewController
+{
+    int _bannerCounter;
+}
+
 @synthesize countTextField = _countTextField;
 @synthesize resultBarButton = _resultBarButton;
 
@@ -78,6 +83,11 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -124,10 +134,24 @@
 //    hold.numberOfTapsRequired = 1;
 //    hold.delegate = self;
 //    [self.view addGestureRecognizer:hold];
+    if (self)
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willBeginBannerViewActionNotification:) name:BannerViewActionWillBegin object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishBannerViewActionNotification:) name:BannerViewActionDidFinish object:nil];
+        _bannerCounter = 0;
+    }
     self.historyController = [[HistoryController alloc] init];
     return self;
 }
 
+- (void)willBeginBannerViewActionNotification:(NSNotification *)notification
+{
+}
+
+- (void)didFinishBannerViewActionNotification:(NSNotification *)notification
+{
+    [[[Utils getInstance] getBannerViewController] hideBannerView];
+}
 
 #pragma detailviewcontroller interface for others
 - (void)setTitle:(NSString *)title andPath:(NSString*)path andContent:(NSString *)content
@@ -363,6 +387,12 @@
 	_codeNavigationPopover.popoverContentSize = CGSizeMake(320., 320.);
     
     [_codeNavigationPopover presentPopoverFromBarButtonItem:self.navigateBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    _bannerCounter++;
+    if (_bannerCounter == 10)
+    {
+        [[[Utils getInstance] getBannerViewController] showBannerView];
+        _bannerCounter = 0;
+    }
 }
 
 -(void) releaseAllPopOver
@@ -453,6 +483,12 @@
 {
 //    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
 //    NSString *pastedText = pasteboard.string;
+    _bannerCounter++;
+    if (_bannerCounter == 10)
+    {
+        [[[Utils getInstance] getBannerViewController] showBannerView];
+        _bannerCounter = 0;
+    }
     if ([_codeNavigationPopover isPopoverVisible] == YES)
     {
         [_codeNavigationPopover dismissPopoverAnimated:YES];
@@ -505,7 +541,7 @@
     UINavigationController *result_controller = [[UINavigationController alloc] initWithRootViewController:self.resultViewController];
     self.resultViewController.title = @"Result";
     _resultPopover = [[UIPopoverController alloc] initWithContentViewController:result_controller];
-    CGSize size = self.splitViewController.view.frame.size;
+    CGSize size = self.view.frame.size;
     size.height = size.height/3+39;
     size.width = size.width;
 	_resultPopover.popoverContentSize = size;

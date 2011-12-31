@@ -12,6 +12,8 @@
 #import "Utils.h"
 
 @implementation AppDelegate
+{
+}
 
 @synthesize window = _window;
 @synthesize splitViewController = _splitViewController;
@@ -31,7 +33,14 @@
     self.splitViewController = [[UISplitViewController alloc] init];
     self.splitViewController.delegate = detailViewController;
     self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailViewController, nil];
-    self.window.rootViewController = self.splitViewController;
+    
+    //Banner support
+    [[Utils getInstance] initBanner:self.splitViewController];
+    self.window.rootViewController = [[Utils getInstance] getBannerViewController];
+    //----------------
+    //self.window.rootViewController = self.splitViewController;
+    //end
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
