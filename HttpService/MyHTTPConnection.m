@@ -237,7 +237,10 @@
 				{
 					postHeaderOK = TRUE;
 					
-                    //TODO kurry crash @ objAtIndex 1
+                    //TODO kurry crash @ objAtIndex 1 Fix me
+                    if ([multipartData count] == 0)
+                        break;
+                    // end
 					NSString* postInfo = [[NSString alloc] initWithBytes:[[multipartData objectAtIndex:1] bytes] length:[[multipartData objectAtIndex:1] length] encoding:NSUTF8StringEncoding];
 					NSArray* postInfoComponents = [postInfo componentsSeparatedByString:@"; filename="];
 					postInfoComponents = [[postInfoComponents lastObject] componentsSeparatedByString:@"\""];
