@@ -12,6 +12,8 @@
 		94158A8314A759190099FE09 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 94158A7F14A759190099FE09 /* Icon-Small-50.png */; };
 		94158A8414A759190099FE09 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 94158A8014A759190099FE09 /* Icon-Small.png */; };
 		94158A8714A77D230099FE09 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 94158A8614A77D230099FE09 /* iTunesArtwork.png */; };
+		9417EB7814AE118000224D2A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9417EB7714AE118000224D2A /* iAd.framework */; };
+		9417EB7C14AE160C00224D2A /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9417EB7B14AE160C00224D2A /* BannerViewController.m */; };
 		9419B87D14A4B3BE00AB679B /* ResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */; };
 		94291E6014A9FB4A00E44221 /* AnalyzeInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94291E5E14A9FB4A00E44221 /* AnalyzeInfoController.m */; };
 		94291E6114A9FB4A00E44221 /* AnalyzeInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94291E5F14A9FB4A00E44221 /* AnalyzeInfoController.xib */; };
@@ -62,10 +64,12 @@
 		9432E3AD149CF9CE00AB5BB7 /* NavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9432E3AC149CF9CE00AB5BB7 /* NavigationController.xib */; };
 		9432E3B0149D02D400AB5BB7 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9432E3AF149D02D400AB5BB7 /* NavigationController.m */; };
 		9434BFC914A38ABF00B34419 /* libZip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434BFB314A389BE00B34419 /* libZip.a */; };
+		94557E5414B05E89004950B4 /* linux_0.1 in Resources */ = {isa = PBXBuildFile; fileRef = 94557E5314B05E89004950B4 /* linux_0.1 */; };
 		94603D07149E041400D72561 /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94603D05149E041400D72561 /* ResultViewController.m */; };
 		94603D08149E041400D72561 /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94603D06149E041400D72561 /* ResultViewController.xib */; };
 		9466466B14A2370700B30CD2 /* WebServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9466466914A2370700B30CD2 /* WebServiceController.m */; };
 		9466466C14A2370700B30CD2 /* WebServiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9466466A14A2370700B30CD2 /* WebServiceController.xib */; };
+		94AB1E5214AF5E0300451020 /* UnSupportedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB1E5114AF5E0300451020 /* UnSupportedParser.m */; };
 		94B23AD81499025A00A83395 /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B23AD71499025A00A83395 /* HistoryController.m */; };
 		94B4036A14A0DE0300E3A636 /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4033014A0D5EB00E3A636 /* libHttpService.a */; };
 		94B4038114A0ED4700E3A636 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4038014A0ED4700E3A636 /* CFNetwork.framework */; };
@@ -113,6 +117,9 @@
 		94158A7F14A759190099FE09 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "icon/Icon-Small-50.png"; sourceTree = "<group>"; };
 		94158A8014A759190099FE09 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "icon/Icon-Small.png"; sourceTree = "<group>"; };
 		94158A8614A77D230099FE09 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iTunesArtwork.png; path = icon/iTunesArtwork.png; sourceTree = "<group>"; };
+		9417EB7714AE118000224D2A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		9417EB7A14AE160C00224D2A /* BannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BannerViewController.h; path = Banner/BannerViewController.h; sourceTree = "<group>"; };
+		9417EB7B14AE160C00224D2A /* BannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BannerViewController.m; path = Banner/BannerViewController.m; sourceTree = "<group>"; };
 		9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultTableCellView.xib; sourceTree = "<group>"; };
 		94291E5D14A9FB4A00E44221 /* AnalyzeInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyzeInfoController.h; sourceTree = "<group>"; };
 		94291E5E14A9FB4A00E44221 /* AnalyzeInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyzeInfoController.m; sourceTree = "<group>"; };
@@ -208,12 +215,15 @@
 		9434C01E14A393DB00B34419 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zip.h; path = Zip/zip.h; sourceTree = "<group>"; };
 		9434C01F14A393DB00B34419 /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zlib.h; path = Zip/zlib.h; sourceTree = "<group>"; };
 		9434C02014A393DB00B34419 /* zutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zutil.h; path = Zip/zutil.h; sourceTree = "<group>"; };
+		94557E5314B05E89004950B4 /* linux_0.1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = linux_0.1; sourceTree = "<group>"; };
 		94603D04149E041400D72561 /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
 		94603D05149E041400D72561 /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
 		94603D06149E041400D72561 /* ResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
 		9466466814A2370700B30CD2 /* WebServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceController.h; sourceTree = "<group>"; };
 		9466466914A2370700B30CD2 /* WebServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceController.m; sourceTree = "<group>"; };
 		9466466A14A2370700B30CD2 /* WebServiceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebServiceController.xib; sourceTree = "<group>"; };
+		94AB1E5014AF5E0300451020 /* UnSupportedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnSupportedParser.h; sourceTree = "<group>"; };
+		94AB1E5114AF5E0300451020 /* UnSupportedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnSupportedParser.m; sourceTree = "<group>"; };
 		94B23AD61499025A00A83395 /* HistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryController.h; sourceTree = "<group>"; };
 		94B23AD71499025A00A83395 /* HistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryController.m; sourceTree = "<group>"; };
 		94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HttpService.xcodeproj; path = HttpService/HttpService.xcodeproj; sourceTree = "<group>"; };
@@ -243,6 +253,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9417EB7814AE118000224D2A /* iAd.framework in Frameworks */,
 				9434BFC914A38ABF00B34419 /* libZip.a in Frameworks */,
 				94B4038114A0ED4700E3A636 /* CFNetwork.framework in Frameworks */,
 				94B4036A14A0DE0300E3A636 /* libHttpService.a in Frameworks */,
@@ -255,9 +266,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9417EB7914AE15CE00224D2A /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				9417EB7A14AE160C00224D2A /* BannerViewController.h */,
+				9417EB7B14AE160C00224D2A /* BannerViewController.m */,
+			);
+			name = Banner;
+			sourceTree = "<group>";
+		};
 		9431D72914910B3000B0900E = {
 			isa = PBXGroup;
 			children = (
+				9417EB7914AE15CE00224D2A /* Banner */,
 				9434C00C14A3925B00B34419 /* ZipInc */,
 				9434BFAE14A389BC00B34419 /* Zip.xcodeproj */,
 				94B4037514A0E2C400E3A636 /* HttpServiceInc */,
@@ -282,6 +303,7 @@
 		9431D73714910B3000B0900E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9417EB7714AE118000224D2A /* iAd.framework */,
 				94B4038014A0ED4700E3A636 /* CFNetwork.framework */,
 				9431D73814910B3000B0900E /* UIKit.framework */,
 				9431D73A14910B3000B0900E /* Foundation.framework */,
@@ -351,6 +373,8 @@
 				9431D7691493B36000B0900E /* HTMLConst.h */,
 				9431D76A1493B36000B0900E /* Parser.h */,
 				9431D76B1493B36000B0900E /* Parser.m */,
+				94AB1E5014AF5E0300451020 /* UnSupportedParser.h */,
+				94AB1E5114AF5E0300451020 /* UnSupportedParser.m */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -406,6 +430,7 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				94557E5314B05E89004950B4 /* linux_0.1 */,
 				94158A8614A77D230099FE09 /* iTunesArtwork.png */,
 				94158A7E14A759190099FE09 /* Icon-72.png */,
 				94158A7F14A759190099FE09 /* Icon-Small-50.png */,
@@ -487,7 +512,6 @@
 				9431D73014910B3000B0900E /* Sources */,
 				9431D73114910B3000B0900E /* Frameworks */,
 				9431D73214910B3000B0900E /* Resources */,
-				941C81D914A1036C00471F0F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -574,26 +598,11 @@
 				94158A8414A759190099FE09 /* Icon-Small.png in Resources */,
 				94158A8714A77D230099FE09 /* iTunesArtwork.png in Resources */,
 				94291E6114A9FB4A00E44221 /* AnalyzeInfoController.xib in Resources */,
+				94557E5414B05E89004950B4 /* linux_0.1 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		941C81D914A1036C00471F0F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export CODESIGN_ALLOCATE=/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate\nif [ \"${PLATFORM_NAME}\" == \"ipads\" ]; then\n/Developer/iphoneentitlements401/gen_entitlements.py \"my.company.${PROJECT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\";\ncodesign -f -s \"iPhone Developer\" --entitlements \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/\"\nfi";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9431D73014910B3000B0900E /* Sources */ = {
@@ -644,6 +653,8 @@
 				94DA0BBE14A624690035DB39 /* Utils.m in Sources */,
 				94D8703114A65888002F2DBB /* FilePathInfoPopupController.m in Sources */,
 				94291E6014A9FB4A00E44221 /* AnalyzeInfoController.m in Sources */,
+				9417EB7C14AE160C00224D2A /* BannerViewController.m in Sources */,
+				94AB1E5214AF5E0300451020 /* UnSupportedParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -696,6 +707,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -712,6 +724,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DHAVE_CONFIG_H";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -723,6 +737,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -735,6 +750,8 @@
 					"-DHAVE_CONFIG_H",
 					"-DNS_BLOCK_ASSERTIONS=1",
 				);
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -745,12 +762,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -759,15 +779,63 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
+		};
+		94557D9F14B0325C004950B4 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = (
+					"-DHAVE_CONFIG_H",
+					"-DNS_BLOCK_ASSERTIONS=1",
+				);
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
+		};
+		94557DA014B0325C004950B4 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "DISTRIBUTION=1";
+				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Distribution;
 		};
 /* End XCBuildConfiguration section */
 
@@ -777,6 +845,7 @@
 			buildConfigurations = (
 				9431D75614910B3000B0900E /* Debug */,
 				9431D75714910B3000B0900E /* Release */,
+				94557D9F14B0325C004950B4 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -786,6 +855,7 @@
 			buildConfigurations = (
 				9431D75914910B3000B0900E /* Debug */,
 				9431D75A14910B3000B0900E /* Release */,
+				94557DA014B0325C004950B4 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

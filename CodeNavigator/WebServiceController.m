@@ -372,6 +372,8 @@
                     count++;
                     number = [NSNumber numberWithFloat:(float)((float)count/(float)[infos count])];
                     [self performSelectorOnMainThread:@selector(setProgressViewValue:) withObject: number waitUntilDone:YES];
+                    if ([info.name rangeOfString:@"__MACOSX"].location != NSNotFound)
+                        continue;
                     if (skipPath == nil)
                     {
                         NSString* tmp = [info.name lastPathComponent];
@@ -450,14 +452,20 @@
                 NSLog(@"ZipException caught: %d - %@", ze.error, [ze reason]);
                 NSError *error;
                 [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.masterViewController reloadData];
+                });
                 return;
-                
+
             } @catch (id e) {
                 [self performSelectorOnMainThread:@selector(log:) withObject:@"Caught a generic exception (see logs), terminating..." waitUntilDone:YES];
                 
                 NSLog(@"Exception caught: %@ - %@", [[e class] description], [e description]);
                 NSError *error;
                 [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.masterViewController reloadData];
+                });
                 return;
             }
             

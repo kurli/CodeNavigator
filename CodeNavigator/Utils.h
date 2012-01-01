@@ -14,6 +14,8 @@
 
 #define MAX_HISTORY_STACK 20
 
+//#define BANNER_SUPPORT
+
 typedef enum _TableViewMode{
     TABLEVIEW_FILE,
     TABLEVIEW_CONTENT

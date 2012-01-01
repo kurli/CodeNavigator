@@ -218,6 +218,8 @@ static Utils *static_utils;
         return YES;
     else if ([extension isEqualToString:@"java"])
         return YES;
+    else if ([extension isEqualToString:@"mm"])
+        return YES;
     return NO;
 }
 

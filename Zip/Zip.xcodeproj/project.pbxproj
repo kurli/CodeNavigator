@@ -8,47 +8,47 @@
 
 /* Begin PBXBuildFile section */
 		9434BFA214A389BC00B34419 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434BFA114A389BC00B34419 /* Foundation.framework */; };
-		9434BFBF14A38A9B00B34419 /* FileInZipInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFB514A38A9B00B34419 /* FileInZipInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434BFBF14A38A9B00B34419 /* FileInZipInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFB514A38A9B00B34419 /* FileInZipInfo.h */; settings = {ATTRIBUTES = (); }; };
 		9434BFC014A38A9B00B34419 /* FileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFB614A38A9B00B34419 /* FileInZipInfo.m */; };
-		9434BFC114A38A9B00B34419 /* ZipException.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFB714A38A9B00B34419 /* ZipException.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434BFC114A38A9B00B34419 /* ZipException.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFB714A38A9B00B34419 /* ZipException.h */; settings = {ATTRIBUTES = (); }; };
 		9434BFC214A38A9B00B34419 /* ZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFB814A38A9B00B34419 /* ZipException.m */; };
-		9434BFC314A38A9B00B34419 /* ZipFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFB914A38A9B00B34419 /* ZipFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434BFC314A38A9B00B34419 /* ZipFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFB914A38A9B00B34419 /* ZipFile.h */; settings = {ATTRIBUTES = (); }; };
 		9434BFC414A38A9B00B34419 /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFBA14A38A9B00B34419 /* ZipFile.m */; };
-		9434BFC514A38A9B00B34419 /* ZipReadStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFBB14A38A9B00B34419 /* ZipReadStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434BFC514A38A9B00B34419 /* ZipReadStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFBB14A38A9B00B34419 /* ZipReadStream.h */; settings = {ATTRIBUTES = (); }; };
 		9434BFC614A38A9B00B34419 /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFBC14A38A9B00B34419 /* ZipReadStream.m */; };
-		9434BFC714A38A9B00B34419 /* ZipWriteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFBD14A38A9B00B34419 /* ZipWriteStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434BFC714A38A9B00B34419 /* ZipWriteStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFBD14A38A9B00B34419 /* ZipWriteStream.h */; settings = {ATTRIBUTES = (); }; };
 		9434BFC814A38A9B00B34419 /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFBE14A38A9B00B34419 /* ZipWriteStream.m */; };
-		9434BFD614A38D0B00B34419 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFCD14A38D0B00B34419 /* crypt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434BFD614A38D0B00B34419 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFCD14A38D0B00B34419 /* crypt.h */; settings = {ATTRIBUTES = (); }; };
 		9434BFD714A38D0B00B34419 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFCE14A38D0B00B34419 /* ioapi.c */; };
-		9434BFD814A38D0B00B34419 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFCF14A38D0B00B34419 /* ioapi.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434BFD814A38D0B00B34419 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFCF14A38D0B00B34419 /* ioapi.h */; settings = {ATTRIBUTES = (); }; };
 		9434BFD914A38D0B00B34419 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFD014A38D0B00B34419 /* mztools.c */; };
-		9434BFDA14A38D0B00B34419 /* mztools.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFD114A38D0B00B34419 /* mztools.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434BFDA14A38D0B00B34419 /* mztools.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFD114A38D0B00B34419 /* mztools.h */; settings = {ATTRIBUTES = (); }; };
 		9434BFDB14A38D0B00B34419 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFD214A38D0B00B34419 /* unzip.c */; };
-		9434BFDC14A38D0B00B34419 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFD314A38D0B00B34419 /* unzip.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434BFDC14A38D0B00B34419 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFD314A38D0B00B34419 /* unzip.h */; settings = {ATTRIBUTES = (); }; };
 		9434BFDD14A38D0B00B34419 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFD414A38D0B00B34419 /* zip.c */; };
-		9434BFDE14A38D0B00B34419 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFD514A38D0B00B34419 /* zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434BFDE14A38D0B00B34419 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFD514A38D0B00B34419 /* zip.h */; settings = {ATTRIBUTES = (); }; };
 		9434BFF614A38D5C00B34419 /* adler32.c in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFE014A38D5C00B34419 /* adler32.c */; };
 		9434BFF714A38D5C00B34419 /* compress.c in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFE114A38D5C00B34419 /* compress.c */; };
 		9434BFF814A38D5C00B34419 /* crc32.c in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFE214A38D5C00B34419 /* crc32.c */; };
-		9434BFF914A38D5C00B34419 /* crc32.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFE314A38D5C00B34419 /* crc32.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434BFF914A38D5C00B34419 /* crc32.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFE314A38D5C00B34419 /* crc32.h */; settings = {ATTRIBUTES = (); }; };
 		9434BFFA14A38D5C00B34419 /* deflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFE414A38D5C00B34419 /* deflate.c */; };
-		9434BFFB14A38D5C00B34419 /* deflate.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFE514A38D5C00B34419 /* deflate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434BFFB14A38D5C00B34419 /* deflate.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFE514A38D5C00B34419 /* deflate.h */; settings = {ATTRIBUTES = (); }; };
 		9434BFFC14A38D5C00B34419 /* gzio.c in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFE614A38D5C00B34419 /* gzio.c */; };
 		9434BFFD14A38D5C00B34419 /* infback.c in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFE714A38D5C00B34419 /* infback.c */; };
 		9434BFFE14A38D5C00B34419 /* inffast.c in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFE814A38D5C00B34419 /* inffast.c */; };
-		9434BFFF14A38D5C00B34419 /* inffast.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFE914A38D5C00B34419 /* inffast.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9434C00014A38D5C00B34419 /* inffixed.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFEA14A38D5C00B34419 /* inffixed.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434BFFF14A38D5C00B34419 /* inffast.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFE914A38D5C00B34419 /* inffast.h */; settings = {ATTRIBUTES = (); }; };
+		9434C00014A38D5C00B34419 /* inffixed.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFEA14A38D5C00B34419 /* inffixed.h */; settings = {ATTRIBUTES = (); }; };
 		9434C00114A38D5C00B34419 /* inflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFEB14A38D5C00B34419 /* inflate.c */; };
-		9434C00214A38D5C00B34419 /* inflate.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFEC14A38D5C00B34419 /* inflate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434C00214A38D5C00B34419 /* inflate.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFEC14A38D5C00B34419 /* inflate.h */; settings = {ATTRIBUTES = (); }; };
 		9434C00314A38D5C00B34419 /* inftrees.c in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFED14A38D5C00B34419 /* inftrees.c */; };
-		9434C00414A38D5C00B34419 /* inftrees.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFEE14A38D5C00B34419 /* inftrees.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434C00414A38D5C00B34419 /* inftrees.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFEE14A38D5C00B34419 /* inftrees.h */; settings = {ATTRIBUTES = (); }; };
 		9434C00514A38D5C00B34419 /* trees.c in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFEF14A38D5C00B34419 /* trees.c */; };
-		9434C00614A38D5C00B34419 /* trees.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFF014A38D5C00B34419 /* trees.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434C00614A38D5C00B34419 /* trees.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFF014A38D5C00B34419 /* trees.h */; settings = {ATTRIBUTES = (); }; };
 		9434C00714A38D5C00B34419 /* uncompr.c in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFF114A38D5C00B34419 /* uncompr.c */; };
-		9434C00814A38D5C00B34419 /* zconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFF214A38D5C00B34419 /* zconf.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9434C00914A38D5C00B34419 /* zlib.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFF314A38D5C00B34419 /* zlib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434C00814A38D5C00B34419 /* zconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFF214A38D5C00B34419 /* zconf.h */; settings = {ATTRIBUTES = (); }; };
+		9434C00914A38D5C00B34419 /* zlib.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFF314A38D5C00B34419 /* zlib.h */; settings = {ATTRIBUTES = (); }; };
 		9434C00A14A38D5C00B34419 /* zutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 9434BFF414A38D5C00B34419 /* zutil.c */; };
-		9434C00B14A38D5C00B34419 /* zutil.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFF514A38D5C00B34419 /* zutil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9434C00B14A38D5C00B34419 /* zutil.h in Headers */ = {isa = PBXBuildFile; fileRef = 9434BFF514A38D5C00B34419 /* zutil.h */; settings = {ATTRIBUTES = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -328,6 +328,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -341,8 +342,10 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -351,14 +354,17 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -387,6 +393,38 @@
 			};
 			name = Release;
 		};
+		94557DB014B04646004950B4 /* Distribute */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribute;
+		};
+		94557DB114B04646004950B4 /* Distribute */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Zip.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Zip/Zip-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Distribute;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -395,6 +433,7 @@
 			buildConfigurations = (
 				9434BFA914A389BC00B34419 /* Debug */,
 				9434BFAA14A389BC00B34419 /* Release */,
+				94557DB014B04646004950B4 /* Distribute */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -404,6 +443,7 @@
 			buildConfigurations = (
 				9434BFAC14A389BC00B34419 /* Debug */,
 				9434BFAD14A389BC00B34419 /* Release */,
+				94557DB114B04646004950B4 /* Distribute */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

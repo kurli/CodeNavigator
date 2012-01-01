@@ -57,6 +57,15 @@
     {
         [[NSFileManager defaultManager] createDirectoryAtPath:projectFolder withIntermediateDirectories:YES attributes:nil error:&error];
     }
+
+    NSString* demoFolder = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/Projects/linux_0.1/"];
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:demoFolder isDirectory:&isFolder];
+    NSString* demoBundle = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/linux_0.1"];
+    if (isExist == NO || (isExist == YES && isFolder == NO))
+    {
+        [[NSFileManager defaultManager] copyItemAtPath:demoBundle toPath:demoFolder error:&error];
+    }
+    
     [self reloadData];
 }
 
