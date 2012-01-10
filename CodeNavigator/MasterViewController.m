@@ -23,6 +23,9 @@
 @synthesize webServiceController = _webServiceController;
 @synthesize webServicePopOverController = _webServicePopOverController;
 @synthesize analyzeButton = _analyzeButton;
+#ifdef LITE_VERSION
+@synthesize purchaseButton = _purchaseButton;
+#endif
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -137,6 +140,9 @@
     [self setWebServicePopOverController:nil];
     [self setTableView:nil];
     [self setAnalyzeButton:nil];
+#ifdef LITE_VERSION
+    [self setPurchaseButton:nil];
+#endif
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -148,7 +154,7 @@
     if (isProjectFolder)
         [self.analyzeButton setEnabled:NO];
     else
-        [self.analyzeButton setEnabled:YES];
+        [self.analyzeButton setEnabled:YES];    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -430,6 +436,12 @@
     [[Utils getInstance] analyzeProject:self.currentProjectPath andForceCreate:YES];
 }
 
+#ifdef LITE_VERSION
+- (IBAction)purchaseClicked:(id)sender {
+    [[Utils getInstance] openPurchaseURL];
+}
+#endif
+
 - (IBAction)addFileToolBarClicked:(id)sender {
     UIBarButtonItem *item = (UIBarButtonItem*)sender;
     if (_webServiceController == nil)
@@ -442,6 +454,9 @@
         [_webServicePopOverController dismissPopoverAnimated:YES];
     else
     {
+#ifdef LITE_VERSION
+        [[Utils getInstance] showPurchaseAlert];
+#endif
         [_webServiceController setMasterViewController:self];
         [_webServicePopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }

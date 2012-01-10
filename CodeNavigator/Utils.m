@@ -220,6 +220,10 @@ static Utils *static_utils;
         return YES;
     else if ([extension isEqualToString:@"mm"])
         return YES;
+    else if ([extension isEqualToString:@"cs"])
+        return YES;
+    else if ([extension isEqualToString:@"hpp"])
+        return YES;
     return NO;
 }
 
@@ -342,6 +346,36 @@ static Utils *static_utils;
             });
             return;
         }
+        
+#ifdef LITE_VERSION
+        // check whether Lite version permitted
+        int fileCount = [[db_content componentsSeparatedByString:@"\n"] count];
+        if ([[projectFolder lastPathComponent] compare:@"linux_0.1"] == NSOrderedSame)
+        {
+            if (fileCount != 84)
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[Utils getInstance] showPurchaseAlert];
+                    [self.analyzeInfoController finishAnalyze];
+                });
+                return;
+            }
+        }
+        else
+        {
+            if (fileCount > 6)
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[Utils getInstance] showPurchaseAlert];
+                    [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Count of source files are larger than 5, Failed to analyze"];
+                    [self.analyzeInfoController finishAnalyze];
+                });
+                return;
+            }
+        }
+#endif
+        
+        
         [db_content writeToFile:databaseFile atomically:YES encoding:NSUTF8StringEncoding error:&error];
         
         //build cscope files
@@ -372,17 +406,35 @@ static Utils *static_utils;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 1)
+    if (alertConfirmMode == ALERT_ANALYZE)
     {
-        [self analyzeProjectConfirmed:storedAnalyzePath andForceCreate:storedForceAnalyze];
-        storedForceAnalyze = NO;
-        self.storedAnalyzePath = nil;
+        if (buttonIndex == 1)
+        {
+            [self analyzeProjectConfirmed:storedAnalyzePath andForceCreate:storedForceAnalyze];
+            storedForceAnalyze = NO;
+            self.storedAnalyzePath = nil;
+        }
+        else
+        {
+            storedForceAnalyze = NO;
+            self.storedAnalyzePath = nil;
+        }
     }
-    else
+    else if (alertConfirmMode == ALERT_PURCHASE)
     {
-        storedForceAnalyze = NO;
-        self.storedAnalyzePath = nil;
+        if (buttonIndex == 1)
+        {
+            //Purchase
+            [self openPurchaseURL];
+        }
     }
+    alertConfirmMode = ALERT_NONE;
+}
+
+-(void) openPurchaseURL
+{
+    NSString* url = @"http://itunes.apple.com/us/app/codenavigator/id492480832?mt=8";
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
 -(void) analyzeProject:(NSString *)path andForceCreate:(BOOL)forceCreate
@@ -411,6 +463,7 @@ static Utils *static_utils;
         NSString* project = [projectFolder lastPathComponent];
         storedAnalyzePath = path;
         storedForceAnalyze = forceCreate;
+        alertConfirmMode = ALERT_ANALYZE;
         UIAlertView *confirmAlert = [[UIAlertView alloc] initWithTitle:@"CodeNavigator" message:[NSString stringWithFormat:@"Would you like to analyze \"%@\" for code navigation?",project] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
         [confirmAlert show];
     }
@@ -702,6 +755,13 @@ static Utils *static_utils;
     }
     return html;
     return nil;
+}
+
+-(void) showPurchaseAlert
+{
+    alertConfirmMode = ALERT_PURCHASE;
+    UIAlertView *confirmAlert = [[UIAlertView alloc] initWithTitle:@"CodeNavigator" message:[NSString stringWithFormat:@"It can only support 5 source files in one Project for Lite Version, Do you want to get Unlimited Full version?"] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Purchase", nil];
+    [confirmAlert show];
 }
 
 @end

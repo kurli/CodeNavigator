@@ -33,6 +33,12 @@
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *analyzeButton;
 
+#ifdef LITE_VERSION
+@property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *purchaseButton;
+
+- (IBAction)purchaseClicked:(id)sender;
+#endif
+
 - (IBAction)addFileToolBarClicked:(id)sender;
 
 - (void) reloadData;

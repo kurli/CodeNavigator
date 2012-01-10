@@ -443,6 +443,9 @@
         [[Utils getInstance] showAnalyzeInfoPopOver:YES];
 }
 
+- (IBAction)hideMasterViewClicked:(id)sender {
+}
+
 - (IBAction)historyClicked:(id)sender {
     UISegmentedControl* controller = sender;
     int index = [controller selectedSegmentIndex];

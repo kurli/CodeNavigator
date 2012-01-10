@@ -350,6 +350,19 @@
                 ZipReadStream *read;
                 NSError* error;
                 
+#ifdef LITE_VERSION
+                if (infos.count > 5)
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[Utils getInstance] showPurchaseAlert];
+                        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Count of source files are larger than 5, limitted in Lite Version"];
+                    });
+                    [zipFiles removeAllObjects];
+                    [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+                    [self performSelectorOnMainThread:@selector(log:) withObject:@"\nSource files larger than 5, limitted in Lite Version.\n" waitUntilDone:YES];
+                    return;
+                }
+#endif
                 //Create Project Folder
                 
                 projectFolder = [filePath stringByDeletingPathExtension];
@@ -359,7 +372,9 @@
                     NSString* info = @"";
                     info = [info stringByAppendingFormat:@"%@ already exist, please change the zip file name", projectFolder];
                     [self performSelectorOnMainThread:@selector(log:) withObject:info waitUntilDone:YES];
-                    break;
+                    [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+                    [zipFiles removeObjectAtIndex:0];
+                    continue;
                 }
                 [[NSFileManager defaultManager] createDirectoryAtPath:projectFolder withIntermediateDirectories:YES attributes:nil error:&error];
 
@@ -455,8 +470,8 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.masterViewController reloadData];
                 });
-                return;
-
+                [zipFiles removeObjectAtIndex:0];
+                continue;
             } @catch (id e) {
                 [self performSelectorOnMainThread:@selector(log:) withObject:@"Caught a generic exception (see logs), terminating..." waitUntilDone:YES];
                 
@@ -466,7 +481,8 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.masterViewController reloadData];
                 });
-                return;
+                [zipFiles removeObjectAtIndex:0];
+                continue;
             }
             
             [zipFiles removeObjectAtIndex:0];

@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		94040588149659C4002A0C73 /* lgz_javascript.js in Resources */ = {isa = PBXBuildFile; fileRef = 9404058514964E56002A0C73 /* lgz_javascript.js */; };
-		94158A8214A759190099FE09 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 94158A7E14A759190099FE09 /* Icon-72.png */; };
-		94158A8314A759190099FE09 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 94158A7F14A759190099FE09 /* Icon-Small-50.png */; };
-		94158A8414A759190099FE09 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 94158A8014A759190099FE09 /* Icon-Small.png */; };
-		94158A8714A77D230099FE09 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 94158A8614A77D230099FE09 /* iTunesArtwork.png */; };
 		9417EB7814AE118000224D2A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9417EB7714AE118000224D2A /* iAd.framework */; };
 		9417EB7C14AE160C00224D2A /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9417EB7B14AE160C00224D2A /* BannerViewController.m */; };
 		9419B87D14A4B3BE00AB679B /* ResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */; };
@@ -70,6 +66,78 @@
 		9466466B14A2370700B30CD2 /* WebServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9466466914A2370700B30CD2 /* WebServiceController.m */; };
 		9466466C14A2370700B30CD2 /* WebServiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9466466A14A2370700B30CD2 /* WebServiceController.xib */; };
 		94AB1E5214AF5E0300451020 /* UnSupportedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB1E5114AF5E0300451020 /* UnSupportedParser.m */; };
+		94ADF13F14BB27EE00BA807A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74414910B3000B0900E /* main.m */; };
+		94ADF14014BB27EE00BA807A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74814910B3000B0900E /* AppDelegate.m */; };
+		94ADF14114BB27EE00BA807A /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74B14910B3000B0900E /* MasterViewController.m */; };
+		94ADF14214BB27EE00BA807A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74E14910B3000B0900E /* DetailViewController.m */; };
+		94ADF14314BB27EE00BA807A /* CodeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7651493B36000B0900E /* CodeParser.m */; };
+		94ADF14414BB27EE00BA807A /* CPlusPlusParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7681493B36000B0900E /* CPlusPlusParser.m */; };
+		94ADF14514BB27EE00BA807A /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D76B1493B36000B0900E /* Parser.m */; };
+		94ADF14614BB27EE00BA807A /* alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7741494754900B0900E /* alloc.c */; };
+		94ADF14714BB27EE00BA807A /* basename.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7761494754900B0900E /* basename.c */; };
+		94ADF14814BB27EE00BA807A /* build.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7771494754900B0900E /* build.c */; };
+		94ADF14914BB27EE00BA807A /* command.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7791494754900B0900E /* command.c */; };
+		94ADF14A14BB27EE00BA807A /* compath.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D77A1494754900B0900E /* compath.c */; };
+		94ADF14B14BB27EE00BA807A /* crossref.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D77D1494754900B0900E /* crossref.c */; };
+		94ADF14C14BB27EE00BA807A /* cscope.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D77E1494754900B0900E /* cscope.c */; };
+		94ADF14D14BB27EE00BA807A /* dir.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7801494754900B0900E /* dir.c */; };
+		94ADF14E14BB27EE00BA807A /* display.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7811494754900B0900E /* display.c */; };
+		94ADF14F14BB27EE00BA807A /* edit.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7821494754900B0900E /* edit.c */; };
+		94ADF15014BB27EE00BA807A /* egrep.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7831494754900B0900E /* egrep.c */; };
+		94ADF15114BB27EE00BA807A /* exec.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7841494754900B0900E /* exec.c */; };
+		94ADF15214BB27EE00BA807A /* find.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7851494754900B0900E /* find.c */; };
+		94ADF15314BB27EE00BA807A /* fscanner.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7861494754900B0900E /* fscanner.c */; };
+		94ADF15414BB27EE00BA807A /* gscope.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7881494754900B0900E /* gscope.c */; };
+		94ADF15514BB27EE00BA807A /* help.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7891494754900B0900E /* help.c */; };
+		94ADF15614BB27EE00BA807A /* history.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D78A1494754900B0900E /* history.c */; };
+		94ADF15714BB27EE00BA807A /* input.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D78B1494754900B0900E /* input.c */; };
+		94ADF15814BB27EE00BA807A /* invlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D78C1494754900B0900E /* invlib.c */; };
+		94ADF15914BB27EE00BA807A /* logdir.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D78F1494754900B0900E /* logdir.c */; };
+		94ADF15A14BB27EE00BA807A /* lookup.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7901494754900B0900E /* lookup.c */; };
+		94ADF15B14BB27EE00BA807A /* mouse.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7921494754900B0900E /* mouse.c */; };
+		94ADF15C14BB27EE00BA807A /* mygetenv.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7931494754900B0900E /* mygetenv.c */; };
+		94ADF15D14BB27EE00BA807A /* mypopen.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7941494754900B0900E /* mypopen.c */; };
+		94ADF15E14BB27EE00BA807A /* snprintf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7961494754900B0900E /* snprintf.c */; };
+		94ADF15F14BB27EE00BA807A /* vpaccess.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D79A1494754900B0900E /* vpaccess.c */; };
+		94ADF16014BB27EE00BA807A /* vpfopen.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D79B1494754900B0900E /* vpfopen.c */; };
+		94ADF16114BB27EE00BA807A /* vpinit.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D79C1494754900B0900E /* vpinit.c */; };
+		94ADF16214BB27EE00BA807A /* vpopen.c in Sources */ = {isa = PBXBuildFile; fileRef = 9431D79D1494754900B0900E /* vpopen.c */; };
+		94ADF16314BB27EE00BA807A /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B23AD71499025A00A83395 /* HistoryController.m */; };
+		94ADF16414BB27EE00BA807A /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9432E3AF149D02D400AB5BB7 /* NavigationController.m */; };
+		94ADF16514BB27EE00BA807A /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94603D05149E041400D72561 /* ResultViewController.m */; };
+		94ADF16614BB27EE00BA807A /* GotoLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EE32D1149FAE0B0088501D /* GotoLineViewController.m */; };
+		94ADF16714BB27EE00BA807A /* WebServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9466466914A2370700B30CD2 /* WebServiceController.m */; };
+		94ADF16814BB27EE00BA807A /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DA0BBD14A624680035DB39 /* Utils.m */; };
+		94ADF16914BB27EE00BA807A /* FilePathInfoPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D8702F14A65887002F2DBB /* FilePathInfoPopupController.m */; };
+		94ADF16A14BB27EE00BA807A /* AnalyzeInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94291E5E14A9FB4A00E44221 /* AnalyzeInfoController.m */; };
+		94ADF16B14BB27EE00BA807A /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9417EB7B14AE160C00224D2A /* BannerViewController.m */; };
+		94ADF16C14BB27EE00BA807A /* UnSupportedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB1E5114AF5E0300451020 /* UnSupportedParser.m */; };
+		94ADF16E14BB27EE00BA807A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9417EB7714AE118000224D2A /* iAd.framework */; };
+		94ADF16F14BB27EE00BA807A /* libZip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434BFB314A389BE00B34419 /* libZip.a */; };
+		94ADF17014BB27EE00BA807A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4038014A0ED4700E3A636 /* CFNetwork.framework */; };
+		94ADF17114BB27EE00BA807A /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4033014A0D5EB00E3A636 /* libHttpService.a */; };
+		94ADF17214BB27EE00BA807A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9431D73814910B3000B0900E /* UIKit.framework */; };
+		94ADF17314BB27EE00BA807A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9431D73A14910B3000B0900E /* Foundation.framework */; };
+		94ADF17414BB27EE00BA807A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9431D73C14910B3000B0900E /* CoreGraphics.framework */; };
+		94ADF17614BB27EE00BA807A /* lgz_javascript.js in Resources */ = {isa = PBXBuildFile; fileRef = 9404058514964E56002A0C73 /* lgz_javascript.js */; };
+		94ADF17714BB27EE00BA807A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9431D74114910B3000B0900E /* InfoPlist.strings */; };
+		94ADF17814BB27EE00BA807A /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9431D75014910B3000B0900E /* MasterViewController.xib */; };
+		94ADF17914BB27EE00BA807A /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9431D75314910B3000B0900E /* DetailViewController.xib */; };
+		94ADF17A14BB27EE00BA807A /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9431D7C51494D1E300B0900E /* folder.png */; };
+		94ADF17B14BB27EE00BA807A /* project.png in Resources */ = {isa = PBXBuildFile; fileRef = 9431D7C61494D1E300B0900E /* project.png */; };
+		94ADF17C14BB27EE00BA807A /* NavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9432E3AC149CF9CE00AB5BB7 /* NavigationController.xib */; };
+		94ADF17D14BB27EE00BA807A /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94603D06149E041400D72561 /* ResultViewController.xib */; };
+		94ADF17E14BB27EE00BA807A /* GotoLineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94EE32D2149FAE0B0088501D /* GotoLineViewController.xib */; };
+		94ADF17F14BB27EE00BA807A /* WebServiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9466466A14A2370700B30CD2 /* WebServiceController.xib */; };
+		94ADF18014BB27EE00BA807A /* ResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */; };
+		94ADF18114BB27EE00BA807A /* FilePathInfoPopupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D8703014A65888002F2DBB /* FilePathInfoPopupController.xib */; };
+		94ADF18614BB27EE00BA807A /* AnalyzeInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94291E5F14A9FB4A00E44221 /* AnalyzeInfoController.xib */; };
+		94ADF18714BB27EE00BA807A /* linux_0.1 in Resources */ = {isa = PBXBuildFile; fileRef = 94557E5314B05E89004950B4 /* linux_0.1 */; };
+		94ADF19614BB630C00BA807A /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 94ADF19514BB630C00BA807A /* Icon-72.png */; };
+		94ADF1A314BB792E00BA807A /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 94ADF19F14BB792E00BA807A /* Icon-72.png */; };
+		94ADF1A414BB792E00BA807A /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 94ADF1A014BB792E00BA807A /* Icon-Small-50.png */; };
+		94ADF1A514BB792E00BA807A /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 94ADF1A114BB792E00BA807A /* Icon-Small.png */; };
+		94ADF1A614BB792E00BA807A /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 94ADF1A214BB792E00BA807A /* iTunesArtwork */; };
 		94B23AD81499025A00A83395 /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B23AD71499025A00A83395 /* HistoryController.m */; };
 		94B4036A14A0DE0300E3A636 /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4033014A0D5EB00E3A636 /* libHttpService.a */; };
 		94B4038114A0ED4700E3A636 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4038014A0ED4700E3A636 /* CFNetwork.framework */; };
@@ -95,6 +163,20 @@
 			remoteGlobalIDString = 9434BF9D14A389BC00B34419;
 			remoteInfo = Zip;
 		};
+		94ADF13B14BB27EE00BA807A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9434BFAE14A389BC00B34419 /* Zip.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9434BF9D14A389BC00B34419;
+			remoteInfo = Zip;
+		};
+		94ADF13D14BB27EE00BA807A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 94B4031A14A0D5EA00E3A636;
+			remoteInfo = HttpService;
+		};
 		94B4032F14A0D5EB00E3A636 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */;
@@ -113,10 +195,6 @@
 
 /* Begin PBXFileReference section */
 		9404058514964E56002A0C73 /* lgz_javascript.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = lgz_javascript.js; sourceTree = "<group>"; };
-		94158A7E14A759190099FE09 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "icon/Icon-72.png"; sourceTree = "<group>"; };
-		94158A7F14A759190099FE09 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "icon/Icon-Small-50.png"; sourceTree = "<group>"; };
-		94158A8014A759190099FE09 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "icon/Icon-Small.png"; sourceTree = "<group>"; };
-		94158A8614A77D230099FE09 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iTunesArtwork.png; path = icon/iTunesArtwork.png; sourceTree = "<group>"; };
 		9417EB7714AE118000224D2A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		9417EB7A14AE160C00224D2A /* BannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BannerViewController.h; path = Banner/BannerViewController.h; sourceTree = "<group>"; };
 		9417EB7B14AE160C00224D2A /* BannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BannerViewController.m; path = Banner/BannerViewController.m; sourceTree = "<group>"; };
@@ -224,6 +302,13 @@
 		9466466A14A2370700B30CD2 /* WebServiceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebServiceController.xib; sourceTree = "<group>"; };
 		94AB1E5014AF5E0300451020 /* UnSupportedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnSupportedParser.h; sourceTree = "<group>"; };
 		94AB1E5114AF5E0300451020 /* UnSupportedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnSupportedParser.m; sourceTree = "<group>"; };
+		94ADF18C14BB27EE00BA807A /* CodeNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94ADF18E14BB27EF00BA807A /* CodeNavigatorLite-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CodeNavigatorLite-Info.plist"; path = "/Users/lgz_software/Documents/iOS_Development/CodeNavigator/CodeNavigatorLite-Info.plist"; sourceTree = "<absolute>"; };
+		94ADF19514BB630C00BA807A /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		94ADF19F14BB792E00BA807A /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "icon/Free/Icon-72.png"; sourceTree = "<group>"; };
+		94ADF1A014BB792E00BA807A /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "icon/Free/Icon-Small-50.png"; sourceTree = "<group>"; };
+		94ADF1A114BB792E00BA807A /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "icon/Free/Icon-Small.png"; sourceTree = "<group>"; };
+		94ADF1A214BB792E00BA807A /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = icon/Free/iTunesArtwork; sourceTree = "<group>"; };
 		94B23AD61499025A00A83395 /* HistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryController.h; sourceTree = "<group>"; };
 		94B23AD71499025A00A83395 /* HistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryController.m; sourceTree = "<group>"; };
 		94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HttpService.xcodeproj; path = HttpService/HttpService.xcodeproj; sourceTree = "<group>"; };
@@ -263,6 +348,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		94ADF16D14BB27EE00BA807A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94ADF16E14BB27EE00BA807A /* iAd.framework in Frameworks */,
+				94ADF16F14BB27EE00BA807A /* libZip.a in Frameworks */,
+				94ADF17014BB27EE00BA807A /* CFNetwork.framework in Frameworks */,
+				94ADF17114BB27EE00BA807A /* libHttpService.a in Frameworks */,
+				94ADF17214BB27EE00BA807A /* UIKit.framework in Frameworks */,
+				94ADF17314BB27EE00BA807A /* Foundation.framework in Frameworks */,
+				94ADF17414BB27EE00BA807A /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -278,6 +377,7 @@
 		9431D72914910B3000B0900E = {
 			isa = PBXGroup;
 			children = (
+				94ADF19514BB630C00BA807A /* Icon-72.png */,
 				9417EB7914AE15CE00224D2A /* Banner */,
 				9434C00C14A3925B00B34419 /* ZipInc */,
 				9434BFAE14A389BC00B34419 /* Zip.xcodeproj */,
@@ -296,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				9431D73414910B3000B0900E /* CodeNavigator.app */,
+				94ADF18C14BB27EE00BA807A /* CodeNavigator.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -354,6 +455,7 @@
 		9431D73F14910B3000B0900E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				94ADF18E14BB27EF00BA807A /* CodeNavigatorLite-Info.plist */,
 				9431D74014910B3000B0900E /* CodeNavigator-Info.plist */,
 				9431D74114910B3000B0900E /* InfoPlist.strings */,
 				9431D74414910B3000B0900E /* main.m */,
@@ -430,11 +532,11 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				94ADF19F14BB792E00BA807A /* Icon-72.png */,
+				94ADF1A014BB792E00BA807A /* Icon-Small-50.png */,
+				94ADF1A114BB792E00BA807A /* Icon-Small.png */,
+				94ADF1A214BB792E00BA807A /* iTunesArtwork */,
 				94557E5314B05E89004950B4 /* linux_0.1 */,
-				94158A8614A77D230099FE09 /* iTunesArtwork.png */,
-				94158A7E14A759190099FE09 /* Icon-72.png */,
-				94158A7F14A759190099FE09 /* Icon-Small-50.png */,
-				94158A8014A759190099FE09 /* Icon-Small.png */,
 				9431D7C51494D1E300B0900E /* folder.png */,
 				9431D7C61494D1E300B0900E /* project.png */,
 				9404058514964E56002A0C73 /* lgz_javascript.js */,
@@ -524,6 +626,25 @@
 			productReference = 9431D73414910B3000B0900E /* CodeNavigator.app */;
 			productType = "com.apple.product-type.application";
 		};
+		94ADF13914BB27EE00BA807A /* CodeNavigatorLite */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94ADF18814BB27EE00BA807A /* Build configuration list for PBXNativeTarget "CodeNavigatorLite" */;
+			buildPhases = (
+				94ADF13E14BB27EE00BA807A /* Sources */,
+				94ADF16D14BB27EE00BA807A /* Frameworks */,
+				94ADF17514BB27EE00BA807A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				94ADF13A14BB27EE00BA807A /* PBXTargetDependency */,
+				94ADF13C14BB27EE00BA807A /* PBXTargetDependency */,
+			);
+			name = CodeNavigatorLite;
+			productName = CodeNavigator;
+			productReference = 94ADF18C14BB27EE00BA807A /* CodeNavigator.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -555,6 +676,7 @@
 			projectRoot = "";
 			targets = (
 				9431D73314910B3000B0900E /* CodeNavigator */,
+				94ADF13914BB27EE00BA807A /* CodeNavigatorLite */,
 			);
 		};
 /* End PBXProject section */
@@ -593,12 +715,34 @@
 				9466466C14A2370700B30CD2 /* WebServiceController.xib in Resources */,
 				9419B87D14A4B3BE00AB679B /* ResultTableCellView.xib in Resources */,
 				94D8703214A65888002F2DBB /* FilePathInfoPopupController.xib in Resources */,
-				94158A8214A759190099FE09 /* Icon-72.png in Resources */,
-				94158A8314A759190099FE09 /* Icon-Small-50.png in Resources */,
-				94158A8414A759190099FE09 /* Icon-Small.png in Resources */,
-				94158A8714A77D230099FE09 /* iTunesArtwork.png in Resources */,
 				94291E6114A9FB4A00E44221 /* AnalyzeInfoController.xib in Resources */,
 				94557E5414B05E89004950B4 /* linux_0.1 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94ADF17514BB27EE00BA807A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94ADF17614BB27EE00BA807A /* lgz_javascript.js in Resources */,
+				94ADF17714BB27EE00BA807A /* InfoPlist.strings in Resources */,
+				94ADF17814BB27EE00BA807A /* MasterViewController.xib in Resources */,
+				94ADF17914BB27EE00BA807A /* DetailViewController.xib in Resources */,
+				94ADF17A14BB27EE00BA807A /* folder.png in Resources */,
+				94ADF17B14BB27EE00BA807A /* project.png in Resources */,
+				94ADF17C14BB27EE00BA807A /* NavigationController.xib in Resources */,
+				94ADF17D14BB27EE00BA807A /* ResultViewController.xib in Resources */,
+				94ADF17E14BB27EE00BA807A /* GotoLineViewController.xib in Resources */,
+				94ADF17F14BB27EE00BA807A /* WebServiceController.xib in Resources */,
+				94ADF18014BB27EE00BA807A /* ResultTableCellView.xib in Resources */,
+				94ADF18114BB27EE00BA807A /* FilePathInfoPopupController.xib in Resources */,
+				94ADF18614BB27EE00BA807A /* AnalyzeInfoController.xib in Resources */,
+				94ADF18714BB27EE00BA807A /* linux_0.1 in Resources */,
+				94ADF19614BB630C00BA807A /* Icon-72.png in Resources */,
+				94ADF1A314BB792E00BA807A /* Icon-72.png in Resources */,
+				94ADF1A414BB792E00BA807A /* Icon-Small-50.png in Resources */,
+				94ADF1A514BB792E00BA807A /* Icon-Small.png in Resources */,
+				94ADF1A614BB792E00BA807A /* iTunesArtwork in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,6 +802,59 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		94ADF13E14BB27EE00BA807A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94ADF13F14BB27EE00BA807A /* main.m in Sources */,
+				94ADF14014BB27EE00BA807A /* AppDelegate.m in Sources */,
+				94ADF14114BB27EE00BA807A /* MasterViewController.m in Sources */,
+				94ADF14214BB27EE00BA807A /* DetailViewController.m in Sources */,
+				94ADF14314BB27EE00BA807A /* CodeParser.m in Sources */,
+				94ADF14414BB27EE00BA807A /* CPlusPlusParser.m in Sources */,
+				94ADF14514BB27EE00BA807A /* Parser.m in Sources */,
+				94ADF14614BB27EE00BA807A /* alloc.c in Sources */,
+				94ADF14714BB27EE00BA807A /* basename.c in Sources */,
+				94ADF14814BB27EE00BA807A /* build.c in Sources */,
+				94ADF14914BB27EE00BA807A /* command.c in Sources */,
+				94ADF14A14BB27EE00BA807A /* compath.c in Sources */,
+				94ADF14B14BB27EE00BA807A /* crossref.c in Sources */,
+				94ADF14C14BB27EE00BA807A /* cscope.c in Sources */,
+				94ADF14D14BB27EE00BA807A /* dir.c in Sources */,
+				94ADF14E14BB27EE00BA807A /* display.c in Sources */,
+				94ADF14F14BB27EE00BA807A /* edit.c in Sources */,
+				94ADF15014BB27EE00BA807A /* egrep.c in Sources */,
+				94ADF15114BB27EE00BA807A /* exec.c in Sources */,
+				94ADF15214BB27EE00BA807A /* find.c in Sources */,
+				94ADF15314BB27EE00BA807A /* fscanner.c in Sources */,
+				94ADF15414BB27EE00BA807A /* gscope.c in Sources */,
+				94ADF15514BB27EE00BA807A /* help.c in Sources */,
+				94ADF15614BB27EE00BA807A /* history.c in Sources */,
+				94ADF15714BB27EE00BA807A /* input.c in Sources */,
+				94ADF15814BB27EE00BA807A /* invlib.c in Sources */,
+				94ADF15914BB27EE00BA807A /* logdir.c in Sources */,
+				94ADF15A14BB27EE00BA807A /* lookup.c in Sources */,
+				94ADF15B14BB27EE00BA807A /* mouse.c in Sources */,
+				94ADF15C14BB27EE00BA807A /* mygetenv.c in Sources */,
+				94ADF15D14BB27EE00BA807A /* mypopen.c in Sources */,
+				94ADF15E14BB27EE00BA807A /* snprintf.c in Sources */,
+				94ADF15F14BB27EE00BA807A /* vpaccess.c in Sources */,
+				94ADF16014BB27EE00BA807A /* vpfopen.c in Sources */,
+				94ADF16114BB27EE00BA807A /* vpinit.c in Sources */,
+				94ADF16214BB27EE00BA807A /* vpopen.c in Sources */,
+				94ADF16314BB27EE00BA807A /* HistoryController.m in Sources */,
+				94ADF16414BB27EE00BA807A /* NavigationController.m in Sources */,
+				94ADF16514BB27EE00BA807A /* ResultViewController.m in Sources */,
+				94ADF16614BB27EE00BA807A /* GotoLineViewController.m in Sources */,
+				94ADF16714BB27EE00BA807A /* WebServiceController.m in Sources */,
+				94ADF16814BB27EE00BA807A /* Utils.m in Sources */,
+				94ADF16914BB27EE00BA807A /* FilePathInfoPopupController.m in Sources */,
+				94ADF16A14BB27EE00BA807A /* AnalyzeInfoController.m in Sources */,
+				94ADF16B14BB27EE00BA807A /* BannerViewController.m in Sources */,
+				94ADF16C14BB27EE00BA807A /* UnSupportedParser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -665,6 +862,16 @@
 			isa = PBXTargetDependency;
 			name = Zip;
 			targetProxy = 9434BFCA14A38ACD00B34419 /* PBXContainerItemProxy */;
+		};
+		94ADF13A14BB27EE00BA807A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Zip;
+			targetProxy = 94ADF13B14BB27EE00BA807A /* PBXContainerItemProxy */;
+		};
+		94ADF13C14BB27EE00BA807A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = HttpService;
+			targetProxy = 94ADF13D14BB27EE00BA807A /* PBXContainerItemProxy */;
 		};
 		94B4035214A0D75B00E3A636 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -837,6 +1044,67 @@
 			};
 			name = Distribution;
 		};
+		94ADF18914BB27EE00BA807A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"LITE_VERSION=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "CodeNavigatorLite-Info.plist";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = CodeNavigator;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		94ADF18A14BB27EE00BA807A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "LITE_VERSION=1";
+				INFOPLIST_FILE = "CodeNavigatorLite-Info.plist";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = CodeNavigator;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		94ADF18B14BB27EE00BA807A /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DISTRIBUTION=1",
+					"LITE_VERSION=1",
+				);
+				INFOPLIST_FILE = "CodeNavigatorLite-Info.plist";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = CodeNavigator;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Distribution;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -856,6 +1124,16 @@
 				9431D75914910B3000B0900E /* Debug */,
 				9431D75A14910B3000B0900E /* Release */,
 				94557DA014B0325C004950B4 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94ADF18814BB27EE00BA807A /* Build configuration list for PBXNativeTarget "CodeNavigatorLite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94ADF18914BB27EE00BA807A /* Debug */,
+				94ADF18A14BB27EE00BA807A /* Release */,
+				94ADF18B14BB27EE00BA807A /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

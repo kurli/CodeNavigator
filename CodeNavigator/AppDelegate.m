@@ -35,7 +35,7 @@
     self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailViewController, nil];
     
     //Banner support
-#ifdef BANNER_SUPPORT
+#ifdef LITE_VERSION
     [[Utils getInstance] initBanner:self.splitViewController];
     self.window.rootViewController = [[Utils getInstance] getBannerViewController];
     //----------------
@@ -43,7 +43,7 @@
     self.window.rootViewController = self.splitViewController;
     //end
 #endif
-    
+
     [self.window makeKeyAndVisible];
     return YES;
 }

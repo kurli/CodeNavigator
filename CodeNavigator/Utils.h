@@ -14,12 +14,16 @@
 
 #define MAX_HISTORY_STACK 20
 
-//#define BANNER_SUPPORT
-
 typedef enum _TableViewMode{
     TABLEVIEW_FILE,
     TABLEVIEW_CONTENT
 } TableViewMode;
+
+typedef enum _AlertConfirmMode{
+    ALERT_ANALYZE,
+    ALERT_PURCHASE,
+    ALERT_NONE
+} AlertConfirmMode;
 
 @interface BuildThreadData : NSObject <UIAlertViewDelegate> {
     BOOL force;
@@ -46,6 +50,7 @@ typedef enum _TableViewMode{
     BOOL storedForceAnalyze;
     BannerViewController *_bannerViewController;
     ADBannerView* _bannerView;
+    AlertConfirmMode alertConfirmMode;
 }
 
 @property (nonatomic, assign) DetailViewController* detailViewController;
@@ -121,5 +126,9 @@ typedef enum _TableViewMode{
 -(NSString*) getDisplayFile:(NSString*) path andProjectBase:(NSString*) projectPath;
 
 -(NSString*) getDisplayPath:(NSString*) path;
+
+-(void) showPurchaseAlert;
+
+-(void) openPurchaseURL;
 
 @end

@@ -82,6 +82,8 @@ typedef enum _JSState {
 
 - (IBAction)infoButtonClicked:(id)sender;
 
+- (IBAction)hideMasterViewClicked:(id)sender;
+
 - (void)goBackHistory;
 
 - (void)goForwardHistory;
