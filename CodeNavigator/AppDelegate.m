@@ -10,6 +10,7 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "Utils.h"
+#import "MGSplitViewController.h"
 
 @implementation AppDelegate
 {
@@ -30,21 +31,25 @@
     DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
     [[Utils getInstance] setDetailViewController:detailViewController];
 
-    self.splitViewController = [[UISplitViewController alloc] init];
+    self.splitViewController = [[MGSplitViewController alloc] init];
+    [[Utils getInstance] setSplitViewController:self.splitViewController];
     self.splitViewController.delegate = detailViewController;
     self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailViewController, nil];
     
     //Banner support
 #ifdef LITE_VERSION
     [[Utils getInstance] initBanner:self.splitViewController];
-    self.window.rootViewController = [[Utils getInstance] getBannerViewController];
+    [self.window addSubView:[[Utils getInstance] getBannerViewController]];
     //----------------
 #else
-    self.window.rootViewController = self.splitViewController;
+    //self.window.rootViewController = self.splitViewController;
+    [self.window addSubview:self.splitViewController.view];
     //end
 #endif
-
     [self.window makeKeyAndVisible];
+    
+    MGSplitViewDividerStyle newStyle = ((self.splitViewController.dividerStyle == MGSplitViewDividerStyleThin) ? MGSplitViewDividerStylePaneSplitter : MGSplitViewDividerStyleThin);
+	[self.splitViewController setDividerStyle:newStyle animated:YES];
     return YES;
 }
 

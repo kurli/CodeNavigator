@@ -17,9 +17,9 @@
     int currentFileIndex;
 }
 
-@property (retain, nonatomic) DetailViewController* detailViewController;
+@property (strong, nonatomic) DetailViewController* detailViewController;
 
-@property (retain, nonatomic) ResultViewController* lineModeViewController;
+@property (strong, nonatomic) ResultViewController* lineModeViewController;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UITableView *tableView;
 

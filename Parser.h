@@ -14,7 +14,7 @@ typedef enum _ParserType
 	CodeParser* parser;
 }
 
-@property (nonatomic, retain) CodeParser* parser;
+@property (nonatomic, strong) CodeParser* parser;
 
 -(void) setFile:(NSString*) name andProjectBase:(NSString*) base;
 

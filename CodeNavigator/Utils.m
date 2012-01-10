@@ -48,6 +48,7 @@ static Utils *static_utils;
 @synthesize resultFileList = _resultFileList;
 @synthesize searchKeyword = _searchKeyword;
 @synthesize storedAnalyzePath;
+@synthesize splitViewController;
 
 +(Utils*)getInstance
 {
@@ -78,14 +79,8 @@ static Utils *static_utils;
 -(void) dealloc
 {
     [self setDetailViewController:nil];
-    [self setAnalyzeInfoController:nil];
-    [self setAnalyzeInfoPopover:nil];
-    [self setAnalyzeThread:nil];
-    [self setAnalyzePath:nil];
+    [self setSplitViewController:nil];
     [self.resultFileList removeAllObjects];
-    [self setResultFileList:nil];
-    [self setSearchKeyword:nil];
-    [self setStoredAnalyzePath:nil];
 }
 
 -(NSString*)getProjectFolder:(NSString *)path

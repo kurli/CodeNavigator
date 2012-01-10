@@ -65,6 +65,12 @@
 		94603D08149E041400D72561 /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94603D06149E041400D72561 /* ResultViewController.xib */; };
 		9466466B14A2370700B30CD2 /* WebServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9466466914A2370700B30CD2 /* WebServiceController.m */; };
 		9466466C14A2370700B30CD2 /* WebServiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9466466A14A2370700B30CD2 /* WebServiceController.xib */; };
+		94846ED014BCA4FD00388D68 /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECB14BCA4FD00388D68 /* MGSplitCornersView.m */; };
+		94846ED114BCA4FD00388D68 /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECB14BCA4FD00388D68 /* MGSplitCornersView.m */; };
+		94846ED214BCA4FD00388D68 /* MGSplitDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECD14BCA4FD00388D68 /* MGSplitDividerView.m */; };
+		94846ED314BCA4FD00388D68 /* MGSplitDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECD14BCA4FD00388D68 /* MGSplitDividerView.m */; };
+		94846ED414BCA4FD00388D68 /* MGSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECF14BCA4FD00388D68 /* MGSplitViewController.m */; };
+		94846ED514BCA4FD00388D68 /* MGSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECF14BCA4FD00388D68 /* MGSplitViewController.m */; };
 		94AB1E5214AF5E0300451020 /* UnSupportedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB1E5114AF5E0300451020 /* UnSupportedParser.m */; };
 		94ADF13F14BB27EE00BA807A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74414910B3000B0900E /* main.m */; };
 		94ADF14014BB27EE00BA807A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74814910B3000B0900E /* AppDelegate.m */; };
@@ -299,6 +305,12 @@
 		9466466814A2370700B30CD2 /* WebServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceController.h; sourceTree = "<group>"; };
 		9466466914A2370700B30CD2 /* WebServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceController.m; sourceTree = "<group>"; };
 		9466466A14A2370700B30CD2 /* WebServiceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebServiceController.xib; sourceTree = "<group>"; };
+		94846ECA14BCA4FD00388D68 /* MGSplitCornersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitCornersView.h; sourceTree = "<group>"; };
+		94846ECB14BCA4FD00388D68 /* MGSplitCornersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitCornersView.m; sourceTree = "<group>"; };
+		94846ECC14BCA4FD00388D68 /* MGSplitDividerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitDividerView.h; sourceTree = "<group>"; };
+		94846ECD14BCA4FD00388D68 /* MGSplitDividerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitDividerView.m; sourceTree = "<group>"; };
+		94846ECE14BCA4FD00388D68 /* MGSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitViewController.h; sourceTree = "<group>"; };
+		94846ECF14BCA4FD00388D68 /* MGSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitViewController.m; sourceTree = "<group>"; };
 		94AB1E5014AF5E0300451020 /* UnSupportedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnSupportedParser.h; sourceTree = "<group>"; };
 		94AB1E5114AF5E0300451020 /* UnSupportedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnSupportedParser.m; sourceTree = "<group>"; };
 		94ADF18C14BB27EE00BA807A /* CodeNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -375,6 +387,7 @@
 		9431D72914910B3000B0900E = {
 			isa = PBXGroup;
 			children = (
+				94846EA914BC9A9A00388D68 /* MGSplitViewController */,
 				9417EB7914AE15CE00224D2A /* Banner */,
 				9434C00C14A3925B00B34419 /* ZipInc */,
 				9434BFAE14A389BC00B34419 /* Zip.xcodeproj */,
@@ -574,6 +587,19 @@
 				9434C01114A392AC00B34419 /* ZipWriteStream.h */,
 			);
 			name = ZipInc;
+			sourceTree = "<group>";
+		};
+		94846EA914BC9A9A00388D68 /* MGSplitViewController */ = {
+			isa = PBXGroup;
+			children = (
+				94846ECA14BCA4FD00388D68 /* MGSplitCornersView.h */,
+				94846ECB14BCA4FD00388D68 /* MGSplitCornersView.m */,
+				94846ECC14BCA4FD00388D68 /* MGSplitDividerView.h */,
+				94846ECD14BCA4FD00388D68 /* MGSplitDividerView.m */,
+				94846ECE14BCA4FD00388D68 /* MGSplitViewController.h */,
+				94846ECF14BCA4FD00388D68 /* MGSplitViewController.m */,
+			);
+			name = MGSplitViewController;
 			sourceTree = "<group>";
 		};
 		94B4032C14A0D5EA00E3A636 /* Products */ = {
@@ -795,6 +821,9 @@
 				94291E6014A9FB4A00E44221 /* AnalyzeInfoController.m in Sources */,
 				9417EB7C14AE160C00224D2A /* BannerViewController.m in Sources */,
 				94AB1E5214AF5E0300451020 /* UnSupportedParser.m in Sources */,
+				94846ED014BCA4FD00388D68 /* MGSplitCornersView.m in Sources */,
+				94846ED214BCA4FD00388D68 /* MGSplitDividerView.m in Sources */,
+				94846ED414BCA4FD00388D68 /* MGSplitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -848,6 +877,9 @@
 				94ADF16A14BB27EE00BA807A /* AnalyzeInfoController.m in Sources */,
 				94ADF16B14BB27EE00BA807A /* BannerViewController.m in Sources */,
 				94ADF16C14BB27EE00BA807A /* UnSupportedParser.m in Sources */,
+				94846ED114BCA4FD00388D68 /* MGSplitCornersView.m in Sources */,
+				94846ED314BCA4FD00388D68 /* MGSplitDividerView.m in Sources */,
+				94846ED514BCA4FD00388D68 /* MGSplitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -964,6 +996,7 @@
 		9431D75914910B3000B0900E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -981,6 +1014,7 @@
 		9431D75A14910B3000B0900E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1025,6 +1059,7 @@
 		94557DA014B0325C004950B4 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";

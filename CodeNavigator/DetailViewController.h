@@ -13,6 +13,7 @@
 #import "NavigationController.h"
 #import "ResultViewController.h"
 #import "GotoLineViewController.h"
+#import "MGSplitViewController.h"
 
 typedef enum _JSState {
     JS_NONE,
@@ -25,7 +26,7 @@ typedef enum _JSState {
 @class GotoLineViewController;
 @class FilePathInfoPopupController;
 
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, UIWebViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate>
+@interface DetailViewController : UIViewController <UIWebViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MGSplitViewControllerDelegate>
 {
     int currentSearchFocusLine;
     int searchLineTotal;

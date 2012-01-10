@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BannerViewController.h"
+#import "MGSplitViewController.h"
 
 @class DetailViewController;
 @class AnalyzeInfoController;
@@ -28,7 +29,7 @@ typedef enum _AlertConfirmMode{
 @interface BuildThreadData : NSObject <UIAlertViewDelegate> {
     BOOL force;
 }
-@property (retain, nonatomic) NSString* path;
+@property (strong, nonatomic) NSString* path;
 
 -(void)setForce: (BOOL)f;
 
@@ -37,9 +38,9 @@ typedef enum _AlertConfirmMode{
 
 @interface ResultFile : NSObject {
 }
-@property (retain, nonatomic) NSString* fileName;
+@property (strong, nonatomic) NSString* fileName;
 
-@property (retain, nonatomic) NSMutableArray* contents;
+@property (strong, nonatomic) NSMutableArray* contents;
 @end
 
 @interface Utils : NSObject
@@ -53,7 +54,9 @@ typedef enum _AlertConfirmMode{
     AlertConfirmMode alertConfirmMode;
 }
 
-@property (nonatomic, assign) DetailViewController* detailViewController;
+@property (nonatomic, unsafe_unretained) DetailViewController* detailViewController;
+
+@property (nonatomic, unsafe_unretained) MGSplitViewController *splitViewController;
 
 @property (nonatomic, strong) AnalyzeInfoController* analyzeInfoController;
 

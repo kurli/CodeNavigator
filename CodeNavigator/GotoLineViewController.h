@@ -11,7 +11,7 @@
 
 @interface GotoLineViewController : UIViewController <UITextFieldDelegate>
 
-@property (retain, nonatomic) DetailViewController* detailViewController;
+@property (strong, nonatomic) DetailViewController* detailViewController;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UITextField *textField;
 

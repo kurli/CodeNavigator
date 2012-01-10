@@ -10,6 +10,7 @@
 #import "Utils.h"
 #import "FilePathInfoPopupController.h"
 #import "BannerViewController.h"
+#import "MGSplitViewController.h"
 
 @implementation DetailViewController
 {
@@ -112,12 +113,12 @@
 {
     jsState = JS_HISTORY_MODE;
     jsHistoryModeScrollY = [self getCurrentScrollLocation];
-    if (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
-    {
-        [self.webView setScalesPageToFit:YES];
-        [self reloadCurrentPage];
-    }
-    else
+//    if (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
+//    {
+//        [self.webView setScalesPageToFit:YES];
+//        [self reloadCurrentPage];
+//    }
+//    else
     {
         [self.webView setScalesPageToFit:NO];
         [self reloadCurrentPage];
@@ -171,7 +172,7 @@
 - (void) gotoFile:(NSString *)filePath andLine:(NSString *)line andKeyword:(NSString *)__keyword
 {
     MasterViewController* masterViewController = nil;
-    NSArray* controllers = [self.splitViewController viewControllers];
+    NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
     masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
     
     NSString* displayPath;
@@ -208,7 +209,7 @@
             _jsGotoLineKeyword = __keyword;
             
             MasterViewController* masterViewController = nil;
-            NSArray* controllers = [self.splitViewController viewControllers];
+            NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
             masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
             [masterViewController gotoFile:displayPath];
         }
@@ -282,7 +283,7 @@
     [self.titleTextField setTitle:title forState:UIControlStateNormal];
     [self.webView loadHTMLString:content baseURL:nil];
     MasterViewController* masterViewController = nil;
-    NSArray* controllers = [self.splitViewController viewControllers];
+    NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
     masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
     [masterViewController gotoFile:url];
 }
@@ -337,7 +338,7 @@
     [self.titleTextField.titleLabel setText:title];
     [self.webView loadHTMLString:content baseURL:nil];
     MasterViewController* masterViewController = nil;
-    NSArray* controllers = [self.splitViewController viewControllers];
+    NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
     masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
     [masterViewController gotoFile:url];
 }
@@ -444,6 +445,7 @@
 }
 
 - (IBAction)hideMasterViewClicked:(id)sender {
+    [[Utils getInstance].splitViewController toggleMasterView:nil];
 }
 
 - (IBAction)historyClicked:(id)sender {
@@ -501,7 +503,7 @@
     [self releaseAllPopOver];
     
     MasterViewController* masterViewController = nil;
-    NSArray* controllers = [self.splitViewController viewControllers];
+    NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
     masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
     NSString* projectPath = [[Utils getInstance] getProjectFolder:masterViewController.currentLocation];
     

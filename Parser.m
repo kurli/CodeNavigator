@@ -21,10 +21,6 @@
     }
 }
 
--(void)dealloc
-{
-    [self setParser:nil];
-}
 
 -(void) setFile: (NSString*) name andProjectBase:(NSString *)base
 {

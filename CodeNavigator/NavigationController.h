@@ -18,11 +18,11 @@
 
 @property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *searchBar;
 
-@property (retain, nonatomic) NSString* currentSearchProject;
+@property (strong, nonatomic) NSString* currentSearchProject;
 
-@property (retain, nonatomic) NSArray* selectionList;
+@property (strong, nonatomic) NSArray* selectionList;
 
-@property (retain, nonatomic) NSString* searchKeyword;
+@property (strong, nonatomic) NSString* searchKeyword;
 
 -(void) setSearchItemText:(NSString*)keyword;
 

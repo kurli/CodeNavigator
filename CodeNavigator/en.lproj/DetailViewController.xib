@@ -43,15 +43,11 @@
 					<object class="IBUIWebView" id="955162051">
 						<reference key="NSNextResponder" ref="647120888"/>
 						<int key="NSvFlags">306</int>
-						<string key="NSFrame">{{0, 44}, {768, 872}}</string>
+						<string key="NSFrame">{{0, 44}, {768, 914}}</string>
 						<reference key="NSSuperview" ref="647120888"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="909745218"/>
 						<string key="NSReuseIdentifierKey">_NS:693</string>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MSAxIDEAA</bytes>
-						</object>
 						<int key="IBUIContentMode">2</int>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<array key="IBUIGestureRecognizers" id="0"/>
@@ -60,7 +56,7 @@
 					<object class="IBUIToolbar" id="909745218">
 						<reference key="NSNextResponder" ref="647120888"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{0, 916}, {768, 44}}</string>
+						<string key="NSFrame">{{0, 960}, {768, 44}}</string>
 						<reference key="NSSuperview" ref="647120888"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -146,7 +142,7 @@
 								<string key="NSFrame">{{174, 6}, {380, 33}}</string>
 								<reference key="NSSuperview" ref="31447470"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="4135877"/>
+								<reference key="NSNextKeyView" ref="119227692"/>
 								<string key="NSReuseIdentifierKey">_NS:241</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -4568,19 +4564,58 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 									<int key="NSfFlags">16</int>
 								</object>
 							</object>
+							<object class="IBUISegmentedControl" id="119227692">
+								<reference key="NSNextResponder" ref="31447470"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{564, 7}, {84, 30}}</string>
+								<reference key="NSSuperview" ref="31447470"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="4135877"/>
+								<string key="NSReuseIdentifierKey">_NS:289</string>
+								<bool key="IBUIOpaque">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<int key="IBSegmentControlStyle">2</int>
+								<int key="IBNumberOfSegments">2</int>
+								<array key="IBSegmentTitles">
+									<string>▲</string>
+									<string>▼</string>
+								</array>
+								<array class="NSMutableArray" key="IBSegmentWidths">
+									<real value="0.0"/>
+									<real value="0.0"/>
+								</array>
+								<array class="NSMutableArray" key="IBSegmentEnabledStates">
+									<boolean value="YES"/>
+									<boolean value="YES"/>
+								</array>
+								<array class="NSMutableArray" key="IBSegmentContentOffsets">
+									<string>{0, 0}</string>
+									<string>{0, 0}</string>
+								</array>
+								<array class="NSMutableArray" key="IBSegmentImages">
+									<reference ref="4"/>
+									<reference ref="4"/>
+								</array>
+							</object>
 							<object class="IBUISearchBar" id="4135877">
 								<reference key="NSNextResponder" ref="31447470"/>
 								<int key="NSvFlags">290</int>
-								<string key="NSFrame">{{564, 0}, {196, 44}}</string>
+								<string key="NSFrame">{{658, 0}, {89, 44}}</string>
 								<reference key="NSSuperview" ref="31447470"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="955162051"/>
 								<string key="NSReuseIdentifierKey">_NS:598</string>
-								<int key="IBUIContentMode">3</int>
+								<bool key="IBUIAutoresizesSubviews">NO</bool>
+								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+								<int key="IBUIContentMode">10</int>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<object class="IBUITextInputTraits" key="IBTextInputTraits">
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
+								<array key="IBScopeButtonTitles">
+									<string>Title</string>
+									<string>Title</string>
+								</array>
 								<bool key="IBIsInBar">YES</bool>
 							</object>
 						</array>
@@ -4615,6 +4650,11 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 								<reference key="IBUICustomView" ref="519364637"/>
 								<reference key="IBUIToolbar" ref="31447470"/>
 							</object>
+							<object class="IBUIBarButtonItem" id="637552046">
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<reference key="IBUICustomView" ref="119227692"/>
+								<reference key="IBUIToolbar" ref="31447470"/>
+							</object>
 							<object class="IBUIBarButtonItem" id="220077380">
 								<string key="IBUITitle">search bar</string>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -4624,7 +4664,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						</array>
 					</object>
 				</array>
-				<string key="NSFrame">{{0, 20}, {768, 960}}</string>
+				<string key="NSFrame">{{0, 20}, {768, 1004}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="31447470"/>
@@ -4633,6 +4673,22 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				<reference key="IBUIGestureRecognizers" ref="0"/>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
 					<int key="IBUIStatusBarStyle">2</int>
+				</object>
+				<object class="IBUIScreenMetrics" key="IBUISimulatedDestinationMetrics">
+					<string key="IBUISimulatedSizeMetricsClass">IBUIScreenMetrics</string>
+					<object class="NSMutableDictionary" key="IBUINormalizedOrientationToSizeMap">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<array key="dict.sortedKeys">
+							<integer value="1"/>
+							<integer value="3"/>
+						</array>
+						<array class="NSMutableArray" key="dict.values">
+							<string>{768, 1024}</string>
+							<string>{1024, 768}</string>
+						</array>
+					</object>
+					<string key="IBUITargetRuntime">IBIPadFramework</string>
+					<string key="IBUIDisplayName">iPad Full Screen</string>
 				</object>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
@@ -4817,10 +4873,11 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<reference key="object" ref="31447470"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="304330403"/>
-							<reference ref="220077380"/>
 							<reference ref="489470261"/>
 							<reference ref="722304279"/>
 							<reference ref="287501367"/>
+							<reference ref="220077380"/>
+							<reference ref="637552046"/>
 						</array>
 						<reference key="parent" ref="647120888"/>
 						<string key="objectName">Top Toolbar</string>
@@ -4905,6 +4962,19 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<reference key="object" ref="287501367"/>
 						<reference key="parent" ref="31447470"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">356</int>
+						<reference key="object" ref="637552046"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="119227692"/>
+						</array>
+						<reference key="parent" ref="31447470"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">355</int>
+						<reference key="object" ref="119227692"/>
+						<reference key="parent" ref="637552046"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -4918,7 +4988,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				<string key="252.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="254.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="271.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<integer value="0" key="271.IUISegmentedControlInspectorSelectedSegmentMetadataKey"/>
+				<integer value="1" key="271.IUISegmentedControlInspectorSelectedSegmentMetadataKey"/>
 				<string key="272.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="297.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="298.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -4929,13 +4999,16 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				<string key="325.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="331.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="334.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="355.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<integer value="0" key="355.IUISegmentedControlInspectorSelectedSegmentMetadataKey"/>
+				<string key="356.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">335</int>
+			<int key="maxID">356</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

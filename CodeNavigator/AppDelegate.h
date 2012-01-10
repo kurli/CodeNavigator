@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class MGSplitViewController;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) UISplitViewController *splitViewController;
+@property (strong, nonatomic) MGSplitViewController *splitViewController;
 
 @end
