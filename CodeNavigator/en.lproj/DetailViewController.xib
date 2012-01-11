@@ -15,7 +15,6 @@
 			<string>IBUIBarButtonItem</string>
 			<string>IBUIButton</string>
 			<string>IBUIToolbar</string>
-			<string>IBUISearchBar</string>
 			<string>IBUIWebView</string>
 			<string>IBUISegmentedControl</string>
 			<string>IBUIView</string>
@@ -139,7 +138,7 @@
 							<object class="IBUIButton" id="519364637">
 								<reference key="NSNextResponder" ref="31447470"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{174, 6}, {380, 33}}</string>
+								<string key="NSFrame">{{174, 6}, {356, 33}}</string>
 								<reference key="NSSuperview" ref="31447470"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="119227692"/>
@@ -4567,10 +4566,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<object class="IBUISegmentedControl" id="119227692">
 								<reference key="NSNextResponder" ref="31447470"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{564, 7}, {84, 30}}</string>
+								<string key="NSFrame">{{540, 7}, {84, 30}}</string>
 								<reference key="NSSuperview" ref="31447470"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="4135877"/>
+								<reference key="NSNextKeyView" ref="955162051"/>
 								<string key="NSReuseIdentifierKey">_NS:289</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -4596,27 +4595,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 									<reference ref="4"/>
 									<reference ref="4"/>
 								</array>
-							</object>
-							<object class="IBUISearchBar" id="4135877">
-								<reference key="NSNextResponder" ref="31447470"/>
-								<int key="NSvFlags">290</int>
-								<string key="NSFrame">{{658, 0}, {89, 44}}</string>
-								<reference key="NSSuperview" ref="31447470"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="955162051"/>
-								<string key="NSReuseIdentifierKey">_NS:598</string>
-								<bool key="IBUIAutoresizesSubviews">NO</bool>
-								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
-								<int key="IBUIContentMode">10</int>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<object class="IBUITextInputTraits" key="IBTextInputTraits">
-									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								</object>
-								<array key="IBScopeButtonTitles">
-									<string>Title</string>
-									<string>Title</string>
-								</array>
-								<bool key="IBIsInBar">YES</bool>
+								<bool key="IBMomentary">YES</bool>
 							</object>
 						</array>
 						<string key="NSFrameSize">{768, 44}</string>
@@ -4655,10 +4634,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 								<reference key="IBUICustomView" ref="119227692"/>
 								<reference key="IBUIToolbar" ref="31447470"/>
 							</object>
-							<object class="IBUIBarButtonItem" id="220077380">
-								<string key="IBUITitle">search bar</string>
+							<object class="IBUIBarButtonItem" id="859424953">
+								<string key="IBUITitle">⊙</string>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<reference key="IBUICustomView" ref="4135877"/>
+								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="31447470"/>
 							</object>
 						</array>
@@ -4753,19 +4732,19 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">gotoHighlightBar</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="119227692"/>
+					</object>
+					<int key="connectionID">361</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="955162051"/>
 						<reference key="destination" ref="841351856"/>
 					</object>
 					<int key="connectionID">174</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">delegate</string>
-						<reference key="source" ref="4135877"/>
-						<reference key="destination" ref="841351856"/>
-					</object>
-					<int key="connectionID">199</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -4825,6 +4804,23 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					</object>
 					<int key="connectionID">335</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">gotoHighlight:</string>
+						<reference key="source" ref="119227692"/>
+						<reference key="destination" ref="841351856"/>
+						<int key="IBEventType">13</int>
+					</object>
+					<int key="connectionID">360</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">highlightWordButtonClicked:</string>
+						<reference key="source" ref="859424953"/>
+						<reference key="destination" ref="841351856"/>
+					</object>
+					<int key="connectionID">359</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -4876,24 +4872,11 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<reference ref="489470261"/>
 							<reference ref="722304279"/>
 							<reference ref="287501367"/>
-							<reference ref="220077380"/>
 							<reference ref="637552046"/>
+							<reference ref="859424953"/>
 						</array>
 						<reference key="parent" ref="647120888"/>
 						<string key="objectName">Top Toolbar</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">254</int>
-						<reference key="object" ref="220077380"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="4135877"/>
-						</array>
-						<reference key="parent" ref="31447470"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">198</int>
-						<reference key="object" ref="4135877"/>
-						<reference key="parent" ref="220077380"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">272</int>
@@ -4975,6 +4958,11 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<reference key="object" ref="119227692"/>
 						<reference key="parent" ref="637552046"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">357</int>
+						<reference key="object" ref="859424953"/>
+						<reference key="parent" ref="31447470"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -4983,10 +4971,8 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="172.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="198.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="217.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="252.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="254.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="271.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<integer value="1" key="271.IUISegmentedControlInspectorSelectedSegmentMetadataKey"/>
 				<string key="272.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -5002,13 +4988,14 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				<string key="355.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<integer value="0" key="355.IUISegmentedControlInspectorSelectedSegmentMetadataKey"/>
 				<string key="356.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="357.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">356</int>
+			<int key="maxID">361</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5016,19 +5003,19 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					<string key="className">DetailViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="downSelectButton:">id</string>
+						<string key="gotoHighlight:">id</string>
 						<string key="gotoLinePopUp:">id</string>
 						<string key="hideMasterViewClicked:">id</string>
+						<string key="highlightWordButtonClicked:">id</string>
 						<string key="historyClicked:">id</string>
 						<string key="infoButtonClicked:">id</string>
 						<string key="navigationButtonClicked:">id</string>
 						<string key="resultPopUp:">id</string>
 						<string key="titleTouched:">id</string>
-						<string key="upSelectButton:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="downSelectButton:">
-							<string key="name">downSelectButton:</string>
+						<object class="IBActionInfo" key="gotoHighlight:">
+							<string key="name">gotoHighlight:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="gotoLinePopUp:">
@@ -5037,6 +5024,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						</object>
 						<object class="IBActionInfo" key="hideMasterViewClicked:">
 							<string key="name">hideMasterViewClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="highlightWordButtonClicked:">
+							<string key="name">highlightWordButtonClicked:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="historyClicked:">
@@ -5059,14 +5050,11 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<string key="name">titleTouched:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="upSelectButton:">
-							<string key="name">upSelectButton:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="analyzeInfoBarButton">UIBarButtonItem</string>
 						<string key="countTextField">UITextField</string>
+						<string key="gotoHighlightBar">UISegmentedControl</string>
 						<string key="historyBar">UISegmentedControl</string>
 						<string key="navigateBarButtonItem">UIBarButtonItem</string>
 						<string key="resultBarButton">UIBarButtonItem</string>
@@ -5081,6 +5069,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<object class="IBToOneOutletInfo" key="countTextField">
 							<string key="name">countTextField</string>
 							<string key="candidateClassName">UITextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="gotoHighlightBar">
+							<string key="name">gotoHighlightBar</string>
+							<string key="candidateClassName">UISegmentedControl</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="historyBar">
 							<string key="name">historyBar</string>

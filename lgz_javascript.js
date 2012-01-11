@@ -5,7 +5,7 @@ function addResult(id, count)
 {
     if (index == 0)
         smoothScroll(id);
-    for (i=0; i<count; i++)
+    //for (i=0; i<count; i++)
         returnArray[index++] = id;
 }
 function encode(s){ 

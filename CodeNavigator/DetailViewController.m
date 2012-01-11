@@ -11,6 +11,7 @@
 #import "FilePathInfoPopupController.h"
 #import "BannerViewController.h"
 #import "MGSplitViewController.h"
+#import "HighLightWordController.h"
 
 @implementation DetailViewController
 {
@@ -32,10 +33,13 @@
 @synthesize resultPopover = _resultPopover;
 @synthesize jsGotoLineKeyword = _jsGotoLineKeyword;
 @synthesize analyzeInfoBarButton = _analyzeInfoBarButton;
+@synthesize gotoHighlightBar = _gotoHighlightBar;
 @synthesize gotoLineViewController = _gotoLineViewController;
 @synthesize gotoLinePopover = _gotoLinePopover;
 @synthesize filePathInfopopover;
 @synthesize filePathInfoController;
+@synthesize highlghtWordPopover;
+@synthesize highlightWordController;
 
 
 #pragma mark - Managing the detail item
@@ -79,6 +83,9 @@
     [self setFilePathInfoController:nil];
     [self setJsGotoLineKeyword:nil];
     [self setTitleTextField:nil];
+    [self setHighlghtWordPopover:nil];
+    [self setHighlightWordController:nil];
+    [self setGotoHighlightBar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -413,11 +420,20 @@
     [self.filePathInfopopover dismissPopoverAnimated:YES];
     [self setFilePathInfopopover:nil];
     [self setFilePathInfoController:nil];
+    
+    [self.highlghtWordPopover dismissPopoverAnimated:YES];
+    [self setHighlightWordController:nil];
+    [self setHighlghtWordPopover:nil];
 }
 
-#pragma Bar Button action
-- (IBAction)upSelectButton:(id)sender {
+-(void) setCurrentSearchFocusLine:(int)line andTotal:(int)total
+{
+    currentSearchFocusLine = line;
+    searchLineTotal = total;
+}
 
+- (void)upSelectButton {
+    
     if (currentSearchFocusLine == 0)
         return;
     currentSearchFocusLine--;
@@ -427,7 +443,7 @@
     [self.countTextField setText:show];
 }
 
-- (IBAction)downSelectButton:(id)sender {
+- (void)downSelectButton {
     if (currentSearchFocusLine == searchLineTotal-1)
         return;
     currentSearchFocusLine++;
@@ -436,6 +452,8 @@
     NSString* show = [NSString stringWithFormat:@"%d/%d", currentSearchFocusLine, searchLineTotal];
     [self.countTextField setText:show];
 }
+
+#pragma Bar Button action
 
 - (IBAction)infoButtonClicked:(id)sender {
     if ([Utils getInstance].analyzeInfoPopover.isPopoverVisible == YES)
@@ -573,6 +591,32 @@
     [_gotoLinePopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
+- (IBAction)highlightWordButtonClicked:(id)sender {
+    if ([self.highlghtWordPopover isPopoverVisible] == YES)
+    {
+        [self.highlghtWordPopover dismissPopoverAnimated:YES];
+        [self releaseAllPopOver];
+        return;
+    }
+    [self releaseAllPopOver];
+    UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
+    self.highlightWordController = [[HighLightWordController alloc] init];
+    self.highlightWordController.detailViewController = self;
+    self.highlghtWordPopover = [[UIPopoverController alloc] initWithContentViewController:self.highlightWordController];
+    self.highlghtWordPopover.popoverContentSize = CGSizeMake(198, 46);
+    
+    [self.highlghtWordPopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+- (IBAction)gotoHighlight:(id)sender {
+    UISegmentedControl* controller = sender;
+    int index = [controller selectedSegmentIndex];
+    if (index == 0)
+        [self upSelectButton];
+    else
+        [self downSelectButton];
+}
+
 #pragma mark - Split view
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
@@ -628,49 +672,6 @@
         return NO;
     }
     return YES;
-}
-
-#pragma mark - SearchBar Delegate
-
--(void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    if (nil == self.webView)
-        return;
-
-    NSString* returnValue;
-    NSString* highlightJS;
-    if ([searchText length] == 0)
-        highlightJS = [NSString stringWithFormat:@"highlight('liguangzhen+++++++++++++++++++++++++++++++++++++++++')"];
-    else if ([searchText length] %5 == 0)
-    {
-        highlightJS = [NSString stringWithFormat:@"highlight('%@')",searchText];
-        returnValue = [self.webView stringByEvaluatingJavaScriptFromString:highlightJS];
-        //NSString* countValue = [NSString stringWithFormat:@"0/%@",returnValue];
-        //[self.countTextField setText:countValue];
-        currentSearchFocusLine = 0;
-        searchLineTotal = [returnValue intValue];
-        self.searchWord = searchText;
-    }
-}
-
--(void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-    NSString* returnValue;
-    NSString* highlightJS;
-    NSString* searchText;
-    searchText = searchBar.text;
-    if ([searchText length] == 0)
-        highlightJS = [NSString stringWithFormat:@"highlight('liguangzhen+++++++++++++++++++++++++++++++++++++++++')"];
-    else
-        highlightJS = [NSString stringWithFormat:@"highlight('%@')",searchText];
-    returnValue = [self.webView stringByEvaluatingJavaScriptFromString:highlightJS];
-    //NSString* countValue = [NSString stringWithFormat:@"0/%@",returnValue];
-    //[self.countTextField setText:countValue];
-    currentSearchFocusLine = 0;
-    searchLineTotal = [returnValue intValue];
-    self.searchWord = searchText;
-    [searchBar setShowsCancelButton:NO animated:YES];
-    [searchBar resignFirstResponder];
 }
 
 @end

@@ -25,8 +25,9 @@ typedef enum _JSState {
 @class ResultViewController;
 @class GotoLineViewController;
 @class FilePathInfoPopupController;
+@class HighLightWordController;
 
-@interface DetailViewController : UIViewController <UIWebViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MGSplitViewControllerDelegate>
+@interface DetailViewController : UIViewController <UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MGSplitViewControllerDelegate>
 {
     int currentSearchFocusLine;
     int searchLineTotal;
@@ -69,21 +70,33 @@ typedef enum _JSState {
 
 @property (strong, nonatomic) UIPopoverController* filePathInfopopover;
 
+@property (strong, nonatomic) HighLightWordController* highlightWordController;
+
+@property (strong, nonatomic) UIPopoverController* highlghtWordPopover;
+
 @property (strong, nonatomic) NSString* jsGotoLineKeyword;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *analyzeInfoBarButton;
+
+@property (unsafe_unretained, nonatomic) IBOutlet UISegmentedControl *gotoHighlightBar;
+
+- (void) setCurrentSearchFocusLine:(int)line andTotal:(int)total;
 
 - (void) setTitle: (NSString*) title andPath:(NSString*)path andContent:(NSString*) content;
 
 - (int) getCurrentScrollLocation;
 
-- (IBAction) upSelectButton:(id)sender;
+- (void) upSelectButton;
 
-- (IBAction) downSelectButton:(id)sender;
+- (void) downSelectButton;
 
 - (IBAction)infoButtonClicked:(id)sender;
 
 - (IBAction)hideMasterViewClicked:(id)sender;
+
+- (IBAction)highlightWordButtonClicked:(id)sender;
+
+- (IBAction)gotoHighlight:(id)sender;
 
 - (void)goBackHistory;
 

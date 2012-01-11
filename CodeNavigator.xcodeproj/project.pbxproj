@@ -151,6 +151,10 @@
 		94DA0BBE14A624690035DB39 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DA0BBD14A624680035DB39 /* Utils.m */; };
 		94EE32D3149FAE0B0088501D /* GotoLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EE32D1149FAE0B0088501D /* GotoLineViewController.m */; };
 		94EE32D4149FAE0B0088501D /* GotoLineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94EE32D2149FAE0B0088501D /* GotoLineViewController.xib */; };
+		94FB0FEB14BDB3A50084E457 /* HighLightWordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FB0FE914BDB3A50084E457 /* HighLightWordController.m */; };
+		94FB0FEC14BDB3A50084E457 /* HighLightWordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FB0FE914BDB3A50084E457 /* HighLightWordController.m */; };
+		94FB0FED14BDB3A50084E457 /* HighLightWordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */; };
+		94FB0FEE14BDB3A50084E457 /* HighLightWordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -341,6 +345,9 @@
 		94EE32D0149FAE0B0088501D /* GotoLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotoLineViewController.h; sourceTree = "<group>"; };
 		94EE32D1149FAE0B0088501D /* GotoLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotoLineViewController.m; sourceTree = "<group>"; };
 		94EE32D2149FAE0B0088501D /* GotoLineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GotoLineViewController.xib; sourceTree = "<group>"; };
+		94FB0FE814BDB3A50084E457 /* HighLightWordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighLightWordController.h; sourceTree = "<group>"; };
+		94FB0FE914BDB3A50084E457 /* HighLightWordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighLightWordController.m; sourceTree = "<group>"; };
+		94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HighLightWordController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -448,6 +455,9 @@
 				94D8702F14A65887002F2DBB /* FilePathInfoPopupController.m */,
 				94291E5D14A9FB4A00E44221 /* AnalyzeInfoController.h */,
 				94291E5E14A9FB4A00E44221 /* AnalyzeInfoController.m */,
+				94FB0FE814BDB3A50084E457 /* HighLightWordController.h */,
+				94FB0FE914BDB3A50084E457 /* HighLightWordController.m */,
+				94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */,
 				94291E5F14A9FB4A00E44221 /* AnalyzeInfoController.xib */,
 				94D8703014A65888002F2DBB /* FilePathInfoPopupController.xib */,
 				9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */,
@@ -740,6 +750,7 @@
 				94D8703214A65888002F2DBB /* FilePathInfoPopupController.xib in Resources */,
 				94291E6114A9FB4A00E44221 /* AnalyzeInfoController.xib in Resources */,
 				94557E5414B05E89004950B4 /* linux_0.1 in Resources */,
+				94FB0FED14BDB3A50084E457 /* HighLightWordController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,6 +776,7 @@
 				94ADF1A414BB792E00BA807A /* Icon-Small-50.png in Resources */,
 				94ADF1A514BB792E00BA807A /* Icon-Small.png in Resources */,
 				94ADF1A614BB792E00BA807A /* iTunesArtwork in Resources */,
+				94FB0FEE14BDB3A50084E457 /* HighLightWordController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,6 +836,7 @@
 				94846ED014BCA4FD00388D68 /* MGSplitCornersView.m in Sources */,
 				94846ED214BCA4FD00388D68 /* MGSplitDividerView.m in Sources */,
 				94846ED414BCA4FD00388D68 /* MGSplitViewController.m in Sources */,
+				94FB0FEB14BDB3A50084E457 /* HighLightWordController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,6 +893,7 @@
 				94846ED114BCA4FD00388D68 /* MGSplitCornersView.m in Sources */,
 				94846ED314BCA4FD00388D68 /* MGSplitDividerView.m in Sources */,
 				94846ED514BCA4FD00388D68 /* MGSplitViewController.m in Sources */,
+				94FB0FEC14BDB3A50084E457 /* HighLightWordController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
