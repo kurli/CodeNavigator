@@ -69,6 +69,11 @@
         [[NSFileManager defaultManager] copyItemAtPath:demoBundle toPath:demoFolder error:&error];
     }
     
+    if ([Utils getInstance].colorScheme == nil)
+    {
+        [[Utils getInstance] readColorScheme];
+    }
+    
     [self reloadData];
 }
 

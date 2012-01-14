@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>day_type</key>
+	<true/>
+	<key>day_background</key>
+	<string>#FFFFFF</string>
+	<key>night_background</key>
+	<string>#303040</string>
+	<key>day_comment</key>
+	<string>#008424</string>
+	<key>night_comment</key>
+	<string>#008424</string>
+	<key>day_header</key>
+	<string>#7A482F</string>
+	<key>night_header</key>
+	<string>#7A482F</string>
+	<key>day_string</key>
+	<string>#D62C24</string>
+	<key>night_string</key>
+	<string>#E6DB74</string>
+	<key>day_keyword</key>
+	<string>#BF40A1</string>
+	<key>night_keyword</key>
+	<string>#BF40A1</string>
+	<key>day_definition</key>
+	<string>#006430</string>
+	<key>night_definition</key>
+	<string>#66D9EF</string>
+	<key>font_size</key>
+	<string>20</string>
+	<key>day_other</key>
+	<string>#888888</string>
+	<key>night_other</key>
+	<string>#BCBCBC</string>
+</dict>
+</plist>

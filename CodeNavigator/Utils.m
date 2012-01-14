@@ -11,6 +11,7 @@
 #import "DetailViewController.h"
 #import "AnalyzeInfoController.h"
 #import "Parser.h"
+#import "HTMLConst.h"
 
 @implementation BuildThreadData
 
@@ -25,6 +26,27 @@
 {
     return force;
 }
+
+@end
+
+@implementation ColorSchema
+
+@synthesize dayType;
+@synthesize day_backgroundColor;
+@synthesize night_backgroundColor;
+@synthesize day_comment;
+@synthesize night_comment;
+@synthesize day_definition;
+@synthesize night_definition;
+@synthesize day_keyword;
+@synthesize night_keyword;
+@synthesize day_header;
+@synthesize night_header;
+@synthesize day_string;
+@synthesize night_string;
+@synthesize font_size;
+@synthesize day_other;
+@synthesize night_other;
 
 @end
 
@@ -49,6 +71,7 @@ static Utils *static_utils;
 @synthesize searchKeyword = _searchKeyword;
 @synthesize storedAnalyzePath;
 @synthesize splitViewController;
+@synthesize colorScheme;
 
 +(Utils*)getInstance
 {
@@ -58,12 +81,278 @@ static Utils *static_utils;
     return static_utils;
 }
 
+-(id) init
+{
+    self = [super init];
+    cssVersion = 1;
+    return self;
+}
+
 -(void) initBanner:(UISplitViewController *)view
 {
     _bannerViewController = [[BannerViewController alloc] initWithContentViewController:view];
     _bannerView =  [[ADBannerView alloc] init];
     _bannerView.requiredContentSizeIdentifiers = [NSSet setWithObjects: ADBannerContentSizeIdentifierPortrait, ADBannerContentSizeIdentifierLandscape, nil];
     [_bannerViewController showBannerView];
+}
+
+-(void) readColorScheme
+{
+    BOOL isFolder = false;
+    BOOL isExist = false;
+    NSError *error;
+    //for color scheme
+    NSString* customizedColor = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/syntax_color.plist"];
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:customizedColor isDirectory:&isFolder];
+    NSString* defaultColor = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/syntax_color.plist"];
+    if (isExist == NO || (isExist == YES && isFolder == YES))
+    {
+        [[NSFileManager defaultManager] createDirectoryAtPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] withIntermediateDirectories:YES attributes:nil error:&error];
+        [[NSFileManager defaultManager] copyItemAtPath:defaultColor toPath:customizedColor error:&error];
+
+        //for javascript
+        NSString* js = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/lgz_javascript.js"];
+        isExist = [[NSFileManager defaultManager] fileExistsAtPath:js isDirectory:&isFolder];
+        NSString* jsPath = [[[NSBundle mainBundle] resourcePath]  stringByAppendingPathComponent:@"lgz_javascript.js"];
+        if (isExist == NO || (isExist == YES && isFolder == YES))
+        {
+            [[NSFileManager defaultManager] copyItemAtPath:jsPath toPath:js error:&error];
+        }
+        cssVersion = 1;
+    }
+    
+    NSData* data = [[NSData alloc] initWithContentsOfFile:customizedColor];
+    NSDictionary *documentDictionary = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListImmutable format:NULL errorDescription:NULL];
+            
+    if (self.colorScheme == nil)
+    {
+        self.colorScheme = [[ColorSchema alloc] init];
+    }
+    BOOL dayType = [[documentDictionary objectForKey:@"day_type"] boolValue];
+    [self.colorScheme setDayType:dayType];
+    NSString* daybg = [documentDictionary objectForKey:@"day_background"];
+    [self.colorScheme setDay_backgroundColor:daybg];
+    NSString* nightbg = [documentDictionary objectForKey:@"night_background"];
+    [self.colorScheme setNight_backgroundColor:nightbg];
+    
+    NSString* day_comment = [documentDictionary objectForKey:@"day_comment"];
+    [self.colorScheme setDay_comment:day_comment];
+    NSString* night_comment = [documentDictionary objectForKey:@"night_comment"];
+    [self.colorScheme setNight_comment:night_comment];
+    
+    NSString* day_header = [documentDictionary objectForKey:@"day_header"];
+    [self.colorScheme setDay_header:day_header];
+    NSString* night_header = [documentDictionary objectForKey:@"night_header"];
+    [self.colorScheme setNight_header:night_header];
+    
+    NSString* day_string = [documentDictionary objectForKey:@"day_string"];
+    [self.colorScheme setDay_string:day_string];
+    NSString* night_string = [documentDictionary objectForKey:@"night_string"];
+    [self.colorScheme setNight_string:night_string];
+    
+    NSString* day_keyword = [documentDictionary objectForKey:@"day_keyword"];
+    [self.colorScheme setDay_keyword:day_keyword];
+    NSString* night_keyword = [documentDictionary objectForKey:@"night_keyword"];
+    [self.colorScheme setNight_keyword:night_keyword];
+    
+    NSString* day_definition = [documentDictionary objectForKey:@"day_definition"];
+    [self.colorScheme setDay_definition:day_definition];
+    NSString* night_definition = [documentDictionary objectForKey:@"night_definition"];
+    [self.colorScheme setNight_definition:night_definition];
+    
+    NSString* font_size = [documentDictionary objectForKey:@"font_size"];
+    [self.colorScheme setFont_size:font_size];
+    
+    NSString* day_other = [documentDictionary objectForKey:@"day_other"];
+    [self.colorScheme setDay_other:day_other];
+    NSString* night_other = [documentDictionary objectForKey:@"night_other"];
+    [self.colorScheme setNight_other:night_other];
+    
+    [self generateCSSScheme];
+}
+
+-(void) generateCSSScheme
+{
+    NSError *error;
+    NSString* css = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/theme.css"];
+    [[NSFileManager defaultManager] removeItemAtPath:css error:&error];
+    
+    NSString* cssStr = [NSString stringWithString:HTML_STYLE];
+    
+    //Background
+    cssStr = [cssStr stringByReplacingOccurrencesOfString:@"-BGCOL-" withString:[self getDisplayBackgroundColor]];
+    
+    if ([self isDayTypeDisplayMode])
+    {
+        //comment
+        cssStr = [cssStr stringByReplacingOccurrencesOfString:@"COMENT" withString:self.colorScheme.day_comment];
+        
+        //header
+        cssStr = [cssStr stringByReplacingOccurrencesOfString:@"HEADER" withString:self.colorScheme.day_header];
+        
+        //string
+        cssStr = [cssStr stringByReplacingOccurrencesOfString:@"STRING" withString:self.colorScheme.day_string];
+        
+        //keyword
+        cssStr = [cssStr stringByReplacingOccurrencesOfString:@"KEYWRD" withString:self.colorScheme.day_keyword];
+        
+        //definition
+        cssStr = [cssStr stringByReplacingOccurrencesOfString:@"DEFINE" withString:self.colorScheme.day_definition];
+        
+        //other
+        cssStr = [cssStr stringByReplacingOccurrencesOfString:@"-OTHER-" withString:self.colorScheme.day_other];
+    }
+    else
+    {
+        //comment
+        cssStr = [cssStr stringByReplacingOccurrencesOfString:@"COMENT" withString:self.colorScheme.night_comment];
+        
+        //header
+        cssStr = [cssStr stringByReplacingOccurrencesOfString:@"HEADER" withString:self.colorScheme.night_header];
+        
+        //string
+        cssStr = [cssStr stringByReplacingOccurrencesOfString:@"STRING" withString:self.colorScheme.night_string];
+        
+        //keyword
+        cssStr = [cssStr stringByReplacingOccurrencesOfString:@"KEYWRD" withString:self.colorScheme.night_keyword];
+        
+        //definition
+        cssStr = [cssStr stringByReplacingOccurrencesOfString:@"DEFINE" withString:self.colorScheme.night_definition];
+        
+        //other
+        cssStr = [cssStr stringByReplacingOccurrencesOfString:@"-OTHER-" withString:self.colorScheme.night_other];
+    }
+    cssStr = [cssStr stringByReplacingOccurrencesOfString:@"FONT_SIZE" withString:self.colorScheme.font_size];
+    [cssStr writeToFile:css atomically:YES encoding:NSUTF8StringEncoding error:&error];
+
+    cssVersion++;
+
+//    NSString*  bgcolor = [self getDisplayBackgroundColor];
+//    if ([bgcolor length] != 7)
+//        return;
+//    bgcolor = [bgcolor substringFromIndex:1];
+//    unsigned int baseValue;
+//    if ([[NSScanner scannerWithString:bgcolor] scanHexInt:&baseValue])
+//    {
+//        [self.detailViewController.webView setBackgroundColor:UIColorFromRGB(baseValue)];
+//        [self.detailViewController.topToolBar setBackgroundColor:UIColorFromRGB(baseValue)];
+//        [self.detailViewController.bottomToolBar setBackgroundColor:UIColorFromRGB(baseValue)];
+//    }
+}
+
+-(int) getCSSVersion
+{
+    return cssVersion;
+}
+
+-(void)writeColorScheme:(BOOL)dayType andDayBackground:(NSString *)dayBG andNightBackground:(NSString *)nightBG andDayComment:(NSString *)dayC andNightComment:(NSString *)nightC andDayString:(NSString *)ds andNightString:(NSString*)ns andDayKeyword:(NSString *)dk andNightKeyword:(NSString *)nk andFontSize:(NSString *)fs
+{
+    NSString* customizedColor = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/syntax_color.plist"];
+    NSMutableDictionary *plist = [[NSMutableDictionary alloc] init];
+    
+    [plist setValue:[NSNumber numberWithBool:dayType] forKey:@"day_type"];    
+    self.colorScheme.dayType = dayType;
+    
+    [plist setValue:self.colorScheme.day_header forKey:@"day_header"];
+    [plist setValue:self.colorScheme.night_header forKey:@"night_header"];
+    
+    [plist setValue:self.colorScheme.day_definition forKey:@"day_definition"];
+    [plist setValue:self.colorScheme.night_definition forKey:@"night_definition"];
+    
+    [plist setValue:self.colorScheme.day_other forKey:@"day_other"];
+    [plist setValue:self.colorScheme.night_other forKey:@"night_other"];
+
+    //font size
+    if (fs == nil)
+        [plist setValue:self.colorScheme.font_size forKey:@"font_size"];
+    else
+    {
+        [plist setValue:fs forKey:@"font_size"];
+        [self.colorScheme setFont_size:fs];
+    }
+    
+    //background
+    if (dayBG == nil)
+        [plist setValue:self.colorScheme.day_backgroundColor forKey:@"day_background"];
+    else
+    {
+        [plist setValue:dayBG forKey:@"day_background"];
+        [self.colorScheme setDay_backgroundColor:dayBG];
+    }
+    
+    if (nightBG == nil)
+        [plist setValue:self.colorScheme.night_backgroundColor forKey:@"night_background"];
+    else
+    {
+        [plist setValue:nightBG forKey:@"night_background"];
+        [self.colorScheme setNight_backgroundColor:nightBG];
+    }
+    
+    //comment
+    if (dayC == nil)
+        [plist setValue:self.colorScheme.day_comment forKey:@"day_comment"];
+    else
+    {
+        [plist setValue:dayC forKey:@"day_comment"];
+        [self.colorScheme setDay_comment:dayC];
+    }
+    
+    if (nightC == nil)
+        [plist setValue:self.colorScheme.night_comment forKey:@"night_comment"];
+    else
+    {
+        [plist setValue:nightC forKey:@"night_comment"];
+        [self.colorScheme setNight_comment:nightC];
+    }
+    
+    //string
+    if (ds == nil)
+        [plist setValue:self.colorScheme.day_string forKey:@"day_string"];
+    else
+    {
+        [plist setValue:ds forKey:@"day_string"];
+        [self.colorScheme setDay_string:ds];
+    }
+    
+    if (ns == nil)
+        [plist setValue:self.colorScheme.night_string forKey:@"night_string"];
+    else
+    {
+        [plist setValue:ns forKey:@"night_string"];
+        [self.colorScheme setNight_string:ns];
+    }
+    
+    //keyword
+    if (dk == nil)
+        [plist setValue:self.colorScheme.day_keyword forKey:@"day_keyword"];
+    else
+    {
+        [plist setValue:dk forKey:@"day_keyword"];
+        [self.colorScheme setDay_keyword:dk];
+    }
+    
+    if (nk == nil)
+        [plist setValue:self.colorScheme.night_keyword forKey:@"night_keyword"];
+    else
+    {
+        [plist setValue:nk forKey:@"night_keyword"];
+        [self.colorScheme setNight_keyword:nk];
+    }
+    
+    [plist writeToFile:customizedColor atomically:YES];
+    [self generateCSSScheme];
+}
+
+-(BOOL) isDayTypeDisplayMode
+{
+    return [self.colorScheme dayType];
+}
+
+-(NSString*) getDisplayBackgroundColor
+{
+    if ([self isDayTypeDisplayMode])
+        return self.colorScheme.day_backgroundColor;
+    return self.colorScheme.night_backgroundColor;
 }
 
 -(BannerViewController*) getBannerViewController
@@ -261,6 +550,8 @@ static Utils *static_utils;
     else if ([extension isEqualToString:@"display"])
         return YES;
     else if ([extension isEqualToString:@"zip"])
+        return YES;
+    else if ([extension isEqualToString:@"display_1"])
         return YES;
     return NO;
 }
@@ -716,7 +1007,7 @@ static Utils *static_utils;
     NSString* displayPath;
     displayPath = [path stringByDeletingPathExtension];
     displayPath = [displayPath stringByAppendingFormat:@"_%@",[path pathExtension]];
-    displayPath = [displayPath stringByAppendingPathExtension:@"display"];
+    displayPath = [displayPath stringByAppendingPathExtension:@"display_1"];
     return displayPath;
 }
 
@@ -749,7 +1040,6 @@ static Utils *static_utils;
         //html = [self HloveyRC4:rc4Result key:@"lgz"];
     }
     return html;
-    return nil;
 }
 
 -(void) showPurchaseAlert

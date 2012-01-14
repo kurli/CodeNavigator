@@ -14,6 +14,7 @@
 #import "ResultViewController.h"
 #import "GotoLineViewController.h"
 #import "MGSplitViewController.h"
+#import "DisplayModeController.h"
 
 typedef enum _JSState {
     JS_NONE,
@@ -74,11 +75,19 @@ typedef enum _JSState {
 
 @property (strong, nonatomic) UIPopoverController* highlghtWordPopover;
 
+@property (strong, nonatomic) DisplayModeController* displayModeController;
+
+@property (strong, nonatomic) UIPopoverController* displayModePopover;
+
 @property (strong, nonatomic) NSString* jsGotoLineKeyword;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *analyzeInfoBarButton;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UISegmentedControl *gotoHighlightBar;
+
+@property (unsafe_unretained, nonatomic) IBOutlet UIToolbar *topToolBar;
+
+@property (unsafe_unretained, nonatomic) IBOutlet UIToolbar *bottomToolBar;
 
 - (void) setCurrentSearchFocusLine:(int)line andTotal:(int)total;
 
@@ -97,6 +106,8 @@ typedef enum _JSState {
 - (IBAction)highlightWordButtonClicked:(id)sender;
 
 - (IBAction)gotoHighlight:(id)sender;
+
+- (IBAction)displayModeClicked:(id)sender;
 
 - (void)goBackHistory;
 

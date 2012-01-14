@@ -34,13 +34,16 @@
 @synthesize jsGotoLineKeyword = _jsGotoLineKeyword;
 @synthesize analyzeInfoBarButton = _analyzeInfoBarButton;
 @synthesize gotoHighlightBar = _gotoHighlightBar;
+@synthesize topToolBar = _topToolBar;
+@synthesize bottomToolBar = _bottomToolBar;
 @synthesize gotoLineViewController = _gotoLineViewController;
 @synthesize gotoLinePopover = _gotoLinePopover;
 @synthesize filePathInfopopover;
 @synthesize filePathInfoController;
 @synthesize highlghtWordPopover;
 @synthesize highlightWordController;
-
+@synthesize displayModePopover;
+@synthesize displayModeController;
 
 #pragma mark - Managing the detail item
 
@@ -86,6 +89,10 @@
     [self setHighlghtWordPopover:nil];
     [self setHighlightWordController:nil];
     [self setGotoHighlightBar:nil];
+    [self setDisplayModeController:nil];
+    [self setDisplayModePopover:nil];
+    [self setTopToolBar:nil];
+    [self setBottomToolBar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -128,7 +135,7 @@
 //    else
     {
         [self.webView setScalesPageToFit:NO];
-        [self reloadCurrentPage];
+        //[self reloadCurrentPage];
     }
     return YES;
 }
@@ -168,7 +175,8 @@
     [self.titleTextField setTitle:title forState:UIControlStateNormal];
     self.webView.opaque = NO;
     self.webView.backgroundColor = [UIColor clearColor];
-    [self.webView loadHTMLString:content baseURL:nil];
+    NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
+    [self.webView loadHTMLString:content baseURL:baseURL];
     [self.historyController updateCurrentScrollLocation:location];
     [self.historyController pushUrl:path];
     content = nil;
@@ -208,7 +216,8 @@
         [self.historyController pushUrl:displayPath];
         if (currentDisplayFile == nil || !([currentDisplayFile compare:displayPath] == NSOrderedSame))
         {
-            [self.webView loadHTMLString:html baseURL:nil];
+            NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
+            [self.webView loadHTMLString:html baseURL:baseURL];
 //            jsState = JS_HISTORY_MODE;
 //            jsHistoryModeScrollY = 0;
             jsState = JS_GOTO_LINE_AND_FOCUS_KEYWORD;
@@ -288,7 +297,8 @@
         }
     }
     [self.titleTextField setTitle:title forState:UIControlStateNormal];
-    [self.webView loadHTMLString:content baseURL:nil];
+    NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
+    [self.webView loadHTMLString:content baseURL:baseURL];
     MasterViewController* masterViewController = nil;
     NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
     masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
@@ -343,7 +353,8 @@
     }
     [self.titleTextField setTitle:title forState:UIControlStateNormal];
     [self.titleTextField.titleLabel setText:title];
-    [self.webView loadHTMLString:content baseURL:nil];
+    NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
+    [self.webView loadHTMLString:content baseURL:baseURL];
     MasterViewController* masterViewController = nil;
     NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
     masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
@@ -372,7 +383,8 @@
     NSString* currentDisplayFile = [self getCurrentDisplayFile];
     NSStringEncoding encoding = NSUTF8StringEncoding;
     html = [NSString stringWithContentsOfFile: currentDisplayFile usedEncoding:&encoding error: &error];
-    [self.webView loadHTMLString:html baseURL:nil];
+    NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
+    [self.webView loadHTMLString:html baseURL:baseURL];
 }
 
 - (void)navigationManagerPopUpWithKeyword:(NSString*)keyword andProject:(NSString*)path {
@@ -424,6 +436,10 @@
     [self.highlghtWordPopover dismissPopoverAnimated:YES];
     [self setHighlightWordController:nil];
     [self setHighlghtWordPopover:nil];
+    
+    [self.displayModePopover dismissPopoverAnimated:YES];
+    [self setDisplayModePopover:nil];
+    [self setDisplayModeController:nil];
 }
 
 -(void) setCurrentSearchFocusLine:(int)line andTotal:(int)total
@@ -617,6 +633,22 @@
         [self downSelectButton];
 }
 
+- (IBAction)displayModeClicked:(id)sender {
+    if ([self.displayModePopover isPopoverVisible] == YES)
+    {
+        [self.displayModePopover dismissPopoverAnimated:YES];
+        [self releaseAllPopOver];
+        return;
+    }
+    [self releaseAllPopOver];
+    UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
+    self.displayModeController = [[DisplayModeController alloc] init];
+    self.displayModePopover = [[UIPopoverController alloc] initWithContentViewController:self.displayModeController];
+    self.displayModePopover.popoverContentSize = self.displayModeController.view.frame.size;
+    
+    [self.displayModePopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
 #pragma mark - Split view
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
@@ -658,6 +690,12 @@
     //[self.webView stringByEvaluatingJavaScriptFromString:js];
     jsState = JS_NONE;
     js = nil;
+    
+    NSString *js1 = @"document.getElementsByTagName('link')[0].setAttribute('href','";
+    NSString* css = [NSString stringWithFormat:@"theme.css?v=%d",[[Utils getInstance] getCSSVersion]];
+    NSString *js2 = [js1 stringByAppendingString:css];
+    NSString *finalJS = [js2 stringByAppendingString:@"');"];
+    [self.webView stringByEvaluatingJavaScriptFromString:finalJS];
 }
 
 -(BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType

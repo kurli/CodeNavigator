@@ -68,13 +68,14 @@
 // ---------------- HTML Components ------------------- 
 -(void) addHead
 {
-    NSError *error;
-    NSStringEncoding encoding = NSUTF8StringEncoding;
-    NSString* jsPath = [[[NSBundle mainBundle] resourcePath]  stringByAppendingPathComponent:@"lgz_javascript.js"];
-    NSString* content = [NSString stringWithContentsOfFile:jsPath usedEncoding:&encoding error:&error];
-    NSString* headContent = [NSString stringWithFormat:HTML_HEAD, content];
-	[htmlContent appendString: headContent];
-	[htmlContent appendString: HTML_STYLE];
+//    NSError *error;
+//    NSStringEncoding encoding = NSUTF8StringEncoding;
+//    NSString* jsPath = [[[NSBundle mainBundle] resourcePath]  stringByAppendingPathComponent:@"lgz_javascript.js"];
+//    NSString* content = [NSString stringWithContentsOfFile:jsPath usedEncoding:&encoding error:&error];
+//    NSString* headContent = [NSString stringWithFormat:HTML_HEAD, content];
+	[htmlContent appendString: HTML_HEAD];
+    [htmlContent appendString: HTML_JS_LINK];
+	[htmlContent appendString: HTML_STYLE_LINK];
 	[htmlContent appendString: HTML_HEAD_END];
 	[htmlContent appendString: HTML_BODY_START];
 }

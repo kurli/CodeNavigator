@@ -1,4 +1,3 @@
-<script>
 var returnArray = new Array();
 var index = 0;
 function addResult(id, count)
@@ -144,5 +143,3 @@ function mousedown(obj)
     tmp = tmp + obj.textContent;
     window.location = tmp;
 }
-
-</script>

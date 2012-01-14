@@ -5,32 +5,36 @@
 <html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">\n\
 <head>\n\
 <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />\n\
-%@ \n\
 "
 
+#define HTML_STYLE_LINK @"<link rel=\"stylesheet\" type=\"text/css\" href=\"theme.css?v=1\" />\n"
+
+#define HTML_JS_LINK @"<script type=\"text/javascript\" src=\"lgz_javascript.js\"></script>\n"
+
 #define HTML_STYLE @" \
-<style type=\"text/css\">\n\
-.defination { color: #006430; font-style: italic; }\n\
-.comment { color: #008424; font-style: italic; }\n\
-.header { color: #7A482F; }\n\
-.string { color: #D62C24; }\n\
-.char { color: #009900; }\n\
+.defination { color: DEFINE; font-style: italic; }\n\
+.comment { color: COMENT; font-style: italic; }\n\
+.header { color: HEADER; }\n\
+.string { color: STRING; }\n\
 .float { color: #996600; }\n\
 .int { color: #999900; }\n\
 .bool { color: #000000; font-weight: bold; }\n\
 .type { color: #FF6633; }\n\
 .flow { color: #FF0000; }\n\
-.keyword { color: #BF40A1; }\n\
-.operator { color: #663300; font-weight: bold; }\n\
+.keyword { color: KEYWRD; }\n\
+.other { color: -OTHER-; }\n\
 .operator { color: #663300; font-weight: bold; }\n\
 \
+body {\n\
+background:-BGCOL-;\n\
+}\n\
+\
 table.code {\n\
- border: 1px solid #ddd;\n\
  border-spacing: 0;\n\
  border-top: 0;\n\
  border-collapse: collapse; \n\
  empty-cells: show;\n\
- font-size: 17px;\n\
+ font-size: FONT_SIZEpx;\n\
  line-height: 130%;\n\
  padding: 0;\n\
  table-layout: fixed;\n\
@@ -39,7 +43,7 @@ table.code {\n\
 .highlight{background:green;font-weight:bold;color:white;} \n\
 \
 table.code tbody th {\n\
- background: #eed;\n\
+ background: #-BGCOL-;\n\
  color: #886;\n\
  font-weight: normal;\n\
  padding: 0 .5em;\n\
@@ -55,15 +59,16 @@ table.code tbody th :link:hover, table.code tbody th :visited:hover {\n\
  color: #000;\n\
 }\n\
 table.code td {\n\
- font: normal 17px monospace;\n\
+ font: bold FONT_SIZEpx monospace;\n\
  overflow: none;\n\
  padding: 1px 2px;\n\
  vertical-align: top;\n\
- background: #F8F8F8;\n\
+ background: -BGCOL-;\n\
+ font-weight: bold;\n\
+ color: #808080;\n\
  -webkit-user-select: text;\n\
  padding-right: 20px;\n\
 }\n\
-</style>\n\
 "
 
 #define HTML_HEAD_END @"</head>\n"
@@ -93,9 +98,9 @@ table.code td {\n\
 
 #define HTML_KEYWORD_START @"<span class=\"keyword\">"
 
-#define HTML_OTHER_WORD @"<span onmousedown=\"mousedown(this);\">"
+#define HTML_OTHER_WORD @"<span class=\"other\" onmousedown=\"mousedown(this);\">"
 
-#define HTML_UNKNOWN_LINE @"<span>%@</span>"
+#define HTML_UNKNOWN_LINE @"<span class=\"other\">%@</span>"
 
 #define HTML_SPAN_END @"</span>"
 

@@ -104,12 +104,6 @@
 								<reference key="IBUIToolbar" ref="785694725"/>
 								<int key="IBUISystemItemIdentifier">5</int>
 							</object>
-							<object class="IBUIBarButtonItem" id="454153374">
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<int key="IBUIStyle">1</int>
-								<reference key="IBUIToolbar" ref="785694725"/>
-								<int key="IBUISystemItemIdentifier">12</int>
-							</object>
 							<object class="IBUIBarButtonItem" id="1027099419">
 								<bool key="IBUIEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -238,7 +232,6 @@
 							<reference ref="317788363"/>
 							<reference ref="40755738"/>
 							<reference ref="1027099419"/>
-							<reference ref="454153374"/>
 						</array>
 						<reference key="parent" ref="380900777"/>
 					</object>
@@ -257,11 +250,6 @@
 						<reference key="object" ref="40755738"/>
 						<reference key="parent" ref="785694725"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">24</int>
-						<reference key="object" ref="454153374"/>
-						<reference key="parent" ref="785694725"/>
-					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -272,7 +260,6 @@
 				<string key="13.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="14.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="24.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
