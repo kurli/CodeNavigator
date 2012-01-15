@@ -9,11 +9,30 @@
     NSError *error;
     NSStringEncoding encoding = NSUTF8StringEncoding;
     fileContent = [NSString stringWithContentsOfFile: name usedEncoding:&encoding error: &error];
-    if (error.code == 264)
+    if (error != nil || fileContent == nil)
     {
-        fileContent = @"File Format not supported yet!";
+        // Chinese GB2312 support 
+        error = nil;
+        NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        fileContent  = [NSString stringWithContentsOfFile:name encoding:enc error:&error];
+        
+        if (fileContent == nil)
+        {
+            const NSStringEncoding *encodings = [NSString availableStringEncodings];  
+            while ((encoding = *encodings++) != 0)  
+            {
+                fileContent = [NSString stringWithContentsOfFile: name encoding:encoding error:&error];
+                if (fileContent != nil && error == nil)
+                {
+                    break;
+                }
+            }
+        }
+        
+        if (fileContent == nil)
+            fileContent = @"File Format not supported yet!";
     }
-	htmlContent = [[NSMutableString alloc] init];
+    htmlContent = [[NSMutableString alloc] init];
     projectBase = base;
 }
 
@@ -170,7 +189,7 @@
     for (; index<[content length]; index++)
 	{
         temp = [content characterAtIndex:index];
-        if ( temp == ' ' )
+        if ( temp == ' ' || temp == '\t'  || temp == 13 || temp == 10)
 			break;
 	}
 	if ( index == [content length] )
