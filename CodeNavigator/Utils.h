@@ -120,7 +120,7 @@ typedef enum _AlertConfirmMode{
 
 -(NSString*) getDisplayBackgroundColor;
 
--(void) initBanner:(UISplitViewController*)view;
+-(void) initBanner:(UIViewController*)view;
 
 -(ADBannerView*) getBannerView;
 

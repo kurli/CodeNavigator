@@ -350,19 +350,6 @@
                 ZipReadStream *read;
                 NSError* error;
                 
-#ifdef LITE_VERSION
-                if (infos.count > 5)
-                {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [[Utils getInstance] showPurchaseAlert];
-                        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Count of source files are larger than 5, limitted in Lite Version"];
-                    });
-                    [zipFiles removeAllObjects];
-                    [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
-                    [self performSelectorOnMainThread:@selector(log:) withObject:@"\nSource files larger than 5, limitted in Lite Version.\n" waitUntilDone:YES];
-                    return;
-                }
-#endif
                 //Create Project Folder
                 
                 projectFolder = [filePath stringByDeletingPathExtension];
@@ -379,6 +366,7 @@
                 [[NSFileManager defaultManager] createDirectoryAtPath:projectFolder withIntermediateDirectories:YES attributes:nil error:&error];
 
                 int count = 0;
+                int liteLimitCount = 0;
                 NSString* skipPath = nil;
                 NSNumber* number;
                 number = [NSNumber numberWithFloat:0];
@@ -425,6 +413,21 @@
                         [self performSelectorOnMainThread:@selector(log:) withObject:[NSString stringWithFormat:@"Unzip: %@", info.name] waitUntilDone:YES];
                         continue;
                     }
+                    
+#ifdef LITE_VERSION
+                    liteLimitCount++;
+                    if (liteLimitCount > 5)
+                    {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [[Utils getInstance] showPurchaseAlert];
+                            [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Maximum number of source files exceeded for Lite Version."];
+                        });
+                        [zipFiles removeAllObjects];
+                        [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+                        [self performSelectorOnMainThread:@selector(log:) withObject:@"\nMaximum number of source files exceeded for Lite Version.\n" waitUntilDone:YES];
+                        return;
+                    }
+#endif
 
                     // Upload all kinds of files
 //                    if (![[Utils getInstance] isSupportedType:info.name])

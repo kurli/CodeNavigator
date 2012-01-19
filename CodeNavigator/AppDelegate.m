@@ -37,15 +37,16 @@
     self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailViewController, nil];
     
     //Banner support
-#ifdef LITE_VERSION
-    [[Utils getInstance] initBanner:self.splitViewController];
-    [self.window addSubView:[[Utils getInstance] getBannerViewController]];
-    //----------------
-#else
-    //self.window.rootViewController = self.splitViewController;
+//#ifdef LITE_VERSION
+//    [[Utils getInstance] initBanner:self.splitViewController];
+//    self.window.rootViewController = [[Utils getInstance] getBannerViewController];
+//    //----------------
+//#else
+//    //self.window.rootViewController = self.splitViewController;
+//    [self.window addSubview:self.splitViewController.view];
+//    //end
+//#endif
     [self.window addSubview:self.splitViewController.view];
-    //end
-#endif
     [self.window makeKeyAndVisible];
     
     MGSplitViewDividerStyle newStyle = ((self.splitViewController.dividerStyle == MGSplitViewDividerStyleThin) ? MGSplitViewDividerStylePaneSplitter : MGSplitViewDividerStyleThin);

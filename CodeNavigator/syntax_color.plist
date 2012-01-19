@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>day_type</key>
-	<true/>
+	<false/>
 	<key>day_background</key>
 	<string>#FFFFFF</string>
 	<key>night_background</key>

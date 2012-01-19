@@ -88,7 +88,7 @@ static Utils *static_utils;
     return self;
 }
 
--(void) initBanner:(UISplitViewController *)view
+-(void) initBanner:(UIViewController *)view
 {
     _bannerViewController = [[BannerViewController alloc] initWithContentViewController:view];
     _bannerView =  [[ADBannerView alloc] init];
@@ -653,7 +653,7 @@ static Utils *static_utils;
             {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[Utils getInstance] showPurchaseAlert];
-                    [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Count of source files are larger than 5, Failed to analyze"];
+                    [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Maximum number of source files exceeded for Lite Version., Failed to analyze"];
                     [self.analyzeInfoController finishAnalyze];
                 });
                 return;

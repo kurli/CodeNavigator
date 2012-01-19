@@ -339,14 +339,12 @@
         displayPath = [[Utils getInstance] getDisplayPath:path];
         if (html != nil)
         {
-            NSArray* controllerArray = [[Utils getInstance].splitViewController viewControllers];
-            DetailViewController* controller = [controllerArray objectAtIndex:1];
+            DetailViewController* controller = [Utils getInstance].detailViewController;
             [controller setTitle:selectedItem andPath:displayPath andContent:html];
         }
         else
         {
-            NSArray* controllerArray = [[Utils getInstance].splitViewController viewControllers];
-            DetailViewController* controller = [controllerArray objectAtIndex:1];
+            DetailViewController* controller = [Utils getInstance].detailViewController;
 
             NSStringEncoding encoding = NSUTF8StringEncoding;
             html = [NSString stringWithContentsOfFile: path usedEncoding:&encoding error: &error];
