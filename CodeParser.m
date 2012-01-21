@@ -177,6 +177,11 @@
 {
 	[htmlContent appendString: HTML_LINE_END];
 }
+
+-(void) addImage:(NSString *)imgPath
+{
+    [htmlContent appendFormat: HTML_IMAGE, imgPath];
+}
 // ---------------- HTML Components End ------------------- 
 
 // ---------------- Common Components ------------------- 

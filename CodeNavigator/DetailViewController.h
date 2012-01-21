@@ -32,6 +32,7 @@ typedef enum _JSState {
 {
     int currentSearchFocusLine;
     int searchLineTotal;
+    BOOL shownToolBar;
     
     //JSState related
     JSState jsState;
@@ -43,7 +44,7 @@ typedef enum _JSState {
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIWebView *webView;
 
-@property (unsafe_unretained, nonatomic) IBOutlet UIButton *titleTextField;
+@property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *titleTextField;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UITextField *countTextField;
 
@@ -123,6 +124,8 @@ typedef enum _JSState {
 - (IBAction)resultPopUp:(id)sender;
 
 - (IBAction)gotoLinePopUp:(id)sender;
+
+- (IBAction)showHideTopToolBarClicked:(id)sender;
 
 - (void)dismissNavigationManager;
 

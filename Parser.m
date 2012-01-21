@@ -15,6 +15,10 @@
     {
         parser = [[UnSupportedParser alloc] init];
     }
+    else if ( IMAGE == type )
+    {
+        parser = [[ImageParser alloc] init];
+    }
 	else
     {
 		parser = nil;

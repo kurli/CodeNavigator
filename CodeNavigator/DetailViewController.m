@@ -61,6 +61,7 @@
     jsState = JS_NONE;
     jsGotoLine = 0;
     jsHistoryModeScrollY = 0;
+    shownToolBar = YES;
     [super viewDidLoad];
 }
 
@@ -140,6 +141,36 @@
     return YES;
 }
 
+-(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    CGRect frameTop = self.topToolBar.frame;
+    CGRect frameBottom = self.bottomToolBar.frame;
+    if ([[Utils getInstance].splitViewController isShowingMaster] == YES)
+    {
+        frameTop.origin.x = 74;
+        frameBottom.origin.x = 74;
+    }
+    else
+    {
+        UIDeviceOrientation  orientation = [UIDevice currentDevice].orientation;
+        if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) {
+            frameTop.origin.x = 74;
+            frameBottom.origin.x = 74;
+        }
+        else {
+            frameTop.origin.x = 212;
+            frameBottom.origin.x = 212;
+        }
+    }
+    [UIView beginAnimations:@"ToolBarPosX"context:nil];         
+    [UIView setAnimationDuration:0.30];           
+    [UIView setAnimationDelegate:self];          
+    [self.topToolBar setFrame:frameTop];
+    [self.bottomToolBar setFrame:frameBottom];
+    [UIView commitAnimations];
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -172,10 +203,11 @@
 - (void)setTitle:(NSString *)title andPath:(NSString*)path andContent:(NSString *)content
 {
     int location = [self getCurrentScrollLocation];
-    [self.titleTextField setTitle:title forState:UIControlStateNormal];
+    [self.titleTextField setTitle:title];
     self.webView.opaque = NO;
     self.webView.backgroundColor = [UIColor clearColor];
     NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
+    [[Utils getInstance] changeUIViewStyle:self.webView];
     [self.webView loadHTMLString:content baseURL:baseURL];
     [self.historyController updateCurrentScrollLocation:location];
     [self.historyController pushUrl:path];
@@ -209,14 +241,14 @@
         html = [[Utils getInstance] getDisplayFile:filePath andProjectBase:nil];
         displayPath = [[Utils getInstance] getDisplayPath:filePath];
         int location = [self getCurrentScrollLocation];
-        [self.titleTextField setTitle:title forState:UIControlStateNormal];
-        
+        [self.titleTextField setTitle:title];        
         NSString* currentDisplayFile = [self getCurrentDisplayFile];
         [self.historyController updateCurrentScrollLocation:location];
         [self.historyController pushUrl:displayPath];
         if (currentDisplayFile == nil || !([currentDisplayFile compare:displayPath] == NSOrderedSame))
         {
             NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
+            [[Utils getInstance] changeUIViewStyle:self.webView];
             [self.webView loadHTMLString:html baseURL:baseURL];
 //            jsState = JS_HISTORY_MODE;
 //            jsHistoryModeScrollY = 0;
@@ -296,8 +328,9 @@
             title = [NSString stringWithFormat:@"%@.%@", name,extention];
         }
     }
-    [self.titleTextField setTitle:title forState:UIControlStateNormal];
+    [self.titleTextField setTitle:title];        
     NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
+    [[Utils getInstance] changeUIViewStyle:self.webView];
     [self.webView loadHTMLString:content baseURL:baseURL];
     MasterViewController* masterViewController = nil;
     NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
@@ -351,9 +384,9 @@
             title = [NSString stringWithFormat:@"%@.%@", name,extention];
         }
     }
-    [self.titleTextField setTitle:title forState:UIControlStateNormal];
-    [self.titleTextField.titleLabel setText:title];
+    [self.titleTextField setTitle:title];        
     NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
+    [[Utils getInstance] changeUIViewStyle:self.webView];
     [self.webView loadHTMLString:content baseURL:baseURL];
     MasterViewController* masterViewController = nil;
     NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
@@ -384,6 +417,7 @@
     NSStringEncoding encoding = NSUTF8StringEncoding;
     html = [NSString stringWithContentsOfFile: currentDisplayFile usedEncoding:&encoding error: &error];
     NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
+    [[Utils getInstance] changeUIViewStyle:self.webView];
     [self.webView loadHTMLString:html baseURL:baseURL];
 }
 
@@ -478,10 +512,6 @@
         [[Utils getInstance] showAnalyzeInfoPopOver:YES];
 }
 
-- (IBAction)hideMasterViewClicked:(id)sender {
-    [[Utils getInstance].splitViewController toggleMasterView:nil];
-}
-
 - (IBAction)historyClicked:(id)sender {
     UISegmentedControl* controller = sender;
     int index = [controller selectedSegmentIndex];
@@ -512,10 +542,10 @@
     self.filePathInfopopover = [[UIPopoverController alloc] initWithContentViewController:self.filePathInfoController];
     NSString* realSourceFile = [[Utils getInstance] getPathFromProject:currentFile];
     realSourceFile = [realSourceFile stringByDeletingLastPathComponent];
-    realSourceFile = [realSourceFile stringByAppendingPathComponent:self.titleTextField.currentTitle];
+    realSourceFile = [realSourceFile stringByAppendingPathComponent:self.titleTextField.title];
     self.filePathInfoController.label.text = realSourceFile;
     self.filePathInfopopover.popoverContentSize = CGSizeMake(640., 45);
-    [self.filePathInfopopover presentPopoverFromRect:((UIButton*)sender).bounds inView:(UIButton*)sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    [self.filePathInfopopover presentPopoverFromBarButtonItem:(UIBarButtonItem*)sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (IBAction)navigationButtonClicked:(id)sender
@@ -605,6 +635,60 @@
     _gotoLinePopover.popoverContentSize = CGSizeMake(250., 45.);
 
     [_gotoLinePopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+- (IBAction)showHideTopToolBarClicked:(id)sender {
+    CGRect frameTop = self.topToolBar.frame;
+    CGRect frameBottom = self.bottomToolBar.frame;
+    UIButton* button = (UIButton*)sender;
+    if (shownToolBar == YES)
+    {
+        frameTop.origin.y = -frameTop.size.height;
+        frameBottom.origin.y = frameBottom.origin.y+frameBottom.size.height;
+        [button setTitle:@"⬇" forState:UIControlStateNormal];
+    }
+    else
+    {
+        frameTop.origin.y = 0;
+        frameBottom.origin.y = frameBottom.origin.y-frameBottom.size.height;
+        [button setTitle:@"⬆" forState:UIControlStateNormal];
+    }
+    [UIView beginAnimations:@"ToolBarShowHide"context:nil];         
+    [UIView setAnimationDuration:0.30];           
+    [UIView setAnimationDelegate:self];          
+    [self.topToolBar setFrame:frameTop];
+    [self.bottomToolBar setFrame:frameBottom];
+    [UIView commitAnimations];
+    shownToolBar = !shownToolBar;
+}
+
+- (IBAction)hideMasterViewClicked:(id)sender {
+    CGRect frameTop = self.topToolBar.frame;
+    CGRect frameBottom = self.bottomToolBar.frame;
+    [[Utils getInstance].splitViewController toggleMasterView:nil];
+    if ([[Utils getInstance].splitViewController isShowingMaster] == YES)
+    {
+        frameTop.origin.x = 74;
+        frameBottom.origin.x = 74;
+    }
+    else
+    {
+        UIDeviceOrientation  orientation = [UIDevice currentDevice].orientation;
+        if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) {
+            frameTop.origin.x = 74;
+            frameBottom.origin.x = 74;
+        }
+        else {
+            frameTop.origin.x = 212;
+            frameBottom.origin.x = 212;
+        }
+    }
+    [UIView beginAnimations:@"ToolBarPosX"context:nil];         
+    [UIView setAnimationDuration:0.30];           
+    [UIView setAnimationDelegate:self];          
+    [self.topToolBar setFrame:frameTop];
+    [self.bottomToolBar setFrame:frameBottom];
+    [UIView commitAnimations];
 }
 
 - (IBAction)highlightWordButtonClicked:(id)sender {

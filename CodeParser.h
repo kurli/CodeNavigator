@@ -44,7 +44,9 @@
 -(void) lineStart: (int)num;
                                                       
 -(void) lineEnd;
-                            
+
+-(void) addImage:(NSString*)imgPath;
+
 -(void) addEnd;
 
 // ---------------- HTML Components End ------------------- 

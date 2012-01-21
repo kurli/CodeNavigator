@@ -17,6 +17,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @class DetailViewController;
 @class AnalyzeInfoController;
+@class MasterViewController;
 
 #define MAX_HISTORY_STACK 20
 
@@ -89,6 +90,8 @@ typedef enum _AlertConfirmMode{
 
 @property (nonatomic, unsafe_unretained) MGSplitViewController *splitViewController;
 
+@property (nonatomic, unsafe_unretained) MasterViewController * masterViewController;
+
 @property (nonatomic, strong) AnalyzeInfoController* analyzeInfoController;
 
 @property (nonatomic, strong) UIPopoverController* analyzeInfoPopover;
@@ -113,6 +116,8 @@ typedef enum _AlertConfirmMode{
 -(void) writeColorScheme:(BOOL)dayType andDayBackground:(NSString*)dayBG andNightBackground:(NSString*)nightBG andDayComment:(NSString*)dayC andNightComment:(NSString*)nightC andDayString:(NSString*)ds  andNightString:(NSString*)ns andDayKeyword:(NSString*)dk andNightKeyword:(NSString*)nk andFontSize:(NSString*)fs;
 
 -(void) generateCSSScheme;
+
+-(void) changeUIViewStyle:(UIView*)view;
 
 -(int) getCSSVersion;
 
@@ -147,6 +152,8 @@ typedef enum _AlertConfirmMode{
 -(void) createFileList:(NSString*)projPath andWriteTo:(NSMutableString*) cache;
 
 -(BOOL) isSupportedType:(NSString*)file;
+
+-(BOOL) isImageType:(NSString*)file;
 
 -(BOOL) isProjectDatabaseFile:(NSString *)file;
 

@@ -107,3 +107,6 @@ table.code td {\n\
 #define HTML_ENTER @"\n"
 
 #define HTML_BLANK @"\n"
+
+#define HTML_IMAGE @"<br><br><br><img src=\"%@\"/>"
+

@@ -1,10 +1,12 @@
 #import <Foundation/NSObject.h>
 #import "CPlusPlusParser.h"
 #import "UnSupportedParser.h"
+#import "ImageParser.h"
 
 typedef enum _ParserType
 {
 	CPLUSPLUS,
+    IMAGE,
     UNKNOWN
 } ParserType;
 

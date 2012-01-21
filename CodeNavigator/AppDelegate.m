@@ -26,6 +26,7 @@
 
     MasterViewController *masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
     UINavigationController *masterNavigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
+    [masterNavigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
     [masterViewController setIsProjectFolder:YES];
 
     DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];

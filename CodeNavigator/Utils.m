@@ -12,6 +12,7 @@
 #import "AnalyzeInfoController.h"
 #import "Parser.h"
 #import "HTMLConst.h"
+#import "MasterViewController.h"
 
 @implementation BuildThreadData
 
@@ -72,6 +73,7 @@ static Utils *static_utils;
 @synthesize storedAnalyzePath;
 @synthesize splitViewController;
 @synthesize colorScheme;
+@synthesize masterViewController;
 
 +(Utils*)getInstance
 {
@@ -225,19 +227,21 @@ static Utils *static_utils;
     cssStr = [cssStr stringByReplacingOccurrencesOfString:@"FONT_SIZE" withString:self.colorScheme.font_size];
     [cssStr writeToFile:css atomically:YES encoding:NSUTF8StringEncoding error:&error];
 
+    [self changeUIViewStyle:self.detailViewController.webView];
     cssVersion++;
+}
 
-//    NSString*  bgcolor = [self getDisplayBackgroundColor];
-//    if ([bgcolor length] != 7)
-//        return;
-//    bgcolor = [bgcolor substringFromIndex:1];
-//    unsigned int baseValue;
-//    if ([[NSScanner scannerWithString:bgcolor] scanHexInt:&baseValue])
-//    {
-//        [self.detailViewController.webView setBackgroundColor:UIColorFromRGB(baseValue)];
-//        [self.detailViewController.topToolBar setBackgroundColor:UIColorFromRGB(baseValue)];
-//        [self.detailViewController.bottomToolBar setBackgroundColor:UIColorFromRGB(baseValue)];
-//    }
+-(void) changeUIViewStyle:(UIView *)view
+{
+    NSString*  bgcolor = [self getDisplayBackgroundColor];
+    if ([bgcolor length] != 7)
+        return;
+    bgcolor = [bgcolor substringFromIndex:1];
+    unsigned int baseValue;
+    if ([[NSScanner scannerWithString:bgcolor] scanHexInt:&baseValue])
+    {
+        [view setBackgroundColor:UIColorFromRGB(baseValue)];
+    }
 }
 
 -(int) getCSSVersion
@@ -369,6 +373,7 @@ static Utils *static_utils;
 {
     [self setDetailViewController:nil];
     [self setSplitViewController:nil];
+    [self setMasterViewController:nil];
     [self.resultFileList removeAllObjects];
 }
 
@@ -488,7 +493,7 @@ static Utils *static_utils;
 {
     NSString *extension = [file pathExtension];
     extension = [extension lowercaseString];
-    if (nil == extension)
+    if (nil == extension || [extension length] == 0)
         return NO;
     else if ([extension isEqualToString:@"h"])
         return YES;
@@ -507,6 +512,27 @@ static Utils *static_utils;
     else if ([extension isEqualToString:@"cs"])
         return YES;
     else if ([extension isEqualToString:@"hpp"])
+        return YES;
+    return NO;
+}
+
+-(BOOL) isImageType:(NSString*)file
+{
+    NSString* extension = [file pathExtension];
+    extension = [extension lowercaseString];
+    if (nil == extension || [extension length] == 0)
+        return NO;
+    else if ([extension isEqualToString:@"bmp"])
+        return YES;
+    else if ([extension isEqualToString:@"jpg"])
+        return YES;
+    else if ([extension isEqualToString:@"jpeg"])
+        return YES;
+    else if ([extension isEqualToString:@"tiff"])
+        return YES;
+    else if ([extension isEqualToString:@"gif"])
+        return YES;
+    else if ([extension isEqualToString:@"png"])
         return YES;
     return NO;
 }
@@ -1023,8 +1049,10 @@ static Utils *static_utils;
     if (![[NSFileManager defaultManager] fileExistsAtPath:displayPath isDirectory:&isFolder])
     {
         Parser* parser = [[Parser alloc] init];
-        if ([[Utils getInstance] isSupportedType:path] == YES)
+        if ([self isSupportedType:path] == YES)
             [parser setParserType:CPLUSPLUS];
+        else if ([self isImageType:path] == YES)
+            [parser setParserType:IMAGE];
         else
             [parser setParserType:UNKNOWN];
         [parser setFile: path andProjectBase:projectPath];
