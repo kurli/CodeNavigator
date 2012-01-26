@@ -155,6 +155,8 @@ typedef enum _AlertConfirmMode{
 
 -(BOOL) isImageType:(NSString*)file;
 
+-(BOOL) isDocType:(NSString*)file;
+
 -(BOOL) isProjectDatabaseFile:(NSString *)file;
 
 -(UIAlertView*) showActivityIndicator:(NSString*)mas andDelegate:(id)dgt;

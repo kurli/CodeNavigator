@@ -27,6 +27,7 @@ typedef enum _JSState {
 @class GotoLineViewController;
 @class FilePathInfoPopupController;
 @class HighLightWordController;
+@class HistoryListController;
 
 @interface DetailViewController : UIViewController <UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MGSplitViewControllerDelegate>
 {
@@ -80,6 +81,10 @@ typedef enum _JSState {
 
 @property (strong, nonatomic) UIPopoverController* displayModePopover;
 
+@property (strong, nonatomic) HistoryListController* historyListController;
+
+@property (strong, nonatomic) UIPopoverController* historyListPopover;
+
 @property (strong, nonatomic) NSString* jsGotoLineKeyword;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *analyzeInfoBarButton;
@@ -93,6 +98,10 @@ typedef enum _JSState {
 - (void) setCurrentSearchFocusLine:(int)line andTotal:(int)total;
 
 - (void) setTitle: (NSString*) title andPath:(NSString*)path andContent:(NSString*) content;
+
+- (void) displayDocTypeFile: (NSString*) path;
+
+- (void) displayHTMLString: (NSString*)content;
 
 - (int) getCurrentScrollLocation;
 
@@ -110,9 +119,13 @@ typedef enum _JSState {
 
 - (IBAction)displayModeClicked:(id)sender;
 
+- (IBAction)historyListClicked:(id)sender;
+
 - (void)goBackHistory;
 
 - (void)goForwardHistory;
+
+- (void)restoreToHistory:(NSString*)history;
 
 - (IBAction)historyClicked:(id)sender;
 

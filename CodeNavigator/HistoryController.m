@@ -81,4 +81,57 @@
     return [historyStack objectAtIndex:index];
 }
 
+-(int) getLocationFromHistoryFormat:(NSString *)content
+{
+    NSRange locationRange = [content rangeOfString:@"::" options:NSBackwardsSearch];
+    if (locationRange.location == NSNotFound)
+        return -1;
+    NSString* tmp = [content substringFromIndex:locationRange.location+locationRange.length];
+    if (tmp == nil || [tmp length] == 0)
+        return -1;
+    return [tmp intValue];
+}
+
+-(NSString*) getUrlFromHistoryFormat:(NSString *)content
+{
+    NSRange locationRange = [content rangeOfString:@"::" options:NSBackwardsSearch];
+    if (locationRange.location == NSNotFound)
+        return content;
+    return [content substringToIndex:locationRange.location];
+}
+
+-(int) getCount
+{
+    if (historyStack == nil)
+        return 0;
+    return [historyStack count];
+}
+
+-(int) getCurrentDisplayIndex
+{
+    return index;
+}
+
+-(NSString*) getPathByIndex:(int)i
+{
+    if (i < 0)
+        return nil;
+    if (historyStack == nil)
+        return nil;
+    if (i >= [historyStack count])
+        return nil;
+    return [historyStack objectAtIndex:i];
+}
+
+-(void) setIndex:(int)i
+{
+    if (i < 0)
+        return;
+    if (historyStack == nil)
+        return;
+    if (i >= [historyStack count])
+        return;
+    index = i;
+}
+
 @end

@@ -537,6 +537,39 @@ static Utils *static_utils;
     return NO;
 }
 
+-(BOOL) isDocType:(NSString *)file
+{
+    NSString* extension = [file pathExtension];
+    extension = [extension lowercaseString];
+    if (nil == extension || [extension length] == 0)
+        return NO;
+    else if ([extension isEqualToString:@"xls"])
+        return YES;
+    else if ([extension isEqualToString:@"key.zip"])
+        return YES;
+    else if ([extension isEqualToString:@"numbers.zip"])
+        return YES;
+    else if ([extension isEqualToString:@"pages.zip"])
+        return YES;
+    else if ([extension isEqualToString:@"pdf"])
+        return YES;
+    else if ([extension isEqualToString:@"ppt"])
+        return YES;
+    else if ([extension isEqualToString:@"doc"])
+        return YES;
+    else if ([extension isEqualToString:@"rtf"])
+        return YES;
+    else if ([extension isEqualToString:@"rtfd.zip"])
+        return YES;
+    else if ([extension isEqualToString:@"key"])
+        return YES;
+    else if ([extension isEqualToString:@"numbers"])
+        return YES;
+    else if ([extension isEqualToString:@"pages"])
+        return YES;
+    return NO;
+}
+
 -(void) createFileList:(NSString *)projPath andWriteTo:(NSMutableString*) cache
 {
     NSError *error;
@@ -1031,6 +1064,11 @@ static Utils *static_utils;
 -(NSString*) getDisplayPath:(NSString*) path
 {
     NSString* displayPath;
+    if ([self isDocType:path])
+    {
+        return path;
+    }
+    
     displayPath = [path stringByDeletingPathExtension];
     displayPath = [displayPath stringByAppendingFormat:@"_%@",[path pathExtension]];
     displayPath = [displayPath stringByAppendingPathExtension:@"display_1"];
@@ -1063,6 +1101,10 @@ static Utils *static_utils;
     }
     else
     {
+        if ([self isDocType:path])
+        {
+            return nil;
+        }
         NSStringEncoding encoding = NSUTF8StringEncoding;
         html = [NSString stringWithContentsOfFile: displayPath usedEncoding:&encoding error: &error];
         //html = [self HloveyRC4:rc4Result key:@"lgz"];

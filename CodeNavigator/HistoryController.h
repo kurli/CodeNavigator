@@ -26,4 +26,16 @@
 
 -(NSString*) pickTopLevelUrl;
 
+-(int) getLocationFromHistoryFormat:(NSString*)content;
+
+-(NSString*) getUrlFromHistoryFormat:(NSString*)content;
+
+-(int) getCount;
+
+-(int) getCurrentDisplayIndex;
+
+-(NSString*) getPathByIndex:(int)i;
+
+-(void) setIndex:(int)i;
+
 @end

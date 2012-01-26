@@ -149,7 +149,7 @@
 							<object class="IBUISegmentedControl" id="119227692">
 								<reference key="NSNextResponder" ref="31447470"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{496, 7}, {84, 30}}</string>
+								<string key="NSFrame">{{498, 7}, {84, 30}}</string>
 								<reference key="NSSuperview" ref="31447470"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="909745218"/>
@@ -203,9 +203,15 @@
 								<reference key="IBUICustomView" ref="495588432"/>
 								<reference key="IBUIToolbar" ref="31447470"/>
 							</object>
+							<object class="IBUIBarButtonItem" id="363306418">
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<int key="IBUIStyle">1</int>
+								<reference key="IBUIToolbar" ref="31447470"/>
+								<int key="IBUISystemItemIdentifier">11</int>
+							</object>
 							<object class="IBUIBarButtonItem" id="594792069">
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<float key="IBUIWidth">287</float>
+								<float key="IBUIWidth">235</float>
 								<reference key="IBUIToolbar" ref="31447470"/>
 							</object>
 							<object class="IBUIBarButtonItem" id="859424953">
@@ -480,6 +486,14 @@
 					</object>
 					<int key="connectionID">371</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">historyListClicked:</string>
+						<reference key="source" ref="363306418"/>
+						<reference key="destination" ref="841351856"/>
+					</object>
+					<int key="connectionID">373</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -534,6 +548,7 @@
 							<reference ref="637552046"/>
 							<reference ref="859424953"/>
 							<reference ref="594792069"/>
+							<reference ref="363306418"/>
 						</array>
 						<reference key="parent" ref="647120888"/>
 						<string key="objectName">Top Toolbar</string>
@@ -620,6 +635,11 @@
 						<reference key="object" ref="925847176"/>
 						<reference key="parent" ref="647120888"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">372</int>
+						<reference key="object" ref="363306418"/>
+						<reference key="parent" ref="31447470"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -647,13 +667,14 @@
 				<string key="366.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="370.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="0.0" key="370.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<string key="372.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">371</int>
+			<int key="maxID">373</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -667,6 +688,7 @@
 						<string key="hideMasterViewClicked:">id</string>
 						<string key="highlightWordButtonClicked:">id</string>
 						<string key="historyClicked:">id</string>
+						<string key="historyListClicked:">id</string>
 						<string key="infoButtonClicked:">id</string>
 						<string key="navigationButtonClicked:">id</string>
 						<string key="resultPopUp:">id</string>
@@ -696,6 +718,10 @@
 						</object>
 						<object class="IBActionInfo" key="historyClicked:">
 							<string key="name">historyClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="historyListClicked:">
+							<string key="name">historyListClicked:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="infoButtonClicked:">

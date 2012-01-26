@@ -12,6 +12,7 @@
 #import "BannerViewController.h"
 #import "MGSplitViewController.h"
 #import "HighLightWordController.h"
+#import "HistoryListController.h"
 
 @implementation DetailViewController
 {
@@ -44,6 +45,8 @@
 @synthesize highlightWordController;
 @synthesize displayModePopover;
 @synthesize displayModeController;
+@synthesize historyListController;
+@synthesize historyListPopover;
 
 #pragma mark - Managing the detail item
 
@@ -67,6 +70,8 @@
 
 - (void)viewDidUnload
 {
+    [self setHistoryListPopover:nil];
+    [self setHistoryListController:nil];
     [self setWebView:nil];
     [self setCountTextField:nil];
     [self.historyController.historyStack removeAllObjects];
@@ -204,16 +209,33 @@
 {
     int location = [self getCurrentScrollLocation];
     [self.titleTextField setTitle:title];
-    self.webView.opaque = NO;
-    self.webView.backgroundColor = [UIColor clearColor];
-    NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
-    [[Utils getInstance] changeUIViewStyle:self.webView];
-    [self.webView loadHTMLString:content baseURL:baseURL];
     [self.historyController updateCurrentScrollLocation:location];
     [self.historyController pushUrl:path];
+    [self displayHTMLString:content];
     content = nil;
-//    jsState = JS_HISTORY_MODE;
-//    jsHistoryModeScrollY = 0;
+}
+
+-(void) displayDocTypeFile:(NSString *)path
+{
+    int location = [self getCurrentScrollLocation];
+    [self.titleTextField setTitle:[path lastPathComponent]];
+    [self.historyController updateCurrentScrollLocation:location];
+    [self.historyController pushUrl:path];
+    
+    NSURL *url = [NSURL fileURLWithPath:path];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [self.webView setScalesPageToFit:YES];
+    [self.webView loadRequest:request];
+}
+
+-(void) displayHTMLString:(NSString *)content
+{
+    NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
+    self.webView.opaque = NO;
+    self.webView.backgroundColor = [UIColor clearColor];
+    [[Utils getInstance] changeUIViewStyle:self.webView];
+    [self.webView setScalesPageToFit:NO];
+    [self.webView loadHTMLString:content baseURL:baseURL];
 }
 
 - (void) gotoFile:(NSString *)filePath andLine:(NSString *)line andKeyword:(NSString *)__keyword
@@ -238,27 +260,25 @@
     
     if ([[Utils getInstance] isSupportedType:filePath] == YES)
     {
-        html = [[Utils getInstance] getDisplayFile:filePath andProjectBase:nil];
-        displayPath = [[Utils getInstance] getDisplayPath:filePath];
+        // save current display status to history stack
         int location = [self getCurrentScrollLocation];
         [self.titleTextField setTitle:title];        
-        NSString* currentDisplayFile = [self getCurrentDisplayFile];
         [self.historyController updateCurrentScrollLocation:location];
+        
+        displayPath = [[Utils getInstance] getDisplayPath:filePath];
         [self.historyController pushUrl:displayPath];
+        
+        NSString* currentDisplayFile = [self getCurrentDisplayFile];
+        html = [[Utils getInstance] getDisplayFile:filePath andProjectBase:nil];
+
         if (currentDisplayFile == nil || !([currentDisplayFile compare:displayPath] == NSOrderedSame))
         {
-            NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
-            [[Utils getInstance] changeUIViewStyle:self.webView];
-            [self.webView loadHTMLString:html baseURL:baseURL];
-//            jsState = JS_HISTORY_MODE;
-//            jsHistoryModeScrollY = 0;
+            [self displayHTMLString:html];
+
             jsState = JS_GOTO_LINE_AND_FOCUS_KEYWORD;
             jsGotoLine = [line intValue];
             _jsGotoLineKeyword = __keyword;
             
-            MasterViewController* masterViewController = nil;
-            NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
-            masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
             [masterViewController gotoFile:displayPath];
         }
         else
@@ -280,22 +300,18 @@
     return [location intValue];
 }
 
-- (void)goBackHistory {
+- (void) restoreToHistory:(NSString *)history
+{
+    NSString* url = nil;
     NSStringEncoding encoding = NSUTF8StringEncoding;
     NSError* error;
-    NSString* url = nil;
-    int location = [self getCurrentScrollLocation];
-    [self.historyController updateCurrentScrollLocation:location];
-    NSString* history = [self.historyController popUrl];
-    if (history == nil)
-        return;
-    NSRange locationRange = [history rangeOfString:@"::" options:NSBackwardsSearch];
-    if( locationRange.location != NSNotFound )
+    
+    int historyLocation = [self.historyController getLocationFromHistoryFormat:history];
+    if( historyLocation != -1 )
     {
-        url = [history substringToIndex:locationRange.location];
-        NSString* tmp = [history substringFromIndex:locationRange.location+locationRange.length];
+        url = [self.historyController getUrlFromHistoryFormat:history];
         jsState = JS_HISTORY_MODE;
-        jsHistoryModeScrollY = [tmp intValue];
+        jsHistoryModeScrollY = historyLocation;
     }
     else
     {
@@ -313,85 +329,46 @@
         return;
     }
     
-    NSString* content = [NSString stringWithContentsOfFile:url encoding:encoding error:&error];
+    NSString* extention = [url pathExtension];
+    if (extention != nil && [extention compare:@"display_1"] == NSOrderedSame)
+    {
+        NSString* content = [NSString stringWithContentsOfFile:url encoding:encoding error:&error];
+        [self displayHTMLString:content];
+    }
+    else
+    {
+        NSURL *nsurl = [NSURL fileURLWithPath:url];
+        NSURLRequest *request = [NSURLRequest requestWithURL:nsurl];
+        [self.webView setScalesPageToFit:YES];
+        [self.webView loadRequest:request];
+    }
+
     NSArray* array = [url pathComponents];
     NSString* title = [array lastObject];
-    locationRange = [title rangeOfString:@".display" options:NSBackwardsSearch];
-    if ( locationRange.location != NSNotFound)
-    {
-        title = [title substringToIndex:locationRange.location];
-        locationRange = [title rangeOfString:@"_" options:NSBackwardsSearch];
-        if ( locationRange.location != NSNotFound )
-        {
-            NSString* name = [title substringToIndex:locationRange.location];
-            NSString* extention = [title substringFromIndex:locationRange.location+1];
-            title = [NSString stringWithFormat:@"%@.%@", name,extention];
-        }
-    }
-    [self.titleTextField setTitle:title];        
-    NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
-    [[Utils getInstance] changeUIViewStyle:self.webView];
-    [self.webView loadHTMLString:content baseURL:baseURL];
+    title = [[Utils getInstance] getSourceFileByDisplayFile:title];
+    [self.titleTextField setTitle:title];
+    
     MasterViewController* masterViewController = nil;
     NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
-    masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
-    [masterViewController gotoFile:url];
+    masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;    [masterViewController gotoFile:url];
+}
+
+- (void)goBackHistory {
+    int location = [self getCurrentScrollLocation];
+    [self.historyController updateCurrentScrollLocation:location];
+    NSString* history = [self.historyController popUrl];
+    if (history == nil)
+        return;
+    [self restoreToHistory:history];
 }
 
 - (void)goForwardHistory {
-    NSStringEncoding encoding = NSUTF8StringEncoding;
-    NSError* error;
-    NSString* url = nil;
     int location = [self getCurrentScrollLocation];
     [self.historyController updateCurrentScrollLocation:location];
     NSString* history = [self.historyController getNextUrl];
     if (history == nil)
         return;
-    NSRange locationRange = [history rangeOfString:@"::" options:NSBackwardsSearch];
-    if( locationRange.location != NSNotFound )
-    {
-        url = [history substringToIndex:locationRange.location];
-        NSString* tmp = [history substringFromIndex:locationRange.location+locationRange.length];
-        jsState = JS_HISTORY_MODE;
-        jsHistoryModeScrollY = [tmp intValue];
-    }
-    else
-    {
-        url = history;
-        jsState = JS_HISTORY_MODE;
-        jsHistoryModeScrollY = 0;
-    }
-    BOOL isFolder;
-    if (![[NSFileManager defaultManager] fileExistsAtPath:url isDirectory:&isFolder])
-    {
-        NSString* filePathFromProject = [[Utils getInstance] getPathFromProject:url];
-        filePathFromProject = [[Utils getInstance] getSourceFileByDisplayFile:filePathFromProject];
-        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:[NSString stringWithFormat:@"%@\n File not found",filePathFromProject]];
-        return;
-    }
-    NSString* content = [NSString stringWithContentsOfFile:url encoding:encoding error:&error];
-    NSArray* array = [url pathComponents];
-    NSString* title = [array lastObject];
-    locationRange = [title rangeOfString:@".display" options:NSBackwardsSearch];
-    if ( locationRange.location != NSNotFound)
-    {
-        title = [title substringToIndex:locationRange.location];
-        locationRange = [title rangeOfString:@"_" options:NSBackwardsSearch];
-        if ( locationRange.location != NSNotFound )
-        {
-            NSString* name = [title substringToIndex:locationRange.location];
-            NSString* extention = [title substringFromIndex:locationRange.location+1];
-            title = [NSString stringWithFormat:@"%@.%@", name,extention];
-        }
-    }
-    [self.titleTextField setTitle:title];        
-    NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
-    [[Utils getInstance] changeUIViewStyle:self.webView];
-    [self.webView loadHTMLString:content baseURL:baseURL];
-    MasterViewController* masterViewController = nil;
-    NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
-    masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
-    [masterViewController gotoFile:url];
+    [self restoreToHistory:history];
 }
 
 
@@ -403,10 +380,7 @@
 -(NSString*) getCurrentDisplayFile
 {
     NSString* path = [self.historyController pickTopLevelUrl];
-    NSArray* array = [path componentsSeparatedByString:@"::"];
-    if ([array count] > 1)
-        return [array objectAtIndex:0];
-    return path;
+    return [self.historyController getUrlFromHistoryFormat:path];
 }
 
 -(void) reloadCurrentPage
@@ -416,9 +390,7 @@
     NSString* currentDisplayFile = [self getCurrentDisplayFile];
     NSStringEncoding encoding = NSUTF8StringEncoding;
     html = [NSString stringWithContentsOfFile: currentDisplayFile usedEncoding:&encoding error: &error];
-    NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
-    [[Utils getInstance] changeUIViewStyle:self.webView];
-    [self.webView loadHTMLString:html baseURL:baseURL];
+    [self displayHTMLString:html];
 }
 
 - (void)navigationManagerPopUpWithKeyword:(NSString*)keyword andProject:(NSString*)path {
@@ -451,6 +423,10 @@
 
 -(void) releaseAllPopOver
 {
+    [self.historyListPopover dismissPopoverAnimated:YES];
+    [self setHistoryListPopover:nil];
+    [self setHistoryListController:nil];
+    
     [self.codeNavigationPopover dismissPopoverAnimated:YES];
     [self setCodeNavigationPopover:nil];
     [self setCodeNavigationController:nil];
@@ -731,6 +707,22 @@
     self.displayModePopover.popoverContentSize = self.displayModeController.view.frame.size;
     
     [self.displayModePopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+- (IBAction)historyListClicked:(id)sender {
+    if ([self.historyListPopover isPopoverVisible] == YES)
+    {
+        [self.historyListPopover dismissPopoverAnimated:YES];
+        [self releaseAllPopOver];
+        return;
+    }
+    [self releaseAllPopOver];
+    UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
+    self.historyListController = [[HistoryListController alloc] init];
+    self.historyListPopover = [[UIPopoverController alloc] initWithContentViewController:self.historyListController];
+    self.historyListPopover.popoverContentSize = self.historyListController.view.frame.size;
+    
+    [self.historyListPopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 #pragma mark - Split view

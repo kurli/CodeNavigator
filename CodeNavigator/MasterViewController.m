@@ -303,7 +303,6 @@
     NSString *selectedItem;
     NSString *path;
     NSString *displayPath;
-    NSError *error;
     NSString* html;
         
     // For directories
@@ -345,10 +344,16 @@
         else
         {
             DetailViewController* controller = [Utils getInstance].detailViewController;
+            
+            if ([[Utils getInstance] isDocType:path])
+            {
+                [controller displayDocTypeFile:path];
+                return;
+            }
 
-            NSStringEncoding encoding = NSUTF8StringEncoding;
-            html = [NSString stringWithContentsOfFile: path usedEncoding:&encoding error: &error];
-            [controller setTitle:selectedItem andPath:path andContent:html];
+//            NSStringEncoding encoding = NSUTF8StringEncoding;
+//            html = [NSString stringWithContentsOfFile: path usedEncoding:&encoding error: &error];
+//            [controller setTitle:selectedItem andPath:path andContent:html];
         }
     }
 }
