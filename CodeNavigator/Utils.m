@@ -513,6 +513,8 @@ static Utils *static_utils;
         return YES;
     else if ([extension isEqualToString:@"hpp"])
         return YES;
+    else if ([extension isEqualToString:@"cc"])
+        return YES;
     return NO;
 }
 
