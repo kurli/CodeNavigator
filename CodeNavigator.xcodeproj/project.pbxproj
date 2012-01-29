@@ -11,6 +11,10 @@
 		9417EB7814AE118000224D2A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9417EB7714AE118000224D2A /* iAd.framework */; };
 		9417EB7C14AE160C00224D2A /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9417EB7B14AE160C00224D2A /* BannerViewController.m */; };
 		9419B87D14A4B3BE00AB679B /* ResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */; };
+		9429000214D4E16E002793BD /* PercentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9429000014D4E16E002793BD /* PercentViewController.m */; };
+		9429000314D4E16E002793BD /* PercentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9429000014D4E16E002793BD /* PercentViewController.m */; };
+		9429000414D4E16E002793BD /* PercentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9429000114D4E16E002793BD /* PercentViewController.xib */; };
+		9429000514D4E16E002793BD /* PercentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9429000114D4E16E002793BD /* PercentViewController.xib */; };
 		94291E6014A9FB4A00E44221 /* AnalyzeInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94291E5E14A9FB4A00E44221 /* AnalyzeInfoController.m */; };
 		94291E6114A9FB4A00E44221 /* AnalyzeInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94291E5F14A9FB4A00E44221 /* AnalyzeInfoController.xib */; };
 		9431D73914910B3000B0900E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9431D73814910B3000B0900E /* UIKit.framework */; };
@@ -222,9 +226,12 @@
 		9417EB7A14AE160C00224D2A /* BannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BannerViewController.h; path = Banner/BannerViewController.h; sourceTree = "<group>"; };
 		9417EB7B14AE160C00224D2A /* BannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BannerViewController.m; path = Banner/BannerViewController.m; sourceTree = "<group>"; };
 		9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultTableCellView.xib; sourceTree = "<group>"; };
+		9429000014D4E16E002793BD /* PercentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PercentViewController.m; sourceTree = "<group>"; };
+		9429000114D4E16E002793BD /* PercentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PercentViewController.xib; sourceTree = "<group>"; };
 		94291E5D14A9FB4A00E44221 /* AnalyzeInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyzeInfoController.h; sourceTree = "<group>"; };
 		94291E5E14A9FB4A00E44221 /* AnalyzeInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyzeInfoController.m; sourceTree = "<group>"; };
 		94291E5F14A9FB4A00E44221 /* AnalyzeInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnalyzeInfoController.xib; sourceTree = "<group>"; };
+		9429FFFF14D4E16E002793BD /* PercentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PercentViewController.h; sourceTree = "<group>"; };
 		9431D73414910B3000B0900E /* CodeNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9431D73814910B3000B0900E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9431D73A14910B3000B0900E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -485,6 +492,9 @@
 				94A5BBA814BF47C000F3BA8B /* DisplayModeController.m */,
 				9443BF5214D1A40200355278 /* HistoryListController.h */,
 				9443BF5314D1A40200355278 /* HistoryListController.m */,
+				9429FFFF14D4E16E002793BD /* PercentViewController.h */,
+				9429000014D4E16E002793BD /* PercentViewController.m */,
+				9429000114D4E16E002793BD /* PercentViewController.xib */,
 				9443BF5414D1A40200355278 /* HistoryListController.xib */,
 				94A5BBA914BF47C000F3BA8B /* DisplayModeController.xib */,
 				94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */,
@@ -793,6 +803,7 @@
 				94B183A414C84480005A27EE /* Icon-Small.png in Resources */,
 				94B183A514C84480005A27EE /* iTunesArtwork in Resources */,
 				9443BF5714D1A40200355278 /* HistoryListController.xib in Resources */,
+				9429000414D4E16E002793BD /* PercentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -819,6 +830,7 @@
 				94A5BBAD14BF47C000F3BA8B /* DisplayModeController.xib in Resources */,
 				94FAC80414C1649400B9A821 /* settings.png in Resources */,
 				9443BF5814D1A40200355278 /* HistoryListController.xib in Resources */,
+				9429000514D4E16E002793BD /* PercentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -882,6 +894,7 @@
 				94A5BBAA14BF47C000F3BA8B /* DisplayModeController.m in Sources */,
 				94D16DE714C9CC3B007439EB /* ImageParser.m in Sources */,
 				9443BF5514D1A40200355278 /* HistoryListController.m in Sources */,
+				9429000214D4E16E002793BD /* PercentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -942,6 +955,7 @@
 				94A5BBAB14BF47C000F3BA8B /* DisplayModeController.m in Sources */,
 				94D16DE814C9CC3B007439EB /* ImageParser.m in Sources */,
 				9443BF5614D1A40200355278 /* HistoryListController.m in Sources */,
+				9429000314D4E16E002793BD /* PercentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,7 @@
 #import "MGSplitViewController.h"
 #import "HighLightWordController.h"
 #import "HistoryListController.h"
+#import "PercentViewController.h"
 
 @implementation DetailViewController
 {
@@ -47,6 +48,8 @@
 @synthesize displayModeController;
 @synthesize historyListController;
 @synthesize historyListPopover;
+@synthesize percentViewController;
+@synthesize percentPopover;
 
 #pragma mark - Managing the detail item
 
@@ -70,6 +73,8 @@
 
 - (void)viewDidUnload
 {
+    [self setPercentPopover:nil];
+    [self setPercentViewController:nil];
     [self setHistoryListPopover:nil];
     [self setHistoryListController:nil];
     [self setWebView:nil];
@@ -265,10 +270,11 @@
         [self.titleTextField setTitle:title];        
         [self.historyController updateCurrentScrollLocation:location];
         
+        NSString* currentDisplayFile = [self getCurrentDisplayFile];
+        
         displayPath = [[Utils getInstance] getDisplayPath:filePath];
         [self.historyController pushUrl:displayPath];
         
-        NSString* currentDisplayFile = [self getCurrentDisplayFile];
         html = [[Utils getInstance] getDisplayFile:filePath andProjectBase:nil];
 
         if (currentDisplayFile == nil || !([currentDisplayFile compare:displayPath] == NSOrderedSame))
@@ -423,6 +429,10 @@
 
 -(void) releaseAllPopOver
 {
+    [self.percentPopover dismissPopoverAnimated:YES];
+    [self setPercentViewController:nil];
+    [self setPercentPopover:nil];
+    
     [self.historyListPopover dismissPopoverAnimated:YES];
     [self setHistoryListPopover:nil];
     [self setHistoryListController:nil];
@@ -723,6 +733,23 @@
     self.historyListPopover.popoverContentSize = self.historyListController.view.frame.size;
     
     [self.historyListPopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+- (IBAction)percentClicked:(id)sender {
+    if ([self.percentPopover isPopoverVisible] == YES)
+    {
+        [self.percentPopover dismissPopoverAnimated:YES];
+        [self releaseAllPopOver];
+        return;
+    }
+    [self releaseAllPopOver];
+    UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
+    self.percentViewController = [[PercentViewController alloc] init];
+    [self.percentViewController setDetailViewController:self];
+    self.percentPopover = [[UIPopoverController alloc] initWithContentViewController:self.percentViewController];
+    self.percentPopover.popoverContentSize = self.percentViewController.view.frame.size;
+
+    [self.percentPopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 #pragma mark - Split view

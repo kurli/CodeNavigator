@@ -143,3 +143,8 @@ function mousedown(obj)
     tmp = tmp + obj.textContent;
     window.location = tmp;
 }
+
+function bodyHeight()
+{
+    return document.body.scrollHeight;
+}

@@ -28,6 +28,7 @@ typedef enum _JSState {
 @class FilePathInfoPopupController;
 @class HighLightWordController;
 @class HistoryListController;
+@class PercentViewController;
 
 @interface DetailViewController : UIViewController <UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MGSplitViewControllerDelegate>
 {
@@ -85,6 +86,10 @@ typedef enum _JSState {
 
 @property (strong, nonatomic) UIPopoverController* historyListPopover;
 
+@property (strong, nonatomic) PercentViewController* percentViewController;
+
+@property (strong, nonatomic) UIPopoverController* percentPopover;
+
 @property (strong, nonatomic) NSString* jsGotoLineKeyword;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *analyzeInfoBarButton;
@@ -120,6 +125,8 @@ typedef enum _JSState {
 - (IBAction)displayModeClicked:(id)sender;
 
 - (IBAction)historyListClicked:(id)sender;
+
+- (IBAction)percentClicked:(id)sender;
 
 - (void)goBackHistory;
 

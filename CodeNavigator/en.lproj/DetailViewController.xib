@@ -73,6 +73,12 @@
 								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="909745218"/>
 							</object>
+							<object class="IBUIBarButtonItem" id="30754001">
+								<string key="IBUITitle">%</string>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<int key="IBUIStyle">1</int>
+								<reference key="IBUIToolbar" ref="909745218"/>
+							</object>
 							<object class="IBUIBarButtonItem" id="1025022547">
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
@@ -149,7 +155,7 @@
 							<object class="IBUISegmentedControl" id="119227692">
 								<reference key="NSNextResponder" ref="31447470"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{498, 7}, {84, 30}}</string>
+								<string key="NSFrame">{{452, 7}, {84, 30}}</string>
 								<reference key="NSSuperview" ref="31447470"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="909745218"/>
@@ -211,7 +217,7 @@
 							</object>
 							<object class="IBUIBarButtonItem" id="594792069">
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<float key="IBUIWidth">235</float>
+								<float key="IBUIWidth">189</float>
 								<reference key="IBUIToolbar" ref="31447470"/>
 							</object>
 							<object class="IBUIBarButtonItem" id="859424953">
@@ -223,6 +229,12 @@
 							<object class="IBUIBarButtonItem" id="637552046">
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<reference key="IBUICustomView" ref="119227692"/>
+								<reference key="IBUIToolbar" ref="31447470"/>
+							</object>
+							<object class="IBUIBarButtonItem" id="248903548">
+								<string key="IBUITitle">⊟</string>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<float key="IBUIWidth">42</float>
 								<reference key="IBUIToolbar" ref="31447470"/>
 							</object>
 						</array>
@@ -494,6 +506,14 @@
 					</object>
 					<int key="connectionID">373</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">percentClicked:</string>
+						<reference key="source" ref="30754001"/>
+						<reference key="destination" ref="841351856"/>
+					</object>
+					<int key="connectionID">375</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -535,6 +555,7 @@
 							<reference ref="368999263"/>
 							<reference ref="377859890"/>
 							<reference ref="1025022547"/>
+							<reference ref="30754001"/>
 						</array>
 						<reference key="parent" ref="647120888"/>
 						<string key="objectName">Bottom Toolbar</string>
@@ -549,6 +570,7 @@
 							<reference ref="859424953"/>
 							<reference ref="594792069"/>
 							<reference ref="363306418"/>
+							<reference ref="248903548"/>
 						</array>
 						<reference key="parent" ref="647120888"/>
 						<string key="objectName">Top Toolbar</string>
@@ -640,6 +662,16 @@
 						<reference key="object" ref="363306418"/>
 						<reference key="parent" ref="31447470"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">374</int>
+						<reference key="object" ref="30754001"/>
+						<reference key="parent" ref="909745218"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">376</int>
+						<reference key="object" ref="248903548"/>
+						<reference key="parent" ref="31447470"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -668,13 +700,15 @@
 				<string key="370.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="0.0" key="370.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="372.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="374.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="376.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">373</int>
+			<int key="maxID">376</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -691,6 +725,7 @@
 						<string key="historyListClicked:">id</string>
 						<string key="infoButtonClicked:">id</string>
 						<string key="navigationButtonClicked:">id</string>
+						<string key="percentClicked:">id</string>
 						<string key="resultPopUp:">id</string>
 						<string key="showHideTopToolBarClicked:">id</string>
 						<string key="titleTouched:">id</string>
@@ -730,6 +765,10 @@
 						</object>
 						<object class="IBActionInfo" key="navigationButtonClicked:">
 							<string key="name">navigationButtonClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="percentClicked:">
+							<string key="name">percentClicked:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="resultPopUp:">
