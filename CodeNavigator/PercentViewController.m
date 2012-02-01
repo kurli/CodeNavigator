@@ -67,6 +67,8 @@
     int currentLocation = [self.detailViewController getCurrentScrollLocation];
     if (currentLocation == 0)
         currentLocation = 1;
+    if (height == 0)
+        height = 1;
     float percent = (float)currentLocation/(float)(height);
     str = [NSString stringWithFormat:@"%.02f%%", percent*100];
     [percentLable setText:str];
@@ -80,6 +82,8 @@
         height = bodyHeight - detailViewController.activeWebView.frame.size.height;
     else
         height = bodyHeight;
+    if (height == 0)
+        height = 1;
     int location = height*slider.value;
     NSString* str = [NSString stringWithFormat:@"scrollTo(0,%d)",location];
     [self.detailViewController.activeWebView stringByEvaluatingJavaScriptFromString:str];
