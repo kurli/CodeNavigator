@@ -57,11 +57,11 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    NSString* str = [self.detailViewController.webView stringByEvaluatingJavaScriptFromString:@"bodyHeight()"];
+    NSString* str = [self.detailViewController.activeWebView stringByEvaluatingJavaScriptFromString:@"bodyHeight()"];
     bodyHeight = [str intValue];
     int height = 0;
-    if (bodyHeight > detailViewController.view.frame.size.height)
-        height = bodyHeight - detailViewController.view.frame.size.height;
+    if (bodyHeight > detailViewController.activeWebView.frame.size.height)
+        height = bodyHeight - detailViewController.activeWebView.frame.size.height;
     else
         height = bodyHeight;
     int currentLocation = [self.detailViewController getCurrentScrollLocation];
@@ -76,13 +76,13 @@
 - (IBAction)sliderChanged:(id)sender {
     UISlider* slider = (UISlider*)sender;
     int height = 0;
-    if (bodyHeight > detailViewController.view.frame.size.height)
-        height = bodyHeight - detailViewController.view.frame.size.height;
+    if (bodyHeight > detailViewController.activeWebView.frame.size.height)
+        height = bodyHeight - detailViewController.activeWebView.frame.size.height;
     else
         height = bodyHeight;
     int location = height*slider.value;
     NSString* str = [NSString stringWithFormat:@"scrollTo(0,%d)",location];
-    [self.detailViewController.webView stringByEvaluatingJavaScriptFromString:str];
+    [self.detailViewController.activeWebView stringByEvaluatingJavaScriptFromString:str];
     str = [NSString stringWithFormat:@"%.02f%%",100*((float)location/(float)height)];
     [percentLable setText:str];
 }

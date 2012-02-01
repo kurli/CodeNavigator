@@ -38,6 +38,8 @@
 @synthesize gotoHighlightBar = _gotoHighlightBar;
 @synthesize topToolBar = _topToolBar;
 @synthesize bottomToolBar = _bottomToolBar;
+@synthesize webViewSegmentController = _webViewSegmentController;
+@synthesize activeMark = _activeMark;
 @synthesize gotoLineViewController = _gotoLineViewController;
 @synthesize gotoLinePopover = _gotoLinePopover;
 @synthesize filePathInfopopover;
@@ -50,6 +52,10 @@
 @synthesize historyListPopover;
 @synthesize percentViewController;
 @synthesize percentPopover;
+@synthesize secondWebView;
+@synthesize activeWebView;
+@synthesize upHistoryController;
+@synthesize downHistoryController;
 
 #pragma mark - Managing the detail item
 
@@ -68,11 +74,16 @@
     jsGotoLine = 0;
     jsHistoryModeScrollY = 0;
     shownToolBar = YES;
+    self.activeWebView = self.webView;
     [super viewDidLoad];
 }
 
 - (void)viewDidUnload
 {
+    [self setUpHistoryController:nil];
+    [self setDownHistoryController:nil];
+    [self setActiveWebView:nil];
+    [self setSecondWebView:nil];
     [self setPercentPopover:nil];
     [self setPercentViewController:nil];
     [self setHistoryListPopover:nil];
@@ -104,6 +115,8 @@
     [self setDisplayModePopover:nil];
     [self setTopToolBar:nil];
     [self setBottomToolBar:nil];
+    [self setWebViewSegmentController:nil];
+    [self setActiveMark:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -146,6 +159,7 @@
 //    else
     {
         [self.webView setScalesPageToFit:NO];
+        [self.secondWebView setScalesPageToFit:NO];
         //[self reloadCurrentPage];
     }
     return YES;
@@ -177,6 +191,11 @@
     [UIView setAnimationDelegate:self];          
     [self.topToolBar setFrame:frameTop];
     [self.bottomToolBar setFrame:frameBottom];
+    int height = self.secondWebView.frame.size.height;
+    if ( height < 20 )
+        [self singleWebView];
+    else
+        [self splitWebView];
     [UIView commitAnimations];
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 }
@@ -196,7 +215,9 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishBannerViewActionNotification:) name:BannerViewActionDidFinish object:nil];
         _bannerCounter = 0;
     }
-    self.historyController = [[HistoryController alloc] init];
+    self.upHistoryController = [[HistoryController alloc] init];
+    self.downHistoryController = [[HistoryController alloc] init];
+    self.historyController = self.upHistoryController;
     return self;
 }
 
@@ -229,18 +250,18 @@
     
     NSURL *url = [NSURL fileURLWithPath:path];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [self.webView setScalesPageToFit:YES];
-    [self.webView loadRequest:request];
+    [self.activeWebView setScalesPageToFit:YES];
+    [self.activeWebView loadRequest:request];
 }
 
 -(void) displayHTMLString:(NSString *)content
 {
     NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
-    self.webView.opaque = NO;
-    self.webView.backgroundColor = [UIColor clearColor];
-    [[Utils getInstance] changeUIViewStyle:self.webView];
-    [self.webView setScalesPageToFit:NO];
-    [self.webView loadHTMLString:content baseURL:baseURL];
+    self.activeWebView.opaque = NO;
+    self.activeWebView.backgroundColor = [UIColor clearColor];
+    [[Utils getInstance] changeUIViewStyle:self.activeWebView];
+    [self.activeWebView setScalesPageToFit:NO];
+    [self.activeWebView loadHTMLString:content baseURL:baseURL];
 }
 
 - (void) gotoFile:(NSString *)filePath andLine:(NSString *)line andKeyword:(NSString *)__keyword
@@ -290,21 +311,15 @@
         else
         {
             NSString* js = [NSString stringWithFormat:@"smoothScroll('L%d')", [line intValue]];
-            [self.webView stringByEvaluatingJavaScriptFromString:js];
+            [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
             //magic way to dis highlight current words
             js = @"highlight('liguangzhen+++++++++++++++++++++++++++++++++++++++++')";
-            [self.webView stringByEvaluatingJavaScriptFromString:js];
+            [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
             js = [NSString stringWithFormat:@"highlight_this_line_keyword('L%d', '%@')", [line intValue], __keyword];
-            [self.webView stringByEvaluatingJavaScriptFromString:js];
+            [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
         }
     }
  }
-
--(int) getCurrentScrollLocation
-{
-    NSString* location = [self.webView stringByEvaluatingJavaScriptFromString:@"currentYPosition()"];
-    return [location intValue];
-}
 
 - (void) restoreToHistory:(NSString *)history
 {
@@ -345,8 +360,8 @@
     {
         NSURL *nsurl = [NSURL fileURLWithPath:url];
         NSURLRequest *request = [NSURLRequest requestWithURL:nsurl];
-        [self.webView setScalesPageToFit:YES];
-        [self.webView loadRequest:request];
+        [self.activeWebView setScalesPageToFit:YES];
+        [self.activeWebView loadRequest:request];
     }
 
     NSArray* array = [url pathComponents];
@@ -462,31 +477,52 @@
     [self setDisplayModeController:nil];
 }
 
+- (IBAction)webViewSegmentChanged:(id)sender {
+    UISegmentedControl* segmentController = sender;
+    if ([segmentController selectedSegmentIndex] == 0)
+    {
+        self.activeWebView = self.webView;
+        self.historyController = self.upHistoryController;
+        NSString* path = [self.upHistoryController pickTopLevelUrl];
+        NSString* currentDisplayFile = [self.upHistoryController getUrlFromHistoryFormat:path];
+        NSString* title = [currentDisplayFile lastPathComponent];
+        title = [[Utils getInstance] getSourceFileByDisplayFile:title];
+        self.titleTextField.title = title;
+        
+        CGRect rect = self.activeMark.frame;
+        rect.origin.x = 5;
+        rect.origin.y = self.webView.frame.size.height-rect.size.height;
+        [self.activeMark setFrame:rect];
+        [self.activeMark setHidden:NO];    
+    }
+    else
+    {
+        self.activeWebView = self.secondWebView;
+        self.historyController = self.downHistoryController;
+        NSString* path = [self.downHistoryController pickTopLevelUrl];
+        NSString* currentDisplayFile = [self.upHistoryController getUrlFromHistoryFormat:path];
+        NSString* title = [currentDisplayFile lastPathComponent];
+        title = [[Utils getInstance] getSourceFileByDisplayFile:title];
+        self.titleTextField.title = title;
+        
+        CGRect rect = self.activeMark.frame;
+        rect.origin.x = 5;
+        rect.origin.y = self.secondWebView.frame.origin.y;
+        [self.activeMark setFrame:rect];
+        [self.activeMark setHidden:NO];  
+    }
+}
+
 -(void) setCurrentSearchFocusLine:(int)line andTotal:(int)total
 {
     currentSearchFocusLine = line;
     searchLineTotal = total;
 }
 
-- (void)upSelectButton {
-    
-    if (currentSearchFocusLine == 0)
-        return;
-    currentSearchFocusLine--;
-    NSString* js = [NSString stringWithFormat:@"gotoLine(%d)", currentSearchFocusLine];
-    [self.webView stringByEvaluatingJavaScriptFromString:js];
-    NSString* show = [NSString stringWithFormat:@"%d/%d", currentSearchFocusLine, searchLineTotal];
-    [self.countTextField setText:show];
-}
-
-- (void)downSelectButton {
-    if (currentSearchFocusLine == searchLineTotal-1)
-        return;
-    currentSearchFocusLine++;
-    NSString* js = [NSString stringWithFormat:@"gotoLine(%d)", currentSearchFocusLine];
-    [self.webView stringByEvaluatingJavaScriptFromString:js];
-    NSString* show = [NSString stringWithFormat:@"%d/%d", currentSearchFocusLine, searchLineTotal];
-    [self.countTextField setText:show];
+-(int) getCurrentScrollLocation
+{
+    NSString* location = [self.activeWebView stringByEvaluatingJavaScriptFromString:@"currentYPosition()"];
+    return [location intValue];
 }
 
 #pragma Bar Button action
@@ -694,6 +730,27 @@
     [self.highlghtWordPopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
+- (void)upSelectButton {
+    
+    if (currentSearchFocusLine == 0)
+        return;
+    currentSearchFocusLine--;
+    NSString* js = [NSString stringWithFormat:@"gotoLine(%d)", currentSearchFocusLine];
+    [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
+    NSString* show = [NSString stringWithFormat:@"%d/%d", currentSearchFocusLine, searchLineTotal];
+    [self.countTextField setText:show];
+}
+
+- (void)downSelectButton {
+    if (currentSearchFocusLine == searchLineTotal-1)
+        return;
+    currentSearchFocusLine++;
+    NSString* js = [NSString stringWithFormat:@"gotoLine(%d)", currentSearchFocusLine];
+    [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
+    NSString* show = [NSString stringWithFormat:@"%d/%d", currentSearchFocusLine, searchLineTotal];
+    [self.countTextField setText:show];
+}
+
 - (IBAction)gotoHighlight:(id)sender {
     UISegmentedControl* controller = sender;
     int index = [controller selectedSegmentIndex];
@@ -752,6 +809,68 @@
     [self.percentPopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
+- (void) splitWebView
+{
+    CGRect rect = self.webView.frame;
+    rect.size.height = self.view.frame.size.height/2;
+    rect.size.height -= self.webViewSegmentController.frame.size.height/2;
+    [self.webView setFrame:rect];
+    CGRect sRect = self.webViewSegmentController.frame;
+    sRect.origin.x = 10;
+    sRect.origin.y = rect.origin.y + rect.size.height;
+    [self.webViewSegmentController setFrame:sRect];
+    rect.origin.y = rect.size.height + self.webViewSegmentController.frame.size.height;
+    [self.secondWebView setFrame:rect];
+    
+    if ([self.webViewSegmentController selectedSegmentIndex] == 0)
+    {
+        rect = self.activeMark.frame;
+        rect.origin.x = 5;
+        rect.origin.y = self.webView.frame.size.height-rect.size.height;
+        [self.activeMark setFrame:rect];
+        [self.activeMark setHidden:NO];
+    }
+    else
+    {
+        rect = self.activeMark.frame;
+        rect.origin.x = 5;
+        rect.origin.y = self.secondWebView.frame.origin.y;
+        [self.activeMark setFrame:rect];
+        [self.activeMark setHidden:NO];
+    }
+}
+
+- (void) singleWebView
+{
+    CGRect rect = self.webView.frame;
+    rect.size.height = self.view.frame.size.height;
+    [self.webView setFrame:rect];
+    rect.origin.y = self.view.frame.size.height - 10;
+    rect.size.height = 10;
+    [self.secondWebView setFrame:rect];
+}
+
+- (IBAction)sourceSplitClicked:(id)sender {
+    [UIView beginAnimations:@"WebViewAnimate"context:nil];
+    [UIView setAnimationDuration:0.30];
+    [UIView setAnimationDelegate:self];
+    if (self.secondWebView.frame.size.height == 10)
+    {
+        // Split webview
+        [self splitWebView];
+    }
+    else
+    {
+        // Only one webview
+        [self singleWebView];
+        [self.webViewSegmentController setSelectedSegmentIndex:0];
+        self.activeWebView = self.webView;
+        self.historyController = self.upHistoryController;
+        [self.activeMark setHidden:YES];
+    }
+    [UIView commitAnimations];
+}
+
 #pragma mark - Split view
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
@@ -780,9 +899,9 @@
             break;
         case JS_GOTO_LINE_AND_FOCUS_KEYWORD:
             js = [NSString stringWithFormat:@"smoothScroll('L%d')", jsGotoLine];
-            [self.webView stringByEvaluatingJavaScriptFromString:js];
+            [webView stringByEvaluatingJavaScriptFromString:js];
             js = [NSString stringWithFormat:@"highlight_this_line_keyword('L%d', '%@')", jsGotoLine, _jsGotoLineKeyword];
-            [self.webView stringByEvaluatingJavaScriptFromString:js];
+            [webView stringByEvaluatingJavaScriptFromString:js];
             jsGotoLine = 0;
             _jsGotoLineKeyword = nil;
             break;
@@ -798,7 +917,7 @@
     NSString* css = [NSString stringWithFormat:@"theme.css?v=%d",[[Utils getInstance] getCSSVersion]];
     NSString *js2 = [js1 stringByAppendingString:css];
     NSString *finalJS = [js2 stringByAppendingString:@"');"];
-    [self.webView stringByEvaluatingJavaScriptFromString:finalJS];
+    [webView stringByEvaluatingJavaScriptFromString:finalJS];
 }
 
 -(BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
@@ -807,7 +926,18 @@
     NSArray* array = [tmp componentsSeparatedByString:@"lgz_redirect:"];
     if ([array count] == 2)
     {
-        NSString* projectFolder = [[Utils getInstance] getProjectFolder:[self getCurrentDisplayFile]];
+        NSString* currentDisplayFile;
+        if (webView == self.webView)
+        {
+            NSString* path = [self.upHistoryController pickTopLevelUrl];
+            currentDisplayFile = [self.upHistoryController getUrlFromHistoryFormat:path];
+        }
+        else
+        {
+            NSString* path = [self.downHistoryController pickTopLevelUrl];
+            currentDisplayFile = [self.downHistoryController getUrlFromHistoryFormat:path];
+        }
+        NSString* projectFolder = [[Utils getInstance] getProjectFolder:currentDisplayFile];
 
         [self navigationManagerPopUpWithKeyword:[array objectAtIndex:1] andProject:projectFolder];
         return NO;

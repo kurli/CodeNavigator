@@ -57,7 +57,7 @@
 
 -(void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    if (nil == self.detailViewController.webView)
+    if (nil == self.detailViewController.activeWebView)
         return;
     
     NSString* returnValue;
@@ -67,7 +67,7 @@
     else if ([searchText length] %5 == 0)
     {
         highlightJS = [NSString stringWithFormat:@"highlight('%@')",searchText];
-        returnValue = [self.detailViewController.webView stringByEvaluatingJavaScriptFromString:highlightJS];
+        returnValue = [self.detailViewController.activeWebView stringByEvaluatingJavaScriptFromString:highlightJS];
         //NSString* countValue = [NSString stringWithFormat:@"0/%@",returnValue];
         //[self.countTextField setText:countValue];
         [self.detailViewController setCurrentSearchFocusLine:0 andTotal:[returnValue intValue]];
@@ -85,7 +85,7 @@
         highlightJS = [NSString stringWithFormat:@"highlight('liguangzhen+++++++++++++++++++++++++++++++++++++++++')"];
     else
         highlightJS = [NSString stringWithFormat:@"highlight('%@')",searchText];
-    returnValue = [self.detailViewController.webView stringByEvaluatingJavaScriptFromString:highlightJS];
+    returnValue = [self.detailViewController.activeWebView stringByEvaluatingJavaScriptFromString:highlightJS];
     //NSString* countValue = [NSString stringWithFormat:@"0/%@",returnValue];
     //[self.countTextField setText:countValue];
     [self.detailViewController setCurrentSearchFocusLine:0 andTotal:[returnValue intValue]];

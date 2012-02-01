@@ -228,6 +228,7 @@ static Utils *static_utils;
     [cssStr writeToFile:css atomically:YES encoding:NSUTF8StringEncoding error:&error];
 
     [self changeUIViewStyle:self.detailViewController.webView];
+    [self changeUIViewStyle:self.detailViewController.secondWebView];
     cssVersion++;
 }
 

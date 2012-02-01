@@ -56,7 +56,11 @@ typedef enum _JSState {
 
 @property (strong, nonatomic) NSString *searchWord;
 
-@property (strong, nonatomic) HistoryController* historyController;
+@property (unsafe_unretained, nonatomic) HistoryController* historyController;
+
+@property (strong, nonatomic) HistoryController* upHistoryController;
+
+@property (strong, nonatomic) HistoryController* downHistoryController;
 
 @property (strong, nonatomic) NavigationController* codeNavigationController;
 
@@ -92,6 +96,10 @@ typedef enum _JSState {
 
 @property (strong, nonatomic) NSString* jsGotoLineKeyword;
 
+@property (strong, nonatomic) IBOutlet UIWebView* secondWebView;
+
+@property (unsafe_unretained, nonatomic) UIWebView* activeWebView;
+
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *analyzeInfoBarButton;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UISegmentedControl *gotoHighlightBar;
@@ -99,6 +107,12 @@ typedef enum _JSState {
 @property (unsafe_unretained, nonatomic) IBOutlet UIToolbar *topToolBar;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIToolbar *bottomToolBar;
+
+@property (unsafe_unretained, nonatomic) IBOutlet UISegmentedControl *webViewSegmentController;
+
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *activeMark;
+
+- (IBAction)webViewSegmentChanged:(id)sender;
 
 - (void) setCurrentSearchFocusLine:(int)line andTotal:(int)total;
 
@@ -128,6 +142,8 @@ typedef enum _JSState {
 
 - (IBAction)percentClicked:(id)sender;
 
+- (IBAction)sourceSplitClicked:(id)sender;
+
 - (void)goBackHistory;
 
 - (void)goForwardHistory;
@@ -141,6 +157,7 @@ typedef enum _JSState {
 - (IBAction)navigationButtonClicked:(id)sender;
 
 - (void)navigationManagerPopUpWithKeyword:(NSString*)keyword andProject:(NSString*)path;
+
 - (IBAction)resultPopUp:(id)sender;
 
 - (IBAction)gotoLinePopUp:(id)sender;
@@ -156,4 +173,9 @@ typedef enum _JSState {
 - (void) reloadCurrentPage;
 
 - (void) releaseAllPopOver;
+
+- (void) splitWebView;
+
+- (void) singleWebView;
+
 @end

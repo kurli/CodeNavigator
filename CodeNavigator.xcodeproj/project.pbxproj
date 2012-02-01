@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		94040588149659C4002A0C73 /* lgz_javascript.js in Resources */ = {isa = PBXBuildFile; fileRef = 9404058514964E56002A0C73 /* lgz_javascript.js */; };
+		94103DF014D86F1300212EBB /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 94103DEF14D86F1300212EBB /* bookmark.png */; };
+		94103DF114D86F1300212EBB /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 94103DEF14D86F1300212EBB /* bookmark.png */; };
 		9417EB7814AE118000224D2A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9417EB7714AE118000224D2A /* iAd.framework */; };
 		9417EB7C14AE160C00224D2A /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9417EB7B14AE160C00224D2A /* BannerViewController.m */; };
 		9419B87D14A4B3BE00AB679B /* ResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */; };
@@ -222,6 +224,7 @@
 
 /* Begin PBXFileReference section */
 		9404058514964E56002A0C73 /* lgz_javascript.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = lgz_javascript.js; sourceTree = "<group>"; };
+		94103DEF14D86F1300212EBB /* bookmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookmark.png; sourceTree = "<group>"; };
 		9417EB7714AE118000224D2A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		9417EB7A14AE160C00224D2A /* BannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BannerViewController.h; path = Banner/BannerViewController.h; sourceTree = "<group>"; };
 		9417EB7B14AE160C00224D2A /* BannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BannerViewController.m; path = Banner/BannerViewController.m; sourceTree = "<group>"; };
@@ -594,6 +597,7 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				94103DEF14D86F1300212EBB /* bookmark.png */,
 				94B1839E14C84480005A27EE /* Icon-72.png */,
 				94B1839F14C84480005A27EE /* Icon-Small-50.png */,
 				94B183A014C84480005A27EE /* Icon-Small.png */,
@@ -804,6 +808,7 @@
 				94B183A514C84480005A27EE /* iTunesArtwork in Resources */,
 				9443BF5714D1A40200355278 /* HistoryListController.xib in Resources */,
 				9429000414D4E16E002793BD /* PercentViewController.xib in Resources */,
+				94103DF014D86F1300212EBB /* bookmark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -831,6 +836,7 @@
 				94FAC80414C1649400B9A821 /* settings.png in Resources */,
 				9443BF5814D1A40200355278 /* HistoryListController.xib in Resources */,
 				9429000514D4E16E002793BD /* PercentViewController.xib in Resources */,
+				94103DF114D86F1300212EBB /* bookmark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
