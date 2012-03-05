@@ -15,8 +15,6 @@
 {
     BOOL isProjectFolder;
 }
-@property (strong, nonatomic) MasterViewController *masterViewController;
-
 @property (strong, nonatomic) NSString *currentLocation;
 
 @property (strong, nonatomic) NSMutableArray *currentDirectories;

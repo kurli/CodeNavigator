@@ -8,6 +8,7 @@
 
 #import "Utils.h"
 #import "ResultViewController.h"
+#import "VirtualizeViewController.h"
 
 @implementation ResultViewController
 
@@ -102,6 +103,36 @@
         return [((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:currentFileIndex]).contents count];
 }
 
+- (IBAction)addButtonClicked:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    UIView *contentView = [button superview];
+    UITableViewCell *cell = (UITableViewCell*)[contentView superview];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    NSString* element = [((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:currentFileIndex]).contents objectAtIndex:indexPath.row];
+    NSArray* components = [element componentsSeparatedByString:@" "];
+    if ([components count] < 3)
+    {
+        NSLog(@"ResultViewController:addButtonClicked add Failed");
+        return;
+    }
+    int line = [[components objectAtIndex:1] intValue];
+
+    NSString* filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+    filePath = [filePath stringByAppendingPathComponent:((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:currentFileIndex]).fileName];
+    NSString* proj = [[Utils getInstance] getProjectFolder:filePath];
+    
+    if ([[Utils getInstance] getSearchType] != 2 && [[Utils getInstance] getSearchType] != 3)
+    {
+        [[Utils getInstance].detailViewController.virtualizeViewController addEntry:[Utils getInstance].searchKeyword andFile:filePath andLine:line andProject:proj];
+    }
+    else
+    {
+        [[Utils getInstance].detailViewController.virtualizeViewController addEntry:[components objectAtIndex:0] andFile:filePath andLine:line andProject:proj];
+    }
+}
+
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -119,11 +150,15 @@
     }
     else
     {
+        UIButton* addButton = nil;
         cell = [tableView dequeueReusableCellWithIdentifier:elementCellIdentifier];
         if (cell == nil)
         {
             cell = [[[NSBundle mainBundle] loadNibNamed:@"ResultTableCellView" owner:self options:nil] lastObject];
+            addButton = (UIButton*)[cell viewWithTag:123];
+            [addButton addTarget:self action:@selector(addButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         }
+
         NSString* element = [((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:currentFileIndex]).contents objectAtIndex:indexPath.row];
         NSArray* components = [element componentsSeparatedByString:@" "];
         if ([components count] < 3)
@@ -145,6 +180,30 @@
         line2 = [line2 stringByAppendingFormat:@"%@", content];
         [((UILabel *)[cell viewWithTag:101]) setText:line1];
         [((UILabel *)[cell viewWithTag:102]) setText:line2];
+        
+        if ([[Utils getInstance].detailViewController.virtualizeViewController isNeedGetResultFromCscope] == YES)
+        {
+            // 2 called, 3 calling
+            if ([[Utils getInstance] getSearchType] != 2 && [[Utils getInstance] getSearchType] != 3)
+            {
+                if ([[Utils getInstance].detailViewController.virtualizeViewController checkWhetherExistInCurrentEntry:[Utils getInstance].searchKeyword andLine:[components objectAtIndex:1]] == NO )
+                    [addButton setHidden:NO];
+            }
+            else
+            {
+                NSString* word;
+                //For find called function
+                if ([[Utils getInstance] getSearchType] == 2)
+                    word = scope;
+                else
+                    word = [Utils getInstance].searchKeyword;
+
+                if ([[Utils getInstance].detailViewController.virtualizeViewController checkWhetherExistInCurrentEntry:word andLine:[components objectAtIndex:1]] == NO )
+                    [addButton setHidden:NO];
+            }
+        }
+        else
+            [addButton setHidden:YES];
     }
     return cell;
 }
@@ -182,7 +241,12 @@
         NSString* line = [components objectAtIndex:1];
         NSString* filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
         filePath = [filePath stringByAppendingPathComponent:((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:currentFileIndex]).fileName];
+        if ([[Utils getInstance] getSearchType] != 2)
         [[Utils getInstance].detailViewController gotoFile:filePath andLine:line andKeyword:[Utils getInstance].searchKeyword];
+        else
+        {
+            [[Utils getInstance].detailViewController gotoFile:filePath andLine:line andKeyword:[components objectAtIndex:0]];
+        }
         //[_detailViewController resultPopUp:nil];
     }
 }

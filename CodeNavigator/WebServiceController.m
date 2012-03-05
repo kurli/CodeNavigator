@@ -58,6 +58,22 @@
 
 - (void)viewDidUnload
 {
+    [self setInternetAddress:nil];
+    [self setHttpServer:nil];
+    [self setTextView:nil];
+    [self setWebServiceSwitcher:nil];
+    [self setProgressView:nil];
+//    [self.zipFiles removeAllObjects];
+//    [self setZipFiles:nil];
+    [self setMasterViewController:nil];
+    [self setUploadToPath:nil];
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+- (void) dealloc
+{
     [self setThread:nil];
     [self setInternetAddress:nil];
     [self setHttpServer:nil];
@@ -68,9 +84,6 @@
     [self setZipFiles:nil];
     [self setMasterViewController:nil];
     [self setUploadToPath:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -372,6 +385,7 @@
                 number = [NSNumber numberWithFloat:0];
                 [self performSelectorOnMainThread:@selector(setProgressViewValue:) withObject:number waitUntilDone:YES];
                 for (FileInZipInfo *info in infos) {
+                    @autoreleasepool {
                     count++;
                     number = [NSNumber numberWithFloat:(float)((float)count/(float)[infos count])];
                     [self performSelectorOnMainThread:@selector(setProgressViewValue:) withObject: number waitUntilDone:YES];
@@ -436,8 +450,20 @@
                     fileWritePath = [NSString stringWithFormat:@"%@/%@", projectFolder, info.name];
                     NSFileHandle *file = [NSFileHandle fileHandleForWritingAtPath:fileWritePath];
                     if(file == nil) {
-                        [[NSFileManager defaultManager] createFileAtPath:fileWritePath contents:nil attributes:nil];
+                        BOOL res = [[NSFileManager defaultManager] createFileAtPath:fileWritePath contents:nil attributes:nil];
+                        if (res == NO)
+                        {
+                            NSString* folder = [fileWritePath stringByDeletingLastPathComponent];
+                            [[NSFileManager defaultManager] createDirectoryAtPath:folder withIntermediateDirectories:YES attributes:nil error:&error];
+                            [[NSFileManager defaultManager] createFileAtPath:fileWritePath contents:nil attributes:nil];
+                            [self performSelectorOnMainThread:@selector(log:) withObject:[NSString stringWithFormat:@"Unzip: %@", [info.name stringByDeletingLastPathComponent]] waitUntilDone:YES];
+                        }
                         file = [NSFileHandle fileHandleForWritingAtPath:fileWritePath];
+                        if (file == nil)
+                        {
+                            NSLog(@"error: %@", info.name);
+                            continue;
+                        }
                     }
                     [unzipFile locateFileInZip:info.name];
                     read= [unzipFile readCurrentFileInZip];
@@ -462,7 +488,8 @@
                     
                     // Clean up
                     [file closeFile];
-                    [read finishedReading];                    
+                    [read finishedReading];     
+                    }
                 }
             } @catch (ZipException *ze) {
                 [self performSelectorOnMainThread:@selector(log:) withObject:@"Caught a ZipException (see logs), terminating..." waitUntilDone:YES];

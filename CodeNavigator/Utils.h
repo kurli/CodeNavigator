@@ -80,6 +80,7 @@ typedef enum _AlertConfirmMode{
     BannerViewController *_bannerViewController;
     ADBannerView* _bannerView;
     AlertConfirmMode alertConfirmMode;
+    int searchType;
     
     // we need to change css version for each theme change
     // add version can do this
@@ -165,9 +166,9 @@ typedef enum _AlertConfirmMode{
 
 -(void) pauseAnalyze;
 
--(void) cscopeSearch:(NSString*)keyword andPath:(NSString*)path andType:(int) type;
+-(void) cscopeSearch:(NSString*)keyword andPath:(NSString*)path andProject:(NSString*)project andType:(int) type andFromVir:(BOOL)fromVir;
 
--(BOOL) setResultListAndAnalyze: (NSArray*) list andKeyword:keyword;
+-(BOOL) setResultListAndAnalyze: (NSArray*) list andKeyword:keyword andSourcePath:(NSString*)sourcePath;
 
 -(int) fileExistInResultFileList: (NSString*) file;
 
@@ -181,12 +182,16 @@ typedef enum _AlertConfirmMode{
 
 -(NSString*)HloveyRC4:(NSString*)aInput key:(NSString*)aKey;
 
--(NSString*) getDisplayFile:(NSString*) path andProjectBase:(NSString*) projectPath;
+-(NSString*) getDisplayFile:(NSString*) sourcePath andProjectBase:(NSString*) projectPath;
 
 -(NSString*) getDisplayPath:(NSString*) path;
 
 -(void) showPurchaseAlert;
 
 -(void) openPurchaseURL;
+
+-(void) setSearchType:(int)type;
+
+-(int) getSearchType;
 
 @end

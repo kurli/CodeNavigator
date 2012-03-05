@@ -23,6 +23,8 @@
 
 @property (unsafe_unretained, nonatomic) IBOutlet UITableView *tableView;
 
+-(IBAction)addButtonClicked:(id)sender;
+
 -(void) setTableViewMode:(TableViewMode) mode;
 
 -(void) setFileIndex: (int)index;

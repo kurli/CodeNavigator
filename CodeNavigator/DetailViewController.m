@@ -14,6 +14,7 @@
 #import "HighLightWordController.h"
 #import "HistoryListController.h"
 #import "PercentViewController.h"
+#import "VirtualizeViewController.h"
 
 @implementation DetailViewController
 {
@@ -40,6 +41,7 @@
 @synthesize bottomToolBar = _bottomToolBar;
 @synthesize webViewSegmentController = _webViewSegmentController;
 @synthesize activeMark = _activeMark;
+@synthesize virtualizeButton;
 @synthesize gotoLineViewController = _gotoLineViewController;
 @synthesize gotoLinePopover = _gotoLinePopover;
 @synthesize filePathInfopopover;
@@ -54,8 +56,10 @@
 @synthesize percentPopover;
 @synthesize secondWebView;
 @synthesize activeWebView;
+@synthesize divider;
 @synthesize upHistoryController;
 @synthesize downHistoryController;
+@synthesize virtualizeViewController;
 
 #pragma mark - Managing the detail item
 
@@ -80,6 +84,7 @@
 
 - (void)viewDidUnload
 {
+    [self setVirtualizeViewController:nil];
     [self setUpHistoryController:nil];
     [self setDownHistoryController:nil];
     [self setActiveWebView:nil];
@@ -117,6 +122,8 @@
     [self setBottomToolBar:nil];
     [self setWebViewSegmentController:nil];
     [self setActiveMark:nil];
+    [self setVirtualizeButton:nil];
+    [self setDivider:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -191,12 +198,20 @@
     [UIView setAnimationDelegate:self];          
     [self.topToolBar setFrame:frameTop];
     [self.bottomToolBar setFrame:frameBottom];
+    [UIView commitAnimations];
+    
+    //for split view
     int height = self.secondWebView.frame.size.height;
     if ( height < 20 )
         [self singleWebView];
     else
         [self splitWebView];
-    [UIView commitAnimations];
+    
+    //for virtualize view
+    if (isVirtualizeDisplayed)
+    {
+        [self showVirtualizeView];
+    }
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 }
 
@@ -218,6 +233,7 @@
     self.upHistoryController = [[HistoryController alloc] init];
     self.downHistoryController = [[HistoryController alloc] init];
     self.historyController = self.upHistoryController;
+    isVirtualizeDisplayed = NO;
     return self;
 }
 
@@ -414,7 +430,7 @@
     [self displayHTMLString:html];
 }
 
-- (void)navigationManagerPopUpWithKeyword:(NSString*)keyword andProject:(NSString*)path {
+- (void)navigationManagerPopUpWithKeyword:(NSString*)keyword andSourcePath:(NSString*)path {
     if (_codeNavigationPopover.isPopoverVisible == YES)
     {
         [_codeNavigationPopover dismissPopoverAnimated:YES];
@@ -425,7 +441,7 @@
     
     _codeNavigationController= [[NavigationController alloc] init];
     [_codeNavigationController setSearchKeyword:keyword];
-    [_codeNavigationController setCurrentSearchProject:path];
+    [_codeNavigationController setCurrentSourcePath:path];
     
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:_codeNavigationController];
     _codeNavigationController.title = @"Code Navigator";
@@ -606,9 +622,35 @@
 	_codeNavigationPopover = [[UIPopoverController alloc] initWithContentViewController:controller];
 	_codeNavigationPopover.popoverContentSize = CGSizeMake(320., 320.);
     
-    [_codeNavigationController setCurrentSearchProject:projectPath];
+    [_codeNavigationController setCurrentSourcePath:projectPath];
     [_codeNavigationController setSearchKeyword:@""];
     [_codeNavigationPopover presentPopoverFromBarButtonItem:(UIBarButtonItem*)sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+-(void) forceResultPopUp:(id)button
+{
+    if ([_resultPopover isPopoverVisible] == YES)
+    {
+        [_resultPopover dismissPopoverAnimated:YES];
+    }
+    if ([[Utils getInstance].resultFileList count] == 0)
+    {
+        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"No result"];
+        return;
+    }
+    UIBarButtonItem* barButton = (UIBarButtonItem*)button;
+    
+    self.resultViewController = [[ResultViewController alloc] init];
+    self.resultViewController.detailViewController = self;
+    UINavigationController *result_controller = [[UINavigationController alloc] initWithRootViewController:self.resultViewController];
+    self.resultViewController.title = @"Result";
+    _resultPopover = [[UIPopoverController alloc] initWithContentViewController:result_controller];
+    CGSize size = self.view.frame.size;
+    size.height = size.height/3+39;
+    size.width = size.width;
+	_resultPopover.popoverContentSize = size;
+    
+    [_resultPopover presentPopoverFromBarButtonItem:barButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 -(void) resultPopUp:(id)sender
@@ -809,6 +851,62 @@
     [self.percentPopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
+- (IBAction)virtualizeButtonClicked:(id)sender {
+    if (isVirtualizeDisplayed == YES)
+        return;
+    
+    // if we are in split webview, we need to hide it
+
+    if (self.secondWebView.frame.size.height != 10)
+    {
+        [UIView beginAnimations:@"WebViewAnimate"context:nil];
+        [UIView setAnimationDuration:0.30];
+        [UIView setAnimationDelegate:self];
+        // Only one webview
+        [self singleWebView];
+        [self.webViewSegmentController setSelectedSegmentIndex:0];
+        self.activeWebView = self.webView;
+        self.historyController = self.upHistoryController;
+        [self.activeMark setHidden:YES];
+        [UIView commitAnimations];
+    }
+    
+    self.virtualizeViewController = [[VirtualizeViewController alloc] init];
+    [self showVirtualizeView];
+    isVirtualizeDisplayed = YES;
+}
+
+- (void) showVirtualizeView
+{
+    [self.view insertSubview:self.virtualizeViewController.view belowSubview:_bottomToolBar];
+    [UIView beginAnimations:@"WebViewAnimate"context:nil];
+    [UIView setAnimationDuration:0.30];
+    [UIView setAnimationDelegate:self];
+    CGRect rect = self.webView.frame;
+    rect.size.height = self.view.frame.size.height/2;
+    [self.webView setFrame:rect];
+    
+    CGRect rect2 = self.virtualizeViewController.view.frame;
+    rect2.origin.y = self.view.frame.size.height/2;
+    rect2.size.height = self.view.frame.size.height/2;
+    rect2.size.width = self.webView.frame.size.width;
+    [self.virtualizeViewController.view setFrame:rect2];
+    [UIView commitAnimations];
+}
+
+- (void) hideVirtualizeView
+{
+    [self.virtualizeViewController.view removeFromSuperview];
+    [self setVirtualizeViewController:nil];
+
+    [UIView beginAnimations:@"WebViewAnimate"context:nil];
+    [UIView setAnimationDuration:0.30];
+    [UIView setAnimationDelegate:self];
+    [self singleWebView];
+    [UIView commitAnimations];
+    isVirtualizeDisplayed = NO;
+}
+
 - (void) splitWebView
 {
     CGRect rect = self.webView.frame;
@@ -821,6 +919,10 @@
     [self.webViewSegmentController setFrame:sRect];
     rect.origin.y = rect.size.height + self.webViewSegmentController.frame.size.height;
     [self.secondWebView setFrame:rect];
+    rect = self.divider.frame;
+    rect.origin.y = self.webViewSegmentController.frame.origin.y;
+    rect.origin.x = self.webViewSegmentController.frame.origin.x+self.webViewSegmentController.frame.size.width;
+    [self.divider setFrame:rect];
     
     if ([self.webViewSegmentController selectedSegmentIndex] == 0)
     {
@@ -851,6 +953,8 @@
 }
 
 - (IBAction)sourceSplitClicked:(id)sender {
+    if (isVirtualizeDisplayed == YES)
+        return;
     [UIView beginAnimations:@"WebViewAnimate"context:nil];
     [UIView setAnimationDuration:0.30];
     [UIView setAnimationDelegate:self];
@@ -918,6 +1022,12 @@
     NSString *js2 = [js1 stringByAppendingString:css];
     NSString *finalJS = [js2 stringByAppendingString:@"');"];
     [webView stringByEvaluatingJavaScriptFromString:finalJS];
+    
+    // For virtualize controller, highlight all children keyword
+    if ([self.virtualizeViewController isNeedHighlightChildKeyword] == YES )
+    {
+        [self.virtualizeViewController highlightAllChildrenKeyword];
+    }
 }
 
 -(BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
@@ -938,8 +1048,22 @@
             currentDisplayFile = [self.downHistoryController getUrlFromHistoryFormat:path];
         }
         NSString* projectFolder = [[Utils getInstance] getProjectFolder:currentDisplayFile];
-
-        [self navigationManagerPopUpWithKeyword:[array objectAtIndex:1] andProject:projectFolder];
+        
+        // if just get entry for virtualization
+        if ([self.virtualizeViewController isGetEntryFromWebView] == YES)
+        {
+            currentDisplayFile = [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
+            currentDisplayFile = [[Utils getInstance] getPathFromProject:currentDisplayFile];
+            
+            // Set here before actually call cscope
+            [self.virtualizeViewController setIsNeedGetResultFromCscope:YES];
+            [[Utils getInstance] cscopeSearch:[array objectAtIndex:1] andPath:currentDisplayFile andProject:projectFolder andType:1 andFromVir:YES];
+        }
+        else
+        {
+            currentDisplayFile = [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
+            [self navigationManagerPopUpWithKeyword:[array objectAtIndex:1] andSourcePath:currentDisplayFile];
+        }
         return NO;
     }
     return YES;

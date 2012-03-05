@@ -96,7 +96,8 @@ function smoothScrollToPosition(stopPosition)
 
 function smoothScroll(eID) {
     var stopY = elmYPosition(eID) - 200;
-    smoothScrollToPosition(stopY);
+    scrollTo(stopY);
+    //smoothScrollToPosition(stopY);
 }
 
 function gotoLine(i)

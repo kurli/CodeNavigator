@@ -29,6 +29,7 @@ typedef enum _JSState {
 @class HighLightWordController;
 @class HistoryListController;
 @class PercentViewController;
+@class VirtualizeViewController;
 
 @interface DetailViewController : UIViewController <UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MGSplitViewControllerDelegate>
 {
@@ -41,6 +42,8 @@ typedef enum _JSState {
     int jsGotoLine;
     int jsHistoryModeScrollY;
     //end
+    
+    BOOL isVirtualizeDisplayed;
 }
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *navigateBarButtonItem;
 
@@ -94,11 +97,15 @@ typedef enum _JSState {
 
 @property (strong, nonatomic) UIPopoverController* percentPopover;
 
+@property (strong, nonatomic) VirtualizeViewController *virtualizeViewController;
+
 @property (strong, nonatomic) NSString* jsGotoLineKeyword;
 
 @property (strong, nonatomic) IBOutlet UIWebView* secondWebView;
 
 @property (unsafe_unretained, nonatomic) UIWebView* activeWebView;
+
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *divider;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *analyzeInfoBarButton;
 
@@ -111,6 +118,8 @@ typedef enum _JSState {
 @property (unsafe_unretained, nonatomic) IBOutlet UISegmentedControl *webViewSegmentController;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *activeMark;
+
+@property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *virtualizeButton;
 
 - (IBAction)webViewSegmentChanged:(id)sender;
 
@@ -156,7 +165,9 @@ typedef enum _JSState {
 
 - (IBAction)navigationButtonClicked:(id)sender;
 
-- (void)navigationManagerPopUpWithKeyword:(NSString*)keyword andProject:(NSString*)path;
+- (IBAction)virtualizeButtonClicked:(id)sender;
+
+- (void)navigationManagerPopUpWithKeyword:(NSString*)keyword andSourcePath:(NSString*)path;
 
 - (IBAction)resultPopUp:(id)sender;
 
@@ -165,6 +176,8 @@ typedef enum _JSState {
 - (IBAction)showHideTopToolBarClicked:(id)sender;
 
 - (void)dismissNavigationManager;
+
+- (void)forceResultPopUp:(id)button;
 
 - (NSString*) getCurrentDisplayFile;
 
@@ -177,5 +190,9 @@ typedef enum _JSState {
 - (void) splitWebView;
 
 - (void) singleWebView;
+
+- (void) showVirtualizeView;
+
+- (void) hideVirtualizeView;
 
 @end

@@ -13,7 +13,7 @@
 @implementation NavigationController
 
 @synthesize searchBar;
-@synthesize currentSearchProject;
+@synthesize currentSourcePath;
 @synthesize selectionList;
 @synthesize searchKeyword;
 
@@ -55,7 +55,7 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     [self setSelectionList:nil];
-    [self setCurrentSearchProject:nil];
+    [self setCurrentSourcePath:nil];
     [super viewDidUnload];
 }
 
@@ -121,7 +121,9 @@
     if ([searchText length] <= 0)
         return;
     
-    [[Utils getInstance] cscopeSearch:searchText andPath:self.currentSearchProject andType:selectedItem];
+    NSString* projectPath = [[Utils getInstance] getProjectFolder:self.currentSourcePath];
+    NSString* sourcePath = [[Utils getInstance] getPathFromProject:self.currentSourcePath];
+    [[Utils getInstance] cscopeSearch:searchText andPath:sourcePath andProject:projectPath andType:selectedItem andFromVir:NO];
 }
 
 -(void) searchBarCancelButtonClicked:(UISearchBar *)_searchBar
@@ -133,7 +135,9 @@
     if ([searchText length] <= 0)
         return;
     
-    [[Utils getInstance] cscopeSearch:searchText andPath:self.currentSearchProject andType:selectedItem];
+    NSString* projectPath = [[Utils getInstance] getProjectFolder:self.currentSourcePath];
+    NSString* sourcePath = [[Utils getInstance] getPathFromProject:self.currentSourcePath];
+    [[Utils getInstance] cscopeSearch:searchText andPath:sourcePath andProject:projectPath andType:selectedItem andFromVir:NO];
 }
 
 -(void)setSearchItemText:(NSString *)keyword

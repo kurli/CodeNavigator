@@ -13,6 +13,8 @@
 #import "Parser.h"
 #import "HTMLConst.h"
 #import "MasterViewController.h"
+#import "VirtualizeViewController.h"
+#import "VirtualizeWrapper.h"
 
 @implementation BuildThreadData
 
@@ -229,6 +231,7 @@ static Utils *static_utils;
 
     [self changeUIViewStyle:self.detailViewController.webView];
     [self changeUIViewStyle:self.detailViewController.secondWebView];
+    [self changeUIViewStyle:self.detailViewController.view];
     cssVersion++;
 }
 
@@ -471,12 +474,12 @@ static Utils *static_utils;
     NSString* extention = [source pathExtension];
     if (extention == nil || [extention length] == 0)
     {
-        tmp = [tmp stringByAppendingString:@"_.display"];
+        tmp = [tmp stringByAppendingString:@"_.display_1"];
     }
     else
     {
         tmp = [tmp stringByDeletingPathExtension];
-        tmp = [tmp stringByAppendingFormat:@"_%@.display", extention];
+        tmp = [tmp stringByAppendingFormat:@"_%@.display_1", extention];
     }
     return tmp;
 }
@@ -614,6 +617,10 @@ static Utils *static_utils;
     else if ([extension isEqualToString:@"zip"])
         return YES;
     else if ([extension isEqualToString:@"display_1"])
+        return YES;
+    else if ([extension isEqualToString:@"lgz_virtualize"])
+        return YES;
+    else if ([extension isEqualToString:@"lgz_vir_img"])
         return YES;
     return NO;
 }
@@ -814,11 +821,12 @@ static Utils *static_utils;
         alertConfirmMode = ALERT_ANALYZE;
         UIAlertView *confirmAlert = [[UIAlertView alloc] initWithTitle:@"CodeNavigator" message:[NSString stringWithFormat:@"Would you like to analyze \"%@\" for code navigation?",project] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
         [confirmAlert show];
+        confirmAlert = nil;
     }
 }
 
 
--(BOOL) setResultListAndAnalyze:(NSArray *)list andKeyword:(NSString *)keyword
+-(BOOL) setResultListAndAnalyze:(NSArray *)list andKeyword:(NSString *)keyword andSourcePath:(NSString *)sourcePath
 {
     if (_resultFileList == nil)
         _resultFileList = [[NSMutableArray alloc] init];
@@ -830,6 +838,14 @@ static Utils *static_utils;
         NSArray* array = [[list objectAtIndex:i] componentsSeparatedByString:@" "];
         if ([array count] < 2)
             continue;
+        //If we are in find_called_function type, we need to skip other files
+        if (searchType == 2)
+        {
+            if ([sourcePath compare:[array objectAtIndex:0]] != NSOrderedSame)
+            {
+                continue;
+            }
+        }
         int index = [self fileExistInResultFileList:[array objectAtIndex:0]];
         if (index == -1)
         {
@@ -872,7 +888,10 @@ static Utils *static_utils;
         NSString* line = [components objectAtIndex:1];
         NSString* filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
         filePath = [filePath stringByAppendingPathComponent:((ResultFile*)[_resultFileList objectAtIndex:0]).fileName];
-        [self.detailViewController gotoFile:filePath andLine:line andKeyword:keyword];
+        if (searchType != 2)
+            [self.detailViewController gotoFile:filePath andLine:line andKeyword:keyword];
+        else
+            [self.detailViewController gotoFile:filePath andLine:line andKeyword:[components objectAtIndex:0]];
         return NO;
     }
     else if ([list count] == 1)
@@ -883,8 +902,15 @@ static Utils *static_utils;
     return YES;
 }
 
--(void) cscopeSearch:(NSString*)keyword andPath:(NSString*)path andType:(int) type
+-(void) cscopeSearch:(NSString *)keyword andPath:(NSString *)sourcePath andProject:(NSString *)project andType:(int)type andFromVir:(BOOL)fromVir
 {
+    if (fromVir == NO)
+    {
+        // Because result has been changed and not from Virtualization
+        // So reset to NO
+        [[Utils getInstance].detailViewController.virtualizeViewController setIsNeedGetResultFromCscope:NO];
+    }
+    
     if ([Utils getInstance].analyzeThread.isExecuting == YES)
     {
         [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Project Analyzing is in progress, Please wait untile analyze finished"];
@@ -895,19 +921,19 @@ static Utils *static_utils;
     NSString* dbFile = nil;
     BOOL isExist = NO;
     
-    if ([path length] == 0)
+    if ([project length] == 0)
     {
         [self alertWithTitle:@"CodeNavigator" andMessage:@"Please select a project"];
         return;
     }
     
-    fileList = [path stringByAppendingPathComponent:@"db_files.lgz_proj_files"];
-    dbFile = [path stringByAppendingPathComponent:@"project.lgz_db"];
+    fileList = [project stringByAppendingPathComponent:@"db_files.lgz_proj_files"];
+    dbFile = [project stringByAppendingPathComponent:@"project.lgz_db"];
     
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:fileList];
     if (isExist == NO)
     {
-        [self analyzeProject:path andForceCreate:YES];
+        [self analyzeProject:project andForceCreate:YES];
 //        isExist = [[NSFileManager defaultManager] fileExistsAtPath:fileList];
 //        if (isExist == NO)
 //            [self alertWithTitle:@"CodeNavigator" andMessage:@"Please select a project"];
@@ -916,7 +942,7 @@ static Utils *static_utils;
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:dbFile];
     if (isExist == NO)
     {
-        [self analyzeProject:path andForceCreate:YES];
+        [self analyzeProject:project andForceCreate:YES];
 //        isExist = [[NSFileManager defaultManager] fileExistsAtPath:dbFile];
 //        if (isExist == NO)
 //            [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please select a project"];
@@ -924,7 +950,8 @@ static Utils *static_utils;
     }
     char* _result = 0;
     NSString* result = @"";
-    cscope_set_base_dir([path UTF8String]);
+    cscope_set_base_dir([project UTF8String]);
+    searchType = type;
     switch (type) {
         case 0:
             _result = cscope_find_this_symble([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
@@ -959,12 +986,58 @@ static Utils *static_utils;
         NSArray* lines = [result componentsSeparatedByString:@"\n"];
 
         BOOL pop = NO;
-        pop = [self setResultListAndAnalyze:lines andKeyword:keyword];
+        pop = [self setResultListAndAnalyze:lines andKeyword:keyword andSourcePath:sourcePath];
         //TODO when poped up already, what to do?
         resultTableviewMode = TABLEVIEW_FILE;
         resultCurrentFileIndex = 0;
         if (pop)
-           [self.detailViewController resultPopUp:self.detailViewController.resultBarButton];
+        {
+            if (fromVir == YES)
+            {
+                [self.detailViewController forceResultPopUp:self.detailViewController.resultBarButton];
+                [self.detailViewController.resultViewController.tableView reloadData];
+            }
+            else
+                [self.detailViewController resultPopUp:self.detailViewController.resultBarButton];
+        }
+        else
+        {
+            if (fromVir == YES)
+            {
+                if (_resultFileList.lastObject == nil )
+                {
+                    [[Utils getInstance].detailViewController.virtualizeViewController.virtualizeWrapper setIsNeedGetDefinition:NO];
+                    return;
+                }
+                NSString* content = [((ResultFile*)[_resultFileList objectAtIndex:0]).contents objectAtIndex:0];
+                NSArray* components = [content componentsSeparatedByString:@" "];
+                if ([components count] < 3)
+                    return;
+                NSString* line = [components objectAtIndex:1];
+                NSString* filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+                filePath = [filePath stringByAppendingPathComponent:((ResultFile*)[_resultFileList objectAtIndex:0]).fileName];
+                NSString *proj = [self getProjectFolder:filePath];
+                if (searchType != 2 && searchType != 3)
+                {
+                    if ([[Utils getInstance].detailViewController.virtualizeViewController checkWhetherExistInCurrentEntry:keyword andLine:line] == NO )
+                        [self.detailViewController.virtualizeViewController addEntry:keyword andFile:filePath andLine:[line intValue] andProject:proj];
+                }
+                else
+                {
+                    NSString* word;
+                    //For find called function
+                    if (searchType == 2)
+                    {
+                        word = [components objectAtIndex:0];
+                    }
+                    else
+                        word = keyword;
+                    
+                    if ([[Utils getInstance].detailViewController.virtualizeViewController checkWhetherExistInCurrentEntry:word andLine:line] == NO )
+                        [self.detailViewController.virtualizeViewController addEntry:[components objectAtIndex:0] andFile:filePath andLine:[line intValue] andProject:proj];
+                }
+            }
+        }
     }
     else
     {
@@ -1089,6 +1162,7 @@ static Utils *static_utils;
     displayPath = [self getDisplayPath:path];
     if (![[NSFileManager defaultManager] fileExistsAtPath:displayPath isDirectory:&isFolder])
     {
+        @autoreleasepool {        
         Parser* parser = [[Parser alloc] init];
         if ([self isSupportedType:path] == YES)
             [parser setParserType:CPLUSPLUS];
@@ -1101,6 +1175,7 @@ static Utils *static_utils;
         html = [parser getHtml];
         //rc4Result = [self HloveyRC4:html key:@"lgz"];
         [html writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        }
     }
     else
     {
@@ -1120,6 +1195,16 @@ static Utils *static_utils;
     alertConfirmMode = ALERT_PURCHASE;
     UIAlertView *confirmAlert = [[UIAlertView alloc] initWithTitle:@"CodeNavigator" message:[NSString stringWithFormat:@"It can only support 5 source files in one Project for Lite Version, Do you want to get Unlimited Full version?"] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Purchase", nil];
     [confirmAlert show];
+}
+
+-(void) setSearchType:(int)type
+{
+    searchType = type;
+}
+
+-(int) getSearchType
+{
+    return searchType;
 }
 
 @end

@@ -18,7 +18,7 @@
 
 @property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *searchBar;
 
-@property (strong, nonatomic) NSString* currentSearchProject;
+@property (strong, nonatomic) NSString* currentSourcePath;
 
 @property (strong, nonatomic) NSArray* selectionList;
 

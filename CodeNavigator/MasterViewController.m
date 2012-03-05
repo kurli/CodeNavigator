@@ -15,7 +15,6 @@
 @implementation MasterViewController
 
 @synthesize tableView = _tableView;
-@synthesize masterViewController = _masterViewController;
 @synthesize currentLocation = _currentLocation;
 @synthesize currentDirectories = _currentDirectories;
 @synthesize currentFiles = _currentFiles;
@@ -133,14 +132,12 @@
 
 - (void)viewDidUnload
 {
-    [self setCurrentProjectPath:nil];
     [self setCurrentLocation:nil];
     [self.currentFiles removeAllObjects];
     [self setCurrentProjectPath:nil];
     [self.currentDirectories removeAllObjects];
     [self setCurrentDirectories:nil];
     [self setCurrentFiles: nil];
-    [self setMasterViewController:nil];
     [self setWebServiceController:nil];
     [self setWebServicePopOverController:nil];
     [self setTableView:nil];
@@ -151,6 +148,23 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)dealloc
+{
+    [self setCurrentLocation:nil];
+    [self.currentFiles removeAllObjects];
+    [self setCurrentProjectPath:nil];
+    [self.currentDirectories removeAllObjects];
+    [self setCurrentDirectories:nil];
+    [self setCurrentFiles: nil];
+    [self setWebServiceController:nil];
+    [self setWebServicePopOverController:nil];
+    [self setTableView:nil];
+    [self setAnalyzeButton:nil];
+#ifdef LITE_VERSION
+    [self setPurchaseButton:nil];
+#endif
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -202,38 +216,71 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *projectIdentifier = @"ProjectCell";
-    static NSString *folderIdentifier = @"FolderCell";
-    static NSString *fileIdentifier = @"FileCell";
+    static NSString *itemIdentifier = @"ProjectCell";
     UITableViewCell *cell;
+    
+    cell = [tableView dequeueReusableCellWithIdentifier:itemIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemIdentifier];
+    }
     
     if (indexPath.row < [self.currentDirectories count])
     {
         if (isProjectFolder == YES)
         {
-            cell = [tableView dequeueReusableCellWithIdentifier:projectIdentifier];
-            if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:projectIdentifier];
-                cell.imageView.image = [UIImage imageNamed:@"project.png"];
-            }
+            cell.imageView.image = [UIImage imageNamed:@"project.png"];
         }
         else
         {
-            cell = [tableView dequeueReusableCellWithIdentifier:folderIdentifier];
-            if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:folderIdentifier];
-                cell.imageView.image = [UIImage imageNamed:@"folder.png"];
-            }
+            cell.imageView.image = [UIImage imageNamed:@"folder.png"];
         }
         cell.textLabel.text = [self.currentDirectories objectAtIndex:indexPath.row];
     }
     else
     {
-        cell = [tableView dequeueReusableCellWithIdentifier:fileIdentifier];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:projectIdentifier];
+        NSString* fileName = [self.currentFiles objectAtIndex:indexPath.row-[self.currentDirectories count]];
+        NSString* extention = [fileName pathExtension];
+        extention = [extention lowercaseString];
+        if ([extention compare:@"cc"] == NSOrderedSame) {
+            cell.imageView.image = [UIImage imageNamed:@"ccFile.png"];
         }
-        cell.textLabel.text = [self.currentFiles objectAtIndex:indexPath.row-[self.currentDirectories count]];
+        else if ([extention compare:@"c"] == NSOrderedSame) {
+            cell.imageView.image = [UIImage imageNamed:@"cFile.png"];
+        }
+        else if ([extention compare:@"cpp"] == NSOrderedSame) {
+            cell.imageView.image = [UIImage imageNamed:@"cppFile.png"];
+        }
+        else if ([extention compare:@"cs"] == NSOrderedSame) {
+            cell.imageView.image = [UIImage imageNamed:@"csFile.png"];
+        }
+        else if ([extention compare:@"h"] == NSOrderedSame) {
+            cell.imageView.image = [UIImage imageNamed:@"hFile.png"];
+        }
+        else if ([extention compare:@"hpp"] == NSOrderedSame) {
+            cell.imageView.image = [UIImage imageNamed:@"hppFile.png"];
+        }
+        else if ([extention compare:@"java"] == NSOrderedSame) {
+            cell.imageView.image = [UIImage imageNamed:@"javaFile.png"];
+        }
+        else if ([extention compare:@"m"] == NSOrderedSame) {
+            cell.imageView.image = [UIImage imageNamed:@"mmFile.png"];
+        }
+        else if ([extention compare:@"s"] == NSOrderedSame) {
+            cell.imageView.image = [UIImage imageNamed:@"sFile.png"];
+        }
+        else if ([extention compare:@"mm"] == NSOrderedSame) {
+            cell.imageView.image = [UIImage imageNamed:@"mmFile.png"];
+        }
+        else {
+            NSString* name = [[fileName pathComponents] lastObject];
+            name = [name lowercaseString];
+            if ([name compare:@"makefile"] == NSOrderedSame)
+                cell.imageView.image = [UIImage imageNamed:@"mkFile.png"];
+            else
+                cell.imageView.image = [UIImage imageNamed:@"File.png"];
+        }
+
+        cell.textLabel.text = fileName;
     }
 
     return cell;
@@ -308,9 +355,8 @@
     // For directories
     if (indexPath.row < [self.currentDirectories count])
     {
-        if (!self.masterViewController) {
-            self.masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
-        }
+        MasterViewController* masterViewController;
+        masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
         selectedItem = [self.currentDirectories objectAtIndex:indexPath.row];
         path = [self.currentLocation stringByAppendingPathComponent:selectedItem];
         
@@ -319,16 +365,16 @@
         
         // If current is Project Folder
         if (isProjectFolder == YES)
-            self.masterViewController.currentProjectPath = path;
+            masterViewController.currentProjectPath = path;
         else
-            self.masterViewController.currentProjectPath = self.currentProjectPath;
+            masterViewController.currentProjectPath = self.currentProjectPath;
         
-        self.masterViewController.currentLocation = path;
-        self.masterViewController.title = selectedItem;
-        self.masterViewController.webServiceController = self.webServiceController;
-        self.masterViewController.webServicePopOverController = self.webServicePopOverController;
-        [self.masterViewController reloadData];
-        [self.navigationController pushViewController:self.masterViewController animated:YES];
+        masterViewController.currentLocation = path;
+        masterViewController.title = selectedItem;
+        masterViewController.webServiceController = self.webServiceController;
+        masterViewController.webServicePopOverController = self.webServicePopOverController;
+        [masterViewController reloadData];
+        [self.navigationController pushViewController:masterViewController animated:YES];
     }
     else
     {
@@ -403,23 +449,22 @@
     // go to the target directory
     for (int i=index+1; i<[targetComponents count]-1; i++)
     {
-        if (!targetViewController.masterViewController) {
-            targetViewController.masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
-        }
+        MasterViewController* masterViewController;
+        masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
         path = [path stringByAppendingPathComponent:[targetComponents objectAtIndex:i]];
         // If current is Project Folder
         if (isProjectFolder == YES)
-            targetViewController.masterViewController.currentProjectPath = path;
+            masterViewController.currentProjectPath = path;
         else
-            targetViewController.masterViewController.currentProjectPath = targetViewController.currentProjectPath;
+            masterViewController.currentProjectPath = targetViewController.currentProjectPath;
         
-        targetViewController.masterViewController.currentLocation = path;
-        targetViewController.masterViewController.title = [targetComponents objectAtIndex:i];
+        masterViewController.currentLocation = path;
+        masterViewController.title = [targetComponents objectAtIndex:i];
         targetViewController.webServiceController = self.webServiceController;
         targetViewController.webServicePopOverController = self.webServicePopOverController;
-        [targetViewController.masterViewController reloadData];
-        [targetViewController.navigationController pushViewController:targetViewController.masterViewController animated:NO];
-        targetViewController = targetViewController.masterViewController;
+        [masterViewController reloadData];
+        [targetViewController.navigationController pushViewController:masterViewController animated:NO];
+        targetViewController = masterViewController;
     }
     
     NSString* title = [targetComponents lastObject];
