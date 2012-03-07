@@ -365,7 +365,8 @@ cscope: Syntax error in namelist file %s: unfinished -I or -p option\n",
 		    compress = NO;
 		    break;
 		case 'k':	/* ignore DFLT_INCDIR */
-		    kernelmode = YES;
+		    //kurry
+            //kernelmode = YES;
 		    break;
 		case 'q':	/* quick search */
 		    invertedindex = YES;

@@ -326,13 +326,18 @@
         }
         else
         {
-            NSString* js = [NSString stringWithFormat:@"smoothScroll('L%d')", [line intValue]];
+            int lll = [line intValue];
+            lll -= 8;
+            if (lll <= 0)
+                lll = 1;
+            NSString* js = [NSString stringWithFormat:@"smoothScroll('L%d')", lll];
             [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
             //magic way to dis highlight current words
-            js = @"highlight('liguangzhen+++++++++++++++++++++++++++++++++++++++++')";
+            js = @"clearHighlight();";
             [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
             js = [NSString stringWithFormat:@"highlight_this_line_keyword('L%d', '%@')", [line intValue], __keyword];
             [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
+            
         }
     }
  }
@@ -994,6 +999,7 @@
 -(void) webViewDidFinishLoad:(UIWebView *)webView
 {
     NSString* js = @"";
+    int lll;
     switch (jsState) {
         case JS_HISTORY_MODE:
             js = [js stringByAppendingString:@"scrollTo"];
@@ -1002,7 +1008,11 @@
             jsHistoryModeScrollY = 0;
             break;
         case JS_GOTO_LINE_AND_FOCUS_KEYWORD:
-            js = [NSString stringWithFormat:@"smoothScroll('L%d')", jsGotoLine];
+            lll = jsGotoLine;
+            lll -= 8;
+            if (lll <= 0)
+                lll = 1;
+            js = [NSString stringWithFormat:@"smoothScroll('L%d')", lll];
             [webView stringByEvaluatingJavaScriptFromString:js];
             js = [NSString stringWithFormat:@"highlight_this_line_keyword('L%d', '%@')", jsGotoLine, _jsGotoLineKeyword];
             [webView stringByEvaluatingJavaScriptFromString:js];

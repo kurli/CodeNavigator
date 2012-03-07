@@ -43,6 +43,15 @@ typedef enum _AlertConfirmMode{
 -(BOOL)getForce;
 @end
 
+@interface SearchThreadData : NSObject <UIAlertViewDelegate> {
+    
+}
+@property (strong, nonatomic) NSString* sourcePath;
+@property (unsafe_unretained, nonatomic) BOOL fromVir;
+@property (strong, nonatomic) NSString* dbFile;
+@property (strong, nonatomic) NSString* fileList;
+@end
+
 //For UI style, color scheme
 @interface ColorSchema : NSObject {
 }
@@ -99,6 +108,10 @@ typedef enum _AlertConfirmMode{
 
 @property (nonatomic, strong) NSThread* analyzeThread;
 
+@property (nonatomic, strong) NSThread* cscopeSearchThread;
+
+@property (nonatomic, strong) UIAlertView* cscopeSearchAlertView;
+
 @property (nonatomic, strong) NSString* analyzePath;
 
 @property (strong, nonatomic) NSMutableArray* resultFileList;
@@ -110,6 +123,8 @@ typedef enum _AlertConfirmMode{
 @property (strong, nonatomic) ColorSchema* colorScheme;
 
 +(Utils*)getInstance;
+
+-(void) initVersion;
 
 // for background syntex color define
 -(void) readColorScheme;
@@ -163,6 +178,8 @@ typedef enum _AlertConfirmMode{
 -(UIAlertView*) showActivityIndicator:(NSString*)mas andDelegate:(id)dgt;
 
 -(void) analyzeThread:(id)data;
+
+-(void) cscopeSearchMethod:(id)data;
 
 -(void) pauseAnalyze;
 

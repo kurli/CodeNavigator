@@ -4575,13 +4575,13 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							</object>
 							<object class="IBUIBarButtonItem" id="377859890">
 								<bool key="IBUIEnabled">NO</bool>
-								<string key="IBUITitle">✳</string>
+								<string key="IBUITitle">⚡</string>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="909745218"/>
 							</object>
 							<object class="IBUIBarButtonItem" id="431071178">
-								<string key="IBUITitle">Virtualize</string>
+								<string key="IBUITitle">Visualize</string>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="909745218"/>
@@ -4707,7 +4707,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 								<reference key="IBUIToolbar" ref="31447470"/>
 							</object>
 							<object class="IBUIBarButtonItem" id="859424953">
-								<string key="IBUITitle">💡</string>
+								<string key="IBUITitle">👀</string>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="31447470"/>
@@ -5287,7 +5287,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				<string key="217.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="252.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="271.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<integer value="1" key="271.IUISegmentedControlInspectorSelectedSegmentMetadataKey"/>
+				<integer value="0" key="271.IUISegmentedControlInspectorSelectedSegmentMetadataKey"/>
 				<string key="272.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="311.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="313.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

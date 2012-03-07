@@ -57,7 +57,11 @@
     NSString* text = [_textField text];
     int line = [text intValue];
     NSString* js = @"";
-    js = [NSString stringWithFormat:@"smoothScroll('L%d')", line];
+    int lll = line;
+    lll -= 8;
+    if (lll <= 0)
+        lll = 1;
+    js = [NSString stringWithFormat:@"smoothScroll('L%d')", lll];
     [_detailViewController.activeWebView stringByEvaluatingJavaScriptFromString:js];
 }
 

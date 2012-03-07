@@ -32,6 +32,16 @@
 
 @end
 
+@implementation SearchThreadData
+
+@synthesize sourcePath;
+@synthesize fromVir;
+@synthesize dbFile;
+@synthesize fileList;
+
+@end
+
+
 @implementation ColorSchema
 
 @synthesize dayType;
@@ -69,6 +79,7 @@ static Utils *static_utils;
 @synthesize analyzeInfoPopover;
 @synthesize analyzeInfoController;
 @synthesize analyzeThread;
+@synthesize cscopeSearchThread;
 @synthesize analyzePath;
 @synthesize resultFileList = _resultFileList;
 @synthesize searchKeyword = _searchKeyword;
@@ -76,6 +87,7 @@ static Utils *static_utils;
 @synthesize splitViewController;
 @synthesize colorScheme;
 @synthesize masterViewController;
+@synthesize cscopeSearchAlertView;
 
 +(Utils*)getInstance
 {
@@ -100,6 +112,73 @@ static Utils *static_utils;
     [_bannerViewController showBannerView];
 }
 
+-(void) initVersion
+{
+    NSError* error;
+    BOOL isExist = false;
+    BOOL isFolder = NO;
+    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/1_3.version"];
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:versionFile];
+    if (isExist == YES)
+    {
+        return;
+    }
+    // add version file
+    [[NSFileManager defaultManager] createDirectoryAtPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] withIntermediateDirectories:YES attributes:nil error:&error];
+    NSString* tmp = @"";
+    [tmp writeToFile:versionFile atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    
+    // delete lgz_software.js and theme.css
+    NSString* js = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.settings/lgz_javascript.js"];
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:js isDirectory:&isFolder];
+    if (isExist == YES)
+    {
+        [[NSFileManager defaultManager] removeItemAtPath:js error:&error];
+    }
+    
+    NSString* css = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.settings/theme.css"];
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:css isDirectory:&isFolder];
+    if (isExist == YES)
+    {
+        [[NSFileManager defaultManager] removeItemAtPath:css error:&error];
+    }
+    
+    //for version 1_3 we need to delete all project files
+    NSString* projectsFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+    NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:projectsFolder error:&error];
+    for (int i=0; i<[contents count]; i++)
+    {
+        NSString *projPath = [projectsFolder stringByAppendingPathComponent:[contents objectAtIndex:i]];
+        [[NSFileManager defaultManager] fileExistsAtPath:projPath isDirectory:&isFolder];
+        if (YES == isFolder)
+        {
+            NSString* db = [projPath stringByAppendingPathComponent:@"project.lgz_db"];
+            [[NSFileManager defaultManager] removeItemAtPath:db error:&error];
+            NSString* fl = [projPath stringByAppendingPathComponent:@"db_files.lgz_proj_files"];
+            [[NSFileManager defaultManager] removeItemAtPath:fl error:&error];
+        }
+    }
+    
+    {
+    NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+    BOOL isFolder = NO;
+    BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:projectFolder isDirectory:&isFolder];
+    NSError *error;
+    if (isExist == NO || (isExist == YES && isFolder == NO))
+    {
+        [[NSFileManager defaultManager] createDirectoryAtPath:projectFolder withIntermediateDirectories:YES attributes:nil error:&error];
+    }
+    
+    NSString* demoFolder = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/Projects/linux_0.1/"];
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:demoFolder isDirectory:&isFolder];
+    NSString* demoBundle = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/linux_0.1"];
+    if (isExist == NO || (isExist == YES && isFolder == NO))
+    {
+        [[NSFileManager defaultManager] copyItemAtPath:demoBundle toPath:demoFolder error:&error];
+    }
+    }
+}
+
 -(void) readColorScheme
 {
     BOOL isFolder = false;
@@ -111,18 +190,18 @@ static Utils *static_utils;
     NSString* defaultColor = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/syntax_color.plist"];
     if (isExist == NO || (isExist == YES && isFolder == YES))
     {
-        [[NSFileManager defaultManager] createDirectoryAtPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] withIntermediateDirectories:YES attributes:nil error:&error];
         [[NSFileManager defaultManager] copyItemAtPath:defaultColor toPath:customizedColor error:&error];
 
-        //for javascript
-        NSString* js = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/lgz_javascript.js"];
-        isExist = [[NSFileManager defaultManager] fileExistsAtPath:js isDirectory:&isFolder];
-        NSString* jsPath = [[[NSBundle mainBundle] resourcePath]  stringByAppendingPathComponent:@"lgz_javascript.js"];
-        if (isExist == NO || (isExist == YES && isFolder == YES))
-        {
-            [[NSFileManager defaultManager] copyItemAtPath:jsPath toPath:js error:&error];
-        }
         cssVersion = 1;
+    }
+    
+    //for javascript
+    NSString* js = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/lgz_javascript.js"];
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:js isDirectory:&isFolder];
+    NSString* jsPath = [[[NSBundle mainBundle] resourcePath]  stringByAppendingPathComponent:@"lgz_javascript.js"];
+    if (isExist == NO || (isExist == YES && isFolder == YES))
+    {
+        [[NSFileManager defaultManager] copyItemAtPath:jsPath toPath:js error:&error];
     }
     
     NSData* data = [[NSData alloc] initWithContentsOfFile:customizedColor];
@@ -666,6 +745,7 @@ static Utils *static_utils;
 
 -(void) analyzeThread:(id)data
 {
+    @autoreleasepool {
     NSString* path = ((BuildThreadData*)data).path;
     BOOL forceCreate = [((BuildThreadData*)data) getForce];
     NSString *databaseFile;
@@ -699,6 +779,7 @@ static Utils *static_utils;
                     [self alertWithTitle:@"CodeNavigator" andMessage:@"No source file found, stop analyzing"];
                 }
             });
+            [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
             return;
         }
         
@@ -713,6 +794,7 @@ static Utils *static_utils;
                     [[Utils getInstance] showPurchaseAlert];
                     [self.analyzeInfoController finishAnalyze];
                 });
+                [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
                 return;
             }
         }
@@ -725,6 +807,7 @@ static Utils *static_utils;
                     [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Maximum number of source files exceeded for Lite Version., Failed to analyze"];
                     [self.analyzeInfoController finishAnalyze];
                 });
+                [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
                 return;
             }
         }
@@ -746,6 +829,8 @@ static Utils *static_utils;
             }
         });
     }
+    }
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 }
 
 -(void) analyzeProjectConfirmed:(NSString *)path andForceCreate:(BOOL)forceCreate
@@ -755,6 +840,7 @@ static Utils *static_utils;
     [data setForce:forceCreate];
     self.analyzeThread = nil;
     self.analyzeThread = [[NSThread alloc] initWithTarget:self selector:@selector(analyzeThread:) object:data];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     [self.analyzeThread start];
     return;
 }
@@ -821,7 +907,6 @@ static Utils *static_utils;
         alertConfirmMode = ALERT_ANALYZE;
         UIAlertView *confirmAlert = [[UIAlertView alloc] initWithTitle:@"CodeNavigator" message:[NSString stringWithFormat:@"Would you like to analyze \"%@\" for code navigation?",project] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
         [confirmAlert show];
-        confirmAlert = nil;
     }
 }
 
@@ -833,9 +918,10 @@ static Utils *static_utils;
     else
         [_resultFileList removeAllObjects];
     
+    NSArray* array = nil;
     for (int i=0; i<[list count]; i++)
     {
-        NSArray* array = [[list objectAtIndex:i] componentsSeparatedByString:@" "];
+        array = [[list objectAtIndex:i] componentsSeparatedByString:@" "];
         if ([array count] < 2)
             continue;
         //If we are in find_called_function type, we need to skip other files
@@ -875,7 +961,6 @@ static Utils *static_utils;
             [element.contents addObject:tmp];
         }
     }
-    _searchKeyword = keyword;
 //    [self.tableView reloadData];
 //    [self setTitle:[NSString stringWithFormat:@"Result files for \"%@\"", _keyword]];
 //    [self.navigationController popViewControllerAnimated:NO];
@@ -888,10 +973,12 @@ static Utils *static_utils;
         NSString* line = [components objectAtIndex:1];
         NSString* filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
         filePath = [filePath stringByAppendingPathComponent:((ResultFile*)[_resultFileList objectAtIndex:0]).fileName];
-        if (searchType != 2)
-            [self.detailViewController gotoFile:filePath andLine:line andKeyword:keyword];
-        else
-            [self.detailViewController gotoFile:filePath andLine:line andKeyword:[components objectAtIndex:0]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (searchType != 2)
+                [self.detailViewController gotoFile:filePath andLine:line andKeyword:keyword];
+            else
+                [self.detailViewController gotoFile:filePath andLine:line andKeyword:[components objectAtIndex:0]];
+        });
         return NO;
     }
     else if ([list count] == 1)
@@ -948,11 +1035,50 @@ static Utils *static_utils;
 //            [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please select a project"];
         return;
     }
-    char* _result = 0;
-    NSString* result = @"";
+    
+    self.cscopeSearchAlertView = [[UIAlertView alloc]   
+                           initWithTitle:@"CodeNavigator\nSearch in progress"   
+                           message:nil delegate:nil cancelButtonTitle:nil  
+                           otherButtonTitles: nil];  
+    
+    [self.cscopeSearchAlertView show];  
+    
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]  
+                                          initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];  
+    
+    indicator.center = CGPointMake(self.cscopeSearchAlertView.bounds.size.width / 2,   
+                                   self.cscopeSearchAlertView.bounds.size.height - 50);  
+    [indicator startAnimating];  
+    [self.cscopeSearchAlertView addSubview:indicator]; 
+    
     cscope_set_base_dir([project UTF8String]);
     searchType = type;
-    switch (type) {
+    _searchKeyword = keyword;
+    
+    SearchThreadData* data = [[SearchThreadData alloc]init];
+    [data setDbFile:dbFile];
+    [data setFileList:fileList];
+    [data setFromVir:fromVir];
+    [data setSourcePath:sourcePath];
+
+    self.cscopeSearchThread = nil;
+    self.cscopeSearchThread = [[NSThread alloc] initWithTarget:self selector:@selector(cscopeSearchMethod:) object:data];
+    [self.cscopeSearchThread setThreadPriority:1];
+    [self.cscopeSearchThread start];
+}
+
+- (void) cscopeSearchMethod:(id)data
+{
+    @autoreleasepool {
+    char* _result = 0;
+    NSString* result;
+    NSString* keyword = [Utils getInstance].searchKeyword;
+    BOOL fromVir = [(SearchThreadData*)data fromVir];
+    NSString* dbFile = [(SearchThreadData*)data dbFile];
+    NSString* fileList = [(SearchThreadData*)data fileList];
+    NSString* sourcePath = [(SearchThreadData*)data sourcePath];
+
+    switch (searchType) {
         case 0:
             _result = cscope_find_this_symble([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
             break;
@@ -984,7 +1110,7 @@ static Utils *static_utils;
         free(_result);
         _result = 0;
         NSArray* lines = [result componentsSeparatedByString:@"\n"];
-
+        
         BOOL pop = NO;
         pop = [self setResultListAndAnalyze:lines andKeyword:keyword andSourcePath:sourcePath];
         //TODO when poped up already, what to do?
@@ -994,11 +1120,17 @@ static Utils *static_utils;
         {
             if (fromVir == YES)
             {
-                [self.detailViewController forceResultPopUp:self.detailViewController.resultBarButton];
-                [self.detailViewController.resultViewController.tableView reloadData];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.detailViewController forceResultPopUp:self.detailViewController.resultBarButton];
+                    [self.detailViewController.resultViewController.tableView reloadData];
+                });
             }
             else
-                [self.detailViewController resultPopUp:self.detailViewController.resultBarButton];
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.detailViewController resultPopUp:self.detailViewController.resultBarButton];
+                });
+            }
         }
         else
         {
@@ -1006,13 +1138,15 @@ static Utils *static_utils;
             {
                 if (_resultFileList.lastObject == nil )
                 {
-                    [[Utils getInstance].detailViewController.virtualizeViewController.virtualizeWrapper setIsNeedGetDefinition:NO];
-                    return;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[Utils getInstance].detailViewController.virtualizeViewController.virtualizeWrapper setIsNeedGetDefinition:NO];
+                    });
+                    goto FINAL;
                 }
                 NSString* content = [((ResultFile*)[_resultFileList objectAtIndex:0]).contents objectAtIndex:0];
                 NSArray* components = [content componentsSeparatedByString:@" "];
                 if ([components count] < 3)
-                    return;
+                    goto FINAL;
                 NSString* line = [components objectAtIndex:1];
                 NSString* filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
                 filePath = [filePath stringByAppendingPathComponent:((ResultFile*)[_resultFileList objectAtIndex:0]).fileName];
@@ -1020,7 +1154,11 @@ static Utils *static_utils;
                 if (searchType != 2 && searchType != 3)
                 {
                     if ([[Utils getInstance].detailViewController.virtualizeViewController checkWhetherExistInCurrentEntry:keyword andLine:line] == NO )
-                        [self.detailViewController.virtualizeViewController addEntry:keyword andFile:filePath andLine:[line intValue] andProject:proj];
+                    {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self.detailViewController.virtualizeViewController addEntry:keyword andFile:filePath andLine:[line intValue] andProject:proj];
+                        });
+                    }
                 }
                 else
                 {
@@ -1034,7 +1172,11 @@ static Utils *static_utils;
                         word = keyword;
                     
                     if ([[Utils getInstance].detailViewController.virtualizeViewController checkWhetherExistInCurrentEntry:word andLine:line] == NO )
-                        [self.detailViewController.virtualizeViewController addEntry:[components objectAtIndex:0] andFile:filePath andLine:[line intValue] andProject:proj];
+                    {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self.detailViewController.virtualizeViewController addEntry:[components objectAtIndex:0] andFile:filePath andLine:[line intValue] andProject:proj];
+                        });
+                    }
                 }
             }
         }
@@ -1042,6 +1184,10 @@ static Utils *static_utils;
     else
     {
         [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Low Memorry!"];
+    }
+FINAL:
+    [[Utils getInstance].cscopeSearchAlertView dismissWithClickedButtonIndex:0 animated:YES];
+    [[Utils getInstance] setCscopeSearchAlertView:nil];
     }
 }
 

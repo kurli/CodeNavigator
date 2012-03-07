@@ -303,6 +303,7 @@
         {
             [self setThread:nil];
             thread = [[NSThread alloc] initWithTarget:self selector:@selector(unzipThread) object:nil];
+            [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
             [thread start];
         }
     }
@@ -439,6 +440,7 @@
                         [zipFiles removeAllObjects];
                         [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
                         [self performSelectorOnMainThread:@selector(log:) withObject:@"\nMaximum number of source files exceeded for Lite Version.\n" waitUntilDone:YES];
+                        [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
                         return;
                     }
 #endif
@@ -525,6 +527,7 @@
             [self performSelectorOnMainThread:@selector(log:) withObject:@"\nFinish" waitUntilDone:YES];
         }
     }
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 }
 
 -(void) analyzeProject:(NSString *)path

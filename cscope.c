@@ -99,7 +99,8 @@ int	fileversion;		/* cross-reference file version */
 BOOL	incurses = NO;		/* in curses */
 BOOL	invertedindex;		/* the database has an inverted index */
 BOOL	isuptodate;		/* consider the crossref up-to-date */
-BOOL	kernelmode;		/* don't use DFLT_INCDIR - bad for kernels */
+//kurry
+//BOOL	kernelmode;		/* don't use DFLT_INCDIR - bad for kernels */
 BOOL	linemode = NO;		/* use line oriented user interface */
 BOOL	verbosemode = NO;	/* print extra information on line mode */
 BOOL	recurse_dir = NO;	/* recurse dirs when searching for src files */
@@ -247,6 +248,8 @@ void cscope_build(const char* out_file_name, const char* file_list_f)
 
     buildonly = YES;
     linemode  = YES;
+    //TODO we do not support sort, so ignore quick sort
+    //invertedindex = YES;
 
     /* read the environment */
     editor = mygetenv("EDITOR", EDITOR);

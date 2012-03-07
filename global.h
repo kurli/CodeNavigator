@@ -264,7 +264,8 @@ extern	int	fileversion;	/* cross-reference file version */
 extern	BOOL	incurses;	/* in curses */
 extern	BOOL	invertedindex;	/* the database has an inverted index */
 extern	BOOL	isuptodate;	/* consider the crossref up-to-date */
-extern	BOOL	kernelmode;	/* don't use DFLT_INCDIR - bad for kernels */
+//kurry
+//extern	BOOL	kernelmode;	/* don't use DFLT_INCDIR - bad for kernels */
 extern	BOOL	linemode;	/* use line oriented user interface */
 extern	BOOL	verbosemode;	/* print extra information on line mode */
 extern	BOOL	recurse_dir;	/* recurse dirs when searching for src files */

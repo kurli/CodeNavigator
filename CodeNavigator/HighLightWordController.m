@@ -63,7 +63,7 @@
     NSString* returnValue;
     NSString* highlightJS;
     if ([searchText length] == 0)
-        highlightJS = [NSString stringWithFormat:@"highlight('liguangzhen+++++++++++++++++++++++++++++++++++++++++')"];
+        highlightJS = [NSString stringWithFormat:@"clearHighlight();"];
     else if ([searchText length] %5 == 0)
     {
         highlightJS = [NSString stringWithFormat:@"highlight('%@')",searchText];
@@ -82,7 +82,7 @@
     NSString* searchText;
     searchText = searchBar.text;
     if ([searchText length] == 0)
-        highlightJS = [NSString stringWithFormat:@"highlight('liguangzhen+++++++++++++++++++++++++++++++++++++++++')"];
+        highlightJS = [NSString stringWithFormat:@"clearHighlight();"];
     else
         highlightJS = [NSString stringWithFormat:@"highlight('%@')",searchText];
     returnValue = [self.detailViewController.activeWebView stringByEvaluatingJavaScriptFromString:highlightJS];
