@@ -117,6 +117,10 @@
 		945428B614F2B51600353EC8 /* ProjectListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945428B314F2B51600353EC8 /* ProjectListController.xib */; };
 		945428B714F2B51600353EC8 /* ProjectListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945428B314F2B51600353EC8 /* ProjectListController.xib */; };
 		94557E5414B05E89004950B4 /* linux_0.1 in Resources */ = {isa = PBXBuildFile; fileRef = 94557E5314B05E89004950B4 /* linux_0.1 */; };
+		945AA3F81507B13E006729C8 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 945AA3F61507B13E006729C8 /* back.png */; };
+		945AA3F91507B13E006729C8 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 945AA3F61507B13E006729C8 /* back.png */; };
+		945AA3FA1507B13E006729C8 /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 945AA3F71507B13E006729C8 /* forward.png */; };
+		945AA3FB1507B13E006729C8 /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 945AA3F71507B13E006729C8 /* forward.png */; };
 		94603D07149E041400D72561 /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94603D05149E041400D72561 /* ResultViewController.m */; };
 		94603D08149E041400D72561 /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94603D06149E041400D72561 /* ResultViewController.xib */; };
 		9466466B14A2370700B30CD2 /* WebServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9466466914A2370700B30CD2 /* WebServiceController.m */; };
@@ -412,6 +416,8 @@
 		945428B214F2B51600353EC8 /* ProjectListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProjectListController.m; path = CodeNavigator/ProjectListController.m; sourceTree = "<group>"; };
 		945428B314F2B51600353EC8 /* ProjectListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProjectListController.xib; path = CodeNavigator/ProjectListController.xib; sourceTree = "<group>"; };
 		94557E5314B05E89004950B4 /* linux_0.1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = linux_0.1; sourceTree = "<group>"; };
+		945AA3F61507B13E006729C8 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		945AA3F71507B13E006729C8 /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward.png; sourceTree = "<group>"; };
 		94603D04149E041400D72561 /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
 		94603D05149E041400D72561 /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
 		94603D06149E041400D72561 /* ResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
@@ -686,6 +692,8 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				945AA3F61507B13E006729C8 /* back.png */,
+				945AA3F71507B13E006729C8 /* forward.png */,
 				9424664B150383C2001701C4 /* ccFile.png */,
 				9424664C150383C2001701C4 /* cFile.png */,
 				9424664D150383C2001701C4 /* cppFile.png */,
@@ -959,6 +967,8 @@
 				94246669150383C2001701C4 /* mkFile.png in Resources */,
 				9424666B150383C2001701C4 /* mmFile.png in Resources */,
 				9424666D150383C2001701C4 /* sFile.png in Resources */,
+				945AA3F81507B13E006729C8 /* back.png in Resources */,
+				945AA3FA1507B13E006729C8 /* forward.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1011,6 +1021,8 @@
 				9424666A150383C2001701C4 /* mkFile.png in Resources */,
 				9424666C150383C2001701C4 /* mmFile.png in Resources */,
 				9424666E150383C2001701C4 /* sFile.png in Resources */,
+				945AA3F91507B13E006729C8 /* back.png in Resources */,
+				945AA3FB1507B13E006729C8 /* forward.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

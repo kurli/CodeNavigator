@@ -77,7 +77,7 @@ table.code td {\n\
 <table class=\"code\"><tbody>\
 "
 
-#define HTML_LINE_START @"<tr id=\"L%d\"><th><a href=\"#L%d\">%d</a></th><td>    "
+#define HTML_LINE_START @"<tr id=\"L%d\"><th><a href=\"#L%d\">%d</a></th><td> "
 
 #define HTML_LINK @"<a href=\"%@=%@\" class=\"%@\" style=\"text-decoration: none\">"
 #define HTML_LINK_END @"</a>"

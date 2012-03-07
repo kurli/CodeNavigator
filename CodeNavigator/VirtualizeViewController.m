@@ -59,7 +59,12 @@
                 
         viewInitedForEdit = NO;
         isCurrentFileManager = YES;
-                
+        
+        MasterViewController* masterViewController = nil;
+        NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
+        masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;    
+        [self setCurrentProjectFolder:[masterViewController.currentProjectPath copy]];
+
         self.fileManagerController = [[FileManagerController alloc] init];
         [fileManagerController setCurrentProjectFolder:currentProjectFolder];
         [fileManagerController searchVirtualizeFiles];

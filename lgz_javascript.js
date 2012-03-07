@@ -17,7 +17,7 @@ function highlight(s){
     returnArray.splice(0, returnArray.length);
     index = 0;
     if (s.length==0){ 
-        
+        return;
     } 
     s=encode(s); 
     var obj=document.getElementsByTagName("tbody")[0]; 
@@ -29,12 +29,17 @@ function highlight(s){
     t=t.replace(r,"<span class='highlight'>$1</span>"); 
     obj.innerHTML=t; 
     return cnt;
-} 
+}
+
+function clearHighlight() {
+    var obj=document.getElementsByTagName("tbody")[0]; 
+    var t=obj.innerHTML.replace(/<span\s+class=.?highlight.?>([^<>]*)<\/span>/gi,"$1"); 
+    obj.innerHTML=t;
+}
 
 function highlight_this_line_keyword(line, s){
     s=encode(s); 
-    var obj=document.getElementsByTagName("tbody")[0]; 
-    obj = document.getElementById(line);
+    var obj = document.getElementById(line);
     var cnt=loopSearch(s,obj); 
     t=obj.innerHTML 
     var r=/{searchHL}(({(?!\/searchHL})|[^{])*){\/searchHL}/g 
@@ -95,8 +100,16 @@ function smoothScrollToPosition(stopPosition)
 }
 
 function smoothScroll(eID) {
-    var stopY = elmYPosition(eID) - 200;
-    scrollTo(stopY);
+//    var stopY = elmYPosition(eID) - 200;
+//    scrollTo(0, stopY);
+    var str = "#"+eID;
+    if (window.location.hash == str)
+    {
+        window.location.hash = 0;
+        window.location.hash = str;
+    }
+    else
+        window.location.hash = str;
     //smoothScrollToPosition(stopY);
 }
 

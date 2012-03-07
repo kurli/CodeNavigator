@@ -925,9 +925,13 @@ static Utils *static_utils;
         if ([array count] < 2)
             continue;
         //If we are in find_called_function type, we need to skip other files
-        if (searchType == 2)
+        if (searchType == 2 || searchType == 1)
         {
-            if ([sourcePath compare:[array objectAtIndex:0]] != NSOrderedSame)
+            NSString* str = [[Utils getInstance] getPathFromProject:sourcePath];
+            if ([str length] == 0) {
+                str = sourcePath;
+            }
+            if ([str compare:[array objectAtIndex:0]] != NSOrderedSame)
             {
                 continue;
             }
@@ -1107,6 +1111,25 @@ static Utils *static_utils;
     if (_result != 0)
     {
         result = [NSString stringWithCString:_result encoding:NSUTF8StringEncoding];
+        
+        // for other language other than c
+        if (fromVir == YES)
+        {
+            if ([result length] == 0) {
+                switch (searchType) {
+                    case 1:
+                    case 3:
+                        free(_result);
+                        _result = 0;
+                        _result = cscope_find_this_symble([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
+                    default:
+                        break;
+                }
+                result = [NSString stringWithCString:_result encoding:NSUTF8StringEncoding];
+            }
+        }
+        //end
+        
         free(_result);
         _result = 0;
         NSArray* lines = [result componentsSeparatedByString:@"\n"];
