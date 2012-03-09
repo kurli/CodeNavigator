@@ -20,4 +20,6 @@
 
 - (IBAction)closeButtonClicked:(id)sender;
 
+- (IBAction)exportButtonClicked:(id)sender;
+
 @end

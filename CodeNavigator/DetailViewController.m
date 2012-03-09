@@ -136,6 +136,11 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    NSString* help = [NSHomeDirectory() stringByAppendingString:@"/Documents/Projects/Help.html"];
+    NSError *error;
+    NSStringEncoding encoding = NSUTF8StringEncoding;
+    NSString* html = [NSString stringWithContentsOfFile: help usedEncoding:&encoding error: &error];
+    [self setTitle:@"Help.html" andPath:help andContent:html];
     [super viewWillAppear:animated];
 }
 
@@ -372,17 +377,27 @@
     }
     
     NSString* extention = [url pathExtension];
-    if (extention != nil && [extention compare:@"display_1"] == NSOrderedSame)
+    if (extention != nil && [extention compare:DISPLAY_FILE_EXTENTION] == NSOrderedSame)
     {
         NSString* content = [NSString stringWithContentsOfFile:url encoding:encoding error:&error];
         [self displayHTMLString:content];
     }
     else
     {
-        NSURL *nsurl = [NSURL fileURLWithPath:url];
-        NSURLRequest *request = [NSURLRequest requestWithURL:nsurl];
-        [self.activeWebView setScalesPageToFit:YES];
-        [self.activeWebView loadRequest:request];
+        if ([[Utils getInstance] isDocType:url] == YES)
+        {
+            NSURL *nsurl = [NSURL fileURLWithPath:url];
+            NSURLRequest *request = [NSURLRequest requestWithURL:nsurl];
+            [self.activeWebView setScalesPageToFit:YES];
+            [self.activeWebView loadRequest:request];
+        }
+        else if ([[Utils getInstance] isWebType:url] == YES)
+        {
+            NSError *error;
+            NSStringEncoding encoding = NSUTF8StringEncoding;
+            NSString* html = [NSString stringWithContentsOfFile: url usedEncoding:&encoding error: &error];
+            [self displayHTMLString:html];
+        }
     }
 
     NSArray* array = [url pathComponents];

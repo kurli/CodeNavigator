@@ -83,14 +83,20 @@
 								<reference key="IBUIToolbar" ref="80453401"/>
 								<int key="IBUISystemItemIdentifier">16</int>
 							</object>
-							<object class="IBUIBarButtonItem" id="335572095">
-								<string key="IBUITitle">&lt;&gt;</string>
+							<object class="IBUIBarButtonItem" id="851158194">
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">NewEntry.png</string>
+								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="80453401"/>
 							</object>
-							<object class="IBUIBarButtonItem" id="851158194">
-								<string key="IBUITitle">NewEntry</string>
+							<object class="IBUIBarButtonItem" id="335572095">
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">max.png</string>
+								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="80453401"/>
@@ -183,7 +189,7 @@
 								<string key="NSFrame">{{438, 140}, {35, 30}}</string>
 								<reference key="NSSuperview" ref="213023476"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="447253633"/>
+								<reference key="NSNextKeyView" ref="660023607"/>
 								<string key="NSReuseIdentifierKey">_NS:225</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -206,6 +212,7 @@
 								<string key="NSFrame">{{441, 178}, {32, 30}}</string>
 								<reference key="NSSuperview" ref="213023476"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="447253633"/>
 								<string key="NSReuseIdentifierKey">_NS:225</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -281,6 +288,7 @@
 						<string key="NSFrame">{{725.5, 54}, {29, 31}}</string>
 						<reference key="NSSuperview" ref="961245003"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:225</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -5036,8 +5044,8 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<reference ref="883756140"/>
 							<reference ref="736086309"/>
 							<reference ref="612099498"/>
-							<reference ref="335572095"/>
 							<reference ref="94162123"/>
+							<reference ref="335572095"/>
 							<reference ref="851158194"/>
 						</array>
 						<reference key="parent" ref="961245003"/>
@@ -5308,10 +5316,11 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">virbackground.png</string>
-			<string key="NS.object.0">{186, 342}</string>
-		</object>
+		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NewEntry.png">{20, 22}</string>
+			<string key="max.png">{20, 22}</string>
+			<string key="virbackground.png">{186, 342}</string>
+		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>
 </archive>

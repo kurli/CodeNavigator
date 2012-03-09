@@ -117,7 +117,7 @@ static Utils *static_utils;
     NSError* error;
     BOOL isExist = false;
     BOOL isFolder = NO;
-    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/1_3.version"];
+    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/1_5.version"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:versionFile];
     if (isExist == YES)
     {
@@ -160,22 +160,38 @@ static Utils *static_utils;
     }
     
     {
-    NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
-    BOOL isFolder = NO;
-    BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:projectFolder isDirectory:&isFolder];
-    NSError *error;
-    if (isExist == NO || (isExist == YES && isFolder == NO))
-    {
-        [[NSFileManager defaultManager] createDirectoryAtPath:projectFolder withIntermediateDirectories:YES attributes:nil error:&error];
-    }
+        NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+        BOOL isFolder = NO;
+        BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:projectFolder isDirectory:&isFolder];
+        NSError *error;
+        if (isExist == NO || (isExist == YES && isFolder == NO))
+        {
+            [[NSFileManager defaultManager] createDirectoryAtPath:projectFolder withIntermediateDirectories:YES attributes:nil error:&error];
+        }
     
-    NSString* demoFolder = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/Projects/linux_0.1/"];
-    isExist = [[NSFileManager defaultManager] fileExistsAtPath:demoFolder isDirectory:&isFolder];
-    NSString* demoBundle = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/linux_0.1"];
-    if (isExist == NO || (isExist == YES && isFolder == NO))
-    {
-        [[NSFileManager defaultManager] copyItemAtPath:demoBundle toPath:demoFolder error:&error];
-    }
+        // copy demo
+        NSString* demoFolder = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/Projects/linux_0.1/"];
+        isExist = [[NSFileManager defaultManager] fileExistsAtPath:demoFolder isDirectory:&isFolder];
+        NSString* demoBundle = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/linux_0.1"];
+        if (isExist == NO || (isExist == YES && isFolder == NO))
+        {
+            [[NSFileManager defaultManager] copyItemAtPath:demoBundle toPath:demoFolder error:&error];
+        }
+        
+        // copy help files
+        NSString* settings = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/"];
+        NSString* helpHtml = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/Help.html"];
+        [[NSFileManager defaultManager] copyItemAtPath:helpHtml toPath:[projectFolder stringByAppendingPathComponent:@"Help.html"] error:&error];
+        NSString* jpg0 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/help.001.jpg"];
+        [[NSFileManager defaultManager] copyItemAtPath:jpg0 toPath:[settings stringByAppendingPathComponent:@"help.001.jpg"] error:&error];
+        NSString* jpg1 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/help.002.jpg"];
+        [[NSFileManager defaultManager] copyItemAtPath:jpg1 toPath:[settings stringByAppendingPathComponent:@"help.002.jpg"] error:&error];
+        NSString* jpg2 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/help.003.jpg"];
+        [[NSFileManager defaultManager] copyItemAtPath:jpg2 toPath:[settings stringByAppendingPathComponent:@"help.003.jpg"] error:&error];
+        NSString* jpg3 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/help.004.jpg"];
+        [[NSFileManager defaultManager] copyItemAtPath:jpg3 toPath:[settings stringByAppendingPathComponent:@"help.004.jpg"] error:&error];
+        NSString* jpg4 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/help.005.jpg"];
+        [[NSFileManager defaultManager] copyItemAtPath:jpg4 toPath:[settings stringByAppendingPathComponent:@"help.005.jpg"] error:&error];
     }
 }
 
@@ -553,12 +569,12 @@ static Utils *static_utils;
     NSString* extention = [source pathExtension];
     if (extention == nil || [extention length] == 0)
     {
-        tmp = [tmp stringByAppendingString:@"_.display_1"];
+        tmp = [tmp stringByAppendingFormat:@"_.%@", DISPLAY_FILE_EXTENTION];
     }
     else
     {
         tmp = [tmp stringByDeletingPathExtension];
-        tmp = [tmp stringByAppendingFormat:@"_%@.display_1", extention];
+        tmp = [tmp stringByAppendingFormat:@"_%@.%@", extention, DISPLAY_FILE_EXTENTION];
     }
     return tmp;
 }
@@ -655,6 +671,21 @@ static Utils *static_utils;
     return NO;
 }
 
+-(BOOL) isWebType:(NSString *)file
+{
+    NSString* extension = [file pathExtension];
+    extension = [extension lowercaseString];
+    if (nil == extension || [extension length] == 0)
+        return NO;
+    else if ([extension isEqualToString:@"html"])
+        return YES;
+    else if ([extension isEqualToString:@"htm"])
+        return YES;
+    else if ([extension isEqualToString:@"xml"])
+        return YES;
+    return NO;
+}
+
 -(void) createFileList:(NSString *)projPath andWriteTo:(NSMutableString*) cache
 {
     NSError *error;
@@ -700,6 +731,8 @@ static Utils *static_utils;
     else if ([extension isEqualToString:@"lgz_virtualize"])
         return YES;
     else if ([extension isEqualToString:@"lgz_vir_img"])
+        return YES;
+    else if ([extension isEqualToString:DISPLAY_FILE_EXTENTION])
         return YES;
     return NO;
 }
@@ -970,6 +1003,11 @@ static Utils *static_utils;
 //    [self.navigationController popViewControllerAnimated:NO];
     if ([list count] == 2)
     {
+        if ([_resultFileList count] == 0)
+        {
+            [[Utils getInstance] alertWithTitle:@"Result" andMessage:@"No Result Found"];
+            return NO;
+        }
         NSString* content = [((ResultFile*)[_resultFileList objectAtIndex:0]).contents objectAtIndex:0];
         NSArray* components = [content componentsSeparatedByString:@" "];
         if ([components count] < 3)
@@ -1113,7 +1151,7 @@ static Utils *static_utils;
         result = [NSString stringWithCString:_result encoding:NSUTF8StringEncoding];
         
         // for other language other than c
-        if (fromVir == YES)
+//        if (fromVir == YES)
         {
             if ([result length] == 0) {
                 switch (searchType) {
@@ -1313,10 +1351,12 @@ FINAL:
     {
         return path;
     }
+    if ([self isWebType:path])
+        return path;
     
     displayPath = [path stringByDeletingPathExtension];
     displayPath = [displayPath stringByAppendingFormat:@"_%@",[path pathExtension]];
-    displayPath = [displayPath stringByAppendingPathExtension:@"display_1"];
+    displayPath = [displayPath stringByAppendingPathExtension:DISPLAY_FILE_EXTENTION];
     return displayPath;
 }
 
@@ -1352,6 +1392,8 @@ FINAL:
         {
             return nil;
         }
+        if ([self isWebType:path])
+            return nil;
         NSStringEncoding encoding = NSUTF8StringEncoding;
         html = [NSString stringWithContentsOfFile: displayPath usedEncoding:&encoding error: &error];
         //html = [self HloveyRC4:rc4Result key:@"lgz"];

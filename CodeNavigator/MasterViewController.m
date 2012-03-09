@@ -245,7 +245,7 @@
             cell.imageView.image = [UIImage imageNamed:@"javaFile.png"];
         }
         else if ([extention compare:@"m"] == NSOrderedSame) {
-            cell.imageView.image = [UIImage imageNamed:@"mmFile.png"];
+            cell.imageView.image = [UIImage imageNamed:@"mFile.png"];
         }
         else if ([extention compare:@"s"] == NSOrderedSame) {
             cell.imageView.image = [UIImage imageNamed:@"sFile.png"];
@@ -377,6 +377,13 @@
             {
                 [controller displayDocTypeFile:path];
                 return;
+            }
+            if ([[Utils getInstance] isWebType:path])
+            {
+                NSError *error;
+                NSStringEncoding encoding = NSUTF8StringEncoding;
+                html = [NSString stringWithContentsOfFile: path usedEncoding:&encoding error: &error];
+                [controller setTitle:selectedItem andPath:path andContent:html];
             }
 
 //            NSStringEncoding encoding = NSUTF8StringEncoding;

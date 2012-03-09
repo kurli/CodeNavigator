@@ -122,8 +122,8 @@
         return;
     
     NSString* projectPath = [[Utils getInstance] getProjectFolder:self.currentSourcePath];
-    NSString* sourcePath = [[Utils getInstance] getPathFromProject:self.currentSourcePath];
-    [[Utils getInstance] cscopeSearch:searchText andPath:sourcePath andProject:projectPath andType:selectedItem andFromVir:NO];
+    //NSString* sourcePath = [[Utils getInstance] getPathFromProject:self.currentSourcePath];
+    [[Utils getInstance] cscopeSearch:searchText andPath:nil andProject:projectPath andType:selectedItem andFromVir:NO];
 }
 
 -(void) searchBarCancelButtonClicked:(UISearchBar *)_searchBar
@@ -136,8 +136,8 @@
         return;
     
     NSString* projectPath = [[Utils getInstance] getProjectFolder:self.currentSourcePath];
-    NSString* sourcePath = [[Utils getInstance] getPathFromProject:self.currentSourcePath];
-    [[Utils getInstance] cscopeSearch:searchText andPath:sourcePath andProject:projectPath andType:selectedItem andFromVir:NO];
+    //NSString* sourcePath = [[Utils getInstance] getPathFromProject:self.currentSourcePath];
+    [[Utils getInstance] cscopeSearch:searchText andPath:nil andProject:projectPath andType:selectedItem andFromVir:NO];
 }
 
 -(void)setSearchItemText:(NSString *)keyword
