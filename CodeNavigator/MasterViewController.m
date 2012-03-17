@@ -499,6 +499,7 @@
 #ifdef LITE_VERSION
         [[Utils getInstance] showPurchaseAlert];
 #endif
+        [[Utils getInstance].detailViewController releaseAllPopOver];
         [_webServiceController setMasterViewController:self];
         [_webServicePopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }

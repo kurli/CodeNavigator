@@ -480,6 +480,13 @@
 
 -(void) releaseAllPopOver
 {
+    MasterViewController* masterViewController = nil;
+    NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
+    masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
+    [masterViewController.webServicePopOverController dismissPopoverAnimated:YES];
+    
+    [[Utils getInstance] showAnalyzeInfoPopOver:NO];
+    
     [self.percentPopover dismissPopoverAnimated:YES];
     [self setPercentViewController:nil];
     [self setPercentPopover:nil];
@@ -564,9 +571,8 @@
 #pragma Bar Button action
 
 - (IBAction)infoButtonClicked:(id)sender {
-    if ([Utils getInstance].analyzeInfoPopover.isPopoverVisible == YES)
-        [[Utils getInstance] showAnalyzeInfoPopOver:NO];
-    else
+    [self releaseAllPopOver];
+    if ([Utils getInstance].analyzeInfoPopover.isPopoverVisible == NO)
         [[Utils getInstance] showAnalyzeInfoPopOver:YES];
 }
 
