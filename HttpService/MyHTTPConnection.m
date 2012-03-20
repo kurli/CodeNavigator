@@ -210,7 +210,8 @@
 	// Therefore, this method may be called multiple times for the same POST request.
 	
 	//NSLog(@"processPostDataChunk");
-	
+    @autoreleasepool {
+
 	if (!postHeaderOK)
 	{
 		UInt16 separatorBytes = 0x0A0D;
@@ -269,6 +270,7 @@
 	{
 		[(NSFileHandle*)[multipartData lastObject] writeData:postDataChunk];
 	}
+    }
 }
 
 @end
