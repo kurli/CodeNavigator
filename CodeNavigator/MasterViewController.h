@@ -47,5 +47,6 @@
 
 - (IBAction)analyzeButtonClicked:(id)sender;
 
+- (IBAction)gitClicked:(id)sender;
 @end
 

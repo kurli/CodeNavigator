@@ -11,6 +11,7 @@
 #import "DetailViewController.h"
 #import "WebServiceController.h"
 #import "cscope.h"
+#import "GitLogViewCongroller.h"
 
 @implementation MasterViewController
 
@@ -478,6 +479,12 @@
     [[Utils getInstance] analyzeProject:self.currentProjectPath andForceCreate:YES];
 }
 
+- (IBAction)gitClicked:(id)sender {    
+    GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewCongroller" bundle:[NSBundle mainBundle]];
+    [gitlogView gitLogForProject: self.currentProjectPath];
+    [gitlogView showModualView];
+}
+
 #ifdef LITE_VERSION
 - (IBAction)purchaseClicked:(id)sender {
     [[Utils getInstance] openPurchaseURL];
@@ -499,10 +506,30 @@
 #ifdef LITE_VERSION
         [[Utils getInstance] showPurchaseAlert];
 #endif
-        [[Utils getInstance].detailViewController releaseAllPopOver];
         [_webServiceController setMasterViewController:self];
         [_webServicePopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

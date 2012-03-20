@@ -8,25 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		94B4031F14A0D5EA00E3A636 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4031E14A0D5EA00E3A636 /* Foundation.framework */; };
-		94B4033314A0D61600E3A636 /* AsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4033114A0D61600E3A636 /* AsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94B4033314A0D61600E3A636 /* AsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4033114A0D61600E3A636 /* AsyncSocket.h */; settings = {ATTRIBUTES = (); }; };
 		94B4033414A0D61600E3A636 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4033214A0D61600E3A636 /* AsyncSocket.m */; };
-		94B4034314A0D62A00E3A636 /* DDData.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4033514A0D62A00E3A636 /* DDData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94B4034314A0D62A00E3A636 /* DDData.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4033514A0D62A00E3A636 /* DDData.h */; settings = {ATTRIBUTES = (); }; };
 		94B4034414A0D62A00E3A636 /* DDData.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4033614A0D62A00E3A636 /* DDData.m */; };
-		94B4034514A0D62A00E3A636 /* DDNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4033714A0D62A00E3A636 /* DDNumber.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94B4034514A0D62A00E3A636 /* DDNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4033714A0D62A00E3A636 /* DDNumber.h */; settings = {ATTRIBUTES = (); }; };
 		94B4034614A0D62A00E3A636 /* DDNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4033814A0D62A00E3A636 /* DDNumber.m */; };
-		94B4034714A0D62A00E3A636 /* DDRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4033914A0D62A00E3A636 /* DDRange.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94B4034714A0D62A00E3A636 /* DDRange.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4033914A0D62A00E3A636 /* DDRange.h */; settings = {ATTRIBUTES = (); }; };
 		94B4034814A0D62A00E3A636 /* DDRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4033A14A0D62A00E3A636 /* DDRange.m */; };
-		94B4034914A0D62A00E3A636 /* HTTPAuthenticationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4033B14A0D62A00E3A636 /* HTTPAuthenticationRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94B4034914A0D62A00E3A636 /* HTTPAuthenticationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4033B14A0D62A00E3A636 /* HTTPAuthenticationRequest.h */; settings = {ATTRIBUTES = (); }; };
 		94B4034A14A0D62A00E3A636 /* HTTPAuthenticationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4033C14A0D62A00E3A636 /* HTTPAuthenticationRequest.m */; };
-		94B4034B14A0D62A00E3A636 /* HTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4033D14A0D62A00E3A636 /* HTTPConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94B4034B14A0D62A00E3A636 /* HTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4033D14A0D62A00E3A636 /* HTTPConnection.h */; settings = {ATTRIBUTES = (); }; };
 		94B4034C14A0D62A00E3A636 /* HTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4033E14A0D62A00E3A636 /* HTTPConnection.m */; };
-		94B4034D14A0D62A00E3A636 /* HTTPResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4033F14A0D62A00E3A636 /* HTTPResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94B4034D14A0D62A00E3A636 /* HTTPResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4033F14A0D62A00E3A636 /* HTTPResponse.h */; settings = {ATTRIBUTES = (); }; };
 		94B4034E14A0D62A00E3A636 /* HTTPResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4034014A0D62A00E3A636 /* HTTPResponse.m */; };
-		94B4034F14A0D62A00E3A636 /* HTTPServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4034114A0D62A00E3A636 /* HTTPServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94B4034F14A0D62A00E3A636 /* HTTPServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4034114A0D62A00E3A636 /* HTTPServer.h */; settings = {ATTRIBUTES = (); }; };
 		94B4035014A0D62A00E3A636 /* HTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4034214A0D62A00E3A636 /* HTTPServer.m */; };
-		94B4035714A0DCE600E3A636 /* localhostAddresses.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4035314A0DCE600E3A636 /* localhostAddresses.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94B4035714A0DCE600E3A636 /* localhostAddresses.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4035314A0DCE600E3A636 /* localhostAddresses.h */; settings = {ATTRIBUTES = (); }; };
 		94B4035814A0DCE600E3A636 /* localhostAddresses.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4035414A0DCE600E3A636 /* localhostAddresses.m */; };
-		94B4035914A0DCE600E3A636 /* MyHTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4035514A0DCE600E3A636 /* MyHTTPConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94B4035914A0DCE600E3A636 /* MyHTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B4035514A0DCE600E3A636 /* MyHTTPConnection.h */; settings = {ATTRIBUTES = (); }; };
 		94B4035A14A0DCE600E3A636 /* MyHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4035614A0DCE600E3A636 /* MyHTTPConnection.m */; };
 /* End PBXBuildFile section */
 
@@ -233,11 +233,47 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		94557DB214B0468B004950B4 /* Distribute */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribute;
+		};
+		94557DB314B0468B004950B4 /* Distribute */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/HttpService.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HttpService/HttpService-Prefix.pch";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Distribute;
+		};
 		94B4032614A0D5EA00E3A636 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -251,8 +287,10 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -261,14 +299,17 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -311,6 +352,7 @@
 			buildConfigurations = (
 				94B4032614A0D5EA00E3A636 /* Debug */,
 				94B4032714A0D5EA00E3A636 /* Release */,
+				94557DB214B0468B004950B4 /* Distribute */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -320,6 +362,7 @@
 			buildConfigurations = (
 				94B4032914A0D5EA00E3A636 /* Debug */,
 				94B4032A14A0D5EA00E3A636 /* Release */,
+				94557DB314B0468B004950B4 /* Distribute */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
