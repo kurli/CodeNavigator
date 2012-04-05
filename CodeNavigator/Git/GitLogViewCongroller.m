@@ -16,6 +16,9 @@
 #import "GTSignature.h"
 #import "GTTreeEntry.h"
 #import "Utils.h"
+#import "GTObjectDatabase.h"
+#import "GTOdbObject.h"
+#import "GitDiffViewController.h"
 
 #import "git2.h"
 
@@ -27,10 +30,21 @@
 
 #define kCellHeight 120;
 
+@implementation PendingData
+
+@synthesize path;
+@synthesize neObj;
+@synthesize oldObj;
+
+@end
+
 @implementation GitLogViewCongroller
 
 @synthesize repo;
 @synthesize commitsArray;
+@synthesize pendingDiffTree;
+@synthesize tableView = _tableView;
+@synthesize diffFileArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +52,8 @@
     if (self) {
         // Custom initialization
         selected = -1;
+        pendingDiffTree = [[NSMutableArray alloc] init];
+        diffFileArray = [[NSMutableArray alloc] init]; 
     }
     return self;
 }
@@ -66,6 +82,7 @@
 
 - (void)viewDidUnload
 {
+    [self setTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -79,6 +96,10 @@
 
 - (void) showModualView
 {
+    if (repo == nil) {
+        [[Utils getInstance] alertWithTitle:@"Git" andMessage:@"Git folder not found!"];
+        return;
+    }
     [[Utils getInstance].splitViewController presentModalViewController:self animated:YES];
 }
 
@@ -144,8 +165,6 @@ int gitTreeDiffCallback(const git_tree_diff_data *ptr, void *data)
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	//[tableView deselectRowAtIndexPath:indexPath animated:TRUE];
-		
 	[tableView beginUpdates];
     int index = indexPath.row;
     if (index > [self.commitsArray count])
@@ -160,38 +179,123 @@ int gitTreeDiffCallback(const git_tree_diff_data *ptr, void *data)
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:path];
         UITextView* detailView = (UITextView*)[cell viewWithTag:DETAIL_TAG];
         UILabel* summaryView = (UILabel*)[cell viewWithTag:SUMMARY_TAG];
+        UIButton* detailButton = (UIButton*)[cell viewWithTag:DETAIL_BUTTON_TAG];
         [summaryView setHidden:NO];
         [detailView setHidden:YES];
+        [detailButton setHidden:YES];
         NSString* detail = [NSString stringWithFormat:@"%@", commit.message];
         [summaryView setText:detail];
     }
     
+    NSMutableString* fileList = [[NSMutableString alloc] init];
     selected = indexPath.row;
     UITableViewCell *cell2 = [tableView cellForRowAtIndexPath:indexPath];
     UITextView* detailView2 = (UITextView*)[cell2 viewWithTag:DETAIL_TAG];
     UILabel* summaryView2 = (UILabel*)[cell2 viewWithTag:SUMMARY_TAG];
-    [summaryView2 setHidden:YES];
+    UIButton* detailButton2 = (UIButton*)[cell2 viewWithTag:DETAIL_BUTTON_TAG];
+    [summaryView2 setHidden:NO];
     [detailView2 setHidden:NO];
+    [detailButton2 setHidden:NO];
     
     GTCommit* commitCurrent = [self.commitsArray objectAtIndex:selected];
+    [summaryView2 setText:commitCurrent.message];
+    if (selected+1 >= [self.commitsArray count]) {
+        [tableView endUpdates];
+        return;
+    }
     GTCommit* commitNext = [self.commitsArray objectAtIndex:selected+1];
     
-    [self gitDiff:commitNext.tree andNewer:commitCurrent.tree andBlock:^(const git_tree_diff_data *ptr, BOOL *stop){
-        NSString* path = [NSString stringWithCString:ptr->path encoding:[NSString defaultCStringEncoding]];
-        path = nil;
-    }];
+    PendingData *pending = [[PendingData alloc] init];
+    [pending setNeObj:commitCurrent.tree];
+    [pending setOldObj:commitNext.tree];
+    [pending setPath:@"/"];
     
+    [pendingDiffTree addObject:pending];
+    
+    [diffFileArray removeAllObjects];
+    
+    while ([pendingDiffTree count] > 0) {
+        pending = [pendingDiffTree objectAtIndex:0];
+        oldObj = pending.oldObj;
+        newObj = pending.neObj;
+        [pendingDiffTree removeObjectAtIndex:0];
+        [self gitDiff:(GTTree*)oldObj andNewer:(GTTree*)newObj andBlock:^(const git_tree_diff_data *ptr, BOOL *stop){
+            NSError* error;
+            GTObject* newObj1 = [self.repo lookupObjectByOid:(git_oid*)(&(ptr->new_oid)) error:&error];
+            if (error != nil) {
+                return;
+            }
+            GTObject* oldObj1 = [self.repo lookupObjectByOid:(git_oid*)(&(ptr->old_oid)) error:&error];
+            if (error != nil) {
+                return;
+            }
+            if (oldObj1 == nil) {
+                oldObj1 = newObj;
+            }
+            if (newObj1 == nil) {
+                newObj1 = oldObj;
+            }
+            if (newObj1 == nil) {
+                return;
+            }
+            NSString* path = [NSString stringWithCString:ptr->path encoding:NSUTF8StringEncoding];
+            
+            if ([[newObj1 type] compare:@"tree"] == NSOrderedSame) {
+                path = [NSString stringWithFormat:@"%@%@/", pending.path, path];
+                PendingData *pending = [[PendingData alloc] init];
+                [pending setNeObj:newObj1];
+                [pending setOldObj:oldObj1];
+                [pending setPath:path];
+                
+                [pendingDiffTree addObject:pending];
+            }
+            else
+            {
+                path = [NSString stringWithFormat:@"%@%@",pending.path, path];
+                git_status_t status = ptr->status;
+                switch (status) {
+                    case GIT_STATUS_ADDED:
+                        [fileList appendFormat:@"[A] %@\n", path];
+                        break;
+                    case GIT_STATUS_DELETED: 
+                        [fileList appendFormat:@"[D] %@\n", path];
+                        break;
+                    case GIT_STATUS_MODIFIED:
+                        [fileList appendFormat:@"[M] %@\n", path];
+                        break;
+                    default:
+                        break;
+                }
+                PendingData *pending = [[PendingData alloc] init];
+                [pending setPath:path];
+                [pending setNeObj:newObj1];
+                [pending setOldObj:oldObj1];
+                //add file to array
+                [diffFileArray addObject:pending];
+            }
+        }];
+    }
+    [detailView2 setText:fileList];
 	[tableView endUpdates];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)_tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+-(IBAction)detailButtonClicked:(id)sender
+{
+    GitDiffViewController* gitDiffView = [[GitDiffViewController alloc] initWithNibName:@"GitDiffViewController" bundle:[NSBundle mainBundle]];
+    [gitDiffView setDiffFileArray:diffFileArray];
+    [self presentModalViewController:gitDiffView animated:YES];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"commitLogCell";
     UITableViewCell *cell;
     
-    cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"GitLogTableCell" owner:self options:nil] lastObject];
+        UIButton* detailButton = (UIButton*)[cell viewWithTag:DETAIL_BUTTON_TAG];
+        [detailButton addTarget:self action:@selector(detailButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     int index = indexPath.row;
     if (index > [self.commitsArray count])
@@ -207,7 +311,7 @@ int gitTreeDiffCallback(const git_tree_diff_data *ptr, void *data)
     
     // set author
     UILabel* authorLabel = (UILabel*)[cell viewWithTag:AUTHOR_TAG];
-    NSString* author = [NSString stringWithFormat:@"Author: %@ (%@)", commit.author.name, commit.author.email];
+    NSString* author = [NSString stringWithFormat:@"Author: %@ <%@>", commit.author.name, commit.author.email];
     [authorLabel setText:author];
     
     UITextView* detailView = (UITextView*)[cell viewWithTag:DETAIL_TAG];
@@ -249,7 +353,7 @@ int gitTreeDiffCallback(const git_tree_diff_data *ptr, void *data)
 - (GLfloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == selected)
-        return 150;
+        return 200;
     return kCellHeight;
 }
 

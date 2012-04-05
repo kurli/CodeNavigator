@@ -162,3 +162,81 @@ function bodyHeight()
 {
     return document.body.scrollHeight;
 }
+
+
+function showLines(start, end)
+{
+    var startID = 'L';
+    startID = startID + start;
+    var endID = 'L';
+    endID = endID + end;
+    var i = start;
+    for (i = start; i<=end; i++)
+    {
+        var id = 'L';
+        id += i;
+        document.getElementById(id).style.display = 'table-row';
+    }
+    var rowID = '';
+    rowID +=start;
+    rowID += '-';
+    rowID += end;
+    var rowElem = document.getElementById(rowID);
+    
+    var tbody=document.getElementsByTagName("tbody")[0]; 
+    tbody.removeChild(rowElem);
+}
+
+function hideLines(token, start,end)
+{
+    var startID = 'L';
+    startID = startID + start;
+    var endID = 'L';
+    endID = endID + end;
+    var i = start;
+    for (i = start; i<=end; i++)
+    {
+        var id = 'L';
+        id += i;
+        document.getElementById(id).style.display = 'none';
+    }
+    
+    var id = 'L';
+    id += end;
+    var element = document.getElementById(id);
+    
+    var tbody=document.getElementsByTagName("tbody")[0]; 
+    var row = document.createElement("tr");
+    var rowID = '';
+    rowID +=start;
+    rowID += '-';
+    rowID += end;
+    row.id = rowID;
+    
+    var th1 = document.createElement("th");
+    th1.appendChild(document.createTextNode("*"));
+    var th2 = document.createElement("th");
+    th2.appendChild(document.createTextNode("+"));
+    var td1 = document.createElement("td");
+    
+    var startContent = document.getElementById(startID);
+    var startTD = startContent.childNodes[2];
+    var content = startTD.textContent;
+    i = content.search(token);
+    var subStr = content.substring(0, i);    
+    subStr += "{......}";
+    var textNode = document.createTextNode(subStr);
+    var divNode = document.createElement("div");
+    divNode.appendChild(textNode);
+
+    divNode.setAttribute("onclick","showLines("+start+",'"+end +"')");
+    th2.setAttribute("onclick","showLines("+start+",'"+end +"')");
+    
+    td1.appendChild(divNode);
+    td1.style.border = '1px solid yellow';
+    
+    row.appendChild(th1);
+    row.appendChild(th2);
+    row.appendChild(td1);
+    tbody.insertBefore(row, element.nextSibling);
+}

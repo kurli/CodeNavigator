@@ -4,14 +4,7 @@
 
 @interface CPlusPlusParser : CodeParser
 {
-	BOOL isCommentsNotEnded;
-	NSMutableString* needParseLine;
-    BOOL isStringNotEnded;
-    NSArray* keywordsArray;
-    NSArray* preprocessorArray;
 }
-
--(void) parseLine: (NSString*) line lineNum:(int)lineNumber;
 
 -(BOOL) checkCommentsLine;
 

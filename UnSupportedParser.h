@@ -12,7 +12,6 @@
 
 @interface UnSupportedParser : CodeParser
 {
-	NSMutableString* needParseLine;
 }
 
 -(void) parseLine: (NSString*) line lineNum:(int)lineNumber;

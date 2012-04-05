@@ -614,6 +614,23 @@ static Utils *static_utils;
         return YES;
     else if ([extension isEqualToString:@"cc"])
         return YES;
+    else if ([extension isEqualToString:@"delphi"])
+        return YES;
+    else if ([extension isEqualToString:@"pascal"])
+        return YES;
+    else if ([extension isEqualToString:@"pas"])
+        return YES;
+    else if ([extension isEqualToString:@"py"])
+        return YES;
+    else if ([extension isEqualToString:@"python"])
+        return YES;
+    else if ([extension isEqualToString:@"rails"])
+        return YES;
+    else if ([extension isEqualToString:@"ror"])
+        return YES;
+    else if ([extension isEqualToString:@"ruby"])
+        return YES;
+    //TODO add other language support
     return NO;
 }
 
@@ -1372,18 +1389,16 @@ FINAL:
     if (![[NSFileManager defaultManager] fileExistsAtPath:displayPath isDirectory:&isFolder])
     {
         @autoreleasepool {        
-        Parser* parser = [[Parser alloc] init];
-        if ([self isSupportedType:path] == YES)
-            [parser setParserType:CPLUSPLUS];
-        else if ([self isImageType:path] == YES)
-            [parser setParserType:IMAGE];
-        else
-            [parser setParserType:UNKNOWN];
-        [parser setFile: path andProjectBase:projectPath];
-        [parser startParse];
-        html = [parser getHtml];
-        //rc4Result = [self HloveyRC4:html key:@"lgz"];
-        [html writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+            Parser* parser = [[Parser alloc] init];
+            if ([self isImageType:path] == YES)
+                [parser setParserType:IMAGE];
+            else
+                [parser checkParseType:path];
+            [parser setFile: path andProjectBase:projectPath];
+            [parser startParse];
+            html = [parser getHtml];
+            //rc4Result = [self HloveyRC4:html key:@"lgz"];
+            [html writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
         }
     }
     else

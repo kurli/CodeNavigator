@@ -81,6 +81,7 @@ static	unsigned setsize1, setsize2;
 static	long	numitems, totterm, zerolong;
 static	char	*indexfile, *postingfile;
 static	FILE	*outfile, *fpost;
+static  char    *outfileName;
 static	unsigned supersize = SUPERINC, supintsize;
 static  unsigned int numpost, numlogblk, amtused, nextpost;
 static  unsigned int lastinblk, numinvitems;

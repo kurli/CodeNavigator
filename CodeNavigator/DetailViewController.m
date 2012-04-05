@@ -305,7 +305,7 @@
         return;
     }
     
-    if ([[Utils getInstance] isSupportedType:filePath] == YES)
+    //if ([[Utils getInstance] isSupportedType:filePath] == YES)
     {
         // save current display status to history stack
         int location = [self getCurrentScrollLocation];
@@ -1089,6 +1089,26 @@
             currentDisplayFile = [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
             [self navigationManagerPopUpWithKeyword:[array objectAtIndex:1] andSourcePath:currentDisplayFile];
         }
+        return NO;
+    }
+    array = [tmp componentsSeparatedByString:@"lgz_fold"];
+    if ([array count] == 2)
+    {
+        NSString* lineStr = [array objectAtIndex:1];
+        NSArray* array = [lineStr componentsSeparatedByString:@":"];
+        if ([array count] != 3) {
+            return NO;
+        }
+        //MAGIC
+        NSString* tmp = [array objectAtIndex:0];
+        if ([tmp compare:@"%7B"] == NSOrderedSame) {
+            tmp = @"{";
+        } else if ([tmp compare:@"%l2"] == NSOrderedSame) {
+            tmp = @"\"\"\"";
+        }
+        NSString* token = [NSString stringWithFormat:@"'%@'", tmp];
+        NSString* js = [NSString stringWithFormat:@"hideLines(%@, %@, %@);", token, [array objectAtIndex:1], [array objectAtIndex:2]];
+        [webView stringByEvaluatingJavaScriptFromString:js];
         return NO;
     }
     return YES;

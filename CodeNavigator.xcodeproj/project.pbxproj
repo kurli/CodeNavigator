@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		94040588149659C4002A0C73 /* lgz_javascript.js in Resources */ = {isa = PBXBuildFile; fileRef = 9404058514964E56002A0C73 /* lgz_javascript.js */; };
+		940BE0E21528CEF300CBAE18 /* GitDiffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0E01528CEF300CBAE18 /* GitDiffViewController.m */; };
+		940BE0E31528CEF300CBAE18 /* GitDiffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0E01528CEF300CBAE18 /* GitDiffViewController.m */; };
+		940BE0E41528CEF300CBAE18 /* GitDiffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940BE0E11528CEF300CBAE18 /* GitDiffViewController.xib */; };
+		940BE0E51528CEF300CBAE18 /* GitDiffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940BE0E11528CEF300CBAE18 /* GitDiffViewController.xib */; };
+		940BE0F01528E64600CBAE18 /* DiffFileListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0EE1528E64600CBAE18 /* DiffFileListController.m */; };
+		940BE0F11528E64600CBAE18 /* DiffFileListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0EE1528E64600CBAE18 /* DiffFileListController.m */; };
+		940BE0F21528E64600CBAE18 /* DiffFileListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940BE0EF1528E64600CBAE18 /* DiffFileListController.xib */; };
+		940BE0F31528E64600CBAE18 /* DiffFileListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940BE0EF1528E64600CBAE18 /* DiffFileListController.xib */; };
 		94103DF014D86F1300212EBB /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 94103DEF14D86F1300212EBB /* bookmark.png */; };
 		94103DF114D86F1300212EBB /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 94103DEF14D86F1300212EBB /* bookmark.png */; };
 		941656FF1515C3C200838005 /* GitLogViewCongroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 941656FD1515C3C200838005 /* GitLogViewCongroller.m */; };
@@ -119,6 +127,36 @@
 		9443BF5614D1A40200355278 /* HistoryListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9443BF5314D1A40200355278 /* HistoryListController.m */; };
 		9443BF5714D1A40200355278 /* HistoryListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9443BF5414D1A40200355278 /* HistoryListController.xib */; };
 		9443BF5814D1A40200355278 /* HistoryListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9443BF5414D1A40200355278 /* HistoryListController.xib */; };
+		944DD7C2152772EF000473BE /* diff.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C1152772EF000473BE /* diff.c */; };
+		944DD7C3152772EF000473BE /* diff.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C1152772EF000473BE /* diff.c */; };
+		944DD7C71527731E000473BE /* getopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C61527731E000473BE /* getopt.c */; };
+		944DD7C81527731E000473BE /* getopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C61527731E000473BE /* getopt.c */; };
+		944DD7CA1527732C000473BE /* fnmatch.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C91527732C000473BE /* fnmatch.c */; };
+		944DD7CB1527732C000473BE /* fnmatch.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C91527732C000473BE /* fnmatch.c */; };
+		944DD7D115277479000473BE /* regex.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7D015277479000473BE /* regex.c */; };
+		944DD7D215277479000473BE /* regex.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7D015277479000473BE /* regex.c */; };
+		944DD7D415277502000473BE /* util.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7D315277502000473BE /* util.c */; };
+		944DD7D515277502000473BE /* util.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7D315277502000473BE /* util.c */; };
+		944DD7D71527752D000473BE /* io.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7D61527752D000473BE /* io.c */; };
+		944DD7D81527752D000473BE /* io.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7D61527752D000473BE /* io.c */; };
+		944DD7DA15277591000473BE /* dif_dir.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7D915277591000473BE /* dif_dir.c */; };
+		944DD7DB15277591000473BE /* dif_dir.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7D915277591000473BE /* dif_dir.c */; };
+		944DD7DD152775FC000473BE /* analyze.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7DC152775FC000473BE /* analyze.c */; };
+		944DD7DE152775FC000473BE /* analyze.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7DC152775FC000473BE /* analyze.c */; };
+		944DD7E115277625000473BE /* cmpbuf.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7E015277625000473BE /* cmpbuf.c */; };
+		944DD7E215277625000473BE /* cmpbuf.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7E015277625000473BE /* cmpbuf.c */; };
+		944DD7E4152776D5000473BE /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7E3152776D5000473BE /* version.c */; };
+		944DD7E5152776D5000473BE /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7E3152776D5000473BE /* version.c */; };
+		944DD7E715277729000473BE /* side.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7E615277729000473BE /* side.c */; };
+		944DD7E815277729000473BE /* side.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7E615277729000473BE /* side.c */; };
+		944DD7EA1527778E000473BE /* context.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7E91527778E000473BE /* context.c */; };
+		944DD7EB1527778E000473BE /* context.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7E91527778E000473BE /* context.c */; };
+		944DD7ED15277845000473BE /* ed.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7EC15277845000473BE /* ed.c */; };
+		944DD7EE15277845000473BE /* ed.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7EC15277845000473BE /* ed.c */; };
+		944DD7F015277877000473BE /* normal.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7EF15277877000473BE /* normal.c */; };
+		944DD7F115277877000473BE /* normal.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7EF15277877000473BE /* normal.c */; };
+		944DD7F3152778B9000473BE /* ifdef.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7F2152778B9000473BE /* ifdef.c */; };
+		944DD7F4152778B9000473BE /* ifdef.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7F2152778B9000473BE /* ifdef.c */; };
 		945428AF14F29A8D00353EC8 /* FileManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 945428AE14F29A8D00353EC8 /* FileManagerController.m */; };
 		945428B014F29A8D00353EC8 /* FileManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 945428AE14F29A8D00353EC8 /* FileManagerController.m */; };
 		945428B414F2B51600353EC8 /* ProjectListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 945428B214F2B51600353EC8 /* ProjectListController.m */; };
@@ -160,6 +198,18 @@
 		94846ED314BCA4FD00388D68 /* MGSplitDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECD14BCA4FD00388D68 /* MGSplitDividerView.m */; };
 		94846ED414BCA4FD00388D68 /* MGSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECF14BCA4FD00388D68 /* MGSplitViewController.m */; };
 		94846ED514BCA4FD00388D68 /* MGSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECF14BCA4FD00388D68 /* MGSplitViewController.m */; };
+		9489196D1524CC9000AB9968 /* BashParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9489196C1524CC9000AB9968 /* BashParser.m */; };
+		9489196E1524CC9000AB9968 /* BashParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9489196C1524CC9000AB9968 /* BashParser.m */; };
+		9497F3A3151A499D006BCBBF /* ObjectiveCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3A2151A499D006BCBBF /* ObjectiveCParser.m */; };
+		9497F3A4151A499D006BCBBF /* ObjectiveCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3A2151A499D006BCBBF /* ObjectiveCParser.m */; };
+		9497F3A8151B85C7006BCBBF /* CSharpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3A7151B85C7006BCBBF /* CSharpParser.m */; };
+		9497F3A9151B85C7006BCBBF /* CSharpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3A7151B85C7006BCBBF /* CSharpParser.m */; };
+		9497F3AD151B8EBA006BCBBF /* DelphiParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3AC151B8EBA006BCBBF /* DelphiParser.m */; };
+		9497F3AE151B8EBA006BCBBF /* DelphiParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3AC151B8EBA006BCBBF /* DelphiParser.m */; };
+		9497F3B4151BA606006BCBBF /* PythonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3B3151BA606006BCBBF /* PythonParser.m */; };
+		9497F3B5151BA606006BCBBF /* PythonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3B3151BA606006BCBBF /* PythonParser.m */; };
+		9497F3CB151CEC4F006BCBBF /* RubbyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3CA151CEC4F006BCBBF /* RubbyParser.m */; };
+		9497F3CC151CEC4F006BCBBF /* RubbyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3CA151CEC4F006BCBBF /* RubbyParser.m */; };
 		94A5079314F6AA1C00587A47 /* virbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5079214F6AA1C00587A47 /* virbackground.png */; };
 		94A5079414F6AA1C00587A47 /* virbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5079214F6AA1C00587A47 /* virbackground.png */; };
 		94A5BBAA14BF47C000F3BA8B /* DisplayModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A5BBA814BF47C000F3BA8B /* DisplayModeController.m */; };
@@ -250,6 +300,12 @@
 		94D8703114A65888002F2DBB /* FilePathInfoPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D8702F14A65887002F2DBB /* FilePathInfoPopupController.m */; };
 		94D8703214A65888002F2DBB /* FilePathInfoPopupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D8703014A65888002F2DBB /* FilePathInfoPopupController.xib */; };
 		94DA0BBE14A624690035DB39 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DA0BBD14A624680035DB39 /* Utils.m */; };
+		94E6DB61152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */; };
+		94E6DB62152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */; };
+		94E6DB63152C9EFF004DBD87 /* DiffInfoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */; };
+		94E6DB64152C9EFF004DBD87 /* DiffInfoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */; };
+		94E6DB66152CBF41004DBD87 /* GidDiffTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E6DB65152CBF41004DBD87 /* GidDiffTableCell.xib */; };
+		94E6DB67152CBF41004DBD87 /* GidDiffTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E6DB65152CBF41004DBD87 /* GidDiffTableCell.xib */; };
 		94EE32D3149FAE0B0088501D /* GotoLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EE32D1149FAE0B0088501D /* GotoLineViewController.m */; };
 		94EE32D4149FAE0B0088501D /* GotoLineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94EE32D2149FAE0B0088501D /* GotoLineViewController.xib */; };
 		94FAC80314C1649400B9A821 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 94FAC80214C1649400B9A821 /* settings.png */; };
@@ -323,6 +379,12 @@
 
 /* Begin PBXFileReference section */
 		9404058514964E56002A0C73 /* lgz_javascript.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = lgz_javascript.js; sourceTree = "<group>"; };
+		940BE0DF1528CEF300CBAE18 /* GitDiffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitDiffViewController.h; sourceTree = "<group>"; };
+		940BE0E01528CEF300CBAE18 /* GitDiffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitDiffViewController.m; sourceTree = "<group>"; };
+		940BE0E11528CEF300CBAE18 /* GitDiffViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GitDiffViewController.xib; sourceTree = "<group>"; };
+		940BE0ED1528E64600CBAE18 /* DiffFileListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiffFileListController.h; sourceTree = "<group>"; };
+		940BE0EE1528E64600CBAE18 /* DiffFileListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiffFileListController.m; sourceTree = "<group>"; };
+		940BE0EF1528E64600CBAE18 /* DiffFileListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiffFileListController.xib; sourceTree = "<group>"; };
 		94103DEF14D86F1300212EBB /* bookmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookmark.png; sourceTree = "<group>"; };
 		941656FC1515C3C200838005 /* GitLogViewCongroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GitLogViewCongroller.h; path = CodeNavigator/Git/GitLogViewCongroller.h; sourceTree = "<group>"; };
 		941656FD1515C3C200838005 /* GitLogViewCongroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitLogViewCongroller.m; path = CodeNavigator/Git/GitLogViewCongroller.m; sourceTree = "<group>"; };
@@ -457,6 +519,28 @@
 		9443BF5214D1A40200355278 /* HistoryListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryListController.h; sourceTree = "<group>"; };
 		9443BF5314D1A40200355278 /* HistoryListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryListController.m; sourceTree = "<group>"; };
 		9443BF5414D1A40200355278 /* HistoryListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryListController.xib; sourceTree = "<group>"; };
+		944DD7C1152772EF000473BE /* diff.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = diff.c; sourceTree = "<group>"; };
+		944DD7C4152772FC000473BE /* diff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = diff.h; sourceTree = "<group>"; };
+		944DD7C51527730D000473BE /* getopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getopt.h; sourceTree = "<group>"; };
+		944DD7C61527731E000473BE /* getopt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = getopt.c; sourceTree = "<group>"; };
+		944DD7C91527732C000473BE /* fnmatch.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fnmatch.c; sourceTree = "<group>"; };
+		944DD7CC15277336000473BE /* fnmatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fnmatch.h; sourceTree = "<group>"; };
+		944DD7CD152773F8000473BE /* diff_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = diff_config.h; sourceTree = "<group>"; };
+		944DD7CE15277432000473BE /* system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system.h; sourceTree = "<group>"; };
+		944DD7CF1527746E000473BE /* regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = regex.h; sourceTree = "<group>"; };
+		944DD7D015277479000473BE /* regex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = regex.c; sourceTree = "<group>"; };
+		944DD7D315277502000473BE /* util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = util.c; sourceTree = "<group>"; };
+		944DD7D61527752D000473BE /* io.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = io.c; sourceTree = "<group>"; };
+		944DD7D915277591000473BE /* dif_dir.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dif_dir.c; sourceTree = "<group>"; };
+		944DD7DC152775FC000473BE /* analyze.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = analyze.c; sourceTree = "<group>"; };
+		944DD7DF15277618000473BE /* cmpbuf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cmpbuf.h; sourceTree = "<group>"; };
+		944DD7E015277625000473BE /* cmpbuf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmpbuf.c; sourceTree = "<group>"; };
+		944DD7E3152776D5000473BE /* version.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = version.c; sourceTree = "<group>"; };
+		944DD7E615277729000473BE /* side.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = side.c; sourceTree = "<group>"; };
+		944DD7E91527778E000473BE /* context.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = context.c; sourceTree = "<group>"; };
+		944DD7EC15277845000473BE /* ed.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ed.c; sourceTree = "<group>"; };
+		944DD7EF15277877000473BE /* normal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = normal.c; sourceTree = "<group>"; };
+		944DD7F2152778B9000473BE /* ifdef.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ifdef.c; sourceTree = "<group>"; };
 		945428AD14F29A8D00353EC8 /* FileManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileManagerController.h; path = CodeNavigator/FileManagerController.h; sourceTree = "<group>"; };
 		945428AE14F29A8D00353EC8 /* FileManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileManagerController.m; path = CodeNavigator/FileManagerController.m; sourceTree = "<group>"; };
 		945428B114F2B51600353EC8 /* ProjectListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProjectListController.h; path = CodeNavigator/ProjectListController.h; sourceTree = "<group>"; };
@@ -489,6 +573,24 @@
 		94846ECD14BCA4FD00388D68 /* MGSplitDividerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitDividerView.m; sourceTree = "<group>"; };
 		94846ECE14BCA4FD00388D68 /* MGSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitViewController.h; sourceTree = "<group>"; };
 		94846ECF14BCA4FD00388D68 /* MGSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitViewController.m; sourceTree = "<group>"; };
+		9489196B1524CC9000AB9968 /* BashParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BashParser.h; path = CodeNavigator/BashParser.h; sourceTree = "<group>"; };
+		9489196C1524CC9000AB9968 /* BashParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BashParser.m; path = CodeNavigator/BashParser.m; sourceTree = "<group>"; };
+		9489196F1524CCB300AB9968 /* BashDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BashDefinition.h; path = CodeNavigator/BashDefinition.h; sourceTree = "<group>"; };
+		9497F3A1151A499C006BCBBF /* ObjectiveCParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCParser.h; sourceTree = "<group>"; };
+		9497F3A2151A499D006BCBBF /* ObjectiveCParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCParser.m; sourceTree = "<group>"; };
+		9497F3A5151A4A13006BCBBF /* ObjectiveCDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCDefinition.h; sourceTree = "<group>"; };
+		9497F3A6151B85C7006BCBBF /* CSharpParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSharpParser.h; path = CodeNavigator/CSharpParser.h; sourceTree = "<group>"; };
+		9497F3A7151B85C7006BCBBF /* CSharpParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSharpParser.m; path = CodeNavigator/CSharpParser.m; sourceTree = "<group>"; };
+		9497F3AA151B85E7006BCBBF /* CSharpDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSharpDefinition.h; path = CodeNavigator/CSharpDefinition.h; sourceTree = "<group>"; };
+		9497F3AB151B8EBA006BCBBF /* DelphiParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DelphiParser.h; path = CodeNavigator/DelphiParser.h; sourceTree = "<group>"; };
+		9497F3AC151B8EBA006BCBBF /* DelphiParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DelphiParser.m; path = CodeNavigator/DelphiParser.m; sourceTree = "<group>"; };
+		9497F3AF151B8ED7006BCBBF /* DelphiDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DelphiDefinition.h; path = CodeNavigator/DelphiDefinition.h; sourceTree = "<group>"; };
+		9497F3B2151BA606006BCBBF /* PythonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PythonParser.h; path = CodeNavigator/PythonParser.h; sourceTree = "<group>"; };
+		9497F3B3151BA606006BCBBF /* PythonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PythonParser.m; path = CodeNavigator/PythonParser.m; sourceTree = "<group>"; };
+		9497F3B6151BA636006BCBBF /* PythonDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PythonDefinition.h; path = CodeNavigator/PythonDefinition.h; sourceTree = "<group>"; };
+		9497F3C9151CEC4F006BCBBF /* RubbyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RubbyParser.h; path = CodeNavigator/RubbyParser.h; sourceTree = "<group>"; };
+		9497F3CA151CEC4F006BCBBF /* RubbyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RubbyParser.m; path = CodeNavigator/RubbyParser.m; sourceTree = "<group>"; };
+		9497F3CD151CEC6A006BCBBF /* RubbyDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RubbyDefinition.h; path = CodeNavigator/RubbyDefinition.h; sourceTree = "<group>"; };
 		94A5079214F6AA1C00587A47 /* virbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = virbackground.png; sourceTree = "<group>"; };
 		94A5BBA714BF47C000F3BA8B /* DisplayModeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayModeController.h; sourceTree = "<group>"; };
 		94A5BBA814BF47C000F3BA8B /* DisplayModeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayModeController.m; sourceTree = "<group>"; };
@@ -547,6 +649,10 @@
 		94D8703014A65888002F2DBB /* FilePathInfoPopupController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilePathInfoPopupController.xib; sourceTree = "<group>"; };
 		94DA0BBC14A624680035DB39 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		94DA0BBD14A624680035DB39 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		94E6DB5E152C9EFF004DBD87 /* DiffInfoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiffInfoListViewController.h; sourceTree = "<group>"; };
+		94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiffInfoListViewController.m; sourceTree = "<group>"; };
+		94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiffInfoListViewController.xib; sourceTree = "<group>"; };
+		94E6DB65152CBF41004DBD87 /* GidDiffTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GidDiffTableCell.xib; sourceTree = "<group>"; };
 		94EE32D0149FAE0B0088501D /* GotoLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GotoLineViewController.h; sourceTree = "<group>"; };
 		94EE32D1149FAE0B0088501D /* GotoLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GotoLineViewController.m; sourceTree = "<group>"; };
 		94EE32D2149FAE0B0088501D /* GotoLineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GotoLineViewController.xib; sourceTree = "<group>"; };
@@ -611,6 +717,7 @@
 				9434BFAE14A389BC00B34419 /* Zip.xcodeproj */,
 				94B4037514A0E2C400E3A636 /* HttpServiceInc */,
 				94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */,
+				944DD7C015277276000473BE /* Diff */,
 				94BF7D8B150E6B1C00FCF653 /* Git */,
 				9431D7C01494CEC300B0900E /* Resources */,
 				9431D773149474EE00B0900E /* cscope */,
@@ -721,6 +828,24 @@
 				94AB1E5114AF5E0300451020 /* UnSupportedParser.m */,
 				94D16DE514C9CC3B007439EB /* ImageParser.h */,
 				94D16DE614C9CC3B007439EB /* ImageParser.m */,
+				9497F3A1151A499C006BCBBF /* ObjectiveCParser.h */,
+				9497F3A2151A499D006BCBBF /* ObjectiveCParser.m */,
+				9497F3A5151A4A13006BCBBF /* ObjectiveCDefinition.h */,
+				9497F3A6151B85C7006BCBBF /* CSharpParser.h */,
+				9497F3A7151B85C7006BCBBF /* CSharpParser.m */,
+				9497F3AA151B85E7006BCBBF /* CSharpDefinition.h */,
+				9497F3AB151B8EBA006BCBBF /* DelphiParser.h */,
+				9497F3AC151B8EBA006BCBBF /* DelphiParser.m */,
+				9497F3AF151B8ED7006BCBBF /* DelphiDefinition.h */,
+				9497F3B2151BA606006BCBBF /* PythonParser.h */,
+				9497F3B3151BA606006BCBBF /* PythonParser.m */,
+				9497F3B6151BA636006BCBBF /* PythonDefinition.h */,
+				9497F3C9151CEC4F006BCBBF /* RubbyParser.h */,
+				9497F3CA151CEC4F006BCBBF /* RubbyParser.m */,
+				9497F3CD151CEC6A006BCBBF /* RubbyDefinition.h */,
+				9489196B1524CC9000AB9968 /* BashParser.h */,
+				9489196C1524CC9000AB9968 /* BashParser.m */,
+				9489196F1524CCB300AB9968 /* BashDefinition.h */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -852,6 +977,35 @@
 			name = ZipInc;
 			sourceTree = "<group>";
 		};
+		944DD7C015277276000473BE /* Diff */ = {
+			isa = PBXGroup;
+			children = (
+				944DD7F2152778B9000473BE /* ifdef.c */,
+				944DD7EF15277877000473BE /* normal.c */,
+				944DD7EC15277845000473BE /* ed.c */,
+				944DD7E91527778E000473BE /* context.c */,
+				944DD7E615277729000473BE /* side.c */,
+				944DD7E3152776D5000473BE /* version.c */,
+				944DD7E015277625000473BE /* cmpbuf.c */,
+				944DD7DF15277618000473BE /* cmpbuf.h */,
+				944DD7DC152775FC000473BE /* analyze.c */,
+				944DD7D915277591000473BE /* dif_dir.c */,
+				944DD7D61527752D000473BE /* io.c */,
+				944DD7D315277502000473BE /* util.c */,
+				944DD7D015277479000473BE /* regex.c */,
+				944DD7CF1527746E000473BE /* regex.h */,
+				944DD7CE15277432000473BE /* system.h */,
+				944DD7CD152773F8000473BE /* diff_config.h */,
+				944DD7CC15277336000473BE /* fnmatch.h */,
+				944DD7C91527732C000473BE /* fnmatch.c */,
+				944DD7C61527731E000473BE /* getopt.c */,
+				944DD7C51527730D000473BE /* getopt.h */,
+				944DD7C4152772FC000473BE /* diff.h */,
+				944DD7C1152772EF000473BE /* diff.c */,
+			);
+			name = Diff;
+			sourceTree = "<group>";
+		};
 		9452BA2514DD7BF3003B88E5 /* Virtualization */ = {
 			isa = PBXGroup;
 			children = (
@@ -939,6 +1093,16 @@
 				941656FD1515C3C200838005 /* GitLogViewCongroller.m */,
 				941656FE1515C3C200838005 /* GitLogViewCongroller.xib */,
 				941657111516280200838005 /* GitLogTableCell.xib */,
+				940BE0DF1528CEF300CBAE18 /* GitDiffViewController.h */,
+				940BE0E01528CEF300CBAE18 /* GitDiffViewController.m */,
+				940BE0E11528CEF300CBAE18 /* GitDiffViewController.xib */,
+				940BE0ED1528E64600CBAE18 /* DiffFileListController.h */,
+				940BE0EE1528E64600CBAE18 /* DiffFileListController.m */,
+				940BE0EF1528E64600CBAE18 /* DiffFileListController.xib */,
+				94E6DB5E152C9EFF004DBD87 /* DiffInfoListViewController.h */,
+				94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */,
+				94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */,
+				94E6DB65152CBF41004DBD87 /* GidDiffTableCell.xib */,
 			);
 			name = Git;
 			sourceTree = "<group>";
@@ -1143,6 +1307,10 @@
 				943486E3150A42A500370AE3 /* Default-Portrait~ipad.png in Resources */,
 				941657011515C3C200838005 /* GitLogViewCongroller.xib in Resources */,
 				941657121516280200838005 /* GitLogTableCell.xib in Resources */,
+				940BE0E41528CEF300CBAE18 /* GitDiffViewController.xib in Resources */,
+				940BE0F21528E64600CBAE18 /* DiffFileListController.xib in Resources */,
+				94E6DB63152C9EFF004DBD87 /* DiffInfoListViewController.xib in Resources */,
+				94E6DB66152CBF41004DBD87 /* GidDiffTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1209,6 +1377,10 @@
 				943486E1150A3DA600370AE3 /* Default-Landscape~ipad.png in Resources */,
 				941657021515C3C200838005 /* GitLogViewCongroller.xib in Resources */,
 				941657131516280200838005 /* GitLogTableCell.xib in Resources */,
+				940BE0E51528CEF300CBAE18 /* GitDiffViewController.xib in Resources */,
+				940BE0F31528E64600CBAE18 /* DiffFileListController.xib in Resources */,
+				94E6DB64152C9EFF004DBD87 /* DiffInfoListViewController.xib in Resources */,
+				94E6DB67152CBF41004DBD87 /* GidDiffTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1279,6 +1451,30 @@
 				945428B414F2B51600353EC8 /* ProjectListController.m in Sources */,
 				94C8C68414FA57D60062750D /* ImagePreviewController.m in Sources */,
 				941656FF1515C3C200838005 /* GitLogViewCongroller.m in Sources */,
+				9497F3A3151A499D006BCBBF /* ObjectiveCParser.m in Sources */,
+				9497F3A8151B85C7006BCBBF /* CSharpParser.m in Sources */,
+				9497F3AD151B8EBA006BCBBF /* DelphiParser.m in Sources */,
+				9497F3B4151BA606006BCBBF /* PythonParser.m in Sources */,
+				9497F3CB151CEC4F006BCBBF /* RubbyParser.m in Sources */,
+				9489196D1524CC9000AB9968 /* BashParser.m in Sources */,
+				944DD7C2152772EF000473BE /* diff.c in Sources */,
+				944DD7C71527731E000473BE /* getopt.c in Sources */,
+				944DD7CA1527732C000473BE /* fnmatch.c in Sources */,
+				944DD7D115277479000473BE /* regex.c in Sources */,
+				944DD7D415277502000473BE /* util.c in Sources */,
+				944DD7D71527752D000473BE /* io.c in Sources */,
+				944DD7DA15277591000473BE /* dif_dir.c in Sources */,
+				944DD7DD152775FC000473BE /* analyze.c in Sources */,
+				944DD7E115277625000473BE /* cmpbuf.c in Sources */,
+				944DD7E4152776D5000473BE /* version.c in Sources */,
+				944DD7E715277729000473BE /* side.c in Sources */,
+				944DD7EA1527778E000473BE /* context.c in Sources */,
+				944DD7ED15277845000473BE /* ed.c in Sources */,
+				944DD7F015277877000473BE /* normal.c in Sources */,
+				944DD7F3152778B9000473BE /* ifdef.c in Sources */,
+				940BE0E21528CEF300CBAE18 /* GitDiffViewController.m in Sources */,
+				940BE0F01528E64600CBAE18 /* DiffFileListController.m in Sources */,
+				94E6DB61152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1346,6 +1542,30 @@
 				945428B514F2B51600353EC8 /* ProjectListController.m in Sources */,
 				94C8C68514FA57D60062750D /* ImagePreviewController.m in Sources */,
 				941657001515C3C200838005 /* GitLogViewCongroller.m in Sources */,
+				9497F3A4151A499D006BCBBF /* ObjectiveCParser.m in Sources */,
+				9497F3A9151B85C7006BCBBF /* CSharpParser.m in Sources */,
+				9497F3AE151B8EBA006BCBBF /* DelphiParser.m in Sources */,
+				9497F3B5151BA606006BCBBF /* PythonParser.m in Sources */,
+				9497F3CC151CEC4F006BCBBF /* RubbyParser.m in Sources */,
+				9489196E1524CC9000AB9968 /* BashParser.m in Sources */,
+				944DD7C3152772EF000473BE /* diff.c in Sources */,
+				944DD7C81527731E000473BE /* getopt.c in Sources */,
+				944DD7CB1527732C000473BE /* fnmatch.c in Sources */,
+				944DD7D215277479000473BE /* regex.c in Sources */,
+				944DD7D515277502000473BE /* util.c in Sources */,
+				944DD7D81527752D000473BE /* io.c in Sources */,
+				944DD7DB15277591000473BE /* dif_dir.c in Sources */,
+				944DD7DE152775FC000473BE /* analyze.c in Sources */,
+				944DD7E215277625000473BE /* cmpbuf.c in Sources */,
+				944DD7E5152776D5000473BE /* version.c in Sources */,
+				944DD7E815277729000473BE /* side.c in Sources */,
+				944DD7EB1527778E000473BE /* context.c in Sources */,
+				944DD7EE15277845000473BE /* ed.c in Sources */,
+				944DD7F115277877000473BE /* normal.c in Sources */,
+				944DD7F4152778B9000473BE /* ifdef.c in Sources */,
+				940BE0E31528CEF300CBAE18 /* GitDiffViewController.m in Sources */,
+				940BE0F11528E64600CBAE18 /* DiffFileListController.m in Sources */,
+				94E6DB62152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

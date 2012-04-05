@@ -52,8 +52,9 @@
     [self.window addSubview:self.splitViewController.view];
     [self.window makeKeyAndVisible];
     
-    MGSplitViewDividerStyle newStyle = ((self.splitViewController.dividerStyle == MGSplitViewDividerStyleThin) ? MGSplitViewDividerStylePaneSplitter : MGSplitViewDividerStyleThin);
-	[self.splitViewController setDividerStyle:newStyle animated:YES];
+    // do not display divider
+//    MGSplitViewDividerStyle newStyle = ((self.splitViewController.dividerStyle == MGSplitViewDividerStyleThin) ? MGSplitViewDividerStylePaneSplitter : MGSplitViewDividerStyleThin);
+//	[self.splitViewController setDividerStyle:newStyle animated:YES];
     return YES;
 }
 

@@ -24,6 +24,8 @@
 .keyword { color: KEYWRD; }\n\
 .other { color: -OTHER-; }\n\
 .operator { color: #663300; font-weight: bold; }\n\
+.system { color: #774499; }\n\
+.number { color: #aa5555; }\n\
 \
 body {\n\
 background:-BGCOL-;\n\
@@ -46,7 +48,7 @@ table.code tbody th {\n\
  background: #-BGCOL-;\n\
  color: #886;\n\
  font-weight: normal;\n\
- padding: 0 .5em;\n\
+ padding: 0 .2em;\n\
  text-align: right;\n\
  vertical-align: top;\n\
 }\n\
@@ -77,7 +79,7 @@ table.code td {\n\
 <table class=\"code\"><tbody>\
 "
 
-#define HTML_LINE_START @"<tr id=\"L%d\"><th><a href=\"#L%d\">%d</a></th><td> "
+#define HTML_LINE_START @"<tr id=\"L%d\"><th>%d</th><th><a href=\"lgz_fold__*&^\">▓</a></th><td>"
 
 #define HTML_LINK @"<a href=\"%@=%@\" class=\"%@\" style=\"text-decoration: none\">"
 #define HTML_LINK_END @"</a>"
@@ -100,13 +102,17 @@ table.code td {\n\
 
 #define HTML_OTHER_WORD @"<span class=\"other\" onmousedown=\"mousedown(this);\">"
 
+#define HTML_SYSTEM_START @"<span class=\"system\">"
+
 #define HTML_UNKNOWN_LINE @"<span class=\"other\">%@</span>"
+
+#define HTML_NUMBER_START @"<span class=\"number\">"
 
 #define HTML_SPAN_END @"</span>"
 
 #define HTML_ENTER @"\n"
 
-#define HTML_BLANK @"\n"
+#define HTML_BLANK @" "
 
 #define HTML_IMAGE @"<br><br><br><img src=\"%@\"/>"
 

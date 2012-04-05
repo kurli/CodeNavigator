@@ -1,5 +1,4 @@
 #import "CPlusPlusParser.h"
-#import "cscope.h"
 
 @implementation CPlusPlusParser
 
@@ -9,85 +8,12 @@
 	{
 		isCommentsNotEnded = NO;
         isStringNotEnded = NO;
-        keywordsArray = [NSArray arrayWithObjects: KEYWORD_OBJS];
+        
+        NSString* keywords = KEYWORD_CPP;
+        keywordsArray = [keywords componentsSeparatedByString:@" "];      
         preprocessorArray = [NSArray arrayWithObjects: PREPROCESSOR];
 	}
 	return self;
-}
-
--(void) parseLine: (NSString*) line lineNum:(int)lineNumber
-{
-	// if a blank line
-	if ( [line length] == 0 )
-    {
-		[self addBlankLine];
-		return;
-    }
-	
-	needParseLine = [line mutableCopy];
-	unichar charTemp;
-	NSRange range;
-	while( [needParseLine length] > 0 )
-	{
-		charTemp = [needParseLine characterAtIndex:0];
-		if ( charTemp == ' ' )
-		{
-			[self addString: @" " addEnter:NO];
-			range.location = 0;
-			range.length = 1;
-			[needParseLine deleteCharactersInRange:range];
-		}
-		else if( charTemp == '\t' )
-		{
-            [self addString: @"    " addEnter:NO];
-			range.location = 0;
-			range.length = 1;
-			[needParseLine deleteCharactersInRange:range];
-		}
-		else {
-			// check comments
-			if ( [self checkCommentsLine] == YES )
-			{
-				continue;
-			}
-			else
-			{
-				if ( [needParseLine length] == 0 )
-					break;
-			}
-			// check preprocessor
-			if ( [self checkPreprocessor: lineNumber] == YES )
-				continue;
-			else{
-				if ( [needParseLine length] == 0 )
-					break;
-			}
-			// check string
-            if ( [self checkString] == YES )
-				continue;
-            else
-			{
-                if ( [needParseLine length] == 0 )
-					break;
-			}
-            // check char
-            if ( [self checkChar] == YES )
-				continue;
-            else
-			{
-                if ( [needParseLine length] == 0 )
-					break;
-			}
-            // check keywords
-            if ( [self checkOthers: lineNumber] == YES )
-				continue;
-            else
-			{
-                if ( [needParseLine length] == 0 )
-					break;
-			}
-		}
-	}	
 }
 
 // return YES, if we need to restart parse
@@ -112,6 +38,8 @@
 			isCommentsNotEnded = NO;
 			NSRange range = {0, commentEndRange.location + commentEndRange.length};
 			[needParseLine deleteCharactersInRange: range];
+            
+            [self bracesEnded:currentParseLine andToken:COMMENTS_MULTI];
 			return YES;
 		}
 		else 
@@ -142,6 +70,7 @@
         }
 		else if( commentMultiStartRange.location == 0 )
         {
+            [self bracesStarted:currentParseLine andToken:COMMENTS_MULTI];
 			// it's comment multi line
 			[self commentStart];
 			// check whether comment line is only this line
@@ -162,6 +91,8 @@
 				[self addEnd];
 				NSRange range = {0, commentEndRange.location + commentEndRange.length};
 				[needParseLine deleteCharactersInRange: range];
+                [self bracesEnded:currentParseLine andToken:COMMENTS_MULTI];
+
 				return YES;
             }
         }
@@ -275,6 +206,12 @@
 	NSRange headerKeyword = [needParseLine rangeOfString: HEADER_KEYWORD];
     if ( [self checkHeader: headerKeyword] == YES )
 		return YES;
+    
+    // support import
+    headerKeyword = [needParseLine rangeOfString: HEADER_KEYWORD2];
+    if ( [self checkHeader: headerKeyword] == YES )
+		return YES;
+    
     // check other Preprocessors
     // get preprocessor end, we do not support "#  define"
     int index = [self getNextSpaceIndex:needParseLine];
@@ -482,6 +419,15 @@
 		word = [needParseLine substringToIndex: 1];
 		[self addString: word addEnter:NO];
 		[needParseLine deleteCharactersInRange: NSMakeRange(0, 1)];
+        
+        //fold support
+        if ([word compare:BRACE_START] == NSOrderedSame) {
+            [self bracesStarted:lineNumber andToken:BRACE_START];
+        }
+        else if ([word compare:BRACE_END] == NSOrderedSame)
+        {
+            [self bracesEnded:lineNumber andToken:BRACE_START];
+        }
 		return YES;
     }
 	
@@ -499,29 +445,54 @@
     }
     else
     {
-        [self otherWordStart];
-        [self addString:word addEnter:NO];
-        [self addEnd];
-        [needParseLine deleteCharactersInRange: NSMakeRange(0, index)];
-        return YES;
-        //NSLog(word);
-        /*
-        // check whether project defined
-        BOOL defined = [self isProjectDefinedWord:word];
-        if (defined == YES)
-        {
-            [self keywordStart];
+        // check whether is a number
+        if ([word rangeOfString:@"0x"].location == 0) {
+            for (index=2; index<[word length]; index++)
+            {
+                temp = [word characterAtIndex: index];
+                if ((temp >='0' && temp <='9') ||
+                    (temp >='A' && temp <= 'Z') ||
+                    (temp >= 'a' && temp <= 'z'))
+                {
+                    continue;
+                }
+                break;
+            }
+            word = [word substringToIndex:index];
+            [self numberStart];
             [self addString:word addEnter:NO];
             [self addEnd];
             [needParseLine deleteCharactersInRange: NSMakeRange(0, index)];
             return YES;
         }
-         */
+        BOOL foundNumber = NO;
+        int index2=0;
+        for (index2=0; index2<[word length]; index2++)
+        {
+            temp = [word characterAtIndex: index2];
+            if ((temp >='0' && temp <='9'))
+            {
+                foundNumber = YES;
+                continue;
+            }
+            break;
+        }
+        if ( foundNumber == YES ) {
+            word = [word substringToIndex:index2];
+            [self numberStart];
+            [self addString:word addEnter:NO];
+            [self addEnd];
+            [needParseLine deleteCharactersInRange: NSMakeRange(0, index2)];
+            return YES;
+        }
+        //end
+        
+        [self otherWordStart];
+        [self addString:word addEnter:NO];
+        [self addEnd];
+        [needParseLine deleteCharactersInRange: NSMakeRange(0, index)];
+        return YES;
     }
-	
-	// now word would be a function, variable, customized keyword(class, defination, typedef)
-	[self addString: word addEnter:NO];
-	[needParseLine deleteCharactersInRange: NSMakeRange(0, index)];
 	return YES;
 }
 
