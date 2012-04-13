@@ -54,6 +54,69 @@
     [self setMetaData:nil];
 }
 
+- (int) whetherExistInTheSelectionList:(NSString*)fileName andPath:(NSString*)path
+{
+    // check item is a folder
+    if (fileName == nil) {
+        for (int i = 0; i<[selectedArray count]; i++) {
+            SelectionItem* item = [selectedArray objectAtIndex:i];
+            //skip file item
+            if (item.fileName != nil) {
+                continue;
+            }
+            
+            //path name same
+            if ([path compare:item.path] == NSOrderedSame) {
+                return i;
+            }
+            
+            // path is in subfolder of item's path, we add it.
+            // We do it when receive data, not here
+            //            if ([path rangeOfString:item.path].location == 0) {
+            //                SelectionItem* item = [[SelectionItem alloc] init];
+            //                item.path = path;
+            //                item.fileName = fileName;
+            //                [selectedArray addObject:item];
+            //                return [selectedArray count] -1;
+            //            }
+        }
+        // path not found
+        return -1;
+    }
+    
+    //    int foundPathChecked = -1;
+    int foundFileExist = -1;
+    // check item is a file
+    for (int i = 0; i<[selectedArray count]; i++) {
+        SelectionItem* item = [selectedArray objectAtIndex:i];
+        if (item.fileName != nil && [path compare:item.path] == NSOrderedSame &&
+            [fileName compare:item.fileName] == NSOrderedSame) {
+            // foreach item is a file, and this item exist
+            foundFileExist = i;
+            break;
+        }
+        //        if (item.fileName == nil) {
+        //            // foreach item is a path
+        //            if ([item.path compare:path] == NSOrderedSame) {
+        //                foundPathChecked = i;
+        //            }
+        //        }
+    }
+    
+    if (foundFileExist != -1) {
+        return foundFileExist;
+    }
+    //    else if (foundPathChecked != -1) {
+    //        // This item not exist in the Array, but the path has been selected
+    //        SelectionItem* item = [[SelectionItem alloc] init];
+    //        item.path = path;
+    //        item.fileName = fileName;
+    //        [selectedArray addObject:item];
+    //        return [selectedArray count] -1;
+    //    }
+    return -1;
+}
+
 - (void) reloadWithMetaData:(id)_metaData
 {
     if (_metaData == nil) {
@@ -134,69 +197,6 @@
     [self.remoteIndicator setHidden:NO];
     [self.refreshButton setHidden:YES];
     [self.restClient loadMetadata:self.currentLocation];
-}
-
-- (int) whetherExistInTheSelectionList:(NSString*)fileName andPath:(NSString*)path
-{
-    // check item is a folder
-    if (fileName == nil) {
-        for (int i = 0; i<[selectedArray count]; i++) {
-            SelectionItem* item = [selectedArray objectAtIndex:i];
-            //skip file item
-            if (item.fileName != nil) {
-                continue;
-            }
-            
-            //path name same
-            if ([path compare:item.path] == NSOrderedSame) {
-                return i;
-            }
-            
-            // path is in subfolder of item's path, we add it.
-            // We do it when receive data, not here
-//            if ([path rangeOfString:item.path].location == 0) {
-//                SelectionItem* item = [[SelectionItem alloc] init];
-//                item.path = path;
-//                item.fileName = fileName;
-//                [selectedArray addObject:item];
-//                return [selectedArray count] -1;
-//            }
-        }
-        // path not found
-        return -1;
-    }
-    
-//    int foundPathChecked = -1;
-    int foundFileExist = -1;
-    // check item is a file
-    for (int i = 0; i<[selectedArray count]; i++) {
-        SelectionItem* item = [selectedArray objectAtIndex:i];
-        if (item.fileName != nil && [path compare:item.path] == NSOrderedSame &&
-            [fileName compare:item.fileName] == NSOrderedSame) {
-            // foreach item is a file, and this item exist
-            foundFileExist = i;
-            break;
-        }
-//        if (item.fileName == nil) {
-//            // foreach item is a path
-//            if ([item.path compare:path] == NSOrderedSame) {
-//                foundPathChecked = i;
-//            }
-//        }
-    }
-    
-    if (foundFileExist != -1) {
-        return foundFileExist;
-    }
-//    else if (foundPathChecked != -1) {
-//        // This item not exist in the Array, but the path has been selected
-//        SelectionItem* item = [[SelectionItem alloc] init];
-//        item.path = path;
-//        item.fileName = fileName;
-//        [selectedArray addObject:item];
-//        return [selectedArray count] -1;
-//    }
-    return -1;
 }
 
 - (void) deleteFolderInArray:(NSString*)path

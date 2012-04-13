@@ -88,6 +88,7 @@ static Utils *static_utils;
 @synthesize colorScheme;
 @synthesize masterViewController;
 @synthesize cscopeSearchAlertView;
+@synthesize dropBoxViewController;
 
 +(Utils*)getInstance
 {
@@ -470,6 +471,7 @@ static Utils *static_utils;
 
 -(void) dealloc
 {
+    [self setDropBoxViewController:nil];
     [self setDetailViewController:nil];
     [self setSplitViewController:nil];
     [self setMasterViewController:nil];

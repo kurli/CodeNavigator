@@ -20,6 +20,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 @class DetailViewController;
 @class AnalyzeInfoController;
 @class MasterViewController;
+@class DropBoxViewController;
 
 #define MAX_HISTORY_STACK 20
 
@@ -123,6 +124,8 @@ typedef enum _AlertConfirmMode{
 @property (strong, nonatomic) NSString* storedAnalyzePath;
 
 @property (strong, nonatomic) ColorSchema* colorScheme;
+
+@property (strong, nonatomic) DropBoxViewController* dropBoxViewController;
 
 +(Utils*)getInstance;
 

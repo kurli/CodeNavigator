@@ -68,6 +68,11 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void) setSyncFinishedText:(NSString*)text2
+{
+    [self.syncFinishedLabel setText:text2];
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -213,11 +218,6 @@
 	[syncErrorTextView scrollRangeToVisible:range];
 }
 
-- (void) setSyncFinishedText:(NSString*)text2
-{
-    [self.syncFinishedLabel setText:text2];
-}
-
 - (void) authentication
 {
     self.dbSession =
@@ -243,6 +243,31 @@
     [retryButton setHidden:NO];
 }
 
+-(BOOL) syncNextFile
+{
+    if ([self.pendingDownloadArray count] == 0) {
+        [self downloadFinished];
+        return NO;
+    }
+    SelectionItem* item = [pendingDownloadArray lastObject];
+    if (item.fileName == nil) {
+        NSLog(@"error");
+        return NO;
+    }
+    NSString* localPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+    localPath = [localPath stringByAppendingPathComponent:item.path];
+    localPath = [localPath stringByAppendingPathComponent:item.fileName];
+    NSString* remotePath = [item.path stringByAppendingPathComponent:item.fileName];
+    [pendingDownloadArray removeLastObject];
+    NSString* text = [NSString stringWithFormat:@"----Load File:\n%@\n", remotePath];
+    [self setSyncStatusText:text];
+    NSError* error;
+    [[NSFileManager defaultManager] createDirectoryAtPath:[localPath stringByDeletingLastPathComponent]     withIntermediateDirectories:YES attributes:nil error:&error];
+    [self.restClient loadFile:remotePath intoPath:localPath];
+    self.currentLoadFile = remotePath;
+    return YES;
+}
+
 -(BOOL) syncNextPath
 {
     if ([self.pendingDownloadArray count] == 0) {
@@ -266,31 +291,6 @@
         path = item.path;
     }
     self.currentLoadFile = path;
-    return YES;
-}
-
--(BOOL) syncNextFile
-{
-    if ([self.pendingDownloadArray count] == 0) {
-        [self downloadFinished];
-        return NO;
-    }
-    SelectionItem* item = [pendingDownloadArray lastObject];
-    if (item.fileName == nil) {
-        NSLog(@"error");
-        return NO;
-    }
-    NSString* localPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
-    localPath = [localPath stringByAppendingPathComponent:item.path];
-    localPath = [localPath stringByAppendingPathComponent:item.fileName];
-    NSString* remotePath = [item.path stringByAppendingPathComponent:item.fileName];
-    [pendingDownloadArray removeLastObject];
-    NSString* text = [NSString stringWithFormat:@"----Load File:\n%@\n", remotePath];
-    [self setSyncStatusText:text];
-    NSError* error;
-    [[NSFileManager defaultManager] createDirectoryAtPath:[localPath stringByDeletingLastPathComponent]     withIntermediateDirectories:YES attributes:nil error:&error];
-    [self.restClient loadFile:remotePath intoPath:localPath];
-    self.currentLoadFile = remotePath;
     return YES;
 }
 
@@ -621,6 +621,7 @@
     NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
     masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
     [masterViewController reloadData];
+    [[Utils getInstance] setDropBoxViewController:nil];
 }
 
 #pragma tableView
