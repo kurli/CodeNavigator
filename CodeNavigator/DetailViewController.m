@@ -42,6 +42,8 @@
 @synthesize webViewSegmentController = _webViewSegmentController;
 @synthesize activeMark = _activeMark;
 @synthesize virtualizeButton;
+@synthesize hideMasterViewButton;
+@synthesize splitWebViewButton;
 @synthesize gotoLineViewController = _gotoLineViewController;
 @synthesize gotoLinePopover = _gotoLinePopover;
 @synthesize filePathInfopopover;
@@ -79,6 +81,7 @@
     jsHistoryModeScrollY = 0;
     shownToolBar = YES;
     self.activeWebView = self.webView;
+    isFirstDisplay = YES;
     [super viewDidLoad];
 }
 
@@ -124,6 +127,8 @@
     [self setActiveMark:nil];
     [self setVirtualizeButton:nil];
     [self setDivider:nil];
+    [self setHideMasterViewButton:nil];
+    [self setSplitWebViewButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -136,11 +141,15 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSString* help = [NSHomeDirectory() stringByAppendingString:@"/Documents/Projects/Help.html"];
-    NSError *error;
-    NSStringEncoding encoding = NSUTF8StringEncoding;
-    NSString* html = [NSString stringWithContentsOfFile: help usedEncoding:&encoding error: &error];
-    [self setTitle:@"Help.html" andPath:help andContent:html];
+    // Only show help html in the first time
+    if (isFirstDisplay) {
+        NSString* help = [NSHomeDirectory() stringByAppendingString:@"/Documents/Projects/Help.html"];
+        NSError *error;
+        NSStringEncoding encoding = NSUTF8StringEncoding;
+        NSString* html = [NSString stringWithContentsOfFile: help usedEncoding:&encoding error: &error];
+        [self setTitle:@"Help.html" andPath:help andContent:html];
+        isFirstDisplay = NO;
+    }
     [super viewWillAppear:animated];
 }
 
@@ -234,11 +243,11 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willBeginBannerViewActionNotification:) name:BannerViewActionWillBegin object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishBannerViewActionNotification:) name:BannerViewActionDidFinish object:nil];
         _bannerCounter = 0;
+        isVirtualizeDisplayed = NO;
     }
     self.upHistoryController = [[HistoryController alloc] init];
     self.downHistoryController = [[HistoryController alloc] init];
     self.historyController = self.upHistoryController;
-    isVirtualizeDisplayed = NO;
     return self;
 }
 
@@ -747,6 +756,7 @@
 }
 
 - (IBAction)hideMasterViewClicked:(id)sender {
+    UIBarButtonItem* toolBar = (UIBarButtonItem*)sender;
     CGRect frameTop = self.topToolBar.frame;
     CGRect frameBottom = self.bottomToolBar.frame;
     [[Utils getInstance].splitViewController toggleMasterView:nil];
@@ -754,9 +764,11 @@
     {
         frameTop.origin.x = 74;
         frameBottom.origin.x = 74;
+        [toolBar setImage:[UIImage imageNamed:@"hide_masterview.png"]];
     }
     else
     {
+        [toolBar setImage:[UIImage imageNamed:@"show_masterview.png"]];
         UIDeviceOrientation  orientation = [UIDevice currentDevice].orientation;
         if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) {
             frameTop.origin.x = 74;
@@ -890,7 +902,7 @@
         [self.activeMark setHidden:YES];
         [UIView commitAnimations];
     }
-    
+    [self.splitWebViewButton setTitle:@"日"];
     self.virtualizeViewController = [[VirtualizeViewController alloc] init];
     [self showVirtualizeView];
     isVirtualizeDisplayed = YES;
@@ -975,6 +987,15 @@
 - (IBAction)sourceSplitClicked:(id)sender {
     if (isVirtualizeDisplayed == YES)
         return;
+    // change bar button item
+    if (self.secondWebView.frame.size.height == 10)
+    {
+        [self.splitWebViewButton setTitle:@"口"];
+    }
+    else {
+        [self.splitWebViewButton setTitle:@"日"];
+    }
+    
     [UIView beginAnimations:@"WebViewAnimate"context:nil];
     [UIView setAnimationDuration:0.30];
     [UIView setAnimationDelegate:self];
@@ -999,14 +1020,16 @@
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
 {
-    barButtonItem.title = NSLocalizedString(@"Project", @"Project");
-    [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
+    //barButtonItem.title = NSLocalizedString(@"Project", @"Project");
+    //[self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
+    [hideMasterViewButton setImage:[UIImage imageNamed:@"show_masterview.png"]];
 }
 
 - (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
-    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
+    //[self.navigationItem setLeftBarButtonItem:nil animated:YES];
+    [hideMasterViewButton setImage:[UIImage imageNamed:@"hide_masterview.png"]];
 }
 
 #pragma mark - WebView Delegate
@@ -1091,7 +1114,7 @@
         }
         return NO;
     }
-    array = [tmp componentsSeparatedByString:@"lgz_fold"];
+    array = [tmp componentsSeparatedByString:@"lgz_fold_"];
     if ([array count] == 2)
     {
         NSString* lineStr = [array objectAtIndex:1];

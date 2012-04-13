@@ -48,5 +48,8 @@
 - (IBAction)analyzeButtonClicked:(id)sender;
 
 - (IBAction)gitClicked:(id)sender;
+
+- (IBAction)dropBoxClicked:(id)sender;
+
 @end
 

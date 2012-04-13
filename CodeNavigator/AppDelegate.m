@@ -11,6 +11,8 @@
 #import "DetailViewController.h"
 #import "Utils.h"
 #import "MGSplitViewController.h"
+#import <DropboxSDK/DropboxSDK.h>
+#import "DropBoxViewController.h"
 
 @implementation AppDelegate
 {
@@ -95,6 +97,20 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+}
+
+#pragma mark DropBox support
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    if ([[DBSession sharedSession] handleOpenURL:url]) {
+        if ([[DBSession sharedSession] isLinked]) {
+            [[Utils getInstance].dropBoxViewController loginSucceed];
+            // At this point you can start making API calls
+        }
+        return YES;
+    }
+    // Add whatever other url handling code your app requires here
+    return NO;
 }
 
 @end

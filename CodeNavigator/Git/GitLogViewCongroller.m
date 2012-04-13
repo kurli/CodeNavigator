@@ -36,6 +36,13 @@
 @synthesize neObj;
 @synthesize oldObj;
 
+-(void) dealloc
+{
+    [self setPath:nil];
+    [self setNeObj:nil];
+    [self setOldObj:nil];
+}
+
 @end
 
 @implementation GitLogViewCongroller
@@ -70,6 +77,11 @@
 {
     [self setRepo:nil];
     [self setCommitsArray:nil];
+    [self.pendingDiffTree removeAllObjects];
+    [self setPendingDiffTree:nil];
+    [self setTableView:nil];
+    [self.diffFileArray removeAllObjects];
+    [self setDiffFileArray:nil];
 }
 
 #pragma mark - View lifecycle
@@ -82,7 +94,13 @@
 
 - (void)viewDidUnload
 {
+    //[self setRepo:nil];
+    //[self setCommitsArray:nil];
+    //[self.pendingDiffTree removeAllObjects];
+    //[self setPendingDiffTree:nil];
     [self setTableView:nil];
+    //[self.diffFileArray removeAllObjects];
+    //[self setDiffFileArray:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -294,12 +312,20 @@ int gitTreeDiffCallback(const git_tree_diff_data *ptr, void *data)
     cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"GitLogTableCell" owner:self options:nil] lastObject];
+        [cell setValue:identifier forKey:@"reuseIdentifier"];
         UIButton* detailButton = (UIButton*)[cell viewWithTag:DETAIL_BUTTON_TAG];
         [detailButton addTarget:self action:@selector(detailButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     int index = indexPath.row;
     if (index > [self.commitsArray count])
         return cell;
+    UIButton* detailButton = (UIButton*)[cell viewWithTag:DETAIL_BUTTON_TAG];
+    if (selected == index) {
+        [detailButton setHidden:NO];
+    } else {
+        [detailButton setHidden:YES];
+    }
+    
     GTCommit* commit = [self.commitsArray objectAtIndex:index];
     
     // set date
@@ -326,7 +352,9 @@ int gitTreeDiffCallback(const git_tree_diff_data *ptr, void *data)
     }
     else
     {
-        [summaryView setHidden:YES];
+        [summaryView setHidden:NO];
+        NSString* detail = [NSString stringWithFormat:@"%@", commit.messageSummary];
+        [summaryView setText:detail];
         [detailView setHidden:NO];
         NSMutableString* detail2 = [[NSMutableString alloc] initWithString:@""];
         GTTreeEntry* entry;

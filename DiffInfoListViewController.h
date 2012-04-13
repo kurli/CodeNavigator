@@ -12,8 +12,8 @@
 
 @interface DiffInfoListViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) NSMutableArray* diffAnalyzeList;
+@property (nonatomic, unsafe_unretained) NSMutableArray* diffAnalyzeList;
 
-@property (nonatomic, strong) GitDiffViewController* gitDiffViewController;
+@property (nonatomic, unsafe_unretained) GitDiffViewController* gitDiffViewController;
 
 @end

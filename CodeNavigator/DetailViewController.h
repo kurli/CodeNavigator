@@ -44,6 +44,7 @@ typedef enum _JSState {
     //end
     
     BOOL isVirtualizeDisplayed;
+    BOOL isFirstDisplay;
 }
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *navigateBarButtonItem;
 
@@ -120,6 +121,10 @@ typedef enum _JSState {
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *activeMark;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *virtualizeButton;
+
+@property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *hideMasterViewButton;
+
+@property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *splitWebViewButton;
 
 - (IBAction)webViewSegmentChanged:(id)sender;
 

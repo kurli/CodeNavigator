@@ -155,6 +155,7 @@
         if (cell == nil)
         {
             cell = [[[NSBundle mainBundle] loadNibNamed:@"ResultTableCellView" owner:self options:nil] lastObject];
+            [cell setValue:elementCellIdentifier forKey:@"reuseIdentifier"];
             addButton = (UIButton*)[cell viewWithTag:123];
             [addButton addTarget:self action:@selector(addButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         }

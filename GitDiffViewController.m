@@ -39,14 +39,6 @@ typedef enum _changeType
     return self;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -61,13 +53,26 @@ typedef enum _changeType
     [self setCurrentDisplayIndex:0];
 }
 
+- (void)dealloc
+{
+    //[self.diffFileArray removeAllObjects];
+    [self setDiffFileArray:nil];
+    [self.diffAnalyzeArray removeAllObjects];
+    [self setDiffAnalyzeArray:nil];
+    [self.webView loadHTMLString:@"" baseURL:nil];
+    [self setWebView:nil];
+    [self setPopOverController:nil];
+}
+
 - (void)viewDidUnload
 {
-    [self setDiffFileArray:nil];
-    [self setPopOverController:nil];
-    [self.diffAnalyzeArray removeAllObjects];
-    [self setDiffFileArray:nil];
+    //[self.diffFileArray removeAllObjects];
+    //[self setDiffFileArray:nil];
+    //[self.diffAnalyzeArray removeAllObjects];
+    //[self setDiffAnalyzeArray:nil];
     [self setWebView:nil];
+    [self.popOverController dismissPopoverAnimated:YES];
+    [self setPopOverController:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

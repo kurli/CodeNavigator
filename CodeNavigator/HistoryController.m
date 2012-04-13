@@ -23,8 +23,13 @@
     }
     else
     {
-        while (index != [historyStack count]-1) {
+        while (index < [historyStack count]-1) {
             [historyStack removeLastObject];
+        }
+        
+        NSString* currentUrl = [historyStack lastObject];
+        if ([currentUrl compare:[url stringByAppendingString:@"::0"]] == NSOrderedSame) {
+            return;
         }
 
         [historyStack addObject:url];

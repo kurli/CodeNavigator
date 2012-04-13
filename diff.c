@@ -306,6 +306,8 @@ _diff (argv)
   //lgz
     //exit (val);
     //lgz
+    free(switch_string);
+    switch_string = 0;
   return val;
 }
 

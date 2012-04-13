@@ -12,6 +12,7 @@
 #import "WebServiceController.h"
 #import "cscope.h"
 #import "GitLogViewCongroller.h"
+#import "DropBoxViewController.h"
 
 @implementation MasterViewController
 
@@ -120,7 +121,7 @@
 
 - (void)viewDidUnload
 {
-    [self setCurrentLocation:nil];
+    //[self setCurrentLocation:nil];
     [self.currentFiles removeAllObjects];
     [self setCurrentProjectPath:nil];
     [self.currentDirectories removeAllObjects];
@@ -488,6 +489,13 @@
     GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewCongroller" bundle:[NSBundle mainBundle]];
     [gitlogView gitLogForProject: self.currentProjectPath];
     [gitlogView showModualView];
+}
+
+- (IBAction)dropBoxClicked:(id)sender {
+    DropBoxViewController* dropBoxViewController = [[DropBoxViewController alloc] initWithNibName:@"DropBoxViewController" bundle:[NSBundle mainBundle]];
+    [[Utils getInstance] setDropBoxViewController:dropBoxViewController];
+    [dropBoxViewController showModualView];
+    dropBoxViewController = nil;
 }
 
 #ifdef LITE_VERSION

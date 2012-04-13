@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1280</int>
+		<int key="IBDocument.SystemTarget">1296</int>
 		<string key="IBDocument.SystemVersion">11D50b</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
 		<string key="IBDocument.AppKitVersion">1138.32</string>
 		<string key="IBDocument.HIToolboxVersion">568.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">933</string>
+			<string key="NS.object.0">1181</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -4539,7 +4539,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<string key="NSFrame">{{74, 704}, {600, 44}}</string>
 						<reference key="NSSuperview" ref="647120888"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:372</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -4607,7 +4606,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<object class="IBUISegmentedControl" id="495588432">
 								<reference key="NSNextResponder" ref="31447470"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{59, 7}, {84, 30}}</string>
+								<string key="NSFrame">{{57, 7}, {84, 30}}</string>
 								<reference key="NSSuperview" ref="31447470"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="119227692"/>
@@ -4647,7 +4646,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<object class="IBUISegmentedControl" id="119227692">
 								<reference key="NSNextResponder" ref="31447470"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{452, 7}, {84, 30}}</string>
+								<string key="NSFrame">{{450, 7}, {84, 30}}</string>
 								<reference key="NSSuperview" ref="31447470"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="487344336"/>
@@ -4691,8 +4690,12 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<int key="IBUIBarStyle">2</int>
 						<array class="NSMutableArray" key="IBUIItems">
 							<object class="IBUIBarButtonItem" id="722304279">
-								<string key="IBUITitle"> ⿰  </string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">hide_masterview.png</string>
+								</object>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<float key="IBUIWidth">35</float>
 								<reference key="IBUIToolbar" ref="31447470"/>
 							</object>
 							<object class="IBUIBarButtonItem" id="304330403">
@@ -4813,7 +4816,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<integer value="1"/>
 							<integer value="3"/>
 						</array>
-						<array class="NSMutableArray" key="dict.values">
+						<array key="dict.values">
 							<string>{768, 1024}</string>
 							<string>{1024, 768}</string>
 						</array>
@@ -4945,6 +4948,22 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<reference key="destination" ref="1031476914"/>
 					</object>
 					<int key="connectionID">392</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">hideMasterViewButton</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="722304279"/>
+					</object>
+					<int key="connectionID">393</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">splitWebViewButton</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="248903548"/>
+					</object>
+					<int key="connectionID">394</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -5324,7 +5343,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">392</int>
+			<int key="maxID">394</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5422,10 +5441,12 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<string key="countTextField">UITextField</string>
 						<string key="divider">UILabel</string>
 						<string key="gotoHighlightBar">UISegmentedControl</string>
+						<string key="hideMasterViewButton">UIBarButtonItem</string>
 						<string key="historyBar">UISegmentedControl</string>
 						<string key="navigateBarButtonItem">UIBarButtonItem</string>
 						<string key="resultBarButton">UIBarButtonItem</string>
 						<string key="secondWebView">UIWebView</string>
+						<string key="splitWebViewButton">UIBarButtonItem</string>
 						<string key="titleTextField">UIBarButtonItem</string>
 						<string key="topToolBar">UIToolbar</string>
 						<string key="virtualizeButton">UIBarButtonItem</string>
@@ -5457,6 +5478,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<string key="name">gotoHighlightBar</string>
 							<string key="candidateClassName">UISegmentedControl</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="hideMasterViewButton">
+							<string key="name">hideMasterViewButton</string>
+							<string key="candidateClassName">UIBarButtonItem</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="historyBar">
 							<string key="name">historyBar</string>
 							<string key="candidateClassName">UISegmentedControl</string>
@@ -5472,6 +5497,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<object class="IBToOneOutletInfo" key="secondWebView">
 							<string key="name">secondWebView</string>
 							<string key="candidateClassName">UIWebView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="splitWebViewButton">
+							<string key="name">splitWebViewButton</string>
+							<string key="candidateClassName">UIBarButtonItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="titleTextField">
 							<string key="name">titleTextField</string>
@@ -5503,14 +5532,19 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
+		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
+			<real value="1296" key="NS.object.0"/>
+		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="back.png">{40, 43}</string>
 			<string key="bookmark.png">{20, 20}</string>
 			<string key="forward.png">{40, 43}</string>
+			<string key="hide_masterview.png">{15, 22}</string>
 			<string key="settings.png">{16, 16}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">933</string>
+		<string key="IBCocoaTouchPluginVersion">1181</string>
 	</data>
 </archive>

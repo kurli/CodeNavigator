@@ -40,7 +40,7 @@
 
 - (void)viewDidUnload
 {
-    [self setDetailViewController:nil];
+    //[self setDetailViewController:nil];
     [self setTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.

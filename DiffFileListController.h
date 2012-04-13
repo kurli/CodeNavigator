@@ -11,8 +11,8 @@
 
 @interface DiffFileListController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) NSMutableArray* diffFileArray;
+@property (nonatomic, unsafe_unretained) NSMutableArray* diffFileArray;
 
-@property (nonatomic, assign) GitDiffViewController* gitDiffViewController;
+@property (nonatomic, unsafe_unretained) GitDiffViewController* gitDiffViewController;
 
 @end

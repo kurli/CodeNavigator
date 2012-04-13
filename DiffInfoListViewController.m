@@ -38,10 +38,16 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)dealloc
+{
+    [self setDiffAnalyzeList:nil];
+    [self setGitDiffViewController:nil];
+}
+
 - (void)viewDidUnload
 {
-    [self setGitDiffViewController:nil];
-    [self setDiffAnalyzeList:nil];
+    //[self setDiffAnalyzeList:nil];
+    //[self setGitDiffViewController:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
