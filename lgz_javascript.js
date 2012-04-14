@@ -65,6 +65,28 @@ function elmYPosition(eID) {
     } return y;
 }
 
+function highlight_keyword_by_lines(lines, s)
+{
+    // input as "L0,L1,L2..."
+    var lineArray = lines.split(",");
+    var i;
+    var lineID;
+    var obj;
+    var curY = currentYPosition();
+    var returnVal = -1;
+    for (i=0; i<lineArray.length; i++) {
+        lineID = lineArray[i];
+        highlight_this_line_keyword(lineID, s);
+        obj = document.getElementById(lineID);
+        if (returnVal == -1)
+        {
+             if (curY <= elmYPosition(lineID))
+                 returnVal = i;
+        }
+    }
+    return returnVal;
+}
+
 function smoothScrollToPosition(stopPosition)
 {
     var startY = currentYPosition();

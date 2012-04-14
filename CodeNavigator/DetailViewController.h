@@ -34,7 +34,6 @@ typedef enum _JSState {
 @interface DetailViewController : UIViewController <UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MGSplitViewControllerDelegate>
 {
     int currentSearchFocusLine;
-    int searchLineTotal;
     BOOL shownToolBar;
     
     //JSState related
@@ -58,7 +57,10 @@ typedef enum _JSState {
 
 @property (unsafe_unretained, nonatomic) IBOutlet UISegmentedControl *historyBar;
 
+// search support
 @property (strong, nonatomic) NSString *searchWord;
+
+@property (strong, nonatomic) NSArray* highlightLineArray;
 
 @property (unsafe_unretained, nonatomic) HistoryController* historyController;
 
@@ -128,7 +130,7 @@ typedef enum _JSState {
 
 - (IBAction)webViewSegmentChanged:(id)sender;
 
-- (void) setCurrentSearchFocusLine:(int)line andTotal:(int)total;
+- (void) setCurrentSearchFocusLine:(int)line;
 
 - (void) setTitle: (NSString*) title andPath:(NSString*)path andContent:(NSString*) content;
 

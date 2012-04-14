@@ -16,6 +16,9 @@
 #import "PercentViewController.h"
 #import "VirtualizeViewController.h"
 
+#define TOOLBAR_X_MASTER_SHOW 55
+#define TOOLBAR_X_MASTER_HIDE 208
+
 @implementation DetailViewController
 {
     int _bannerCounter;
@@ -62,6 +65,7 @@
 @synthesize upHistoryController;
 @synthesize downHistoryController;
 @synthesize virtualizeViewController;
+@synthesize highlightLineArray;
 
 #pragma mark - Managing the detail item
 
@@ -87,6 +91,14 @@
 
 - (void)viewDidUnload
 {
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self setVirtualizeViewController:nil];
     [self setUpHistoryController:nil];
     [self setDownHistoryController:nil];
@@ -102,6 +114,7 @@
     [self.historyController setHistoryStack:nil];
     [self setHistoryController:nil];
     [self setSearchWord:nil];
+    [self setHighlightLineArray:nil];
     [self setHistoryBar:nil];
     [self setCodeNavigationController:nil];
     [self setCodeNavigationPopover:nil];
@@ -129,14 +142,6 @@
     [self setDivider:nil];
     [self setHideMasterViewButton:nil];
     [self setSplitWebViewButton:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (void) dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -192,19 +197,19 @@
     CGRect frameBottom = self.bottomToolBar.frame;
     if ([[Utils getInstance].splitViewController isShowingMaster] == YES)
     {
-        frameTop.origin.x = 74;
-        frameBottom.origin.x = 74;
+        frameTop.origin.x = TOOLBAR_X_MASTER_SHOW;
+        frameBottom.origin.x = TOOLBAR_X_MASTER_SHOW;
     }
     else
     {
         UIDeviceOrientation  orientation = [UIDevice currentDevice].orientation;
         if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) {
-            frameTop.origin.x = 74;
-            frameBottom.origin.x = 74;
+            frameTop.origin.x = TOOLBAR_X_MASTER_SHOW;
+            frameBottom.origin.x = TOOLBAR_X_MASTER_SHOW;
         }
         else {
-            frameTop.origin.x = 212;
-            frameBottom.origin.x = 212;
+            frameTop.origin.x = TOOLBAR_X_MASTER_HIDE;
+            frameBottom.origin.x = TOOLBAR_X_MASTER_HIDE;
         }
     }
     [UIView beginAnimations:@"ToolBarPosX"context:nil];         
@@ -558,10 +563,9 @@
     }
 }
 
--(void) setCurrentSearchFocusLine:(int)line andTotal:(int)total
+-(void) setCurrentSearchFocusLine:(int)line
 {
     currentSearchFocusLine = line;
-    searchLineTotal = total;
 }
 
 -(int) getCurrentScrollLocation
@@ -762,8 +766,8 @@
     [[Utils getInstance].splitViewController toggleMasterView:nil];
     if ([[Utils getInstance].splitViewController isShowingMaster] == YES)
     {
-        frameTop.origin.x = 74;
-        frameBottom.origin.x = 74;
+        frameTop.origin.x = TOOLBAR_X_MASTER_SHOW;
+        frameBottom.origin.x = TOOLBAR_X_MASTER_SHOW;
         [toolBar setImage:[UIImage imageNamed:@"hide_masterview.png"]];
     }
     else
@@ -771,12 +775,12 @@
         [toolBar setImage:[UIImage imageNamed:@"show_masterview.png"]];
         UIDeviceOrientation  orientation = [UIDevice currentDevice].orientation;
         if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) {
-            frameTop.origin.x = 74;
-            frameBottom.origin.x = 74;
+            frameTop.origin.x = TOOLBAR_X_MASTER_SHOW;
+            frameBottom.origin.x = TOOLBAR_X_MASTER_SHOW;
         }
         else {
-            frameTop.origin.x = 212;
-            frameBottom.origin.x = 212;
+            frameTop.origin.x = TOOLBAR_X_MASTER_HIDE;
+            frameBottom.origin.x = TOOLBAR_X_MASTER_HIDE;
         }
     }
     [UIView beginAnimations:@"ToolBarPosX"context:nil];         
@@ -809,20 +813,35 @@
     if (currentSearchFocusLine == 0)
         return;
     currentSearchFocusLine--;
-    NSString* js = [NSString stringWithFormat:@"gotoLine(%d)", currentSearchFocusLine];
+    if (currentSearchFocusLine >= [highlightLineArray count]) {
+        return;
+    }
+    int line = [[highlightLineArray objectAtIndex:currentSearchFocusLine] intValue];
+    line -= 8;
+    if (line <= 0) {
+        line = 1;
+    }
+    NSString* js = [NSString stringWithFormat:@"smoothScroll('L%d')", line];
     [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
-    NSString* show = [NSString stringWithFormat:@"%d/%d", currentSearchFocusLine, searchLineTotal];
-    [self.countTextField setText:show];
+//    NSString* show = [NSString stringWithFormat:@"%d/%d", currentSearchFocusLine, searchLineTotal];
+//    [self.countTextField setText:show];
 }
 
 - (void)downSelectButton {
-    if (currentSearchFocusLine == searchLineTotal-1)
-        return;
     currentSearchFocusLine++;
-    NSString* js = [NSString stringWithFormat:@"gotoLine(%d)", currentSearchFocusLine];
+    if (currentSearchFocusLine >= [highlightLineArray count]) {
+        currentSearchFocusLine-- ;
+        return;
+    }
+    int line = [[highlightLineArray objectAtIndex:currentSearchFocusLine] intValue];
+    line -= 8;
+    if (line <= 0) {
+        line = 1;
+    }
+    NSString* js = [NSString stringWithFormat:@"smoothScroll('L%d')", line];
     [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
-    NSString* show = [NSString stringWithFormat:@"%d/%d", currentSearchFocusLine, searchLineTotal];
-    [self.countTextField setText:show];
+//    NSString* show = [NSString stringWithFormat:@"%d/%d", currentSearchFocusLine, searchLineTotal];
+//    [self.countTextField setText:show];
 }
 
 - (IBAction)gotoHighlight:(id)sender {
