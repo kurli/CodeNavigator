@@ -346,6 +346,11 @@
 {
     if (isSyncInProgress) {
         if (progress == 1) {
+            //delete local display file
+            NSError* error;
+            NSString* displayFile = [[Utils getInstance] getDisplayPath:destPath];
+            [[NSFileManager defaultManager] removeItemAtPath:displayFile error:&error];
+            
             destPath = [[Utils getInstance] getPathFromProject:destPath];
             NSString* text = [NSString stringWithFormat:@"%@", destPath];
             [self setSyncFinishedText:text];
@@ -556,6 +561,20 @@
     [self.loadProgressView setProgress:0];
     [self.syncingIndicator setHidden:NO];
     [self.syncingIndicator startAnimating];
+    
+    //delete file list
+    SelectionItem* item = [pendingDownloadArray objectAtIndex:0];
+    NSArray* array = [item.path componentsSeparatedByString:@"/"];
+    if ([array count] < 2) {
+        return;
+    }
+    
+    NSString* localPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+    localPath = [localPath stringByAppendingFormat:@"/%@", [array objectAtIndex:1]];
+
+    NSString* databaseFile = [localPath stringByAppendingPathComponent:@"db_files.lgz_proj_files"];
+    NSError* error;
+    [[NSFileManager defaultManager] removeItemAtPath:databaseFile error:&error];
     [self syncNextPath];
 }
 
