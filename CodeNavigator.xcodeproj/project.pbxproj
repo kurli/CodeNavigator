@@ -63,8 +63,6 @@
 		9424666C150383C2001701C4 /* mmFile.png in Resources */ = {isa = PBXBuildFile; fileRef = 94246655150383C2001701C4 /* mmFile.png */; };
 		9424666D150383C2001701C4 /* sFile.png in Resources */ = {isa = PBXBuildFile; fileRef = 94246656150383C2001701C4 /* sFile.png */; };
 		9424666E150383C2001701C4 /* sFile.png in Resources */ = {isa = PBXBuildFile; fileRef = 94246656150383C2001701C4 /* sFile.png */; };
-		9429000214D4E16E002793BD /* PercentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9429000014D4E16E002793BD /* PercentViewController.m */; };
-		9429000314D4E16E002793BD /* PercentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9429000014D4E16E002793BD /* PercentViewController.m */; };
 		9429000414D4E16E002793BD /* PercentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9429000114D4E16E002793BD /* PercentViewController.xib */; };
 		9429000514D4E16E002793BD /* PercentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9429000114D4E16E002793BD /* PercentViewController.xib */; };
 		94291E6014A9FB4A00E44221 /* AnalyzeInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94291E5E14A9FB4A00E44221 /* AnalyzeInfoController.m */; };
@@ -443,12 +441,10 @@
 		94246654150383C2001701C4 /* mkFile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mkFile.png; sourceTree = "<group>"; };
 		94246655150383C2001701C4 /* mmFile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mmFile.png; sourceTree = "<group>"; };
 		94246656150383C2001701C4 /* sFile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sFile.png; sourceTree = "<group>"; };
-		9429000014D4E16E002793BD /* PercentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PercentViewController.m; sourceTree = "<group>"; };
 		9429000114D4E16E002793BD /* PercentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PercentViewController.xib; sourceTree = "<group>"; };
 		94291E5D14A9FB4A00E44221 /* AnalyzeInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyzeInfoController.h; sourceTree = "<group>"; };
 		94291E5E14A9FB4A00E44221 /* AnalyzeInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyzeInfoController.m; sourceTree = "<group>"; };
 		94291E5F14A9FB4A00E44221 /* AnalyzeInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnalyzeInfoController.xib; sourceTree = "<group>"; };
-		9429FFFF14D4E16E002793BD /* PercentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PercentViewController.h; sourceTree = "<group>"; };
 		9431D73414910B3000B0900E /* CodeNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9431D73814910B3000B0900E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9431D73A14910B3000B0900E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -834,8 +830,6 @@
 				94A5BBA814BF47C000F3BA8B /* DisplayModeController.m */,
 				9443BF5214D1A40200355278 /* HistoryListController.h */,
 				9443BF5314D1A40200355278 /* HistoryListController.m */,
-				9429FFFF14D4E16E002793BD /* PercentViewController.h */,
-				9429000014D4E16E002793BD /* PercentViewController.m */,
 				9429000114D4E16E002793BD /* PercentViewController.xib */,
 				9443BF5414D1A40200355278 /* HistoryListController.xib */,
 				94A5BBA914BF47C000F3BA8B /* DisplayModeController.xib */,
@@ -1540,7 +1534,6 @@
 				94A5BBAA14BF47C000F3BA8B /* DisplayModeController.m in Sources */,
 				94D16DE714C9CC3B007439EB /* ImageParser.m in Sources */,
 				9443BF5514D1A40200355278 /* HistoryListController.m in Sources */,
-				9429000214D4E16E002793BD /* PercentViewController.m in Sources */,
 				94422A3314DD87F50076AC66 /* VirtualizeViewController.m in Sources */,
 				94D822D814DEF451004FCDD1 /* VirtualizeWrapper.m in Sources */,
 				945428AF14F29A8D00353EC8 /* FileManagerController.m in Sources */,
@@ -1634,7 +1627,6 @@
 				94A5BBAB14BF47C000F3BA8B /* DisplayModeController.m in Sources */,
 				94D16DE814C9CC3B007439EB /* ImageParser.m in Sources */,
 				9443BF5614D1A40200355278 /* HistoryListController.m in Sources */,
-				9429000314D4E16E002793BD /* PercentViewController.m in Sources */,
 				94422A3414DD87F50076AC66 /* VirtualizeViewController.m in Sources */,
 				94D822D914DEF451004FCDD1 /* VirtualizeWrapper.m in Sources */,
 				945428B014F29A8D00353EC8 /* FileManagerController.m in Sources */,

@@ -13,7 +13,6 @@
 #import "MGSplitViewController.h"
 #import "HighLightWordController.h"
 #import "HistoryListController.h"
-#import "PercentViewController.h"
 #import "VirtualizeViewController.h"
 
 #define TOOLBAR_X_MASTER_SHOW 55
@@ -47,6 +46,8 @@
 @synthesize virtualizeButton;
 @synthesize hideMasterViewButton;
 @synthesize splitWebViewButton;
+@synthesize scrollBackgroundView;
+@synthesize scrollItem;
 @synthesize gotoLineViewController = _gotoLineViewController;
 @synthesize gotoLinePopover = _gotoLinePopover;
 @synthesize filePathInfopopover;
@@ -57,8 +58,6 @@
 @synthesize displayModeController;
 @synthesize historyListController;
 @synthesize historyListPopover;
-@synthesize percentViewController;
-@synthesize percentPopover;
 @synthesize secondWebView;
 @synthesize activeWebView;
 @synthesize divider;
@@ -66,6 +65,7 @@
 @synthesize downHistoryController;
 @synthesize virtualizeViewController;
 @synthesize highlightLineArray;
+@synthesize scrollBarTapRecognizer;
 
 #pragma mark - Managing the detail item
 
@@ -86,11 +86,25 @@
     shownToolBar = YES;
     self.activeWebView = self.webView;
     isFirstDisplay = YES;
+    
+    // show hide scrollbar
+    scrollBarTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapInScrollView:)];
+    scrollBarTapRecognizer.numberOfTapsRequired = 1;
+    [self.scrollBackgroundView addGestureRecognizer:scrollBarTapRecognizer];
+    
+    // add drag listener
+	[scrollItem addTarget:self action:@selector(wasDragged:withEvent:) 
+     forControlEvents:UIControlEventTouchDragInside];
+
     [super viewDidLoad];
 }
 
 - (void)viewDidUnload
 {
+    [self.scrollBackgroundView removeGestureRecognizer:self.scrollBarTapRecognizer];
+    [self setScrollBarTapRecognizer:nil];
+    [self setScrollBackgroundView:nil];
+    [self setScrollItem:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -98,14 +112,14 @@
 
 - (void) dealloc
 {
+    [self.scrollBackgroundView removeGestureRecognizer:self.scrollBarTapRecognizer];
+    [self setScrollBarTapRecognizer:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self setVirtualizeViewController:nil];
     [self setUpHistoryController:nil];
     [self setDownHistoryController:nil];
     [self setActiveWebView:nil];
     [self setSecondWebView:nil];
-    [self setPercentPopover:nil];
-    [self setPercentViewController:nil];
     [self setHistoryListPopover:nil];
     [self setHistoryListController:nil];
     [self setWebView:nil];
@@ -263,6 +277,78 @@
 - (void)didFinishBannerViewActionNotification:(NSNotification *)notification
 {
     [[[Utils getInstance] getBannerViewController] hideBannerView];
+}
+
+#pragma Gesture Recognizer
+- (void)handleSingleTapInScrollView:(UIGestureRecognizer*)sender
+{
+    NSString* str = [self.activeWebView stringByEvaluatingJavaScriptFromString:@"bodyHeight()"];
+    int bodyHeight = [str intValue];
+    int height = 0;
+    if (bodyHeight > activeWebView.frame.size.height)
+        height = bodyHeight - activeWebView.frame.size.height;
+    else
+        height = bodyHeight;
+    int currentLocation = [self getCurrentScrollLocation];
+    if (currentLocation == 0)
+        currentLocation = 1;
+    if (height == 0)
+        height = 1;
+    float percent = (float)currentLocation/(float)(height);
+    
+    int center = scrollBackgroundView.frame.size.height - scrollItem.frame.size.height;
+    center *= percent;
+    center += scrollItem.frame.size.height/2;
+    scrollItem.center = CGPointMake(scrollItem.center.x, center);
+    
+    [self.scrollBackgroundView setBackgroundColor:[UIColor grayColor]];
+    [self.scrollItem setHidden:NO];
+}
+
+- (void)wasDragged:(UIButton *)button withEvent:(UIEvent *)event
+{    
+	// get the touch
+	UITouch *touch = [[event touchesForView:button] anyObject];
+    
+	// get delta
+	CGPoint previousLocation = [touch previousLocationInView:button];
+	CGPoint location = [touch locationInView:button];
+	CGFloat delta_y = location.y - previousLocation.y;
+    
+    int finalPosY = button.frame.origin.y + delta_y;
+    
+    if (finalPosY < 0 ) {
+        return;
+    }
+    if (finalPosY > scrollBackgroundView.frame.size.height - button.frame.size.height ) {
+        return;
+    }
+    
+    // move button
+	button.center = CGPointMake(button.center.x,
+                                button.center.y + delta_y);
+    
+        NSString* str = [self.activeWebView stringByEvaluatingJavaScriptFromString:@"bodyHeight()"];
+        int bodyHeight = [str intValue];
+        int height = 0;
+        if (bodyHeight > activeWebView.frame.size.height)
+            height = bodyHeight - activeWebView.frame.size.height;
+        else
+            height = bodyHeight;
+        if (height == 0)
+            height = 1;
+        
+//        int currentLocation = [self getCurrentScrollLocation];
+//        if (currentLocation == 0)
+//            currentLocation = 1;
+        int buttonTop = button.center.y - button.frame.size.height/2;
+        int scrollHeight = scrollBackgroundView.frame.size.height - button.frame.size.height;
+        
+        float percent = (float)buttonTop/(float)scrollHeight;
+        
+        int location2 = height*percent;
+        NSString* str2 = [NSString stringWithFormat:@"scrollTo(0,%d)",location2];
+        [self.activeWebView stringByEvaluatingJavaScriptFromString:str2];
 }
 
 #pragma detailviewcontroller interface for others
@@ -494,10 +580,6 @@
 
 -(void) releaseAllPopOver
 {
-    [self.percentPopover dismissPopoverAnimated:YES];
-    [self setPercentViewController:nil];
-    [self setPercentPopover:nil];
-    
     [self.historyListPopover dismissPopoverAnimated:YES];
     [self setHistoryListPopover:nil];
     [self setHistoryListController:nil];
@@ -885,23 +967,6 @@
     [self.historyListPopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
-- (IBAction)percentClicked:(id)sender {
-    if ([self.percentPopover isPopoverVisible] == YES)
-    {
-        [self.percentPopover dismissPopoverAnimated:YES];
-        [self releaseAllPopOver];
-        return;
-    }
-    [self releaseAllPopOver];
-    UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
-    self.percentViewController = [[PercentViewController alloc] init];
-    [self.percentViewController setDetailViewController:self];
-    self.percentPopover = [[UIPopoverController alloc] initWithContentViewController:self.percentViewController];
-    self.percentPopover.popoverContentSize = self.percentViewController.view.frame.size;
-
-    [self.percentPopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-}
-
 - (IBAction)virtualizeButtonClicked:(id)sender {
     if (isVirtualizeDisplayed == YES)
         return;
@@ -1100,6 +1165,14 @@
 -(BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     NSString* tmp = [request.URL absoluteString];
+    
+    //touch start
+    if ([[tmp lastPathComponent] compare:@"lgz_touch_start"] == NSOrderedSame) {
+        [scrollItem setHidden:YES];
+        [scrollBackgroundView setBackgroundColor:[UIColor clearColor]];
+        return NO;
+    }
+    
     NSArray* array = [tmp componentsSeparatedByString:@"lgz_redirect:"];
     if ([array count] == 2)
     {

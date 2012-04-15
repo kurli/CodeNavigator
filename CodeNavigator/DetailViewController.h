@@ -28,7 +28,6 @@ typedef enum _JSState {
 @class FilePathInfoPopupController;
 @class HighLightWordController;
 @class HistoryListController;
-@class PercentViewController;
 @class VirtualizeViewController;
 
 @interface DetailViewController : UIViewController <UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MGSplitViewControllerDelegate>
@@ -96,10 +95,6 @@ typedef enum _JSState {
 
 @property (strong, nonatomic) UIPopoverController* historyListPopover;
 
-@property (strong, nonatomic) PercentViewController* percentViewController;
-
-@property (strong, nonatomic) UIPopoverController* percentPopover;
-
 @property (strong, nonatomic) VirtualizeViewController *virtualizeViewController;
 
 @property (strong, nonatomic) NSString* jsGotoLineKeyword;
@@ -128,6 +123,12 @@ typedef enum _JSState {
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *splitWebViewButton;
 
+// Scroll support
+@property (unsafe_unretained, nonatomic) IBOutlet UIView *scrollBackgroundView;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *scrollItem;
+@property (strong, nonatomic) UITapGestureRecognizer* scrollBarTapRecognizer;
+- (void)handleSingleTapInScrollView:(UIGestureRecognizer*)sender;
+
 - (IBAction)webViewSegmentChanged:(id)sender;
 
 - (void) setCurrentSearchFocusLine:(int)line;
@@ -155,8 +156,6 @@ typedef enum _JSState {
 - (IBAction)displayModeClicked:(id)sender;
 
 - (IBAction)historyListClicked:(id)sender;
-
-- (IBAction)percentClicked:(id)sender;
 
 - (IBAction)sourceSplitClicked:(id)sender;
 

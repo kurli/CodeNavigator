@@ -48,6 +48,10 @@ function highlight_this_line_keyword(line, s){
     return cnt;
 }
 
+document.addEventListener('touchstart', function(event) {
+    window.location.href= "lgz_touch_start";
+}, false);
+
 function currentYPosition() {
     // Firefox, Chrome, Opera, Safari
     if (self.pageYOffset) 
