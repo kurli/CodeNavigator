@@ -30,7 +30,7 @@
 @property (nonatomic, unsafe_unretained) UIButton* refreshButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *backButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIActivityIndicatorView *remoteIndicator;
-@property (nonatomic, strong) DBRestClient* restClient;
+@property (nonatomic, unsafe_unretained) DBRestClient* restClient;
 @property (nonatomic, strong) DBMetadata* metaData;
 
 - (void) reloadWithMetaData:(DBMetadata*) _metaData;

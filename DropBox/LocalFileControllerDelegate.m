@@ -92,10 +92,10 @@
     NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:projectFolder error:&error];
     for (int i=0; i<[contents count]; i++)
     {
-        //Hide hidden files such as .git .DS_Store
-        if ([[[contents objectAtIndex:i] substringToIndex:1] compare:@"."] == NSOrderedSame) {
-            continue;
-        }
+//        //Hide hidden files such as .git .DS_Store
+//        if ([[[contents objectAtIndex:i] substringToIndex:1] compare:@"."] == NSOrderedSame) {
+//            continue;
+//        }
         
         NSString *currentPath = [projectFolder stringByAppendingPathComponent:[contents objectAtIndex:i]];
         BOOL isFolder = NO;

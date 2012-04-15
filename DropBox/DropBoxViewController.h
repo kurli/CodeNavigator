@@ -23,7 +23,7 @@
 
 @property (nonatomic, strong) DBSession* dbSession;
 
-@property (nonatomic, strong, readonly) DBRestClient* restClient;
+@property (nonatomic, strong) DBRestClient* restClient;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *loginButton;
 

@@ -408,7 +408,7 @@
                 }
             }
             [self.pendingDownloadArray removeAllObjects];
-            NSString* text = [NSString stringWithFormat:@"----Sync Canceled !!!\n"];
+            NSString* text = [NSString stringWithFormat:@"----Sync Canceled...\n"];
             [self setSyncStatusText:text];
         }
         return;
@@ -619,7 +619,9 @@
         [[DBSession sharedSession] link];
     }
     else {
+        [restClient cancelFileLoad:currentLoadFile];
         [[DBSession sharedSession] unlinkAll];
+        [self setRestClient:nil];
         self.relinkUserId = nil;
         [[Utils getInstance].splitViewController dismissModalViewControllerAnimated:YES];
         
