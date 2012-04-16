@@ -46,6 +46,7 @@
 @synthesize virtualizeButton;
 @synthesize hideMasterViewButton;
 @synthesize splitWebViewButton;
+@synthesize historySwipeImageView;
 @synthesize scrollBackgroundView;
 @synthesize scrollItem;
 @synthesize gotoLineViewController = _gotoLineViewController;
@@ -95,7 +96,7 @@
     // add drag listener
 	[scrollItem addTarget:self action:@selector(wasDragged:withEvent:) 
      forControlEvents:UIControlEventTouchDragInside];
-
+    
     [super viewDidLoad];
 }
 
@@ -105,6 +106,7 @@
     [self setScrollBarTapRecognizer:nil];
     [self setScrollBackgroundView:nil];
     [self setScrollItem:nil];
+    [self setHistorySwipeImageView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -1162,12 +1164,115 @@
     }
 }
 
+#define SWIPE_STEP 350
+
 -(BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
+    static int multiTouchStarted = 0;
+    static int multiTouchState = 0;//0:not defined 1: forward 2: backward
     NSString* tmp = [request.URL absoluteString];
+    
+    //multi touch start
+    if ([tmp rangeOfString:@"lgz_multi_touch_start"].location != NSNotFound) {
+        tmp = [tmp lastPathComponent];
+        //TODO
+        NSArray* array = [tmp componentsSeparatedByString:@":"];
+        if ([array count] != 2) {
+            return NO;
+        }
+        int value = [[array objectAtIndex:1]intValue];
+        if (multiTouchStarted == 0) {
+            multiTouchStarted = value;
+        }
+        else {
+            CGRect rect = historySwipeImageView.frame;
+            int delta = value - multiTouchStarted;
+            if (multiTouchState == 0) {
+                if (delta > 10) {
+                    //backward
+                    if (value > self.view.frame.size.width/2) {
+                        multiTouchStarted = 0;
+                        return NO;
+                    }
+                    rect.origin.x = 0;
+                    multiTouchState = 2;
+                    [historySwipeImageView setImage:[UIImage imageNamed:@"backward_history.png"]];
+                    [historySwipeImageView setFrame:rect];
+                    [historySwipeImageView setHidden:NO];
+                } else if (delta < -10) {
+                    //forward
+                    if (value < self.view.frame.size.width/2) {
+                        multiTouchStarted = 0;
+                        return NO;
+                    }
+                    rect.origin.x = self.view.frame.size.width;
+                    multiTouchState = 1;
+                    [historySwipeImageView setImage:[UIImage imageNamed:@"forward_history.png"]];
+                    [historySwipeImageView setFrame:rect];
+                    [historySwipeImageView setHidden:NO];
+                }
+                return NO;
+            }
+            
+            int detailViewWidth = self.view.frame.size.width;
+            //change img position
+            if (multiTouchState == 2) {
+                //backward
+                rect.origin.x = (detailViewWidth - rect.size.width) * ((float)delta/(float)SWIPE_STEP);
+                [historySwipeImageView setFrame:rect];
+            } else {
+                //forward
+                rect.origin.x = detailViewWidth + detailViewWidth * ((float)delta/(float)SWIPE_STEP);
+                [historySwipeImageView setFrame:rect];
+            }
+            
+            //perform forward/backward
+            if (delta >= SWIPE_STEP) {
+                //NSLog(@"Touc Move Back %d :%d", value, delta);
+                multiTouchStarted = 0;
+                multiTouchState = 0;
+                [historySwipeImageView setHidden:YES];
+                [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(goBackHistory) userInfo:nil repeats:NO];      
+            }
+            else if(delta <= -(SWIPE_STEP)) {
+                //NSLog(@"Touc Move Forward %d :%d", value, delta);
+                multiTouchStarted = 0;
+                multiTouchState = 0;
+                [historySwipeImageView setHidden:YES];
+                [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(goForwardHistory) userInfo:nil repeats:NO];      
+            }
+        }
+        return NO;
+    }
+    
+//    //multi touch end
+//    if ([tmp rangeOfString:@"lgz_touch_end"].location == 0) {
+//        if (multiTouchStarted == 0) {
+//            return NO;
+//        }
+//        NSArray* array = [tmp componentsSeparatedByString:@":"];
+//        if ([array count] != 2) {
+//            multiTouchStarted = 0;
+//            return NO;
+//        }
+//        int value = [[array objectAtIndex:1]intValue];
+//        
+//        NSLog(@"Ended %d %d", value, value - multiTouchStarted);
+//        if (value > 80) {
+//            [self goBackHistory];
+//        }
+//        else if (value < -80) {
+//            [self goForwardHistory];
+//        }
+//        multiTouchStarted = 0;
+//        return NO;
+//    }
     
     //touch start
     if ([[tmp lastPathComponent] compare:@"lgz_touch_start"] == NSOrderedSame) {
+        multiTouchStarted = 0;
+        multiTouchState = 0;
+        [historySwipeImageView setHidden:YES];
         [scrollItem setHidden:YES];
         [scrollBackgroundView setBackgroundColor:[UIColor clearColor]];
         return NO;

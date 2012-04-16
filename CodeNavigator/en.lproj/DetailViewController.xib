@@ -4588,6 +4588,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<string key="NSFrame">{{56, 704}, {644, 44}}</string>
 						<reference key="NSSuperview" ref="647120888"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:372</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -4821,13 +4822,28 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<string key="NSFrame">{{692, 12}, {32, 32}}</string>
 						<reference key="NSSuperview" ref="647120888"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="1031476914"/>
+						<reference key="NSNextKeyView" ref="516707454"/>
 						<string key="NSReuseIdentifierKey">_NS:569</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">bookmark.png</string>
+						</object>
+					</object>
+					<object class="IBUIImageView" id="516707454">
+						<reference key="NSNextResponder" ref="647120888"/>
+						<int key="NSvFlags">-2147483356</int>
+						<string key="NSFrame">{{9, 310}, {128, 128}}</string>
+						<reference key="NSSuperview" ref="647120888"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="1031476914"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">forward_history.png</string>
 						</object>
 					</object>
 				</array>
@@ -5020,6 +5036,14 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">historySwipeImageView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="516707454"/>
+					</object>
+					<int key="connectionID">401</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="955162051"/>
 						<reference key="destination" ref="841351856"/>
@@ -5191,6 +5215,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<reference ref="487344336"/>
 							<reference ref="1031476914"/>
 							<reference ref="611102731"/>
+							<reference ref="516707454"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -5354,6 +5379,11 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<reference key="object" ref="415496906"/>
 						<reference key="parent" ref="611102731"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">400</int>
+						<reference key="object" ref="516707454"/>
+						<reference key="parent" ref="647120888"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -5391,13 +5421,14 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				<string key="391.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="395.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="396.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="400.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">399</int>
+			<int key="maxID">401</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5414,7 +5445,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<string key="historyListClicked:">id</string>
 						<string key="infoButtonClicked:">id</string>
 						<string key="navigationButtonClicked:">id</string>
-						<string key="percentClicked:">id</string>
 						<string key="resultPopUp:">id</string>
 						<string key="showHideTopToolBarClicked:">id</string>
 						<string key="sourceSplitClicked:">id</string>
@@ -5459,10 +5489,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<string key="name">navigationButtonClicked:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="percentClicked:">
-							<string key="name">percentClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="resultPopUp:">
 							<string key="name">resultPopUp:</string>
 							<string key="candidateClassName">id</string>
@@ -5497,6 +5523,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<string key="gotoHighlightBar">UISegmentedControl</string>
 						<string key="hideMasterViewButton">UIBarButtonItem</string>
 						<string key="historyBar">UISegmentedControl</string>
+						<string key="historySwipeImageView">UIImageView</string>
 						<string key="navigateBarButtonItem">UIBarButtonItem</string>
 						<string key="resultBarButton">UIBarButtonItem</string>
 						<string key="scrollBackgroundView">UIView</string>
@@ -5541,6 +5568,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<object class="IBToOneOutletInfo" key="historyBar">
 							<string key="name">historyBar</string>
 							<string key="candidateClassName">UISegmentedControl</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="historySwipeImageView">
+							<string key="name">historySwipeImageView</string>
+							<string key="candidateClassName">UIImageView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="navigateBarButtonItem">
 							<string key="name">navigateBarButtonItem</string>
@@ -5606,6 +5637,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 			<string key="back.png">{40, 43}</string>
 			<string key="bookmark.png">{20, 20}</string>
 			<string key="forward.png">{40, 43}</string>
+			<string key="forward_history.png">{128, 128}</string>
 			<string key="hide_masterview.png">{15, 22}</string>
 			<string key="settings.png">{16, 16}</string>
 		</dictionary>

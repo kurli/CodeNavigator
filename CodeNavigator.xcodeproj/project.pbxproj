@@ -318,6 +318,10 @@
 		94C8C68714FA57D60062750D /* ImagePreviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C8C68314FA57D60062750D /* ImagePreviewController.xib */; };
 		94D16DE714C9CC3B007439EB /* ImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D16DE614C9CC3B007439EB /* ImageParser.m */; };
 		94D16DE814C9CC3B007439EB /* ImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D16DE614C9CC3B007439EB /* ImageParser.m */; };
+		94D1BF79153C56420007A8EB /* forward_history.png in Resources */ = {isa = PBXBuildFile; fileRef = 94D1BF78153C56420007A8EB /* forward_history.png */; };
+		94D1BF7A153C56420007A8EB /* forward_history.png in Resources */ = {isa = PBXBuildFile; fileRef = 94D1BF78153C56420007A8EB /* forward_history.png */; };
+		94D1BF7C153C66A20007A8EB /* backward_history.png in Resources */ = {isa = PBXBuildFile; fileRef = 94D1BF7B153C66A20007A8EB /* backward_history.png */; };
+		94D1BF7D153C66A20007A8EB /* backward_history.png in Resources */ = {isa = PBXBuildFile; fileRef = 94D1BF7B153C66A20007A8EB /* backward_history.png */; };
 		94D822D814DEF451004FCDD1 /* VirtualizeWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D822D714DEF451004FCDD1 /* VirtualizeWrapper.m */; };
 		94D822D914DEF451004FCDD1 /* VirtualizeWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D822D714DEF451004FCDD1 /* VirtualizeWrapper.m */; };
 		94D8703114A65888002F2DBB /* FilePathInfoPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D8702F14A65887002F2DBB /* FilePathInfoPopupController.m */; };
@@ -683,6 +687,8 @@
 		94C8C68314FA57D60062750D /* ImagePreviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImagePreviewController.xib; path = CodeNavigator/ImagePreviewController.xib; sourceTree = "<group>"; };
 		94D16DE514C9CC3B007439EB /* ImageParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageParser.h; sourceTree = "<group>"; };
 		94D16DE614C9CC3B007439EB /* ImageParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageParser.m; sourceTree = "<group>"; };
+		94D1BF78153C56420007A8EB /* forward_history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward_history.png; sourceTree = "<group>"; };
+		94D1BF7B153C66A20007A8EB /* backward_history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backward_history.png; sourceTree = "<group>"; };
 		94D822D614DEF451004FCDD1 /* VirtualizeWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VirtualizeWrapper.h; path = CodeNavigator/VirtualizeWrapper.h; sourceTree = "<group>"; };
 		94D822D714DEF451004FCDD1 /* VirtualizeWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VirtualizeWrapper.m; path = CodeNavigator/VirtualizeWrapper.m; sourceTree = "<group>"; };
 		94D8702E14A65887002F2DBB /* FilePathInfoPopupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilePathInfoPopupController.h; sourceTree = "<group>"; };
@@ -948,6 +954,8 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				94D1BF7B153C66A20007A8EB /* backward_history.png */,
+				94D1BF78153C56420007A8EB /* forward_history.png */,
 				94F4249615387E1E005FC4C8 /* hide_masterview.png */,
 				94F4249715387E1E005FC4C8 /* show_masterview.png */,
 				94BF99BE15348A6700F4EFFD /* refresh_error.png */,
@@ -1391,6 +1399,8 @@
 				94BF99BF15348A6700F4EFFD /* refresh_error.png in Resources */,
 				94F4249815387E1E005FC4C8 /* hide_masterview.png in Resources */,
 				94F4249A15387E1E005FC4C8 /* show_masterview.png in Resources */,
+				94D1BF79153C56420007A8EB /* forward_history.png in Resources */,
+				94D1BF7C153C66A20007A8EB /* backward_history.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1471,6 +1481,8 @@
 				94BF99C015348A6700F4EFFD /* refresh_error.png in Resources */,
 				94F4249915387E1E005FC4C8 /* hide_masterview.png in Resources */,
 				94F4249B15387E1E005FC4C8 /* show_masterview.png in Resources */,
+				94D1BF7A153C56420007A8EB /* forward_history.png in Resources */,
+				94D1BF7D153C66A20007A8EB /* backward_history.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

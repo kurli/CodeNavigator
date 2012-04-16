@@ -52,6 +52,29 @@ document.addEventListener('touchstart', function(event) {
     window.location.href= "lgz_touch_start";
 }, false);
 
+document.addEventListener('touchmove', function(event) {
+    if (event.touches.length >= 2)
+    {
+        // use it to prevent default behavior
+        event.preventDefault();
+        var touch = event.touches[0];
+        var value = "lgz_multi_touch_start:"+touch.clientX;
+        window.location.href = value;
+    }
+}, false);
+
+//document.addEventListener('touchend', function(event) {
+//    var touch = event.touches[0];
+//    var str = "lgz_touch_end:" + touch.pageX;
+//    window.location.href= str;
+//}, false);
+//
+//document.addEventListener('touchcancel', function(event) {
+//    var touch = event.touches[0];
+//    var str = "lgz_touch_end:" + touch.pageX;
+//    window.location.href= str;
+//}, false);
+
 function currentYPosition() {
     // Firefox, Chrome, Opera, Safari
     if (self.pageYOffset) 

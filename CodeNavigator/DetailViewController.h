@@ -129,6 +129,8 @@ typedef enum _JSState {
 @property (strong, nonatomic) UITapGestureRecognizer* scrollBarTapRecognizer;
 - (void)handleSingleTapInScrollView:(UIGestureRecognizer*)sender;
 
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *historySwipeImageView;
+
 - (IBAction)webViewSegmentChanged:(id)sender;
 
 - (void) setCurrentSearchFocusLine:(int)line;
