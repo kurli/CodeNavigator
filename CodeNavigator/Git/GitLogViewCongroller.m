@@ -115,7 +115,7 @@
 - (void) showModualView
 {
     if (repo == nil) {
-        [[Utils getInstance] alertWithTitle:@"Git" andMessage:@"Git folder not found!"];
+        [[Utils getInstance] alertWithTitle:@"Git" andMessage:@"No Git database found!"];
         return;
     }
     [[Utils getInstance].splitViewController presentModalViewController:self animated:YES];

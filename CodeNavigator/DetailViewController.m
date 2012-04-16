@@ -611,39 +611,49 @@
     [self setDisplayModeController:nil];
 }
 
+- (void) setUpWebViewAsActive
+{
+    self.activeWebView = self.webView;
+    self.historyController = self.upHistoryController;
+    NSString* path = [self.upHistoryController pickTopLevelUrl];
+    NSString* currentDisplayFile = [self.upHistoryController getUrlFromHistoryFormat:path];
+    NSString* title = [currentDisplayFile lastPathComponent];
+    title = [[Utils getInstance] getSourceFileByDisplayFile:title];
+    self.titleTextField.title = title;
+    
+    CGRect rect = self.activeMark.frame;
+    rect.origin.x = 5;
+    rect.origin.y = self.webView.frame.size.height-rect.size.height;
+    [self.activeMark setFrame:rect];
+    [self.activeMark setHidden:NO];  
+}
+
+- (void) setDownWebViewAsActive
+{
+    self.activeWebView = self.secondWebView;
+    self.historyController = self.downHistoryController;
+    NSString* path = [self.downHistoryController pickTopLevelUrl];
+    NSString* currentDisplayFile = [self.upHistoryController getUrlFromHistoryFormat:path];
+    NSString* title = [currentDisplayFile lastPathComponent];
+    title = [[Utils getInstance] getSourceFileByDisplayFile:title];
+    self.titleTextField.title = title;
+    
+    CGRect rect = self.activeMark.frame;
+    rect.origin.x = 5;
+    rect.origin.y = self.secondWebView.frame.origin.y;
+    [self.activeMark setFrame:rect];
+    [self.activeMark setHidden:NO];  
+}
+
 - (IBAction)webViewSegmentChanged:(id)sender {
     UISegmentedControl* segmentController = sender;
     if ([segmentController selectedSegmentIndex] == 0)
     {
-        self.activeWebView = self.webView;
-        self.historyController = self.upHistoryController;
-        NSString* path = [self.upHistoryController pickTopLevelUrl];
-        NSString* currentDisplayFile = [self.upHistoryController getUrlFromHistoryFormat:path];
-        NSString* title = [currentDisplayFile lastPathComponent];
-        title = [[Utils getInstance] getSourceFileByDisplayFile:title];
-        self.titleTextField.title = title;
-        
-        CGRect rect = self.activeMark.frame;
-        rect.origin.x = 5;
-        rect.origin.y = self.webView.frame.size.height-rect.size.height;
-        [self.activeMark setFrame:rect];
-        [self.activeMark setHidden:NO];    
+        [self setUpWebViewAsActive];
     }
     else
     {
-        self.activeWebView = self.secondWebView;
-        self.historyController = self.downHistoryController;
-        NSString* path = [self.downHistoryController pickTopLevelUrl];
-        NSString* currentDisplayFile = [self.upHistoryController getUrlFromHistoryFormat:path];
-        NSString* title = [currentDisplayFile lastPathComponent];
-        title = [[Utils getInstance] getSourceFileByDisplayFile:title];
-        self.titleTextField.title = title;
-        
-        CGRect rect = self.activeMark.frame;
-        rect.origin.x = 5;
-        rect.origin.y = self.secondWebView.frame.origin.y;
-        [self.activeMark setFrame:rect];
-        [self.activeMark setHidden:NO];  
+        [self setDownWebViewAsActive];
     }
 }
 
@@ -1275,6 +1285,17 @@
         [historySwipeImageView setHidden:YES];
         [scrollItem setHidden:YES];
         [scrollBackgroundView setBackgroundColor:[UIColor clearColor]];
+        
+        // set activeview
+        if (self.secondWebView.frame.size.height > 10){
+            if (self.webView == webView) {
+                [self setUpWebViewAsActive];
+                [self.webViewSegmentController setSelectedSegmentIndex:0];
+            } else if (self.secondWebView == webView){
+                [self setDownWebViewAsActive];
+                [self.webViewSegmentController setSelectedSegmentIndex:1];
+            }
+        }
         return NO;
     }
     
