@@ -127,23 +127,23 @@
 	int i = 0;
 	for ( i=0; i<[lineArray count]; i++)
     {
-        int start = [htmlContent length];
-        if (start != 0)
-            start--;
-        if (i == 61) {
-            i = i;
+        @autoreleasepool {
+            int start = [htmlContent length];
+            if (start != 0)
+                start--;
+            if (i == 61) {
+                i = i;
+            }
+            [self lineStart:i+1 andContent:[lineArray objectAtIndex:i]];
+            NSString* lineString = [lineArray objectAtIndex: i];
+            lineString = [self wrapLine:lineString];
+            currentParseLine = i;
+            [self parseLine: lineString lineNum:i];
+            [self lineEnd];
+            NSRange range = {start, [htmlContent length]-start};
+            [htmlContent replaceOccurrencesOfString:BREAK_STR withString:@"<br>" options:NSCaseInsensitiveSearch range:range];
         }
-		[self lineStart:i+1 andContent:[lineArray objectAtIndex:i]];
-		NSString* lineString = [lineArray objectAtIndex: i];
-        lineString = [self wrapLine:lineString];
-        currentParseLine = i;
-		[self parseLine: lineString lineNum:i];
-		[self lineEnd];
-        NSRange range = {start, [htmlContent length]-start};
-        [htmlContent replaceOccurrencesOfString:BREAK_STR withString:@"<br>" options:NSCaseInsensitiveSearch range:range];
-        //[lineString release];
     }
-	//[lineArray release];
     [htmlContent appendString: HTML_END];
     [self addString:@"" addEnter:YES];
 	return YES;

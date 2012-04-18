@@ -117,6 +117,12 @@
 		943486E1150A3DA600370AE3 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 943486E0150A3DA600370AE3 /* Default-Landscape~ipad.png */; };
 		943486E2150A42A000370AE3 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 943486E0150A3DA600370AE3 /* Default-Landscape~ipad.png */; };
 		943486E3150A42A500370AE3 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 943486DE150A3D4000370AE3 /* Default-Portrait~ipad.png */; };
+		94352107153EFC1E003F316A /* version_control.png in Resources */ = {isa = PBXBuildFile; fileRef = 94352106153EFC1E003F316A /* version_control.png */; };
+		94352108153EFC1E003F316A /* version_control.png in Resources */ = {isa = PBXBuildFile; fileRef = 94352106153EFC1E003F316A /* version_control.png */; };
+		9435210C153F03D1003F316A /* VersionControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435210A153F03D1003F316A /* VersionControlController.m */; };
+		9435210D153F03D1003F316A /* VersionControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435210A153F03D1003F316A /* VersionControlController.m */; };
+		9435210E153F03D1003F316A /* VersionControlController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9435210B153F03D1003F316A /* VersionControlController.xib */; };
+		9435210F153F03D1003F316A /* VersionControlController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9435210B153F03D1003F316A /* VersionControlController.xib */; };
 		94422A3314DD87F50076AC66 /* VirtualizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94422A3114DD87F50076AC66 /* VirtualizeViewController.m */; };
 		94422A3414DD87F50076AC66 /* VirtualizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94422A3114DD87F50076AC66 /* VirtualizeViewController.m */; };
 		94422A3514DD87F50076AC66 /* VirtualizeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94422A3214DD87F50076AC66 /* VirtualizeViewController.xib */; };
@@ -222,6 +228,10 @@
 		9497F3B5151BA606006BCBBF /* PythonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3B3151BA606006BCBBF /* PythonParser.m */; };
 		9497F3CB151CEC4F006BCBBF /* RubbyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3CA151CEC4F006BCBBF /* RubbyParser.m */; };
 		9497F3CC151CEC4F006BCBBF /* RubbyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3CA151CEC4F006BCBBF /* RubbyParser.m */; };
+		94A0FAE3153DDA78004277BF /* cscope.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A0FAE2153DDA78004277BF /* cscope.png */; };
+		94A0FAE4153DDA78004277BF /* cscope.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A0FAE2153DDA78004277BF /* cscope.png */; };
+		94A0FAE6153DDAD9004277BF /* virtualize.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A0FAE5153DDAD9004277BF /* virtualize.png */; };
+		94A0FAE7153DDAD9004277BF /* virtualize.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A0FAE5153DDAD9004277BF /* virtualize.png */; };
 		94A5079314F6AA1C00587A47 /* virbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5079214F6AA1C00587A47 /* virbackground.png */; };
 		94A5079414F6AA1C00587A47 /* virbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5079214F6AA1C00587A47 /* virbackground.png */; };
 		94A51848152DF2AC0062DA65 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A51847152DF2AC0062DA65 /* DropboxSDK.framework */; };
@@ -542,6 +552,10 @@
 		9434C01E14A393DB00B34419 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zip.h; path = Zip/zip.h; sourceTree = "<group>"; };
 		9434C01F14A393DB00B34419 /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zlib.h; path = Zip/zlib.h; sourceTree = "<group>"; };
 		9434C02014A393DB00B34419 /* zutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zutil.h; path = Zip/zutil.h; sourceTree = "<group>"; };
+		94352106153EFC1E003F316A /* version_control.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = version_control.png; sourceTree = "<group>"; };
+		94352109153F03D1003F316A /* VersionControlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionControlController.h; sourceTree = "<group>"; };
+		9435210A153F03D1003F316A /* VersionControlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionControlController.m; sourceTree = "<group>"; };
+		9435210B153F03D1003F316A /* VersionControlController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VersionControlController.xib; sourceTree = "<group>"; };
 		94422A3014DD87F50076AC66 /* VirtualizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VirtualizeViewController.h; path = CodeNavigator/VirtualizeViewController.h; sourceTree = "<group>"; };
 		94422A3114DD87F50076AC66 /* VirtualizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VirtualizeViewController.m; path = CodeNavigator/VirtualizeViewController.m; sourceTree = "<group>"; };
 		94422A3214DD87F50076AC66 /* VirtualizeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VirtualizeViewController.xib; path = CodeNavigator/VirtualizeViewController.xib; sourceTree = "<group>"; };
@@ -629,6 +643,8 @@
 		9497F3C9151CEC4F006BCBBF /* RubbyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RubbyParser.h; path = CodeNavigator/RubbyParser.h; sourceTree = "<group>"; };
 		9497F3CA151CEC4F006BCBBF /* RubbyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RubbyParser.m; path = CodeNavigator/RubbyParser.m; sourceTree = "<group>"; };
 		9497F3CD151CEC6A006BCBBF /* RubbyDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RubbyDefinition.h; path = CodeNavigator/RubbyDefinition.h; sourceTree = "<group>"; };
+		94A0FAE2153DDA78004277BF /* cscope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cscope.png; sourceTree = "<group>"; };
+		94A0FAE5153DDAD9004277BF /* virtualize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = virtualize.png; sourceTree = "<group>"; };
 		94A5079214F6AA1C00587A47 /* virbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = virbackground.png; sourceTree = "<group>"; };
 		94A51847152DF2AC0062DA65 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 		94A5184A152DF30A0062DA65 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -836,6 +852,9 @@
 				94A5BBA814BF47C000F3BA8B /* DisplayModeController.m */,
 				9443BF5214D1A40200355278 /* HistoryListController.h */,
 				9443BF5314D1A40200355278 /* HistoryListController.m */,
+				94352109153F03D1003F316A /* VersionControlController.h */,
+				9435210A153F03D1003F316A /* VersionControlController.m */,
+				9435210B153F03D1003F316A /* VersionControlController.xib */,
 				9429000114D4E16E002793BD /* PercentViewController.xib */,
 				9443BF5414D1A40200355278 /* HistoryListController.xib */,
 				94A5BBA914BF47C000F3BA8B /* DisplayModeController.xib */,
@@ -954,6 +973,9 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				94352106153EFC1E003F316A /* version_control.png */,
+				94A0FAE5153DDAD9004277BF /* virtualize.png */,
+				94A0FAE2153DDA78004277BF /* cscope.png */,
 				94D1BF7B153C66A20007A8EB /* backward_history.png */,
 				94D1BF78153C56420007A8EB /* forward_history.png */,
 				94F4249615387E1E005FC4C8 /* hide_masterview.png */,
@@ -1401,6 +1423,10 @@
 				94F4249A15387E1E005FC4C8 /* show_masterview.png in Resources */,
 				94D1BF79153C56420007A8EB /* forward_history.png in Resources */,
 				94D1BF7C153C66A20007A8EB /* backward_history.png in Resources */,
+				94A0FAE3153DDA78004277BF /* cscope.png in Resources */,
+				94A0FAE6153DDAD9004277BF /* virtualize.png in Resources */,
+				94352107153EFC1E003F316A /* version_control.png in Resources */,
+				9435210E153F03D1003F316A /* VersionControlController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1483,6 +1509,10 @@
 				94F4249B15387E1E005FC4C8 /* show_masterview.png in Resources */,
 				94D1BF7A153C56420007A8EB /* forward_history.png in Resources */,
 				94D1BF7D153C66A20007A8EB /* backward_history.png in Resources */,
+				94A0FAE4153DDA78004277BF /* cscope.png in Resources */,
+				94A0FAE7153DDAD9004277BF /* virtualize.png in Resources */,
+				94352108153EFC1E003F316A /* version_control.png in Resources */,
+				9435210F153F03D1003F316A /* VersionControlController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1579,6 +1609,7 @@
 				94A51850152DF8D70062DA65 /* DropBoxViewController.m in Sources */,
 				9457C78715307AF500BB9185 /* LocalFileControllerDelegate.m in Sources */,
 				9457C78B15307B1400BB9185 /* RemoteFileControllerDelegate.m in Sources */,
+				9435210C153F03D1003F316A /* VersionControlController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1672,6 +1703,7 @@
 				94A51851152DF8D70062DA65 /* DropBoxViewController.m in Sources */,
 				9457C78815307AF500BB9185 /* LocalFileControllerDelegate.m in Sources */,
 				9457C78C15307B1400BB9185 /* RemoteFileControllerDelegate.m in Sources */,
+				9435210D153F03D1003F316A /* VersionControlController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

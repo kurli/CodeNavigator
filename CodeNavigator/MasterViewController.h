@@ -29,6 +29,8 @@
 
 @property (strong, nonatomic) UIPopoverController *webServicePopOverController;
 
+@property (strong, nonatomic) UIPopoverController* versionControllerPopOverController; 
+
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *analyzeButton;
 
 #ifdef LITE_VERSION
@@ -50,6 +52,8 @@
 - (IBAction)gitClicked:(id)sender;
 
 - (IBAction)dropBoxClicked:(id)sender;
+
+- (IBAction)versionControlButtonClicked:(id)sender;
 
 @end
 

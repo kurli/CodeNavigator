@@ -13,6 +13,7 @@
 #import "cscope.h"
 #import "GitLogViewCongroller.h"
 #import "DropBoxViewController.h"
+#import "VersionControlController.h"
 
 @implementation MasterViewController
 
@@ -27,6 +28,7 @@
 #ifdef LITE_VERSION
 @synthesize purchaseButton = _purchaseButton;
 #endif
+@synthesize versionControllerPopOverController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -497,6 +499,19 @@
     [dropBoxViewController showModualView];
     dropBoxViewController = nil;
 }
+
+- (IBAction)versionControlButtonClicked:(id)sender {
+    UIBarButtonItem *item = (UIBarButtonItem*)sender;
+
+    VersionControlController* controller = [[VersionControlController alloc] init];
+    [controller setMasterViewController:self];
+    
+    versionControllerPopOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
+    versionControllerPopOverController.popoverContentSize = controller.view.frame.size;
+    
+    [versionControllerPopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
+
 
 #ifdef LITE_VERSION
 - (IBAction)purchaseClicked:(id)sender {

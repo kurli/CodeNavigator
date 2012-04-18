@@ -559,6 +559,9 @@
     }
     
     CGContextRef context = UIGraphicsGetCurrentContext();
+    if (context == nil) {
+        return;
+    }
     CGContextSetFillColorWithColor(context, [color CGColor]);
     CGContextBeginPath(context);
     CGContextFillRect(context, rect);
