@@ -503,13 +503,17 @@
 - (IBAction)versionControlButtonClicked:(id)sender {
     UIBarButtonItem *item = (UIBarButtonItem*)sender;
 
+    if ([versionControllerPopOverController isPopoverVisible] == YES) {
+        [versionControllerPopOverController dismissPopoverAnimated:YES];
+    }
+    
     VersionControlController* controller = [[VersionControlController alloc] init];
     [controller setMasterViewController:self];
     
     versionControllerPopOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
     versionControllerPopOverController.popoverContentSize = controller.view.frame.size;
     
-    [versionControllerPopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    [versionControllerPopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 
