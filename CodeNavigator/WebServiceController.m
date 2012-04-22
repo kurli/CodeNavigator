@@ -381,7 +381,7 @@
 
                 int count = 0;
                 int liteLimitCount = 0;
-                NSString* skipPath = nil;
+//                NSString* skipPath = nil;
                 NSNumber* number;
                 number = [NSNumber numberWithFloat:0];
                 [self performSelectorOnMainThread:@selector(setProgressViewValue:) withObject:number waitUntilDone:YES];
@@ -392,35 +392,35 @@
                     [self performSelectorOnMainThread:@selector(setProgressViewValue:) withObject: number waitUntilDone:YES];
                     if ([info.name rangeOfString:@"__MACOSX"].location != NSNotFound)
                         continue;
-                    if (skipPath == nil)
-                    {
-                        NSString* tmp = [info.name lastPathComponent];
-                        if ([[tmp substringToIndex:1] compare:@"."] == NSOrderedSame)
-                        {
-                            skipPath = [info.name copy];
-                            continue;
-                        }
-                    }
-                    else
-                    {
-                        NSRange range;
-                        range = [info.name rangeOfString:skipPath];
-                        if (range.location != NSNotFound && range.location == 0)
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            NSString* tmp = [info.name lastPathComponent];
-                            if ([[tmp substringToIndex:1] compare:@"."] == NSOrderedSame)
-                            {
-                                skipPath = [info.name copy];
-                                continue;
-                            }
-                            else
-                                skipPath = nil;
-                        }
-                    }
+//                    if (skipPath == nil)
+//                    {
+//                        NSString* tmp = [info.name lastPathComponent];
+//                        if ([[tmp substringToIndex:1] compare:@"."] == NSOrderedSame)
+//                        {
+//                            skipPath = [info.name copy];
+//                            continue;
+//                        }
+//                    }
+//                    else
+//                    {
+//                        NSRange range;
+//                        range = [info.name rangeOfString:skipPath];
+//                        if (range.location != NSNotFound && range.location == 0)
+//                        {
+//                            continue;
+//                        }
+//                        else
+//                        {
+//                            NSString* tmp = [info.name lastPathComponent];
+//                            if ([[tmp substringToIndex:1] compare:@"."] == NSOrderedSame)
+//                            {
+//                                skipPath = [info.name copy];
+//                                continue;
+//                            }
+//                            else
+//                                skipPath = nil;
+//                        }
+//                    }
                     if ([info.name characterAtIndex:[info.name length]-1] == '/')
                     {
                         fileWritePath = [NSString stringWithFormat:@"%@/%@", projectFolder, info.name];
@@ -428,9 +428,11 @@
                         [self performSelectorOnMainThread:@selector(log:) withObject:[NSString stringWithFormat:@"Unzip: %@", info.name] waitUntilDone:YES];
                         continue;
                     }
-                    
 #ifdef LITE_VERSION
                     liteLimitCount++;
+                    if ([info.name rangeOfString:@"/.git/"].location != NSOrderedSame) {
+                        liteLimitCount--;
+                    }
                     if (liteLimitCount > 5)
                     {
                         dispatch_async(dispatch_get_main_queue(), ^{

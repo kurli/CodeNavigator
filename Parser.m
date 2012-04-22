@@ -65,6 +65,10 @@
     NSString *extension = [file pathExtension];
     extension = [extension lowercaseString];
 
+    if ([[[file lastPathComponent] lowercaseString] compare:@"makefile"] == NSOrderedSame) {
+        [self setParserType:BASH];
+        return;
+    }
     if ([extension isEqualToString:@"c"])
     {
         [self setParserType:CPLUSPLUS];

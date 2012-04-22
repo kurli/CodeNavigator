@@ -487,9 +487,22 @@
     [[Utils getInstance] analyzeProject:self.currentProjectPath andForceCreate:YES];
 }
 
-- (IBAction)gitClicked:(id)sender {    
+- (IBAction)gitClicked:(id)sender {
+    NSError* error;
     GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewCongroller" bundle:[NSBundle mainBundle]];
-    [gitlogView gitLogForProject: self.currentProjectPath];
+    NSString* gitFolder = self.currentProjectPath;
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[gitFolder stringByAppendingPathComponent:@".git"]]) {
+        NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:gitFolder error:&error];
+        for (int i=0; i<[contents count]; i++) {
+            NSString* path = [contents objectAtIndex:i];
+            path = [self.currentProjectPath stringByAppendingPathComponent:path];
+            if ([[NSFileManager defaultManager] fileExistsAtPath:[path stringByAppendingPathComponent:@".git"]]){
+                gitFolder = path;
+                break;
+            }
+        }
+    }
+    [gitlogView gitLogForProject: gitFolder];
     [gitlogView showModualView];
 }
 
