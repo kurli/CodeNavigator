@@ -309,6 +309,7 @@
         [[Utils getInstance] writeColorScheme:NO andDayBackground:nil andNightBackground:self.backgroundTextField.text andDayComment:nil andNightComment:self.commentTextField.text andDayString:nil andNightString:self.stringTextField.text andDayKeyword:nil andNightKeyword:self.keywordTextField.text andFontSize:self.textSizeTextField.text];
     }
     [[Utils getInstance].detailViewController reloadCurrentPage];
+    [[Utils getInstance].detailViewController displayModeClicked:nil];
 }
 
 - (IBAction)defaultButtonClicked:(id)sender {

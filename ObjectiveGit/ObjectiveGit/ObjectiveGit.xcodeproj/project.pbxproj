@@ -28,27 +28,27 @@
 		94BF796F150E3A3400FCF653 /* GTTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BF7948150E3A3400FCF653 /* GTTag.m */; };
 		94BF7971150E3A3400FCF653 /* GTTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BF794A150E3A3400FCF653 /* GTTree.m */; };
 		94BF7973150E3A3400FCF653 /* GTTreeEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BF794C150E3A3400FCF653 /* GTTreeEntry.m */; };
-		94BF7CE6150E491B00FCF653 /* NSData+Git.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7926150E3A3300FCF653 /* NSData+Git.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CE7150E491B00FCF653 /* NSError+Git.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7928150E3A3300FCF653 /* NSError+Git.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CE8150E491B00FCF653 /* NSString+Git.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF792A150E3A3300FCF653 /* NSString+Git.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CE9150E491B00FCF653 /* GTBlob.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF792C150E3A3300FCF653 /* GTBlob.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CEA150E491B00FCF653 /* GTBranch.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF792E150E3A3300FCF653 /* GTBranch.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CEB150E491B00FCF653 /* GTCommit.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7930150E3A3300FCF653 /* GTCommit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CEC150E491B00FCF653 /* GTConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7932150E3A3300FCF653 /* GTConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CED150E491B00FCF653 /* GTEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7934150E3A3300FCF653 /* GTEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CEE150E491B00FCF653 /* GTIndex.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7936150E3A3300FCF653 /* GTIndex.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CEF150E491B00FCF653 /* GTIndexEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7938150E3A3300FCF653 /* GTIndexEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CF0150E491B00FCF653 /* GTObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF793A150E3A3300FCF653 /* GTObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CF1150E491B00FCF653 /* GTObjectDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF793C150E3A3300FCF653 /* GTObjectDatabase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CF2150E491B00FCF653 /* GTOdbObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF793E150E3A3300FCF653 /* GTOdbObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CF3150E491B00FCF653 /* GTReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7940150E3A3300FCF653 /* GTReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CF4150E491B00FCF653 /* GTRepository.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7942150E3A3300FCF653 /* GTRepository.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CF5150E491B00FCF653 /* GTSignature.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7945150E3A3300FCF653 /* GTSignature.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CF6150E491B00FCF653 /* GTTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7947150E3A3300FCF653 /* GTTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CF7150E491B00FCF653 /* GTTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7949150E3A3400FCF653 /* GTTree.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CF8150E491B00FCF653 /* GTTreeEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF794B150E3A3400FCF653 /* GTTreeEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CF9150E491B00FCF653 /* ObjectiveGit.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7917150E398400FCF653 /* ObjectiveGit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94BF7CFE150E4C7A00FCF653 /* dct_weak.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7CFD150E4C7A00FCF653 /* dct_weak.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		94BF7CE6150E491B00FCF653 /* NSData+Git.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7926150E3A3300FCF653 /* NSData+Git.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CE7150E491B00FCF653 /* NSError+Git.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7928150E3A3300FCF653 /* NSError+Git.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CE8150E491B00FCF653 /* NSString+Git.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF792A150E3A3300FCF653 /* NSString+Git.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CE9150E491B00FCF653 /* GTBlob.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF792C150E3A3300FCF653 /* GTBlob.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CEA150E491B00FCF653 /* GTBranch.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF792E150E3A3300FCF653 /* GTBranch.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CEB150E491B00FCF653 /* GTCommit.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7930150E3A3300FCF653 /* GTCommit.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CEC150E491B00FCF653 /* GTConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7932150E3A3300FCF653 /* GTConfiguration.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CED150E491B00FCF653 /* GTEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7934150E3A3300FCF653 /* GTEnumerator.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CEE150E491B00FCF653 /* GTIndex.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7936150E3A3300FCF653 /* GTIndex.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CEF150E491B00FCF653 /* GTIndexEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7938150E3A3300FCF653 /* GTIndexEntry.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CF0150E491B00FCF653 /* GTObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF793A150E3A3300FCF653 /* GTObject.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CF1150E491B00FCF653 /* GTObjectDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF793C150E3A3300FCF653 /* GTObjectDatabase.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CF2150E491B00FCF653 /* GTOdbObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF793E150E3A3300FCF653 /* GTOdbObject.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CF3150E491B00FCF653 /* GTReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7940150E3A3300FCF653 /* GTReference.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CF4150E491B00FCF653 /* GTRepository.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7942150E3A3300FCF653 /* GTRepository.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CF5150E491B00FCF653 /* GTSignature.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7945150E3A3300FCF653 /* GTSignature.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CF6150E491B00FCF653 /* GTTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7947150E3A3300FCF653 /* GTTag.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CF7150E491B00FCF653 /* GTTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7949150E3A3400FCF653 /* GTTree.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CF8150E491B00FCF653 /* GTTreeEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF794B150E3A3400FCF653 /* GTTreeEntry.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CF9150E491B00FCF653 /* ObjectiveGit.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7917150E398400FCF653 /* ObjectiveGit.h */; settings = {ATTRIBUTES = (); }; };
+		94BF7CFE150E4C7A00FCF653 /* dct_weak.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7CFD150E4C7A00FCF653 /* dct_weak.h */; settings = {ATTRIBUTES = (); }; };
 		94BF7F9B150F912200FCF653 /* git2.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BF7F9A150F912200FCF653 /* git2.h */; };
 		94BF8043150F970400FCF653 /* libgit2-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BF8042150F970400FCF653 /* libgit2-iOS.a */; };
 /* End PBXBuildFile section */
@@ -341,12 +341,56 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		9404E8EF1541A6AD00C5E1BA /* Distribute */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/libgit2/include";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribute;
+		};
+		9404E8F01541A6AD00C5E1BA /* Distribute */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				DSTROOT = /tmp/ObjectiveGit.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ObjectiveGit/ObjectiveGit-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/libgit2/include";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/CodeNavigator-cqumyjavssthetbukoyrbkckdvkq/Build/Products/Debug-iphoneos\"",
+					"\"$(SRCROOT)/../libgit2\"",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Distribute;
+		};
 		94BF791A150E398400FCF653 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -360,8 +404,10 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/libgit2/include";
 			};
 			name = Debug;
@@ -372,14 +418,17 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/libgit2/include";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -389,6 +438,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DSTROOT = /tmp/ObjectiveGit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ObjectiveGit/ObjectiveGit-Prefix.pch";
@@ -400,6 +450,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -408,6 +459,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DSTROOT = /tmp/ObjectiveGit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ObjectiveGit/ObjectiveGit-Prefix.pch";
@@ -419,6 +471,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -431,6 +484,7 @@
 			buildConfigurations = (
 				94BF791A150E398400FCF653 /* Debug */,
 				94BF791B150E398400FCF653 /* Release */,
+				9404E8EF1541A6AD00C5E1BA /* Distribute */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -440,6 +494,7 @@
 			buildConfigurations = (
 				94BF791D150E398400FCF653 /* Debug */,
 				94BF791E150E398400FCF653 /* Release */,
+				9404E8F01541A6AD00C5E1BA /* Distribute */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

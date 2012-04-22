@@ -118,7 +118,7 @@ static Utils *static_utils;
     NSError* error;
     BOOL isExist = false;
     BOOL isFolder = NO;
-    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/1_5.version"];
+    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/1_6.version"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:versionFile];
     if (isExist == YES)
     {
@@ -183,16 +183,16 @@ static Utils *static_utils;
         NSString* settings = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/"];
         NSString* helpHtml = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/Help.html"];
         [[NSFileManager defaultManager] copyItemAtPath:helpHtml toPath:[projectFolder stringByAppendingPathComponent:@"Help.html"] error:&error];
-        NSString* jpg0 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/help.001.jpg"];
-        [[NSFileManager defaultManager] copyItemAtPath:jpg0 toPath:[settings stringByAppendingPathComponent:@"help.001.jpg"] error:&error];
-        NSString* jpg1 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/help.002.jpg"];
-        [[NSFileManager defaultManager] copyItemAtPath:jpg1 toPath:[settings stringByAppendingPathComponent:@"help.002.jpg"] error:&error];
-        NSString* jpg2 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/help.003.jpg"];
-        [[NSFileManager defaultManager] copyItemAtPath:jpg2 toPath:[settings stringByAppendingPathComponent:@"help.003.jpg"] error:&error];
-        NSString* jpg3 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/help.004.jpg"];
-        [[NSFileManager defaultManager] copyItemAtPath:jpg3 toPath:[settings stringByAppendingPathComponent:@"help.004.jpg"] error:&error];
-        NSString* jpg4 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/help.005.jpg"];
-        [[NSFileManager defaultManager] copyItemAtPath:jpg4 toPath:[settings stringByAppendingPathComponent:@"help.005.jpg"] error:&error];
+        NSString* jpg0 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/1.jpeg"];
+        [[NSFileManager defaultManager] copyItemAtPath:jpg0 toPath:[settings stringByAppendingPathComponent:@"1.jpeg"] error:&error];
+        NSString* jpg1 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/2.jpeg"];
+        [[NSFileManager defaultManager] copyItemAtPath:jpg1 toPath:[settings stringByAppendingPathComponent:@"2.jpeg"] error:&error];
+        NSString* jpg2 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/3.jpeg"];
+        [[NSFileManager defaultManager] copyItemAtPath:jpg2 toPath:[settings stringByAppendingPathComponent:@"3.jpeg"] error:&error];
+        NSString* jpg3 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/4.jpeg"];
+        [[NSFileManager defaultManager] copyItemAtPath:jpg3 toPath:[settings stringByAppendingPathComponent:@"4.jpeg"] error:&error];
+        NSString* jpg4 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/5.jpeg"];
+        [[NSFileManager defaultManager] copyItemAtPath:jpg4 toPath:[settings stringByAppendingPathComponent:@"5.jpeg"] error:&error];
     }
 }
 
