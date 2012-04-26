@@ -185,6 +185,11 @@
 - (IBAction)projectListClicked:(id)sender {
     UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
     
+    if ([projectListPopoverController isPopoverVisible] == YES) {
+        [projectListPopoverController dismissPopoverAnimated:YES];
+        return;
+    }
+    
     ProjectListController* projectListController = [[ProjectListController alloc] init];
     [projectListController setViewController:self];
     
@@ -207,6 +212,7 @@
 }
 
 - (IBAction)deleteButtonClicked:(id)sender {
+    [projectListPopoverController dismissPopoverAnimated:YES];
     if (self.currentSelectedVirImg == nil)
         return;
     UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"CodeNavigator" message:@"Would you like to delete this file?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
@@ -296,6 +302,7 @@
 }
 
 - (IBAction)newButtonClicked:(id)sender {
+    [projectListPopoverController dismissPopoverAnimated:YES];
     if (isCurrentFileManager == NO)
     {
         if ([self.virtualizeWrapper isDirty] == YES)
@@ -347,6 +354,7 @@
 }
 
 - (IBAction)closeButtonClicked:(id)sender {
+    [projectListPopoverController dismissPopoverAnimated:YES];
     if (isCurrentFileManager == YES)
         [[Utils getInstance].detailViewController hideVirtualizeView];
     else
@@ -361,6 +369,7 @@
 }
 
 - (IBAction)showSelectedVirImgClicked:(id)sender {
+    [projectListPopoverController dismissPopoverAnimated:YES];
     if (self.currentSelectedVirImg == nil)
         return;
     isCurrentFileManager = NO;

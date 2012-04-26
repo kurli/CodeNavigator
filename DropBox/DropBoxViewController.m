@@ -254,6 +254,27 @@
         NSLog(@"error");
         return NO;
     }
+    
+#ifdef LITE_VERSION
+    int limitCount = 0;
+    for (int i=0; i<[pendingDownloadArray count]; i++) {
+        SelectionItem* obj = [pendingDownloadArray objectAtIndex:i];
+        if ([obj.path rangeOfString:@"/.git/"].location != NSOrderedSame) {
+            limitCount++;
+        }
+    }
+    
+    if (limitCount > 5) {
+        [[Utils getInstance] showPurchaseAlert];
+        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Maximum number of source files exceeded for Lite Version."];
+        [pendingDownloadArray removeAllObjects];
+        [self.syncingIndicator setHidden:YES];
+        [self.syncingIndicator stopAnimating];
+        [restClient cancelFileLoad:currentLoadFile];
+        return NO;
+    }
+#endif
+
     NSString* localPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
     localPath = [localPath stringByAppendingPathComponent:item.path];
     localPath = [localPath stringByAppendingPathComponent:item.fileName];
@@ -598,6 +619,7 @@
     rect = self.backgroundView.frame;
     rect.origin.y = self.view.frame.size.height;
     [self.backgroundView setFrame:rect];
+    isSyncInProgress = NO;
 }
 
 - (IBAction)localBackClicked:(id)sender {

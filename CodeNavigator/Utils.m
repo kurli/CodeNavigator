@@ -16,6 +16,10 @@
 #import "VirtualizeViewController.h"
 #import "VirtualizeWrapper.h"
 
+#ifdef LITE_VERSION
+#import "GADBannerView.h"
+#endif
+
 @implementation BuildThreadData
 
 @synthesize path;
@@ -102,14 +106,53 @@ static Utils *static_utils;
 {
     self = [super init];
     cssVersion = 1;
+#ifdef LITE_VERSION
+    is_adMobON = YES; 
+#endif
     return self;
+}
+
+-(void)dealloc
+{
+    _adModView.delegate = nil;
+    _adModView = nil;
+    _iAdView.delegate = nil;
+    _iAdView = nil;
+    [self setDropBoxViewController:nil];
+    [self setDetailViewController:nil];
+    [self setSplitViewController:nil];
+    [self setMasterViewController:nil];
+    [self.resultFileList removeAllObjects];
+}
+
+-(BOOL) isAdModOn
+{
+    return is_adMobON;
 }
 
 -(void) initBanner:(UIViewController *)view
 {
     _bannerViewController = [[BannerViewController alloc] initWithContentViewController:view];
-    _bannerView =  [[ADBannerView alloc] init];
-    _bannerView.requiredContentSizeIdentifiers = [NSSet setWithObjects: ADBannerContentSizeIdentifierPortrait, ADBannerContentSizeIdentifierLandscape, nil];
+
+    if([[[NSTimeZone localTimeZone] name] rangeOfString:@"America/"].location== 0 
+       || [[[NSTimeZone localTimeZone] name] rangeOfString:@"Pacific/"].location== 0 
+       || [[[NSTimeZone localTimeZone] name] rangeOfString:@"Europe/"].location== 0 
+       || [[[NSTimeZone localTimeZone] name] rangeOfString:@"Asia/Tokyo"].location== 0) 
+    {
+        is_adMobON = NO;
+    }
+    // do not support iAd
+    is_adMobON = YES;
+    
+    if (is_adMobON == NO) {
+        _iAdView =  [[ADBannerView alloc] init];
+        _iAdView.requiredContentSizeIdentifiers = [NSSet setWithObjects: ADBannerContentSizeIdentifier480x32, nil];
+        [_iAdView setHidden:YES];
+    } else {
+        _adModView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+        _adModView.adUnitID = @"a14f96b923910f9";
+        _adModView.rootViewController = self.splitViewController;
+    }
     [_bannerViewController showBannerView];
 }
 
@@ -464,18 +507,14 @@ static Utils *static_utils;
     return _bannerViewController;
 }
 
--(ADBannerView*) getBannerView
+-(ADBannerView*) getIAdBannerView
 {
-    return _bannerView;
+    return _iAdView;
 }
 
--(void) dealloc
+-(GADBannerView*) getAdModBannerView
 {
-    [self setDropBoxViewController:nil];
-    [self setDetailViewController:nil];
-    [self setSplitViewController:nil];
-    [self setMasterViewController:nil];
-    [self.resultFileList removeAllObjects];
+    return _adModView;
 }
 
 -(NSString*)getProjectFolder:(NSString *)path

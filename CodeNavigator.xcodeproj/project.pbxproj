@@ -232,6 +232,8 @@
 		94A0FAE4153DDA78004277BF /* cscope.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A0FAE2153DDA78004277BF /* cscope.png */; };
 		94A0FAE6153DDAD9004277BF /* virtualize.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A0FAE5153DDAD9004277BF /* virtualize.png */; };
 		94A0FAE7153DDAD9004277BF /* virtualize.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A0FAE5153DDAD9004277BF /* virtualize.png */; };
+		94A3B09A15447C6200C8E132 /* libObjectiveGit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BF7924150E398500FCF653 /* libObjectiveGit.a */; };
+		94A3B09B15447C7500C8E132 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A5184A152DF30A0062DA65 /* Security.framework */; };
 		94A5079314F6AA1C00587A47 /* virbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5079214F6AA1C00587A47 /* virbackground.png */; };
 		94A5079414F6AA1C00587A47 /* virbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5079214F6AA1C00587A47 /* virbackground.png */; };
 		94A51848152DF2AC0062DA65 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A51847152DF2AC0062DA65 /* DropboxSDK.framework */; };
@@ -316,6 +318,11 @@
 		94B23AD81499025A00A83395 /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B23AD71499025A00A83395 /* HistoryController.m */; };
 		94B4036A14A0DE0300E3A636 /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4033014A0D5EB00E3A636 /* libHttpService.a */; };
 		94B4038114A0ED4700E3A636 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4038014A0ED4700E3A636 /* CFNetwork.framework */; };
+		94B8EC211546F2B600931747 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC1F1546F2B600931747 /* libGoogleAdMobAds.a */; };
+		94B8EC221546F2B600931747 /* Mediation in Resources */ = {isa = PBXBuildFile; fileRef = 94B8EC201546F2B600931747 /* Mediation */; };
+		94B8EC241546F2FD00931747 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC231546F2FD00931747 /* AudioToolbox.framework */; };
+		94B8EC261546F30900931747 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC251546F30900931747 /* MessageUI.framework */; };
+		94B8EC281546F31700931747 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC271546F31700931747 /* SystemConfiguration.framework */; };
 		94BF7DA4150E727B00FCF653 /* libZip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434BFB314A389BE00B34419 /* libZip.a */; };
 		94BF7DA6150E73B100FCF653 /* libObjectiveGit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BF7924150E398500FCF653 /* libObjectiveGit.a */; };
 		94BF99BC1534887000F4EFFD /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF99BB1534887000F4EFFD /* refresh.png */; };
@@ -373,6 +380,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9434BF9D14A389BC00B34419;
 			remoteInfo = Zip;
+		};
+		94A3B09815447C4C00C8E132 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94BF791F150E398400FCF653 /* ObjectiveGit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 94BF790E150E398400FCF653;
+			remoteInfo = ObjectiveGit;
 		};
 		94ADF13B14BB27EE00BA807A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -672,6 +686,20 @@
 		94B4037E14A0E33000E3A636 /* localhostAddresses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = localhostAddresses.h; path = HttpService/localhostAddresses.h; sourceTree = "<group>"; };
 		94B4037F14A0E33000E3A636 /* MyHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyHTTPConnection.h; path = HttpService/MyHTTPConnection.h; sourceTree = "<group>"; };
 		94B4038014A0ED4700E3A636 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		94B8EC161546F2B600931747 /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
+		94B8EC171546F2B600931747 /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdNetworkExtras.h; sourceTree = "<group>"; };
+		94B8EC181546F2B600931747 /* GADAdSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdSize.h; sourceTree = "<group>"; };
+		94B8EC191546F2B600931747 /* GADBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerView.h; sourceTree = "<group>"; };
+		94B8EC1A1546F2B600931747 /* GADBannerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerViewDelegate.h; sourceTree = "<group>"; };
+		94B8EC1B1546F2B600931747 /* GADInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitial.h; sourceTree = "<group>"; };
+		94B8EC1C1546F2B600931747 /* GADInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitialDelegate.h; sourceTree = "<group>"; };
+		94B8EC1D1546F2B600931747 /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequest.h; sourceTree = "<group>"; };
+		94B8EC1E1546F2B600931747 /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequestError.h; sourceTree = "<group>"; };
+		94B8EC1F1546F2B600931747 /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
+		94B8EC201546F2B600931747 /* Mediation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Mediation; sourceTree = "<group>"; };
+		94B8EC231546F2FD00931747 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		94B8EC251546F30900931747 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		94B8EC271546F31700931747 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		94BF791F150E398400FCF653 /* ObjectiveGit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveGit.xcodeproj; path = ObjectiveGit/ObjectiveGit/ObjectiveGit.xcodeproj; sourceTree = "<group>"; };
 		94BF7D8D150E6DC200FCF653 /* GTBlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTBlob.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTBlob.h; sourceTree = "<group>"; };
 		94BF7D8E150E6DC200FCF653 /* GTBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTBranch.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTBranch.h; sourceTree = "<group>"; };
@@ -750,6 +778,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B8EC281546F31700931747 /* SystemConfiguration.framework in Frameworks */,
+				94B8EC261546F30900931747 /* MessageUI.framework in Frameworks */,
+				94B8EC241546F2FD00931747 /* AudioToolbox.framework in Frameworks */,
+				94A3B09B15447C7500C8E132 /* Security.framework in Frameworks */,
+				94A3B09A15447C6200C8E132 /* libObjectiveGit.a in Frameworks */,
 				94ADF16E14BB27EE00BA807A /* iAd.framework in Frameworks */,
 				94ADF16F14BB27EE00BA807A /* libZip.a in Frameworks */,
 				94ADF17014BB27EE00BA807A /* CFNetwork.framework in Frameworks */,
@@ -758,6 +791,7 @@
 				94ADF17314BB27EE00BA807A /* Foundation.framework in Frameworks */,
 				94ADF17414BB27EE00BA807A /* CoreGraphics.framework in Frameworks */,
 				94A51849152DF2AC0062DA65 /* DropboxSDK.framework in Frameworks */,
+				94B8EC211546F2B600931747 /* libGoogleAdMobAds.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,6 +801,7 @@
 		9417EB7914AE15CE00224D2A /* Banner */ = {
 			isa = PBXGroup;
 			children = (
+				94B8EC151546F23500931747 /* GoogleAds */,
 				9417EB7A14AE160C00224D2A /* BannerViewController.h */,
 				9417EB7B14AE160C00224D2A /* BannerViewController.m */,
 			);
@@ -776,6 +811,9 @@
 		9431D72914910B3000B0900E = {
 			isa = PBXGroup;
 			children = (
+				94B8EC271546F31700931747 /* SystemConfiguration.framework */,
+				94B8EC251546F30900931747 /* MessageUI.framework */,
+				94B8EC231546F2FD00931747 /* AudioToolbox.framework */,
 				94A5184A152DF30A0062DA65 /* Security.framework */,
 				94A51847152DF2AC0062DA65 /* DropboxSDK.framework */,
 				94BF791F150E398400FCF653 /* ObjectiveGit.xcodeproj */,
@@ -1177,6 +1215,24 @@
 			name = HttpServiceInc;
 			sourceTree = "<group>";
 		};
+		94B8EC151546F23500931747 /* GoogleAds */ = {
+			isa = PBXGroup;
+			children = (
+				94B8EC161546F2B600931747 /* GADAdMobExtras.h */,
+				94B8EC171546F2B600931747 /* GADAdNetworkExtras.h */,
+				94B8EC181546F2B600931747 /* GADAdSize.h */,
+				94B8EC191546F2B600931747 /* GADBannerView.h */,
+				94B8EC1A1546F2B600931747 /* GADBannerViewDelegate.h */,
+				94B8EC1B1546F2B600931747 /* GADInterstitial.h */,
+				94B8EC1C1546F2B600931747 /* GADInterstitialDelegate.h */,
+				94B8EC1D1546F2B600931747 /* GADRequest.h */,
+				94B8EC1E1546F2B600931747 /* GADRequestError.h */,
+				94B8EC1F1546F2B600931747 /* libGoogleAdMobAds.a */,
+				94B8EC201546F2B600931747 /* Mediation */,
+			);
+			name = GoogleAds;
+			sourceTree = "<group>";
+		};
 		94BF7920150E398400FCF653 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1271,6 +1327,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				94A3B09915447C4C00C8E132 /* PBXTargetDependency */,
 				94ADF13A14BB27EE00BA807A /* PBXTargetDependency */,
 				94ADF13C14BB27EE00BA807A /* PBXTargetDependency */,
 			);
@@ -1513,6 +1570,7 @@
 				9404E8FB1541E6B000C5E1BA /* 3.jpeg in Resources */,
 				9404E8FD1541E6B000C5E1BA /* 4.jpeg in Resources */,
 				9404E8FF1541E6B000C5E1BA /* 5.jpeg in Resources */,
+				94B8EC221546F2B600931747 /* Mediation in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1714,6 +1772,11 @@
 			isa = PBXTargetDependency;
 			name = Zip;
 			targetProxy = 9434BFCA14A38ACD00B34419 /* PBXContainerItemProxy */;
+		};
+		94A3B09915447C4C00C8E132 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ObjectiveGit;
+			targetProxy = 94A3B09815447C4C00C8E132 /* PBXContainerItemProxy */;
 		};
 		94ADF13A14BB27EE00BA807A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1947,6 +2010,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
+					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNavigator;
@@ -1974,6 +2038,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
+					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNavigator;
@@ -2004,6 +2069,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
+					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNavigator;

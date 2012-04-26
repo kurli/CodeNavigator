@@ -21,6 +21,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 @class AnalyzeInfoController;
 @class MasterViewController;
 @class DropBoxViewController;
+@class GADBannerView;
 
 #define MAX_HISTORY_STACK 20
 
@@ -90,13 +91,18 @@ typedef enum _AlertConfirmMode{
     int resultCurrentFileIndex;
     BOOL storedForceAnalyze;
     BannerViewController *_bannerViewController;
-    ADBannerView* _bannerView;
+    ADBannerView* _iAdView;
+    GADBannerView* _adModView;
     AlertConfirmMode alertConfirmMode;
     int searchType;
     
     // we need to change css version for each theme change
     // add version can do this
     int cssVersion;
+    
+#ifdef LITE_VERSION
+    BOOL is_adMobON;
+#endif
 }
 
 @property (nonatomic, unsafe_unretained) DetailViewController* detailViewController;
@@ -129,6 +135,8 @@ typedef enum _AlertConfirmMode{
 
 +(Utils*)getInstance;
 
+-(BOOL) isAdModOn;
+
 -(void) initVersion;
 
 // for background syntex color define
@@ -148,7 +156,9 @@ typedef enum _AlertConfirmMode{
 
 -(void) initBanner:(UIViewController*)view;
 
--(ADBannerView*) getBannerView;
+-(ADBannerView*) getIAdBannerView;
+
+-(GADBannerView*) getAdModBannerView;
 
 -(BannerViewController*) getBannerViewController;
 

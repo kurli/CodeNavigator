@@ -42,15 +42,11 @@
     self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailViewController, nil];
     
     //Banner support
-//#ifdef LITE_VERSION
-//    [[Utils getInstance] initBanner:self.splitViewController];
-//    self.window.rootViewController = [[Utils getInstance] getBannerViewController];
-//    //----------------
-//#else
-//    //self.window.rootViewController = self.splitViewController;
-//    [self.window addSubview:self.splitViewController.view];
-//    //end
-//#endif
+#ifdef LITE_VERSION
+    [[Utils getInstance] initBanner:detailViewController];
+//    [self.window addSubview:[[Utils getInstance] getBannerViewController].view];
+#endif
+    //end
     [self.window addSubview:self.splitViewController.view];
     [self.window makeKeyAndVisible];
     
@@ -66,6 +62,9 @@
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
+#ifdef LITE_VERSION
+    [[[Utils getInstance] getBannerViewController] showBannerView];
+#endif
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
