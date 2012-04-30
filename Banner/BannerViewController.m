@@ -173,7 +173,7 @@ NSString * const BannerViewActionDidFinish = @"BannerViewActionDidFinish";
             adModBannerView.delegate = self;
             [adModBannerView setHidden:YES];
             GADRequest *request = [GADRequest request];
-            request.testing = YES;
+//            request.testing = YES;
             [adModBannerView loadRequest:request];
             isAdModGot = NO;
             [self loadView];

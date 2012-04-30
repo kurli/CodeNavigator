@@ -247,6 +247,9 @@
     {
         [self showVirtualizeView];
     }
+#ifdef LITE_VERSION
+    [[[Utils getInstance] getBannerViewController] viewDidLayoutSubviews];
+#endif
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 }
 
@@ -1119,6 +1122,9 @@
     //barButtonItem.title = NSLocalizedString(@"Project", @"Project");
     //[self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
     [hideMasterViewButton setImage:[UIImage imageNamed:@"show_masterview.png"]];
+#ifdef LITE_VERSION
+    [[[Utils getInstance] getBannerViewController] viewDidLayoutSubviews];
+#endif
 }
 
 - (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
@@ -1126,6 +1132,13 @@
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
     //[self.navigationItem setLeftBarButtonItem:nil animated:YES];
     [hideMasterViewButton setImage:[UIImage imageNamed:@"hide_masterview.png"]];
+#ifdef LITE_VERSION
+//    UIInterfaceOrientation orientation = [[UIDevice currentDevice] orientation];
+//    if (UIInterfaceOrientationIsPortrait(orientation)) {
+//        [[[Utils getInstance] getBannerViewController] hideBannerView];
+//    }
+    [[[Utils getInstance] getBannerViewController] viewDidLayoutSubviews];
+#endif
 }
 
 #pragma mark - WebView Delegate
