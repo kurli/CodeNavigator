@@ -100,9 +100,9 @@ typedef enum _AlertConfirmMode{
     // add version can do this
     int cssVersion;
     
-#ifdef LITE_VERSION
     BOOL is_adMobON;
-#endif
+    
+    BOOL isScreenLocked;
 }
 
 @property (nonatomic, unsafe_unretained) DetailViewController* detailViewController;
@@ -227,5 +227,11 @@ typedef enum _AlertConfirmMode{
 -(void) setSearchType:(int)type;
 
 -(int) getSearchType;
+
+-(NSString*) isPasswardSet;
+
+-(BOOL) isScreenLocked;
+
+-(void) setIsScreenLocked:(BOOL)locked;
 
 @end

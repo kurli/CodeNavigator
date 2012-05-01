@@ -55,5 +55,7 @@
 
 - (IBAction)versionControlButtonClicked:(id)sender;
 
+- (IBAction)lockButtonClicked:(id)sender;
+
 @end
 

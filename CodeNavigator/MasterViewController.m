@@ -14,6 +14,7 @@
 #import "GitLogViewCongroller.h"
 #import "DropBoxViewController.h"
 #import "VersionControlController.h"
+#import "SecurityViewController.h"
 
 @implementation MasterViewController
 
@@ -527,6 +528,11 @@
     versionControllerPopOverController.popoverContentSize = controller.view.frame.size;
     
     [versionControllerPopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+- (IBAction)lockButtonClicked:(id)sender {
+    SecurityViewController* viewController = [[SecurityViewController alloc] init];
+    [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
 }
 
 

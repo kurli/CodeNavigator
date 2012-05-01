@@ -264,10 +264,12 @@
 //    [self.view addGestureRecognizer:hold];
     if (self)
     {
+#ifdef LITE_VERSION
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willBeginBannerViewActionNotification:) name:BannerViewActionWillBegin object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishBannerViewActionNotification:) name:BannerViewActionDidFinish object:nil];
         _bannerCounter = 0;
         isVirtualizeDisplayed = NO;
+#endif
     }
     self.upHistoryController = [[HistoryController alloc] init];
     self.downHistoryController = [[HistoryController alloc] init];

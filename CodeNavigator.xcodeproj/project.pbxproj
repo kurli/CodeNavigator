@@ -35,7 +35,6 @@
 		941657121516280200838005 /* GitLogTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941657111516280200838005 /* GitLogTableCell.xib */; };
 		941657131516280200838005 /* GitLogTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941657111516280200838005 /* GitLogTableCell.xib */; };
 		9417EB7814AE118000224D2A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9417EB7714AE118000224D2A /* iAd.framework */; };
-		9417EB7C14AE160C00224D2A /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9417EB7B14AE160C00224D2A /* BannerViewController.m */; };
 		9418F76714D9B0C4003134E6 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9418F76314D9B0C4003134E6 /* Icon-72.png */; };
 		9418F76814D9B0C4003134E6 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9418F76414D9B0C4003134E6 /* Icon-Small-50.png */; };
 		9418F76914D9B0C4003134E6 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9418F76514D9B0C4003134E6 /* Icon-Small.png */; };
@@ -141,6 +140,12 @@
 		9443BF5614D1A40200355278 /* HistoryListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9443BF5314D1A40200355278 /* HistoryListController.m */; };
 		9443BF5714D1A40200355278 /* HistoryListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9443BF5414D1A40200355278 /* HistoryListController.xib */; };
 		9443BF5814D1A40200355278 /* HistoryListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9443BF5414D1A40200355278 /* HistoryListController.xib */; };
+		9443D1EE154EDA6A008CB52D /* SecurityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9443D1EC154EDA6A008CB52D /* SecurityViewController.m */; };
+		9443D1EF154EDA6A008CB52D /* SecurityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9443D1EC154EDA6A008CB52D /* SecurityViewController.m */; };
+		9443D1F0154EDA6A008CB52D /* SecurityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9443D1ED154EDA6A008CB52D /* SecurityViewController.xib */; };
+		9443D1F1154EDA6A008CB52D /* SecurityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9443D1ED154EDA6A008CB52D /* SecurityViewController.xib */; };
+		9443D1F3154FF4D8008CB52D /* Lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 9443D1F2154FF4D8008CB52D /* Lock.png */; };
+		9443D1F4154FF4D8008CB52D /* Lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 9443D1F2154FF4D8008CB52D /* Lock.png */; };
 		944DD7C2152772EF000473BE /* diff.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C1152772EF000473BE /* diff.c */; };
 		944DD7C3152772EF000473BE /* diff.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C1152772EF000473BE /* diff.c */; };
 		944DD7C71527731E000473BE /* getopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C61527731E000473BE /* getopt.c */; };
@@ -581,6 +586,10 @@
 		9443BF5214D1A40200355278 /* HistoryListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryListController.h; sourceTree = "<group>"; };
 		9443BF5314D1A40200355278 /* HistoryListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryListController.m; sourceTree = "<group>"; };
 		9443BF5414D1A40200355278 /* HistoryListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryListController.xib; sourceTree = "<group>"; };
+		9443D1EB154EDA6A008CB52D /* SecurityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecurityViewController.h; path = Security/SecurityViewController.h; sourceTree = "<group>"; };
+		9443D1EC154EDA6A008CB52D /* SecurityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecurityViewController.m; path = Security/SecurityViewController.m; sourceTree = "<group>"; };
+		9443D1ED154EDA6A008CB52D /* SecurityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SecurityViewController.xib; path = Security/SecurityViewController.xib; sourceTree = "<group>"; };
+		9443D1F2154FF4D8008CB52D /* Lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lock.png; sourceTree = "<group>"; };
 		944DD7C1152772EF000473BE /* diff.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = diff.c; sourceTree = "<group>"; };
 		944DD7C4152772FC000473BE /* diff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = diff.h; sourceTree = "<group>"; };
 		944DD7C51527730D000473BE /* getopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getopt.h; sourceTree = "<group>"; };
@@ -825,6 +834,7 @@
 				9434BFAE14A389BC00B34419 /* Zip.xcodeproj */,
 				94B4037514A0E2C400E3A636 /* HttpServiceInc */,
 				94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */,
+				9443D1EA154ED9D6008CB52D /* Security */,
 				944DD7C015277276000473BE /* Diff */,
 				94A5184C152DF5150062DA65 /* DropBox */,
 				94BF7D8B150E6B1C00FCF653 /* Git */,
@@ -1011,6 +1021,7 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9443D1F2154FF4D8008CB52D /* Lock.png */,
 				94352106153EFC1E003F316A /* version_control.png */,
 				94A0FAE5153DDAD9004277BF /* virtualize.png */,
 				94A0FAE2153DDA78004277BF /* cscope.png */,
@@ -1098,6 +1109,16 @@
 				9434C01114A392AC00B34419 /* ZipWriteStream.h */,
 			);
 			name = ZipInc;
+			sourceTree = "<group>";
+		};
+		9443D1EA154ED9D6008CB52D /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				9443D1EB154EDA6A008CB52D /* SecurityViewController.h */,
+				9443D1EC154EDA6A008CB52D /* SecurityViewController.m */,
+				9443D1ED154EDA6A008CB52D /* SecurityViewController.xib */,
+			);
+			name = Security;
 			sourceTree = "<group>";
 		};
 		944DD7C015277276000473BE /* Diff */ = {
@@ -1484,6 +1505,8 @@
 				9404E8FA1541E6B000C5E1BA /* 3.jpeg in Resources */,
 				9404E8FC1541E6B000C5E1BA /* 4.jpeg in Resources */,
 				9404E8FE1541E6B000C5E1BA /* 5.jpeg in Resources */,
+				9443D1F0154EDA6A008CB52D /* SecurityViewController.xib in Resources */,
+				9443D1F3154FF4D8008CB52D /* Lock.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1571,6 +1594,8 @@
 				9404E8FD1541E6B000C5E1BA /* 4.jpeg in Resources */,
 				9404E8FF1541E6B000C5E1BA /* 5.jpeg in Resources */,
 				94B8EC221546F2B600931747 /* Mediation in Resources */,
+				9443D1F1154EDA6A008CB52D /* SecurityViewController.xib in Resources */,
+				9443D1F4154FF4D8008CB52D /* Lock.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1625,7 +1650,6 @@
 				94DA0BBE14A624690035DB39 /* Utils.m in Sources */,
 				94D8703114A65888002F2DBB /* FilePathInfoPopupController.m in Sources */,
 				94291E6014A9FB4A00E44221 /* AnalyzeInfoController.m in Sources */,
-				9417EB7C14AE160C00224D2A /* BannerViewController.m in Sources */,
 				94AB1E5214AF5E0300451020 /* UnSupportedParser.m in Sources */,
 				94846ED014BCA4FD00388D68 /* MGSplitCornersView.m in Sources */,
 				94846ED214BCA4FD00388D68 /* MGSplitDividerView.m in Sources */,
@@ -1668,6 +1692,7 @@
 				9457C78715307AF500BB9185 /* LocalFileControllerDelegate.m in Sources */,
 				9457C78B15307B1400BB9185 /* RemoteFileControllerDelegate.m in Sources */,
 				9435210C153F03D1003F316A /* VersionControlController.m in Sources */,
+				9443D1EE154EDA6A008CB52D /* SecurityViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1762,6 +1787,7 @@
 				9457C78815307AF500BB9185 /* LocalFileControllerDelegate.m in Sources */,
 				9457C78C15307B1400BB9185 /* RemoteFileControllerDelegate.m in Sources */,
 				9435210D153F03D1003F316A /* VersionControlController.m in Sources */,
+				9443D1EF154EDA6A008CB52D /* SecurityViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

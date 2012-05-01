@@ -114,9 +114,13 @@ static Utils *static_utils;
 
 -(void)dealloc
 {
+#ifdef LITE_VERSION
     _adModView.delegate = nil;
+#endif
     _adModView = nil;
+#ifdef LITE_VERSION
     _iAdView.delegate = nil;
+#endif
     _iAdView = nil;
     [self setDropBoxViewController:nil];
     [self setDetailViewController:nil];
@@ -132,6 +136,7 @@ static Utils *static_utils;
 
 -(void) initBanner:(UIViewController *)view
 {
+#ifdef LITE_VERSION
     _bannerViewController = [[BannerViewController alloc] initWithContentViewController:view];
 
     if([[[NSTimeZone localTimeZone] name] rangeOfString:@"America/"].location== 0 
@@ -154,6 +159,7 @@ static Utils *static_utils;
         _adModView.rootViewController = self.splitViewController;
     }
     [_bannerViewController showBannerView];
+#endif
 }
 
 -(void) initVersion
@@ -1474,6 +1480,33 @@ FINAL:
 -(int) getSearchType
 {
     return searchType;
+}
+
+-(NSString*) isPasswardSet
+{
+    NSError* error;
+    BOOL isExist = NO;
+    NSString* pasFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/Password"];
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:pasFile];
+    if (isExist == NO)
+    {
+        return nil;
+    }
+    NSString* pasContent = [NSString stringWithContentsOfFile:pasFile encoding:NSUTF8StringEncoding error:&error];
+    if (error != nil) {
+        return nil;
+    }
+    return pasContent;
+}
+
+-(BOOL)isScreenLocked
+{
+    return isScreenLocked;
+}
+
+-(void) setIsScreenLocked:(BOOL)locked
+{
+    isScreenLocked = locked;
 }
 
 @end
