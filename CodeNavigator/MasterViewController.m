@@ -515,22 +515,28 @@
 }
 
 - (IBAction)versionControlButtonClicked:(id)sender {
-    UIBarButtonItem *item = (UIBarButtonItem*)sender;
-
-    if ([versionControllerPopOverController isPopoverVisible] == YES) {
-        [versionControllerPopOverController dismissPopoverAnimated:YES];
-    }
-    
-    VersionControlController* controller = [[VersionControlController alloc] init];
-    [controller setMasterViewController:self];
-    
-    versionControllerPopOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
-    versionControllerPopOverController.popoverContentSize = controller.view.frame.size;
-    
-    [versionControllerPopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    // Ignore Dropbox
+//    UIBarButtonItem *item = (UIBarButtonItem*)sender;
+//
+//    if ([versionControllerPopOverController isPopoverVisible] == YES) {
+//        [versionControllerPopOverController dismissPopoverAnimated:YES];
+//    }
+//    
+//    VersionControlController* controller = [[VersionControlController alloc] init];
+//    [controller setMasterViewController:self];
+//    
+//    versionControllerPopOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
+//    versionControllerPopOverController.popoverContentSize = controller.view.frame.size;
+//    
+//    [versionControllerPopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    [self gitClicked:sender];
 }
 
 - (IBAction)lockButtonClicked:(id)sender {
+    [self.webServicePopOverController dismissPopoverAnimated:YES];
+    [[Utils getInstance].detailViewController releaseAllPopOver];
+    [[Utils getInstance].analyzeInfoPopover dismissPopoverAnimated:YES];
+    
     SecurityViewController* viewController = [[SecurityViewController alloc] init];
     [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
 }

@@ -19,7 +19,6 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @class DetailViewController;
 @class AnalyzeInfoController;
-@class MasterViewController;
 @class DropBoxViewController;
 @class GADBannerView;
 
@@ -108,8 +107,6 @@ typedef enum _AlertConfirmMode{
 @property (nonatomic, unsafe_unretained) DetailViewController* detailViewController;
 
 @property (nonatomic, unsafe_unretained) MGSplitViewController *splitViewController;
-
-@property (nonatomic, unsafe_unretained) MasterViewController * masterViewController;
 
 @property (nonatomic, strong) AnalyzeInfoController* analyzeInfoController;
 

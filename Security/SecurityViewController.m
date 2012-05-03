@@ -76,13 +76,13 @@
     NSString* pas = [[Utils getInstance] isPasswardSet];
     if (pas == nil) {
         passwordStat = RESET_PASSWORD;
-        [informationLabel setText:@"You can set password to protect your projects"];
+        [informationLabel setText:@"Create a password:"];
         [resetButton setTitle:@"Exit" forState:UIControlStateNormal];
         return;
     }
     pas = nil;
     passwordStat = ENTER_PASSWORD;
-    [informationLabel setText:@"Please Enter Password"];
+    [informationLabel setText:@"Password:"];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -122,7 +122,7 @@
             [[Utils getInstance].splitViewController dismissModalViewControllerAnimated:YES];
         }
         else {
-            [informationLabel setText:@"Password Error"];
+            [informationLabel setText:@"!!!Password Error"];
             password = [[NSMutableString alloc] initWithString:@""];
             needConfirmPassword = [[NSMutableString alloc] initWithString:@""];
             [pas1 setText:@""];
@@ -145,10 +145,10 @@
             [pas3 setText:@""];
             [pas4 setText:@""];
             passwordStat = RESET_PASSWORD;
-            [informationLabel setText:@"Please Set Password:(0000 to erase password)"];
+            [informationLabel setText:@"Create a password:(0000 to erase current password)"];
         }
         else {
-            [informationLabel setText:@"Password Error"];
+            [informationLabel setText:@"!!!Password Error"];
             password = [[NSMutableString alloc] initWithString:@""];
             needConfirmPassword = [[NSMutableString alloc] initWithString:@""];
             [pas1 setText:@""];
@@ -178,7 +178,7 @@
         [pas3 setText:@""];
         [pas4 setText:@""];
         passwordStat = RESET_PASSWORD_CONFIRM;
-        [informationLabel setText:@"Confirm password"];
+        [informationLabel setText:@"Confirm your password"];
     }
     else if (passwordStat == RESET_PASSWORD_CONFIRM)
     {
@@ -192,7 +192,7 @@
             [[Utils getInstance].splitViewController dismissModalViewControllerAnimated:YES];
             return;
         } else {
-            [informationLabel setText:@"Password do not same as previous, reenter"];
+            [informationLabel setText:@"Password don't match, Try again"];
             passwordStat = RESET_PASSWORD;
             password = [[NSMutableString alloc] initWithString:@""];
             needConfirmPassword = [[NSMutableString alloc] initWithString:@""];
@@ -263,7 +263,7 @@
         if ([[Utils getInstance] isPasswardSet] == nil) {
             // Reset password, no password previously
             passwordStat = RESET_PASSWORD;
-            [informationLabel setText:@"Please Set Password:(0000 to erase password)"];
+            [informationLabel setText:@"New password:(0000 to erase password)"];
             [resetButton setTitle:@"Exit" forState:UIControlStateNormal];
         } else {
             // Reset password, need check whether authonized

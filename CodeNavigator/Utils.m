@@ -90,7 +90,6 @@ static Utils *static_utils;
 @synthesize storedAnalyzePath;
 @synthesize splitViewController;
 @synthesize colorScheme;
-@synthesize masterViewController;
 @synthesize cscopeSearchAlertView;
 @synthesize dropBoxViewController;
 
@@ -125,7 +124,6 @@ static Utils *static_utils;
     [self setDropBoxViewController:nil];
     [self setDetailViewController:nil];
     [self setSplitViewController:nil];
-    [self setMasterViewController:nil];
     [self.resultFileList removeAllObjects];
 }
 
@@ -826,6 +824,11 @@ static Utils *static_utils;
         }
         if (self.analyzeInfoPopover.popoverVisible == NO)
         {
+            MasterViewController* _masterViewController = nil;
+            NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
+            _masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
+            [_masterViewController.webServicePopOverController dismissPopoverAnimated:YES];
+            
             [self.analyzeInfoPopover presentPopoverFromBarButtonItem:self.detailViewController.analyzeInfoBarButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         }
     }
