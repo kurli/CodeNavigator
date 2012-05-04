@@ -51,6 +51,11 @@
     [self.window addSubview:self.splitViewController.view];
     [self.window makeKeyAndVisible];
     
+    if ([[Utils getInstance] isScreenLocked] == NO && [[Utils getInstance] isPasswardSet] != nil) {
+        SecurityViewController* viewController = [[SecurityViewController alloc] init];
+        [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
+    }
+    
     // do not display divider
 //    MGSplitViewDividerStyle newStyle = ((self.splitViewController.dividerStyle == MGSplitViewDividerStyleThin) ? MGSplitViewDividerStylePaneSplitter : MGSplitViewDividerStyleThin);
 //	[self.splitViewController setDividerStyle:newStyle animated:YES];
