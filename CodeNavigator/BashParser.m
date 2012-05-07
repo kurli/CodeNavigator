@@ -211,19 +211,6 @@
 	return NO;
 }
 
--(BOOL) checkIsKeyword: (NSString*) word
-{
-	int i=0;
-	for (; i<[keywordsArray count]; i++)
-    {
-		//TODO performance need to be more improved
-		NSString* key = [keywordsArray objectAtIndex:i];
-		if ( [key compare: word] == NSOrderedSame )
-			return YES;
-    }
-	return NO;
-}
-
 -(BOOL) checkIsCommand: (NSString*) word
 {
 	int i=0;

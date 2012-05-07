@@ -336,6 +336,23 @@
     [bracesArray removeObjectAtIndex:index];
 }
 
+-(BOOL) checkIsKeyword: (NSString*) word
+{
+	int i=0;
+	for (; i<[keywordsArray count]; i++)
+    {
+		//TODO performance need to be more improved
+		NSString* key = [keywordsArray objectAtIndex:i];
+        NSComparisonResult result = [key compare:word];
+		if ( result == NSOrderedSame )
+			return YES;
+        if ( result > 0) {
+            return NO;
+        }
+    }
+	return NO;
+}
+
 // end
 
 // ---------------- HTML Components ------------------- 

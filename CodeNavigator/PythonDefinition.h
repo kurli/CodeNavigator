@@ -15,7 +15,7 @@
 
 #define COMMENTS_MULTI_END @"\"\"\""
 
-#define KEYWORD_PYTHON @"and assert break class continue def del elif else except exec finally for from global if import in is lambda not or pass print raise return try yield while None True False self cls class_"
+#define KEYWORD_PYTHON @"False None True and assert break class class_ cls continue def del elif else except exec finally for from global if import in is lambda not or pass print raise return self try while yield"
 
 #define PREPROCESSOR nil
 

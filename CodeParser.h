@@ -56,6 +56,8 @@
 
 -(void) bracesEnded:(int)lineNumber andToken:(NSString*)token;
 
+-(BOOL) checkIsKeyword: (NSString*) word;
+
 // end
 
 // ---------------- HTML Components ------------------- 

@@ -386,19 +386,6 @@
 	return NO;
 }
 
--(BOOL) checkIsKeyword: (NSString*) word
-{
-	int i=0;
-	for (; i<[keywordsArray count]; i++)
-    {
-		//TODO performance need to be more improved
-		NSString* key = [keywordsArray objectAtIndex:i];
-		if ( [key compare: word] == NSOrderedSame )
-			return YES;
-    }
-	return NO;
-}
-
 // return YES, if we need to restart parse
 // return NO, we do not need to reparse, or no header found
 -(BOOL) checkOthers: (int) lineNumber

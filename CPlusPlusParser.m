@@ -10,7 +10,20 @@
         isStringNotEnded = NO;
         
         NSString* keywords = KEYWORD_CPP;
-        keywordsArray = [keywords componentsSeparatedByString:@" "];      
+        keywordsArray = [keywords componentsSeparatedByString:@" "];
+        //****
+//        keywords = @"if fi then elif else for do done until while break continue case function return in eq ne gt lt ge le";
+//        keywordsArray = [keywords componentsSeparatedByString:@" "];
+//        keywordsArray = [keywordsArray sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+//            NSComparisonResult result = [a compare:b];
+//            return result;
+//                         }];
+//        NSMutableString* str = [[NSMutableString alloc] init];
+//        for (int i=0; i<[keywordsArray count]; i++) {
+//            [str appendFormat:@"%@ ",[keywordsArray objectAtIndex:i]];
+//        }
+//        NSLog(str);
+        //****
         preprocessorArray = [NSArray arrayWithObjects: PREPROCESSOR];
 	}
 	return self;
@@ -368,19 +381,6 @@
 		return YES;
 	else if ( (int)character >='A' && (int)character <='Z' )
 		return YES;
-	return NO;
-}
-
--(BOOL) checkIsKeyword: (NSString*) word
-{
-	int i=0;
-	for (; i<[keywordsArray count]; i++)
-    {
-		//TODO performance need to be more improved
-		NSString* key = [keywordsArray objectAtIndex:i];
-		if ( [key compare: word] == NSOrderedSame )
-			return YES;
-    }
 	return NO;
 }
 

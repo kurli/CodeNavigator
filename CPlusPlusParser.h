@@ -14,8 +14,6 @@
 
 -(BOOL) checkOthers: (int)lineNumber;
 
--(BOOL) checkIsKeyword: (NSString*) word;
-
 -(BOOL) checkChar;
 
 -(BOOL) checkHeader:(NSRange) headerKeyword;
