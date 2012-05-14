@@ -223,8 +223,8 @@ function showLines(start, end)
     var tbody=document.getElementsByTagName("tbody")[0]; 
     var trList = tbody.getElementsByTagName("tr");
     
-    var tagStartIndex = start;
-    for (tagStartIndex = start; tagStartIndex<trList.length; tagStartIndex++)
+    var tagStartIndex;
+    for (tagStartIndex = start-1; tagStartIndex<trList.length; tagStartIndex++)
     {
         if (trList[tagStartIndex].id == 'L'+start)
             break;
@@ -234,8 +234,8 @@ function showLines(start, end)
         alert("Source Parse Error, Please reparse it");
         return;
     }
-    var tagEndIndex = end;
-    for (tagEndIndex = end; tagEndIndex<trList.length; tagEndIndex++)
+    var tagEndIndex;
+    for (tagEndIndex = end-1; tagEndIndex<trList.length; tagEndIndex++)
     {
         if (trList[tagEndIndex].id == 'L'+end)
             break;
@@ -275,7 +275,7 @@ function hideLines(token, start,end)
     var trList = tbody.getElementsByTagName("tr");
     
     var tagStartIndex = start;
-    for (tagStartIndex = start; tagStartIndex<trList.length; tagStartIndex++)
+    for (tagStartIndex = start-1; tagStartIndex<trList.length; tagStartIndex++)
     {
         if (trList[tagStartIndex].id == 'L'+start)
             break;
@@ -285,8 +285,8 @@ function hideLines(token, start,end)
         alert("Source Parse Error, Please reparse it");
         return;
     }
-    var tagEndIndex = end;
-    for (tagEndIndex = end; tagEndIndex<trList.length; tagEndIndex++)
+    var tagEndIndex;
+    for (tagEndIndex = end-1; tagEndIndex<trList.length; tagEndIndex++)
     {
         if (trList[tagEndIndex].id == 'L'+end)
             break;
