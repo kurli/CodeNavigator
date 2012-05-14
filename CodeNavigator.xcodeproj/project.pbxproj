@@ -183,6 +183,8 @@
 		945428B614F2B51600353EC8 /* ProjectListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945428B314F2B51600353EC8 /* ProjectListController.xib */; };
 		945428B714F2B51600353EC8 /* ProjectListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945428B314F2B51600353EC8 /* ProjectListController.xib */; };
 		94557E5414B05E89004950B4 /* linux_0.1 in Resources */ = {isa = PBXBuildFile; fileRef = 94557E5314B05E89004950B4 /* linux_0.1 */; };
+		9456A93F15617BDC0092128D /* Comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 9456A93E15617BDC0092128D /* Comment.png */; };
+		9456A94015617BDC0092128D /* Comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 9456A93E15617BDC0092128D /* Comment.png */; };
 		9457C78715307AF500BB9185 /* LocalFileControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9457C78615307AF500BB9185 /* LocalFileControllerDelegate.m */; };
 		9457C78815307AF500BB9185 /* LocalFileControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9457C78615307AF500BB9185 /* LocalFileControllerDelegate.m */; };
 		9457C78B15307B1400BB9185 /* RemoteFileControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9457C78A15307B1400BB9185 /* RemoteFileControllerDelegate.m */; };
@@ -209,6 +211,13 @@
 		945AA45F150926A1006729C8 /* Help.html in Resources */ = {isa = PBXBuildFile; fileRef = 945AA453150926A1006729C8 /* Help.html */; };
 		94603D07149E041400D72561 /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94603D05149E041400D72561 /* ResultViewController.m */; };
 		94603D08149E041400D72561 /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94603D06149E041400D72561 /* ResultViewController.xib */; };
+		94618169155BF85800A25635 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC251546F30900931747 /* MessageUI.framework */; };
+		94618179155EEDAB00A25635 /* CommentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 94618177155EEDAB00A25635 /* CommentManager.m */; };
+		9461817A155EEDAB00A25635 /* CommentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 94618177155EEDAB00A25635 /* CommentManager.m */; };
+		9461817B155EEDAB00A25635 /* CommentManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94618178155EEDAB00A25635 /* CommentManager.xib */; };
+		9461817C155EEDAB00A25635 /* CommentManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94618178155EEDAB00A25635 /* CommentManager.xib */; };
+		94636B54155A91E700B1C37F /* CommentWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94636B53155A91E700B1C37F /* CommentWrapper.m */; };
+		94636B55155A91E700B1C37F /* CommentWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94636B53155A91E700B1C37F /* CommentWrapper.m */; };
 		9466466B14A2370700B30CD2 /* WebServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9466466914A2370700B30CD2 /* WebServiceController.m */; };
 		9466466C14A2370700B30CD2 /* WebServiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9466466A14A2370700B30CD2 /* WebServiceController.xib */; };
 		9473AEF614DACD6A00D39E05 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9473AEF214DACD6A00D39E05 /* Icon-72.png */; };
@@ -223,6 +232,10 @@
 		94846ED514BCA4FD00388D68 /* MGSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECF14BCA4FD00388D68 /* MGSplitViewController.m */; };
 		9489196D1524CC9000AB9968 /* BashParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9489196C1524CC9000AB9968 /* BashParser.m */; };
 		9489196E1524CC9000AB9968 /* BashParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9489196C1524CC9000AB9968 /* BashParser.m */; };
+		948F1C7315583B7600AE4C99 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 948F1C7115583B7600AE4C99 /* CommentViewController.m */; };
+		948F1C7415583B7600AE4C99 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 948F1C7115583B7600AE4C99 /* CommentViewController.m */; };
+		948F1C7515583B7600AE4C99 /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 948F1C7215583B7600AE4C99 /* CommentViewController.xib */; };
+		948F1C7615583B7600AE4C99 /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 948F1C7215583B7600AE4C99 /* CommentViewController.xib */; };
 		9497F3A3151A499D006BCBBF /* ObjectiveCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3A2151A499D006BCBBF /* ObjectiveCParser.m */; };
 		9497F3A4151A499D006BCBBF /* ObjectiveCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3A2151A499D006BCBBF /* ObjectiveCParser.m */; };
 		9497F3A8151B85C7006BCBBF /* CSharpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3A7151B85C7006BCBBF /* CSharpParser.m */; };
@@ -618,6 +631,7 @@
 		945428B214F2B51600353EC8 /* ProjectListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProjectListController.m; path = CodeNavigator/ProjectListController.m; sourceTree = "<group>"; };
 		945428B314F2B51600353EC8 /* ProjectListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProjectListController.xib; path = CodeNavigator/ProjectListController.xib; sourceTree = "<group>"; };
 		94557E5314B05E89004950B4 /* linux_0.1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = linux_0.1; sourceTree = "<group>"; };
+		9456A93E15617BDC0092128D /* Comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Comment.png; sourceTree = "<group>"; };
 		9457C78515307AF500BB9185 /* LocalFileControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalFileControllerDelegate.h; path = DropBox/LocalFileControllerDelegate.h; sourceTree = "<group>"; };
 		9457C78615307AF500BB9185 /* LocalFileControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalFileControllerDelegate.m; path = DropBox/LocalFileControllerDelegate.m; sourceTree = "<group>"; };
 		9457C78915307B1400BB9185 /* RemoteFileControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RemoteFileControllerDelegate.h; path = DropBox/RemoteFileControllerDelegate.h; sourceTree = "<group>"; };
@@ -635,6 +649,11 @@
 		94603D04149E041400D72561 /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
 		94603D05149E041400D72561 /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
 		94603D06149E041400D72561 /* ResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
+		94618176155EEDAB00A25635 /* CommentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentManager.h; path = Comments/CommentManager.h; sourceTree = "<group>"; };
+		94618177155EEDAB00A25635 /* CommentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentManager.m; path = Comments/CommentManager.m; sourceTree = "<group>"; };
+		94618178155EEDAB00A25635 /* CommentManager.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentManager.xib; path = Comments/CommentManager.xib; sourceTree = "<group>"; };
+		94636B52155A91E700B1C37F /* CommentWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentWrapper.h; path = Comments/CommentWrapper.h; sourceTree = "<group>"; };
+		94636B53155A91E700B1C37F /* CommentWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentWrapper.m; path = Comments/CommentWrapper.m; sourceTree = "<group>"; };
 		9466466814A2370700B30CD2 /* WebServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceController.h; sourceTree = "<group>"; };
 		9466466914A2370700B30CD2 /* WebServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceController.m; sourceTree = "<group>"; };
 		9466466A14A2370700B30CD2 /* WebServiceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebServiceController.xib; sourceTree = "<group>"; };
@@ -651,6 +670,9 @@
 		9489196B1524CC9000AB9968 /* BashParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BashParser.h; path = CodeNavigator/BashParser.h; sourceTree = "<group>"; };
 		9489196C1524CC9000AB9968 /* BashParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BashParser.m; path = CodeNavigator/BashParser.m; sourceTree = "<group>"; };
 		9489196F1524CCB300AB9968 /* BashDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BashDefinition.h; path = CodeNavigator/BashDefinition.h; sourceTree = "<group>"; };
+		948F1C7015583B7600AE4C99 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentViewController.h; path = Comments/CommentViewController.h; sourceTree = "<group>"; };
+		948F1C7115583B7600AE4C99 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentViewController.m; path = Comments/CommentViewController.m; sourceTree = "<group>"; };
+		948F1C7215583B7600AE4C99 /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentViewController.xib; path = Comments/CommentViewController.xib; sourceTree = "<group>"; };
 		9497F3A1151A499C006BCBBF /* ObjectiveCParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCParser.h; sourceTree = "<group>"; };
 		9497F3A2151A499D006BCBBF /* ObjectiveCParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCParser.m; sourceTree = "<group>"; };
 		9497F3A5151A4A13006BCBBF /* ObjectiveCDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCDefinition.h; sourceTree = "<group>"; };
@@ -770,6 +792,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94618169155BF85800A25635 /* MessageUI.framework in Frameworks */,
 				94A5184B152DF30A0062DA65 /* Security.framework in Frameworks */,
 				94BF7DA6150E73B100FCF653 /* libObjectiveGit.a in Frameworks */,
 				94BF7DA4150E727B00FCF653 /* libZip.a in Frameworks */,
@@ -834,6 +857,7 @@
 				9434BFAE14A389BC00B34419 /* Zip.xcodeproj */,
 				94B4037514A0E2C400E3A636 /* HttpServiceInc */,
 				94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */,
+				948F1C6F15583AD700AE4C99 /* Comment */,
 				9443D1EA154ED9D6008CB52D /* Security */,
 				944DD7C015277276000473BE /* Diff */,
 				94A5184C152DF5150062DA65 /* DropBox */,
@@ -1021,6 +1045,7 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9456A93E15617BDC0092128D /* Comment.png */,
 				9443D1F2154FF4D8008CB52D /* Lock.png */,
 				94352106153EFC1E003F316A /* version_control.png */,
 				94A0FAE5153DDAD9004277BF /* virtualize.png */,
@@ -1194,6 +1219,21 @@
 				94846ECF14BCA4FD00388D68 /* MGSplitViewController.m */,
 			);
 			name = MGSplitViewController;
+			sourceTree = "<group>";
+		};
+		948F1C6F15583AD700AE4C99 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				948F1C7015583B7600AE4C99 /* CommentViewController.h */,
+				948F1C7115583B7600AE4C99 /* CommentViewController.m */,
+				948F1C7215583B7600AE4C99 /* CommentViewController.xib */,
+				94636B52155A91E700B1C37F /* CommentWrapper.h */,
+				94636B53155A91E700B1C37F /* CommentWrapper.m */,
+				94618176155EEDAB00A25635 /* CommentManager.h */,
+				94618177155EEDAB00A25635 /* CommentManager.m */,
+				94618178155EEDAB00A25635 /* CommentManager.xib */,
+			);
+			name = Comment;
 			sourceTree = "<group>";
 		};
 		94A5184C152DF5150062DA65 /* DropBox */ = {
@@ -1507,6 +1547,9 @@
 				9404E8FE1541E6B000C5E1BA /* 5.jpeg in Resources */,
 				9443D1F0154EDA6A008CB52D /* SecurityViewController.xib in Resources */,
 				9443D1F3154FF4D8008CB52D /* Lock.png in Resources */,
+				948F1C7515583B7600AE4C99 /* CommentViewController.xib in Resources */,
+				9461817B155EEDAB00A25635 /* CommentManager.xib in Resources */,
+				9456A93F15617BDC0092128D /* Comment.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1596,6 +1639,9 @@
 				94B8EC221546F2B600931747 /* Mediation in Resources */,
 				9443D1F1154EDA6A008CB52D /* SecurityViewController.xib in Resources */,
 				9443D1F4154FF4D8008CB52D /* Lock.png in Resources */,
+				948F1C7615583B7600AE4C99 /* CommentViewController.xib in Resources */,
+				9461817C155EEDAB00A25635 /* CommentManager.xib in Resources */,
+				9456A94015617BDC0092128D /* Comment.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1693,6 +1739,9 @@
 				9457C78B15307B1400BB9185 /* RemoteFileControllerDelegate.m in Sources */,
 				9435210C153F03D1003F316A /* VersionControlController.m in Sources */,
 				9443D1EE154EDA6A008CB52D /* SecurityViewController.m in Sources */,
+				948F1C7315583B7600AE4C99 /* CommentViewController.m in Sources */,
+				94636B54155A91E700B1C37F /* CommentWrapper.m in Sources */,
+				94618179155EEDAB00A25635 /* CommentManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1788,6 +1837,9 @@
 				9457C78C15307B1400BB9185 /* RemoteFileControllerDelegate.m in Sources */,
 				9435210D153F03D1003F316A /* VersionControlController.m in Sources */,
 				9443D1EF154EDA6A008CB52D /* SecurityViewController.m in Sources */,
+				948F1C7415583B7600AE4C99 /* CommentViewController.m in Sources */,
+				94636B55155A91E700B1C37F /* CommentWrapper.m in Sources */,
+				9461817A155EEDAB00A25635 /* CommentManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

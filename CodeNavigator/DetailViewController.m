@@ -14,6 +14,8 @@
 #import "HighLightWordController.h"
 #import "HistoryListController.h"
 #import "VirtualizeViewController.h"
+#import "CommentViewController.h"
+#import "CommentWrapper.h"
 
 #define TOOLBAR_X_MASTER_SHOW 55
 #define TOOLBAR_X_MASTER_HIDE 208
@@ -1143,6 +1145,43 @@
 #endif
 }
 
+- (void) showCommentInWebView:(int)_line andComment:(NSString*)_comment
+{
+    NSString* comment = _comment;
+    comment = [comment stringByReplacingOccurrencesOfString:@"\n" withString:@"lgz_br_lgz"];
+    
+    NSString* js = [NSString stringWithFormat:@"showComment('%d','%@');",_line+1, comment];
+    [activeWebView stringByEvaluatingJavaScriptFromString:js];
+}
+
+-(void) showAllComments
+{
+    // Show comments
+    NSString* currentDisplayFile;
+    if (activeWebView == self.webView)
+    {
+        NSString* path = [self.upHistoryController pickTopLevelUrl];
+        currentDisplayFile = [self.upHistoryController getUrlFromHistoryFormat:path];
+    }
+    else
+    {
+        NSString* path = [self.downHistoryController pickTopLevelUrl];
+        currentDisplayFile = [self.downHistoryController getUrlFromHistoryFormat:path];
+    }
+    currentDisplayFile = [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
+    NSString* extention = [currentDisplayFile pathExtension];
+    NSString* commentFile = [currentDisplayFile stringByDeletingPathExtension];
+    commentFile = [commentFile stringByAppendingFormat:@"_%@", extention];
+    commentFile = [commentFile stringByAppendingPathExtension:@"lgz_comment"];
+    
+    CommentWrapper* commentWrapper = [[CommentWrapper alloc] init];
+    [commentWrapper readFromFile:commentFile];
+    for (int i=0; i<[commentWrapper.commentArray count]; i++) {
+        CommentItem* item = [commentWrapper.commentArray objectAtIndex:i];
+        [self showCommentInWebView:item.line andComment:item.comment];
+    }
+}
+
 #pragma mark - WebView Delegate
 
 -(void) webViewDidFinishLoad:(UIWebView *)webView
@@ -1187,6 +1226,8 @@
     {
         [self.virtualizeViewController highlightAllChildrenKeyword];
     }
+    
+    [self showAllComments];
 }
 
 #define SWIPE_STEP 350
@@ -1365,6 +1406,35 @@
         NSString* token = [NSString stringWithFormat:@"'%@'", tmp];
         NSString* js = [NSString stringWithFormat:@"hideLines(%@, %@, %@);", token, [array objectAtIndex:1], [array objectAtIndex:2]];
         [webView stringByEvaluatingJavaScriptFromString:js];
+        return NO;
+    }
+    //comment support
+    array = [tmp componentsSeparatedByString:@"lgz_comment:"];
+    if ([array count] == 2) {
+        NSString* lineStr = [array objectAtIndex:1];
+        int line = [lineStr intValue];
+        //TODO
+//        [[Utils getInstance].webServicePopOverController dismissPopoverAnimated:YES];
+        [self releaseAllPopOver];
+        [[Utils getInstance].analyzeInfoPopover dismissPopoverAnimated:YES];
+        
+        CommentViewController* viewController = [[CommentViewController alloc] init];
+        [viewController setLine:line];
+        NSString* currentDisplayFile;
+        if (webView == self.webView)
+        {
+            NSString* path = [self.upHistoryController pickTopLevelUrl];
+            currentDisplayFile = [self.upHistoryController getUrlFromHistoryFormat:path];
+        }
+        else
+        {
+            NSString* path = [self.downHistoryController pickTopLevelUrl];
+            currentDisplayFile = [self.downHistoryController getUrlFromHistoryFormat:path];
+        }
+        currentDisplayFile = [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
+        [viewController initWithFileName:currentDisplayFile];
+        viewController.modalPresentationStyle = UIModalPresentationFormSheet;
+        [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
         return NO;
     }
     return YES;

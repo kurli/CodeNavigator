@@ -219,13 +219,42 @@ function showLines(start, end)
     startID = startID + start;
     var endID = 'L';
     endID = endID + end;
-    var i = start;
-    for (i = start; i<=end; i++)
+    
+    var tbody=document.getElementsByTagName("tbody")[0]; 
+    var trList = tbody.getElementsByTagName("tr");
+    
+    var tagStartIndex = start;
+    for (tagStartIndex = start; tagStartIndex<trList.length; tagStartIndex++)
     {
-        var id = 'L';
-        id += i;
-        document.getElementById(id).style.display = 'table-row';
+        if (trList[tagStartIndex].id == 'L'+start)
+            break;
     }
+    if (tagStartIndex == trList.length)
+    {
+        alert("Source Parse Error, Please reparse it");
+        return;
+    }
+    var tagEndIndex = end;
+    for (tagEndIndex = end; tagEndIndex<trList.length; tagEndIndex++)
+    {
+        if (trList[tagEndIndex].id == 'L'+end)
+            break;
+    }
+    if (tagEndIndex == trList.length)
+    {
+        alert("Source Parse Error, Please reparse it");
+        return;
+    }
+    
+    var i;
+    for (i = tagStartIndex; i<=tagEndIndex; i++)
+    {
+//        var id = 'L';
+//        id += i;
+        trList[i].style.display = 'table-row';
+        //document.getElementById(id).style.display = 'table-row';
+    }
+    
     var rowID = '';
     rowID +=start;
     rowID += '-';
@@ -242,12 +271,39 @@ function hideLines(token, start,end)
     startID = startID + start;
     var endID = 'L';
     endID = endID + end;
-    var i = start;
-    for (i = start; i<=end; i++)
+    var tbody=document.getElementsByTagName("tbody")[0]; 
+    var trList = tbody.getElementsByTagName("tr");
+    
+    var tagStartIndex = start;
+    for (tagStartIndex = start; tagStartIndex<trList.length; tagStartIndex++)
     {
-        var id = 'L';
-        id += i;
-        document.getElementById(id).style.display = 'none';
+        if (trList[tagStartIndex].id == 'L'+start)
+            break;
+    }
+    if (tagStartIndex == trList.length)
+    {
+        alert("Source Parse Error, Please reparse it");
+        return;
+    }
+    var tagEndIndex = end;
+    for (tagEndIndex = end; tagEndIndex<trList.length; tagEndIndex++)
+    {
+        if (trList[tagEndIndex].id == 'L'+end)
+            break;
+    }
+    if (tagEndIndex == trList.length)
+    {
+        alert("Source Parse Error, Please reparse it");
+        return;
+    }
+    
+    var i;
+    for (i = tagStartIndex; i<=tagEndIndex; i++)
+    {
+//        var id = 'L';
+//        id += i;
+//        document.getElementById(id).style.display = 'none';
+        trList[i].style.display = 'none';
     }
     
     var id = 'L';
@@ -288,4 +344,39 @@ function hideLines(token, start,end)
     row.appendChild(th2);
     row.appendChild(td1);
     tbody.insertBefore(row, element.nextSibling);
+}
+
+function showComment(trID, comment)
+{
+    var trObj = document.getElementById('L'+trID);
+    var tbody=document.getElementsByTagName("tbody")[0];
+    //remove pre comment
+    var preComment = document.getElementById(trID+"-comment");
+    if (preComment)
+    {
+        tbody.removeChild(preComment);
+        if (comment.length == 0)
+            return;
+    }
+    
+    var row = document.createElement("tr");
+    row.id = trID+"-comment";
+    var th1 = document.createElement("th");
+//    //th1.appendChild(document.createTextNode(" "));
+    var th2 = document.createElement("th");
+//    //th2.appendChild(document.createTextNode(" "));
+    var td1 = document.createElement("td");
+    comment = comment.replace(/lgz_br_lgz/ig, '\n');
+    var textNode = document.createTextNode(comment);
+    var divNode = document.createElement("div");
+    divNode.style.backgroundColor = 'yellow';
+    divNode.style.color = 'black';
+    divNode.appendChild(textNode);
+    divNode.setAttribute("onclick","window.location='lgz_comment:"+trID+"'");
+    td1.appendChild(divNode);
+    td1.style.border = '1px solid yellow';
+    row.appendChild(th1);
+    row.appendChild(th2);
+    row.appendChild(td1);
+    tbody.insertBefore(row, trObj.nextSibling);
 }

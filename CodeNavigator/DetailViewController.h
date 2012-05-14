@@ -203,4 +203,6 @@ typedef enum _JSState {
 
 - (void) hideVirtualizeView;
 
+- (void) showCommentInWebView:(int)_line andComment:(NSString*)_comment;
+
 @end

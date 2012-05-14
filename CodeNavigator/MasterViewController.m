@@ -15,6 +15,7 @@
 #import "DropBoxViewController.h"
 #import "VersionControlController.h"
 #import "SecurityViewController.h"
+#import "CommentManager.h"
 
 @implementation MasterViewController
 
@@ -30,6 +31,7 @@
 @synthesize purchaseButton = _purchaseButton;
 #endif
 @synthesize versionControllerPopOverController;
+@synthesize commentManagerPopOverController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -125,6 +127,7 @@
 - (void)viewDidUnload
 {
     //[self setCurrentLocation:nil];
+    [self setCommentManagerPopOverController: nil];
     [self.currentFiles removeAllObjects];
     [self setCurrentProjectPath:nil];
     [self.currentDirectories removeAllObjects];
@@ -144,6 +147,7 @@
 
 - (void)dealloc
 {
+    [self setCommentManagerPopOverController: nil];
     [self setCurrentLocation:nil];
     [self.currentFiles removeAllObjects];
     [self setCurrentProjectPath:nil];
@@ -539,6 +543,29 @@
     
     SecurityViewController* viewController = [[SecurityViewController alloc] init];
     [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
+}
+
+- (IBAction)commentClicked:(id)sender {
+    UIBarButtonItem *item = (UIBarButtonItem*)sender;
+    
+    if ([commentManagerPopOverController isPopoverVisible] == YES) {
+        [commentManagerPopOverController dismissPopoverAnimated:YES];
+        return;
+    }
+    
+    if (isProjectFolder == YES) {
+        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please select a project"];
+        return;
+    }
+    
+    CommentManager* controller = [[CommentManager alloc] init];
+    [controller initWithMasterViewController:self];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
+
+    controller.title = @"Comments";
+    commentManagerPopOverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
+    commentManagerPopOverController.popoverContentSize = controller.view.frame.size;
+    [commentManagerPopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 

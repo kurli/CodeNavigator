@@ -445,7 +445,7 @@
 
 -(void) lineStart: (int)line andContent:(NSString *)lineContent
 {
-    NSString* content = [NSString stringWithFormat:HTML_LINE_START, line, line];
+    NSString* content = [NSString stringWithFormat:HTML_LINE_START, line, line, line];
     [htmlContent appendString: content];    
 }
 

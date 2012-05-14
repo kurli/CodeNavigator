@@ -31,6 +31,8 @@
 
 @property (strong, nonatomic) UIPopoverController* versionControllerPopOverController; 
 
+@property (strong, nonatomic) UIPopoverController* commentManagerPopOverController;
+
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *analyzeButton;
 
 #ifdef LITE_VERSION
@@ -56,6 +58,8 @@
 - (IBAction)versionControlButtonClicked:(id)sender;
 
 - (IBAction)lockButtonClicked:(id)sender;
+
+- (IBAction)commentClicked:(id)sender;
 
 @end
 

@@ -794,6 +794,8 @@ static Utils *static_utils;
         return YES;
     else if ([extension isEqualToString:@"lgz_vir_img"])
         return YES;
+    else if ([extension isEqualToString:@"lgz_comment"])
+        return YES;
     else if ([extension isEqualToString:@"display_2"])
         return YES;
     else if ([extension isEqualToString:DISPLAY_FILE_EXTENTION])
