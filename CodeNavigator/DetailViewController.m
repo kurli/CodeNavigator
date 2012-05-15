@@ -573,10 +573,10 @@
     [_codeNavigationController setCurrentSourcePath:path];
     
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:_codeNavigationController];
-    _codeNavigationController.title = @"Code Navigator";
+    _codeNavigationController.title = @"CodeNavigator";
     // Setup the popover for use from the navigation bar.
 	_codeNavigationPopover = [[UIPopoverController alloc] initWithContentViewController:controller];
-	_codeNavigationPopover.popoverContentSize = CGSizeMake(320., 320.);
+	_codeNavigationPopover.popoverContentSize = _codeNavigationController.view.frame.size;
     
     [_codeNavigationPopover presentPopoverFromBarButtonItem:self.navigateBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     _bannerCounter++;
@@ -912,7 +912,10 @@
 - (void)upSelectButton {
     
     if (currentSearchFocusLine == 0)
+    {
+        currentSearchFocusLine = [highlightLineArray count];
         return;
+    }
     currentSearchFocusLine--;
     if (currentSearchFocusLine >= [highlightLineArray count]) {
         return;
@@ -931,7 +934,8 @@
 - (void)downSelectButton {
     currentSearchFocusLine++;
     if (currentSearchFocusLine >= [highlightLineArray count]) {
-        currentSearchFocusLine-- ;
+        //currentSearchFocusLine-- ;
+        currentSearchFocusLine = -1;
         return;
     }
     int line = [[highlightLineArray objectAtIndex:currentSearchFocusLine] intValue];
