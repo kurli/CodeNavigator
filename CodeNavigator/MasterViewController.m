@@ -18,6 +18,7 @@
 #import "CommentManager.h"
 
 @implementation MasterViewController
+@synthesize fileSearchBar = _fileSearchBar;
 
 @synthesize tableView = _tableView;
 @synthesize currentLocation = _currentLocation;
@@ -32,6 +33,7 @@
 #endif
 @synthesize versionControllerPopOverController;
 @synthesize commentManagerPopOverController;
+@synthesize searchFileResultArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,6 +44,7 @@
         self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
         isProjectFolder = NO;
         self.navigationItem.rightBarButtonItem = self.editButtonItem;
+        isCurrentSearchFileMode = NO;
     }
     return self;
 }
@@ -140,6 +143,7 @@
 #ifdef LITE_VERSION
     [self setPurchaseButton:nil];
 #endif
+    [self setFileSearchBar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -147,6 +151,9 @@
 
 - (void)dealloc
 {
+    [self.searchFileResultArray removeAllObjects];
+    [self setSearchFileResultArray:nil];
+    [self setFileSearchBar:nil];
     [self setCommentManagerPopOverController: nil];
     [self setCurrentLocation:nil];
     [self.currentFiles removeAllObjects];
@@ -167,9 +174,19 @@
 {
     [super viewWillAppear:animated];
     if (isProjectFolder)
+    {
+        [self.fileSearchBar setHidden:YES];
         [self.analyzeButton setEnabled:NO];
+        CGRect rect = self.tableView.frame;
+        rect.size.height += (rect.origin.y - self.view.frame.origin.y);
+        rect.origin.y = self.view.frame.origin.y;
+        [self.tableView setFrame:rect];
+    }
     else
-        [self.analyzeButton setEnabled:YES];    
+    {
+        [self.fileSearchBar setHidden:NO];
+        [self.analyzeButton setEnabled:YES];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -201,6 +218,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (isCurrentSearchFileMode == YES) {
+        return [self.searchFileResultArray count];
+    }
+    
     NSInteger count = 0;
     if (nil != self.currentDirectories)
         count += [self.currentDirectories count];
@@ -212,6 +233,28 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (isCurrentSearchFileMode == YES) {
+        static NSString *fileCellIdentifier = @"FileCell";
+        UITableViewCell *cell;
+        
+        cell = [_tableView dequeueReusableCellWithIdentifier:fileCellIdentifier];
+        if (cell == nil) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"ResultTableCellView" owner:self options:nil] lastObject];
+            [cell setValue:fileCellIdentifier forKey:@"reuseIdentifier"];
+        }
+        NSString* item = nil;
+        if (indexPath.row < [self.searchFileResultArray count]) {
+            item = [self.searchFileResultArray objectAtIndex:indexPath.row];
+        }
+        NSString* fileName = [item lastPathComponent];
+//        [((UILabel *)[cell viewWithTag:101]) setTextColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
+        [((UILabel *)[cell viewWithTag:101]) setText:fileName];
+//        [((UILabel *)[cell viewWithTag:102]) setTextColor:[UIColor colorWithRed:0 green:0 blue:1 alpha:1]];
+        [((UILabel *)[cell viewWithTag:102]) setText:[[Utils getInstance] getPathFromProject:item]];
+        
+        return cell;
+    }
+    
     static NSString *itemIdentifier = @"ProjectCell";
     UITableViewCell *cell;
     
@@ -285,6 +328,9 @@
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (isCurrentSearchFileMode == YES) {
+        return NO;
+    }
     // Return NO if you do not want the specified item to be editable.
     if (self.editing)
         return YES;
@@ -320,6 +366,16 @@
     }   
 }
 
+-(GLfloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (isCurrentSearchFileMode == YES)
+    {
+        return 65;
+    }
+    else
+        return 50;
+}
+
 /*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
@@ -343,11 +399,44 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (isCurrentSearchFileMode == YES) {
+        if (indexPath.row >= [self.searchFileResultArray count]) {
+            return;
+        }
+        NSString* item = [self.searchFileResultArray objectAtIndex:indexPath.row];
+        NSString* html = [[Utils getInstance] getDisplayFile:item andProjectBase:self.currentProjectPath];
+        NSString* displayPath = [[Utils getInstance] getDisplayPath:item];
+        if (html != nil)
+        {
+            DetailViewController* controller = [Utils getInstance].detailViewController;
+            [controller setTitle:[item lastPathComponent] andPath:displayPath andContent:html];
+        }
+        else
+        {
+            DetailViewController* controller = [Utils getInstance].detailViewController;
+            
+            if ([[Utils getInstance] isDocType:item])
+            {
+                [controller displayDocTypeFile:item];
+                return;
+            }
+            if ([[Utils getInstance] isWebType:item])
+            {
+                NSError *error;
+                NSStringEncoding encoding = NSUTF8StringEncoding;
+                html = [NSString stringWithContentsOfFile: item usedEncoding:&encoding error: &error];
+                [controller setTitle:[item lastPathComponent] andPath:item andContent:html];
+            }
+        }
+        [self.fileSearchBar resignFirstResponder];
+        return;
+    }
+    
     NSString *selectedItem;
     NSString *path;
     NSString *displayPath;
     NSString* html;
-        
+
     // For directories
     if (indexPath.row < [self.currentDirectories count])
     {
@@ -409,6 +498,11 @@
 
 -(void) gotoFile:(NSString *)filePath
 {
+    // If current table view is in search mode, just ignore it
+    if (isCurrentSearchFileMode == YES) {
+        return;
+    }
+    
     MasterViewController* targetViewController = nil;
     if (filePath == nil)
     {
@@ -595,25 +689,60 @@
     }
 }
 
+#pragma mark SearchDelegate
+
+- (IBAction)searchFileDoneButtonClicked:(id)sender
+{
+    isCurrentSearchFileMode = NO;
+    [self.searchFileResultArray removeAllObjects];
+    [self setSearchFileResultArray:nil];
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.fileSearchBar setText:@""];
+    [self.fileSearchBar resignFirstResponder];
+    [self.tableView reloadData];
+}
+
+- (void) searchBarTextDidBeginEditing:(UISearchBar *)theSearchBar {
+    if (isCurrentSearchFileMode == YES) {
+        return;
+    }
+    isCurrentSearchFileMode = YES;
+    [self.searchFileResultArray removeAllObjects];
+    [self setSearchFileResultArray:nil];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(searchFileDoneButtonClicked:)];          
+    self.navigationItem.rightBarButtonItem = doneButton;
+    [self.tableView reloadData];
+}
+
+- (void) searchBar:(UISearchBar *)theSearchBar textDidChange:(NSString *)searchText {
+    if ([self.currentProjectPath length] == 0) {
+        return;
+    }
+    if ([searchText length] == 0) {
+        return;
+    }
+    NSString* fileList = [self.currentProjectPath stringByAppendingPathComponent:@"db_files.lgz_proj_files"];
+    
+    BOOL isExist;
+    BOOL isFolder;
+    NSError* error;
+    
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:fileList isDirectory:&isFolder];
+    if (isExist == NO) {
+        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please analyze this project first"];
+        return;
+    }
+    NSString* fileListContent = [NSString stringWithContentsOfFile:fileList encoding:NSUTF8StringEncoding error:&error];
+    self.searchFileResultArray = [[NSMutableArray alloc] init];
+    NSArray* array = [fileListContent componentsSeparatedByString:@"\n"];
+    for (int i=0; i<[array count]; i++) {
+        NSString* fileName = [[array objectAtIndex:i] lastPathComponent];
+        if ([fileName rangeOfString:searchText].location != NSNotFound)
+        {
+            [self.searchFileResultArray addObject:[array objectAtIndex:i]];
+        }
+    }
+    [self.tableView reloadData];
+}
+
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

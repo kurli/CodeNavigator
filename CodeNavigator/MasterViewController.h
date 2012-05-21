@@ -11,9 +11,10 @@
 @class DetailViewController;
 @class WebServiceController;
 
-@interface MasterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
+@interface MasterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UISearchBarDelegate>
 {
     BOOL isProjectFolder;
+    BOOL isCurrentSearchFileMode;
 }
 @property (strong, nonatomic) NSString *currentLocation;
 
@@ -40,6 +41,10 @@
 
 - (IBAction)purchaseClicked:(id)sender;
 #endif
+
+@property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *fileSearchBar;
+
+@property (strong, nonatomic) NSMutableArray* searchFileResultArray;
 
 - (IBAction)addFileToolBarClicked:(id)sender;
 

@@ -15,6 +15,7 @@
 			<string>IBUITableView</string>
 			<string>IBUIToolbar</string>
 			<string>IBUIView</string>
+			<string>IBUISearchBar</string>
 			<string>IBProxyObject</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
@@ -40,7 +41,7 @@
 					<object class="IBUITableView" id="286511803">
 						<reference key="NSNextResponder" ref="380900777"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrameSize">{333, 764}</string>
+						<string key="NSFrame">{{0, 44}, {333, 720}}</string>
 						<reference key="NSSuperview" ref="380900777"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="785694725"/>
@@ -4478,7 +4479,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<string key="NSFrame">{{0, 764}, {320, 44}}</string>
 						<reference key="NSSuperview" ref="380900777"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:372</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -4535,6 +4535,25 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							</object>
 						</array>
 					</object>
+					<object class="IBUISearchBar" id="31062346">
+						<reference key="NSNextResponder" ref="380900777"/>
+						<int key="NSvFlags">290</int>
+						<string key="NSFrameSize">{320, 44}</string>
+						<reference key="NSSuperview" ref="380900777"/>
+						<reference key="NSWindow"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<int key="IBUIContentMode">3</int>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<int key="IBBarStyle">2</int>
+						<string key="IBPlaceholder">Search files</string>
+						<object class="IBUITextInputTraits" key="IBTextInputTraits">
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						</object>
+						<array key="IBScopeButtonTitles">
+							<string>Title</string>
+							<string>Title</string>
+						</array>
+					</object>
 				</array>
 				<string key="NSFrame">{{0, 44}, {320, 808}}</string>
 				<reference key="NSSuperview"/>
@@ -4580,6 +4599,14 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<reference key="destination" ref="1027099419"/>
 					</object>
 					<int key="connectionID">16</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">FileSearchBar</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="31062346"/>
+					</object>
+					<int key="connectionID">50</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -4637,6 +4664,14 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					</object>
 					<int key="connectionID">37</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="31062346"/>
+						<reference key="destination" ref="841351856"/>
+					</object>
+					<int key="connectionID">51</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -4663,6 +4698,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<array class="NSMutableArray" key="children">
 							<reference ref="286511803"/>
 							<reference ref="785694725"/>
+							<reference ref="31062346"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -4714,6 +4750,11 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<reference key="object" ref="380810484"/>
 						<reference key="parent" ref="785694725"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">49</int>
+						<reference key="object" ref="31062346"/>
+						<reference key="parent" ref="380900777"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -4727,6 +4768,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				<string key="32.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="34.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="36.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="49.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -4735,7 +4777,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">39</int>
+			<int key="maxID">51</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4788,6 +4830,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="analyzeButton">UIBarButtonItem</string>
+						<string key="fileSearchBar">UISearchBar</string>
 						<string key="purchaseButton">UIBarButtonItem</string>
 						<string key="tableView">UITableView</string>
 					</dictionary>
@@ -4795,6 +4838,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<object class="IBToOneOutletInfo" key="analyzeButton">
 							<string key="name">analyzeButton</string>
 							<string key="candidateClassName">UIBarButtonItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="fileSearchBar">
+							<string key="name">fileSearchBar</string>
+							<string key="candidateClassName">UISearchBar</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="purchaseButton">
 							<string key="name">purchaseButton</string>

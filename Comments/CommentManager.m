@@ -128,7 +128,7 @@
         NSString* sourceFullName = [sourceName stringByAppendingPathExtension:extention];
         [((UILabel *)[cell viewWithTag:101]) setTextColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
         [((UILabel *)[cell viewWithTag:101]) setText:sourceFullName];
-        [((UILabel *)[cell viewWithTag:102]) setTextColor:[UIColor colorWithRed:0 green:0 blue:1 alpha:1]];
+        [((UILabel *)[cell viewWithTag:102]) setTextColor:[UIColor colorWithRed:0.5 green:0 blue:0.5 alpha:1]];
         [((UILabel *)[cell viewWithTag:102]) setText:[[item stringByDeletingLastPathComponent] stringByAppendingPathComponent:sourceFullName]];
     }
     else
