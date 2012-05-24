@@ -10,6 +10,10 @@
 
 @interface CommentItem : NSObject
 
+@property (nonatomic, strong) NSString* userName;
+
+@property (nonatomic, unsafe_unretained) int time;
+
 @property (nonatomic, unsafe_unretained) int line;
 
 @property (nonatomic, strong) NSString* comment;

@@ -4496,19 +4496,19 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 								<reference key="IBUIToolbar" ref="785694725"/>
 								<int key="IBUISystemItemIdentifier">5</int>
 							</object>
-							<object class="IBUIBarButtonItem" id="380810484">
+							<object class="IBUIBarButtonItem" id="957870542">
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">Comment.png</string>
+									<string key="NSResourceName">Lock.png</string>
 								</object>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="785694725"/>
 							</object>
-							<object class="IBUIBarButtonItem" id="957870542">
+							<object class="IBUIBarButtonItem" id="380810484">
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">Lock.png</string>
+									<string key="NSResourceName">Comment.png</string>
 								</object>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIStyle">1</int>
@@ -4535,7 +4535,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							</object>
 						</array>
 					</object>
-					<object class="IBUISearchBar" id="31062346">
+					<object class="IBUISearchBar" id="515653040">
 						<reference key="NSNextResponder" ref="380900777"/>
 						<int key="NSvFlags">290</int>
 						<string key="NSFrameSize">{320, 44}</string>
@@ -4604,7 +4604,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">FileSearchBar</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="31062346"/>
+						<reference key="destination" ref="515653040"/>
 					</object>
 					<int key="connectionID">50</int>
 				</object>
@@ -4667,7 +4667,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
-						<reference key="source" ref="31062346"/>
+						<reference key="source" ref="515653040"/>
 						<reference key="destination" ref="841351856"/>
 					</object>
 					<int key="connectionID">51</int>
@@ -4698,7 +4698,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<array class="NSMutableArray" key="children">
 							<reference ref="286511803"/>
 							<reference ref="785694725"/>
-							<reference ref="31062346"/>
+							<reference ref="515653040"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -4752,7 +4752,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">49</int>
-						<reference key="object" ref="31062346"/>
+						<reference key="object" ref="515653040"/>
 						<reference key="parent" ref="380900777"/>
 					</object>
 				</array>

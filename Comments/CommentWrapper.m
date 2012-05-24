@@ -8,14 +8,19 @@
 
 #import "CommentWrapper.h"
 #import "Utils.h"
+#import "SBJson.h"
 
-#define COMMENT_SEPRATER @"----lgz----comment----\n"
-#define COMMENT_LINE_SEP @"----lgz--line----\n"
+#define COMMENT_USER_NAME @"username"
+#define COMMENT_TIME @"time"
+#define COMMENT_LINE @"line"
+#define COMMENT_COMMENT @"comment"
 
 @implementation CommentItem
 
 @synthesize line;
 @synthesize comment;
+@synthesize userName;
+@synthesize time;
 
 @end
 
@@ -44,15 +49,37 @@
     NSError* error;
     if (isExist) {
         totalComment = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
-        NSArray* array = [totalComment componentsSeparatedByString:COMMENT_SEPRATER];
-        for (int i=0; i<[array count]; i++) {
-            NSArray* array2 = [[array objectAtIndex:i] componentsSeparatedByString:COMMENT_LINE_SEP];
-            if ([array2 count] == 2) {
-                CommentItem *item = [[CommentItem alloc] init];
-                [item setLine:[[array2 objectAtIndex:0] intValue]];
-                [item setComment:[array2 objectAtIndex:1]];
-                [commentArray addObject:item];
+        
+        SBJsonParser* parser = [[SBJsonParser alloc] init];
+        NSArray* commentList = [parser objectWithString:totalComment];
+        for (int i=0; i<[commentList count]; i++) {
+            NSDictionary* dictionary = [commentList objectAtIndex:i];
+            if ([dictionary count] == 0) {
+                return;
             }
+            CommentItem* item = [[CommentItem alloc] init];
+            NSString* tmp = [dictionary objectForKey:COMMENT_USER_NAME];
+            if (tmp == nil) {
+                continue;
+            }
+            [item setUserName:tmp];
+            tmp = [dictionary objectForKey:COMMENT_TIME];
+            if (tmp == nil) {
+                continue;
+            }
+            [item setTime:[tmp intValue]];
+            tmp = [dictionary objectForKey:COMMENT_COMMENT];
+            if (tmp == nil) {
+                continue;
+            }
+            [item setComment:tmp];
+            tmp = [dictionary objectForKey:COMMENT_LINE];
+            if (tmp == nil) {
+                continue;
+            }
+            [item setLine:[tmp intValue]];
+            
+            [commentArray addObject:item];
         }
     }
 }
@@ -62,6 +89,8 @@
     CommentItem* newItem = [[CommentItem alloc] init];
     newItem.line = line;
     newItem.comment = comment;
+    newItem.userName = @"";
+    newItem.time = 0;
     
     if ([commentArray count] == 0) {
         [commentArray addObject:newItem];
@@ -135,14 +164,20 @@
         return;
     }
     
-    NSMutableString* str = [[NSMutableString alloc] init];
+    NSMutableArray* mutableArray = [[NSMutableArray alloc] init];
     for (int i=0; i<[commentArray count]; i++) {
         CommentItem* item = [commentArray objectAtIndex:i];
         if ([item.comment length] == 0) {
             continue;
         }
-        [str appendFormat:@"%d\n%@%@%@", item.line, COMMENT_LINE_SEP, item.comment, COMMENT_SEPRATER];
+        NSMutableDictionary* dictionary = [[NSMutableDictionary alloc] init];
+        [dictionary setObject:item.userName forKey:COMMENT_USER_NAME];
+        [dictionary setObject:[NSString stringWithFormat:@"%d", item.time] forKey:COMMENT_TIME];
+        [dictionary setObject:item.comment forKey:COMMENT_COMMENT];
+        [dictionary setObject:[NSString stringWithFormat:@"%d", item.line] forKey:COMMENT_LINE];
+        [mutableArray addObject:dictionary];
     }
+    NSString* str = [mutableArray JSONRepresentation];
     
     [str writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error];
 }
