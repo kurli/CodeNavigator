@@ -440,6 +440,11 @@
 
 -(void) addUnknownLine:(NSString *)content
 {
+    NSMutableString* mutableString = [content mutableCopy];
+    content = [mutableString stringByReplacingOccurrencesOfString: @"<" withString:@"&lt;"];
+    mutableString = [content mutableCopy];
+    content = [mutableString stringByReplacingOccurrencesOfString: @">" withString:@"&gt;"];
+
     [htmlContent appendFormat:HTML_UNKNOWN_LINE, content];
 }
 

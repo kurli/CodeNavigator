@@ -208,7 +208,7 @@ padding-right: 20px;\
     
     NSString* path = [[Utils getInstance] getPathFromProject:fileName];
     
-    [picker setSubject:[NSString stringWithFormat:@"%@--Comment L%d", path, line+1]];
+    [picker setSubject:[NSString stringWithFormat:@"%@--Comments L%d", path, line+1]];
     
     [emailBody appendString:@"<html><body>"];
     //File path

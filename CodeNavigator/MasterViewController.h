@@ -46,6 +46,8 @@
 
 @property (strong, nonatomic) NSMutableArray* searchFileResultArray;
 
+@property (strong, nonatomic) UIPopoverController* fileInfoPopOverController;
+
 - (IBAction)addFileToolBarClicked:(id)sender;
 
 - (void) reloadData;

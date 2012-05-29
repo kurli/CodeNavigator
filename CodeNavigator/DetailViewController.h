@@ -135,11 +135,11 @@ typedef enum _JSState {
 
 - (void) setCurrentSearchFocusLine:(int)line;
 
-- (void) setTitle: (NSString*) title andPath:(NSString*)path andContent:(NSString*) content;
+- (void) setTitle: (NSString*) title andPath:(NSString*)path andContent:(NSString*) content andBaseUrl:(NSString*)baseURL;
 
 - (void) displayDocTypeFile: (NSString*) path;
 
-- (void) displayHTMLString: (NSString*)content;
+- (void) displayHTMLString: (NSString*)content andBaseURL:(NSString*)baseURL;
 
 - (int) getCurrentScrollLocation;
 

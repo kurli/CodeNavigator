@@ -170,7 +170,7 @@
         NSError *error;
         NSStringEncoding encoding = NSUTF8StringEncoding;
         NSString* html = [NSString stringWithContentsOfFile: help usedEncoding:&encoding error: &error];
-        [self setTitle:@"Help.html" andPath:help andContent:html];
+        [self setTitle:@"Help.html" andPath:help andContent:html andBaseUrl:nil];
         isFirstDisplay = NO;
     }
     [super viewWillAppear:animated];
@@ -361,13 +361,13 @@
 }
 
 #pragma detailviewcontroller interface for others
-- (void)setTitle:(NSString *)title andPath:(NSString*)path andContent:(NSString *)content
+- (void)setTitle:(NSString *)title andPath:(NSString*)path andContent:(NSString *)content andBaseUrl:(NSString *)baseURL
 {
     int location = [self getCurrentScrollLocation];
     [self.titleTextField setTitle:title];
     [self.historyController updateCurrentScrollLocation:location];
     [self.historyController pushUrl:path];
-    [self displayHTMLString:content];
+    [self displayHTMLString:content andBaseURL:baseURL];
     content = nil;
 }
 
@@ -384,14 +384,18 @@
     [self.activeWebView loadRequest:request];
 }
 
--(void) displayHTMLString:(NSString *)content
+-(void) displayHTMLString:(NSString *)content andBaseURL:(NSString *)baseURL
 {
-    NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
+    if (baseURL == nil) {
+        baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
+    } else {
+        baseURL = [NSURL fileURLWithPath:baseURL isDirectory:YES];
+    }
     self.activeWebView.opaque = NO;
     self.activeWebView.backgroundColor = [UIColor clearColor];
     [[Utils getInstance] changeUIViewStyle:self.activeWebView];
     [self.activeWebView setScalesPageToFit:NO];
-    [self.activeWebView loadHTMLString:content baseURL:baseURL];
+    [self.activeWebView loadHTMLString:content baseURL:[baseURL copy]];
 }
 
 - (void) gotoFile:(NSString *)filePath andLine:(NSString *)line andKeyword:(NSString *)__keyword
@@ -430,7 +434,7 @@
 
         if (currentDisplayFile == nil || !([currentDisplayFile compare:displayPath] == NSOrderedSame))
         {
-            [self displayHTMLString:html];
+            [self displayHTMLString:html andBaseURL:nil];
 
             jsState = JS_GOTO_LINE_AND_FOCUS_KEYWORD;
             jsGotoLine = [line intValue];
@@ -489,7 +493,7 @@
     if (extention != nil && [extention compare:DISPLAY_FILE_EXTENTION] == NSOrderedSame)
     {
         NSString* content = [NSString stringWithContentsOfFile:url encoding:encoding error:&error];
-        [self displayHTMLString:content];
+        [self displayHTMLString:content andBaseURL:nil];
     }
     else
     {
@@ -502,10 +506,17 @@
         }
         else if ([[Utils getInstance] isWebType:url] == YES)
         {
-            NSError *error;
-            NSStringEncoding encoding = NSUTF8StringEncoding;
-            NSString* html = [NSString stringWithContentsOfFile: url usedEncoding:&encoding error: &error];
-            [self displayHTMLString:html];
+            NSString* proj = [[Utils getInstance] getProjectFolder:url];
+            if ([proj length] == 0 || [proj compare:url] == NSOrderedSame) {
+                NSError *error;
+                NSStringEncoding encoding = NSUTF8StringEncoding;
+                NSString* html = [NSString stringWithContentsOfFile: url usedEncoding:&encoding error: &error];
+                [self displayHTMLString:html andBaseURL:nil];
+            }
+            else {
+                NSString* content = [NSString stringWithContentsOfFile:url encoding:encoding error:&error];
+                [self displayHTMLString:content andBaseURL:[url stringByDeletingLastPathComponent]];
+            }
         }
     }
 
@@ -556,7 +567,7 @@
     NSString* currentDisplayFile = [self getCurrentDisplayFile];
     NSStringEncoding encoding = NSUTF8StringEncoding;
     html = [NSString stringWithContentsOfFile: currentDisplayFile usedEncoding:&encoding error: &error];
-    [self displayHTMLString:html];
+    [self displayHTMLString:html andBaseURL:nil];
 }
 
 - (void)navigationManagerPopUpWithKeyword:(NSString*)keyword andSourcePath:(NSString*)path {

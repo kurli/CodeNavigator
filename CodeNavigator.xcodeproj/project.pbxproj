@@ -360,6 +360,10 @@
 		94B23AD81499025A00A83395 /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B23AD71499025A00A83395 /* HistoryController.m */; };
 		94B4036A14A0DE0300E3A636 /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4033014A0D5EB00E3A636 /* libHttpService.a */; };
 		94B4038114A0ED4700E3A636 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4038014A0ED4700E3A636 /* CFNetwork.framework */; };
+		94B7E5AA156FE2BA000F3F34 /* FileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B7E5A8156FE2BA000F3F34 /* FileInfoViewController.m */; };
+		94B7E5AB156FE2BB000F3F34 /* FileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B7E5A8156FE2BA000F3F34 /* FileInfoViewController.m */; };
+		94B7E5AC156FE2BB000F3F34 /* FileInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B7E5A9156FE2BA000F3F34 /* FileInfoViewController.xib */; };
+		94B7E5AD156FE2BB000F3F34 /* FileInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B7E5A9156FE2BA000F3F34 /* FileInfoViewController.xib */; };
 		94B8EC211546F2B600931747 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC1F1546F2B600931747 /* libGoogleAdMobAds.a */; };
 		94B8EC221546F2B600931747 /* Mediation in Resources */ = {isa = PBXBuildFile; fileRef = 94B8EC201546F2B600931747 /* Mediation */; };
 		94B8EC241546F2FD00931747 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC231546F2FD00931747 /* AudioToolbox.framework */; };
@@ -375,6 +379,8 @@
 		94C8C68514FA57D60062750D /* ImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C8C68214FA57D60062750D /* ImagePreviewController.m */; };
 		94C8C68614FA57D60062750D /* ImagePreviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C8C68314FA57D60062750D /* ImagePreviewController.xib */; };
 		94C8C68714FA57D60062750D /* ImagePreviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C8C68314FA57D60062750D /* ImagePreviewController.xib */; };
+		94CB787F156E80C8009452D8 /* FileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CB787E156E80C8009452D8 /* FileTableViewCell.xib */; };
+		94CB7880156E80C8009452D8 /* FileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CB787E156E80C8009452D8 /* FileTableViewCell.xib */; };
 		94D16DE714C9CC3B007439EB /* ImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D16DE614C9CC3B007439EB /* ImageParser.m */; };
 		94D16DE814C9CC3B007439EB /* ImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D16DE614C9CC3B007439EB /* ImageParser.m */; };
 		94D1BF79153C56420007A8EB /* forward_history.png in Resources */ = {isa = PBXBuildFile; fileRef = 94D1BF78153C56420007A8EB /* forward_history.png */; };
@@ -766,6 +772,9 @@
 		94B4037E14A0E33000E3A636 /* localhostAddresses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = localhostAddresses.h; path = HttpService/localhostAddresses.h; sourceTree = "<group>"; };
 		94B4037F14A0E33000E3A636 /* MyHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyHTTPConnection.h; path = HttpService/MyHTTPConnection.h; sourceTree = "<group>"; };
 		94B4038014A0ED4700E3A636 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		94B7E5A7156FE2BA000F3F34 /* FileInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileInfoViewController.h; path = FileInfoController/FileInfoViewController.h; sourceTree = "<group>"; };
+		94B7E5A8156FE2BA000F3F34 /* FileInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileInfoViewController.m; path = FileInfoController/FileInfoViewController.m; sourceTree = "<group>"; };
+		94B7E5A9156FE2BA000F3F34 /* FileInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FileInfoViewController.xib; path = FileInfoController/FileInfoViewController.xib; sourceTree = "<group>"; };
 		94B8EC161546F2B600931747 /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
 		94B8EC171546F2B600931747 /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdNetworkExtras.h; sourceTree = "<group>"; };
 		94B8EC181546F2B600931747 /* GADAdSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdSize.h; sourceTree = "<group>"; };
@@ -809,6 +818,7 @@
 		94C8C68114FA57D60062750D /* ImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagePreviewController.h; path = CodeNavigator/ImagePreviewController.h; sourceTree = "<group>"; };
 		94C8C68214FA57D60062750D /* ImagePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagePreviewController.m; path = CodeNavigator/ImagePreviewController.m; sourceTree = "<group>"; };
 		94C8C68314FA57D60062750D /* ImagePreviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImagePreviewController.xib; path = CodeNavigator/ImagePreviewController.xib; sourceTree = "<group>"; };
+		94CB787E156E80C8009452D8 /* FileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileTableViewCell.xib; sourceTree = "<group>"; };
 		94D16DE514C9CC3B007439EB /* ImageParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageParser.h; sourceTree = "<group>"; };
 		94D16DE614C9CC3B007439EB /* ImageParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageParser.m; sourceTree = "<group>"; };
 		94D1BF78153C56420007A8EB /* forward_history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward_history.png; sourceTree = "<group>"; };
@@ -946,7 +956,9 @@
 				94BF7D8B150E6B1C00FCF653 /* Git */,
 				9431D7C01494CEC300B0900E /* Resources */,
 				9431D773149474EE00B0900E /* cscope */,
+				94B7E5A6156FE278000F3F34 /* FileInfoController */,
 				9431D7621493B31500B0900E /* Parser */,
+				9447208015752EFB002EEA5A /* ManuallyParserController */,
 				9452BA2514DD7BF3003B88E5 /* Virtualization */,
 				9431D73E14910B3000B0900E /* CodeNavigator */,
 				9431D73714910B3000B0900E /* Frameworks */,
@@ -1022,6 +1034,7 @@
 				9431D75014910B3000B0900E /* MasterViewController.xib */,
 				9431D75314910B3000B0900E /* DetailViewController.xib */,
 				9432E3AC149CF9CE00AB5BB7 /* NavigationController.xib */,
+				94CB787E156E80C8009452D8 /* FileTableViewCell.xib */,
 				9431D73F14910B3000B0900E /* Supporting Files */,
 			);
 			path = CodeNavigator;
@@ -1228,6 +1241,13 @@
 			name = Security;
 			sourceTree = "<group>";
 		};
+		9447208015752EFB002EEA5A /* ManuallyParserController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ManuallyParserController;
+			sourceTree = "<group>";
+		};
 		944DD7C015277276000473BE /* Diff */ = {
 			isa = PBXGroup;
 			children = (
@@ -1356,6 +1376,16 @@
 				94B4037F14A0E33000E3A636 /* MyHTTPConnection.h */,
 			);
 			name = HttpServiceInc;
+			sourceTree = "<group>";
+		};
+		94B7E5A6156FE278000F3F34 /* FileInfoController */ = {
+			isa = PBXGroup;
+			children = (
+				94B7E5A7156FE2BA000F3F34 /* FileInfoViewController.h */,
+				94B7E5A8156FE2BA000F3F34 /* FileInfoViewController.m */,
+				94B7E5A9156FE2BA000F3F34 /* FileInfoViewController.xib */,
+			);
+			name = FileInfoController;
 			sourceTree = "<group>";
 		};
 		94B8EC151546F23500931747 /* GoogleAds */ = {
@@ -1632,6 +1662,8 @@
 				948F1C7515583B7600AE4C99 /* CommentViewController.xib in Resources */,
 				9461817B155EEDAB00A25635 /* CommentManager.xib in Resources */,
 				9456A93F15617BDC0092128D /* Comment.png in Resources */,
+				94CB787F156E80C8009452D8 /* FileTableViewCell.xib in Resources */,
+				94B7E5AC156FE2BB000F3F34 /* FileInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1724,6 +1756,8 @@
 				948F1C7615583B7600AE4C99 /* CommentViewController.xib in Resources */,
 				9461817C155EEDAB00A25635 /* CommentManager.xib in Resources */,
 				9456A94015617BDC0092128D /* Comment.png in Resources */,
+				94CB7880156E80C8009452D8 /* FileTableViewCell.xib in Resources */,
+				94B7E5AD156FE2BB000F3F34 /* FileInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1836,6 +1870,7 @@
 				94246F70156BC84600CA4234 /* SBJsonTokeniser.m in Sources */,
 				94246F72156BC84600CA4234 /* SBJsonUTF8Stream.m in Sources */,
 				94246F74156BC84600CA4234 /* SBJsonWriter.m in Sources */,
+				94B7E5AA156FE2BA000F3F34 /* FileInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1946,6 +1981,7 @@
 				94246F71156BC84600CA4234 /* SBJsonTokeniser.m in Sources */,
 				94246F73156BC84600CA4234 /* SBJsonUTF8Stream.m in Sources */,
 				94246F75156BC84600CA4234 /* SBJsonWriter.m in Sources */,
+				94B7E5AB156FE2BB000F3F34 /* FileInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

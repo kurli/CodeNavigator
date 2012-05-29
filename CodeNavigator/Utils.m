@@ -1422,8 +1422,8 @@ FINAL:
     {
         return path;
     }
-    if ([self isWebType:path])
-        return path;
+//    if ([self isWebType:path])
+//        return path;
     
     displayPath = [path stringByDeletingPathExtension];
     displayPath = [displayPath stringByAppendingFormat:@"_%@",[path pathExtension]];
@@ -1461,8 +1461,8 @@ FINAL:
         {
             return nil;
         }
-        if ([self isWebType:path])
-            return nil;
+//        if ([self isWebType:path])
+//            return nil;
         NSStringEncoding encoding = NSUTF8StringEncoding;
         html = [NSString stringWithContentsOfFile: displayPath usedEncoding:&encoding error: &error];
         //html = [self HloveyRC4:rc4Result key:@"lgz"];

@@ -16,6 +16,7 @@
 #import "VersionControlController.h"
 #import "SecurityViewController.h"
 #import "CommentManager.h"
+#import "FileInfoViewController.h"
 
 @implementation MasterViewController
 @synthesize fileSearchBar = _fileSearchBar;
@@ -34,6 +35,7 @@
 @synthesize versionControllerPopOverController;
 @synthesize commentManagerPopOverController;
 @synthesize searchFileResultArray;
+@synthesize fileInfoPopOverController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -137,6 +139,7 @@
     [self setCurrentDirectories:nil];
     [self setCurrentFiles: nil];
     [self setWebServiceController:nil];
+    [self.webServicePopOverController dismissPopoverAnimated:NO];
     [self setWebServicePopOverController:nil];
     [self setTableView:nil];
     [self setAnalyzeButton:nil];
@@ -144,6 +147,8 @@
     [self setPurchaseButton:nil];
 #endif
     [self setFileSearchBar:nil];
+    [self.fileInfoPopOverController dismissPopoverAnimated:NO];
+    [self setFileInfoPopOverController:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -151,6 +156,7 @@
 
 - (void)dealloc
 {
+    [self setFileInfoPopOverController:nil];
     [self.searchFileResultArray removeAllObjects];
     [self setSearchFileResultArray:nil];
     [self setFileSearchBar:nil];
@@ -210,6 +216,40 @@
     return YES;
 }
 
+- (IBAction)fileInfoButtonClicked:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    UIView *contentView = [button superview];
+    UITableViewCell *cell = (UITableViewCell*)[contentView superview];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    if ([self.fileInfoPopOverController isPopoverVisible] == YES) {
+        [self.fileInfoPopOverController dismissPopoverAnimated:NO];
+    }
+    
+    if (indexPath.row < [self.currentDirectories count])
+    {
+        return;
+    }
+    
+    NSString* fileName = [self.currentFiles objectAtIndex:indexPath.row-[self.currentDirectories count]];
+    
+    NSString* path = [self.currentLocation stringByAppendingPathComponent:fileName];
+    
+    FileInfoViewController* fileInfoViewController = [[FileInfoViewController alloc] init];
+    [fileInfoViewController setSourceFile:path];
+    [fileInfoViewController setMasterViewController:self];
+    
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:fileInfoViewController];
+    fileInfoViewController.title = @"Action";
+    // Setup the popover for use from the navigation bar.
+	fileInfoPopOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
+	fileInfoPopOverController.popoverContentSize = fileInfoViewController.view.frame.size;
+    
+    [fileInfoPopOverController presentPopoverFromRect:button.frame inView:cell permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+}
+
+#pragma mark tableView delegate
 // Customize the number of sections in the table view.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -256,15 +296,15 @@
     }
     
     static NSString *itemIdentifier = @"ProjectCell";
+    static NSString *fileIdentifier = @"FileCellIdentifier";
     UITableViewCell *cell;
-    
-    cell = [tableView dequeueReusableCellWithIdentifier:itemIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemIdentifier];
-    }
     
     if (indexPath.row < [self.currentDirectories count])
     {
+        cell = [tableView dequeueReusableCellWithIdentifier:itemIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemIdentifier];
+        }
         if (isProjectFolder == YES)
         {
             cell.imageView.image = [UIImage imageNamed:@"project.png"];
@@ -277,49 +317,80 @@
     }
     else
     {
+        UIImageView* imageView;
+        cell = [_tableView dequeueReusableCellWithIdentifier:fileIdentifier];
+        if (cell == nil) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"FileTableViewCell" owner:self options:nil] lastObject];
+            [cell setValue:fileIdentifier forKey:@"reuseIdentifier"];
+        }
+        imageView = (UIImageView*)[cell viewWithTag:101];
+        
         NSString* fileName = [self.currentFiles objectAtIndex:indexPath.row-[self.currentDirectories count]];
         NSString* extention = [fileName pathExtension];
         extention = [extention lowercaseString];
         if ([extention compare:@"cc"] == NSOrderedSame) {
-            cell.imageView.image = [UIImage imageNamed:@"ccFile.png"];
+            imageView.image = [UIImage imageNamed:@"ccFile.png"];
         }
         else if ([extention compare:@"c"] == NSOrderedSame) {
-            cell.imageView.image = [UIImage imageNamed:@"cFile.png"];
+            imageView.image = [UIImage imageNamed:@"cFile.png"];
         }
         else if ([extention compare:@"cpp"] == NSOrderedSame) {
-            cell.imageView.image = [UIImage imageNamed:@"cppFile.png"];
+            imageView.image = [UIImage imageNamed:@"cppFile.png"];
         }
         else if ([extention compare:@"cs"] == NSOrderedSame) {
-            cell.imageView.image = [UIImage imageNamed:@"csFile.png"];
+            imageView.image = [UIImage imageNamed:@"csFile.png"];
         }
         else if ([extention compare:@"h"] == NSOrderedSame) {
-            cell.imageView.image = [UIImage imageNamed:@"hFile.png"];
+            imageView.image = [UIImage imageNamed:@"hFile.png"];
         }
         else if ([extention compare:@"hpp"] == NSOrderedSame) {
-            cell.imageView.image = [UIImage imageNamed:@"hppFile.png"];
+            imageView.image = [UIImage imageNamed:@"hppFile.png"];
         }
         else if ([extention compare:@"java"] == NSOrderedSame) {
-            cell.imageView.image = [UIImage imageNamed:@"javaFile.png"];
+            imageView.image = [UIImage imageNamed:@"javaFile.png"];
         }
         else if ([extention compare:@"m"] == NSOrderedSame) {
-            cell.imageView.image = [UIImage imageNamed:@"mFile.png"];
+            imageView.image = [UIImage imageNamed:@"mFile.png"];
         }
         else if ([extention compare:@"s"] == NSOrderedSame) {
-            cell.imageView.image = [UIImage imageNamed:@"sFile.png"];
+            imageView.image = [UIImage imageNamed:@"sFile.png"];
         }
         else if ([extention compare:@"mm"] == NSOrderedSame) {
-            cell.imageView.image = [UIImage imageNamed:@"mmFile.png"];
+            imageView.image = [UIImage imageNamed:@"mmFile.png"];
         }
         else {
             NSString* name = [[fileName pathComponents] lastObject];
             name = [name lowercaseString];
             if ([name compare:@"makefile"] == NSOrderedSame)
-                cell.imageView.image = [UIImage imageNamed:@"mkFile.png"];
+                imageView.image = [UIImage imageNamed:@"mkFile.png"];
             else
-                cell.imageView.image = [UIImage imageNamed:@"File.png"];
+                imageView.image = [UIImage imageNamed:@"File.png"];
         }
 
-        cell.textLabel.text = fileName;
+        ((UILabel*)[cell viewWithTag:102]).text = fileName;
+        
+        NSError* error;
+        NSString* filePath = self.currentLocation;
+        filePath = [filePath stringByAppendingPathComponent:fileName];
+        NSDictionary *attributes = [[NSFileManager defaultManager] 
+                                    attributesOfItemAtPath:filePath error:&error];
+        float theSize = [(NSNumber*)[attributes valueForKey:NSFileSize] floatValue];
+        NSString* sizeStr;
+        if (theSize<1023)
+            sizeStr = ([NSString stringWithFormat:@"%1.f bytes",theSize]);
+        else {
+            theSize = theSize / 1024;
+            sizeStr = ([NSString stringWithFormat:@"%1.1f KB",theSize]);
+        }
+        
+        NSDate* date = [attributes valueForKey:NSFileModificationDate];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init]; 
+        [dateFormatter setDateFormat:@"yy/MM/dd HH:mm"];
+
+        ((UILabel*)[cell viewWithTag:103]).text = sizeStr;
+        ((UILabel*)[cell viewWithTag:104]).text = [dateFormatter stringFromDate:date];
+        UIButton* infoButton = (UIButton*)[cell viewWithTag:110];
+        [infoButton addTarget:self action:@selector(fileInfoButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
 
     return cell;
@@ -373,7 +444,13 @@
         return 65;
     }
     else
-        return 50;
+    {
+        if (indexPath.row < [self.currentDirectories count])
+            return 50;
+        else {
+            return 60;
+        }
+    }
 }
 
 /*
@@ -409,7 +486,7 @@
         if (html != nil)
         {
             DetailViewController* controller = [Utils getInstance].detailViewController;
-            [controller setTitle:[item lastPathComponent] andPath:displayPath andContent:html];
+            [controller setTitle:[item lastPathComponent] andPath:displayPath andContent:html andBaseUrl:nil];
         }
         else
         {
@@ -420,13 +497,13 @@
                 [controller displayDocTypeFile:item];
                 return;
             }
-            if ([[Utils getInstance] isWebType:item])
-            {
-                NSError *error;
-                NSStringEncoding encoding = NSUTF8StringEncoding;
-                html = [NSString stringWithContentsOfFile: item usedEncoding:&encoding error: &error];
-                [controller setTitle:[item lastPathComponent] andPath:item andContent:html];
-            }
+//            if ([[Utils getInstance] isWebType:item])
+//            {
+//                NSError *error;
+//                NSStringEncoding encoding = NSUTF8StringEncoding;
+//                html = [NSString stringWithContentsOfFile: item usedEncoding:&encoding error: &error];
+//                [controller setTitle:[item lastPathComponent] andPath:item andContent:html];
+//            }
         }
         [self.fileSearchBar resignFirstResponder];
         return;
@@ -463,31 +540,40 @@
     }
     else
     {
+        DetailViewController* controller = [Utils getInstance].detailViewController;
+
         selectedItem = [self.currentFiles objectAtIndex:indexPath.row-[self.currentDirectories count]];
         path = [self.currentLocation stringByAppendingPathComponent:selectedItem];
         html = [[Utils getInstance] getDisplayFile:path andProjectBase:self.currentProjectPath];
         displayPath = [[Utils getInstance] getDisplayPath:path];
+        
+        //Help.html special case
+        if (isProjectFolder == YES && [selectedItem compare:@"Help.html"] == NSOrderedSame) {
+            NSError *error;
+            NSStringEncoding encoding = NSUTF8StringEncoding;
+            html = [NSString stringWithContentsOfFile: path usedEncoding:&encoding error: &error];
+            [controller setTitle:selectedItem andPath:path andContent:html andBaseUrl:nil];
+            return;
+        }
+        //other case
         if (html != nil)
         {
-            DetailViewController* controller = [Utils getInstance].detailViewController;
-            [controller setTitle:selectedItem andPath:displayPath andContent:html];
+            [controller setTitle:selectedItem andPath:displayPath andContent:html andBaseUrl:nil];
         }
         else
-        {
-            DetailViewController* controller = [Utils getInstance].detailViewController;
-            
+        {            
             if ([[Utils getInstance] isDocType:path])
             {
                 [controller displayDocTypeFile:path];
                 return;
             }
-            if ([[Utils getInstance] isWebType:path])
-            {
-                NSError *error;
-                NSStringEncoding encoding = NSUTF8StringEncoding;
-                html = [NSString stringWithContentsOfFile: path usedEncoding:&encoding error: &error];
-                [controller setTitle:selectedItem andPath:path andContent:html];
-            }
+//            if ([[Utils getInstance] isWebType:path])
+//            {
+//                NSError *error;
+//                NSStringEncoding encoding = NSUTF8StringEncoding;
+//                html = [NSString stringWithContentsOfFile: path usedEncoding:&encoding error: &error];
+//                [controller setTitle:selectedItem andPath:path andContent:html];
+//            }
 
 //            NSStringEncoding encoding = NSUTF8StringEncoding;
 //            html = [NSString stringWithContentsOfFile: path usedEncoding:&encoding error: &error];
