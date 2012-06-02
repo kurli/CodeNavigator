@@ -10,6 +10,31 @@
 
 @implementation ObjectiveCParser
 
++(NSString*) getExtentionsStr
+{
+    return @"m h";
+}
+
++(NSString*) getSingleLineCommentsStr
+{
+    return COMMENTS_SINGLE;
+}
+
++(NSString*) getMultiLineCommentsStartStr
+{
+    return COMMENTS_MULTI;
+}
+
++(NSString*) getMultiLineCommentsEndStr
+{
+    return COMMENTS_MULTI_END;
+}
+
++(NSString*) getKeywordsStr
+{
+    return KEYWORD_OBJ;
+}
+
 -(id) init
 {
 	if ( (self = [super init])!=nil )

@@ -1,39 +1,21 @@
 //
-//  PythonParser.m
+//  ManuallyParser.m
 //  CodeNavigator
 //
-//  Created by Guozhen Li on 3/23/12.
+//  Created by Guozhen Li on 6/3/12.
 //  Copyright (c) 2012 Siemens Corporate Research. All rights reserved.
 //
 
-#import "PythonParser.h"
+#import "ManuallyParser.h"
 
-@implementation PythonParser
+@implementation ManuallyParser
 
-+(NSString*) getExtentionsStr
-{
-    return @"py python";
-}
-
-+(NSString*) getSingleLineCommentsStr
-{
-    return COMMENTS_SINGLE;
-}
-
-+(NSString*) getMultiLineCommentsStartStr
-{
-    return COMMENTS_MULTI;
-}
-
-+(NSString*) getMultiLineCommentsEndStr
-{
-    return COMMENTS_MULTI_END;
-}
-
-+(NSString*) getKeywordsStr
-{
-    return KEYWORD_PYTHON;
-}
+@synthesize name;
+@synthesize extentions;
+@synthesize singleLineComments;
+@synthesize multilineCommentsS;
+@synthesize multilineCommentsE;
+@synthesize keywords;
 
 -(id) init
 {
@@ -41,10 +23,6 @@
 	{
 		isCommentsNotEnded = NO;
         isStringNotEnded = NO;
-        
-        NSString* keywords = KEYWORD_PYTHON;
-        keywordsArray = [keywords componentsSeparatedByString:@" "];      
-        preprocessorArray = [NSArray arrayWithObjects: PREPROCESSOR];
 	}
 	return self;
 }
@@ -57,10 +35,10 @@
     if ( isStringNotEnded == YES )
 		return NO;
 	if ( YES == isCommentsNotEnded )
-    {		
-		// comments not ended we nned to find COMMENTS_MULTI_END
+    {
+		// comments not ended we nned to find "*/"
 		// In this case we assume that we have met /* before
-		NSRange commentEndRange = [needParseLine rangeOfString: COMMENTS_MULTI_END];
+		NSRange commentEndRange = [needParseLine rangeOfString: multilineCommentsE];
 		// check whether */ exsist
 		if ( commentEndRange.location != NSNotFound )
 		{
@@ -71,9 +49,9 @@
 			isCommentsNotEnded = NO;
 			NSRange range = {0, commentEndRange.location + commentEndRange.length};
 			[needParseLine deleteCharactersInRange: range];
-			[self bracesEnded:currentParseLine andToken:@"%l2"];
+            
+            [self bracesEnded:currentParseLine andToken:multilineCommentsS];
 			return YES;
-            return YES;
 		}
 		else 
 		{
@@ -89,16 +67,9 @@
     {
 		// We need to check whether comments in the beginning
 		// check //
-		NSRange commentSingleRange = [needParseLine rangeOfString: COMMENTS_SINGLE];
-		NSRange commentMultiStartRange = [needParseLine rangeOfString: COMMENTS_MULTI];
-        NSRange commentEndRange = [needParseLine rangeOfString: COMMENTS_MULTI_END];
-        //Python special
-        if (commentMultiStartRange.location != NSNotFound) {
-            NSRange range;
-            range.location = commentMultiStartRange.location + commentMultiStartRange.length;
-            range.length = [needParseLine length]-range.location;
-            commentEndRange = [needParseLine rangeOfString:COMMENTS_MULTI_END options:NSLiteralSearch range:range];
-        }
+		NSRange commentSingleRange = [needParseLine rangeOfString: singleLineComments];
+		NSRange commentMultiStartRange = [needParseLine rangeOfString: multilineCommentsS];
+		NSRange commentEndRange = [needParseLine rangeOfString: multilineCommentsE];
 		if ( commentSingleRange.location == 0 )
         {
 			// it's comment line
@@ -110,7 +81,7 @@
         }
 		else if( commentMultiStartRange.location == 0 )
         {
-            [self bracesStarted:currentParseLine andToken:@"%l2"];
+            [self bracesStarted:currentParseLine andToken:multilineCommentsS];
 			// it's comment multi line
 			[self commentStart];
 			// check whether comment line is only this line
@@ -131,104 +102,13 @@
 				[self addEnd];
 				NSRange range = {0, commentEndRange.location + commentEndRange.length};
 				[needParseLine deleteCharactersInRange: range];
-                [self bracesEnded:currentParseLine andToken:@"%l2"];
+                [self bracesEnded:currentParseLine andToken:multilineCommentsS];
+                
 				return YES;
             }
         }
 		return NO;
     }
-}
-
--(BOOL) checkHeader:(NSRange) headerKeyword
-{
-  	if ( headerKeyword.location == NSNotFound )
-    {
-		return NO;
-    }
-	// header started
-	[self headerStart];
-	NSString* keyword = [needParseLine substringToIndex: headerKeyword.location + headerKeyword.length];
-	[self addString: keyword addEnter: NO];
-	[self addEnd];
-	NSRange range = {0, headerKeyword.location + headerKeyword.length};
-	[needParseLine deleteCharactersInRange: range];
-    
-	unichar charTemp;
-	while( [needParseLine length] > 0 )
-    {
-		charTemp = [needParseLine characterAtIndex:0];
-		if ( charTemp == ' ' )
-        {
-			[self addString: @" " addEnter:NO];
-			range.location = 0;
-			range.length = 1;
-			[needParseLine deleteCharactersInRange:range];
-        }
-		else if( charTemp == '\t' )
-		{
-			[self addString: @"    " addEnter:NO];
-			range.location = 0;
-			range.length = 1;
-			[needParseLine deleteCharactersInRange:range];
-		}
-		else
-        {
-			if ( charTemp == '"' )
-            {
-				[self stringStart];
-				[self addString:@"\"" addEnter:NO];
-				range.location = 0;
-				range.length = 1;
-				[needParseLine deleteCharactersInRange:range];
-				range = [needParseLine rangeOfString: @"\""];
-                if ( range.location == NSNotFound )
-				{
-					// parse error
-                    [self addString:needParseLine addEnter:NO];
-                    [needParseLine setString: @""];
-                    return YES;
-				}
-				NSString* content = [needParseLine substringToIndex: range.location + range.length];
-				// add to code analyzer
-				[self addString:content addEnter:NO];
-				[self addEnd];
-				NSRange deleteRange;
-				deleteRange.location = 0;
-				deleteRange.length = range.location + range.length;
-				[needParseLine deleteCharactersInRange: deleteRange];
-				return YES;
-            }
-			else if ( charTemp == '<' )
-            {
-				[self stringStart];
-				[self addString:@"&lt;" addEnter:NO];
-				range.location = 0;
-				range.length = 1;
-				[needParseLine deleteCharactersInRange:range];
-				range = [needParseLine rangeOfString: @">"];
-                if ( range.location == NSNotFound )
-				{
-                    [self addString:needParseLine addEnter:NO];
-                    [needParseLine setString: @""];
-                    return YES;
-				}
-				NSString* content = [needParseLine substringToIndex: range.location + range.length-1];
-				[self addString:content addEnter:NO];
-                [self addString:@"&gt" addEnter:NO];
-				[self addEnd];
-				NSRange deleteRange;
-				deleteRange.location = 0;
-				deleteRange.length = range.location + range.length;
-				[needParseLine deleteCharactersInRange: deleteRange];
-				return YES;
-            }
-			else
-            {
-				return YES;
-            }
-        }
-	}
-    return YES;
 }
 
 // return YES, if we need to restart parse
@@ -236,46 +116,6 @@
 -(BOOL) checkPreprocessor: (int) lineNumber
 {
     return NO;
-    // If we r in string, we dont need to parse comment
-    if ( isStringNotEnded == YES )
-		return NO;
-	
-	NSRange headerBegin = [needParseLine rangeOfString: @""];
-	if ( headerBegin.location != 0 )
-		return NO;
-	NSRange headerKeyword = [needParseLine rangeOfString: HEADER_KEYWORD];
-    if ( [self checkHeader: headerKeyword] == YES )
-		return YES;
-    
-    // support import
-    headerKeyword = [needParseLine rangeOfString: HEADER_KEYWORD2];
-    if ( [self checkHeader: headerKeyword] == YES )
-		return YES;
-    
-    // check other Preprocessors
-    // get preprocessor end, we do not support "#  define"
-    int index = [self getNextSpaceIndex:needParseLine];
-	
-    if ( index == 0)
-		return NO;
-    if ( index == -1)
-        index = [needParseLine length];
-    // check whether preprocessor
-    NSString* content = [needParseLine substringToIndex: index];
-    for (index = 0; index<[preprocessorArray count]; index++)
-	{
-        NSString* key = [preprocessorArray objectAtIndex:index];
-        if ( [key compare: content] == NSOrderedSame )
-			break;
-	}
-    if ( index == [preprocessorArray count] )
-		return NO;
-    
-    [self headerStart];
-    [self addString: content addEnter:NO];
-    [self addEnd];
-    [needParseLine deleteCharactersInRange: NSMakeRange(0, [content length])];
-    return YES;
 }
 
 // return YES, if we need to restart parse
@@ -446,6 +286,15 @@
 		word = [needParseLine substringToIndex: 1];
 		[self addString: word addEnter:NO];
 		[needParseLine deleteCharactersInRange: NSMakeRange(0, 1)];
+        
+        //fold support
+//        if ([word compare:BRACE_START] == NSOrderedSame) {
+//            [self bracesStarted:lineNumber andToken:BRACE_START];
+//        }
+//        else if ([word compare:BRACE_END] == NSOrderedSame)
+//        {
+//            [self bracesEnded:lineNumber andToken:BRACE_START];
+//        }
 		return YES;
     }
 	
@@ -512,6 +361,12 @@
         return YES;
     }
 	return YES;
+}
+
+-(void) setKeywords:(NSString *)_keywords
+{
+    keywords = _keywords;
+    keywordsArray = [keywords componentsSeparatedByString:@" "];
 }
 
 @end

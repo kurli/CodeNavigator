@@ -10,6 +10,7 @@
 #import "Utils.h"
 #import "DetailViewController.h"
 #import "MasterViewController.h"
+#import "ManuallyParserViewController.h"
 
 //source wrapper
 #define RE_OPEN 0
@@ -42,6 +43,7 @@
 
 - (void)dealloc
 {
+    [self.selectionList removeAllObjects];
     [self setSelectionList:nil];
     [self setSourceFilePath:nil];
     [self setMasterViewController:nil];
@@ -106,6 +108,12 @@
         [[NSFileManager defaultManager] removeItemAtPath:displayPath error:&error];
         [masterViewController reloadData];
         [[Utils getInstance] analyzeProject:proj andForceCreate:YES];
+        //remove comments file
+        NSString* extention = [sourceFilePath pathExtension];
+        NSString* commentFile = [sourceFilePath stringByDeletingPathExtension];
+        commentFile = [commentFile stringByAppendingFormat:@"_%@", extention];
+        commentFile = [commentFile stringByAppendingPathExtension:@"lgz_comment"];
+        [[NSFileManager defaultManager] removeItemAtPath:commentFile error:&error];
     }
 }
 
@@ -113,6 +121,14 @@
 {
     UIAlertView *confirmAlert = [[UIAlertView alloc] initWithTitle:@"CodeNavigator" message:@"Would you like to delete this file?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
      [confirmAlert show];
+}
+
+-(void) presentOpenAsView
+{
+    ManuallyParserViewController* viewController = [[ManuallyParserViewController alloc] init];
+    viewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [viewController setFilePath:sourceFilePath];
+    [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -142,7 +158,7 @@
                 }
             }
             else if (indexPath.row == OPEN_AS) {
-                //TODO
+                [self presentOpenAsView];
             }
             else if (indexPath.row == SOURCE_DELETE) {
                 [self deleteFile];
@@ -172,6 +188,9 @@
             else if (indexPath.row == WEB_DELETE) {
                 [self deleteFile];
             }
+        case FILEINFO_OTHER:
+            [self deleteFile];
+            break;
         default:
             break;
     }
@@ -190,11 +209,18 @@
     if ([extention compare:@"html"] == NSOrderedSame) {
         fileInfoType = FILEINFO_WEB;
         //Do not change the order
-        selectionList = [[NSArray alloc] initWithObjects:@"Open as Source File", @"Preview", @"Delete", nil];
+        selectionList = [[NSMutableArray alloc] initWithObjects:@"Open as Source File", @"Preview", @"Delete", nil];
     } else {
+        if ([[Utils getInstance] isDocType:path] == YES ||
+            [[Utils getInstance] isImageType:path]) {
+            fileInfoType = FILEINFO_OTHER;
+            selectionList = [[NSMutableArray alloc] initWithObjects:@"Delete", nil];
+            return;
+        }
+        
         fileInfoType = FILEINFO_SOURCE;
         //Do not change the order
-        selectionList = [[NSArray alloc] initWithObjects:@"Refresh", @"Open As", @"Delete", nil];
+        selectionList = [[NSMutableArray alloc] initWithObjects:@"Refresh", @"Open As", @"Delete", nil];
     }
 }
 

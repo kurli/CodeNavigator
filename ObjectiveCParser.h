@@ -30,4 +30,14 @@
 
 -(BOOL) checkATBeginner:(int) lineNumber;
 
++(NSString*) getExtentionsStr;
+
++(NSString*) getSingleLineCommentsStr;
+
++(NSString*) getMultiLineCommentsStartStr;
+
++(NSString*) getMultiLineCommentsEndStr;
+
++(NSString*) getKeywordsStr;
+
 @end

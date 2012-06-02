@@ -11,6 +11,43 @@
 
 @implementation CSharpParser
 
++(NSString*) getExtentionsStr:(int)type
+{
+    if (type == CSHARP)
+        return @"cs";
+    else if (type == JAVA)
+        return @"java";
+    else if (type == JAVASCRIPT)
+        return @"js";
+    return @"";
+}
+
++(NSString*) getSingleLineCommentsStr
+{
+    return COMMENTS_SINGLE;
+}
+
++(NSString*) getMultiLineCommentsStartStr
+{
+    return COMMENTS_MULTI;
+}
+
++(NSString*) getMultiLineCommentsEndStr
+{
+    return COMMENTS_MULTI_END;
+}
+
++(NSString*) getKeywordsStr:(int)type
+{
+    if (type == CSHARP)
+        return KEYWORD_CSHARP;
+    else if (type == JAVA)
+        return KEYWORD_JAVA;
+    else if (type == JAVASCRIPT)
+        return KEYWORD_JAVASCRIPT;
+    return @"";
+}
+
 -(id) initWithType:(ParserType)type
 {
 	if ( (self = [super init])!=nil )

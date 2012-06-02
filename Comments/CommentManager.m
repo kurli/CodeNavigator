@@ -42,6 +42,22 @@
     
     NSString* projCommentContent = [NSString stringWithContentsOfFile:projCommentPath encoding:NSUTF8StringEncoding error:&error];
     self.fileArray = [projCommentContent componentsSeparatedByString:@"\n"];
+    NSMutableString* result = [[NSMutableString alloc] init];
+    for (int i=0; i<[fileArray count]; i++) {
+        if ([[self.fileArray objectAtIndex:i] length] == 0) {
+            continue;
+        }
+        NSString* path = NSHomeDirectory();
+        path = [path stringByAppendingPathComponent:@"Documents"];
+        path = [path stringByAppendingPathComponent:@"Projects"];
+        path = [path stringByAppendingPathComponent:[self.fileArray objectAtIndex:i]];
+        BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:path];
+        if (isExist) {
+            [result appendFormat:@"%@\n", [self.fileArray objectAtIndex:i]];
+        }
+    }
+    self.fileArray = [result componentsSeparatedByString:@"\n"];
+    [result writeToFile:projCommentPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
 
 - (void)viewDidLoad

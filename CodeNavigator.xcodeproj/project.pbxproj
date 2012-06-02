@@ -156,6 +156,8 @@
 		9435210D153F03D1003F316A /* VersionControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435210A153F03D1003F316A /* VersionControlController.m */; };
 		9435210E153F03D1003F316A /* VersionControlController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9435210B153F03D1003F316A /* VersionControlController.xib */; };
 		9435210F153F03D1003F316A /* VersionControlController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9435210B153F03D1003F316A /* VersionControlController.xib */; };
+		9435320B157A861D0011A446 /* ManuallyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435320A157A861D0011A446 /* ManuallyParser.m */; };
+		9435320C157A861D0011A446 /* ManuallyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435320A157A861D0011A446 /* ManuallyParser.m */; };
 		94422A3314DD87F50076AC66 /* VirtualizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94422A3114DD87F50076AC66 /* VirtualizeViewController.m */; };
 		94422A3414DD87F50076AC66 /* VirtualizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94422A3114DD87F50076AC66 /* VirtualizeViewController.m */; };
 		94422A3514DD87F50076AC66 /* VirtualizeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94422A3214DD87F50076AC66 /* VirtualizeViewController.xib */; };
@@ -170,6 +172,10 @@
 		9443D1F1154EDA6A008CB52D /* SecurityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9443D1ED154EDA6A008CB52D /* SecurityViewController.xib */; };
 		9443D1F3154FF4D8008CB52D /* Lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 9443D1F2154FF4D8008CB52D /* Lock.png */; };
 		9443D1F4154FF4D8008CB52D /* Lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 9443D1F2154FF4D8008CB52D /* Lock.png */; };
+		94472084157534E9002EEA5A /* ManuallyParserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94472082157534E9002EEA5A /* ManuallyParserViewController.m */; };
+		94472085157534E9002EEA5A /* ManuallyParserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94472082157534E9002EEA5A /* ManuallyParserViewController.m */; };
+		94472086157534E9002EEA5A /* ManuallyParserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94472083157534E9002EEA5A /* ManuallyParserViewController.xib */; };
+		94472087157534E9002EEA5A /* ManuallyParserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94472083157534E9002EEA5A /* ManuallyParserViewController.xib */; };
 		944DD7C2152772EF000473BE /* diff.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C1152772EF000473BE /* diff.c */; };
 		944DD7C3152772EF000473BE /* diff.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C1152772EF000473BE /* diff.c */; };
 		944DD7C71527731E000473BE /* getopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C61527731E000473BE /* getopt.c */; };
@@ -648,6 +654,8 @@
 		94352109153F03D1003F316A /* VersionControlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionControlController.h; sourceTree = "<group>"; };
 		9435210A153F03D1003F316A /* VersionControlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionControlController.m; sourceTree = "<group>"; };
 		9435210B153F03D1003F316A /* VersionControlController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VersionControlController.xib; sourceTree = "<group>"; };
+		94353209157A861D0011A446 /* ManuallyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManuallyParser.h; sourceTree = "<group>"; };
+		9435320A157A861D0011A446 /* ManuallyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManuallyParser.m; sourceTree = "<group>"; };
 		94422A3014DD87F50076AC66 /* VirtualizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VirtualizeViewController.h; path = CodeNavigator/VirtualizeViewController.h; sourceTree = "<group>"; };
 		94422A3114DD87F50076AC66 /* VirtualizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VirtualizeViewController.m; path = CodeNavigator/VirtualizeViewController.m; sourceTree = "<group>"; };
 		94422A3214DD87F50076AC66 /* VirtualizeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VirtualizeViewController.xib; path = CodeNavigator/VirtualizeViewController.xib; sourceTree = "<group>"; };
@@ -658,6 +666,9 @@
 		9443D1EC154EDA6A008CB52D /* SecurityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecurityViewController.m; path = Security/SecurityViewController.m; sourceTree = "<group>"; };
 		9443D1ED154EDA6A008CB52D /* SecurityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SecurityViewController.xib; path = Security/SecurityViewController.xib; sourceTree = "<group>"; };
 		9443D1F2154FF4D8008CB52D /* Lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lock.png; sourceTree = "<group>"; };
+		94472081157534E9002EEA5A /* ManuallyParserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManuallyParserViewController.h; path = ManuallyParser/ManuallyParserViewController.h; sourceTree = "<group>"; };
+		94472082157534E9002EEA5A /* ManuallyParserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManuallyParserViewController.m; path = ManuallyParser/ManuallyParserViewController.m; sourceTree = "<group>"; };
+		94472083157534E9002EEA5A /* ManuallyParserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManuallyParserViewController.xib; path = ManuallyParser/ManuallyParserViewController.xib; sourceTree = "<group>"; };
 		944DD7C1152772EF000473BE /* diff.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = diff.c; sourceTree = "<group>"; };
 		944DD7C4152772FC000473BE /* diff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = diff.h; sourceTree = "<group>"; };
 		944DD7C51527730D000473BE /* getopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getopt.h; sourceTree = "<group>"; };
@@ -1085,6 +1096,8 @@
 				9489196B1524CC9000AB9968 /* BashParser.h */,
 				9489196C1524CC9000AB9968 /* BashParser.m */,
 				9489196F1524CCB300AB9968 /* BashDefinition.h */,
+				94353209157A861D0011A446 /* ManuallyParser.h */,
+				9435320A157A861D0011A446 /* ManuallyParser.m */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -1244,6 +1257,9 @@
 		9447208015752EFB002EEA5A /* ManuallyParserController */ = {
 			isa = PBXGroup;
 			children = (
+				94472081157534E9002EEA5A /* ManuallyParserViewController.h */,
+				94472082157534E9002EEA5A /* ManuallyParserViewController.m */,
+				94472083157534E9002EEA5A /* ManuallyParserViewController.xib */,
 			);
 			name = ManuallyParserController;
 			sourceTree = "<group>";
@@ -1664,6 +1680,7 @@
 				9456A93F15617BDC0092128D /* Comment.png in Resources */,
 				94CB787F156E80C8009452D8 /* FileTableViewCell.xib in Resources */,
 				94B7E5AC156FE2BB000F3F34 /* FileInfoViewController.xib in Resources */,
+				94472086157534E9002EEA5A /* ManuallyParserViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1758,6 +1775,7 @@
 				9456A94015617BDC0092128D /* Comment.png in Resources */,
 				94CB7880156E80C8009452D8 /* FileTableViewCell.xib in Resources */,
 				94B7E5AD156FE2BB000F3F34 /* FileInfoViewController.xib in Resources */,
+				94472087157534E9002EEA5A /* ManuallyParserViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1871,6 +1889,8 @@
 				94246F72156BC84600CA4234 /* SBJsonUTF8Stream.m in Sources */,
 				94246F74156BC84600CA4234 /* SBJsonWriter.m in Sources */,
 				94B7E5AA156FE2BA000F3F34 /* FileInfoViewController.m in Sources */,
+				94472084157534E9002EEA5A /* ManuallyParserViewController.m in Sources */,
+				9435320B157A861D0011A446 /* ManuallyParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1982,6 +2002,8 @@
 				94246F73156BC84600CA4234 /* SBJsonUTF8Stream.m in Sources */,
 				94246F75156BC84600CA4234 /* SBJsonWriter.m in Sources */,
 				94B7E5AB156FE2BB000F3F34 /* FileInfoViewController.m in Sources */,
+				94472085157534E9002EEA5A /* ManuallyParserViewController.m in Sources */,
+				9435320C157A861D0011A446 /* ManuallyParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

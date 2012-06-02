@@ -10,6 +10,31 @@
 
 @implementation RubbyParser
 
++(NSString*) getExtentionsStr
+{
+    return @"rails ror ruby";
+}
+
++(NSString*) getSingleLineCommentsStr
+{
+    return COMMENTS_SINGLE;
+}
+
++(NSString*) getMultiLineCommentsStartStr
+{
+    return COMMENTS_MULTI;
+}
+
++(NSString*) getMultiLineCommentsEndStr
+{
+    return COMMENTS_MULTI_END;
+}
+
++(NSString*) getKeywordsStr
+{
+    return KEYWORD_RUBBY;
+}
+
 -(id) init
 {
 	if ( (self = [super init])!=nil )

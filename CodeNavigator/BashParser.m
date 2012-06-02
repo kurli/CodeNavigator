@@ -10,6 +10,31 @@
 
 @implementation BashParser
 
++(NSString*) getExtentionsStr
+{
+    return @"sh shell bash";
+}
+
++(NSString*) getSingleLineCommentsStr
+{
+    return COMMENTS_SINGLE;
+}
+
++(NSString*) getMultiLineCommentsStartStr
+{
+    return @"";
+}
+
++(NSString*) getMultiLineCommentsEndStr
+{
+    return @"";
+}
+
++(NSString*) getKeywordsStr
+{
+    return KEYWORD_COMMANDS;
+}
+
 -(id) init
 {
 	if ( (self = [super init])!=nil )

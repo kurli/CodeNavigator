@@ -427,6 +427,12 @@
             [self.currentFiles removeObjectAtIndex:indexPath.row - [self.currentDirectories count]];
             NSString* displayPath = [[Utils getInstance] getDisplayFileBySourceFile:path];
             [[NSFileManager defaultManager] removeItemAtPath:displayPath error:&error];
+            //remove comments file
+            NSString* extention = [path pathExtension];
+            NSString* commentFile = [path stringByDeletingPathExtension];
+            commentFile = [commentFile stringByAppendingFormat:@"_%@", extention];
+            commentFile = [commentFile stringByAppendingPathExtension:@"lgz_comment"];
+            [[NSFileManager defaultManager] removeItemAtPath:commentFile error:&error];
         }
         [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];

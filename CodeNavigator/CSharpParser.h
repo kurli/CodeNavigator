@@ -31,4 +31,14 @@
 
 -(BOOL) checkIsNameValidChar: (unichar) character;
 
++(NSString*) getExtentionsStr:(int)type;
+
++(NSString*) getSingleLineCommentsStr;
+
++(NSString*) getMultiLineCommentsStartStr;
+
++(NSString*) getMultiLineCommentsEndStr;
+
++(NSString*) getKeywordsStr:(int)type;
+
 @end

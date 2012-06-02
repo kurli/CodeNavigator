@@ -2,6 +2,31 @@
 
 @implementation CPlusPlusParser
 
++(NSString*) getExtentionsStr
+{
+    return @"c cpp h hpp mm";
+}
+
++(NSString*) getSingleLineCommentsStr
+{
+    return COMMENTS_SINGLE;
+}
+
++(NSString*) getMultiLineCommentsStartStr
+{
+    return COMMENTS_MULTI;
+}
+
++(NSString*) getMultiLineCommentsEndStr
+{
+    return COMMENTS_MULTI_END;
+}
+
++(NSString*) getKeywordsStr
+{
+    return KEYWORD_CPP;
+}
+
 -(id) init
 {
 	if ( (self = [super init])!=nil )

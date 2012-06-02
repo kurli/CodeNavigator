@@ -10,7 +10,8 @@
 
 typedef enum {
     FILEINFO_WEB,
-    FILEINFO_SOURCE
+    FILEINFO_SOURCE,
+    FILEINFO_OTHER
 } FileInfoType;
 
 @class MasterViewController;
@@ -20,7 +21,7 @@ typedef enum {
     FileInfoType fileInfoType;
 }
 
-@property (strong, nonatomic) NSArray* selectionList;
+@property (strong, nonatomic) NSMutableArray* selectionList;
 
 @property (strong, nonatomic) NSString* sourceFilePath;
 

@@ -8,10 +8,18 @@
 #import "PythonParser.h"
 #import "RubbyParser.h"
 #import "BashParser.h"
+#import "ManuallyParser.h"
+
+#define PARSER_PATH @"/Documents/.settings/ManuallyParser"
+#define EXTENTION @"extention"
+#define SINGLE_LINE_COMMENTS @"single_line_comments"
+#define MULTI_LINE_COMMENTS_START @"multi_line_comments_start"
+#define MULTI_LINE_COMMENTS_END @"multi_line_comments_end"
+#define KEYWORDS @"keywords"
 
 typedef enum _ParserType
 {
-	CPLUSPLUS,
+	CPLUSPLUS = 0,
     IMAGE,
     OBJECTIVE_C,
     CSHARP,
@@ -45,4 +53,13 @@ typedef enum _ParserType
 -(void) setParserType: (ParserType) type;
 
 -(void) checkParseType: (NSString*) file;
+
+#pragma mark manually parser support
++(BOOL)saveManuallyParser:(NSString*)name andExtention:(NSString*)extention andSingleLine:(NSString*)singleLine andMultiLineS:(NSString*)multilineS andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords;
+
++(NSArray*) getManuallyParserNames;
+
++(NSDictionary*) getParserByName:(NSString*)name;
+
++ (int)checkManuallyParserIndex:(NSString*)extention;
 @end
