@@ -706,20 +706,20 @@
 
 - (IBAction)versionControlButtonClicked:(id)sender {
     // Ignore Dropbox
-//    UIBarButtonItem *item = (UIBarButtonItem*)sender;
-//
-//    if ([versionControllerPopOverController isPopoverVisible] == YES) {
-//        [versionControllerPopOverController dismissPopoverAnimated:YES];
-//    }
-//    
-//    VersionControlController* controller = [[VersionControlController alloc] init];
-//    [controller setMasterViewController:self];
-//    
-//    versionControllerPopOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
-//    versionControllerPopOverController.popoverContentSize = controller.view.frame.size;
-//    
-//    [versionControllerPopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    [self gitClicked:sender];
+    UIBarButtonItem *item = (UIBarButtonItem*)sender;
+
+    if ([versionControllerPopOverController isPopoverVisible] == YES) {
+        [versionControllerPopOverController dismissPopoverAnimated:YES];
+    }
+    
+    VersionControlController* controller = [[VersionControlController alloc] init];
+    [controller setMasterViewController:self];
+    
+    versionControllerPopOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
+    versionControllerPopOverController.popoverContentSize = controller.view.frame.size;
+    
+    [versionControllerPopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+//    [self gitClicked:sender];
 }
 
 - (IBAction)lockButtonClicked:(id)sender {

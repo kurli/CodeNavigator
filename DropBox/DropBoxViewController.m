@@ -431,11 +431,13 @@
             [self.pendingDownloadArray removeAllObjects];
             NSString* text = [NSString stringWithFormat:@"----Sync Canceled...\n"];
             [self setSyncStatusText:text];
+            [restClient cancelAllRequests];
         }
         return;
     }
 	if (index != alertView.cancelButtonIndex) {
-		[[DBSession sharedSession] linkUserId:relinkUserId];
+        [[DBSession sharedSession] linkUserId:relinkUserId fromController:self];
+//		[[DBSession sharedSession] linkUserId:relinkUserId];
 	}
 	self.relinkUserId = nil;
 }
@@ -638,7 +640,8 @@
 
 - (IBAction)loginClicked:(id)sender {
     if (![[DBSession sharedSession] isLinked]) {
-        [[DBSession sharedSession] link];
+//        [[DBSession sharedSession] link];
+        [[DBSession sharedSession] linkFromController:self];
     }
     else {
         [restClient cancelFileLoad:currentLoadFile];

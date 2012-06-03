@@ -40,6 +40,8 @@
 		9418F76914D9B0C4003134E6 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9418F76514D9B0C4003134E6 /* Icon-Small.png */; };
 		9418F76A14D9B0C4003134E6 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 9418F76614D9B0C4003134E6 /* iTunesArtwork */; };
 		9419B87D14A4B3BE00AB679B /* ResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */; };
+		94205714157B938B00178CBF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94205713157B938B00178CBF /* QuartzCore.framework */; };
+		94205715157B939B00178CBF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94205713157B938B00178CBF /* QuartzCore.framework */; };
 		9424660C1502AA2F001701C4 /* ManuallAddChild.png in Resources */ = {isa = PBXBuildFile; fileRef = 9424660A1502AA2F001701C4 /* ManuallAddChild.png */; };
 		9424660D1502AA2F001701C4 /* ManuallAddChild.png in Resources */ = {isa = PBXBuildFile; fileRef = 9424660A1502AA2F001701C4 /* ManuallAddChild.png */; };
 		9424660E1502AA2F001701C4 /* manuallAddParent.png in Resources */ = {isa = PBXBuildFile; fileRef = 9424660B1502AA2F001701C4 /* manuallAddParent.png */; };
@@ -512,6 +514,7 @@
 		9418F76514D9B0C4003134E6 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "icon/Free/Icon-Small.png"; sourceTree = "<group>"; };
 		9418F76614D9B0C4003134E6 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = icon/Free/iTunesArtwork; sourceTree = "<group>"; };
 		9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultTableCellView.xib; sourceTree = "<group>"; };
+		94205713157B938B00178CBF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9424660A1502AA2F001701C4 /* ManuallAddChild.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ManuallAddChild.png; sourceTree = "<group>"; };
 		9424660B1502AA2F001701C4 /* manuallAddParent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = manuallAddParent.png; sourceTree = "<group>"; };
 		942466101502D53A001701C4 /* EntryBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EntryBg.png; sourceTree = "<group>"; };
@@ -862,6 +865,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94205714157B938B00178CBF /* QuartzCore.framework in Frameworks */,
 				94618169155BF85800A25635 /* MessageUI.framework in Frameworks */,
 				94A5184B152DF30A0062DA65 /* Security.framework in Frameworks */,
 				94BF7DA6150E73B100FCF653 /* libObjectiveGit.a in Frameworks */,
@@ -880,6 +884,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94205715157B939B00178CBF /* QuartzCore.framework in Frameworks */,
 				94B8EC281546F31700931747 /* SystemConfiguration.framework in Frameworks */,
 				94B8EC261546F30900931747 /* MessageUI.framework in Frameworks */,
 				94B8EC241546F2FD00931747 /* AudioToolbox.framework in Frameworks */,
@@ -945,6 +950,7 @@
 		9431D72914910B3000B0900E = {
 			isa = PBXGroup;
 			children = (
+				94205713157B938B00178CBF /* QuartzCore.framework */,
 				94B8EC271546F31700931747 /* SystemConfiguration.framework */,
 				94B8EC251546F30900931747 /* MessageUI.framework */,
 				94B8EC231546F2FD00931747 /* AudioToolbox.framework */,
