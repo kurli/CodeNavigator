@@ -264,9 +264,14 @@
         }];
     NSMutableString* str = [[NSMutableString alloc] init];
     for (int i=0; i<[keywordsArray count]-1; i++) {
+        if ([[keywordsArray objectAtIndex:i] length] == 0) {
+            continue;
+        }
         [str appendFormat:@"%@ ",[keywordsArray objectAtIndex:i]];
     }
-    [str appendString:[keywordsArray lastObject]];
+    if ([[keywordsArray lastObject] length] != 0) {
+        [str appendString:[keywordsArray lastObject]];
+    }
     
     NSMutableDictionary* dictionary = [[NSMutableDictionary alloc] init];
     [dictionary setObject:extention forKey:EXTENTION];

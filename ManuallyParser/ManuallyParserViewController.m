@@ -31,6 +31,7 @@
 @synthesize deleteButton;
 @synthesize filePath;
 @synthesize manuallyParserArray;
+@synthesize scrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,6 +61,7 @@
     [self setParserTypePicker:nil];
     [self setNameField:nil];
     [self setDeleteButton:nil];
+    [self setScrollView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -289,6 +291,7 @@
         [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please specify the Extentions"];
         return NO;
     }
+    extention = [extention lowercaseString];
     singleLine = self.singleLineCommentsField.text;
     multiLineS = self.multiLineCommentsStartField.text;
     multiLineE = self.multiLineCommentsEndField.text;
@@ -372,6 +375,14 @@ andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords andEnable:(BO
     [self.multiLineCommentsStartField setText:multilineS];
     [self.multiLineCommentsEndField setText:multilineE];
     [self.keyworldField setText:keywords];
+    
+    CGSize size = CGSizeMake(self.scrollView.frame.size.width, self.keyworldField.frame.origin.y + self.keyworldField.contentSize.height);
+    [self.scrollView setContentSize:size];
+    CGRect rect = self.keyworldField.frame;
+    if (rect.size.height < self.keyworldField.contentSize.height) {
+        rect.size = self.keyworldField.contentSize;
+    }
+    [self.keyworldField setFrame:rect];
     
     [self.nameField setEnabled:enable];
     [self.extentionsField setEnabled:enable];
@@ -550,6 +561,50 @@ andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords andEnable:(BO
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     return [parserArray count] + [manuallyParserArray count]+1;
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [UIView beginAnimations:@"showKeyboardAnimation" context:nil];
+    [UIView setAnimationDuration:0.30];
+
+    CGSize size = CGSizeMake(self.scrollView.frame.size.width, self.keyworldField.frame.origin.y + self.keyworldField.contentSize.height+200);
+    [self.scrollView setContentSize:size];
+    
+    [UIView commitAnimations];
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    CGSize size = CGSizeMake(self.scrollView.frame.size.width, self.keyworldField.frame.origin.y + self.keyworldField.contentSize.height+200);
+    [self.scrollView setContentSize:size];
+    
+    CGRect rect = self.keyworldField.frame;
+    if (rect.size.height < self.keyworldField.contentSize.height) {
+        rect.size = self.keyworldField.contentSize;
+    }
+    [self.keyworldField setFrame:rect];
+    
+    CGPoint bottomOffset = CGPointMake(0, [self.scrollView contentSize].height - self.scrollView.frame.size.height);
+    if (bottomOffset.y > 0) {
+        [scrollView setContentOffset:bottomOffset animated:YES];
+    }
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.30];
+    CGSize size = CGSizeMake(self.scrollView.frame.size.width, self.keyworldField.frame.origin.y + self.keyworldField.contentSize.height);
+    [self.scrollView setContentSize:size];
+    
+    CGRect rect = self.keyworldField.frame;
+    if (rect.size.height < self.keyworldField.contentSize.height) {
+        rect.size = self.keyworldField.contentSize;
+    }
+    [self.keyworldField setFrame:rect];
+
+    [UIView commitAnimations];
 }
 
 @end
