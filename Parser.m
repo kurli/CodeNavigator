@@ -66,7 +66,7 @@
     }
 }
 
-+ (int)checkManuallyParserIndex:(NSString*)extention
++ (int)checkManuallyParserIndex:(NSString*)_extention
 {
     NSArray* manuallyParserArray = [Parser getManuallyParserNames];
     for (int i=0; i<[manuallyParserArray count]; i++) {
@@ -76,7 +76,7 @@
         NSArray* array = [extentioin componentsSeparatedByString:@" "];
         for (int j=0; j<[array count]; j++) {
             NSString* ext = [array objectAtIndex:j];
-            if ([ext compare:extention] == NSOrderedSame) {
+            if ([ext compare:_extention] == NSOrderedSame) {
                 return i;
             }
         }

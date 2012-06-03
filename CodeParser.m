@@ -378,10 +378,10 @@
 -(void) addString:(NSString *)content addEnter: (BOOL)addEnter
 {
     // replace < and >
-    NSMutableString* mutableString = [content mutableCopy];
-    content = [mutableString stringByReplacingOccurrencesOfString: @"<" withString:@"&lt;"];
-    mutableString = [content mutableCopy];
-    content = [mutableString stringByReplacingOccurrencesOfString: @">" withString:@"&gt;"];
+//    NSMutableString* mutableString = [content mutableCopy];
+    content = [content stringByReplacingOccurrencesOfString: @"<" withString:@"&lt;"];
+//    mutableString = [content mutableCopy];
+    content = [content stringByReplacingOccurrencesOfString: @">" withString:@"&gt;"];
 	[htmlContent appendString: content];
 	if( YES == addEnter )
 		[htmlContent appendString: HTML_BLANK];
@@ -440,10 +440,10 @@
 
 -(void) addUnknownLine:(NSString *)content
 {
-    NSMutableString* mutableString = [content mutableCopy];
-    content = [mutableString stringByReplacingOccurrencesOfString: @"<" withString:@"&lt;"];
-    mutableString = [content mutableCopy];
-    content = [mutableString stringByReplacingOccurrencesOfString: @">" withString:@"&gt;"];
+//    NSMutableString* mutableString = [content mutableCopy];
+    content = [content stringByReplacingOccurrencesOfString: @"<" withString:@"&lt;"];
+//    mutableString = [content mutableCopy];
+    content = [content stringByReplacingOccurrencesOfString: @">" withString:@"&gt;"];
 
     [htmlContent appendFormat:HTML_UNKNOWN_LINE, content];
 }

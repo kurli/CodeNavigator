@@ -104,6 +104,10 @@
         if (item.line == line) {
             item.comment = comment;
             insertBeforeIndex = -1;
+            if ([comment length] == 0) {
+                [commentArray removeObjectAtIndex:i];
+                return;
+            }
             break;
         }
         else if (item.line > line) {
@@ -179,7 +183,9 @@
     }
     NSString* str = [mutableArray JSONRepresentation];
     
-    [str writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    if ([str length] > 0) {
+        [str writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    }
 }
 
 -(NSString*) getCommentByLine:(int)line
