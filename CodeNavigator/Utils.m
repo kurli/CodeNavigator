@@ -165,7 +165,7 @@ static Utils *static_utils;
     NSError* error;
     BOOL isExist = false;
     BOOL isFolder = NO;
-    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/1_6.version"];
+    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/1_7.version"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:versionFile];
     if (isExist == YES)
     {
@@ -800,6 +800,8 @@ static Utils *static_utils;
     else if ([extension isEqualToString:@"lgz_comment"])
         return YES;
     else if ([extension isEqualToString:@"display_2"])
+        return YES;
+    else if ([extension isEqualToString:@"display_3"])
         return YES;
     else if ([extension isEqualToString:DISPLAY_FILE_EXTENTION])
         return YES;
