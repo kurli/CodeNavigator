@@ -47,7 +47,11 @@
     {
         currentFileIndex = [[Utils getInstance] getResultViewFileIndex];
         if (self.lineModeViewController == nil)
+#ifdef IPHONE_VERSION
+            self.lineModeViewController = [[ResultViewController alloc] initWithNibName:@"ResultViewController-iPhone" bundle:nil];
+#else
             self.lineModeViewController = [[ResultViewController alloc] initWithNibName:@"ResultViewController" bundle:nil];
+#endif        
         [self.lineModeViewController setTableViewMode:TABLEVIEW_CONTENT];
         [self.lineModeViewController setDetailViewController:self.detailViewController];
         [self.lineModeViewController setFileIndex:currentFileIndex];
@@ -225,7 +229,11 @@
     {
         currentFileIndex = indexPath.row;
         if (self.lineModeViewController == nil)
+#ifdef IPHONE_VERSION
+            self.lineModeViewController = [[ResultViewController alloc] initWithNibName:@"ResultViewController-iPhone" bundle:nil];
+#else
             self.lineModeViewController = [[ResultViewController alloc] initWithNibName:@"ResultViewController" bundle:nil];
+#endif        
         [self.lineModeViewController setTableViewMode:TABLEVIEW_CONTENT];
         [self.lineModeViewController setDetailViewController:self.detailViewController];
         [self.lineModeViewController setFileIndex:currentFileIndex];
@@ -235,6 +243,10 @@
     }
     else
     {
+#ifdef IPHONE_VERSION
+        [self dismissModalViewControllerAnimated:NO];
+#endif
+        
         NSString* content = [((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:currentFileIndex]).contents objectAtIndex:indexPath.row];
         NSArray* components = [content componentsSeparatedByString:@" "];
         if ([components count] < 3)
@@ -265,5 +277,11 @@
     currentFileIndex = index;
     [[Utils getInstance] setResultViewFileIndex:index];
 }
+
+#ifdef IPHONE_VERSION
+- (IBAction)doneButtonClicked:(id)sender {
+    [self dismissModalViewControllerAnimated:NO];
+}
+#endif
 
 @end

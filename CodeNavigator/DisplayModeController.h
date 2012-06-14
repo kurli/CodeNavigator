@@ -63,6 +63,9 @@ typedef enum _ColorTextView
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *stringSelectButton;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *keywordSelectButton;
+#ifdef IPHONE_VERSION
+@property (unsafe_unretained, nonatomic) IBOutlet UIScrollView *scrollView;
+#endif
 
 - (IBAction)modeValueChanged:(id)sender;
 

@@ -20,6 +20,12 @@
 #define TOOLBAR_X_MASTER_SHOW 55
 #define TOOLBAR_X_MASTER_HIDE 208
 
+#ifdef IPHONE_VERSION
+#define LINE_DELTA 4
+#else
+#define LINE_DELTA 8
+#endif
+
 @implementation DetailViewController
 {
     int _bannerCounter;
@@ -211,6 +217,7 @@
 
 -(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
+#ifndef IPHONE_VERSION
     CGRect frameTop = self.topToolBar.frame;
     CGRect frameBottom = self.bottomToolBar.frame;
     if ([[Utils getInstance].splitViewController isShowingMaster] == YES)
@@ -251,6 +258,7 @@
     }
 #ifdef LITE_VERSION
     [[[Utils getInstance] getBannerViewController] viewDidLayoutSubviews];
+#endif
 #endif
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 }
@@ -400,9 +408,13 @@
 
 - (void) gotoFile:(NSString *)filePath andLine:(NSString *)line andKeyword:(NSString *)__keyword
 {
+#ifdef IPHONE_VERSION
+    MasterViewController* masterViewController = (MasterViewController*)[Utils getInstance].masterViewController.topViewController;
+#else
     MasterViewController* masterViewController = nil;
     NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
     masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
+#endif
     
     NSString* displayPath;
     BOOL isFolder = NO;
@@ -445,7 +457,7 @@
         else
         {
             int lll = [line intValue];
-            lll -= 8;
+            lll -= LINE_DELTA;
             if (lll <= 0)
                 lll = 1;
             NSString* js = [NSString stringWithFormat:@"smoothScroll('L%d')", lll];
@@ -525,9 +537,14 @@
     title = [[Utils getInstance] getSourceFileByDisplayFile:title];
     [self.titleTextField setTitle:title];
     
+#ifdef IPHONE_VERSION
+    MasterViewController* masterViewController = (MasterViewController*)[Utils getInstance].masterViewController.topViewController;
+#else
     MasterViewController* masterViewController = nil;
     NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
-    masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;    [masterViewController gotoFile:url];
+    masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController; 
+#endif
+    [masterViewController gotoFile:url];
 }
 
 - (void)goBackHistory {
@@ -585,11 +602,15 @@
     
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:_codeNavigationController];
     _codeNavigationController.title = @"CodeNavigator";
+#ifdef IPHONE_VERSION
+    [self presentModalViewController:controller animated:YES];
+#else
     // Setup the popover for use from the navigation bar.
 	_codeNavigationPopover = [[UIPopoverController alloc] initWithContentViewController:controller];
 	_codeNavigationPopover.popoverContentSize = _codeNavigationController.view.frame.size;
     
     [_codeNavigationPopover presentPopoverFromBarButtonItem:self.navigateBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+#endif
     _bannerCounter++;
     if (_bannerCounter == 10)
     {
@@ -722,6 +743,8 @@
 //    [masterViewController gotoFile:currentFile];
     
     self.filePathInfoController = [[FilePathInfoPopupController alloc] init];
+#ifdef IPHONE_VERSION
+#else
     self.filePathInfopopover = [[UIPopoverController alloc] initWithContentViewController:self.filePathInfoController];
     NSString* realSourceFile = [[Utils getInstance] getPathFromProject:currentFile];
     realSourceFile = [realSourceFile stringByDeletingLastPathComponent];
@@ -729,6 +752,7 @@
     self.filePathInfoController.label.text = realSourceFile;
     self.filePathInfopopover.popoverContentSize = CGSizeMake(640., 45);
     [self.filePathInfopopover presentPopoverFromBarButtonItem:(UIBarButtonItem*)sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+#endif
 }
 
 - (IBAction)navigationButtonClicked:(id)sender
@@ -749,9 +773,13 @@
     }
     [self releaseAllPopOver];
     
+#ifndef IPHONE_VERSION
     MasterViewController* masterViewController = nil;
     NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
     masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
+#else
+    MasterViewController* masterViewController = (MasterViewController*)[Utils getInstance].masterViewController.topViewController;
+#endif
     NSString* projectPath = [[Utils getInstance] getProjectFolder:masterViewController.currentLocation];
     
     if (projectPath == nil)
@@ -763,6 +791,11 @@
     _codeNavigationController= [[NavigationController alloc] init];
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:_codeNavigationController];
     _codeNavigationController.title = @"Code Navigator";
+#ifdef IPHONE_VERSION
+    [self presentModalViewController:controller animated:YES];
+    [_codeNavigationController setCurrentSourcePath:projectPath];
+    [_codeNavigationController setSearchKeyword:@""];
+#else
     // Setup the popover for use from the navigation bar.
 	_codeNavigationPopover = [[UIPopoverController alloc] initWithContentViewController:controller];
 	_codeNavigationPopover.popoverContentSize = CGSizeMake(320., 320.);
@@ -770,6 +803,7 @@
     [_codeNavigationController setCurrentSourcePath:projectPath];
     [_codeNavigationController setSearchKeyword:@""];
     [_codeNavigationPopover presentPopoverFromBarButtonItem:(UIBarButtonItem*)sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+#endif
 }
 
 -(void) forceResultPopUp:(id)button
@@ -785,10 +819,17 @@
     }
     UIBarButtonItem* barButton = (UIBarButtonItem*)button;
     
+#ifdef IPHONE_VERSION
+    self.resultViewController = [[ResultViewController alloc] initWithNibName:@"ResultViewController-iPhone" bundle:nil];
+#else
     self.resultViewController = [[ResultViewController alloc] init];
+#endif
     self.resultViewController.detailViewController = self;
     UINavigationController *result_controller = [[UINavigationController alloc] initWithRootViewController:self.resultViewController];
     self.resultViewController.title = @"Result";
+#ifdef IPHONE_VERSION
+    [self presentModalViewController:result_controller animated:YES];
+#else
     _resultPopover = [[UIPopoverController alloc] initWithContentViewController:result_controller];
     CGSize size = self.view.frame.size;
     size.height = size.height/3+39;
@@ -796,6 +837,7 @@
 	_resultPopover.popoverContentSize = size;
     
     [_resultPopover presentPopoverFromBarButtonItem:barButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+#endif
 }
 
 -(void) resultPopUp:(id)sender
@@ -814,10 +856,17 @@
     }
     UIBarButtonItem* barButton = (UIBarButtonItem*)sender;
     
+#ifdef IPHONE_VERSION
+    self.resultViewController = [[ResultViewController alloc] initWithNibName:@"ResultViewController-iPhone" bundle:nil];
+#else
     self.resultViewController = [[ResultViewController alloc] init];
+#endif
     self.resultViewController.detailViewController = self;
     UINavigationController *result_controller = [[UINavigationController alloc] initWithRootViewController:self.resultViewController];
     self.resultViewController.title = @"Result";
+#ifdef IPHONE_VERSION
+    [self presentModalViewController:result_controller animated:NO];
+#else
     _resultPopover = [[UIPopoverController alloc] initWithContentViewController:result_controller];
     CGSize size = self.view.frame.size;
     size.height = size.height/3+39;
@@ -825,6 +874,7 @@
 	_resultPopover.popoverContentSize = size;
     
     [_resultPopover presentPopoverFromBarButtonItem:barButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+#endif
 }
 
 -(void) gotoLinePopUp:(id)sender
@@ -840,10 +890,14 @@
     
     _gotoLineViewController = [[GotoLineViewController alloc] init];
     _gotoLineViewController.detailViewController = self;
+#ifdef IPHONE_VERSION
+    [self presentModalViewController:_gotoLineViewController animated:YES];
+#else
     _gotoLinePopover = [[UIPopoverController alloc] initWithContentViewController:_gotoLineViewController];
     _gotoLinePopover.popoverContentSize = CGSizeMake(250., 45.);
-
+    
     [_gotoLinePopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+#endif
 }
 
 - (IBAction)showHideTopToolBarClicked:(id)sender {
@@ -912,12 +966,20 @@
     }
     [self releaseAllPopOver];
     UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
+#ifdef IPHONE_VERSION
+    self.highlightWordController = [[HighLightWordController alloc] initWithNibName:@"HighLightWordController-iPhone" bundle:nil];
+#else
     self.highlightWordController = [[HighLightWordController alloc] init];
+#endif
     self.highlightWordController.detailViewController = self;
+#ifdef IPHONE_VERSION
+    [self presentModalViewController:self.highlightWordController animated:YES];
+#else
     self.highlghtWordPopover = [[UIPopoverController alloc] initWithContentViewController:self.highlightWordController];
     self.highlghtWordPopover.popoverContentSize = CGSizeMake(198, 46);
     
     [self.highlghtWordPopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+#endif
 }
 
 - (void)upSelectButton {
@@ -932,7 +994,7 @@
         return;
     }
     int line = [[highlightLineArray objectAtIndex:currentSearchFocusLine] intValue];
-    line -= 8;
+    line -= LINE_DELTA;
     if (line <= 0) {
         line = 1;
     }
@@ -950,7 +1012,7 @@
         return;
     }
     int line = [[highlightLineArray objectAtIndex:currentSearchFocusLine] intValue];
-    line -= 8;
+    line -= LINE_DELTA;
     if (line <= 0) {
         line = 1;
     }
@@ -978,11 +1040,16 @@
     }
     [self releaseAllPopOver];
     UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
+#ifdef IPHONE_VERSION
+    self.displayModeController = [[DisplayModeController alloc] initWithNibName:@"DisplayModeController-iPhone" bundle:nil];
+    [self presentModalViewController:self.displayModeController animated:YES];
+#else
     self.displayModeController = [[DisplayModeController alloc] init];
     self.displayModePopover = [[UIPopoverController alloc] initWithContentViewController:self.displayModeController];
     self.displayModePopover.popoverContentSize = self.displayModeController.view.frame.size;
     
     [self.displayModePopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+#endif
 }
 
 - (IBAction)historyListClicked:(id)sender {
@@ -995,10 +1062,14 @@
     [self releaseAllPopOver];
     UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
     self.historyListController = [[HistoryListController alloc] init];
+#ifdef IPHONE_VERSION
+    [self presentModalViewController:self.historyListController animated:YES];
+#else
     self.historyListPopover = [[UIPopoverController alloc] initWithContentViewController:self.historyListController];
     self.historyListPopover.popoverContentSize = self.historyListController.view.frame.size;
     
     [self.historyListPopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+#endif
 }
 
 - (IBAction)virtualizeButtonClicked:(id)sender {
@@ -1169,6 +1240,12 @@
     [activeWebView stringByEvaluatingJavaScriptFromString:js];
 }
 
+#ifdef IPHONE_VERSION
+- (IBAction)filesButtonClicked:(id)sender {
+    [self dismissModalViewControllerAnimated:NO];
+}
+#endif
+
 -(void) showAllComments
 {
     // Show comments
@@ -1212,7 +1289,7 @@
             break;
         case JS_GOTO_LINE_AND_FOCUS_KEYWORD:
             lll = jsGotoLine;
-            lll -= 8;
+            lll -= LINE_DELTA;
             if (lll <= 0)
                 lll = 1;
             js = [NSString stringWithFormat:@"smoothScroll('L%d')", lll];
@@ -1433,7 +1510,11 @@
         [self releaseAllPopOver];
         [[Utils getInstance].analyzeInfoPopover dismissPopoverAnimated:YES];
         
+#ifdef IPHONE_VERSION
+        CommentViewController* viewController = [[CommentViewController alloc] initWithNibName:@"CommentViewController-iPhone" bundle:nil];
+#else
         CommentViewController* viewController = [[CommentViewController alloc] init];
+#endif
         [viewController setLine:line];
         NSString* currentDisplayFile;
         if (webView == self.webView)
@@ -1449,7 +1530,11 @@
         currentDisplayFile = [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
         [viewController initWithFileName:currentDisplayFile];
         viewController.modalPresentationStyle = UIModalPresentationFormSheet;
+#ifdef IPHONE_VERSION
+        [self presentModalViewController:viewController animated:YES];
+#else
         [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
+#endif
         return NO;
     }
     return YES;

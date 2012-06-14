@@ -12,6 +12,7 @@
 @implementation HighLightWordController
 
 @synthesize detailViewController;
+@synthesize searchBarUI;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,6 +42,7 @@
 - (void)viewDidUnload
 {
     //[self setDetailViewController:nil];
+    [self setSearchBarUI:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -49,7 +51,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 -(void) searchWrapper
@@ -161,6 +163,19 @@
         [self.detailViewController releaseAllPopOver];
         [self searchWrapper];
     }
+#ifdef IPHONE_VERSION
+    [self dismissModalViewControllerAnimated:NO];
+#endif
 }
 
+#ifdef IPHONE_VERSION
+- (IBAction)searchButtonClicked:(id)sender {
+    [self searchBarSearchButtonClicked:searchBarUI];
+    [self dismissModalViewControllerAnimated:NO];
+}
+
+- (IBAction)cancelButtonClicked:(id)sender {
+    [self dismissModalViewControllerAnimated:NO];
+}
+#endif
 @end

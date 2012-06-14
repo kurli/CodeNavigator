@@ -16,7 +16,11 @@
 #import "VersionControlController.h"
 #import "SecurityViewController.h"
 #import "CommentManager.h"
+#ifdef IPHONE_VERSION
+#import "FileInfoControlleriPhone.h"
+#else
 #import "FileInfoViewController.h"
+#endif
 
 @implementation MasterViewController
 @synthesize fileSearchBar = _fileSearchBar;
@@ -36,6 +40,9 @@
 @synthesize commentManagerPopOverController;
 @synthesize searchFileResultArray;
 @synthesize fileInfoPopOverController;
+#ifdef IPHONE_VERSION
+@synthesize fileInfoControlleriPhone;
+#endif
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -149,6 +156,9 @@
     [self setFileSearchBar:nil];
     [self.fileInfoPopOverController dismissPopoverAnimated:NO];
     [self setFileInfoPopOverController:nil];
+#ifdef IPHONE_VERSION
+    [self setFileInfoControlleriPhone:nil];
+#endif
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -173,6 +183,9 @@
     [self setAnalyzeButton:nil];
 #ifdef LITE_VERSION
     [self setPurchaseButton:nil];
+#endif
+#ifdef IPHONE_VERSION
+    [self setFileInfoControlleriPhone:nil];
 #endif
 }
 
@@ -236,6 +249,11 @@
     
     NSString* path = [self.currentLocation stringByAppendingPathComponent:fileName];
     
+#ifdef IPHONE_VERSION
+    self.fileInfoControlleriPhone = [[FileInfoControlleriPhone alloc] init];
+    [fileInfoControlleriPhone setMasterViewController:self];
+    [fileInfoControlleriPhone setSourceFile:path];
+#else
     FileInfoViewController* fileInfoViewController = [[FileInfoViewController alloc] init];
     [fileInfoViewController setSourceFile:path];
     [fileInfoViewController setMasterViewController:self];
@@ -247,6 +265,7 @@
 	fileInfoPopOverController.popoverContentSize = fileInfoViewController.view.frame.size;
     
     [fileInfoPopOverController presentPopoverFromRect:button.frame inView:cell permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+#endif
 }
 
 #pragma mark tableView delegate
@@ -489,6 +508,9 @@
         NSString* item = [self.searchFileResultArray objectAtIndex:indexPath.row];
         NSString* html = [[Utils getInstance] getDisplayFile:item andProjectBase:self.currentProjectPath];
         NSString* displayPath = [[Utils getInstance] getDisplayPath:item];
+#ifdef IPHONE_VERSION
+        [self presentModalViewController:[Utils getInstance].detailViewController animated:YES];
+#endif
         if (html != nil)
         {
             DetailViewController* controller = [Utils getInstance].detailViewController;
@@ -524,7 +546,11 @@
     if (indexPath.row < [self.currentDirectories count])
     {
         MasterViewController* masterViewController;
+#ifdef IPHONE_VERSION
+        masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController-iPhone" bundle:nil];
+#else
         masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
+#endif
         selectedItem = [self.currentDirectories objectAtIndex:indexPath.row];
         path = [self.currentLocation stringByAppendingPathComponent:selectedItem];
         
@@ -552,6 +578,10 @@
         path = [self.currentLocation stringByAppendingPathComponent:selectedItem];
         html = [[Utils getInstance] getDisplayFile:path andProjectBase:self.currentProjectPath];
         displayPath = [[Utils getInstance] getDisplayPath:path];
+        
+#ifdef IPHONE_VERSION
+        [self presentModalViewController:[Utils getInstance].detailViewController animated:YES];
+#endif
         
         //Help.html special case
         if (isProjectFolder == YES && [selectedItem compare:@"Help.html"] == NSOrderedSame) {
@@ -639,7 +669,11 @@
     for (int i=index+1; i<[targetComponents count]-1; i++)
     {
         MasterViewController* masterViewController;
+#ifdef IPHONE_VERSION
+        masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController-iPhone" bundle:nil];
+#else
         masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
+#endif
         path = [path stringByAppendingPathComponent:[targetComponents objectAtIndex:i]];
         // If current is Project Folder
         if (isProjectFolder == YES)
@@ -744,14 +778,22 @@
         return;
     }
     
+#ifdef IPHONE_VERSION
+    CommentManager* controller = [[CommentManager alloc] initWithNibName:@"CommentManager-iPhone" bundle:nil];
+#else
     CommentManager* controller = [[CommentManager alloc] init];
+#endif
     [controller initWithMasterViewController:self];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
 
     controller.title = @"Comments";
+#ifdef IPHONE_VERSION
+    [self presentModalViewController:navigationController animated:YES];
+#else
     commentManagerPopOverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
     commentManagerPopOverController.popoverContentSize = controller.view.frame.size;
     [commentManagerPopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+#endif
 }
 
 
@@ -765,9 +807,13 @@
     UIBarButtonItem *item = (UIBarButtonItem*)sender;
     if (_webServiceController == nil)
     {
+#ifdef IPHONE_VERSION
+        _webServiceController = [[WebServiceController alloc] initWithNibName:@"WebServiceController-iPhone" bundle:nil];
+#else
         _webServiceController = [[WebServiceController alloc]init];
         _webServicePopOverController = [[UIPopoverController alloc] initWithContentViewController:_webServiceController];
         _webServicePopOverController.popoverContentSize = _webServiceController.view.frame.size;
+#endif
     }
     if (_webServicePopOverController.popoverVisible == YES)
         [_webServicePopOverController dismissPopoverAnimated:YES];
@@ -777,7 +823,11 @@
         [[Utils getInstance] showPurchaseAlert];
 #endif
         [_webServiceController setMasterViewController:self];
+#ifdef IPHONE_VERSION
+        [self presentModalViewController:_webServiceController animated:YES];
+#else
         [_webServicePopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+#endif
     }
 }
 
@@ -835,6 +885,11 @@
         }
     }
     [self.tableView reloadData];
+}
+
+- (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self.fileSearchBar resignFirstResponder];
 }
 
 @end

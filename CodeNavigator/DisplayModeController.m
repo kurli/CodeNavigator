@@ -32,6 +32,9 @@
 @synthesize commentSelecteButton;
 @synthesize stringSelectButton;
 @synthesize keywordSelectButton;
+#ifdef IPHONE_VERSION
+@synthesize scrollView;
+#endif
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -227,6 +230,9 @@
     [self setCommentSelecteButton:nil];
     [self setStringSelectButton:nil];
     [self setKeywordSelectButton:nil];
+#ifdef IPHONE_VERSION
+    [self setScrollView:nil];
+#endif
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -261,6 +267,9 @@
     [self setDemoColor:keywordTextField.text andLabel:keywordDemoLabel];
     [self setSliderValues:backgroundTextField.text];
     [self setFontSize];
+#ifdef IPHONE_VERSION
+    [scrollView setContentSize:CGSizeMake(320, 620)];
+#endif
     [super viewWillAppear:animated];
 }
 
@@ -310,6 +319,9 @@
     }
     [[Utils getInstance].detailViewController reloadCurrentPage];
     [[Utils getInstance].detailViewController displayModeClicked:nil];
+#ifdef IPHONE_VERSION
+    [self dismissModalViewControllerAnimated:YES];
+#endif
 }
 
 - (IBAction)defaultButtonClicked:(id)sender {

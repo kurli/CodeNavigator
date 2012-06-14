@@ -92,6 +92,7 @@ static Utils *static_utils;
 @synthesize colorScheme;
 @synthesize cscopeSearchAlertView;
 @synthesize dropBoxViewController;
+@synthesize masterViewController;
 
 +(Utils*)getInstance
 {
@@ -825,9 +826,11 @@ static Utils *static_utils;
     {
         if (self.analyzeInfoPopover == nil)
         {
+#ifndef IPHONE_VERSION
             self.analyzeInfoController = [[AnalyzeInfoController alloc] init];
             self.analyzeInfoPopover = [[UIPopoverController alloc] initWithContentViewController:self.analyzeInfoController];
             self.analyzeInfoPopover.popoverContentSize = CGSizeMake(320, 130);
+#endif
         }
         if (self.analyzeInfoPopover.popoverVisible == NO)
         {
@@ -841,7 +844,9 @@ static Utils *static_utils;
     }
     else
     {
+#ifndef IPHONE_VERSION
         [self.analyzeInfoPopover dismissPopoverAnimated:YES];
+#endif
     }
 }
 

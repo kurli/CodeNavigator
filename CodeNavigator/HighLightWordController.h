@@ -12,5 +12,12 @@
 @interface HighLightWordController : UIViewController<UISearchBarDelegate>
 
 @property (strong, nonatomic) DetailViewController* detailViewController;
+@property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *searchBarUI;
+
+#ifdef IPHONE_VERSION
+- (IBAction)searchButtonClicked:(id)sender;
+
+- (IBAction)cancelButtonClicked:(id)sender;
+#endif
 
 @end

@@ -10,6 +10,9 @@
 
 @class DetailViewController;
 @class WebServiceController;
+#ifdef IPHONE_VERSION
+@class FileInfoControlleriPhone;
+#endif
 
 @interface MasterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UISearchBarDelegate>
 {
@@ -47,6 +50,10 @@
 @property (strong, nonatomic) NSMutableArray* searchFileResultArray;
 
 @property (strong, nonatomic) UIPopoverController* fileInfoPopOverController;
+
+#ifdef IPHONE_VERSION
+@property (strong, nonatomic) FileInfoControlleriPhone* fileInfoControlleriPhone;
+#endif
 
 - (IBAction)addFileToolBarClicked:(id)sender;
 

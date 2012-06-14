@@ -28,5 +28,8 @@
 -(void) setTableViewMode:(TableViewMode) mode;
 
 -(void) setFileIndex: (int)index;
+#ifdef IPHONE_VERSION
+- (IBAction)doneButtonClicked:(id)sender;
+#endif
 
 @end

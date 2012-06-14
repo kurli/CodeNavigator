@@ -29,6 +29,10 @@
 
 -(void) analyzeProject:(NSString*)path;
 
+#ifdef IPHONE_VERSION
+- (IBAction)doneButtonClicked:(id)sender;
+#endif
+
 @property (unsafe_unretained, nonatomic) IBOutlet UITextView *textView;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIProgressView *progressView;

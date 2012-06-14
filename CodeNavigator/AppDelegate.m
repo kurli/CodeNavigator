@@ -21,6 +21,10 @@
 
 @synthesize window = _window;
 @synthesize splitViewController = _splitViewController;
+#ifdef IPHONE_VERSION
+@synthesize masterNavigationController = _masterNavigationController;
+@synthesize detailViewController;
+#endif
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -29,6 +33,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 
+#ifndef IPHONE_VERSION
     MasterViewController *masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
     UINavigationController *masterNavigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
     [masterNavigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
@@ -36,11 +41,21 @@
 
     DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
     [[Utils getInstance] setDetailViewController:detailViewController];
-
+    
     self.splitViewController = [[MGSplitViewController alloc] init];
     [[Utils getInstance] setSplitViewController:self.splitViewController];
     self.splitViewController.delegate = detailViewController;
     self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailViewController, nil];
+#else
+    MasterViewController *masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController-iPhone" bundle:nil];
+    self.masterNavigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
+    [self.masterNavigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
+    [masterViewController setIsProjectFolder:YES];
+    [[Utils getInstance] setMasterViewController:self.masterNavigationController];
+    
+    self.detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController-iPhone" bundle:nil];
+    [[Utils getInstance] setDetailViewController:self.detailViewController];
+#endif
     
     //Banner support
 #ifdef LITE_VERSION
@@ -48,8 +63,13 @@
 //    [self.window addSubview:[[Utils getInstance] getBannerViewController].view];
 #endif
     //end
+#ifndef IPHONE_VERSION
     [self.window addSubview:self.splitViewController.view];
     [self.window makeKeyAndVisible];
+#else
+    self.window.rootViewController = self.masterNavigationController;
+    [self.window makeKeyAndVisible];
+#endif
     
     double delayInSeconds = 1.5;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);

@@ -243,7 +243,11 @@ padding-right: 20px;\
         [emailBody appendFormat:@"<div>%@</div>", [array objectAtIndex:i]];
     }
     //Add signature
-    [emailBody appendString:@"<div><br><br>Sent from my iPad <a href=\"http://itunes.apple.com/us/app/codenavigator/id492480832?mt=8\">CodeNavigator</div>"];
+#ifdef IPHONE_VERSION
+    [emailBody appendString:@"<div><br><br>Sent from my iPhone <a href=\"http://itunes.apple.com/cn/artist/guangzhen-li/id492480835\">CodeNavigator</div>"];
+#else
+    [emailBody appendString:@"<div><br><br>Sent from my iPad <a href=\"http://itunes.apple.com/cn/artist/guangzhen-li/id492480835\">CodeNavigator</div>"];
+#endif
     
     [emailBody appendFormat:@"</body></html>"];
     

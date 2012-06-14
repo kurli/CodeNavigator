@@ -31,4 +31,7 @@ typedef enum _CommentManagerMode{
 - (void) setCurrentModeComments;
 - (void) initWithCommentFile:(NSString*)path;
 
+#ifdef IPHONE_VERSION
+- (IBAction)doneButtonClicked:(id)sender;
+#endif
 @end

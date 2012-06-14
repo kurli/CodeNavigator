@@ -108,6 +108,8 @@ typedef enum _AlertConfirmMode{
 
 @property (nonatomic, unsafe_unretained) MGSplitViewController *splitViewController;
 
+@property (nonatomic, unsafe_unretained) UINavigationController* masterViewController;
+
 @property (nonatomic, strong) AnalyzeInfoController* analyzeInfoController;
 
 @property (nonatomic, strong) UIPopoverController* analyzeInfoPopover;

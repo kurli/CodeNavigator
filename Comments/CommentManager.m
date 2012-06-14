@@ -166,7 +166,11 @@
         path = [path stringByAppendingPathComponent:@"Documents"];
         path = [path stringByAppendingPathComponent:@"Projects"];
         path = [path stringByAppendingPathComponent:[fileArray objectAtIndex:indexPath.row]];
+#ifdef IPHONE_VERSION
+        self.commentManager = [[CommentManager alloc] initWithNibName:@"CommentManager-iPhone" bundle:nil];
+#else
         self.commentManager = [[CommentManager alloc] init];
+#endif
         [self.commentManager setMasterViewController:self.masterViewController];
         [self.commentManager initWithCommentFile:path];
         [self.commentManager setCurrentModeComments];
@@ -185,6 +189,10 @@
         CommentItem* item= (CommentItem*)([self.commentWrapper.commentArray objectAtIndex:indexPath.row]);
         NSString* line = [NSString stringWithFormat:@"%d", item.line];
         [[Utils getInstance].detailViewController gotoFile:sourceFullPath andLine:line andKeyword:nil];
+#ifdef IPHONE_VERSION
+        //[self dismissModalViewControllerAnimated:NO];
+        [self presentModalViewController:[Utils getInstance].detailViewController animated:YES];
+#endif
     }
 }
 
@@ -198,5 +206,11 @@
     self.commentWrapper = [[CommentWrapper alloc] init];
     [self.commentWrapper readFromFile:path];
 }
+
+#ifdef IPHONE_VERSION
+- (IBAction)doneButtonClicked:(id)sender {
+    [self dismissModalViewControllerAnimated:NO];
+}
+#endif
 
 @end

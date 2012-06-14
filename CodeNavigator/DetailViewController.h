@@ -205,4 +205,8 @@ typedef enum _JSState {
 
 - (void) showCommentInWebView:(int)_line andComment:(NSString*)_comment;
 
+#ifdef IPHONE_VERSION
+- (IBAction)filesButtonClicked:(id)sender;
+#endif
+
 @end

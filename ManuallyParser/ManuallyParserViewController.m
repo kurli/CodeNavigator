@@ -256,6 +256,9 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+#ifdef IPHONE_VERSION
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+#endif
 	return YES;
 }
 
@@ -377,10 +380,17 @@ andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords andEnable:(BO
     [self.keyworldField setText:keywords];
     
     CGSize size = CGSizeMake(self.scrollView.frame.size.width, self.keyworldField.frame.origin.y + self.keyworldField.contentSize.height);
+    if ([keywords length] == 0) {
+        size.height -= self.keyworldField.contentSize.height;
+        size.height += 150;
+    }
     [self.scrollView setContentSize:size];
     CGRect rect = self.keyworldField.frame;
     if (rect.size.height < self.keyworldField.contentSize.height) {
         rect.size = self.keyworldField.contentSize;
+    }
+    if ([keywords length] == 0) {
+        rect.size.height = 150;
     }
     [self.keyworldField setFrame:rect];
     
@@ -569,7 +579,15 @@ andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords andEnable:(BO
     [UIView setAnimationDuration:0.30];
 
     CGSize size = CGSizeMake(self.scrollView.frame.size.width, self.keyworldField.frame.origin.y + self.keyworldField.contentSize.height+200);
-    [self.scrollView setContentSize:size];
+    if ([textView.text length] == 0) {
+        size.height -= self.keyworldField.contentSize.height;
+        size.height += 150;
+    }
+    [self.scrollView setContentSize:size];    
+#ifdef IPHONE_VERSION
+
+    [self.scrollView scrollRectToVisible:textView.frame animated:YES];
+#endif
     
     [UIView commitAnimations];
 }
@@ -577,18 +595,20 @@ andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords andEnable:(BO
 - (void)textViewDidChange:(UITextView *)textView
 {
     CGSize size = CGSizeMake(self.scrollView.frame.size.width, self.keyworldField.frame.origin.y + self.keyworldField.contentSize.height+200);
+    size.height += 30;
     [self.scrollView setContentSize:size];
     
     CGRect rect = self.keyworldField.frame;
     if (rect.size.height < self.keyworldField.contentSize.height) {
         rect.size = self.keyworldField.contentSize;
     }
+
     [self.keyworldField setFrame:rect];
     
-    CGPoint bottomOffset = CGPointMake(0, [self.scrollView contentSize].height - self.scrollView.frame.size.height);
-    if (bottomOffset.y > 0) {
-        [scrollView setContentOffset:bottomOffset animated:YES];
-    }
+//    CGPoint bottomOffset = CGPointMake(0, [self.scrollView contentSize].height - self.scrollView.frame.size.height);
+//    if (bottomOffset.y > 0) {
+//        [scrollView setContentOffset:bottomOffset animated:YES];
+//    }
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView

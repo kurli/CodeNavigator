@@ -185,6 +185,10 @@
     [[Utils getInstance].detailViewController dismissNavigationManager];
     [[Utils getInstance].detailViewController releaseAllPopOver];
     
+#ifdef IPHONE_VERSION
+    [self dismissModalViewControllerAnimated:NO];
+#endif
+    
     NSString* searchText = _searchBar.text;
     if ([searchText length] <= 0)
         return;
@@ -211,6 +215,10 @@
 {
     [[Utils getInstance].detailViewController dismissNavigationManager];
     [[Utils getInstance].detailViewController releaseAllPopOver];
+    
+#ifdef IPHONE_VERSION
+    [self dismissModalViewControllerAnimated:NO];
+#endif
     
     NSString* searchText = _searchBar.text;
     if ([searchText length] <= 0)

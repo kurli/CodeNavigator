@@ -89,7 +89,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return YES;
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -537,5 +537,11 @@
     [[Utils getInstance] analyzeProject:path andForceCreate:YES];
     [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Upload Finished"];
 }
+
+#ifdef IPHONE_VERSION
+- (IBAction)doneButtonClicked:(id)sender {
+    [self dismissModalViewControllerAnimated:NO];
+}
+#endif
 
 @end
