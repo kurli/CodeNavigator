@@ -186,7 +186,7 @@
     [[Utils getInstance].detailViewController releaseAllPopOver];
     
 #ifdef IPHONE_VERSION
-    [self dismissModalViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:NO completion:nil];
 #endif
     
     NSString* searchText = _searchBar.text;
@@ -217,7 +217,7 @@
     [[Utils getInstance].detailViewController releaseAllPopOver];
     
 #ifdef IPHONE_VERSION
-    [self dismissModalViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:NO completion:nil];
 #endif
     
     NSString* searchText = _searchBar.text;

@@ -244,7 +244,7 @@
     else
     {
 #ifdef IPHONE_VERSION
-        [self dismissModalViewControllerAnimated:NO];
+        [self dismissViewControllerAnimated:NO completion:nil];
 #endif
         
         NSString* content = [((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:currentFileIndex]).contents objectAtIndex:indexPath.row];
@@ -280,7 +280,7 @@
 
 #ifdef IPHONE_VERSION
 - (IBAction)doneButtonClicked:(id)sender {
-    [self dismissModalViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 #endif
 

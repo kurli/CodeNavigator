@@ -320,7 +320,7 @@
     [[Utils getInstance].detailViewController reloadCurrentPage];
     [[Utils getInstance].detailViewController displayModeClicked:nil];
 #ifdef IPHONE_VERSION
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:NO completion:nil];
 #endif
 }
 

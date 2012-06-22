@@ -259,6 +259,7 @@
 		9473AEF714DACD6A00D39E05 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9473AEF314DACD6A00D39E05 /* Icon-Small-50.png */; };
 		9473AEF814DACD6A00D39E05 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9473AEF414DACD6A00D39E05 /* Icon-Small.png */; };
 		9473AEF914DACD6A00D39E05 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 9473AEF514DACD6A00D39E05 /* iTunesArtwork */; };
+		947D9F8C158BA930000B5136 /* ResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */; };
 		947F861215863579002EAA1E /* DetailViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947F861015863579002EAA1E /* DetailViewController-iPhone.xib */; };
 		947F861315863579002EAA1E /* MasterViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947F861115863579002EAA1E /* MasterViewController-iPhone.xib */; };
 		947F861715879408002EAA1E /* DisplayModeController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947F861615879407002EAA1E /* DisplayModeController-iPhone.xib */; };
@@ -481,6 +482,9 @@
 		94A3B09B15447C7500C8E132 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A5184A152DF30A0062DA65 /* Security.framework */; };
 		94A404AA158A1BA00084F645 /* FileInfoControlleriPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A404A9158A1BA00084F645 /* FileInfoControlleriPhone.m */; };
 		94A404AC158A299C0084F645 /* ManuallyParserViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A404AB158A299C0084F645 /* ManuallyParserViewController-iPhone.xib */; };
+		94A404B4158A53C10084F645 /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A404B3158A53C10084F645 /* Icon-57.png */; };
+		94A404CF158A635C0084F645 /* CodeNavigatoriPhone-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94A404CE158A635C0084F645 /* CodeNavigatoriPhone-info.plist */; };
+		94A404D1158A69920084F645 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A404B9158A56B50084F645 /* Default.png */; };
 		94A5079314F6AA1C00587A47 /* virbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5079214F6AA1C00587A47 /* virbackground.png */; };
 		94A5079414F6AA1C00587A47 /* virbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5079214F6AA1C00587A47 /* virbackground.png */; };
 		94A51848152DF2AC0062DA65 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A51847152DF2AC0062DA65 /* DropboxSDK.framework */; };
@@ -982,13 +986,15 @@
 		9497F3C9151CEC4F006BCBBF /* RubbyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RubbyParser.h; path = CodeNavigator/RubbyParser.h; sourceTree = "<group>"; };
 		9497F3CA151CEC4F006BCBBF /* RubbyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RubbyParser.m; path = CodeNavigator/RubbyParser.m; sourceTree = "<group>"; };
 		9497F3CD151CEC6A006BCBBF /* RubbyDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RubbyDefinition.h; path = CodeNavigator/RubbyDefinition.h; sourceTree = "<group>"; };
-		949DC26B1583E8CF00385796 /* CodeNavigator copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CodeNavigator copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		949DC26D1583E8CF00385796 /* CodeNavigator copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CodeNavigator copy2-Info.plist"; path = "/Users/lgz_software/Documents/iOS_Development/CodeNavigator/CodeNavigator copy2-Info.plist"; sourceTree = "<absolute>"; };
+		949DC26B1583E8CF00385796 /* CodeNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A0FAE2153DDA78004277BF /* cscope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cscope.png; sourceTree = "<group>"; };
 		94A0FAE5153DDAD9004277BF /* virtualize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = virtualize.png; sourceTree = "<group>"; };
 		94A404A8158A1BA00084F645 /* FileInfoControlleriPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileInfoControlleriPhone.h; path = FileInfoController/FileInfoControlleriPhone.h; sourceTree = "<group>"; };
 		94A404A9158A1BA00084F645 /* FileInfoControlleriPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileInfoControlleriPhone.m; path = FileInfoController/FileInfoControlleriPhone.m; sourceTree = "<group>"; };
 		94A404AB158A299C0084F645 /* ManuallyParserViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "ManuallyParserViewController-iPhone.xib"; path = "ManuallyParser/ManuallyParserViewController-iPhone.xib"; sourceTree = "<group>"; };
+		94A404B3158A53C10084F645 /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57.png"; sourceTree = "<group>"; };
+		94A404B9158A56B50084F645 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		94A404CE158A635C0084F645 /* CodeNavigatoriPhone-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CodeNavigatoriPhone-info.plist"; sourceTree = "<group>"; };
 		94A5079214F6AA1C00587A47 /* virbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = virbackground.png; sourceTree = "<group>"; };
 		94A51847152DF2AC0062DA65 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 		94A5184A152DF30A0062DA65 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -1201,6 +1207,8 @@
 		9431D72914910B3000B0900E = {
 			isa = PBXGroup;
 			children = (
+				94A404CE158A635C0084F645 /* CodeNavigatoriPhone-info.plist */,
+				94A404B3158A53C10084F645 /* Icon-57.png */,
 				94205713157B938B00178CBF /* QuartzCore.framework */,
 				94B8EC271546F31700931747 /* SystemConfiguration.framework */,
 				94B8EC251546F30900931747 /* MessageUI.framework */,
@@ -1231,7 +1239,6 @@
 				9431D73E14910B3000B0900E /* CodeNavigator */,
 				9431D73714910B3000B0900E /* Frameworks */,
 				9431D73514910B3000B0900E /* Products */,
-				949DC26D1583E8CF00385796 /* CodeNavigator copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1240,7 +1247,7 @@
 			children = (
 				9431D73414910B3000B0900E /* CodeNavigator.app */,
 				94ADF18C14BB27EE00BA807A /* CodeNavigator.app */,
-				949DC26B1583E8CF00385796 /* CodeNavigator copy.app */,
+				949DC26B1583E8CF00385796 /* CodeNav.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1418,6 +1425,7 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				94A404B9158A56B50084F645 /* Default.png */,
 				9456A93E15617BDC0092128D /* Comment.png */,
 				9443D1F2154FF4D8008CB52D /* Lock.png */,
 				94352106153EFC1E003F316A /* version_control.png */,
@@ -1792,7 +1800,7 @@
 			);
 			name = "CodeNavigator-iPhone";
 			productName = CodeNavigator;
-			productReference = 949DC26B1583E8CF00385796 /* CodeNavigator copy.app */;
+			productReference = 949DC26B1583E8CF00385796 /* CodeNav.app */;
 			productType = "com.apple.product-type.application";
 		};
 		94ADF13914BB27EE00BA807A /* CodeNavigatorLite */ = {
@@ -1821,7 +1829,7 @@
 		9431D72B14910B3000B0900E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = 9431D72E14910B3000B0900E /* Build configuration list for PBXProject "CodeNavigator" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2059,6 +2067,10 @@
 				9452B1AE1588FF4A00B9A9F8 /* CommentViewController-iPhone.xib in Resources */,
 				9452B1B01589024100B9A9F8 /* CommentManager-iPhone.xib in Resources */,
 				94A404AC158A299C0084F645 /* ManuallyParserViewController-iPhone.xib in Resources */,
+				94A404B4158A53C10084F645 /* Icon-57.png in Resources */,
+				94A404CF158A635C0084F645 /* CodeNavigatoriPhone-info.plist in Resources */,
+				94A404D1158A69920084F645 /* Default.png in Resources */,
+				947D9F8C158BA930000B5136 /* ResultTableCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2755,13 +2767,13 @@
 					"IPHONE_VERSION=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "CodeNavigator copy2-Info.plist";
+				INFOPLIST_FILE = "CodeNavigatoriPhone-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = "CodeNavigator copy";
+				PRODUCT_NAME = CodeNav;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2782,13 +2794,13 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
-				INFOPLIST_FILE = "CodeNavigator copy2-Info.plist";
+				INFOPLIST_FILE = "CodeNavigatoriPhone-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = "CodeNavigator copy";
+				PRODUCT_NAME = CodeNav;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2810,13 +2822,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DISTRIBUTION=1";
-				INFOPLIST_FILE = "CodeNavigator copy2-Info.plist";
+				INFOPLIST_FILE = "CodeNavigatoriPhone-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = "CodeNavigator copy";
+				PRODUCT_NAME = CodeNav;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;

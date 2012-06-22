@@ -66,7 +66,7 @@
 //    [self.zipFiles removeAllObjects];
 //    [self setZipFiles:nil];
     [self setMasterViewController:nil];
-    [self setUploadToPath:nil];
+//    [self setUploadToPath:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -540,7 +540,7 @@
 
 #ifdef IPHONE_VERSION
 - (IBAction)doneButtonClicked:(id)sender {
-    [self dismissModalViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 #endif
 

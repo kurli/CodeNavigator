@@ -88,6 +88,7 @@
 
 - (void)viewDidLoad
 {
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
 	//_navigationManagerPopover.delegate = self;
     jsState = JS_NONE;
     jsGotoLine = 0;
@@ -110,11 +111,12 @@
 
 - (void)viewDidUnload
 {
-    [self.scrollBackgroundView removeGestureRecognizer:self.scrollBarTapRecognizer];
+//    [self.scrollBackgroundView removeGestureRecognizer:self.scrollBarTapRecognizer];
     [self setScrollBarTapRecognizer:nil];
     [self setScrollBackgroundView:nil];
     [self setScrollItem:nil];
     [self setHistorySwipeImageView:nil];
+    [self setActiveWebView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -444,6 +446,11 @@
         
         html = [[Utils getInstance] getDisplayFile:filePath andProjectBase:nil];
 
+#ifdef IPHONE_VERSION
+        //magic way to reload current page if needed
+        currentDisplayFile = @"";
+#endif
+        
         if (currentDisplayFile == nil || !([currentDisplayFile compare:displayPath] == NSOrderedSame))
         {
             [self displayHTMLString:html andBaseURL:nil];
@@ -1242,7 +1249,8 @@
 
 #ifdef IPHONE_VERSION
 - (IBAction)filesButtonClicked:(id)sender {
-    [self dismissModalViewControllerAnimated:NO];
+    [self displayHTMLString:@"" andBaseURL:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 #endif
 

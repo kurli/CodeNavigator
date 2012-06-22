@@ -209,7 +209,7 @@
 
 #ifdef IPHONE_VERSION
 - (IBAction)doneButtonClicked:(id)sender {
-    [self dismissModalViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 #endif
 

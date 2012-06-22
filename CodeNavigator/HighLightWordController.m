@@ -164,18 +164,18 @@
         [self searchWrapper];
     }
 #ifdef IPHONE_VERSION
-    [self dismissModalViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:NO completion:nil];
 #endif
 }
 
 #ifdef IPHONE_VERSION
 - (IBAction)searchButtonClicked:(id)sender {
     [self searchBarSearchButtonClicked:searchBarUI];
-    [self dismissModalViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (IBAction)cancelButtonClicked:(id)sender {
-    [self dismissModalViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 #endif
 @end
