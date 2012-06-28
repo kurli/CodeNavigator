@@ -141,7 +141,7 @@
     //[self setCurrentLocation:nil];
     [self setCommentManagerPopOverController: nil];
     [self.currentFiles removeAllObjects];
-    [self setCurrentProjectPath:nil];
+//    [self setCurrentProjectPath:nil];
     [self.currentDirectories removeAllObjects];
     [self setCurrentDirectories:nil];
     [self setCurrentFiles: nil];

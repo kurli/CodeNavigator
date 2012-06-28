@@ -52,9 +52,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.    
 }
 
 - (void)viewDidUnload
@@ -188,6 +186,7 @@
             else if (indexPath.row == WEB_DELETE) {
                 [self deleteFile];
             }
+            break;
         case FILEINFO_OTHER:
             [self deleteFile];
             break;

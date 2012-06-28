@@ -38,21 +38,26 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        parserArray = [[NSMutableArray alloc] initWithObjects:PREDEF_PARSER, nil];
-        currentSelected = -1;
-        manuallyParserArray = [Parser getManuallyParserNames];
     }
     return self;
 }
 
 - (void)viewDidLoad
 {
+    parserArray = [[NSMutableArray alloc] initWithObjects:PREDEF_PARSER, nil];
+    currentSelected = -1;
+    manuallyParserArray = [Parser getManuallyParserNames];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
 {
+    [self.parserArray removeAllObjects];
+    [self setParserArray:nil];
+    [self setManuallyParserArray:nil];
+    [self setFilePath:nil];
+    
     [self setExtentionsField:nil];
     [self setSingleLineCommentsField:nil];
     [self setMultiLineCommentsStartField:nil];

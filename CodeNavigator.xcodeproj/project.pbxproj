@@ -2794,6 +2794,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "IPHONE_VERSION=1";
 				INFOPLIST_FILE = "CodeNavigatoriPhone-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2821,7 +2822,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = "DISTRIBUTION=1";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DISTRIBUTION=1",
+					"IPHONE_VERSION=1",
+				);
 				INFOPLIST_FILE = "CodeNavigatoriPhone-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

@@ -7,7 +7,7 @@
 	<key>day_background</key>
 	<string>#FFFFFF</string>
 	<key>night_background</key>
-	<string>#303040</string>
+	<string>#000000</string>
 	<key>day_comment</key>
 	<string>#008424</string>
 	<key>night_comment</key>
@@ -29,7 +29,7 @@
 	<key>night_definition</key>
 	<string>#66D9EF</string>
 	<key>font_size</key>
-	<string>20</string>
+	<string>15</string>
 	<key>day_other</key>
 	<string>#888888</string>
 	<key>night_other</key>

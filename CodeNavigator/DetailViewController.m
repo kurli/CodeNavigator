@@ -88,6 +88,17 @@
 
 - (void)viewDidLoad
 {
+#ifdef LITE_VERSION
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willBeginBannerViewActionNotification:) name:BannerViewActionWillBegin object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishBannerViewActionNotification:) name:BannerViewActionDidFinish object:nil];
+    _bannerCounter = 0;
+    isVirtualizeDisplayed = NO;
+#endif
+    
+    self.upHistoryController = [[HistoryController alloc] init];
+    self.downHistoryController = [[HistoryController alloc] init];
+    self.historyController = self.upHistoryController;
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
 	//_navigationManagerPopover.delegate = self;
     jsState = JS_NONE;
@@ -111,12 +122,46 @@
 
 - (void)viewDidUnload
 {
-//    [self.scrollBackgroundView removeGestureRecognizer:self.scrollBarTapRecognizer];
     [self setScrollBarTapRecognizer:nil];
-    [self setScrollBackgroundView:nil];
-    [self setScrollItem:nil];
-    [self setHistorySwipeImageView:nil];
+    [self setVirtualizeViewController:nil];
+    [self setUpHistoryController:nil];
+    [self setDownHistoryController:nil];
     [self setActiveWebView:nil];
+    [self setSecondWebView:nil];
+    [self setHistoryListPopover:nil];
+    [self setHistoryListController:nil];
+    [self setWebView:nil];
+    [self setCountTextField:nil];
+    [self setHistoryController:nil];
+    [self setSearchWord:nil];
+    [self setHighlightLineArray:nil];
+    [self setHistoryBar:nil];
+    [self setCodeNavigationController:nil];
+    [self setCodeNavigationPopover:nil];
+    [self setResultViewController:nil];
+    [self setResultPopover:nil];
+    [self setResultBarButton:nil];
+    [self setGotoLinePopover:nil];
+    [self setGotoLineViewController:nil];
+    [self setNavigateBarButtonItem:nil];
+    [self setAnalyzeInfoBarButton:nil];
+    [self setFilePathInfopopover:nil];
+    [self setFilePathInfoController:nil];
+    [self setJsGotoLineKeyword:nil];
+    [self setTitleTextField:nil];
+    [self setHighlghtWordPopover:nil];
+    [self setHighlightWordController:nil];
+    [self setGotoHighlightBar:nil];
+    [self setDisplayModeController:nil];
+    [self setDisplayModePopover:nil];
+    [self setTopToolBar:nil];
+    [self setBottomToolBar:nil];
+    [self setWebViewSegmentController:nil];
+    [self setActiveMark:nil];
+    [self setVirtualizeButton:nil];
+    [self setDivider:nil];
+    [self setHideMasterViewButton:nil];
+    [self setSplitWebViewButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -201,8 +246,8 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    jsState = JS_HISTORY_MODE;
-    jsHistoryModeScrollY = [self getCurrentScrollLocation];
+//    jsState = JS_HISTORY_MODE;
+//    jsHistoryModeScrollY = [self getCurrentScrollLocation];
 //    if (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
 //    {
 //        [self.webView setScalesPageToFit:YES];
@@ -263,30 +308,6 @@
 #endif
 #endif
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-//    UILongPressGestureRecognizer *hold;
-//    hold = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-//    hold.minimumPressDuration = 2.0;
-//    hold.numberOfTapsRequired = 1;
-//    hold.delegate = self;
-//    [self.view addGestureRecognizer:hold];
-    if (self)
-    {
-#ifdef LITE_VERSION
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willBeginBannerViewActionNotification:) name:BannerViewActionWillBegin object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishBannerViewActionNotification:) name:BannerViewActionDidFinish object:nil];
-        _bannerCounter = 0;
-        isVirtualizeDisplayed = NO;
-#endif
-    }
-    self.upHistoryController = [[HistoryController alloc] init];
-    self.downHistoryController = [[HistoryController alloc] init];
-    self.historyController = self.upHistoryController;
-    return self;
 }
 
 - (void)willBeginBannerViewActionNotification:(NSNotification *)notification
@@ -445,11 +466,6 @@
         [self.historyController pushUrl:displayPath];
         
         html = [[Utils getInstance] getDisplayFile:filePath andProjectBase:nil];
-
-#ifdef IPHONE_VERSION
-        //magic way to reload current page if needed
-        currentDisplayFile = @"";
-#endif
         
         if (currentDisplayFile == nil || !([currentDisplayFile compare:displayPath] == NSOrderedSame))
         {
@@ -1249,7 +1265,6 @@
 
 #ifdef IPHONE_VERSION
 - (IBAction)filesButtonClicked:(id)sender {
-    [self displayHTMLString:@"" andBaseURL:nil];
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 #endif
