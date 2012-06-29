@@ -43,6 +43,7 @@
 #ifdef IPHONE_VERSION
 @synthesize fileInfoControlleriPhone;
 #endif
+@synthesize deleteAlertView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,8 +53,10 @@
 //        self clearsSelectionOnViewWillAppear = NO;
         self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
         isProjectFolder = NO;
-        self.navigationItem.rightBarButtonItem = self.editButtonItem;
+        // we do not show edit button from v1.8
+//        self.navigationItem.rightBarButtonItem = self.editButtonItem;
         isCurrentSearchFileMode = NO;
+        deleteItemId = -1;
     }
     return self;
 }
@@ -140,9 +143,9 @@
 {
     //[self setCurrentLocation:nil];
     [self setCommentManagerPopOverController: nil];
-    [self.currentFiles removeAllObjects];
-//    [self setCurrentProjectPath:nil];
-    [self.currentDirectories removeAllObjects];
+//    [self.currentFiles removeAllObjects];
+////    [self setCurrentProjectPath:nil];
+//    [self.currentDirectories removeAllObjects];
     [self setCurrentDirectories:nil];
     [self setCurrentFiles: nil];
     [self setWebServiceController:nil];
@@ -421,29 +424,34 @@
     if (isCurrentSearchFileMode == YES) {
         return NO;
     }
-    // Return NO if you do not want the specified item to be editable.
-    if (self.editing)
-        return YES;
-    return NO;
+//    // Return NO if you do not want the specified item to be editable.
+//    if (self.editing)
+//        return YES;
+    return YES;
 }
 
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSError *error;
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
+    if (alertView == self.deleteAlertView) {
+        [self setDeleteAlertView:nil];
+        if (deleteItemId == -1)
+            return;
+        if (buttonIndex != 1) {
+            return;
+        }
+        NSError *error;
         NSString* path = @"";
         path = [path stringByAppendingString:self.currentLocation];
         // Delete the row from the data source.
-        if (indexPath.row < [self.currentDirectories count])
+        if (deleteItemId < [self.currentDirectories count])
         {
-            path = [path stringByAppendingPathComponent:[self.currentDirectories objectAtIndex:indexPath.row]];
-            [self.currentDirectories removeObjectAtIndex:indexPath.row];
+            path = [path stringByAppendingPathComponent:[self.currentDirectories objectAtIndex:deleteItemId]];
+            [self.currentDirectories removeObjectAtIndex:deleteItemId];
         }
         else
         {
-            path = [path stringByAppendingPathComponent:[self.currentFiles objectAtIndex:indexPath.row-[self.currentDirectories count]]];
-            [self.currentFiles removeObjectAtIndex:indexPath.row - [self.currentDirectories count]];
+            path = [path stringByAppendingPathComponent:[self.currentFiles objectAtIndex:deleteItemId-[self.currentDirectories count]]];
+            [self.currentFiles removeObjectAtIndex:deleteItemId - [self.currentDirectories count]];
             NSString* displayPath = [[Utils getInstance] getDisplayFileBySourceFile:path];
             [[NSFileManager defaultManager] removeItemAtPath:displayPath error:&error];
             //remove comments file
@@ -454,9 +462,20 @@
             [[NSFileManager defaultManager] removeItemAtPath:commentFile error:&error];
         }
         [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:deleteItemId inSection:0] ] withRowAnimation:UITableViewRowAnimationFade];
         if (!isProjectFolder)
             [[Utils getInstance] analyzeProject:path andForceCreate:YES];
+    }
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        deleteItemId = indexPath.row;
+        self.deleteAlertView = [[UIAlertView alloc] initWithTitle:@"CodeNavigator" message:@"Would you like to delete this file?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
+        [self.deleteAlertView show];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }   
@@ -838,7 +857,9 @@
     isCurrentSearchFileMode = NO;
     [self.searchFileResultArray removeAllObjects];
     [self setSearchFileResultArray:nil];
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // ignore it after v1.8
+//    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = nil;
     [self.fileSearchBar setText:@""];
     [self.fileSearchBar resignFirstResponder];
     [self.tableView reloadData];

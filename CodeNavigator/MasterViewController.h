@@ -18,6 +18,7 @@
 {
     BOOL isProjectFolder;
     BOOL isCurrentSearchFileMode;
+    int deleteItemId;
 }
 @property (strong, nonatomic) NSString *currentLocation;
 
@@ -54,6 +55,8 @@
 #ifdef IPHONE_VERSION
 @property (strong, nonatomic) FileInfoControlleriPhone* fileInfoControlleriPhone;
 #endif
+
+@property (strong, nonatomic) UIAlertView* deleteAlertView;
 
 - (IBAction)addFileToolBarClicked:(id)sender;
 

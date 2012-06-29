@@ -365,8 +365,11 @@
                 NSError* error;
                 
                 //Create Project Folder
-                
-                projectFolder = [filePath stringByDeletingPathExtension];
+                NSString* _tmp = [filePath lastPathComponent];
+                _tmp = [_tmp stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+                NSString* _tmp2 = [filePath stringByDeletingLastPathComponent];
+                _tmp2 = [_tmp2 stringByAppendingPathComponent:_tmp];
+                projectFolder = [_tmp2 stringByDeletingPathExtension];
                 
                 if ([[NSFileManager defaultManager] fileExistsAtPath:projectFolder])
                 {
@@ -421,16 +424,17 @@
 //                                skipPath = nil;
 //                        }
 //                    }
-                    if ([info.name characterAtIndex:[info.name length]-1] == '/')
+                    NSString* _nameWrapper = [info.name stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+                    if ([_nameWrapper characterAtIndex:[_nameWrapper length]-1] == '/')
                     {
-                        fileWritePath = [NSString stringWithFormat:@"%@/%@", projectFolder, info.name];
+                        fileWritePath = [NSString stringWithFormat:@"%@/%@", projectFolder, _nameWrapper];
                         [[NSFileManager defaultManager] createDirectoryAtPath:fileWritePath withIntermediateDirectories:YES attributes:nil error:&error];
-                        [self performSelectorOnMainThread:@selector(log:) withObject:[NSString stringWithFormat:@"Unzip: %@", info.name] waitUntilDone:YES];
+                        [self performSelectorOnMainThread:@selector(log:) withObject:[NSString stringWithFormat:@"Unzip: %@", _nameWrapper] waitUntilDone:YES];
                         continue;
                     }
 #ifdef LITE_VERSION
                     liteLimitCount++;
-                    if ([info.name rangeOfString:@"/.git/"].location != NSOrderedSame) {
+                    if ([_nameWrapper rangeOfString:@"/.git/"].location != NSOrderedSame) {
                         liteLimitCount--;
                     }
                     if (liteLimitCount > 5)
@@ -451,7 +455,7 @@
 //                    if (![[Utils getInstance] isSupportedType:info.name])
 //                         continue;
                     
-                    fileWritePath = [NSString stringWithFormat:@"%@/%@", projectFolder, info.name];
+                    fileWritePath = [NSString stringWithFormat:@"%@/%@", projectFolder, _nameWrapper];
                     NSFileHandle *file = [NSFileHandle fileHandleForWritingAtPath:fileWritePath];
                     if(file == nil) {
                         BOOL res = [[NSFileManager defaultManager] createFileAtPath:fileWritePath contents:nil attributes:nil];
@@ -460,12 +464,12 @@
                             NSString* folder = [fileWritePath stringByDeletingLastPathComponent];
                             [[NSFileManager defaultManager] createDirectoryAtPath:folder withIntermediateDirectories:YES attributes:nil error:&error];
                             [[NSFileManager defaultManager] createFileAtPath:fileWritePath contents:nil attributes:nil];
-                            [self performSelectorOnMainThread:@selector(log:) withObject:[NSString stringWithFormat:@"Unzip: %@", [info.name stringByDeletingLastPathComponent]] waitUntilDone:YES];
+                            [self performSelectorOnMainThread:@selector(log:) withObject:[NSString stringWithFormat:@"Unzip: %@", [_nameWrapper stringByDeletingLastPathComponent]] waitUntilDone:YES];
                         }
                         file = [NSFileHandle fileHandleForWritingAtPath:fileWritePath];
                         if (file == nil)
                         {
-                            NSLog(@"error: %@", info.name);
+                            NSLog(@"error: %@", _nameWrapper);
                             continue;
                         }
                     }

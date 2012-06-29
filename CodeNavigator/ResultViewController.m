@@ -151,6 +151,7 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:fileCellIdentifier];
         }
         cell.textLabel.text = ((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:indexPath.row]).fileName;
+        cell.textLabel.lineBreakMode |= UILineBreakModeMiddleTruncation;
     }
     else
     {

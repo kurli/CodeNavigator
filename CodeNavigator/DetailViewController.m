@@ -773,7 +773,7 @@
     realSourceFile = [realSourceFile stringByDeletingLastPathComponent];
     realSourceFile = [realSourceFile stringByAppendingPathComponent:self.titleTextField.title];
     self.filePathInfoController.label.text = realSourceFile;
-    self.filePathInfopopover.popoverContentSize = CGSizeMake(640., 45);
+    self.filePathInfopopover.popoverContentSize = CGSizeMake(640., self.filePathInfoController.view.frame.size.height);
     [self.filePathInfopopover presentPopoverFromBarButtonItem:(UIBarButtonItem*)sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 #endif
 }
