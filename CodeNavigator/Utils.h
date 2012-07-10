@@ -15,7 +15,7 @@ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-#define DISPLAY_FILE_EXTENTION @"display_4"
+#define DISPLAY_FILE_EXTENTION @"display_5"
 
 @class DetailViewController;
 @class AnalyzeInfoController;
@@ -179,7 +179,7 @@ typedef enum _AlertConfirmMode{
 
 -(void) analyzeProjectConfirmed:(NSString*)path andForceCreate:(BOOL)forceCreate;
 
--(void) createFileList:(NSString*)projPath andWriteTo:(NSMutableString*) cache;
+-(void) createFileList:(NSString*)projPath andWriteTo:(NSMutableString*) cache andSearchDelta:(NSMutableString*)delta;
 
 -(BOOL) isSupportedType:(NSString*)file;
 

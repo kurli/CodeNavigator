@@ -215,7 +215,7 @@ build(void)
     int     built = 0;		/* built crossref for these files */
     int     copied = 0;		/* copied crossref for these files */
     unsigned long fileindex;		/* source file name index */
-    BOOL    interactive = YES;	/* output progress messages */
+    BOOL    interactive = NO;	/* output progress messages */
 
     /* normalize the current directory relative to the home directory so
        the cross-reference is not rebuilt when the user's login is moved */

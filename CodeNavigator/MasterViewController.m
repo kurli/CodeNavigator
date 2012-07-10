@@ -884,7 +884,7 @@
     if ([searchText length] == 0) {
         return;
     }
-    NSString* fileList = [self.currentProjectPath stringByAppendingPathComponent:@"db_files.lgz_proj_files"];
+    NSString* fileList = [self.currentProjectPath stringByAppendingPathComponent:@"search_files.lgz_proj_files"];
     
     BOOL isExist;
     BOOL isFolder;
@@ -895,11 +895,13 @@
         [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please analyze this project first"];
         return;
     }
+    searchText = [searchText lowercaseString];
     NSString* fileListContent = [NSString stringWithContentsOfFile:fileList encoding:NSUTF8StringEncoding error:&error];
     self.searchFileResultArray = [[NSMutableArray alloc] init];
     NSArray* array = [fileListContent componentsSeparatedByString:@"\n"];
     for (int i=0; i<[array count]; i++) {
         NSString* fileName = [[array objectAtIndex:i] lastPathComponent];
+        fileName = [fileName lowercaseString];
         if ([fileName rangeOfString:searchText].location != NSNotFound)
         {
             [self.searchFileResultArray addObject:[array objectAtIndex:i]];

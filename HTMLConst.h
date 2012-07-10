@@ -16,11 +16,6 @@
 .comment { color: COMENT; font-style: italic; }\n\
 .header { color: HEADER; }\n\
 .string { color: STRING; }\n\
-.float { color: #996600; }\n\
-.int { color: #999900; }\n\
-.bool { color: #000000; font-weight: bold; }\n\
-.type { color: #FF6633; }\n\
-.flow { color: #FF0000; }\n\
 .keyword { color: KEYWRD; }\n\
 .other { color: -OTHER-; }\n\
 .operator { color: #663300; font-weight: bold; }\n\
@@ -34,10 +29,8 @@ background:-BGCOL-;\n\
 table.code {\n\
  border-spacing: 0;\n\
  border-top: 0;\n\
- border-collapse: collapse; \n\
  empty-cells: show;\n\
  font-size: FONT_SIZEpx;\n\
- line-height: 130%;\n\
  padding: 0;\n\
  table-layout: fixed;\n\
 }\n\
@@ -71,23 +64,28 @@ table.code td {\n\
  -webkit-user-select: text;\n\
  padding-right: 20px;\n\
 }\n\
+pre {\n\
+margin-bottom: 0px;\n\
+margin-left: 0px;\n\
+margin-right: 0px;\n\
+margin-top: 0px;\n\
+}\
 "
 
 #define HTML_HEAD_END @"</head>\n"
 
-#define HTML_BODY_START @"<body><pre>\n\
+#define HTML_BODY_START @"<body>\n\
 <table class=\"code\"><tbody>\
 "
 
-#define HTML_LINE_START @"<tr id=\"L%d\"><th><a href=\"lgz_comment:%d\">%d</a></th><th><a href=\"lgz_fold__*&^\">▓</a></th><td>"
+#define HTML_LINE_START @"<tr id=\"L%d\"><th><a href=\"lgz_comment:%d\"><pre>%d</pre></a></th><th><a href=\"lgz_fold__*&^\"><pre>▓</pre></a></th><td><pre>"
 
 #define HTML_LINK @"<a href=\"%@=%@\" class=\"%@\" style=\"text-decoration: none\">"
 #define HTML_LINK_END @"</a>"
 
-#define HTML_LINE_END @"</td></tr>\n"
+#define HTML_LINE_END @"</pre></td></tr>\n"
 
 #define HTML_END @"</tbody></table> \n\
-</pre>\n\
 </body>\n\
 </html>\n\
 "

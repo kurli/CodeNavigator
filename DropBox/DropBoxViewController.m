@@ -598,6 +598,8 @@
     NSString* databaseFile = [localPath stringByAppendingPathComponent:@"db_files.lgz_proj_files"];
     NSError* error;
     [[NSFileManager defaultManager] removeItemAtPath:databaseFile error:&error];
+    databaseFile = [localPath stringByAppendingPathComponent:@"search_files.lgz_proj_files"];
+    [[NSFileManager defaultManager] removeItemAtPath:databaseFile error:&error];
     [self syncNextPath];
 }
 

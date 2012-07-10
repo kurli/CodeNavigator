@@ -227,7 +227,11 @@ char	*kur_getcwd(char *name, size_t size)
 
 void cscope_set_base_dir(const char* dir)
 {
-    basedir = dir;
+    if (basedir != NULL) {
+        free(basedir);
+    }
+    basedir = malloc(sizeof(const char)*(strlen(dir)+1));
+    strcpy(basedir, dir);
 }
 
 void cscope_build(const char* out_file_name, const char* file_list_f)

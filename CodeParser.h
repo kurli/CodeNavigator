@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-#define MAX_CHAR_IN_LINE 70
+#define MAX_CHAR_IN_LINE 80
 #define BREAK_STR @"lgz_BR_lgz"
 
 @interface CodeParser : NSObject

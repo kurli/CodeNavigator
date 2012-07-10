@@ -205,6 +205,8 @@ static Utils *static_utils;
             [[NSFileManager defaultManager] removeItemAtPath:db error:&error];
             NSString* fl = [projPath stringByAppendingPathComponent:@"db_files.lgz_proj_files"];
             [[NSFileManager defaultManager] removeItemAtPath:fl error:&error];
+            fl = [projPath stringByAppendingPathComponent:@"search_files.lgz_proj_files"];
+            [[NSFileManager defaultManager] removeItemAtPath:fl error:&error];
         }
     }
     
@@ -752,7 +754,7 @@ static Utils *static_utils;
     return NO;
 }
 
--(void) createFileList:(NSString *)projPath andWriteTo:(NSMutableString*) cache
+-(void) createFileList:(NSString *)projPath andWriteTo:(NSMutableString*) cache andSearchDelta:(NSMutableString *)delta
 {
     NSError *error;
     BOOL isFolder;
@@ -767,13 +769,19 @@ static Utils *static_utils;
         
         [[NSFileManager defaultManager] fileExistsAtPath:fullPath isDirectory:&isFolder];
         if (isFolder == YES)
-            [[Utils getInstance] createFileList:fullPath andWriteTo:cache];
+            [[Utils getInstance] createFileList:fullPath andWriteTo:cache andSearchDelta:delta];
         else
         {
             if ([[Utils getInstance] isSupportedType:file] == YES)
             {
                 [cache appendString:fullPath];
                 [cache appendString:@"\n"];
+            } else {
+                if ([[Utils getInstance] isProjectDatabaseFile:fullPath]) {
+                    continue;
+                }
+                [delta appendString:fullPath];
+                [delta appendString:@"\n"];
             }
         }
     }
@@ -803,6 +811,8 @@ static Utils *static_utils;
     else if ([extension isEqualToString:@"display_2"])
         return YES;
     else if ([extension isEqualToString:@"display_3"])
+        return YES;
+    else if ([extension isEqualToString:@"display_4"])
         return YES;
     else if ([extension isEqualToString:DISPLAY_FILE_EXTENTION])
         return YES;
@@ -863,12 +873,14 @@ static Utils *static_utils;
     NSString* path = ((BuildThreadData*)data).path;
     BOOL forceCreate = [((BuildThreadData*)data) getForce];
     NSString *databaseFile;
+    NSString *searchDeltaFile;
     BOOL isFolder;
     BOOL isExist;
     NSError *error;
     NSString *cscope_db_path;
     
     NSMutableString *db_content = [[NSMutableString alloc] init];
+    NSMutableString *search_delta_content = [[NSMutableString alloc] init];
     NSString* projectFolder = [[Utils getInstance] getProjectFolder:path];
     [self setAnalyzePath:[projectFolder lastPathComponent]];
     [((BuildThreadData*)data) setPath:nil];
@@ -876,6 +888,7 @@ static Utils *static_utils;
     
     //check whether analyzed
     databaseFile = [projectFolder stringByAppendingPathComponent:@"db_files.lgz_proj_files"];
+    searchDeltaFile = [projectFolder stringByAppendingPathComponent:@"search_files.lgz_proj_files"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:databaseFile isDirectory:&isFolder];
     
     if (forceCreate || isExist == NO || (isExist == YES && isFolder == YES))
@@ -884,7 +897,9 @@ static Utils *static_utils;
             [self showAnalyzeInfoPopOver:YES];
             [[Utils getInstance].detailViewController.analyzeInfoBarButton setEnabled:YES];
         });
-        [[Utils getInstance] createFileList:projectFolder andWriteTo:db_content];
+        [[Utils getInstance] createFileList:projectFolder andWriteTo:db_content andSearchDelta:search_delta_content];
+        [search_delta_content insertString:db_content atIndex:0];
+        [search_delta_content writeToFile:searchDeltaFile atomically:YES encoding:NSUTF8StringEncoding error:&error];
         if (db_content == nil || [db_content length] == 0)
         {
             dispatch_async(dispatch_get_main_queue(), ^{
