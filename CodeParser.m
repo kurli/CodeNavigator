@@ -328,10 +328,12 @@
     //get <tr id position
     range = [htmlContent rangeOfString:@"<tr id" options:NSBackwardsSearch range:range];
     range.length = (startPosition-range.location);
-    NSString* tmp;
-    tmp = [htmlContent stringByReplacingOccurrencesOfString:@"_*&^" withString:str options:NSLiteralSearch range:range];
-    tmp = [tmp stringByReplacingOccurrencesOfString:@"▓" withString:@"-" options:NSLiteralSearch range:range];
-    htmlContent = [NSMutableString stringWithString:tmp];
+//    NSString* tmp;
+    [htmlContent replaceOccurrencesOfString:@"_*&^" withString:str options:NSLiteralSearch range:range];
+    [htmlContent replaceOccurrencesOfString:@"▓" withString:@"-" options:NSLiteralSearch range:range];
+//    tmp = [htmlContent stringByReplacingOccurrencesOfString:@"_*&^" withString:str options:NSLiteralSearch range:range];
+//    tmp = [tmp stringByReplacingOccurrencesOfString:@"▓" withString:@"-" options:NSLiteralSearch range:range];
+//    htmlContent = [NSMutableString stringWithString:tmp];
     
     [bracesArray removeObjectAtIndex:index];
 }
