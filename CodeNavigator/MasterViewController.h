@@ -78,5 +78,7 @@
 
 - (IBAction)commentClicked:(id)sender;
 
+- (IBAction)helpButtonClicked:(id)sender;
+
 @end
 

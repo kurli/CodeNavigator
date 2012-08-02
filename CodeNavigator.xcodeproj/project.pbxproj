@@ -259,6 +259,16 @@
 		9473AEF714DACD6A00D39E05 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9473AEF314DACD6A00D39E05 /* Icon-Small-50.png */; };
 		9473AEF814DACD6A00D39E05 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9473AEF414DACD6A00D39E05 /* Icon-Small.png */; };
 		9473AEF914DACD6A00D39E05 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 9473AEF514DACD6A00D39E05 /* iTunesArtwork */; };
+		9478C6CF15C8093400F443D9 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9478C6CD15C8093400F443D9 /* HelpViewController.m */; };
+		9478C6D015C8093400F443D9 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6CE15C8093400F443D9 /* HelpViewController.xib */; };
+		9478C6D615C8207600F443D9 /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D115C8207600F443D9 /* appstore.png */; };
+		9478C6D715C8207600F443D9 /* demoVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D215C8207600F443D9 /* demoVideo.png */; };
+		9478C6D815C8207600F443D9 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D315C8207600F443D9 /* share.png */; };
+		9478C6D915C8207600F443D9 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D415C8207600F443D9 /* twitter.png */; };
+		9478C6DA15C8207600F443D9 /* weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D515C8207600F443D9 /* weibo.png */; };
+		9478C6DC15C8213100F443D9 /* feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6DB15C8213100F443D9 /* feedback.png */; };
+		9478C6DE15C8396300F443D9 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9478C6DD15C8396300F443D9 /* Twitter.framework */; };
+		9478C6E015C859F000F443D9 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6DF15C859F000F443D9 /* help.png */; };
 		947D9F8C158BA930000B5136 /* ResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */; };
 		947F861215863579002EAA1E /* DetailViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947F861015863579002EAA1E /* DetailViewController-iPhone.xib */; };
 		947F861315863579002EAA1E /* MasterViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947F861115863579002EAA1E /* MasterViewController-iPhone.xib */; };
@@ -955,6 +965,17 @@
 		9473AEF314DACD6A00D39E05 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "icon/Icon-Small-50.png"; sourceTree = "<group>"; };
 		9473AEF414DACD6A00D39E05 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "icon/Icon-Small.png"; sourceTree = "<group>"; };
 		9473AEF514DACD6A00D39E05 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = icon/iTunesArtwork; sourceTree = "<group>"; };
+		9478C6CC15C8093400F443D9 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpViewController.h; path = help/HelpViewController.h; sourceTree = "<group>"; };
+		9478C6CD15C8093400F443D9 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpViewController.m; path = help/HelpViewController.m; sourceTree = "<group>"; };
+		9478C6CE15C8093400F443D9 /* HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HelpViewController.xib; path = help/HelpViewController.xib; sourceTree = "<group>"; };
+		9478C6D115C8207600F443D9 /* appstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = appstore.png; path = help/appstore.png; sourceTree = "<group>"; };
+		9478C6D215C8207600F443D9 /* demoVideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = demoVideo.png; path = help/demoVideo.png; sourceTree = "<group>"; };
+		9478C6D315C8207600F443D9 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share.png; path = help/share.png; sourceTree = "<group>"; };
+		9478C6D415C8207600F443D9 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitter.png; path = help/twitter.png; sourceTree = "<group>"; };
+		9478C6D515C8207600F443D9 /* weibo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = weibo.png; path = help/weibo.png; sourceTree = "<group>"; };
+		9478C6DB15C8213100F443D9 /* feedback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = feedback.png; path = help/feedback.png; sourceTree = "<group>"; };
+		9478C6DD15C8396300F443D9 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		9478C6DF15C859F000F443D9 /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
 		947F861015863579002EAA1E /* DetailViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DetailViewController-iPhone.xib"; sourceTree = "<group>"; };
 		947F861115863579002EAA1E /* MasterViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MasterViewController-iPhone.xib"; sourceTree = "<group>"; };
 		947F861615879407002EAA1E /* DisplayModeController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DisplayModeController-iPhone.xib"; sourceTree = "<group>"; };
@@ -1103,6 +1124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9478C6DE15C8396300F443D9 /* Twitter.framework in Frameworks */,
 				94205714157B938B00178CBF /* QuartzCore.framework in Frameworks */,
 				94618169155BF85800A25635 /* MessageUI.framework in Frameworks */,
 				94A5184B152DF30A0062DA65 /* Security.framework in Frameworks */,
@@ -1207,6 +1229,7 @@
 		9431D72914910B3000B0900E = {
 			isa = PBXGroup;
 			children = (
+				9478C6DD15C8396300F443D9 /* Twitter.framework */,
 				94A404CE158A635C0084F645 /* CodeNavigatoriPhone-info.plist */,
 				94A404B3158A53C10084F645 /* Icon-57.png */,
 				94205713157B938B00178CBF /* QuartzCore.framework */,
@@ -1236,6 +1259,7 @@
 				9431D7621493B31500B0900E /* Parser */,
 				9447208015752EFB002EEA5A /* ManuallyParserController */,
 				9452BA2514DD7BF3003B88E5 /* Virtualization */,
+				9478C6C615C8086300F443D9 /* Help */,
 				9431D73E14910B3000B0900E /* CodeNavigator */,
 				9431D73714910B3000B0900E /* Frameworks */,
 				9431D73514910B3000B0900E /* Products */,
@@ -1425,6 +1449,13 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9478C6DF15C859F000F443D9 /* help.png */,
+				9478C6DB15C8213100F443D9 /* feedback.png */,
+				9478C6D115C8207600F443D9 /* appstore.png */,
+				9478C6D215C8207600F443D9 /* demoVideo.png */,
+				9478C6D315C8207600F443D9 /* share.png */,
+				9478C6D415C8207600F443D9 /* twitter.png */,
+				9478C6D515C8207600F443D9 /* weibo.png */,
 				94A404B9158A56B50084F645 /* Default.png */,
 				9456A93E15617BDC0092128D /* Comment.png */,
 				9443D1F2154FF4D8008CB52D /* Lock.png */,
@@ -1598,6 +1629,16 @@
 				945AA453150926A1006729C8 /* Help.html */,
 			);
 			path = help;
+			sourceTree = "<group>";
+		};
+		9478C6C615C8086300F443D9 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				9478C6CC15C8093400F443D9 /* HelpViewController.h */,
+				9478C6CD15C8093400F443D9 /* HelpViewController.m */,
+				9478C6CE15C8093400F443D9 /* HelpViewController.xib */,
+			);
+			name = Help;
 			sourceTree = "<group>";
 		};
 		94846EA914BC9A9A00388D68 /* MGSplitViewController */ = {
@@ -1980,6 +2021,14 @@
 				94CB787F156E80C8009452D8 /* FileTableViewCell.xib in Resources */,
 				94B7E5AC156FE2BB000F3F34 /* FileInfoViewController.xib in Resources */,
 				94472086157534E9002EEA5A /* ManuallyParserViewController.xib in Resources */,
+				9478C6D015C8093400F443D9 /* HelpViewController.xib in Resources */,
+				9478C6D615C8207600F443D9 /* appstore.png in Resources */,
+				9478C6D715C8207600F443D9 /* demoVideo.png in Resources */,
+				9478C6D815C8207600F443D9 /* share.png in Resources */,
+				9478C6D915C8207600F443D9 /* twitter.png in Resources */,
+				9478C6DA15C8207600F443D9 /* weibo.png in Resources */,
+				9478C6DC15C8213100F443D9 /* feedback.png in Resources */,
+				9478C6E015C859F000F443D9 /* help.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2281,6 +2330,7 @@
 				94B7E5AA156FE2BA000F3F34 /* FileInfoViewController.m in Sources */,
 				94472084157534E9002EEA5A /* ManuallyParserViewController.m in Sources */,
 				9435320B157A861D0011A446 /* ManuallyParser.m in Sources */,
+				9478C6CF15C8093400F443D9 /* HelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2659,6 +2709,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
@@ -2685,6 +2736,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
@@ -2737,6 +2789,7 @@
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DISTRIBUTION=1";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",

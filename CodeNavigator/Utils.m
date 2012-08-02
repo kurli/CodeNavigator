@@ -15,6 +15,7 @@
 #import "MasterViewController.h"
 #import "VirtualizeViewController.h"
 #import "VirtualizeWrapper.h"
+#import "HelpViewController.h"
 
 #ifdef LITE_VERSION
 #import "GADBannerView.h"
@@ -166,12 +167,21 @@ static Utils *static_utils;
     NSError* error;
     BOOL isExist = false;
     BOOL isFolder = NO;
-    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/2_0.version"];
+    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/2_1.version"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:versionFile];
     if (isExist == YES)
     {
         return;
     }
+    // Show Help dislog
+    double delayInSeconds = 10;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        HelpViewController* viewController = [[HelpViewController alloc] init];
+        viewController.modalPresentationStyle = UIModalPresentationFormSheet;
+        [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
+    });
+    
     // add version file
     [[NSFileManager defaultManager] createDirectoryAtPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] withIntermediateDirectories:YES attributes:nil error:&error];
     NSString* tmp = @"";

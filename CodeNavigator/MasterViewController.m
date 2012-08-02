@@ -21,6 +21,7 @@
 #else
 #import "FileInfoViewController.h"
 #endif
+#import "HelpViewController.h"
 
 @implementation MasterViewController
 @synthesize fileSearchBar = _fileSearchBar;
@@ -763,6 +764,10 @@
 
     if ([versionControllerPopOverController isPopoverVisible] == YES) {
         [versionControllerPopOverController dismissPopoverAnimated:YES];
+        return;
+    }
+    if ([commentManagerPopOverController isPopoverVisible] == YES) {
+        [commentManagerPopOverController dismissPopoverAnimated:YES];
     }
     
     VersionControlController* controller = [[VersionControlController alloc] init];
@@ -776,6 +781,13 @@
 }
 
 - (IBAction)lockButtonClicked:(id)sender {
+    if ([commentManagerPopOverController isPopoverVisible] == YES) {
+        [commentManagerPopOverController dismissPopoverAnimated:YES];
+    }
+    
+    if ([versionControllerPopOverController isPopoverVisible] == YES) {
+        [versionControllerPopOverController dismissPopoverAnimated:YES];
+    }
     [self.webServicePopOverController dismissPopoverAnimated:YES];
     [[Utils getInstance].detailViewController releaseAllPopOver];
     [[Utils getInstance].analyzeInfoPopover dismissPopoverAnimated:YES];
@@ -790,6 +802,10 @@
     if ([commentManagerPopOverController isPopoverVisible] == YES) {
         [commentManagerPopOverController dismissPopoverAnimated:YES];
         return;
+    }
+    
+    if ([versionControllerPopOverController isPopoverVisible] == YES) {
+        [versionControllerPopOverController dismissPopoverAnimated:YES];
     }
     
     if (isProjectFolder == YES) {
@@ -913,6 +929,13 @@
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [self.fileSearchBar resignFirstResponder];
+}
+
+- (void) helpButtonClicked:(id)sender
+{
+    HelpViewController* viewController = [[HelpViewController alloc] init];
+    viewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
 }
 
 @end
