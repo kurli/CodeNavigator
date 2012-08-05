@@ -11,7 +11,7 @@
 #import "Utils.h"
 #import "DetailViewController.h"
 
-#define PREDEF_PARSER @"C/C++", @"Objective-C", @"C#", @"Java", @"Delphi", @"Javascript", @"Pythone", @"Rubby", @"Bash"
+#define PREDEF_PARSER @"C/C++", @"Objective-C", @"C#", @"Java", @"Delphi", @"Javascript", @"Pythone", @"Ruby", @"Bash"
 
 @interface ManuallyParserViewController ()
 {
@@ -185,7 +185,7 @@
     }
     else if ([extension isEqualToString:@"rails"] || [extension isEqualToString:@"ror"] || [extension isEqualToString:@"ruby"])
     {
-        type = RUBBY;
+        type = RUBY;
     }
     else if ([extension isEqualToString:@"sh"] || [extension isEqualToString:@"shell"] || [extension isEqualToString:@"bash"])
     {
@@ -240,7 +240,7 @@
         [self.parserTypePicker selectRow:6 inComponent:0 animated:YES];
         currentSelected = 6;
     }
-    else if (RUBBY == type)
+    else if (RUBY == type)
     {
         [self.parserTypePicker selectRow:7 inComponent:0 animated:YES];
         currentSelected = 7;
@@ -339,8 +339,8 @@
         case 6://PYTHONE:
             type = PYTHONE;
             break;
-        case 7://RUBBY:
-            type = RUBBY;
+        case 7://RUBY:
+            type = RUBY;
             break;
         case 8://BASH:
             type = BASH;
@@ -496,8 +496,8 @@ andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords andEnable:(BO
             multiLineE = [PythonParser getMultiLineCommentsEndStr];
             keywords = [PythonParser getKeywordsStr];
             break;
-        case 7://RUBBY:
-            name = @"Rubby";
+        case 7://RUBY:
+            name = @"Ruby";
             extention = [RubbyParser getExtentionsStr];
             singleLine = [RubbyParser getSingleLineCommentsStr];
             multiLineS = [RubbyParser getMultiLineCommentsStartStr];

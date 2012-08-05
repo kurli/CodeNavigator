@@ -75,6 +75,7 @@
 @synthesize virtualizeViewController;
 @synthesize highlightLineArray;
 @synthesize scrollBarTapRecognizer;
+@synthesize showCommentsSegment;
 
 #pragma mark - Managing the detail item
 
@@ -748,6 +749,46 @@
         [self goForwardHistory];
 }
 
+//Copy from showAllComments
+-(void) hideAllComments
+{
+    // Show comments
+    NSString* currentDisplayFile;
+    if (activeWebView == self.webView)
+    {
+        NSString* path = [self.upHistoryController pickTopLevelUrl];
+        currentDisplayFile = [self.upHistoryController getUrlFromHistoryFormat:path];
+    }
+    else
+    {
+        NSString* path = [self.downHistoryController pickTopLevelUrl];
+        currentDisplayFile = [self.downHistoryController getUrlFromHistoryFormat:path];
+    }
+    currentDisplayFile = [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
+    NSString* extention = [currentDisplayFile pathExtension];
+    NSString* commentFile = [currentDisplayFile stringByDeletingPathExtension];
+    commentFile = [commentFile stringByAppendingFormat:@"_%@", extention];
+    commentFile = [commentFile stringByAppendingPathExtension:@"lgz_comment"];
+    
+    CommentWrapper* commentWrapper = [[CommentWrapper alloc] init];
+    [commentWrapper readFromFile:commentFile];
+    for (int i=0; i<[commentWrapper.commentArray count]; i++) {
+        CommentItem* item = [commentWrapper.commentArray objectAtIndex:i];
+        [self showCommentInWebView:item.line andComment:@""];
+    }
+}
+
+- (IBAction)showCommentsClicked:(id)sender {
+    UISegmentedControl* controller = sender;
+    int index = [controller selectedSegmentIndex];
+    if (index == 0) {
+        [self showAllComments];
+    }
+    else {
+        [self hideAllComments];
+    }
+}
+
 - (IBAction)titleTouched:(id)sender {
     if ([self.filePathInfopopover isPopoverVisible] == YES)
     {
@@ -1342,7 +1383,9 @@
         [self.virtualizeViewController highlightAllChildrenKeyword];
     }
     
-    [self showAllComments];
+    if ([showCommentsSegment selectedSegmentIndex] == 0) {
+        [self showAllComments];
+    }
 }
 
 #define SWIPE_STEP 350

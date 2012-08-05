@@ -188,7 +188,15 @@
         NSString* sourceFullPath = [sourceName stringByAppendingPathExtension:extention];
         CommentItem* item= (CommentItem*)([self.commentWrapper.commentArray objectAtIndex:indexPath.row]);
         NSString* line = [NSString stringWithFormat:@"%d", item.line];
+        
         [[Utils getInstance].detailViewController gotoFile:sourceFullPath andLine:line andKeyword:nil];
+        
+        // Change comment segment if it's hide currently
+        if ([[Utils getInstance].detailViewController.showCommentsSegment selectedSegmentIndex] == 1) {
+            [[Utils getInstance].detailViewController.showCommentsSegment setSelectedSegmentIndex:0];
+            [[Utils getInstance].detailViewController showAllComments];
+        }
+        
 #ifdef IPHONE_VERSION
         //[self dismissModalViewControllerAnimated:NO];
         [self presentModalViewController:[Utils getInstance].detailViewController animated:YES];

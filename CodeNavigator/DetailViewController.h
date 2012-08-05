@@ -56,6 +56,8 @@ typedef enum _JSState {
 
 @property (unsafe_unretained, nonatomic) IBOutlet UISegmentedControl *historyBar;
 
+@property (unsafe_unretained, nonatomic) IBOutlet UISegmentedControl *showCommentsSegment;
+
 // search support
 @property (strong, nonatomic) NSString *searchWord;
 
@@ -183,6 +185,8 @@ typedef enum _JSState {
 
 - (IBAction)showHideTopToolBarClicked:(id)sender;
 
+- (IBAction)showCommentsClicked:(id)sender;
+
 - (void)dismissNavigationManager;
 
 - (void)forceResultPopUp:(id)button;
@@ -204,6 +208,8 @@ typedef enum _JSState {
 - (void) hideVirtualizeView;
 
 - (void) showCommentInWebView:(int)_line andComment:(NSString*)_comment;
+
+- (void) showAllComments;
 
 #ifdef IPHONE_VERSION
 - (IBAction)filesButtonClicked:(id)sender;

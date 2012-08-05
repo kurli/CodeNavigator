@@ -52,7 +52,7 @@
     {
         parser = [[PythonParser alloc] init];
     }
-    else if (RUBBY == type)
+    else if (RUBY == type)
     {
         parser = [[RubbyParser alloc] init];
     }
@@ -199,9 +199,9 @@
         [self setParserType:PYTHONE];
         return;
     }
-    else if ([extension isEqualToString:@"rails"] || [extension isEqualToString:@"ror"] || [extension isEqualToString:@"ruby"])
+    else if ([extension isEqualToString:@"rails"] || [extension isEqualToString:@"ror"] || [extension isEqualToString:@"ruby"] || [extension isEqualToString:@"rb"])
     {
-        [self setParserType:RUBBY];
+        [self setParserType:RUBY];
         return;
     }
     else if ([extension isEqualToString:@"sh"] || [extension isEqualToString:@"shell"] || [extension isEqualToString:@"bash"])

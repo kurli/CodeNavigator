@@ -27,7 +27,7 @@ typedef enum _ParserType
     DELPHI,
     JAVASCRIPT,
     PYTHONE,
-    RUBBY,
+    RUBY,
     BASH,
     UNKNOWN
 } ParserType;

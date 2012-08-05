@@ -12,7 +12,7 @@
 
 +(NSString*) getExtentionsStr
 {
-    return @"rails ror ruby";
+    return @"rails ror ruby rb";
 }
 
 +(NSString*) getSingleLineCommentsStr
