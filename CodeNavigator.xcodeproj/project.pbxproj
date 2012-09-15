@@ -606,6 +606,16 @@
 		94D1BF7A153C56420007A8EB /* forward_history.png in Resources */ = {isa = PBXBuildFile; fileRef = 94D1BF78153C56420007A8EB /* forward_history.png */; };
 		94D1BF7C153C66A20007A8EB /* backward_history.png in Resources */ = {isa = PBXBuildFile; fileRef = 94D1BF7B153C66A20007A8EB /* backward_history.png */; };
 		94D1BF7D153C66A20007A8EB /* backward_history.png in Resources */ = {isa = PBXBuildFile; fileRef = 94D1BF7B153C66A20007A8EB /* backward_history.png */; };
+		94D3B87715E5344E006C28E4 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9478C6CD15C8093400F443D9 /* HelpViewController.m */; };
+		94D3B87815E53469006C28E4 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9478C6DD15C8396300F443D9 /* Twitter.framework */; };
+		94D3B87915E53487006C28E4 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6CE15C8093400F443D9 /* HelpViewController.xib */; };
+		94D3B87A15E53928006C28E4 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6DF15C859F000F443D9 /* help.png */; };
+		94D3B87B15E53979006C28E4 /* demoVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D215C8207600F443D9 /* demoVideo.png */; };
+		94D3B87C15E53984006C28E4 /* feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6DB15C8213100F443D9 /* feedback.png */; };
+		94D3B87D15E5399A006C28E4 /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D115C8207600F443D9 /* appstore.png */; };
+		94D3B87E15E539A6006C28E4 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D415C8207600F443D9 /* twitter.png */; };
+		94D3B87F15E539AD006C28E4 /* weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D515C8207600F443D9 /* weibo.png */; };
+		94D3B88015E539B8006C28E4 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D315C8207600F443D9 /* share.png */; };
 		94D822D814DEF451004FCDD1 /* VirtualizeWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D822D714DEF451004FCDD1 /* VirtualizeWrapper.m */; };
 		94D822D914DEF451004FCDD1 /* VirtualizeWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D822D714DEF451004FCDD1 /* VirtualizeWrapper.m */; };
 		94D8703114A65888002F2DBB /* FilePathInfoPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D8702F14A65887002F2DBB /* FilePathInfoPopupController.m */; };
@@ -1163,6 +1173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94D3B87815E53469006C28E4 /* Twitter.framework in Frameworks */,
 				94205715157B939B00178CBF /* QuartzCore.framework in Frameworks */,
 				94B8EC281546F31700931747 /* SystemConfiguration.framework in Frameworks */,
 				94B8EC261546F30900931747 /* MessageUI.framework in Frameworks */,
@@ -2127,6 +2138,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94D3B88015E539B8006C28E4 /* share.png in Resources */,
+				94D3B87F15E539AD006C28E4 /* weibo.png in Resources */,
+				94D3B87E15E539A6006C28E4 /* twitter.png in Resources */,
+				94D3B87D15E5399A006C28E4 /* appstore.png in Resources */,
+				94D3B87C15E53984006C28E4 /* feedback.png in Resources */,
+				94D3B87B15E53979006C28E4 /* demoVideo.png in Resources */,
+				94D3B87A15E53928006C28E4 /* help.png in Resources */,
+				94D3B87915E53487006C28E4 /* HelpViewController.xib in Resources */,
 				94ADF17614BB27EE00BA807A /* lgz_javascript.js in Resources */,
 				94ADF17714BB27EE00BA807A /* InfoPlist.strings in Resources */,
 				94ADF17814BB27EE00BA807A /* MasterViewController.xib in Resources */,
@@ -2451,6 +2470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94D3B87715E5344E006C28E4 /* HelpViewController.m in Sources */,
 				94ADF13F14BB27EE00BA807A /* main.m in Sources */,
 				94ADF14014BB27EE00BA807A /* AppDelegate.m in Sources */,
 				94ADF14114BB27EE00BA807A /* MasterViewController.m in Sources */,
@@ -2910,6 +2930,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "CodeNavigatorLite-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
@@ -2938,6 +2959,7 @@
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "LITE_VERSION=1";
 				INFOPLIST_FILE = "CodeNavigatorLite-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
@@ -2969,6 +2991,7 @@
 					"LITE_VERSION=1",
 				);
 				INFOPLIST_FILE = "CodeNavigatorLite-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",

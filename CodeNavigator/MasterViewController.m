@@ -759,6 +759,7 @@
 }
 
 - (IBAction)versionControlButtonClicked:(id)sender {
+#ifndef LITE_VERSION
     // Ignore Dropbox
     UIBarButtonItem *item = (UIBarButtonItem*)sender;
 
@@ -777,7 +778,9 @@
     versionControllerPopOverController.popoverContentSize = controller.view.frame.size;
     
     [versionControllerPopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-//    [self gitClicked:sender];
+#else
+    [self gitClicked:sender];
+#endif
 }
 
 - (IBAction)lockButtonClicked:(id)sender {

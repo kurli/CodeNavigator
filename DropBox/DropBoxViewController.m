@@ -120,9 +120,9 @@
 
 -(void)dealloc
 {
-    if ([[DBSession sharedSession] isLinked]) {
-        [[DBSession sharedSession] unlinkAll];
-    }
+//    if ([[DBSession sharedSession] isLinked]) {
+//        [[DBSession sharedSession] unlinkAll];
+//    }
     [self setRelinkUserId:nil];
     [self.pendingDownloadArray removeAllObjects];
     [self setPendingDownloadArray:nil];
@@ -286,6 +286,25 @@
     [[NSFileManager defaultManager] createDirectoryAtPath:[localPath stringByDeletingLastPathComponent]     withIntermediateDirectories:YES attributes:nil error:&error];
     [self.restClient loadFile:remotePath intoPath:localPath];
     self.currentLoadFile = remotePath;
+    
+//    SelectionItem* item2 = [pendingDownloadArray lastObject];
+//    if (item2 == nil) {
+//        return YES;
+//    }
+//    if (item2.fileName == nil) {
+//        return YES;
+//    }
+//    NSString* localPath2 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+//    localPath2 = [localPath2 stringByAppendingPathComponent:item2.path];
+//    localPath2 = [localPath2 stringByAppendingPathComponent:item2.fileName];
+//    NSString* remotePath2 = [item2.path stringByAppendingPathComponent:item2.fileName];
+//    [pendingDownloadArray removeLastObject];
+//    NSString* text2 = [NSString stringWithFormat:@"----Load File:\n%@\n", remotePath2];
+//    [self setSyncStatusText:text2];
+//    NSError* error2;
+//    [[NSFileManager defaultManager] createDirectoryAtPath:[localPath2 stringByDeletingLastPathComponent]     withIntermediateDirectories:YES attributes:nil error:&error2];
+//    [self.restClient loadFile:remotePath2 intoPath:localPath2];
+//    self.currentLoadFile = remotePath2;
     return YES;
 }
 
@@ -660,10 +679,10 @@
 }
 
 - (IBAction)doneClicked:(id)sender {
-    if ([[DBSession sharedSession] isLinked]) {
-        [[DBSession sharedSession] unlinkAll];
-        self.relinkUserId = nil;
-    }
+//    if ([[DBSession sharedSession] isLinked]) {
+//        [[DBSession sharedSession] unlinkAll];
+//        self.relinkUserId = nil;
+//    }
     [[Utils getInstance].splitViewController dismissModalViewControllerAnimated:YES];
     MasterViewController* masterViewController = nil;
     NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];

@@ -54,7 +54,11 @@
     
     NSArray *toRecipients = [NSArray arrayWithObject:@"guangzhen@hotmail.com"];   
     [picker setToRecipients:toRecipients];
-    [picker setSubject:@"CodeNavigator v2.1 feedback"];
+#ifdef LITE_VERSION
+    [picker setSubject:@"CodeNavigatorLite v2.0 feedback"];
+#else
+    [picker setSubject:@"CodeNavigator v2.2 feedback"];
+#endif
     [self presentModalViewController:picker animated:YES];
 }
 
@@ -82,7 +86,7 @@
 // Launches the Mail application on the device.
 -(void)launchMailAppOnDevice
 {
-    NSString *recipients = @"mailto:guangzhenhotmail.com?subject=CodeNavigator v2.1 feedback";
+    NSString *recipients = @"mailto:guangzhenhotmail.com?subject=CodeNavigator v2.2 feedback";
     
     NSString *email = [NSString stringWithFormat:@"%@", recipients];
     email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -150,7 +154,11 @@
             [self sendButtonClicked:nil];
             break;
         case 2:
+#ifdef LITE_VERSION
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/us/app/codenavigator/id492480832?mt=8"]];
+#else
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=492480832&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software"]];
+#endif
             break;
         case 3:
             // Twitter
@@ -213,7 +221,11 @@
             break;
         case 2:
             cell.imageView.image = [UIImage imageNamed:@"appstore.png"];
+#ifdef LITE_VERSION
+            cell.textLabel.text = @"Get Full Version";
+#else
             cell.textLabel.text = @"Rate CodeNavigator";
+#endif
             break;
         case 3:
             //Twitter
@@ -249,7 +261,11 @@
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
     if (section == 4) {
-        return @"CodeNavigator 2.1 Guangzhen Li\n@2011-2012";
+#ifdef LITE_VERSION
+        return @"CodeNavigatorLite 2.0 Guangzhen Li\n@2011-2012";
+#else
+        return @"CodeNavigator 2.2 Guangzhen Li\n@2011-2012";
+#endif
     }
     return @"";
 }
@@ -259,7 +275,11 @@
     if (section == 0)
         return @"Help";
     else if (section == 2)
+#ifdef LITE_VERSION
+        return @"No Ads, No limits, latest version";
+#else
         return @"Rate me to make me better";
+#endif
     else if (section == 3)
         return @"Twitter";
     else if (section == 4)
@@ -277,7 +297,11 @@
     if (buttonIndex != 1) {
         return;
     }
+#ifdef LITE_VERSION
+    NSString* url = @"http://itunes.apple.com/us/app/codenavigatorlite/id494004821?mt=8";
+#else
     NSString* url = @"http://itunes.apple.com/us/app/codenavigator/id492480832?mt=8";
+#endif
     switch (alertType) {
         case ALERT_DEMO_VIDEO:
             url = @"http://v.youku.com/v_show/id_XNDEwNTkxOTQ4.html";
