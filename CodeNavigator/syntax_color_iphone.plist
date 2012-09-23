@@ -29,12 +29,12 @@
 	<key>night_definition</key>
 	<string>#66D9EF</string>
 	<key>font_size</key>
-	<string>20</string>
+	<string>15</string>
 	<key>day_other</key>
 	<string>#888888</string>
 	<key>night_other</key>
 	<string>#BCBCBC</string>
 	<key>max_line_count</key>
-	<string>80</string>
+	<string>45</string>
 </dict>
 </plist>

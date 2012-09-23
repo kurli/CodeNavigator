@@ -15,7 +15,9 @@
 #import "MasterViewController.h"
 #import "VirtualizeViewController.h"
 #import "VirtualizeWrapper.h"
+#ifndef IPHONE_VERSION
 #import "HelpViewController.h"
+#endif
 
 #ifdef LITE_VERSION
 #import "GADBannerView.h"
@@ -65,6 +67,7 @@
 @synthesize font_size;
 @synthesize day_other;
 @synthesize night_other;
+@synthesize max_line_count;
 
 @end
 
@@ -173,6 +176,7 @@ static Utils *static_utils;
     {
         return;
     }
+#ifndef IPHONE_VERSION
     // Show Help dislog
     double delayInSeconds = 10;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
@@ -181,6 +185,7 @@ static Utils *static_utils;
         viewController.modalPresentationStyle = UIModalPresentationFormSheet;
         [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
     });
+#endif
     
     // add version file
     [[NSFileManager defaultManager] createDirectoryAtPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] withIntermediateDirectories:YES attributes:nil error:&error];
@@ -264,7 +269,11 @@ static Utils *static_utils;
     //for color scheme
     NSString* customizedColor = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/syntax_color.plist"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:customizedColor isDirectory:&isFolder];
+#ifndef IPHONE_VERSION
     NSString* defaultColor = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/syntax_color.plist"];
+#else
+    NSString* defaultColor = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/syntax_color_iphone.plist"];
+#endif
     if (isExist == NO || (isExist == YES && isFolder == YES))
     {
         [[NSFileManager defaultManager] copyItemAtPath:defaultColor toPath:customizedColor error:&error];
@@ -328,6 +337,18 @@ static Utils *static_utils;
     NSString* night_other = [documentDictionary objectForKey:@"night_other"];
     [self.colorScheme setNight_other:night_other];
     
+    NSString* max_line_count = [documentDictionary objectForKey:@"max_line_count"];
+    if (max_line_count == nil || [max_line_count length] == 0) {
+#ifdef IPHONE_VERSION
+        [self.colorScheme setMax_line_count:@"45"];
+#else
+        [self.colorScheme setMax_line_count:@"80"];
+#endif
+    }
+    else {
+        [self.colorScheme setMax_line_count:max_line_count];
+    }
+    
     [self generateCSSScheme];
 }
 
@@ -337,7 +358,7 @@ static Utils *static_utils;
     NSString* css = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/theme.css"];
     [[NSFileManager defaultManager] removeItemAtPath:css error:&error];
     
-    NSString* cssStr = [NSString stringWithString:HTML_STYLE];
+    NSString* cssStr = HTML_STYLE;
     
     //Background
     cssStr = [cssStr stringByReplacingOccurrencesOfString:@"-BGCOL-" withString:[self getDisplayBackgroundColor]];
@@ -409,7 +430,7 @@ static Utils *static_utils;
     return cssVersion;
 }
 
--(void)writeColorScheme:(BOOL)dayType andDayBackground:(NSString *)dayBG andNightBackground:(NSString *)nightBG andDayComment:(NSString *)dayC andNightComment:(NSString *)nightC andDayString:(NSString *)ds andNightString:(NSString*)ns andDayKeyword:(NSString *)dk andNightKeyword:(NSString *)nk andFontSize:(NSString *)fs
+-(void)writeColorScheme:(BOOL)dayType andDayBackground:(NSString *)dayBG andNightBackground:(NSString *)nightBG andDayComment:(NSString *)dayC andNightComment:(NSString *)nightC andDayString:(NSString *)ds andNightString:(NSString*)ns andDayKeyword:(NSString *)dk andNightKeyword:(NSString *)nk andFontSize:(NSString *)fs andLineWrapper:(NSString *)lw
 {
     NSString* customizedColor = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/syntax_color.plist"];
     NSMutableDictionary *plist = [[NSMutableDictionary alloc] init];
@@ -501,6 +522,14 @@ static Utils *static_utils;
     {
         [plist setValue:nk forKey:@"night_keyword"];
         [self.colorScheme setNight_keyword:nk];
+    }
+    
+    if (lw == nil) {
+        [plist setValue:self.colorScheme.max_line_count forKey:@"max_line_count"];
+    }
+    else {
+        [plist setValue:lw forKey:@"max_line_count"];
+        [self.colorScheme setMax_line_count:lw];
     }
     
     [plist writeToFile:customizedColor atomically:YES];
@@ -1484,6 +1513,10 @@ FINAL:
             else
                 [parser checkParseType:path];
             [parser setFile: path andProjectBase:projectPath];
+            int maxLineCount = [colorScheme.max_line_count intValue];
+            if (maxLineCount > 0) {
+                [parser setMaxLineCount:maxLineCount];
+            }
             [parser startParse];
             html = [parser getHtml];
             //rc4Result = [self HloveyRC4:html key:@"lgz"];

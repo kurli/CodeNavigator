@@ -74,6 +74,7 @@ typedef enum _AlertConfirmMode{
 @property (nonatomic, strong) NSString* font_size;
 @property (nonatomic, strong) NSString* day_other;
 @property (nonatomic, strong) NSString* night_other;
+@property (nonatomic, strong) NSString* max_line_count;
 @end
 
 @interface ResultFile : NSObject {
@@ -141,7 +142,7 @@ typedef enum _AlertConfirmMode{
 // for background syntex color define
 -(void) readColorScheme;
 
--(void) writeColorScheme:(BOOL)dayType andDayBackground:(NSString*)dayBG andNightBackground:(NSString*)nightBG andDayComment:(NSString*)dayC andNightComment:(NSString*)nightC andDayString:(NSString*)ds  andNightString:(NSString*)ns andDayKeyword:(NSString*)dk andNightKeyword:(NSString*)nk andFontSize:(NSString*)fs;
+-(void) writeColorScheme:(BOOL)dayType andDayBackground:(NSString*)dayBG andNightBackground:(NSString*)nightBG andDayComment:(NSString*)dayC andNightComment:(NSString*)nightC andDayString:(NSString*)ds  andNightString:(NSString*)ns andDayKeyword:(NSString*)dk andNightKeyword:(NSString*)nk andFontSize:(NSString*)fs andLineWrapper:(NSString*)lw;
 
 -(void) generateCSSScheme;
 

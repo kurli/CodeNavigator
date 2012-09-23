@@ -20,8 +20,8 @@
 #import "FileInfoControlleriPhone.h"
 #else
 #import "FileInfoViewController.h"
-#endif
 #import "HelpViewController.h"
+#endif
 
 @implementation MasterViewController
 @synthesize fileSearchBar = _fileSearchBar;
@@ -733,6 +733,7 @@
 }
 
 - (IBAction)gitClicked:(id)sender {
+#ifndef IPHONE_VERSION
     NSError* error;
     GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewCongroller" bundle:[NSBundle mainBundle]];
     NSString* gitFolder = self.currentProjectPath;
@@ -749,13 +750,16 @@
     }
     [gitlogView gitLogForProject: gitFolder];
     [gitlogView showModualView];
+#endif
 }
 
 - (IBAction)dropBoxClicked:(id)sender {
+#ifndef IPHONE_VERSION
     DropBoxViewController* dropBoxViewController = [[DropBoxViewController alloc] initWithNibName:@"DropBoxViewController" bundle:[NSBundle mainBundle]];
     [[Utils getInstance] setDropBoxViewController:dropBoxViewController];
     [dropBoxViewController showModualView];
     dropBoxViewController = nil;
+#endif
 }
 
 - (IBAction)versionControlButtonClicked:(id)sender {
@@ -936,9 +940,11 @@
 
 - (void) helpButtonClicked:(id)sender
 {
+#ifndef IPHONE_VERSION
     HelpViewController* viewController = [[HelpViewController alloc] init];
     viewController.modalPresentationStyle = UIModalPresentationFormSheet;
     [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
+#endif
 }
 
 @end

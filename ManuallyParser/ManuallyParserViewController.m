@@ -97,168 +97,6 @@
     return -1;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    NSString *extension = [filePath pathExtension];
-    extension = [extension lowercaseString];
-    ParserType type = UNKNOWN;
-    int manuallyIndex = -1;
-    
-    if ([[[filePath lastPathComponent] lowercaseString] compare:@"makefile"] == NSOrderedSame) {
-        type = BASH;
-    }
-    else if ([extension isEqualToString:@"c"])
-    {
-        type = CPLUSPLUS;
-    }
-    else if ([extension isEqualToString:@"cc"])
-    {
-        type = CPLUSPLUS;
-    }
-    else if ([extension isEqualToString:@"h"])
-    {
-        NSError *error;
-        NSString* path = [filePath stringByDeletingLastPathComponent];
-        NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:&error];
-        for (int i =0; i<[contents count]; i++) {
-            NSString* tmp = [contents objectAtIndex:i];
-            NSString *ext = [tmp pathExtension];
-            if ([ext compare:@"m"] == NSOrderedSame)
-            {
-                type = OBJECTIVE_C;
-            }
-            if ([ext compare:@"c"] == NSOrderedSame ||
-                [ext compare:@"cpp"] == NSOrderedSame)
-            {
-                type = CPLUSPLUS;
-            }
-        }
-        if (type == UNKNOWN) {
-            type = CPLUSPLUS;
-        }
-    }
-    else if ([extension isEqualToString:@"cpp"])
-    {
-        type = CPLUSPLUS;
-    }
-    else if ([extension isEqualToString:@"m"])
-    {
-        type = OBJECTIVE_C;
-    }
-    else if ([extension isEqualToString:@"cs"])
-    {
-        type = CSHARP;
-    }
-    else if ([extension isEqualToString:@"java"])
-    {
-        type = JAVA;
-        return;
-    }
-    else if ([extension isEqualToString:@"delphi"])
-    {
-        type = DELPHI;
-    }
-    else if ([extension isEqualToString:@"pascal"])
-    {
-        type = DELPHI;
-    }
-    else if ([extension isEqualToString:@"pas"])
-    {
-        type = DELPHI;
-    }
-    else if ([extension isEqualToString:@"mm"])
-    {
-        type = CPLUSPLUS;
-    }
-    else if ([extension isEqualToString:@"hpp"])
-    {
-        type = CPLUSPLUS;
-    }
-    else if ([extension isEqualToString:@"js"] || [extension isEqualToString:@"jscript"] || [extension isEqualToString:@"javascript"])
-    {
-        type = JAVASCRIPT;
-    }
-    else if ([extension isEqualToString:@"py"] || [extension isEqualToString:@"python"])
-    {
-        type = PYTHONE;
-    }
-    else if ([extension isEqualToString:@"rails"] || [extension isEqualToString:@"ror"] || [extension isEqualToString:@"ruby"])
-    {
-        type = RUBY;
-    }
-    else if ([extension isEqualToString:@"sh"] || [extension isEqualToString:@"shell"] || [extension isEqualToString:@"bash"])
-    {
-        type = BASH;
-    }
-    // s xml sql vb
-    else
-    {
-        manuallyIndex = [self checkManuallyParserIndex:extension];
-        if (manuallyIndex > -1) {
-            type = -1;
-        }
-    }
-    
-    if ( CPLUSPLUS == type )
-    {
-        [self.parserTypePicker selectRow:0 inComponent:0 animated:YES];
-        currentSelected = 0;
-    }
-    else if( UNKNOWN == type )
-    {
-        currentSelected = [parserArray count]+[manuallyParserArray count];
-        [self.parserTypePicker selectRow:currentSelected inComponent:0 animated:YES];
-    }
-    else if (OBJECTIVE_C == type)
-    {
-        [self.parserTypePicker selectRow:1 inComponent:0 animated:YES];
-        currentSelected = 1;
-    }
-    else if (CSHARP == type)
-    {
-        [self.parserTypePicker selectRow:2 inComponent:0 animated:YES];
-        currentSelected = 2;
-    }
-    else if (JAVA == type)
-    {
-        [self.parserTypePicker selectRow:3 inComponent:0 animated:YES];
-        currentSelected = 3;
-    }
-    else if (DELPHI == type)
-    {
-        [self.parserTypePicker selectRow:4 inComponent:0 animated:YES];
-        currentSelected = 4;
-    }
-    else if (JAVASCRIPT == type)
-    {
-        [self.parserTypePicker selectRow:5 inComponent:0 animated:YES];
-        currentSelected = 5;
-    }
-    else if (PYTHONE == type)
-    {
-        [self.parserTypePicker selectRow:6 inComponent:0 animated:YES];
-        currentSelected = 6;
-    }
-    else if (RUBY == type)
-    {
-        [self.parserTypePicker selectRow:7 inComponent:0 animated:YES];
-        currentSelected = 7;
-    }
-    else if (BASH == type)
-    {
-        [self.parserTypePicker selectRow:8 inComponent:0 animated:YES];
-        currentSelected = 8;
-    }
-    else {
-        //it's a manually type
-        currentSelected = [parserArray count] + manuallyIndex;
-        [self.parserTypePicker selectRow:currentSelected inComponent:0 animated:YES];
-    }
-
-    [self predefParserSelected];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 #ifdef IPHONE_VERSION
@@ -631,5 +469,168 @@ andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords andEnable:(BO
 
     [UIView commitAnimations];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSString *extension = [filePath pathExtension];
+    extension = [extension lowercaseString];
+    ParserType type = UNKNOWN;
+    int manuallyIndex = -1;
+    
+    if ([[[filePath lastPathComponent] lowercaseString] compare:@"makefile"] == NSOrderedSame) {
+        type = BASH;
+    }
+    else if ([extension isEqualToString:@"c"])
+    {
+        type = CPLUSPLUS;
+    }
+    else if ([extension isEqualToString:@"cc"])
+    {
+        type = CPLUSPLUS;
+    }
+    else if ([extension isEqualToString:@"h"])
+    {
+        NSError *error;
+        NSString* path = [filePath stringByDeletingLastPathComponent];
+        NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:&error];
+        for (int i =0; i<[contents count]; i++) {
+            NSString* tmp = [contents objectAtIndex:i];
+            NSString *ext = [tmp pathExtension];
+            if ([ext compare:@"m"] == NSOrderedSame)
+            {
+                type = OBJECTIVE_C;
+            }
+            if ([ext compare:@"c"] == NSOrderedSame ||
+                [ext compare:@"cpp"] == NSOrderedSame)
+            {
+                type = CPLUSPLUS;
+            }
+        }
+        if (type == UNKNOWN) {
+            type = CPLUSPLUS;
+        }
+    }
+    else if ([extension isEqualToString:@"cpp"])
+    {
+        type = CPLUSPLUS;
+    }
+    else if ([extension isEqualToString:@"m"])
+    {
+        type = OBJECTIVE_C;
+    }
+    else if ([extension isEqualToString:@"cs"])
+    {
+        type = CSHARP;
+    }
+    else if ([extension isEqualToString:@"java"])
+    {
+        type = JAVA;
+        return;
+    }
+    else if ([extension isEqualToString:@"delphi"])
+    {
+        type = DELPHI;
+    }
+    else if ([extension isEqualToString:@"pascal"])
+    {
+        type = DELPHI;
+    }
+    else if ([extension isEqualToString:@"pas"])
+    {
+        type = DELPHI;
+    }
+    else if ([extension isEqualToString:@"mm"])
+    {
+        type = CPLUSPLUS;
+    }
+    else if ([extension isEqualToString:@"hpp"])
+    {
+        type = CPLUSPLUS;
+    }
+    else if ([extension isEqualToString:@"js"] || [extension isEqualToString:@"jscript"] || [extension isEqualToString:@"javascript"])
+    {
+        type = JAVASCRIPT;
+    }
+    else if ([extension isEqualToString:@"py"] || [extension isEqualToString:@"python"])
+    {
+        type = PYTHONE;
+    }
+    else if ([extension isEqualToString:@"rails"] || [extension isEqualToString:@"ror"] || [extension isEqualToString:@"ruby"])
+    {
+        type = RUBY;
+    }
+    else if ([extension isEqualToString:@"sh"] || [extension isEqualToString:@"shell"] || [extension isEqualToString:@"bash"])
+    {
+        type = BASH;
+    }
+    // s xml sql vb
+    else
+    {
+        manuallyIndex = [self checkManuallyParserIndex:extension];
+        if (manuallyIndex > -1) {
+            type = -1;
+        }
+    }
+    
+    if ( CPLUSPLUS == type )
+    {
+        [self.parserTypePicker selectRow:0 inComponent:0 animated:YES];
+        currentSelected = 0;
+    }
+    else if( UNKNOWN == type )
+    {
+        currentSelected = [parserArray count]+[manuallyParserArray count];
+        [self.parserTypePicker selectRow:currentSelected inComponent:0 animated:YES];
+    }
+    else if (OBJECTIVE_C == type)
+    {
+        [self.parserTypePicker selectRow:1 inComponent:0 animated:YES];
+        currentSelected = 1;
+    }
+    else if (CSHARP == type)
+    {
+        [self.parserTypePicker selectRow:2 inComponent:0 animated:YES];
+        currentSelected = 2;
+    }
+    else if (JAVA == type)
+    {
+        [self.parserTypePicker selectRow:3 inComponent:0 animated:YES];
+        currentSelected = 3;
+    }
+    else if (DELPHI == type)
+    {
+        [self.parserTypePicker selectRow:4 inComponent:0 animated:YES];
+        currentSelected = 4;
+    }
+    else if (JAVASCRIPT == type)
+    {
+        [self.parserTypePicker selectRow:5 inComponent:0 animated:YES];
+        currentSelected = 5;
+    }
+    else if (PYTHONE == type)
+    {
+        [self.parserTypePicker selectRow:6 inComponent:0 animated:YES];
+        currentSelected = 6;
+    }
+    else if (RUBY == type)
+    {
+        [self.parserTypePicker selectRow:7 inComponent:0 animated:YES];
+        currentSelected = 7;
+    }
+    else if (BASH == type)
+    {
+        [self.parserTypePicker selectRow:8 inComponent:0 animated:YES];
+        currentSelected = 8;
+    }
+    else {
+        //it's a manually type
+        currentSelected = [parserArray count] + manuallyIndex;
+        [self.parserTypePicker selectRow:currentSelected inComponent:0 animated:YES];
+    }
+    
+    [self predefParserSelected];
+}
+
 
 @end

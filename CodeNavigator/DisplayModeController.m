@@ -35,6 +35,7 @@
 #ifdef IPHONE_VERSION
 @synthesize scrollView;
 #endif
+@synthesize lineWrapperTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -230,6 +231,7 @@
     [self setCommentSelecteButton:nil];
     [self setStringSelectButton:nil];
     [self setKeywordSelectButton:nil];
+    [self setLineWrapperTextField:nil];
 #ifdef IPHONE_VERSION
     [self setScrollView:nil];
 #endif
@@ -242,6 +244,7 @@
 {
     self.backgroundTextField.text = [[Utils getInstance] getDisplayBackgroundColor];
     self.textSizeTextField.text = [Utils getInstance].colorScheme.font_size;
+    self.lineWrapperTextField.text = [Utils getInstance].colorScheme.max_line_count;
     if ([[Utils getInstance] isDayTypeDisplayMode] == YES)
     {
         [self.modeSelection setSelectedSegmentIndex:0];
@@ -311,16 +314,17 @@
 - (IBAction)donButtonClicked:(id)sender {
     if (self.modeSelection.selectedSegmentIndex == 0)
     {
-        [[Utils getInstance]writeColorScheme:YES andDayBackground:self.backgroundTextField.text andNightBackground:nil andDayComment:self.commentTextField.text andNightComment:nil andDayString:self.stringTextField.text andNightString:nil andDayKeyword:self.keywordTextField.text andNightKeyword:nil andFontSize:self.textSizeTextField.text];
+        [[Utils getInstance]writeColorScheme:YES andDayBackground:self.backgroundTextField.text andNightBackground:nil andDayComment:self.commentTextField.text andNightComment:nil andDayString:self.stringTextField.text andNightString:nil andDayKeyword:self.keywordTextField.text andNightKeyword:nil andFontSize:self.textSizeTextField.text andLineWrapper:lineWrapperTextField.text];
     }
     else
     {
-        [[Utils getInstance] writeColorScheme:NO andDayBackground:nil andNightBackground:self.backgroundTextField.text andDayComment:nil andNightComment:self.commentTextField.text andDayString:nil andNightString:self.stringTextField.text andDayKeyword:nil andNightKeyword:self.keywordTextField.text andFontSize:self.textSizeTextField.text];
+        [[Utils getInstance] writeColorScheme:NO andDayBackground:nil andNightBackground:self.backgroundTextField.text andDayComment:nil andNightComment:self.commentTextField.text andDayString:nil andNightString:self.stringTextField.text andDayKeyword:nil andNightKeyword:self.keywordTextField.text andFontSize:self.textSizeTextField.text andLineWrapper:lineWrapperTextField.text];
     }
     [[Utils getInstance].detailViewController reloadCurrentPage];
-    [[Utils getInstance].detailViewController displayModeClicked:nil];
 #ifdef IPHONE_VERSION
     [self dismissViewControllerAnimated:NO completion:nil];
+#else
+    [[Utils getInstance].detailViewController displayModeClicked:nil];
 #endif
 }
 
@@ -332,6 +336,7 @@
     [[Utils getInstance] readColorScheme];
     self.backgroundTextField.text = [[Utils getInstance] getDisplayBackgroundColor];
     self.textSizeTextField.text = [Utils getInstance].colorScheme.font_size;
+    self.lineWrapperTextField.text = [Utils getInstance].colorScheme.max_line_count;
     if ([[Utils getInstance] isDayTypeDisplayMode] == YES)
     {
         [self.modeSelection setSelectedSegmentIndex:0];
@@ -446,4 +451,10 @@
 - (IBAction)fontSizeTextViewChanged:(id)sender {
     [self setFontSize];
 }
+
+- (IBAction)lineWrapperTextViewChanged:(id)sender
+{
+    [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please 'Refresh' the source files manually to make this 'Line Wrapper' valid."];
+}
+
 @end

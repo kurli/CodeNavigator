@@ -135,6 +135,7 @@
 #pragma mark DropBox support
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+#ifndef IPHONE_VERSION
     if ([[DBSession sharedSession] handleOpenURL:url]) {
         if ([[DBSession sharedSession] isLinked]) {
             [[Utils getInstance].dropBoxViewController loginSucceed];
@@ -142,6 +143,7 @@
         }
         return YES;
     }
+#endif
     // Add whatever other url handling code your app requires here
     return NO;
 }

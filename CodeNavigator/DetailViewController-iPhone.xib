@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1296</int>
+		<int key="IBDocument.SystemTarget">1536</int>
 		<string key="IBDocument.SystemVersion">11E53</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2840</string>
 		<string key="IBDocument.AppKitVersion">1138.47</string>
 		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1181</string>
+			<string key="NS.object.0">1926</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
 			<string>IBUIBarButtonItem</string>
 			<string>IBUIButton</string>
-			<string>IBUIToolbar</string>
-			<string>IBUIWebView</string>
 			<string>IBUISegmentedControl</string>
+			<string>IBUIToolbar</string>
 			<string>IBUIView</string>
+			<string>IBUIWebView</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -56,7 +56,7 @@
 					<object class="IBUIButton" id="965350322">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{0, 418}, {34, 37}}</string>
+						<string key="NSFrame">{{0, 418}, {43, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="356855474"/>
@@ -100,7 +100,7 @@
 							<object class="IBUISegmentedControl" id="215102870">
 								<reference key="NSNextResponder" ref="415979463"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{51, 8}, {77, 30}}</string>
+								<string key="NSFrame">{{59, 8}, {110, 30}}</string>
 								<reference key="NSSuperview" ref="415979463"/>
 								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:273</string>
@@ -144,8 +144,13 @@
 							<object class="IBUIBarButtonItem" id="567248655">
 								<reference key="IBUIImage" ref="729960157"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="415979463"/>
+							</object>
+							<object class="IBUIBarButtonItem" id="637439809">
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<float key="IBUIWidth">22</float>
+								<reference key="IBUIToolbar" ref="415979463"/>
+								<int key="IBUISystemItemIdentifier">6</int>
 							</object>
 							<object class="IBUIBarButtonItem" id="486155883">
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -163,18 +168,27 @@
 									<string key="NSResourceName">settings.png</string>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="415979463"/>
+							</object>
+							<object class="IBUIBarButtonItem" id="981443464">
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<float key="IBUIWidth">13</float>
+								<reference key="IBUIToolbar" ref="415979463"/>
+								<int key="IBUISystemItemIdentifier">6</int>
 							</object>
 							<object class="IBUIBarButtonItem" id="987807117">
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="415979463"/>
 								<int key="IBUISystemItemIdentifier">12</int>
 							</object>
+							<object class="IBUIBarButtonItem" id="614700138">
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<float key="IBUIWidth">19</float>
+								<reference key="IBUIToolbar" ref="415979463"/>
+								<int key="IBUISystemItemIdentifier">6</int>
+							</object>
 							<object class="IBUIBarButtonItem" id="1024295301">
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="415979463"/>
 								<int key="IBUISystemItemIdentifier">11</int>
 							</object>
@@ -222,7 +236,7 @@
 					<object class="IBUIButton" id="1002373106">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, -4}, {34, 44}}</string>
+						<string key="NSFrame">{{0, -4}, {43, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="424704396"/>
@@ -332,22 +346,6 @@
 					</object>
 				</object>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
-				<object class="IBUIScreenMetrics" key="IBUISimulatedDestinationMetrics">
-					<string key="IBUISimulatedSizeMetricsClass">IBUIScreenMetrics</string>
-					<object class="NSMutableDictionary" key="IBUINormalizedOrientationToSizeMap">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<array key="dict.sortedKeys">
-							<integer value="1"/>
-							<integer value="3"/>
-						</array>
-						<array key="dict.values">
-							<string>{320, 480}</string>
-							<string>{480, 320}</string>
-						</array>
-					</object>
-					<string key="IBUITargetRuntime">IBCocoaTouchFramework</string>
-					<string key="IBUIDisplayName">iPhone/iPod touch Full Screen</string>
-				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 		</array>
@@ -518,8 +516,8 @@
 							<reference ref="356855474"/>
 							<reference ref="1002373106"/>
 							<reference ref="221668047"/>
-							<reference ref="415979463"/>
 							<reference ref="965350322"/>
+							<reference ref="415979463"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -544,6 +542,9 @@
 							<reference ref="1024295301"/>
 							<reference ref="874271515"/>
 							<reference ref="741295647"/>
+							<reference ref="637439809"/>
+							<reference ref="981443464"/>
+							<reference ref="614700138"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -640,6 +641,21 @@
 						<reference key="object" ref="965350322"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">50</int>
+						<reference key="object" ref="637439809"/>
+						<reference key="parent" ref="415979463"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">51</int>
+						<reference key="object" ref="981443464"/>
+						<reference key="parent" ref="415979463"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">52</int>
+						<reference key="object" ref="614700138"/>
+						<reference key="parent" ref="415979463"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -664,6 +680,9 @@
 				<string key="41.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<integer value="0" key="41.IUISegmentedControlInspectorSelectedSegmentMetadataKey"/>
 				<string key="42.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="50.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="51.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="52.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<integer value="0" key="8.IUISegmentedControlInspectorSelectedSegmentMetadataKey"/>
@@ -673,7 +692,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">49</int>
+			<int key="maxID">52</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -692,6 +711,7 @@
 						<string key="infoButtonClicked:">id</string>
 						<string key="navigationButtonClicked:">id</string>
 						<string key="resultPopUp:">id</string>
+						<string key="showCommentsClicked:">id</string>
 						<string key="showHideTopToolBarClicked:">id</string>
 						<string key="sourceSplitClicked:">id</string>
 						<string key="titleTouched:">id</string>
@@ -743,6 +763,10 @@
 							<string key="name">resultPopUp:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="showCommentsClicked:">
+							<string key="name">showCommentsClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="showHideTopToolBarClicked:">
 							<string key="name">showHideTopToolBarClicked:</string>
 							<string key="candidateClassName">id</string>
@@ -779,6 +803,7 @@
 						<string key="scrollBackgroundView">UIView</string>
 						<string key="scrollItem">UIButton</string>
 						<string key="secondWebView">UIWebView</string>
+						<string key="showCommentsSegment">UISegmentedControl</string>
 						<string key="splitWebViewButton">UIBarButtonItem</string>
 						<string key="titleTextField">UIBarButtonItem</string>
 						<string key="topToolBar">UIToolbar</string>
@@ -843,6 +868,10 @@
 							<string key="name">secondWebView</string>
 							<string key="candidateClassName">UIWebView</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="showCommentsSegment">
+							<string key="name">showCommentsSegment</string>
+							<string key="candidateClassName">UISegmentedControl</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="splitWebViewButton">
 							<string key="name">splitWebViewButton</string>
 							<string key="candidateClassName">UIBarButtonItem</string>
@@ -879,7 +908,7 @@
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1296" key="NS.object.0"/>
+			<real value="1536" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
@@ -887,6 +916,6 @@
 			<string key="hide_masterview.png">{15, 22}</string>
 			<string key="settings.png">{20, 20}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1181</string>
+		<string key="IBCocoaTouchPluginVersion">1926</string>
 	</data>
 </archive>

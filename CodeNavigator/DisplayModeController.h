@@ -67,6 +67,8 @@ typedef enum _ColorTextView
 @property (unsafe_unretained, nonatomic) IBOutlet UIScrollView *scrollView;
 #endif
 
+@property (unsafe_unretained, nonatomic) IBOutlet UITextField *lineWrapperTextField;
+
 - (IBAction)modeValueChanged:(id)sender;
 
 - (IBAction)donButtonClicked:(id)sender;
@@ -102,5 +104,7 @@ typedef enum _ColorTextView
 - (IBAction)increaseFSButtonClicked:(id)sender;
 
 - (IBAction)fontSizeTextViewChanged:(id)sender;
+
+- (IBAction)lineWrapperTextViewChanged:(id)sender;
 
 @end

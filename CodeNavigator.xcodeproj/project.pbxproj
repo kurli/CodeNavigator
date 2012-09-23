@@ -178,6 +178,9 @@
 		94472085157534E9002EEA5A /* ManuallyParserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94472082157534E9002EEA5A /* ManuallyParserViewController.m */; };
 		94472086157534E9002EEA5A /* ManuallyParserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94472083157534E9002EEA5A /* ManuallyParserViewController.xib */; };
 		94472087157534E9002EEA5A /* ManuallyParserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94472083157534E9002EEA5A /* ManuallyParserViewController.xib */; };
+		944A5B4F160B60010076410C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 944A5B4E160B60010076410C /* Default@2x.png */; };
+		944A5B51160B60670076410C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 944A5B50160B60670076410C /* Default-568h@2x.png */; };
+		944A5B53160B63B00076410C /* syntax_color_iphone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 944A5B52160B63B00076410C /* syntax_color_iphone.plist */; };
 		944DD7C2152772EF000473BE /* diff.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C1152772EF000473BE /* diff.c */; };
 		944DD7C3152772EF000473BE /* diff.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C1152772EF000473BE /* diff.c */; };
 		944DD7C71527731E000473BE /* getopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C61527731E000473BE /* getopt.c */; };
@@ -353,7 +356,6 @@
 		949DC1CF1583E8CF00385796 /* FileManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 945428AE14F29A8D00353EC8 /* FileManagerController.m */; };
 		949DC1D01583E8CF00385796 /* ProjectListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 945428B214F2B51600353EC8 /* ProjectListController.m */; };
 		949DC1D11583E8CF00385796 /* ImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C8C68214FA57D60062750D /* ImagePreviewController.m */; };
-		949DC1D21583E8CF00385796 /* GitLogViewCongroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 941656FD1515C3C200838005 /* GitLogViewCongroller.m */; };
 		949DC1D31583E8CF00385796 /* ObjectiveCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3A2151A499D006BCBBF /* ObjectiveCParser.m */; };
 		949DC1D41583E8CF00385796 /* CSharpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3A7151B85C7006BCBBF /* CSharpParser.m */; };
 		949DC1D51583E8CF00385796 /* DelphiParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3AC151B8EBA006BCBBF /* DelphiParser.m */; };
@@ -375,12 +377,6 @@
 		949DC1E51583E8CF00385796 /* ed.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7EC15277845000473BE /* ed.c */; };
 		949DC1E61583E8CF00385796 /* normal.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7EF15277877000473BE /* normal.c */; };
 		949DC1E71583E8CF00385796 /* ifdef.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7F2152778B9000473BE /* ifdef.c */; };
-		949DC1E81583E8CF00385796 /* GitDiffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0E01528CEF300CBAE18 /* GitDiffViewController.m */; };
-		949DC1E91583E8CF00385796 /* DiffFileListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0EE1528E64600CBAE18 /* DiffFileListController.m */; };
-		949DC1EA1583E8CF00385796 /* DiffInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */; };
-		949DC1EB1583E8CF00385796 /* DropBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A5184E152DF8D70062DA65 /* DropBoxViewController.m */; };
-		949DC1EC1583E8CF00385796 /* LocalFileControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9457C78615307AF500BB9185 /* LocalFileControllerDelegate.m */; };
-		949DC1ED1583E8CF00385796 /* RemoteFileControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9457C78A15307B1400BB9185 /* RemoteFileControllerDelegate.m */; };
 		949DC1EE1583E8CF00385796 /* VersionControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435210A153F03D1003F316A /* VersionControlController.m */; };
 		949DC1EF1583E8CF00385796 /* SecurityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9443D1EC154EDA6A008CB52D /* SecurityViewController.m */; };
 		949DC1F01583E8CF00385796 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 948F1C7115583B7600AE4C99 /* CommentViewController.m */; };
@@ -404,7 +400,6 @@
 		949DC2031583E8CF00385796 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94205713157B938B00178CBF /* QuartzCore.framework */; };
 		949DC2041583E8CF00385796 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC251546F30900931747 /* MessageUI.framework */; };
 		949DC2051583E8CF00385796 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A5184A152DF30A0062DA65 /* Security.framework */; };
-		949DC2061583E8CF00385796 /* libObjectiveGit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BF7924150E398500FCF653 /* libObjectiveGit.a */; };
 		949DC2071583E8CF00385796 /* libZip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434BFB314A389BE00B34419 /* libZip.a */; };
 		949DC2081583E8CF00385796 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9417EB7714AE118000224D2A /* iAd.framework */; };
 		949DC2091583E8CF00385796 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4038014A0ED4700E3A636 /* CFNetwork.framework */; };
@@ -412,14 +407,12 @@
 		949DC20B1583E8CF00385796 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9431D73814910B3000B0900E /* UIKit.framework */; };
 		949DC20C1583E8CF00385796 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9431D73A14910B3000B0900E /* Foundation.framework */; };
 		949DC20D1583E8CF00385796 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9431D73C14910B3000B0900E /* CoreGraphics.framework */; };
-		949DC20E1583E8CF00385796 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A51847152DF2AC0062DA65 /* DropboxSDK.framework */; };
 		949DC2101583E8CF00385796 /* lgz_javascript.js in Resources */ = {isa = PBXBuildFile; fileRef = 9404058514964E56002A0C73 /* lgz_javascript.js */; };
 		949DC2111583E8CF00385796 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9431D74114910B3000B0900E /* InfoPlist.strings */; };
 		949DC2141583E8CF00385796 /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9431D7C51494D1E300B0900E /* folder.png */; };
 		949DC2151583E8CF00385796 /* project.png in Resources */ = {isa = PBXBuildFile; fileRef = 9431D7C61494D1E300B0900E /* project.png */; };
 		949DC2161583E8CF00385796 /* NavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9432E3AC149CF9CE00AB5BB7 /* NavigationController.xib */; };
 		949DC21D1583E8CF00385796 /* linux_0.1 in Resources */ = {isa = PBXBuildFile; fileRef = 94557E5314B05E89004950B4 /* linux_0.1 */; };
-		949DC21F1583E8CF00385796 /* syntax_color.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94FB0FEF14BDF2EF0084E457 /* syntax_color.plist */; };
 		949DC2211583E8CF00385796 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 94FAC80214C1649400B9A821 /* settings.png */; };
 		949DC2241583E8CF00385796 /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 94103DEF14D86F1300212EBB /* bookmark.png */; };
 		949DC2251583E8CF00385796 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9473AEF214DACD6A00D39E05 /* Icon-72.png */; };
@@ -453,16 +446,8 @@
 		949DC2411583E8CF00385796 /* Help.html in Resources */ = {isa = PBXBuildFile; fileRef = 945AA453150926A1006729C8 /* Help.html */; };
 		949DC2421583E8CF00385796 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 943486E0150A3DA600370AE3 /* Default-Landscape~ipad.png */; };
 		949DC2431583E8CF00385796 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 943486DE150A3D4000370AE3 /* Default-Portrait~ipad.png */; };
-		949DC2441583E8CF00385796 /* GitLogViewCongroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941656FE1515C3C200838005 /* GitLogViewCongroller.xib */; };
-		949DC2451583E8CF00385796 /* GitLogTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941657111516280200838005 /* GitLogTableCell.xib */; };
-		949DC2461583E8CF00385796 /* GitDiffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940BE0E11528CEF300CBAE18 /* GitDiffViewController.xib */; };
-		949DC2471583E8CF00385796 /* DiffFileListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940BE0EF1528E64600CBAE18 /* DiffFileListController.xib */; };
-		949DC2481583E8CF00385796 /* DiffInfoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */; };
-		949DC2491583E8CF00385796 /* GidDiffTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E6DB65152CBF41004DBD87 /* GidDiffTableCell.xib */; };
-		949DC24A1583E8CF00385796 /* DropBoxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A5184F152DF8D70062DA65 /* DropBoxViewController.xib */; };
 		949DC24B1583E8CF00385796 /* masterView_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9457C78D153086FC00BB9185 /* masterView_bg.png */; };
 		949DC24C1583E8CF00385796 /* nav_backButton_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9457C7901530923800BB9185 /* nav_backButton_icon.png */; };
-		949DC24D1583E8CF00385796 /* SelectionTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9457C7931530B91600BB9185 /* SelectionTableCell.xib */; };
 		949DC24E1583E8CF00385796 /* checkbox_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 9457C7961530BA3800BB9185 /* checkbox_no.png */; };
 		949DC24F1583E8CF00385796 /* checkbox_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = 9457C7971530BA3800BB9185 /* checkbox_yes.png */; };
 		949DC2501583E8CF00385796 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF99BB1534887000F4EFFD /* refresh.png */; };
@@ -658,13 +643,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9434BF9D14A389BC00B34419;
 			remoteInfo = Zip;
-		};
-		949DC1931583E8CF00385796 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 94BF791F150E398400FCF653 /* ObjectiveGit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 94BF790E150E398400FCF653;
-			remoteInfo = ObjectiveGit;
 		};
 		949DC1951583E8CF00385796 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -915,6 +893,9 @@
 		94472081157534E9002EEA5A /* ManuallyParserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManuallyParserViewController.h; path = ManuallyParser/ManuallyParserViewController.h; sourceTree = "<group>"; };
 		94472082157534E9002EEA5A /* ManuallyParserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManuallyParserViewController.m; path = ManuallyParser/ManuallyParserViewController.m; sourceTree = "<group>"; };
 		94472083157534E9002EEA5A /* ManuallyParserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManuallyParserViewController.xib; path = ManuallyParser/ManuallyParserViewController.xib; sourceTree = "<group>"; };
+		944A5B4E160B60010076410C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		944A5B50160B60670076410C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		944A5B52160B63B00076410C /* syntax_color_iphone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = syntax_color_iphone.plist; path = CodeNavigator/syntax_color_iphone.plist; sourceTree = "<group>"; };
 		944DD7C1152772EF000473BE /* diff.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = diff.c; sourceTree = "<group>"; };
 		944DD7C4152772FC000473BE /* diff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = diff.h; sourceTree = "<group>"; };
 		944DD7C51527730D000473BE /* getopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getopt.h; sourceTree = "<group>"; };
@@ -1157,7 +1138,6 @@
 				949DC2031583E8CF00385796 /* QuartzCore.framework in Frameworks */,
 				949DC2041583E8CF00385796 /* MessageUI.framework in Frameworks */,
 				949DC2051583E8CF00385796 /* Security.framework in Frameworks */,
-				949DC2061583E8CF00385796 /* libObjectiveGit.a in Frameworks */,
 				949DC2071583E8CF00385796 /* libZip.a in Frameworks */,
 				949DC2081583E8CF00385796 /* iAd.framework in Frameworks */,
 				949DC2091583E8CF00385796 /* CFNetwork.framework in Frameworks */,
@@ -1165,7 +1145,6 @@
 				949DC20B1583E8CF00385796 /* UIKit.framework in Frameworks */,
 				949DC20C1583E8CF00385796 /* Foundation.framework in Frameworks */,
 				949DC20D1583E8CF00385796 /* CoreGraphics.framework in Frameworks */,
-				949DC20E1583E8CF00385796 /* DropboxSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1240,6 +1219,8 @@
 		9431D72914910B3000B0900E = {
 			isa = PBXGroup;
 			children = (
+				944A5B50160B60670076410C /* Default-568h@2x.png */,
+				944A5B4E160B60010076410C /* Default@2x.png */,
 				9478C6DD15C8396300F443D9 /* Twitter.framework */,
 				94A404CE158A635C0084F645 /* CodeNavigatoriPhone-info.plist */,
 				94A404B3158A53C10084F645 /* Icon-57.png */,
@@ -1460,6 +1441,7 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				944A5B52160B63B00076410C /* syntax_color_iphone.plist */,
 				9478C6DF15C859F000F443D9 /* help.png */,
 				9478C6DB15C8213100F443D9 /* feedback.png */,
 				9478C6D115C8207600F443D9 /* appstore.png */,
@@ -1846,7 +1828,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				949DC1921583E8CF00385796 /* PBXTargetDependency */,
 				949DC1941583E8CF00385796 /* PBXTargetDependency */,
 				949DC1961583E8CF00385796 /* PBXTargetDependency */,
 			);
@@ -2053,7 +2034,6 @@
 				949DC2151583E8CF00385796 /* project.png in Resources */,
 				949DC2161583E8CF00385796 /* NavigationController.xib in Resources */,
 				949DC21D1583E8CF00385796 /* linux_0.1 in Resources */,
-				949DC21F1583E8CF00385796 /* syntax_color.plist in Resources */,
 				949DC2211583E8CF00385796 /* settings.png in Resources */,
 				949DC2241583E8CF00385796 /* bookmark.png in Resources */,
 				949DC2251583E8CF00385796 /* Icon-72.png in Resources */,
@@ -2087,16 +2067,8 @@
 				949DC2411583E8CF00385796 /* Help.html in Resources */,
 				949DC2421583E8CF00385796 /* Default-Landscape~ipad.png in Resources */,
 				949DC2431583E8CF00385796 /* Default-Portrait~ipad.png in Resources */,
-				949DC2441583E8CF00385796 /* GitLogViewCongroller.xib in Resources */,
-				949DC2451583E8CF00385796 /* GitLogTableCell.xib in Resources */,
-				949DC2461583E8CF00385796 /* GitDiffViewController.xib in Resources */,
-				949DC2471583E8CF00385796 /* DiffFileListController.xib in Resources */,
-				949DC2481583E8CF00385796 /* DiffInfoListViewController.xib in Resources */,
-				949DC2491583E8CF00385796 /* GidDiffTableCell.xib in Resources */,
-				949DC24A1583E8CF00385796 /* DropBoxViewController.xib in Resources */,
 				949DC24B1583E8CF00385796 /* masterView_bg.png in Resources */,
 				949DC24C1583E8CF00385796 /* nav_backButton_icon.png in Resources */,
-				949DC24D1583E8CF00385796 /* SelectionTableCell.xib in Resources */,
 				949DC24E1583E8CF00385796 /* checkbox_no.png in Resources */,
 				949DC24F1583E8CF00385796 /* checkbox_yes.png in Resources */,
 				949DC2501583E8CF00385796 /* refresh.png in Resources */,
@@ -2131,6 +2103,9 @@
 				94A404CF158A635C0084F645 /* CodeNavigatoriPhone-info.plist in Resources */,
 				94A404D1158A69920084F645 /* Default.png in Resources */,
 				947D9F8C158BA930000B5136 /* ResultTableCellView.xib in Resources */,
+				944A5B4F160B60010076410C /* Default@2x.png in Resources */,
+				944A5B51160B60670076410C /* Default-568h@2x.png in Resources */,
+				944A5B53160B63B00076410C /* syntax_color_iphone.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2414,7 +2389,6 @@
 				949DC1CF1583E8CF00385796 /* FileManagerController.m in Sources */,
 				949DC1D01583E8CF00385796 /* ProjectListController.m in Sources */,
 				949DC1D11583E8CF00385796 /* ImagePreviewController.m in Sources */,
-				949DC1D21583E8CF00385796 /* GitLogViewCongroller.m in Sources */,
 				949DC1D31583E8CF00385796 /* ObjectiveCParser.m in Sources */,
 				949DC1D41583E8CF00385796 /* CSharpParser.m in Sources */,
 				949DC1D51583E8CF00385796 /* DelphiParser.m in Sources */,
@@ -2436,12 +2410,6 @@
 				949DC1E51583E8CF00385796 /* ed.c in Sources */,
 				949DC1E61583E8CF00385796 /* normal.c in Sources */,
 				949DC1E71583E8CF00385796 /* ifdef.c in Sources */,
-				949DC1E81583E8CF00385796 /* GitDiffViewController.m in Sources */,
-				949DC1E91583E8CF00385796 /* DiffFileListController.m in Sources */,
-				949DC1EA1583E8CF00385796 /* DiffInfoListViewController.m in Sources */,
-				949DC1EB1583E8CF00385796 /* DropBoxViewController.m in Sources */,
-				949DC1EC1583E8CF00385796 /* LocalFileControllerDelegate.m in Sources */,
-				949DC1ED1583E8CF00385796 /* RemoteFileControllerDelegate.m in Sources */,
 				949DC1EE1583E8CF00385796 /* VersionControlController.m in Sources */,
 				949DC1EF1583E8CF00385796 /* SecurityViewController.m in Sources */,
 				949DC1F01583E8CF00385796 /* CommentViewController.m in Sources */,
@@ -2587,11 +2555,6 @@
 			isa = PBXTargetDependency;
 			name = Zip;
 			targetProxy = 9434BFCA14A38ACD00B34419 /* PBXContainerItemProxy */;
-		};
-		949DC1921583E8CF00385796 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ObjectiveGit;
-			targetProxy = 949DC1931583E8CF00385796 /* PBXContainerItemProxy */;
 		};
 		949DC1941583E8CF00385796 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
