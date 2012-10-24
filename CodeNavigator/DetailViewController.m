@@ -16,6 +16,7 @@
 #import "VirtualizeViewController.h"
 #import "CommentViewController.h"
 #import "CommentWrapper.h"
+#import "FunctionListViewController.h"
 
 #define TOOLBAR_X_MASTER_SHOW 55
 #define TOOLBAR_X_MASTER_HIDE 208
@@ -46,7 +47,6 @@
 @synthesize resultPopover = _resultPopover;
 @synthesize jsGotoLineKeyword = _jsGotoLineKeyword;
 @synthesize analyzeInfoBarButton = _analyzeInfoBarButton;
-@synthesize gotoHighlightBar = _gotoHighlightBar;
 @synthesize topToolBar = _topToolBar;
 @synthesize bottomToolBar = _bottomToolBar;
 @synthesize webViewSegmentController = _webViewSegmentController;
@@ -76,6 +76,8 @@
 @synthesize highlightLineArray;
 @synthesize scrollBarTapRecognizer;
 @synthesize showCommentsSegment;
+@synthesize functionListPopover;
+@synthesize functionListViewController;
 
 #pragma mark - Managing the detail item
 
@@ -152,7 +154,6 @@
     [self setTitleTextField:nil];
     [self setHighlghtWordPopover:nil];
     [self setHighlightWordController:nil];
-    [self setGotoHighlightBar:nil];
     [self setDisplayModeController:nil];
     [self setDisplayModePopover:nil];
     [self setTopToolBar:nil];
@@ -163,6 +164,8 @@
     [self setDivider:nil];
     [self setHideMasterViewButton:nil];
     [self setSplitWebViewButton:nil];
+    [self setFunctionListPopover:nil];
+    [self setFunctionListViewController:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -203,7 +206,6 @@
     [self setTitleTextField:nil];
     [self setHighlghtWordPopover:nil];
     [self setHighlightWordController:nil];
-    [self setGotoHighlightBar:nil];
     [self setDisplayModeController:nil];
     [self setDisplayModePopover:nil];
     [self setTopToolBar:nil];
@@ -486,6 +488,9 @@
                 lll = 1;
             NSString* js = [NSString stringWithFormat:@"smoothScroll('L%d')", lll];
             [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
+            int tmp = [line intValue];
+            js = [NSString stringWithFormat:@"FocusLine('L%d')",tmp];
+            [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
             //magic way to dis highlight current words
             js = @"clearHighlight();";
             [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
@@ -672,6 +677,10 @@
     [self.displayModePopover dismissPopoverAnimated:YES];
     [self setDisplayModePopover:nil];
     [self setDisplayModeController:nil];
+    
+    [self.functionListPopover dismissPopoverAnimated:YES];
+    [self setFunctionListViewController:nil];
+    [self setFunctionListPopover:nil];
 }
 
 - (void) setUpWebViewAsActive
@@ -1040,7 +1049,7 @@
     [self presentModalViewController:self.highlightWordController animated:YES];
 #else
     self.highlghtWordPopover = [[UIPopoverController alloc] initWithContentViewController:self.highlightWordController];
-    self.highlghtWordPopover.popoverContentSize = CGSizeMake(198, 46);
+    self.highlghtWordPopover.popoverContentSize = self.highlightWordController.view.frame.size;
     
     [self.highlghtWordPopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 #endif
@@ -1053,6 +1062,9 @@
         currentSearchFocusLine = [highlightLineArray count];
         return;
     }
+    if (currentSearchFocusLine == -1) {
+        currentSearchFocusLine = [highlightLineArray count];
+    }
     currentSearchFocusLine--;
     if (currentSearchFocusLine >= [highlightLineArray count]) {
         return;
@@ -1063,6 +1075,9 @@
         line = 1;
     }
     NSString* js = [NSString stringWithFormat:@"smoothScroll('L%d')", line];
+    [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
+    int tmp = [[highlightLineArray objectAtIndex:currentSearchFocusLine] intValue];
+    js = [NSString stringWithFormat:@"FocusLine('L%d')",tmp];
     [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
 //    NSString* show = [NSString stringWithFormat:@"%d/%d", currentSearchFocusLine, searchLineTotal];
 //    [self.countTextField setText:show];
@@ -1081,6 +1096,9 @@
         line = 1;
     }
     NSString* js = [NSString stringWithFormat:@"smoothScroll('L%d')", line];
+    [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
+    int tmp = [[highlightLineArray objectAtIndex:currentSearchFocusLine] intValue];
+    js = [NSString stringWithFormat:@"FocusLine('L%d')",tmp];
     [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
 //    NSString* show = [NSString stringWithFormat:@"%d/%d", currentSearchFocusLine, searchLineTotal];
 //    [self.countTextField setText:show];
@@ -1269,6 +1287,29 @@
     [UIView commitAnimations];
 }
 
+- (IBAction)functionListClicked:(id)sender {
+    if ([self.functionListPopover isPopoverVisible] == YES)
+    {
+        [self.functionListPopover dismissPopoverAnimated:YES];
+        [self releaseAllPopOver];
+        return;
+    }
+    [self releaseAllPopOver];
+    UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
+    self.functionListViewController = [[FunctionListViewController alloc] initWithNibName:@"FunctionListViewController" bundle:nil];
+    NSString* currentFilePath = [self getCurrentDisplayFile];
+    currentFilePath = [[Utils getInstance] getSourceFileByDisplayFile:currentFilePath];
+    [self.functionListViewController setCurrentFilePath:currentFilePath];
+    
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:self.functionListViewController];
+    functionListViewController.title = @"Tag List";
+
+    self.functionListPopover = [[UIPopoverController alloc] initWithContentViewController:controller];
+//    self.functionListPopover.popoverContentSize = self.historyListController.view.frame.size;
+    
+    [self.functionListPopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
 #pragma mark - Split view
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
@@ -1357,6 +1398,8 @@
             if (lll <= 0)
                 lll = 1;
             js = [NSString stringWithFormat:@"smoothScroll('L%d')", lll];
+            [webView stringByEvaluatingJavaScriptFromString:js];
+            js = [NSString stringWithFormat:@"FocusLine('L%d')",jsGotoLine];
             [webView stringByEvaluatingJavaScriptFromString:js];
             js = [NSString stringWithFormat:@"highlight_this_line_keyword('L%d', '%@')", jsGotoLine, _jsGotoLineKeyword];
             [webView stringByEvaluatingJavaScriptFromString:js];

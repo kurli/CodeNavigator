@@ -105,6 +105,8 @@
         NSString* displayPath = [[Utils getInstance] getDisplayFileBySourceFile:sourceFilePath];
         [[NSFileManager defaultManager] removeItemAtPath:displayPath error:&error];
         [masterViewController reloadData];
+        NSString* tagPath = [[Utils getInstance] getTagFileBySourceFile:sourceFilePath];
+        [[NSFileManager defaultManager] removeItemAtPath:tagPath error:&error];
         [[Utils getInstance] analyzeProject:proj andForceCreate:YES];
         //remove comments file
         NSString* extention = [sourceFilePath pathExtension];

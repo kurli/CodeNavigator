@@ -41,6 +41,8 @@
         [[NSFileManager defaultManager] removeItemAtPath:sourceFilePath error:&error];
         NSString* displayPath = [[Utils getInstance] getDisplayFileBySourceFile:sourceFilePath];
         [[NSFileManager defaultManager] removeItemAtPath:displayPath error:&error];
+        NSString* tagPath = [[Utils getInstance] getTagFileBySourceFile:sourceFilePath];
+        [[NSFileManager defaultManager] removeItemAtPath:tagPath error:&error];
         [masterViewController reloadData];
         [[Utils getInstance] analyzeProject:proj andForceCreate:YES];
         //remove comments file

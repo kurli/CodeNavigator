@@ -29,6 +29,7 @@ typedef enum _JSState {
 @class HighLightWordController;
 @class HistoryListController;
 @class VirtualizeViewController;
+@class FunctionListViewController;
 
 @interface DetailViewController : UIViewController <UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MGSplitViewControllerDelegate>
 {
@@ -97,6 +98,10 @@ typedef enum _JSState {
 
 @property (strong, nonatomic) UIPopoverController* historyListPopover;
 
+@property (strong, nonatomic) FunctionListViewController* functionListViewController;
+
+@property (strong, nonatomic) UIPopoverController* functionListPopover;
+
 @property (strong, nonatomic) VirtualizeViewController *virtualizeViewController;
 
 @property (strong, nonatomic) NSString* jsGotoLineKeyword;
@@ -108,8 +113,6 @@ typedef enum _JSState {
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *divider;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *analyzeInfoBarButton;
-
-@property (unsafe_unretained, nonatomic) IBOutlet UISegmentedControl *gotoHighlightBar;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIToolbar *topToolBar;
 
@@ -214,5 +217,7 @@ typedef enum _JSState {
 #ifdef IPHONE_VERSION
 - (IBAction)filesButtonClicked:(id)sender;
 #endif
+
+- (IBAction)functionListClicked:(id)sender;
 
 @end

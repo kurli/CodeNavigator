@@ -160,22 +160,25 @@
         self.detailViewController.searchWord = searchText;
         [searchBar setShowsCancelButton:NO animated:YES];
         [searchBar resignFirstResponder];
-        [self.detailViewController releaseAllPopOver];
+//        [self.detailViewController releaseAllPopOver];
         [self searchWrapper];
     }
 #ifdef IPHONE_VERSION
-    [self dismissViewControllerAnimated:NO completion:nil];
+//    [self dismissViewControllerAnimated:NO completion:nil];
 #endif
 }
 
 #ifdef IPHONE_VERSION
 - (IBAction)searchButtonClicked:(id)sender {
     [self searchBarSearchButtonClicked:searchBarUI];
-    [self dismissViewControllerAnimated:NO completion:nil];
+//    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (IBAction)cancelButtonClicked:(id)sender {
-    [self dismissViewControllerAnimated:NO completion:nil];
+//    [self dismissViewControllerAnimated:NO completion:nil];
 }
 #endif
+- (IBAction)gotoHighlight:(id)sender {
+    [self.detailViewController gotoHighlight:sender];
+}
 @end

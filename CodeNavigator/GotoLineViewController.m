@@ -63,6 +63,8 @@
         lll = 1;
     js = [NSString stringWithFormat:@"smoothScroll('L%d')", lll];
     [_detailViewController.activeWebView stringByEvaluatingJavaScriptFromString:js];
+    js = [NSString stringWithFormat:@"FocusLine('L%d')",[text intValue]];
+    [_detailViewController.activeWebView stringByEvaluatingJavaScriptFromString:js];    
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField

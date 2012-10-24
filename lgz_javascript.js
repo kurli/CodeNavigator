@@ -148,6 +148,16 @@ function smoothScrollToPosition(stopPosition)
     }
 }
 
+function deFocusLine(eID) {
+    eID.style.backgroundColor = document.body.background;
+}
+
+function FocusLine(eID) {
+    var obj = document.getElementById(eID);
+    obj.style.backgroundColor = 'yellow';
+    setTimeout("deFocusLine("+eID+")", 500);
+}
+
 function smoothScroll(eID) {
 //    var stopY = elmYPosition(eID) - 200;
 //    scrollTo(0, stopY);

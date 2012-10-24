@@ -264,7 +264,7 @@
 #ifdef LITE_VERSION
         return @"CodeNavigatorLite 2.0 Guangzhen Li\n@2011-2012";
 #else
-        return @"CodeNavigator 2.2 Guangzhen Li\n@2011-2012";
+        return @"CodeNavigator 2.3 Guangzhen Li\n@2011-2012";
 #endif
     }
     return @"";

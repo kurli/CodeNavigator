@@ -455,6 +455,8 @@
             [self.currentFiles removeObjectAtIndex:deleteItemId - [self.currentDirectories count]];
             NSString* displayPath = [[Utils getInstance] getDisplayFileBySourceFile:path];
             [[NSFileManager defaultManager] removeItemAtPath:displayPath error:&error];
+            NSString* tagPath = [[Utils getInstance] getTagFileBySourceFile:path];
+            [[NSFileManager defaultManager] removeItemAtPath:tagPath error:&error];
             //remove comments file
             NSString* extention = [path pathExtension];
             NSString* commentFile = [path stringByDeletingPathExtension];

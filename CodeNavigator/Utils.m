@@ -23,6 +23,8 @@
 #import "GADBannerView.h"
 #endif
 
+#import "FunctionListManager.h"
+
 @implementation BuildThreadData
 
 @synthesize path;
@@ -97,6 +99,7 @@ static Utils *static_utils;
 @synthesize cscopeSearchAlertView;
 @synthesize dropBoxViewController;
 @synthesize masterViewController;
+@synthesize functionListManager;
 
 +(Utils*)getInstance
 {
@@ -170,7 +173,7 @@ static Utils *static_utils;
     NSError* error;
     BOOL isExist = false;
     BOOL isFolder = NO;
-    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/2_1.version"];
+    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/2_3.version"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:versionFile];
     if (isExist == YES)
     {
@@ -666,6 +669,24 @@ static Utils *static_utils;
     return tmp;
 }
 
+-(NSString*) getTagFileBySourceFile:(NSString *)source
+{
+    if (source == nil || [source length] == 0)
+        return nil;
+    NSString* tmp = [source copy];
+    NSString* extention = [source pathExtension];
+    if (extention == nil || [extention length] == 0)
+    {
+        tmp = [tmp stringByAppendingFormat:@"_.%@", @"lgz_tags"];
+    }
+    else
+    {
+        tmp = [tmp stringByDeletingPathExtension];
+        tmp = [tmp stringByAppendingFormat:@"_%@.%@", extention, @"lgz_tags"];
+    }
+    return tmp;
+}
+
 -(void)deleteDisplayFileForSource:(NSString *)source
 {
     NSError *error;
@@ -852,6 +873,8 @@ static Utils *static_utils;
     else if ([extension isEqualToString:@"display_3"])
         return YES;
     else if ([extension isEqualToString:@"display_4"])
+        return YES;
+    else if ([extension isEqualToString:@"lgz_tags"])
         return YES;
     else if ([extension isEqualToString:DISPLAY_FILE_EXTENTION])
         return YES;
@@ -1580,6 +1603,14 @@ FINAL:
 -(void) setIsScreenLocked:(BOOL)locked
 {
     isScreenLocked = locked;
+}
+
+-(void) getFunctionListForFile:(NSString *)path andCallback:(GetFunctionListCallback)callback
+{
+    if (functionListManager == nil) {
+        self.functionListManager = [[FunctionListManager alloc] init];
+    }
+    [self.functionListManager getFunctionListForFile:path andCallback:callback];
 }
 
 @end

@@ -17,10 +17,13 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #define DISPLAY_FILE_EXTENTION @"display_5"
 
+typedef void (^GetFunctionListCallback)(NSArray* array);
+
 @class DetailViewController;
 @class AnalyzeInfoController;
 @class DropBoxViewController;
 @class GADBannerView;
+@class FunctionListManager;
 
 #define MAX_HISTORY_STACK 20
 
@@ -132,6 +135,7 @@ typedef enum _AlertConfirmMode{
 @property (strong, nonatomic) ColorSchema* colorScheme;
 
 @property (strong, nonatomic) DropBoxViewController* dropBoxViewController;
+@property (strong, nonatomic) FunctionListManager* functionListManager;
 
 +(Utils*)getInstance;
 
@@ -173,6 +177,8 @@ typedef enum _AlertConfirmMode{
 -(NSString*) getSourceFileByDisplayFile:(NSString*)displayFile;
 
 -(NSString*) getDisplayFileBySourceFile:(NSString*)source;
+
+-(NSString*) getTagFileBySourceFile:(NSString*)sourcd;
 
 -(void) deleteDisplayFileForSource:(NSString*)source;
 
@@ -233,5 +239,7 @@ typedef enum _AlertConfirmMode{
 -(BOOL) isScreenLocked;
 
 -(void) setIsScreenLocked:(BOOL)locked;
+
+-(void) getFunctionListForFile:(NSString*)path andCallback:(GetFunctionListCallback)callback;
 
 @end

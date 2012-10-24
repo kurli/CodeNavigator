@@ -20,4 +20,6 @@
 - (IBAction)cancelButtonClicked:(id)sender;
 #endif
 
+- (IBAction)gotoHighlight:(id)sender;
+
 @end
