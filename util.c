@@ -79,7 +79,8 @@ error (format, arg, arg1)
      char const *format, *arg, *arg1;
 {
   fprintf (stderr, "%s: ", program_name);
-  fprintf (stderr, format, arg, arg1);
+    //kurry
+//  fprintf (stderr, format, arg, arg1);
   fprintf (stderr, "\n");
 }
 

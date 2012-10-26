@@ -142,27 +142,27 @@
 
 - (void)viewDidUnload
 {
-    //[self setCurrentLocation:nil];
-    [self setCommentManagerPopOverController: nil];
-//    [self.currentFiles removeAllObjects];
-////    [self setCurrentProjectPath:nil];
-//    [self.currentDirectories removeAllObjects];
-    [self setCurrentDirectories:nil];
-    [self setCurrentFiles: nil];
-    [self setWebServiceController:nil];
-    [self.webServicePopOverController dismissPopoverAnimated:NO];
-    [self setWebServicePopOverController:nil];
-    [self setTableView:nil];
-    [self setAnalyzeButton:nil];
-#ifdef LITE_VERSION
-    [self setPurchaseButton:nil];
-#endif
-    [self setFileSearchBar:nil];
-    [self.fileInfoPopOverController dismissPopoverAnimated:NO];
-    [self setFileInfoPopOverController:nil];
-#ifdef IPHONE_VERSION
-    [self setFileInfoControlleriPhone:nil];
-#endif
+//    //[self setCurrentLocation:nil];
+//    [self setCommentManagerPopOverController: nil];
+////    [self.currentFiles removeAllObjects];
+//////    [self setCurrentProjectPath:nil];
+////    [self.currentDirectories removeAllObjects];
+//    [self setCurrentDirectories:nil];
+//    [self setCurrentFiles: nil];
+//    [self setWebServiceController:nil];
+//    [self.webServicePopOverController dismissPopoverAnimated:NO];
+//    [self setWebServicePopOverController:nil];
+//    [self setTableView:nil];
+//    [self setAnalyzeButton:nil];
+//#ifdef LITE_VERSION
+//    [self setPurchaseButton:nil];
+//#endif
+//    [self setFileSearchBar:nil];
+//    [self.fileInfoPopOverController dismissPopoverAnimated:NO];
+//    [self setFileInfoPopOverController:nil];
+//#ifdef IPHONE_VERSION
+//    [self setFileInfoControlleriPhone:nil];
+//#endif
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

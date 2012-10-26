@@ -51,6 +51,9 @@
     if (activityIndicator.hidden == NO) {
         return;
     }
+    NSError* error;
+    NSString* tagFile = [[Utils getInstance] getTagFileBySourceFile:self.currentFilePath];
+    [[NSFileManager defaultManager] removeItemAtPath:tagFile error:&error];
     [[Utils getInstance] getFunctionListForFile:self.currentFilePath andCallback:^(NSArray* array){
         [self.activityIndicator stopAnimating];
         [self.activityIndicator setHidden:YES];
@@ -65,10 +68,12 @@
     [activityIndicator setHidden:NO];
     [activityIndicator startAnimating];
     [[Utils getInstance] getFunctionListForFile:self.currentFilePath andCallback:^(NSArray* array){
+        dispatch_async(dispatch_get_main_queue(), ^{
         [self.activityIndicator stopAnimating];
         [self.activityIndicator setHidden:YES];
         self.tagsArray = array;
         [self.tableView reloadData];
+        });
     }];
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStyleBordered target:self action:@selector(refreshButtonClicked:)];
     self.navigationItem.rightBarButtonItem = refreshButton;

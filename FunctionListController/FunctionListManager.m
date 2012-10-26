@@ -40,6 +40,7 @@
 
 -(void) analyzeCtagFile:(GetFunctionListCallback)cb
 {
+    int srcEndIndex = 0;
     NSError* error;
     NSString* ctagFile = [[Utils getInstance] getTagFileBySourceFile:self.path];
     NSString* content = [NSString stringWithContentsOfFile:ctagFile encoding:NSUTF8StringEncoding error:&error];
@@ -57,24 +58,50 @@
             continue;
         }
         
-        FunctionItem* item = [[FunctionItem alloc] init];
-        [item setType:[detailArray objectAtIndex:3]];
-        NSString* name;
-        if ([item.type compare:@"v"] == NSOrderedSame) {
-            name = [detailArray objectAtIndex:2];
-            name = [name substringFromIndex:2];
-            name = [name substringToIndex:[name length]-4];
-            [item setName:name];
+        // Find src end index
+        for (srcEndIndex = 2; srcEndIndex<[detailArray count]; srcEndIndex++) {
+            NSString* testString = [detailArray objectAtIndex:srcEndIndex];
+            if ([testString rangeOfString:@";\"" options:NSStringEnumerationReverse].location == [testString length]-2) {
+                break;
+            }
         }
-        else if([item.type compare:@"f"] == NSOrderedSame) {
+        
+        FunctionItem* item = [[FunctionItem alloc] init];
+        [item setType:[detailArray objectAtIndex:srcEndIndex+1]];
+        NSString* name;
+        if ([item.type compare:@"v"] == NSOrderedSame || [item.type compare:@"f"] == NSOrderedSame) {
             name = [detailArray objectAtIndex:2];
-            name = [name substringFromIndex:2];
-            name = [name substringToIndex:[name length]-4];
-            [item setName:name];        }
+            if ([name length] <= 7) {
+                [item setName:[detailArray objectAtIndex:0]];
+            }
+            else {
+                for (int k=2; k<srcEndIndex; k++) {
+                    name = [name stringByAppendingString:[detailArray objectAtIndex:k]];
+                }
+                name = [name substringFromIndex:2];
+                name = [name substringToIndex:[name length]-4];
+                NSRange range = [name rangeOfString:[detailArray objectAtIndex:0]];
+                if (range.location != NSNotFound) {
+                    [item setName:[name substringFromIndex:range.location]];
+                }
+            }
+        }
         else {
             [item setName:[detailArray objectAtIndex:0]];
         }
-        NSArray* lineArray = [[detailArray objectAtIndex:4] componentsSeparatedByString:@":"];
+        //Tream leading
+//        int k = 0;
+//        for (; k<item.name.length; k++) {
+//            if ([item.name characterAtIndex:k] != ' ' &&
+//                [item.name characterAtIndex:k] != '\t') {
+//                break;
+//            }
+//        }
+//        if (k != 0) {
+//            item.name = [item.name substringFromIndex:k];
+//        }
+        
+        NSArray* lineArray = [[detailArray objectAtIndex:srcEndIndex+2] componentsSeparatedByString:@":"];
         if ([lineArray count] != 2) {
             continue;
         }

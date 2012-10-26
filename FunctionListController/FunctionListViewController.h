@@ -14,7 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
-@property (strong, nonatomic) NSArray* tagsArray;
+@property (strong, atomic) NSArray* tagsArray;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
