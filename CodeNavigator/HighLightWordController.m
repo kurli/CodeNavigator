@@ -164,7 +164,7 @@
         [self searchWrapper];
     }
 #ifdef IPHONE_VERSION
-//    [self dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 #endif
 }
 
@@ -175,7 +175,7 @@
 }
 
 - (IBAction)cancelButtonClicked:(id)sender {
-//    [self dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 #endif
 - (IBAction)gotoHighlight:(id)sender {

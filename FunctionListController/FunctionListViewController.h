@@ -12,10 +12,10 @@
 
 @property (strong, nonatomic) NSString* currentFilePath;
 
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (unsafe_unretained, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @property (strong, atomic) NSArray* tagsArray;
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (unsafe_unretained, nonatomic) IBOutlet UITableView *tableView;
 
 @end

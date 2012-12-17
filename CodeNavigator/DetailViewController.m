@@ -311,6 +311,11 @@
 #endif
 #endif
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+//    NSString *js1 = @"document.getElementsByTagName('link')[0].setAttribute('href','";
+//    NSString* css = [NSString stringWithFormat:@"theme.css?v=%d",[[Utils getInstance] getCSSVersion]];
+//    NSString *js2 = [js1 stringByAppendingString:css];
+//    NSString *finalJS = [js2 stringByAppendingString:@"');"];
+//    [activeWebView stringByEvaluatingJavaScriptFromString:finalJS];
 }
 
 - (void)willBeginBannerViewActionNotification:(NSNotification *)notification
@@ -1295,7 +1300,6 @@
         return;
     }
     [self releaseAllPopOver];
-    UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
     self.functionListViewController = [[FunctionListViewController alloc] initWithNibName:@"FunctionListViewController" bundle:nil];
     NSString* currentFilePath = [self getCurrentDisplayFile];
     currentFilePath = [[Utils getInstance] getSourceFileByDisplayFile:currentFilePath];
@@ -1304,10 +1308,15 @@
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:self.functionListViewController];
     functionListViewController.title = @"Tag List";
 
+#ifdef IPHONE_VERSION
+    [self presentModalViewController:controller animated:YES];
+#else
+    UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
     self.functionListPopover = [[UIPopoverController alloc] initWithContentViewController:controller];
 //    self.functionListPopover.popoverContentSize = self.historyListController.view.frame.size;
     
     [self.functionListPopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+#endif
 }
 
 #pragma mark - Split view

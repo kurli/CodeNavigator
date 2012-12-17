@@ -55,9 +55,9 @@
     NSArray *toRecipients = [NSArray arrayWithObject:@"guangzhen@hotmail.com"];   
     [picker setToRecipients:toRecipients];
 #ifdef LITE_VERSION
-    [picker setSubject:@"CodeNavigatorLite v2.0 feedback"];
+    [picker setSubject:@"CodeNavigatorLite v2.1 feedback"];
 #else
-    [picker setSubject:@"CodeNavigator v2.2 feedback"];
+    [picker setSubject:@"CodeNavigator v2.3 feedback"];
 #endif
     [self presentModalViewController:picker animated:YES];
 }
@@ -86,7 +86,7 @@
 // Launches the Mail application on the device.
 -(void)launchMailAppOnDevice
 {
-    NSString *recipients = @"mailto:guangzhenhotmail.com?subject=CodeNavigator v2.2 feedback";
+    NSString *recipients = @"mailto:guangzhenhotmail.com?subject=CodeNavigator v2.3 feedback";
     
     NSString *email = [NSString stringWithFormat:@"%@", recipients];
     email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -262,7 +262,7 @@
 {
     if (section == 4) {
 #ifdef LITE_VERSION
-        return @"CodeNavigatorLite 2.0 Guangzhen Li\n@2011-2012";
+        return @"CodeNavigatorLite 2.1 Guangzhen Li\n@2011-2012";
 #else
         return @"CodeNavigator 2.3 Guangzhen Li\n@2011-2012";
 #endif

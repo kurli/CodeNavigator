@@ -360,7 +360,7 @@
     {
         fileName = [self.currentFiles objectAtIndex:indexPath.row-[self.currentDirectories count]];
         if (depth == 0) {
-            label.text = [NSString stringWithFormat:@"Not a valid Project!--%@", fileName];
+            label.text = [NSString stringWithFormat:@"Please upload to a Project (Folder)!--%@", fileName];
             [iconImg setHidden:YES];
             [checkBox setHidden:YES];
         }

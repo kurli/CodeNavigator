@@ -165,7 +165,8 @@
     js = [NSString stringWithFormat:@"smoothScroll('L%d')", lll];
     [[Utils getInstance].detailViewController.activeWebView stringByEvaluatingJavaScriptFromString:js];
     js = [NSString stringWithFormat:@"FocusLine('L%d')",line];
-    [[Utils getInstance].detailViewController.activeWebView  stringByEvaluatingJavaScriptFromString:js];    
+    [[Utils getInstance].detailViewController.activeWebView  stringByEvaluatingJavaScriptFromString:js];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 -(GLfloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
