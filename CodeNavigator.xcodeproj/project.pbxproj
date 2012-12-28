@@ -1414,6 +1414,7 @@
 		94BF99BE15348A6700F4EFFD /* refresh_error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh_error.png; sourceTree = "<group>"; };
 		94C2CDC3167F55C9004FB1FB /* HtmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HtmlParser.h; sourceTree = "<group>"; };
 		94C2CDC4167F55C9004FB1FB /* HtmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HtmlParser.m; sourceTree = "<group>"; };
+		94C2CDC8167F5991004FB1FB /* HTMLDefination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLDefination.h; sourceTree = "<group>"; };
 		94C8C68114FA57D60062750D /* ImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagePreviewController.h; path = CodeNavigator/ImagePreviewController.h; sourceTree = "<group>"; };
 		94C8C68214FA57D60062750D /* ImagePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagePreviewController.m; path = CodeNavigator/ImagePreviewController.m; sourceTree = "<group>"; };
 		94C8C68314FA57D60062750D /* ImagePreviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImagePreviewController.xib; path = CodeNavigator/ImagePreviewController.xib; sourceTree = "<group>"; };
@@ -1732,6 +1733,7 @@
 				9435320A157A861D0011A446 /* ManuallyParser.m */,
 				94C2CDC3167F55C9004FB1FB /* HtmlParser.h */,
 				94C2CDC4167F55C9004FB1FB /* HtmlParser.m */,
+				94C2CDC8167F5991004FB1FB /* HTMLDefination.h */,
 			);
 			name = Parser;
 			sourceTree = "<group>";

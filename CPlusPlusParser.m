@@ -37,7 +37,7 @@
         NSString* keywords = KEYWORD_CPP;
         keywordsArray = [keywords componentsSeparatedByString:@" "];
         //****
-//        keywords = @"if fi then elif else for do done until while break continue case function return in eq ne gt lt ge le";
+//        keywords = @"and or xor __FILE__ exception __LINE__ array as break case class const continue declare default die do echo else elseif empty enddeclare endfor endforeach endif endswitch	endwhile eval exit extends for foreach function global if include include_once isset list new print require require_once return static switch unset use var while __FUNCTION__ __CLASS__ __METHOD__ final php_user_filter interface implements extends public private protected abstract clone try catch throw cfunction this __CLASS__ __DIR__ __FILE__ __FUNCTION__ __LINE__ __METHOD__ __NAMESPACE__ __TRAIT__";
 //        keywordsArray = [keywords componentsSeparatedByString:@" "];
 //        keywordsArray = [keywordsArray sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
 //            NSComparisonResult result = [a compare:b];

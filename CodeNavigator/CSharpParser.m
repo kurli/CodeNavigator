@@ -67,6 +67,8 @@
         keywords = KEYWORD_JAVA;
     else if (type == JAVASCRIPT)
         keywords = KEYWORD_JAVASCRIPT;
+    else if (type == PHP)
+        keywords = KEYWORD_PHP;
 
     keywordsArray = [keywords componentsSeparatedByString:@" "];      
     preprocessorArray = [NSArray arrayWithObjects: PREPROCESSOR];

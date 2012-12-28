@@ -173,7 +173,7 @@ static Utils *static_utils;
     NSError* error;
     BOOL isExist = false;
     BOOL isFolder = NO;
-    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/2_3.version"];
+    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/2_4.version"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:versionFile];
     if (isExist == YES)
     {
@@ -738,6 +738,8 @@ static Utils *static_utils;
         return YES;
     else if ([extension isEqualToString:@"ruby"])
         return YES;
+    else if ([extension isEqualToString:@"php"])
+        return YES;
     int index = [Parser checkManuallyParserIndex:extension];
     if (index != -1) {
         return YES;
@@ -832,17 +834,23 @@ static Utils *static_utils;
             [[Utils getInstance] createFileList:fullPath andWriteTo:cache andSearchDelta:delta];
         else
         {
-            if ([[Utils getInstance] isSupportedType:file] == YES)
-            {
-                [cache appendString:fullPath];
-                [cache appendString:@"\n"];
-            } else {
-                if ([[Utils getInstance] isProjectDatabaseFile:fullPath]) {
-                    continue;
-                }
-                [delta appendString:fullPath];
-                [delta appendString:@"\n"];
+            if ([[Utils getInstance] isProjectDatabaseFile:fullPath]) {
+                continue;
             }
+            [cache appendString:fullPath];
+            [cache appendString:@"\n"];
+            
+//            if ([[Utils getInstance] isSupportedType:file] == YES)
+//            {
+//                [cache appendString:fullPath];
+//                [cache appendString:@"\n"];
+//            } else {
+//                if ([[Utils getInstance] isProjectDatabaseFile:fullPath]) {
+//                    continue;
+//                }
+//                [delta appendString:fullPath];
+//                [delta appendString:@"\n"];
+//            }
         }
     }
 }

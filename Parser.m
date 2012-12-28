@@ -39,6 +39,11 @@
         parser = [[CSharpParser alloc] init];
         [(CSharpParser*)parser setType:JAVA];
     }
+    else if (PHP == type)
+    {
+        parser = [[CSharpParser alloc] init];
+        [(CSharpParser*)parser setType:PHP];
+    }
     else if (DELPHI == type)
     {
         parser = [[DelphiParser alloc] init];
@@ -59,6 +64,10 @@
     else if (BASH == type)
     {
         parser = [[BashParser alloc] init];
+    }
+    else if (HTML == type)
+    {
+        parser = [[HtmlParser alloc] init];
     }
 	else
     {
@@ -207,6 +216,17 @@
     else if ([extension isEqualToString:@"sh"] || [extension isEqualToString:@"shell"] || [extension isEqualToString:@"bash"])
     {
         [self setParserType:BASH];
+        return;
+    }
+    else if ([extension isEqualToString:@"html"] || [extension isEqualToString:@"htm"] ||
+             [extension isEqualToString:@"xml"])
+    {
+        [self setParserType:HTML];
+        return;
+    }
+    else if ([extension isEqualToString:@"php"])
+    {
+        [self setParserType:PHP];
         return;
     }
     // s xml sql vb

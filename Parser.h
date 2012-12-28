@@ -9,6 +9,7 @@
 #import "RubbyParser.h"
 #import "BashParser.h"
 #import "ManuallyParser.h"
+#import "HtmlParser.h"
 
 #define PARSER_PATH @"/Documents/.settings/ManuallyParser"
 #define EXTENTION @"extention"
@@ -29,6 +30,8 @@ typedef enum _ParserType
     PYTHONE,
     RUBY,
     BASH,
+    HTML,
+    PHP,
     UNKNOWN
 } ParserType;
 
