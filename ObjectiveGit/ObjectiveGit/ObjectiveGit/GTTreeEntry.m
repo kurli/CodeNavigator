@@ -43,7 +43,7 @@
 @implementation GTTreeEntry
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"<%@: %p> name: %@, sha: %@ attributes: %i", NSStringFromClass([self class]), self, [self name], [self sha], [self attributes]];
+	return [NSString stringWithFormat:@"<%@: %p> name: %@, sha: %@ attributes: %lu", NSStringFromClass([self class]), self, [self name], [self sha], (unsigned long)[self attributes]];
 }
 
 - (void)dealloc {
@@ -73,7 +73,7 @@
 }
 
 - (NSInteger)attributes {
-	return git_tree_entry_attributes(self.git_tree_entry);
+	return git_tree_entry_filemode(self.git_tree_entry);
 }
 
 - (NSString *)sha {
@@ -99,8 +99,8 @@
 
 - (id)initWithTreeEntry:(GTTreeEntry *)treeEntry error:(NSError **)error {
     git_object *obj;
-    int gitError = git_tree_entry_2object(&obj, treeEntry.repository.git_repository, treeEntry.git_tree_entry);
-    if (gitError < GIT_SUCCESS) {
+    int gitError = git_tree_entry_to_object(&obj, treeEntry.repository.git_repository, treeEntry.git_tree_entry);
+    if (gitError < GIT_OK) {
         if (error != NULL) {
             *error = [NSError git_errorFor:gitError withAdditionalDescription:@"Failed to get object for tree entry."];
         }

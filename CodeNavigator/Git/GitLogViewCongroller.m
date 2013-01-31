@@ -19,6 +19,8 @@
 #import "GTObjectDatabase.h"
 #import "GTOdbObject.h"
 #import "GitDiffViewController.h"
+#import "GTDiff.h"
+#import "GTDiffFile.h"
 
 #import "git2.h"
 
@@ -157,27 +159,30 @@
 
 #pragma mark libgit2 related
 
-typedef void (^GTTreeDiffStatusBlock)(const git_tree_diff_data *ptr, BOOL *stop);
+//typedef void (^GTTreeDiffStatusBlock)(const git_tree_diff_data *ptr, BOOL *stop);
+//
+//struct gitDiffData {
+//    __unsafe_unretained GTTreeDiffStatusBlock block;
+//};
+//
+//int gitTreeDiffCallback(const git_tree_diff_data *ptr, void *data);
+//int gitTreeDiffCallback(const git_tree_diff_data *ptr, void *data)
+//{
+//    struct gitDiffData* diff = data;
+//    BOOL stop = NO;
+//    diff->block(ptr, &stop);
+//    return (stop ? GIT_ERROR : GIT_OK);
+//}
 
-struct gitDiffData {
-    __unsafe_unretained GTTreeDiffStatusBlock block;
-};
-
-int gitTreeDiffCallback(const git_tree_diff_data *ptr, void *data);
-int gitTreeDiffCallback(const git_tree_diff_data *ptr, void *data)
-{
-    struct gitDiffData* diff = data;
-    BOOL stop = NO;
-    diff->block(ptr, &stop);
-    return (stop ? GIT_ERROR : GIT_SUCCESS);
-}
-
--(void) gitDiff:(GTTree*)old andNewer:(GTTree*)newer andBlock:(GTTreeDiffStatusBlock)block
-{
-    struct gitDiffData diff;
-    diff.block = block;
-    git_tree_diff(old.git_tree, newer.git_tree, gitTreeDiffCallback, &diff);
-}
+//-(void) gitDiff:(GTTree*)old andNewer:(GTTree*)newer andBlock:(GTTreeDiffStatusBlock)block
+//{
+//    struct gitDiffData diff;
+//    diff.block = block;
+//    git_diff_list *diffList;
+//    git_diff_tree_to_tree(&diffList, old.repository.git_repository, old.git_tree, newer.git_tree, 0);
+//
+////    git_tree_diff(old.git_tree, newer.git_tree, gitTreeDiffCallback, &diff);
+//}
 
 #pragma mark TableView related
 
@@ -237,26 +242,30 @@ int gitTreeDiffCallback(const git_tree_diff_data *ptr, void *data)
         oldObj = pending.oldObj;
         newObj = pending.neObj;
         [pendingDiffTree removeObjectAtIndex:0];
-        [self gitDiff:(GTTree*)oldObj andNewer:(GTTree*)newObj andBlock:^(const git_tree_diff_data *ptr, BOOL *stop){
-            NSError* error;
-            GTObject* newObj1 = [self.repo lookupObjectByOid:(git_oid*)(&(ptr->new_oid)) error:&error];
+        
+        NSError *error;
+        GTDiff* diff = [GTDiff diffOldTree:(GTTree*)oldObj withNewTree:(GTTree*)newObj options:NULL error:&error];
+        if (diff == NULL || error != NULL)
+        {
+            continue;
+        }
+        [diff enumerateDeltasUsingBlock:^(GTDiffDelta *delta, BOOL *stop){
+            NSError *error;
+            if (delta.git_diff_delta == 0) {
+                return;
+            }
+            git_oid new_oid = delta.git_diff_delta->new_file.oid;
+            git_oid old_oid = delta.git_diff_delta->old_file.oid;
+            GTObject* newObj1 = [self.repo lookupObjectByOid:&new_oid error:&error];
             if (error != nil) {
                 return;
             }
-            GTObject* oldObj1 = [self.repo lookupObjectByOid:(git_oid*)(&(ptr->old_oid)) error:&error];
+            GTObject* oldObj1 = [self.repo lookupObjectByOid:&old_oid error:&error];
             if (error != nil) {
                 return;
             }
-            if (oldObj1 == nil) {
-                oldObj1 = newObj;
-            }
-            if (newObj1 == nil) {
-                newObj1 = oldObj;
-            }
-            if (newObj1 == nil) {
-                return;
-            }
-            NSString* path = [NSString stringWithCString:ptr->path encoding:NSUTF8StringEncoding];
+
+            NSString* path = [NSString stringWithFormat:@"%@%@",pending.path, delta.oldFile.path];
             
             if ([[newObj1 type] compare:@"tree"] == NSOrderedSame) {
                 path = [NSString stringWithFormat:@"%@%@/", pending.path, path];
@@ -264,34 +273,87 @@ int gitTreeDiffCallback(const git_tree_diff_data *ptr, void *data)
                 [pending setNeObj:newObj1];
                 [pending setOldObj:oldObj1];
                 [pending setPath:path];
-                
                 [pendingDiffTree addObject:pending];
+                return;
             }
-            else
-            {
-                path = [NSString stringWithFormat:@"%@%@",pending.path, path];
-                git_status_t status = ptr->status;
-                switch (status) {
-                    case GIT_STATUS_ADDED:
-                        [fileList appendFormat:@"[A] %@\n", path];
-                        break;
-                    case GIT_STATUS_DELETED: 
-                        [fileList appendFormat:@"[D] %@\n", path];
-                        break;
-                    case GIT_STATUS_MODIFIED:
-                        [fileList appendFormat:@"[M] %@\n", path];
-                        break;
-                    default:
-                        break;
-                }
-                PendingData *pending = [[PendingData alloc] init];
-                [pending setPath:path];
-                [pending setNeObj:newObj1];
-                [pending setOldObj:oldObj1];
-                //add file to array
-                [diffFileArray addObject:pending];
+            
+            switch (delta.type) {
+                case GTDiffFileDeltaAdded:
+                    [fileList appendFormat:@"[A] %@\n", path];
+                    break;
+                case GTDiffFileDeltaModified:                    
+                    [fileList appendFormat:@"[M] %@\n", path];
+                    break;
+                case GTDiffFileDeltaDeleted:
+                    [fileList appendFormat:@"[D] %@\n", path];
+                    break;
+                default:
+                    break;
             }
+                        
+            PendingData *pending = [[PendingData alloc] init];
+            [pending setPath:path];
+            [pending setNeObj:newObj1];
+            [pending setOldObj:oldObj1];
+            //add file to array
+            [diffFileArray addObject:pending];
         }];
+        
+//        [self gitDiff:(GTTree*)oldObj andNewer:(GTTree*)newObj andBlock:^(const git_tree_diff_data *ptr, BOOL *stop){
+//            NSError* error;
+//            GTObject* newObj1 = [self.repo lookupObjectByOid:(git_oid*)(&(ptr->new_oid)) error:&error];
+//            if (error != nil) {
+//                return;
+//            }
+//            GTObject* oldObj1 = [self.repo lookupObjectByOid:(git_oid*)(&(ptr->old_oid)) error:&error];
+//            if (error != nil) {
+//                return;
+//            }
+//            if (oldObj1 == nil) {
+//                oldObj1 = newObj;
+//            }
+//            if (newObj1 == nil) {
+//                newObj1 = oldObj;
+//            }
+//            if (newObj1 == nil) {
+//                return;
+//            }
+//            NSString* path = [NSString stringWithCString:ptr->path encoding:NSUTF8StringEncoding];
+//            
+//            if ([[newObj1 type] compare:@"tree"] == NSOrderedSame) {
+//                path = [NSString stringWithFormat:@"%@%@/", pending.path, path];
+//                PendingData *pending = [[PendingData alloc] init];
+//                [pending setNeObj:newObj1];
+//                [pending setOldObj:oldObj1];
+//                [pending setPath:path];
+//                
+//                [pendingDiffTree addObject:pending];
+//            }
+//            else
+//            {
+//                path = [NSString stringWithFormat:@"%@%@",pending.path, path];
+//                git_status_t status = ptr->status;
+//                switch (status) {
+//                    case GIT_STATUS_ADDED:
+//                        [fileList appendFormat:@"[A] %@\n", path];
+//                        break;
+//                    case GIT_STATUS_DELETED: 
+//                        [fileList appendFormat:@"[D] %@\n", path];
+//                        break;
+//                    case GIT_STATUS_MODIFIED:
+//                        [fileList appendFormat:@"[M] %@\n", path];
+//                        break;
+//                    default:
+//                        break;
+//                }
+//                PendingData *pending = [[PendingData alloc] init];
+//                [pending setPath:path];
+//                [pending setNeObj:newObj1];
+//                [pending setOldObj:oldObj1];
+//                //add file to array
+//                [diffFileArray addObject:pending];
+//            }
+//        }];
     }
     [detailView2 setText:fileList];
 	[tableView endUpdates];

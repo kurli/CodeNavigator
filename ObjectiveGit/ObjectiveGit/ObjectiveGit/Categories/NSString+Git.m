@@ -51,9 +51,9 @@
 - (NSString *)git_shortUniqueShaString {
 	if ([self git_isHexString] == NO) { return nil; }
     
-	// Kyle says with a length of 6 our chances of collision are 9.6e-29, so we'll take those odds
+	// Seven characters matches the short form of git on the command line
 	// todo: Vicent wrote something to do this officially: consider using it instead
-	static const NSUInteger magicUniqueLength = 6;
+	static const NSUInteger magicUniqueLength = 7;
     if ([self length] < magicUniqueLength) {
         return nil;
     }
@@ -65,7 +65,7 @@
     if ([self git_isHexString] == NO) {
         if (error != NULL) {
             *error = [NSError errorWithDomain:GTGitErrorDomain 
-                                         code:GIT_EINVALIDARGS 
+                                         code:GITERR_INVALID
                                      userInfo:
                       [NSDictionary dictionaryWithObject:@"unabled to create oid from non-sha string" 
                                                   forKey:NSLocalizedDescriptionKey]];
@@ -74,7 +74,7 @@
     }
     
 	int gitError = git_oid_fromstr(oid, [self UTF8String]);
-	if(gitError < GIT_SUCCESS) {
+	if(gitError < GIT_OK) {
 		if(error != NULL) {
 			*error = [NSError git_errorForMkStr:gitError];
         }

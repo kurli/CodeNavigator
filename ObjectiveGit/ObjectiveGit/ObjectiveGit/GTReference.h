@@ -26,8 +26,12 @@
 #import "GTObject.h"
 
 typedef enum {
+	GTReferenceErrorCodeInvalidReference = -4,
+} GTReferenceErrorCode;
+
+typedef enum {
 	GTReferenceTypesOid = GIT_REF_OID,				/** A reference which points at an object id */
-	GTReferenceTypesSymoblic = GIT_REF_SYMBOLIC,	/** A reference which points at another reference */
+	GTReferenceTypesSymbolic = GIT_REF_SYMBOLIC,	/** A reference which points at another reference */
 	GTReferenceTypesPacked = GIT_REF_PACKED,
 	GTReferenceTypesHasPeel = GIT_REF_HAS_PEEL,
 	GTReferenceTypesListAll = GIT_REF_LISTALL,
@@ -38,8 +42,8 @@ typedef enum {
 
 @interface GTReference : NSObject <GTObject> {}
 
-@property (nonatomic, assign) git_reference *git_reference;
-@property (nonatomic, unsafe_unretained) GTRepository *repository;
+@property (nonatomic, readonly) git_reference *git_reference;
+@property (nonatomic, strong) GTRepository *repository;
 @property (nonatomic, readonly) NSString *type;
 @property (nonatomic, readonly) const git_oid *oid;
 @property (nonatomic, readonly, getter=isValid) BOOL valid;
@@ -54,17 +58,12 @@ typedef enum {
 + (id)referenceByResolvingSymbolicReference:(GTReference *)symbolicRef error:(NSError **)error;
 - (id)initByResolvingSymbolicReference:(GTReference *)symbolicRef error:(NSError **)error;
 
+- (id)initWithGitReference:(git_reference *)ref repository:(GTRepository *)repository;
+
 - (NSString *)target;
 - (BOOL)setTarget:(NSString *)newTarget error:(NSError **)error;
 - (NSString *)name;
 - (BOOL)setName:(NSString *)newName error:(NSError **)error;
-
-// Pack this reference
-//
-// error(out) - will be filled if an error occurs
-//
-// returns YES if the pack was successful
-- (BOOL)packAllWithError:(NSError **)error;
 
 // Delete this reference
 //
@@ -86,5 +85,8 @@ typedef enum {
 //
 // returns YES if the reload was successful, NO otherwise.
 - (BOOL)reloadWithError:(NSError **)error;
+
+// An error indicating that the git_reference is no longer valid.
++ (NSError *)invalidReferenceError;
 
 @end

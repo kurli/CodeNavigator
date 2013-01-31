@@ -36,7 +36,7 @@ NSString * const GTGitErrorDomain = @"GTGitErrorDomain";
 @implementation NSError (Git)
 
 + (NSError *)git_errorFor:(NSInteger)code withAdditionalDescription:(NSString *)desc {
-	return [NSError errorWithDomain:GTGitErrorDomain code:code userInfo:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@ %@", desc, [self gitLastErrorDescriptionWithCode:code]] forKey:NSLocalizedDescriptionKey]];
+	return [NSError errorWithDomain:GTGitErrorDomain code:code userInfo:[NSDictionary dictionaryWithObjectsAndKeys:desc, NSLocalizedDescriptionKey, [self gitLastErrorDescriptionWithCode:code], NSLocalizedFailureReasonErrorKey, nil]];
 }
 
 + (NSError *)git_errorFor:(NSInteger)code {
@@ -48,12 +48,16 @@ NSString * const GTGitErrorDomain = @"GTGitErrorDomain";
 }
 
 + (NSString *)gitLastErrorDescriptionWithCode:(NSInteger)code {
-	const char *gitLastError = git_lasterror();
-	if(gitLastError == NULL && code == GIT_EOSERR) {
-		gitLastError = strerror(errno);
+	const git_error *gitLastError = giterr_last();
+	if(gitLastError == NULL && code == GITERR_OS) {
+		return [NSString stringWithUTF8String:strerror(errno)];
 	}
 	
-	return [NSString stringWithUTF8String:gitLastError];
+	if(gitLastError != NULL) {
+		return [NSString stringWithUTF8String:gitLastError->message];
+	} else {
+		return nil;
+	}
 }
 
 @end

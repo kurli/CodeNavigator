@@ -1318,6 +1318,13 @@
 		948F1C7015583B7600AE4C99 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentViewController.h; path = Comments/CommentViewController.h; sourceTree = "<group>"; };
 		948F1C7115583B7600AE4C99 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentViewController.m; path = Comments/CommentViewController.m; sourceTree = "<group>"; };
 		948F1C7215583B7600AE4C99 /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentViewController.xib; path = Comments/CommentViewController.xib; sourceTree = "<group>"; };
+		949335B916A71BF300E0883E /* GTConfiguration+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GTConfiguration+Private.h"; path = "ObjectiveGit/ObjectiveGit/ObjectiveGit/GTConfiguration+Private.h"; sourceTree = "<group>"; };
+		949335BA16A71BF300E0883E /* GTDiff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTDiff.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTDiff.h; sourceTree = "<group>"; };
+		949335BB16A71BF300E0883E /* GTDiffDelta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTDiffDelta.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTDiffDelta.h; sourceTree = "<group>"; };
+		949335BC16A71BF300E0883E /* GTDiffFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTDiffFile.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTDiffFile.h; sourceTree = "<group>"; };
+		949335BD16A71BF400E0883E /* GTDiffHunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTDiffHunk.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTDiffHunk.h; sourceTree = "<group>"; };
+		949335BE16A71BF400E0883E /* GTDiffLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTDiffLine.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTDiffLine.h; sourceTree = "<group>"; };
+		949335BF16A71BF400E0883E /* GTRemote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTRemote.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTRemote.h; sourceTree = "<group>"; };
 		9497F3A1151A499C006BCBBF /* ObjectiveCParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCParser.h; sourceTree = "<group>"; };
 		9497F3A2151A499D006BCBBF /* ObjectiveCParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCParser.m; sourceTree = "<group>"; };
 		9497F3A5151A4A13006BCBBF /* ObjectiveCDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCDefinition.h; sourceTree = "<group>"; };
@@ -2208,6 +2215,13 @@
 		94BF7D8C150E6D6E00FCF653 /* Header */ = {
 			isa = PBXGroup;
 			children = (
+				949335B916A71BF300E0883E /* GTConfiguration+Private.h */,
+				949335BA16A71BF300E0883E /* GTDiff.h */,
+				949335BB16A71BF300E0883E /* GTDiffDelta.h */,
+				949335BC16A71BF300E0883E /* GTDiffFile.h */,
+				949335BD16A71BF400E0883E /* GTDiffHunk.h */,
+				949335BE16A71BF400E0883E /* GTDiffLine.h */,
+				949335BF16A71BF400E0883E /* GTRemote.h */,
 				94BF7DA3150E6E9900FCF653 /* dct_weak.h */,
 				94BF7DA2150E6E7900FCF653 /* git2.h */,
 				94BF7D9F150E6DD200FCF653 /* NSData+Git.h */,

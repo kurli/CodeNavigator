@@ -837,20 +837,20 @@ static Utils *static_utils;
             if ([[Utils getInstance] isProjectDatabaseFile:fullPath]) {
                 continue;
             }
-            [cache appendString:fullPath];
-            [cache appendString:@"\n"];
+//            [cache appendString:fullPath];
+//            [cache appendString:@"\n"];
             
-//            if ([[Utils getInstance] isSupportedType:file] == YES)
-//            {
-//                [cache appendString:fullPath];
-//                [cache appendString:@"\n"];
-//            } else {
-//                if ([[Utils getInstance] isProjectDatabaseFile:fullPath]) {
-//                    continue;
-//                }
-//                [delta appendString:fullPath];
-//                [delta appendString:@"\n"];
-//            }
+            if ([[Utils getInstance] isSupportedType:file] == YES)
+            {
+                [cache appendString:fullPath];
+                [cache appendString:@"\n"];
+            } else {
+                if ([[Utils getInstance] isProjectDatabaseFile:fullPath]) {
+                    continue;
+                }
+                [delta appendString:fullPath];
+                [delta appendString:@"\n"];
+            }
         }
     }
 }

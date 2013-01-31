@@ -23,9 +23,7 @@
 //  THE SOFTWARE.
 //
 
-#import <git2.h>
-
-#import <ObjectiveGit/dct_weak.h>
+#import "git2.h"
 
 #import <ObjectiveGit/GTRepository.h>
 #import <ObjectiveGit/GTEnumerator.h>
@@ -39,6 +37,8 @@
 #import <ObjectiveGit/GTReference.h>
 #import <ObjectiveGit/GTBranch.h>
 #import <ObjectiveGit/GTObject.h>
+#import <ObjectiveGit/GTRemote.h>
+#import <ObjectiveGit/GTConfiguration.h>
 
 #import <ObjectiveGit/GTObjectDatabase.h>
 #import <ObjectiveGit/GTOdbObject.h>
@@ -46,3 +46,19 @@
 #import <ObjectiveGit/NSError+Git.h>
 #import <ObjectiveGit/NSData+Git.h>
 #import <ObjectiveGit/NSString+Git.h>
+
+#import <ObjectiveGit/GTDiff.h>
+#import <ObjectiveGit/GTDiffDelta.h>
+#import <ObjectiveGit/GTDiffFile.h>
+#import <ObjectiveGit/GTDiffHunk.h>
+#import <ObjectiveGit/GTDiffLine.h>
+
+// This must be called before doing any ObjectiveGit work.  Under normal
+// circumstances, it will automatically be called on your behalf.
+// If you've linked ObjectiveGit as a static library but haven't set
+// the -all_load linker flag, you'll have to call this manually.
+extern void GTSetupThreads(void);
+
+// If you called GTSetupThreads, you must call this after all your ObjectiveGit 
+// work is done before your app quits.
+extern void GTShutdownThreads(void);

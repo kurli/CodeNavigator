@@ -35,7 +35,7 @@
 @implementation GTIndexEntry
 
 - (NSString *)description {
-  return [NSString stringWithFormat:@"<%@: %p> path: %@, modificationDate: %@, creationDate: %@, fileSize: %ll KB, flags: %d", NSStringFromClass([self class]), self, self.path, self.modificationDate, self.creationDate, self.fileSize, self.flags];
+  return [NSString stringWithFormat:@"<%@: %p> path: %@, modificationDate: %@, creationDate: %@, fileSize: %lld KB, flags: %lu", NSStringFromClass([self class]), self, self.path, self.modificationDate, self.creationDate, self.fileSize, (unsigned long)self.flags];
 }
 
 - (void)dealloc {
@@ -60,7 +60,10 @@
 @synthesize valid;
 @synthesize repository;
 
-+ (id)indexEntryWithEntry:(git_index_entry *)theEntry {
++ (id)indexEntryWithEntry:(const git_index_entry *)theEntry {
+	if (theEntry == NULL)
+		return nil;
+
 	return [[self alloc] initWithEntry:theEntry];
 }
 
@@ -71,10 +74,13 @@
 	return self;
 }
 
-- (id)initWithEntry:(git_index_entry *)theEntry {
+- (id)initWithEntry:(const git_index_entry *)theEntry {
 	if((self = [self init])) {
-        git_index_entry *thisEntry = self.git_index_entry;
-        memcpy(thisEntry, theEntry, sizeof(git_index_entry));
+		if (theEntry)
+		{
+			git_index_entry *thisEntry = self.git_index_entry;
+			memcpy(thisEntry, theEntry, sizeof(git_index_entry));
+		}
 	}
 	return self;
 }
@@ -97,7 +103,7 @@
 
 - (BOOL)setSha:(NSString *)theSha error:(NSError **)error {
 	int gitError = git_oid_fromstr(&git_index_entry->oid, [theSha UTF8String]);
-	if(gitError < GIT_SUCCESS) {
+	if(gitError < GIT_OK) {
 		if(error != NULL)
 			*error = [NSError git_errorForMkStr:gitError];
 		return NO;

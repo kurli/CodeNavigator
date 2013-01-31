@@ -35,7 +35,7 @@
 @implementation GTTree
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"<%@: %p> numberOfEntries: %i", NSStringFromClass([self class]), self, [self numberOfEntries]];
+	return [NSString stringWithFormat:@"<%@: %p> numberOfEntries: %lu", NSStringFromClass([self class]), self, (unsigned long)[self numberOfEntries]];
 }
 
 
@@ -71,7 +71,7 @@
 	if(!success) return nil;
 	
 	int gitError = git_tree_add_entry(&newEntry, self.tree, &oid, [filename UTF8String], (int)mode);
-	if(gitError < GIT_SUCCESS) {
+	if(gitError < GIT_OK) {
 		if(error != NULL)
 			*error = [NSError gitErrorForAddTreeEntry:gitError];
 		return nil;

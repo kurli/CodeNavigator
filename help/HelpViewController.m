@@ -57,7 +57,7 @@
 #ifdef LITE_VERSION
     [picker setSubject:@"CodeNavigatorLite v2.1 feedback"];
 #else
-    [picker setSubject:@"CodeNavigator v2.3 feedback"];
+    [picker setSubject:@"CodeNavigator v2.4 feedback"];
 #endif
     [self presentModalViewController:picker animated:YES];
 }
@@ -264,7 +264,7 @@
 #ifdef LITE_VERSION
         return @"CodeNavigatorLite 2.1 Guangzhen Li\n@2011-2012";
 #else
-        return @"CodeNavigator 2.3 Guangzhen Li\n@2011-2012";
+        return @"CodeNavigator 2.4 Guangzhen Li\n@2011-2013";
 #endif
     }
     return @"";

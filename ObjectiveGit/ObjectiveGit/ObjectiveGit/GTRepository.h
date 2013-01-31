@@ -39,7 +39,6 @@
 @class GTBranch;
 @class GTConfiguration;
 
-
 // Options returned from the enumerateFileStatusUsingBlock: function
 enum {
 	GTRepositoryFileStatusIndexNew = GIT_STATUS_INDEX_NEW,
@@ -55,13 +54,21 @@ enum {
 
 typedef unsigned int GTRepositoryFileStatus;
 
+typedef enum : git_reset_t {
+    GTRepositoryResetTypeSoft = GIT_RESET_SOFT,
+    GTRepositoryResetTypeMixed = GIT_RESET_MIXED,
+    GTRepositoryResetTypeHard = GIT_RESET_HARD
+} GTRepositoryResetType;
+
 typedef void (^GTRepositoryStatusBlock)(NSURL *fileURL, GTRepositoryFileStatus status, BOOL *stop);
 
-
-@interface GTRepository : NSObject <GTObject> {}
+@interface GTRepository : NSObject <GTObject>
 
 @property (nonatomic, assign, readonly) git_repository *git_repository;
+// The file URL for the repository's working directory.
 @property (nonatomic, readonly, strong) NSURL *fileURL;
+// The file URL for the repository's .git directory.
+@property (nonatomic, readonly, strong) NSURL *gitDirectoryURL;
 @property (nonatomic, readonly, strong) GTEnumerator *enumerator; // should only be used on the main thread
 @property (nonatomic, readonly, strong) GTIndex *index;
 @property (nonatomic, readonly, strong) GTObjectDatabase *objectDatabase;
@@ -74,6 +81,19 @@ typedef void (^GTRepositoryStatusBlock)(NSURL *fileURL, GTRepositoryFileStatus s
 
 + (id)repositoryWithURL:(NSURL *)localFileURL error:(NSError **)error;
 - (id)initWithURL:(NSURL *)localFileURL error:(NSError **)error;
+
+// Clone a repository
+//
+// originURL             - The URL to clone from.
+// workdirURL            - A URL to the desired working directory on the local machine.
+// barely                - If YES, create a bare clone
+// withCheckout          - if NO, don't checkout the remote HEAD
+// error                 - A pointer to fill in case of trouble.
+// transferProgressBlock - This block is called with network transfer updates.
+// checkoutProgressBlock - This block is called with checkout updates (if withCheckout is YES).
+//
+// returns nil (and fills the error parameter) if an error occurred, or a GTRepository object if successful.
++ (id)cloneFromURL:(NSURL *)originURL toWorkingDirectory:(NSURL *)workdirURL barely:(BOOL)barely withCheckout:(BOOL)withCheckout error:(NSError **)error transferProgressBlock:(void (^)(const git_transfer_progress *))transferProgressBlock checkoutProgressBlock:(void (^)(NSString *path, NSUInteger completedSteps, NSUInteger totalSteps))checkoutProgressBlock;
 
 // Helper for getting the sha1 has of a raw object
 //
@@ -88,6 +108,9 @@ typedef void (^GTRepositoryStatusBlock)(NSURL *fileURL, GTRepositoryFileStatus s
 - (GTObject *)lookupObjectByOid:(git_oid *)oid error:(NSError **)error;
 - (GTObject *)lookupObjectBySha:(NSString *)sha objectType:(GTObjectType)type error:(NSError **)error;
 - (GTObject *)lookupObjectBySha:(NSString *)sha error:(NSError **)error;
+
+// Lookup an object in the repo using a revparse spec
+- (GTObject *)lookupObjectByRefspec:(NSString *)spec error:(NSError **)error;
 
 // List references in the repository
 //
@@ -163,13 +186,20 @@ typedef void (^GTRepositoryStatusBlock)(NSURL *fileURL, GTRepositoryFileStatus s
 // returns the local commits, an empty array if there is no remote branch, or nil if an error occurred
 - (NSArray *)localCommitsRelativeToRemoteBranch:(GTBranch *)remoteBranch error:(NSError **)error;
 
-- (NSArray*) remoteNames;
-- (BOOL) hasRemoteNamed: (NSString*) potentialRemoteName;
-
-// Returns a NSURL to the git working directory
-// NOTE: the fileURL property of GTRepository points to the .git folder
-// this repository.
+// Pack all references in the repository.
 //
-// Returns a path to the git working directory
-- (NSURL*) repositoryURL;
+// error(out) - will be filled if an error occurs
+//
+// returns YES if the pack was successful
+- (BOOL)packAllWithError:(NSError **)error;
+
+// Reset the repository's HEAD to the given commit.
+//
+// commit - the commit the HEAD is to be reset to. Must not be nil.
+// resetType - The type of reset to be used.
+// error(out) - in the event of an error this may be set.
+//
+// Returns `YES` if successful, `NO` if not.
+- (BOOL)resetToCommit:(GTCommit *)commit withResetType:(GTRepositoryResetType)resetType error:(NSError **)error;
+
 @end
