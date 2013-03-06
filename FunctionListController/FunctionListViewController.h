@@ -16,6 +16,10 @@
 
 @property (strong, atomic) NSArray* tagsArray;
 
+@property (strong, atomic) NSArray* tagsArrayCopy;
+
 @property (unsafe_unretained, nonatomic) IBOutlet UITableView *tableView;
+
+@property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *searchField;
 
 @end

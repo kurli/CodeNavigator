@@ -1553,15 +1553,15 @@
         [scrollBackgroundView setBackgroundColor:[UIColor clearColor]];
         
         // set activeview
-        if (self.secondWebView.frame.size.height > 10){
-            if (self.webView == webView) {
-                [self setUpWebViewAsActive];
-                [self.webViewSegmentController setSelectedSegmentIndex:0];
-            } else if (self.secondWebView == webView){
-                [self setDownWebViewAsActive];
-                [self.webViewSegmentController setSelectedSegmentIndex:1];
-            }
-        }
+//        if (self.secondWebView.frame.size.height > 10){
+//            if (self.webView == webView) {
+//                [self setUpWebViewAsActive];
+//                [self.webViewSegmentController setSelectedSegmentIndex:0];
+//            } else if (self.secondWebView == webView){
+//                [self setDownWebViewAsActive];
+//                [self.webViewSegmentController setSelectedSegmentIndex:1];
+//            }
+//        }
         return NO;
     }
     

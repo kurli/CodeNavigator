@@ -55,9 +55,9 @@
     NSArray *toRecipients = [NSArray arrayWithObject:@"guangzhen@hotmail.com"];   
     [picker setToRecipients:toRecipients];
 #ifdef LITE_VERSION
-    [picker setSubject:@"CodeNavigatorLite v2.1 feedback"];
+    [picker setSubject:@"CodeNavigatorLite v2.5 feedback"];
 #else
-    [picker setSubject:@"CodeNavigator v2.4 feedback"];
+    [picker setSubject:@"CodeNavigator v2.5 feedback"];
 #endif
     [self presentModalViewController:picker animated:YES];
 }
@@ -262,9 +262,9 @@
 {
     if (section == 4) {
 #ifdef LITE_VERSION
-        return @"CodeNavigatorLite 2.1 Guangzhen Li\n@2011-2012";
+        return @"CodeNavigatorLite 2.5 Guangzhen Li\n@2011-2013";
 #else
-        return @"CodeNavigator 2.4 Guangzhen Li\n@2011-2013";
+        return @"CodeNavigator 2.5 Guangzhen Li\n@2011-2013";
 #endif
     }
     return @"";

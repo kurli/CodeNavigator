@@ -21,6 +21,7 @@
 #else
 #import "FileInfoViewController.h"
 #import "HelpViewController.h"
+#import "git2.h"
 #endif
 
 @implementation MasterViewController
@@ -734,8 +735,60 @@
     [[Utils getInstance] analyzeProject:self.currentProjectPath andForceCreate:YES];
 }
 
+//test git clone
+
+static void checkout_progress(const char *path, size_t cur, size_t tot, void *payload)
+{
+	bool *was_called = (bool*)payload;
+	(*was_called) = true;
+}
+
+static void fetch_progress(const git_transfer_progress *stats, void *payload)
+{
+	bool *was_called = (bool*)payload;
+	(*was_called) = true;
+}
+
+
+- (void) gitTest
+{
+    git_repository *g_repo;
+    git_clone_options g_options;
+//    git_buf path = GIT_BUF_INIT;
+    git_reference *head;
+    git_remote *origin;
+    git_checkout_opts dummy_opts = GIT_CHECKOUT_OPTS_INIT;
+
+    bool checkout_progress_cb_was_called = false,
+    fetch_progress_cb_was_called = false;
+    
+    memset(&g_options, 0, sizeof(git_clone_options));
+	g_options.version = GIT_CLONE_OPTIONS_VERSION;
+	g_options.checkout_opts = dummy_opts;
+	g_options.checkout_opts.checkout_strategy = GIT_CHECKOUT_SAFE;
+    
+    g_options.checkout_opts.checkout_strategy = GIT_CHECKOUT_SAFE_CREATE;
+	g_options.checkout_opts.progress_cb = &checkout_progress;
+	g_options.checkout_opts.progress_payload = &checkout_progress_cb_was_called;
+	g_options.fetch_progress_cb = &fetch_progress;
+	g_options.fetch_progress_payload = &fetch_progress_cb_was_called;
+    
+    NSString* gitFolder = self.currentProjectPath;
+    gitFolder = [gitFolder stringByAppendingPathComponent:@"test"];
+
+    int success = git_clone(&g_repo, "http://github.com/libgit2/TestGitRepository", [gitFolder cStringUsingEncoding:NSUTF8StringEncoding], &g_options);
+    
+//    success = git_buf_joinpath(&path, git_repository_workdir(g_repo), "master.txt")
+    
+    success = git_reference_lookup(&head, g_repo, "HEAD");
+    success = git_remote_load(&origin, g_repo, "origin");
+    
+}
+
 - (IBAction)gitClicked:(id)sender {
 #ifndef IPHONE_VERSION
+//    [self gitTest];
+//    return;
     NSError* error;
     GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewCongroller" bundle:[NSBundle mainBundle]];
     NSString* gitFolder = self.currentProjectPath;

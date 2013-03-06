@@ -21,6 +21,7 @@
 @synthesize activityIndicator;
 @synthesize tagsArray;
 @synthesize tableView;
+@synthesize tagsArrayCopy;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,6 +42,7 @@
 {
     [self setActivityIndicator:nil];
     [self setTableView:nil];
+    [self setSearchField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -167,11 +169,51 @@
     js = [NSString stringWithFormat:@"FocusLine('L%d')",line];
     [[Utils getInstance].detailViewController.activeWebView  stringByEvaluatingJavaScriptFromString:js];
     [self dismissModalViewControllerAnimated:YES];
+    [self.searchField resignFirstResponder];
 }
 
 -(GLfloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 50;
 }
+
+
+#pragma mark SearchDelegate
+- (IBAction)searchFileDoneButtonClicked:(id)sender
+{
+    if ([self.searchField.text length] == 0) {
+        tagsArray = tagsArrayCopy;
+        [tableView reloadData];
+    }
+}
+
+- (void) searchBarTextDidBeginEditing:(UISearchBar *)theSearchBar {
+    tagsArrayCopy = tagsArray;
+    tagsArray = nil;
+}
+
+- (void) searchBar:(UISearchBar *)theSearchBar textDidChange:(NSString *)searchText {
+    if ([searchText length] == 0) {
+        tagsArray = tagsArrayCopy;
+        [tableView reloadData];
+        return;
+    }
+    
+    NSMutableArray* result = [[NSMutableArray alloc] init];
+    NSString* searchLow = [searchText lowercaseString];
+    NSString* itemLow;
+    
+    for (int i =0; i<[tagsArrayCopy count]; i++) {
+        FunctionItem* item = [tagsArrayCopy objectAtIndex:i];
+        itemLow = [item.name lowercaseString];
+
+        if ([itemLow rangeOfString:searchLow].location != NSNotFound) {
+            [result addObject:item];
+        }
+    }
+    tagsArray = result;
+    [tableView reloadData];
+}
+
 
 @end
