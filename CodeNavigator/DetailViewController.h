@@ -16,6 +16,10 @@
 #import "MGSplitViewController.h"
 #import "DisplayModeController.h"
 
+#ifdef LITE_VERSION
+#import "GAI.h"
+#endif
+
 typedef enum _JSState {
     JS_NONE,
     JS_GOTO_LINE_AND_FOCUS_KEYWORD,
@@ -31,7 +35,11 @@ typedef enum _JSState {
 @class VirtualizeViewController;
 @class FunctionListViewController;
 
+#ifdef LITE_VERSION
+@interface DetailViewController : GAITrackedViewController <UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MGSplitViewControllerDelegate>
+#else
 @interface DetailViewController : UIViewController <UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MGSplitViewControllerDelegate>
+#endif
 {
     int currentSearchFocusLine;
     BOOL shownToolBar;

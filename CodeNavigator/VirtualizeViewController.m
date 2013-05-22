@@ -95,6 +95,10 @@
         [self.toolBar setItems:fileManagerToolBarsArray animated:YES];
     else
         [self.toolBar setItems:fsViewToolBarsArray animated:YES];
+    
+#ifdef LITE_VERSION
+    self.trackedViewName = @"Help Screen";
+#endif
 }
 
 - (void)didReceiveMemoryWarning

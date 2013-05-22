@@ -159,6 +159,10 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    if (self.detailViewController)
+    {
+        return [self.detailViewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
+    }
     return YES;
 }
 
@@ -494,7 +498,7 @@
 	[self.detailViewController viewWillAppear:animated];
 	
 	_reconfigurePopup = YES;
-	[self layoutSubviews];
+//	[self layoutSubviews];
 }
 
 
@@ -506,6 +510,7 @@
 		[self.masterViewController viewDidAppear:animated];
 	}
 	[self.detailViewController viewDidAppear:animated];
+    [self layoutSubviews];
 }
 
 

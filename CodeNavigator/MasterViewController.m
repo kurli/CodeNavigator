@@ -23,6 +23,9 @@
 #import "HelpViewController.h"
 #import "git2.h"
 #endif
+#ifdef LITE_VERSION
+#import "GAI.h"
+#endif
 
 @implementation MasterViewController
 @synthesize fileSearchBar = _fileSearchBar;
@@ -806,6 +809,12 @@ static void fetch_progress(const git_transfer_progress *stats, void *payload)
     [gitlogView gitLogForProject: gitFolder];
     [gitlogView showModualView];
 #endif
+#ifdef LITE_VERSION
+    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
+                                                    withAction:nil
+                                                     withLabel:@"git clicked"
+                                                     withValue:nil];
+#endif
 }
 
 - (IBAction)dropBoxClicked:(id)sender {
@@ -814,6 +823,12 @@ static void fetch_progress(const git_transfer_progress *stats, void *payload)
     [[Utils getInstance] setDropBoxViewController:dropBoxViewController];
     [dropBoxViewController showModualView];
     dropBoxViewController = nil;
+#endif
+#ifdef LITE_VERSION
+    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
+                                                    withAction:nil
+                                                     withLabel:@"Dropbox clicked"
+                                                     withValue:nil];
 #endif
 }
 
@@ -856,9 +871,21 @@ static void fetch_progress(const git_transfer_progress *stats, void *payload)
     
     SecurityViewController* viewController = [[SecurityViewController alloc] init];
     [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
+#ifdef LITE_VERSION
+    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
+                                                    withAction:nil
+                                                     withLabel:@"Lock button clicked"
+                                                     withValue:nil];
+#endif
 }
 
 - (IBAction)commentClicked:(id)sender {
+#ifdef LITE_VERSION
+    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
+                                                    withAction:nil
+                                                     withLabel:@"Comments clicked"
+                                                     withValue:nil];
+#endif
     UIBarButtonItem *item = (UIBarButtonItem*)sender;
     
     if ([commentManagerPopOverController isPopoverVisible] == YES) {
@@ -926,6 +953,12 @@ static void fetch_progress(const git_transfer_progress *stats, void *payload)
         [_webServicePopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 #endif
     }
+#ifdef LITE_VERSION
+    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
+                                                    withAction:nil
+                                                     withLabel:@"Web Upload Service"
+                                                     withValue:nil];
+#endif
 }
 
 #pragma mark SearchDelegate

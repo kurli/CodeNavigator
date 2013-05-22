@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#ifdef LITE_VERSION
+#import "GAITrackedViewController.h"
+#endif
 
 @class VirtualizeWrapper;
 @class FileManagerController;
@@ -20,7 +23,11 @@ typedef enum _ALERT_TYPE
     ALERT_DELETE
 } ALERT_TYPE;
 
+#ifdef LITE_VERSION
+@interface VirtualizeViewController : GAITrackedViewController <UITableViewDelegate, UITableViewDataSource>
+#else
 @interface VirtualizeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+#endif
 {
     // For this flag, when click keyword in webview, it will automatically 
     // search global definition

@@ -17,6 +17,9 @@
 #import "CommentViewController.h"
 #import "CommentWrapper.h"
 #import "FunctionListViewController.h"
+#ifdef LITE_VERSION
+#import "GAI.h"
+#endif
 
 #define TOOLBAR_X_MASTER_SHOW 55
 #define TOOLBAR_X_MASTER_HIDE 208
@@ -121,6 +124,9 @@
      forControlEvents:UIControlEventTouchDragInside];
     
     [super viewDidLoad];
+#ifdef LITE_VERSION
+    self.trackedViewName = @"Browsing Code";
+#endif
 }
 
 - (void)viewDidUnload
@@ -1137,6 +1143,12 @@
     
     [self.displayModePopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 #endif
+#ifdef LITE_VERSION
+    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
+                                                    withAction:nil
+                                                     withLabel:@"Settings clicked"
+                                                     withValue:nil];
+#endif
 }
 
 - (IBAction)historyListClicked:(id)sender {
@@ -1156,6 +1168,12 @@
     self.historyListPopover.popoverContentSize = self.historyListController.view.frame.size;
     
     [self.historyListPopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+#endif
+#ifdef LITE_VERSION
+    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
+                                                    withAction:nil
+                                                     withLabel:@"History list clicked"
+                                                     withValue:nil];
 #endif
 }
 
@@ -1182,6 +1200,12 @@
     self.virtualizeViewController = [[VirtualizeViewController alloc] init];
     [self showVirtualizeView];
     isVirtualizeDisplayed = YES;
+#ifdef LITE_VERSION
+    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
+                                                    withAction:nil
+                                                     withLabel:@"Visualize clicked"
+                                                     withValue:nil];
+#endif
 }
 
 - (void) showVirtualizeView
@@ -1290,6 +1314,12 @@
         [self.activeMark setHidden:YES];
     }
     [UIView commitAnimations];
+#ifdef LITE_VERSION
+    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
+                                                    withAction:nil
+                                                     withLabel:@"Split Clicked"
+                                                     withValue:nil];
+#endif
 }
 
 - (IBAction)functionListClicked:(id)sender {
@@ -1316,6 +1346,12 @@
 //    self.functionListPopover.popoverContentSize = self.historyListController.view.frame.size;
     
     [self.functionListPopover presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+#endif
+#ifdef LITE_VERSION
+    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
+                                                    withAction:nil
+                                                     withLabel:@"Function List Clicked"
+                                                     withValue:nil];
 #endif
 }
 

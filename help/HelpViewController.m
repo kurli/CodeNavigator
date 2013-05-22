@@ -9,6 +9,10 @@
 #import "HelpViewController.h"
 #import "Utils.h"
 
+#ifdef LITE_VERSION
+#import "GAI.h"
+#endif
+
 #define ALERT_DEMO_VIDEO 0
 #define ALERT_TWITTER_FOLLOW 1
 #define ALERT_WEIBO_FOLLOW 2
@@ -33,6 +37,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+#ifdef LITE_VERSION
+    self.trackedViewName = @"Help Screen";
+#endif
 }
 
 - (void)viewDidUnload
@@ -55,9 +62,9 @@
     NSArray *toRecipients = [NSArray arrayWithObject:@"guangzhen@hotmail.com"];   
     [picker setToRecipients:toRecipients];
 #ifdef LITE_VERSION
-    [picker setSubject:@"CodeNavigatorLite v2.5 feedback"];
+    [picker setSubject:@"CodeNavigatorLite v2.5.1 feedback"];
 #else
-    [picker setSubject:@"CodeNavigator v2.5 feedback"];
+    [picker setSubject:@"CodeNavigator v2.5.1 feedback"];
 #endif
     [self presentModalViewController:picker animated:YES];
 }
@@ -145,6 +152,12 @@
     UIAlertView* alertConfirmView;
     switch (indexPath.section) {
         case 0:
+#ifdef LITE_VERSION
+            [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"Help Selection"
+                                                            withAction:nil
+                                                             withLabel:@"Demo Video"
+                                                             withValue:nil];
+#endif
             //demoVideo
             alertType = ALERT_DEMO_VIDEO;
             alertConfirmView = [[UIAlertView alloc] initWithTitle:@"Do you want to open this link in Safari?" message:@"http://v.youku.com/v_show/id_XNDEwNTkxOTQ4.html" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
@@ -159,6 +172,12 @@
 #else
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=492480832&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software"]];
 #endif
+#ifdef LITE_VERSION
+            [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"Help Selection"
+                                                            withAction:nil
+                                                             withLabel:@"Rate"
+                                                             withValue:nil];
+#endif
             break;
         case 3:
             // Twitter
@@ -172,6 +191,12 @@
                 //Share
                 [self shareWithTwitter];
             }
+#ifdef LITE_VERSION
+            [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"Help Selection"
+                                                            withAction:nil
+                                                             withLabel:@"Follow twitter"
+                                                             withValue:nil];
+#endif
             break;
         case 4:
             // Weibo
@@ -187,6 +212,12 @@
                 alertConfirmView = [[UIAlertView alloc] initWithTitle:@"Do you want to open Sina Weibo in Safari?" message:@"You need to have Sina Weibo account!" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
                 [alertConfirmView show];
             }
+#ifdef LITE_VERSION
+            [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"Help Selection"
+                                                            withAction:nil
+                                                             withLabel:@"Follow weibo"
+                                                             withValue:nil];
+#endif
             break;
             
         default:
@@ -262,9 +293,9 @@
 {
     if (section == 4) {
 #ifdef LITE_VERSION
-        return @"CodeNavigatorLite 2.5 Guangzhen Li\n@2011-2013";
+        return @"CodeNavigatorLite 2.5.1 Guangzhen Li\n@2011-2013";
 #else
-        return @"CodeNavigator 2.5 Guangzhen Li\n@2011-2013";
+        return @"CodeNavigator 2.5.1 Guangzhen Li\n@2011-2013";
 #endif
     }
     return @"";

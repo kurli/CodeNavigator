@@ -15,6 +15,10 @@
 #import "DropBoxViewController.h"
 #import "SecurityViewController.h"
 
+#ifdef LITE_VERSION
+#import "GAI.h"
+#endif
+
 @implementation AppDelegate
 {
 }
@@ -73,7 +77,8 @@ void uncaughtExceptionHandler(NSException*exception){
     //end
 #ifndef IPHONE_VERSION
     //[self.window addSubview:self.splitViewController.view];
-    self.window.rootViewController = self.splitViewController;
+    [self.window setRootViewController:self.splitViewController];
+    //self.window.rootViewController = self.splitViewController;
     [self.window makeKeyAndVisible];
 #else
     self.window.rootViewController = self.masterNavigationController;
@@ -88,6 +93,17 @@ void uncaughtExceptionHandler(NSException*exception){
             [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
         }
     });
+    
+#ifdef LITE_VERSION
+    // Google Analytics// Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 120;
+    // Optional: set debug to YES for extra debugging information.
+    //    [GAI sharedInstance].debug = YES;
+    // Create tracker instance.
+    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-39030094-1"];
+#endif
     
     // do not display divider
 //    MGSplitViewDividerStyle newStyle = ((self.splitViewController.dividerStyle == MGSplitViewDividerStyleThin) ? MGSplitViewDividerStylePaneSplitter : MGSplitViewDividerStyleThin);

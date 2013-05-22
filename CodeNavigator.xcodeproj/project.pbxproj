@@ -162,6 +162,8 @@
 		9435320B157A861D0011A446 /* ManuallyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435320A157A861D0011A446 /* ManuallyParser.m */; };
 		9435320C157A861D0011A446 /* ManuallyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435320A157A861D0011A446 /* ManuallyParser.m */; };
 		943A81D916381FA000E39298 /* tag_list.png in Resources */ = {isa = PBXBuildFile; fileRef = 943A81D816381FA000E39298 /* tag_list.png */; };
+		94407B1916E7B26F0011F941 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94407B1816E7B26F0011F941 /* libGoogleAnalytics.a */; };
+		94407B1B16E7BCBD0011F941 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94407B1A16E7BCBD0011F941 /* CoreData.framework */; };
 		94422A3314DD87F50076AC66 /* VirtualizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94422A3114DD87F50076AC66 /* VirtualizeViewController.m */; };
 		94422A3414DD87F50076AC66 /* VirtualizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94422A3114DD87F50076AC66 /* VirtualizeViewController.m */; };
 		94422A3514DD87F50076AC66 /* VirtualizeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94422A3214DD87F50076AC66 /* VirtualizeViewController.xib */; };
@@ -1130,6 +1132,13 @@
 		94353209157A861D0011A446 /* ManuallyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManuallyParser.h; sourceTree = "<group>"; };
 		9435320A157A861D0011A446 /* ManuallyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManuallyParser.m; sourceTree = "<group>"; };
 		943A81D816381FA000E39298 /* tag_list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag_list.png; sourceTree = "<group>"; };
+		94407B1316E7B26F0011F941 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		94407B1416E7B26F0011F941 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		94407B1516E7B26F0011F941 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		94407B1616E7B26F0011F941 /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransaction.h; sourceTree = "<group>"; };
+		94407B1716E7B26F0011F941 /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransactionItem.h; sourceTree = "<group>"; };
+		94407B1816E7B26F0011F941 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
+		94407B1A16E7BCBD0011F941 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		94422A3014DD87F50076AC66 /* VirtualizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VirtualizeViewController.h; path = CodeNavigator/VirtualizeViewController.h; sourceTree = "<group>"; };
 		94422A3114DD87F50076AC66 /* VirtualizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VirtualizeViewController.m; path = CodeNavigator/VirtualizeViewController.m; sourceTree = "<group>"; };
 		94422A3214DD87F50076AC66 /* VirtualizeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VirtualizeViewController.xib; path = CodeNavigator/VirtualizeViewController.xib; sourceTree = "<group>"; };
@@ -1502,9 +1511,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B8EC281546F31700931747 /* SystemConfiguration.framework in Frameworks */,
+				94407B1B16E7BCBD0011F941 /* CoreData.framework in Frameworks */,
 				94D3B87815E53469006C28E4 /* Twitter.framework in Frameworks */,
 				94205715157B939B00178CBF /* QuartzCore.framework in Frameworks */,
-				94B8EC281546F31700931747 /* SystemConfiguration.framework in Frameworks */,
 				94B8EC261546F30900931747 /* MessageUI.framework in Frameworks */,
 				94B8EC241546F2FD00931747 /* AudioToolbox.framework in Frameworks */,
 				94A3B09B15447C7500C8E132 /* Security.framework in Frameworks */,
@@ -1518,6 +1528,7 @@
 				94ADF17414BB27EE00BA807A /* CoreGraphics.framework in Frameworks */,
 				94A51849152DF2AC0062DA65 /* DropboxSDK.framework in Frameworks */,
 				94B8EC211546F2B600931747 /* libGoogleAdMobAds.a in Frameworks */,
+				94407B1916E7B26F0011F941 /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1569,6 +1580,8 @@
 		9431D72914910B3000B0900E = {
 			isa = PBXGroup;
 			children = (
+				94407B1A16E7BCBD0011F941 /* CoreData.framework */,
+				94407B1216E7B2400011F941 /* GoogleAnalytics */,
 				944A5B50160B60670076410C /* Default-568h@2x.png */,
 				944A5B4E160B60010076410C /* Default@2x.png */,
 				9478C6DD15C8396300F443D9 /* Twitter.framework */,
@@ -1895,6 +1908,19 @@
 				9434C01114A392AC00B34419 /* ZipWriteStream.h */,
 			);
 			name = ZipInc;
+			sourceTree = "<group>";
+		};
+		94407B1216E7B2400011F941 /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				94407B1316E7B26F0011F941 /* GAI.h */,
+				94407B1416E7B26F0011F941 /* GAITrackedViewController.h */,
+				94407B1516E7B26F0011F941 /* GAITracker.h */,
+				94407B1616E7B26F0011F941 /* GAITransaction.h */,
+				94407B1716E7B26F0011F941 /* GAITransactionItem.h */,
+				94407B1816E7B26F0011F941 /* libGoogleAnalytics.a */,
+			);
+			name = GoogleAnalytics;
 			sourceTree = "<group>";
 		};
 		9443D1EA154ED9D6008CB52D /* Security */ = {
@@ -3626,6 +3652,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SKIP_INSTALL = NO;
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3655,6 +3682,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SKIP_INSTALL = NO;
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -3687,6 +3715,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SKIP_INSTALL = NO;
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;

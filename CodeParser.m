@@ -29,6 +29,21 @@
             }
         }
         
+        // find a default recognizeable encoding
+        if (error != nil)
+        {
+            const NSStringEncoding *encodings = [NSString availableStringEncodings];
+            while ((encoding = *encodings++) != 0)
+            {
+                fileContent = [NSString stringWithContentsOfFile: name encoding:encoding error:&error];
+                if (fileContent != nil)
+                {
+                    break;
+                }
+            }
+
+        }
+        
         if (fileContent == nil)
             fileContent = @"File Format not supported yet!";
     }

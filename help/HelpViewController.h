@@ -11,7 +11,15 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import <Twitter/Twitter.h>
 
+#ifdef LITE_VERSION
+#import "GAITrackedViewController.h"
+#endif
+
+#ifdef LITE_VERSION
+@interface HelpViewController : GAITrackedViewController <UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate>
+#else
 @interface HelpViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate>
+#endif
 {
     int alertType;
 }
