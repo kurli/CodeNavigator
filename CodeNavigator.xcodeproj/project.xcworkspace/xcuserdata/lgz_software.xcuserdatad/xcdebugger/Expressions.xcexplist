@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <VariablesViewState
    version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "regcomp:regcomp.c">
+      </ContextState>
+      <ContextState
+         contextName = "-[Utils analyzeProject:andForceCreate:]:Utils.m">
+      </ContextState>
+   </ContextStates>
 </VariablesViewState>
