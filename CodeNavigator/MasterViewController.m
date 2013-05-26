@@ -26,6 +26,7 @@
 #ifdef LITE_VERSION
 #import "GAI.h"
 #endif
+#import "GitCloneViewController.h"
 
 @implementation MasterViewController
 @synthesize fileSearchBar = _fileSearchBar;
@@ -82,6 +83,12 @@
     {
         [[Utils getInstance] readColorScheme];
     }
+    [self reloadData];
+    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(reloadData:) name:MASTER_VIEW_RELOAD object:nil];
+}
+
+- (void) reloadData: (id)empty
+{
     [self reloadData];
 }
 
@@ -167,6 +174,7 @@
 //#ifdef IPHONE_VERSION
 //    [self setFileInfoControlleriPhone:nil];
 //#endif
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MASTER_VIEW_RELOAD object:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -738,60 +746,16 @@
     [[Utils getInstance] analyzeProject:self.currentProjectPath andForceCreate:YES];
 }
 
-//test git clone
-
-static void checkout_progress(const char *path, size_t cur, size_t tot, void *payload)
-{
-	bool *was_called = (bool*)payload;
-	(*was_called) = true;
-}
-
-static void fetch_progress(const git_transfer_progress *stats, void *payload)
-{
-	bool *was_called = (bool*)payload;
-	(*was_called) = true;
-}
-
-
-- (void) gitTest
-{
-    git_repository *g_repo;
-    git_clone_options g_options;
-//    git_buf path = GIT_BUF_INIT;
-    git_reference *head;
-    git_remote *origin;
-    git_checkout_opts dummy_opts = GIT_CHECKOUT_OPTS_INIT;
-
-    bool checkout_progress_cb_was_called = false,
-    fetch_progress_cb_was_called = false;
-    
-    memset(&g_options, 0, sizeof(git_clone_options));
-	g_options.version = GIT_CLONE_OPTIONS_VERSION;
-	g_options.checkout_opts = dummy_opts;
-	g_options.checkout_opts.checkout_strategy = GIT_CHECKOUT_SAFE;
-    
-    g_options.checkout_opts.checkout_strategy = GIT_CHECKOUT_SAFE_CREATE;
-	g_options.checkout_opts.progress_cb = &checkout_progress;
-	g_options.checkout_opts.progress_payload = &checkout_progress_cb_was_called;
-	g_options.fetch_progress_cb = &fetch_progress;
-	g_options.fetch_progress_payload = &fetch_progress_cb_was_called;
-    
-    NSString* gitFolder = self.currentProjectPath;
-    gitFolder = [gitFolder stringByAppendingPathComponent:@"test"];
-
-    int success = git_clone(&g_repo, "http://github.com/libgit2/TestGitRepository", [gitFolder cStringUsingEncoding:NSUTF8StringEncoding], &g_options);
-    
-//    success = git_buf_joinpath(&path, git_repository_workdir(g_repo), "master.txt")
-    
-    success = git_reference_lookup(&head, g_repo, "HEAD");
-    success = git_remote_load(&origin, g_repo, "origin");
-    
-}
-
 - (IBAction)gitClicked:(id)sender {
 #ifndef IPHONE_VERSION
-//    [self gitTest];
-//    return;
+    // If in project list mode, means git clone a project from remote
+    if ([self.currentProjectPath length] == 0) {
+        GitCloneViewController* viewController = [[GitCloneViewController alloc] init];
+        viewController.modalPresentationStyle = UIModalPresentationFormSheet;
+        //[[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
+        [self presentViewController:viewController animated:YES completion:nil];
+        return;
+    }
     NSError* error;
     GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewCongroller" bundle:[NSBundle mainBundle]];
     NSString* gitFolder = self.currentProjectPath;

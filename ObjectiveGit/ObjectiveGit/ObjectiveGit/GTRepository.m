@@ -181,7 +181,8 @@ static void transferProgressCallback(const git_transfer_progress *progress, void
 	const char *remoteURL = originURL.absoluteString.UTF8String;
 	const char *workingDirectoryPath = workdirURL.path.UTF8String;
 	git_repository *repository;
-	int gitError = git_clone(&repository, remoteURL, workingDirectoryPath, &cloneOptions);
+    git_remote *remote;
+	int gitError = git_clone(&repository, remoteURL, workingDirectoryPath, &cloneOptions, &remote);
 	if (gitError < GIT_OK) {
 		if (error != NULL) *error = [NSError git_errorFor:gitError withAdditionalDescription:@"Failed to clone repository."];
 		return nil;

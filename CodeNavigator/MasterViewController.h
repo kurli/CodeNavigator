@@ -14,6 +14,8 @@
 @class FileInfoControlleriPhone;
 #endif
 
+#define MASTER_VIEW_RELOAD @"CodeNavigator_master_view_reload"
+
 @interface MasterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UISearchBarDelegate>
 {
     BOOL isProjectFolder;

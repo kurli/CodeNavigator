@@ -100,6 +100,8 @@ static Utils *static_utils;
 @synthesize dropBoxViewController;
 @synthesize masterViewController;
 @synthesize functionListManager;
+@synthesize gitPassword;
+@synthesize gitUsername;
 
 +(Utils*)getInstance
 {

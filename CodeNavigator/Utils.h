@@ -137,6 +137,10 @@ typedef enum _AlertConfirmMode{
 @property (strong, nonatomic) DropBoxViewController* dropBoxViewController;
 @property (strong, nonatomic) FunctionListManager* functionListManager;
 
+@property (strong, nonatomic) NSString* gitUsername;
+
+@property (strong, nonatomic) NSString* gitPassword;
+
 +(Utils*)getInstance;
 
 -(BOOL) isAdModOn;

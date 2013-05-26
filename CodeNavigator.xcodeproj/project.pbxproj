@@ -153,6 +153,8 @@
 		943486E1150A3DA600370AE3 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 943486E0150A3DA600370AE3 /* Default-Landscape~ipad.png */; };
 		943486E2150A42A000370AE3 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 943486E0150A3DA600370AE3 /* Default-Landscape~ipad.png */; };
 		943486E3150A42A500370AE3 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 943486DE150A3D4000370AE3 /* Default-Portrait~ipad.png */; };
+		9434A5A6174FC00D004B1A9D /* GitCloneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9434A5A4174FC00D004B1A9D /* GitCloneViewController.m */; };
+		9434A5A7174FC00D004B1A9D /* GitCloneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9434A5A5174FC00D004B1A9D /* GitCloneViewController.xib */; };
 		94352107153EFC1E003F316A /* version_control.png in Resources */ = {isa = PBXBuildFile; fileRef = 94352106153EFC1E003F316A /* version_control.png */; };
 		94352108153EFC1E003F316A /* version_control.png in Resources */ = {isa = PBXBuildFile; fileRef = 94352106153EFC1E003F316A /* version_control.png */; };
 		9435210C153F03D1003F316A /* VersionControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435210A153F03D1003F316A /* VersionControlController.m */; };
@@ -1104,6 +1106,9 @@
 		9432E3AF149D02D400AB5BB7 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		943486DE150A3D4000370AE3 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		943486E0150A3DA600370AE3 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		9434A5A3174FC00D004B1A9D /* GitCloneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GitCloneViewController.h; path = ObjectiveGit/GitCloneViewController.h; sourceTree = "<group>"; };
+		9434A5A4174FC00D004B1A9D /* GitCloneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitCloneViewController.m; path = ObjectiveGit/GitCloneViewController.m; sourceTree = "<group>"; };
+		9434A5A5174FC00D004B1A9D /* GitCloneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GitCloneViewController.xib; path = ObjectiveGit/GitCloneViewController.xib; sourceTree = "<group>"; };
 		9434BFAE14A389BC00B34419 /* Zip.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Zip.xcodeproj; path = Zip/Zip.xcodeproj; sourceTree = "<group>"; };
 		9434C00D14A392AC00B34419 /* FileInZipInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileInZipInfo.h; path = Zip/FileInZipInfo.h; sourceTree = "<group>"; };
 		9434C00E14A392AC00B34419 /* ZipException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipException.h; path = Zip/ZipException.h; sourceTree = "<group>"; };
@@ -2234,6 +2239,9 @@
 				94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */,
 				94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */,
 				94E6DB65152CBF41004DBD87 /* GidDiffTableCell.xib */,
+				9434A5A3174FC00D004B1A9D /* GitCloneViewController.h */,
+				9434A5A4174FC00D004B1A9D /* GitCloneViewController.m */,
+				9434A5A5174FC00D004B1A9D /* GitCloneViewController.xib */,
 			);
 			name = Git;
 			sourceTree = "<group>";
@@ -2518,6 +2526,7 @@
 				94EED18E16331D99003D9CA3 /* FunctionListViewController.xib in Resources */,
 				941B2AC01636D419000BBF59 /* TagItemCell.xib in Resources */,
 				943A81D916381FA000E39298 /* tag_list.png in Resources */,
+				9434A5A7174FC00D004B1A9D /* GitCloneViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2889,6 +2898,7 @@
 				94EED18D16331D99003D9CA3 /* FunctionListViewController.m in Sources */,
 				94EED19116332147003D9CA3 /* FunctionListManager.m in Sources */,
 				94C2CDC5167F55C9004FB1FB /* HtmlParser.m in Sources */,
+				9434A5A6174FC00D004B1A9D /* GitCloneViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
