@@ -14,6 +14,7 @@
 #import <DropboxSDK/DropboxSDK.h>
 #import "DropBoxViewController.h"
 #import "SecurityViewController.h"
+#import "HandleURLController.h"
 
 #ifdef LITE_VERSION
 #import "GAI.h"
@@ -25,6 +26,7 @@
 
 @synthesize window = _window;
 @synthesize splitViewController = _splitViewController;
+@synthesize handleURLController;
 #ifdef IPHONE_VERSION
 @synthesize masterNavigationController = _masterNavigationController;
 @synthesize detailViewController;
@@ -157,6 +159,11 @@ void uncaughtExceptionHandler(NSException*exception){
      */
 }
 
+- (void) applicationDidReceiveMemoryWarning:(UIApplication *)application
+{
+    [self setHandleURLController:nil];
+}
+
 #pragma mark DropBox support
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
@@ -169,8 +176,24 @@ void uncaughtExceptionHandler(NSException*exception){
         return YES;
     }
 #endif
+    if (handleURLController == nil) {
+        handleURLController = [[HandleURLController alloc] init];
+    }
+    else {
+        if ([handleURLController isBusy]) {
+            [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"CodeNavigator is busy now, Please wait for a while"];
+            return NO;
+        }
+    }
+
+    BOOL isSupported = [handleURLController checkWhetherSupported:url];
+    if (!isSupported) {
+        return NO;
+    }
+    [handleURLController setFilePath:[url absoluteString]];
+    BOOL handled = [handleURLController handleFile:[url absoluteString]];
     // Add whatever other url handling code your app requires here
-    return NO;
+    return handled;
 }
 
 @end

@@ -649,6 +649,9 @@
 		94A5BBAB14BF47C000F3BA8B /* DisplayModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A5BBA814BF47C000F3BA8B /* DisplayModeController.m */; };
 		94A5BBAC14BF47C000F3BA8B /* DisplayModeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A5BBA914BF47C000F3BA8B /* DisplayModeController.xib */; };
 		94A5BBAD14BF47C000F3BA8B /* DisplayModeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A5BBA914BF47C000F3BA8B /* DisplayModeController.xib */; };
+		94AB105517550CD500359AE8 /* HandleURLController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB105417550CD500359AE8 /* HandleURLController.m */; };
+		94AB10591755146E00359AE8 /* FileFormatResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB10581755146E00359AE8 /* FileFormatResolver.m */; };
+		94AB105C175516C900359AE8 /* ZipFileResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB105B175516C900359AE8 /* ZipFileResolver.m */; };
 		94AB1E5214AF5E0300451020 /* UnSupportedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB1E5114AF5E0300451020 /* UnSupportedParser.m */; };
 		94ADF13F14BB27EE00BA807A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74414910B3000B0900E /* main.m */; };
 		94ADF14014BB27EE00BA807A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74814910B3000B0900E /* AppDelegate.m */; };
@@ -1211,9 +1214,9 @@
 		94618178155EEDAB00A25635 /* CommentManager.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentManager.xib; path = Comments/CommentManager.xib; sourceTree = "<group>"; };
 		94636B52155A91E700B1C37F /* CommentWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentWrapper.h; path = Comments/CommentWrapper.h; sourceTree = "<group>"; };
 		94636B53155A91E700B1C37F /* CommentWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentWrapper.m; path = Comments/CommentWrapper.m; sourceTree = "<group>"; };
-		9466466814A2370700B30CD2 /* WebServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceController.h; sourceTree = "<group>"; };
-		9466466914A2370700B30CD2 /* WebServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceController.m; sourceTree = "<group>"; };
-		9466466A14A2370700B30CD2 /* WebServiceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebServiceController.xib; sourceTree = "<group>"; };
+		9466466814A2370700B30CD2 /* WebServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebServiceController.h; path = CodeNavigator/WebServiceController.h; sourceTree = "<group>"; };
+		9466466914A2370700B30CD2 /* WebServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebServiceController.m; path = CodeNavigator/WebServiceController.m; sourceTree = "<group>"; };
+		9466466A14A2370700B30CD2 /* WebServiceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebServiceController.xib; path = CodeNavigator/WebServiceController.xib; sourceTree = "<group>"; };
 		9471D4371630463100629F35 /* readtags.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = readtags.c; path = ctags/readtags.c; sourceTree = "<group>"; };
 		9471D4391630480E00629F35 /* readtags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = readtags.h; path = ctags/readtags.h; sourceTree = "<group>"; };
 		9473AEF214DACD6A00D39E05 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "icon/Icon-72.png"; sourceTree = "<group>"; };
@@ -1319,7 +1322,7 @@
 		947F861015863579002EAA1E /* DetailViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DetailViewController-iPhone.xib"; sourceTree = "<group>"; };
 		947F861115863579002EAA1E /* MasterViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MasterViewController-iPhone.xib"; sourceTree = "<group>"; };
 		947F861615879407002EAA1E /* DisplayModeController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DisplayModeController-iPhone.xib"; sourceTree = "<group>"; };
-		947F86181587A8C2002EAA1E /* WebServiceController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "WebServiceController-iPhone.xib"; sourceTree = "<group>"; };
+		947F86181587A8C2002EAA1E /* WebServiceController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "WebServiceController-iPhone.xib"; path = "CodeNavigator/WebServiceController-iPhone.xib"; sourceTree = "<group>"; };
 		94846ECA14BCA4FD00388D68 /* MGSplitCornersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitCornersView.h; sourceTree = "<group>"; };
 		94846ECB14BCA4FD00388D68 /* MGSplitCornersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitCornersView.m; sourceTree = "<group>"; };
 		94846ECC14BCA4FD00388D68 /* MGSplitDividerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitDividerView.h; sourceTree = "<group>"; };
@@ -1372,6 +1375,12 @@
 		94A5BBA714BF47C000F3BA8B /* DisplayModeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayModeController.h; sourceTree = "<group>"; };
 		94A5BBA814BF47C000F3BA8B /* DisplayModeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayModeController.m; sourceTree = "<group>"; };
 		94A5BBA914BF47C000F3BA8B /* DisplayModeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisplayModeController.xib; sourceTree = "<group>"; };
+		94AB105317550CD500359AE8 /* HandleURLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HandleURLController.h; path = CodeNavigator/HandleURLController.h; sourceTree = "<group>"; };
+		94AB105417550CD500359AE8 /* HandleURLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HandleURLController.m; path = CodeNavigator/HandleURLController.m; sourceTree = "<group>"; };
+		94AB10571755146E00359AE8 /* FileFormatResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileFormatResolver.h; path = CodeNavigator/FileFormatResolver.h; sourceTree = "<group>"; };
+		94AB10581755146E00359AE8 /* FileFormatResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileFormatResolver.m; path = CodeNavigator/FileFormatResolver.m; sourceTree = "<group>"; };
+		94AB105A175516C900359AE8 /* ZipFileResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipFileResolver.h; path = CodeNavigator/ZipFileResolver.h; sourceTree = "<group>"; };
+		94AB105B175516C900359AE8 /* ZipFileResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZipFileResolver.m; path = CodeNavigator/ZipFileResolver.m; sourceTree = "<group>"; };
 		94AB1E5014AF5E0300451020 /* UnSupportedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnSupportedParser.h; sourceTree = "<group>"; };
 		94AB1E5114AF5E0300451020 /* UnSupportedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnSupportedParser.m; sourceTree = "<group>"; };
 		94ADF18C14BB27EE00BA807A /* CodeNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1622,6 +1631,10 @@
 				9452BA2514DD7BF3003B88E5 /* Virtualization */,
 				9478C6C615C8086300F443D9 /* Help */,
 				94EED18916331CF1003D9CA3 /* FunctionList */,
+				94476C4D1754DEA500D3B305 /* WebService */,
+				94AB105217550C5F00359AE8 /* HandleURLController */,
+				94AB106317563CDB00359AE8 /* ASIHTTPRequest */,
+				94AB1056175513D400359AE8 /* FileFormatResolver */,
 				9431D73E14910B3000B0900E /* CodeNavigator */,
 				9431D73714910B3000B0900E /* Frameworks */,
 				9431D73514910B3000B0900E /* Products */,
@@ -1669,8 +1682,6 @@
 				94603D05149E041400D72561 /* ResultViewController.m */,
 				94EE32D0149FAE0B0088501D /* GotoLineViewController.h */,
 				94EE32D1149FAE0B0088501D /* GotoLineViewController.m */,
-				9466466814A2370700B30CD2 /* WebServiceController.h */,
-				9466466914A2370700B30CD2 /* WebServiceController.m */,
 				94D8702E14A65887002F2DBB /* FilePathInfoPopupController.h */,
 				94D8702F14A65887002F2DBB /* FilePathInfoPopupController.m */,
 				94291E5D14A9FB4A00E44221 /* AnalyzeInfoController.h */,
@@ -1693,8 +1704,6 @@
 				94291E5F14A9FB4A00E44221 /* AnalyzeInfoController.xib */,
 				94D8703014A65888002F2DBB /* FilePathInfoPopupController.xib */,
 				9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */,
-				9466466A14A2370700B30CD2 /* WebServiceController.xib */,
-				947F86181587A8C2002EAA1E /* WebServiceController-iPhone.xib */,
 				94EE32D2149FAE0B0088501D /* GotoLineViewController.xib */,
 				94603D06149E041400D72561 /* ResultViewController.xib */,
 				94F6EEE01587BD30002DE115 /* ResultViewController-iPhone.xib */,
@@ -1949,6 +1958,17 @@
 			name = ManuallyParserController;
 			sourceTree = "<group>";
 		};
+		94476C4D1754DEA500D3B305 /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				9466466814A2370700B30CD2 /* WebServiceController.h */,
+				9466466914A2370700B30CD2 /* WebServiceController.m */,
+				9466466A14A2370700B30CD2 /* WebServiceController.xib */,
+				947F86181587A8C2002EAA1E /* WebServiceController-iPhone.xib */,
+			);
+			name = WebService;
+			sourceTree = "<group>";
+		};
 		944DD7C015277276000473BE /* Diff */ = {
 			isa = PBXGroup;
 			children = (
@@ -2156,6 +2176,33 @@
 				9457C7931530B91600BB9185 /* SelectionTableCell.xib */,
 			);
 			name = DropBox;
+			sourceTree = "<group>";
+		};
+		94AB105217550C5F00359AE8 /* HandleURLController */ = {
+			isa = PBXGroup;
+			children = (
+				94AB105317550CD500359AE8 /* HandleURLController.h */,
+				94AB105417550CD500359AE8 /* HandleURLController.m */,
+			);
+			name = HandleURLController;
+			sourceTree = "<group>";
+		};
+		94AB1056175513D400359AE8 /* FileFormatResolver */ = {
+			isa = PBXGroup;
+			children = (
+				94AB10571755146E00359AE8 /* FileFormatResolver.h */,
+				94AB10581755146E00359AE8 /* FileFormatResolver.m */,
+				94AB105A175516C900359AE8 /* ZipFileResolver.h */,
+				94AB105B175516C900359AE8 /* ZipFileResolver.m */,
+			);
+			name = FileFormatResolver;
+			sourceTree = "<group>";
+		};
+		94AB106317563CDB00359AE8 /* ASIHTTPRequest */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ASIHTTPRequest;
 			sourceTree = "<group>";
 		};
 		94B4032C14A0D5EA00E3A636 /* Products */ = {
@@ -2899,6 +2946,9 @@
 				94EED19116332147003D9CA3 /* FunctionListManager.m in Sources */,
 				94C2CDC5167F55C9004FB1FB /* HtmlParser.m in Sources */,
 				9434A5A6174FC00D004B1A9D /* GitCloneViewController.m in Sources */,
+				94AB105517550CD500359AE8 /* HandleURLController.m in Sources */,
+				94AB10591755146E00359AE8 /* FileFormatResolver.m in Sources */,
+				94AB105C175516C900359AE8 /* ZipFileResolver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

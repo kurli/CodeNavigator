@@ -124,7 +124,7 @@ static int cred_acquire(git_cred **cred,
 	g_options.checkout_opts.progress_payload = &checkout_progress_cb_was_called;
 	g_options.fetch_progress_cb = &fetch_progress;
 	g_options.fetch_progress_payload = &fetch_progress_cb_was_called;
-    g_options.cred_acquire_cb = &cred_acquire;
+//    g_options.cred_acquire_cb = &cred_acquire;
     
     NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
     NSString* gitFolder = projectFolder;
@@ -229,7 +229,7 @@ static int cred_acquire(git_cred **cred,
 
 - (IBAction)doneClicked:(id)sender {
     if (self.cloneThread.isExecuting) {
-        
+        [self checkWhetherCancelClone];
         return;
     }
     [self dismissModalViewControllerAnimated:YES];

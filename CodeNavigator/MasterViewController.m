@@ -891,7 +891,13 @@
 }
 #endif
 
-- (IBAction)addFileToolBarClicked:(id)sender {
+- (void) hideWebUploadService
+{
+    [_webServicePopOverController dismissPopoverAnimated:YES];
+}
+
+- (void) showWebUploadService:(id)sender
+{
     UIBarButtonItem *item = (UIBarButtonItem*)sender;
     if (_webServiceController == nil)
     {
@@ -903,9 +909,9 @@
         _webServicePopOverController.popoverContentSize = _webServiceController.view.frame.size;
 #endif
     }
-    if (_webServicePopOverController.popoverVisible == YES)
-        [_webServicePopOverController dismissPopoverAnimated:YES];
-    else
+//    if (_webServicePopOverController.popoverVisible == YES)
+//        [_webServicePopOverController dismissPopoverAnimated:YES];
+//    else
     {
 #ifdef LITE_VERSION
         [[Utils getInstance] showPurchaseAlert];
@@ -923,6 +929,15 @@
                                                      withLabel:@"Web Upload Service"
                                                      withValue:nil];
 #endif
+}
+
+- (IBAction)addFileToolBarClicked:(id)sender {
+    if (!_webServicePopOverController || _webServicePopOverController.popoverVisible == NO) {
+        [self showWebUploadService:sender];
+        return;
+    }
+    if (_webServicePopOverController.popoverVisible == YES)
+        [_webServicePopOverController dismissPopoverAnimated:YES];
 }
 
 #pragma mark SearchDelegate

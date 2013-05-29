@@ -10,10 +10,13 @@
 
 @class MGSplitViewController;
 @class DetailViewController;
+@class HandleURLController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (strong, nonatomic) HandleURLController* handleURLController;
 
 @property (strong, nonatomic) MGSplitViewController *splitViewController;
 
