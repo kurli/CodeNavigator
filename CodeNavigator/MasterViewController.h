@@ -82,5 +82,7 @@
 
 - (IBAction)helpButtonClicked:(id)sender;
 
+- (void) showGitCloneView;
+
 @end
 

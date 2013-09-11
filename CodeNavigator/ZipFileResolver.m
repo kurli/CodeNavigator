@@ -41,7 +41,7 @@
             NSURL* url = [[NSURL alloc] initWithString:self.filePath];
             NSData* data = [[NSData alloc] initWithContentsOfURL:url];
             NSString* path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
-            path = [path stringByAppendingString:[self.filePath lastPathComponent]];
+            path = [path stringByAppendingPathComponent:[self.filePath lastPathComponent]];
             [data writeToFile:path atomically:YES];
             @try
             {
@@ -96,6 +96,7 @@
                                 [[Utils getInstance] showPurchaseAlert];
                                 [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Maximum number of source files exceeded for Lite Version."];
                             });
+                            //TODO remove file
                             return;
                         }
 #endif
@@ -158,6 +159,12 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:MASTER_VIEW_RELOAD object:nil];
             });
+        
+            NSError* error;
+            [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+            path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Inbox"];
+            [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+
             [self performSelectorOnMainThread:@selector(dismissWaitingDialog) withObject:nil waitUntilDone:YES];
     }
 }

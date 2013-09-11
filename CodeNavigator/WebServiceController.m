@@ -548,4 +548,7 @@
 }
 #endif
 
+- (IBAction)gitCloneClicked:(id)sender {
+    [masterViewController showGitCloneView];
+}
 @end

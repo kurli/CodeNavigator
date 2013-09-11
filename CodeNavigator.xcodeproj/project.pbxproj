@@ -652,6 +652,7 @@
 		94AB105517550CD500359AE8 /* HandleURLController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB105417550CD500359AE8 /* HandleURLController.m */; };
 		94AB10591755146E00359AE8 /* FileFormatResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB10581755146E00359AE8 /* FileFormatResolver.m */; };
 		94AB105C175516C900359AE8 /* ZipFileResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB105B175516C900359AE8 /* ZipFileResolver.m */; };
+		94AB10661756548000359AE8 /* OtherFormatResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB10651756548000359AE8 /* OtherFormatResolver.m */; };
 		94AB1E5214AF5E0300451020 /* UnSupportedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB1E5114AF5E0300451020 /* UnSupportedParser.m */; };
 		94ADF13F14BB27EE00BA807A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74414910B3000B0900E /* main.m */; };
 		94ADF14014BB27EE00BA807A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74814910B3000B0900E /* AppDelegate.m */; };
@@ -1381,6 +1382,8 @@
 		94AB10581755146E00359AE8 /* FileFormatResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileFormatResolver.m; path = CodeNavigator/FileFormatResolver.m; sourceTree = "<group>"; };
 		94AB105A175516C900359AE8 /* ZipFileResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipFileResolver.h; path = CodeNavigator/ZipFileResolver.h; sourceTree = "<group>"; };
 		94AB105B175516C900359AE8 /* ZipFileResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZipFileResolver.m; path = CodeNavigator/ZipFileResolver.m; sourceTree = "<group>"; };
+		94AB10641756548000359AE8 /* OtherFormatResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OtherFormatResolver.h; path = CodeNavigator/OtherFormatResolver.h; sourceTree = "<group>"; };
+		94AB10651756548000359AE8 /* OtherFormatResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OtherFormatResolver.m; path = CodeNavigator/OtherFormatResolver.m; sourceTree = "<group>"; };
 		94AB1E5014AF5E0300451020 /* UnSupportedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnSupportedParser.h; sourceTree = "<group>"; };
 		94AB1E5114AF5E0300451020 /* UnSupportedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnSupportedParser.m; sourceTree = "<group>"; };
 		94ADF18C14BB27EE00BA807A /* CodeNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2194,6 +2197,8 @@
 				94AB10581755146E00359AE8 /* FileFormatResolver.m */,
 				94AB105A175516C900359AE8 /* ZipFileResolver.h */,
 				94AB105B175516C900359AE8 /* ZipFileResolver.m */,
+				94AB10641756548000359AE8 /* OtherFormatResolver.h */,
+				94AB10651756548000359AE8 /* OtherFormatResolver.m */,
 			);
 			name = FileFormatResolver;
 			sourceTree = "<group>";
@@ -2949,6 +2954,7 @@
 				94AB105517550CD500359AE8 /* HandleURLController.m in Sources */,
 				94AB10591755146E00359AE8 /* FileFormatResolver.m in Sources */,
 				94AB105C175516C900359AE8 /* ZipFileResolver.m in Sources */,
+				94AB10661756548000359AE8 /* OtherFormatResolver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3542,8 +3548,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Guangzhen Li (PQJKU5VVU3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Guangzhen Li (PQJKU5VVU3)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -3555,6 +3561,8 @@
 					"-DHAVE_CONFIG_H",
 					"-DNS_BLOCK_ASSERTIONS=1",
 				);
+				PROVISIONING_PROFILE = "C95ABE0A-7FCC-4FBC-B88B-9B07ADF82AF8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C95ABE0A-7FCC-4FBC-B88B-9B07ADF82AF8";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -3566,8 +3574,8 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Guangzhen Li (KTWHB3SHL5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Guangzhen Li (KTWHB3SHL5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",

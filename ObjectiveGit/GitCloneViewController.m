@@ -182,7 +182,7 @@ static int cred_acquire(git_cred **cred,
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(checkout_progress:) name:CHECKOUT_PROGRESS object:nil];
     
     //for test
-    [self.urlTextField setText:@"http://github.com/libgit2/objective-git.git"];
+//    [self.urlTextField setText:@"http://github.com/libgit2/objective-git.git"];
 }
 
 - (void) replaceLastLine:(NSString*)log

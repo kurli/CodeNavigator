@@ -746,14 +746,20 @@
     [[Utils getInstance] analyzeProject:self.currentProjectPath andForceCreate:YES];
 }
 
+- (void) showGitCloneView
+{
+    [_webServicePopOverController dismissPopoverAnimated:YES];
+    GitCloneViewController* viewController = [[GitCloneViewController alloc] init];
+    viewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    //[[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
 - (IBAction)gitClicked:(id)sender {
 #ifndef IPHONE_VERSION
     // If in project list mode, means git clone a project from remote
     if ([self.currentProjectPath length] == 0) {
-        GitCloneViewController* viewController = [[GitCloneViewController alloc] init];
-        viewController.modalPresentationStyle = UIModalPresentationFormSheet;
-        //[[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
-        [self presentViewController:viewController animated:YES completion:nil];
+        [self showGitCloneView];
         return;
     }
     NSError* error;

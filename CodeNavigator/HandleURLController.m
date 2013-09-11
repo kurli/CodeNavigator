@@ -8,6 +8,7 @@
 
 #import "HandleURLController.h"
 #import "ZipFileResolver.h"
+#import "OtherFormatResolver.h"
 
 @implementation HandleURLController
 
@@ -26,6 +27,10 @@
     NSString* extension = [urlStr pathExtension];
     if ([extension compare:@"zip"] == NSOrderedSame) {
         fileFormatResolver = [[ZipFileResolver alloc] init];
+        return YES;
+    }
+    else {
+        fileFormatResolver = [[OtherFormatResolver alloc]init];
         return YES;
     }
     return NO;

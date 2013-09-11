@@ -51,4 +51,6 @@
 
 @property (strong, atomic) NSString* uploadToPath;
 
+- (IBAction)gitCloneClicked:(id)sender;
+
 @end
