@@ -331,7 +331,7 @@
         return;
 //    UIBarButtonItem* button = [Utils getInstance].detailViewController.virtualizeButton;
 //    [[Utils getInstance].detailViewController virtualizeButtonClicked:button];
-    [[Utils getInstance].detailViewController.resultPopover dismissPopoverAnimated:NO];
+    [[Utils getInstance].detailViewController.popoverController dismissPopoverAnimated:NO];
     getEntryFromWebView = NO;
 //    NSString* path = [project stringByAppendingPathComponent:fileName];
 //    path = [path stringByAppendingPathExtension:@"lgz_virtualize"];

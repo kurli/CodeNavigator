@@ -86,35 +86,19 @@ typedef enum _JSState {
 
 @property (strong, nonatomic) NavigationController* codeNavigationController;
 
-@property (strong, nonatomic) UIPopoverController *codeNavigationPopover;
-
 @property (strong, nonatomic) ResultViewController *resultViewController;
-
-@property (strong, nonatomic) UIPopoverController *resultPopover;
 
 @property (strong, nonatomic) GotoLineViewController *gotoLineViewController;
 
-@property (strong, nonatomic) UIPopoverController *gotoLinePopover;
-
 @property (strong, nonatomic) FilePathInfoPopupController* filePathInfoController;
-
-@property (strong, nonatomic) UIPopoverController* filePathInfopopover;
 
 @property (strong, nonatomic) HighLightWordController* highlightWordController;
 
-@property (strong, nonatomic) UIPopoverController* highlghtWordPopover;
-
 @property (strong, nonatomic) DisplayModeController* displayModeController;
-
-@property (strong, nonatomic) UIPopoverController* displayModePopover;
 
 @property (strong, nonatomic) HistoryListController* historyListController;
 
-@property (strong, nonatomic) UIPopoverController* historyListPopover;
-
 @property (strong, nonatomic) FunctionListViewController* functionListViewController;
-
-@property (strong, nonatomic) UIPopoverController* functionListPopover;
 
 @property (strong, nonatomic) VirtualizeViewController *virtualizeViewController;
 
@@ -208,7 +192,7 @@ typedef enum _JSState {
 
 - (IBAction)showCommentsClicked:(id)sender;
 
-- (void)dismissNavigationManager;
+- (void)dismissPopovers;
 
 - (void)forceResultPopUp:(id)button;
 

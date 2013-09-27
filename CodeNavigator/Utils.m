@@ -909,6 +909,7 @@ static Utils *static_utils;
         if (self.analyzeInfoPopover == nil)
         {
 #ifndef IPHONE_VERSION
+            [detailViewController dismissPopovers];
             self.analyzeInfoController = [[AnalyzeInfoController alloc] init];
             self.analyzeInfoPopover = [[UIPopoverController alloc] initWithContentViewController:self.analyzeInfoController];
             self.analyzeInfoPopover.popoverContentSize = CGSizeMake(320, 130);

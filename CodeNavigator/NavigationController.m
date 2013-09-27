@@ -182,7 +182,7 @@
 -(void) searchBarSearchButtonClicked:(UISearchBar *)_searchBar
 {
     [_searchBar resignFirstResponder];
-    [[Utils getInstance].detailViewController dismissNavigationManager];
+    [[Utils getInstance].detailViewController dismissPopovers];
     [[Utils getInstance].detailViewController releaseAllPopOver];
     
 #ifdef IPHONE_VERSION
@@ -194,7 +194,7 @@
         return;
     
     if (selectedItem == 0) {
-        [[Utils getInstance].detailViewController dismissNavigationManager];
+        [[Utils getInstance].detailViewController dismissPopovers];
         [self highlightInCurrentFile:searchText];
         return;
     }
@@ -213,7 +213,7 @@
 
 -(void) searchBarCancelButtonClicked:(UISearchBar *)_searchBar
 {
-    [[Utils getInstance].detailViewController dismissNavigationManager];
+    [[Utils getInstance].detailViewController dismissPopovers];
     [[Utils getInstance].detailViewController releaseAllPopOver];
     
 #ifdef IPHONE_VERSION
@@ -225,7 +225,7 @@
         return;
     
     if (selectedItem == 0) {
-        [[Utils getInstance].detailViewController dismissNavigationManager];
+        [[Utils getInstance].detailViewController dismissPopovers];
         [self highlightInCurrentFile:searchText];
         return;
     }
