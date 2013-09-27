@@ -20,6 +20,7 @@
 #ifdef LITE_VERSION
 #import "GAI.h"
 #endif
+#import "FileBrowserViewController.h"
 
 #define TOOLBAR_X_MASTER_SHOW 55
 #define TOOLBAR_X_MASTER_HIDE 208
@@ -81,6 +82,8 @@
 @synthesize showCommentsSegment;
 @synthesize functionListPopover;
 @synthesize functionListViewController;
+@synthesize popoverController;
+@synthesize fileBrowserViewController;
 
 #pragma mark - Managing the detail item
 
@@ -122,6 +125,8 @@
     // add drag listener
 	[scrollItem addTarget:self action:@selector(wasDragged:withEvent:) 
      forControlEvents:UIControlEventTouchDragInside];
+    
+    needUpdateMasterViewTable = NO;
     
     [super viewDidLoad];
 #ifdef LITE_VERSION
@@ -172,6 +177,8 @@
     [self setSplitWebViewButton:nil];
     [self setFunctionListPopover:nil];
     [self setFunctionListViewController:nil];
+    [self setPopoverController:nil];
+    [self setFileBrowserButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -692,6 +699,10 @@
     [self.functionListPopover dismissPopoverAnimated:YES];
     [self setFunctionListViewController:nil];
     [self setFunctionListPopover:nil];
+    
+    [self.popoverController dismissPopoverAnimated:YES];
+    [self setPopoverController:nil];
+    [self setFileBrowserViewController:nil];
 }
 
 - (void) setUpWebViewAsActive
@@ -864,7 +875,7 @@
 #else
     MasterViewController* masterViewController = (MasterViewController*)[Utils getInstance].masterViewController.topViewController;
 #endif
-    NSString* projectPath = [[Utils getInstance] getProjectFolder:masterViewController.currentLocation];
+    NSString* projectPath = [[Utils getInstance] getProjectFolder:[masterViewController getCurrentLocation]];
     
     if (projectPath == nil)
     {
@@ -1033,7 +1044,7 @@
             frameBottom.origin.x = TOOLBAR_X_MASTER_HIDE;
         }
     }
-    [UIView beginAnimations:@"ToolBarPosX"context:nil];         
+    [UIView beginAnimations:@"ToolBarPosX"context:nil];
     [UIView setAnimationDuration:0.30];           
     [UIView setAnimationDelegate:self];          
     [self.topToolBar setFrame:frameTop];
@@ -1355,6 +1366,29 @@
 #endif
 }
 
+- (IBAction)fileBrowserButtonClicked:(id)sender {
+    if ([self.popoverController isPopoverVisible] == YES)
+    {
+        [self.popoverController dismissPopoverAnimated:YES];
+        [self releaseAllPopOver];
+        return;
+    }
+    [self releaseAllPopOver];
+    self.fileBrowserViewController = [[FileBrowserViewController alloc] initWithNibName:@"FileBrowserViewController" bundle:nil];
+    [self.fileBrowserViewController setFileBrowserViewDelegate:self];
+    [self.fileBrowserViewController setIsProjectFolder:YES];
+    
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:self.fileBrowserViewController];
+    
+    NSString* currentFilePath = [self getCurrentDisplayFile];
+    [self.fileBrowserViewController setInitialPath:currentFilePath];
+    
+    self.popoverController = [[UIPopoverController alloc] initWithContentViewController:controller];
+    //    self.functionListPopover.popoverContentSize = self.historyListController.view.frame.size;
+    
+    [self.popoverController presentPopoverFromRect:CGRectMake(1, 1, 1, 1) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
 #pragma mark - Split view
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
@@ -1365,6 +1399,7 @@
 #ifdef LITE_VERSION
     [[[Utils getInstance] getBannerViewController] viewDidLayoutSubviews];
 #endif
+    [self.fileBrowserButton setHidden:NO];
 }
 
 - (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
@@ -1379,6 +1414,19 @@
 //    }
     [[[Utils getInstance] getBannerViewController] viewDidLayoutSubviews];
 #endif
+    [self.fileBrowserButton setHidden:YES];
+    if (popoverController.contentViewController == fileBrowserViewController.parentViewController) {
+        [popoverController dismissPopoverAnimated:YES];
+    }
+    
+    // TableView has been updated by popup fileListBrowser, so need to update masterView
+    // TableView
+    if (needUpdateMasterViewTable) {
+        MasterViewController* masterViewController = nil;
+        NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
+        masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
+        [masterViewController gotoFile:[self getCurrentDisplayFile]];
+    }
 }
 
 - (void) showCommentInWebView:(int)_line andComment:(NSString*)_comment
@@ -1692,6 +1740,10 @@
         return NO;
     }
     return YES;
+}
+
+- (void)fileBrowserViewDisappeared {
+    needUpdateMasterViewTable = YES;
 }
 
 @end

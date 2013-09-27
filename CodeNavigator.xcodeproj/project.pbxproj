@@ -164,6 +164,7 @@
 		9435320B157A861D0011A446 /* ManuallyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435320A157A861D0011A446 /* ManuallyParser.m */; };
 		9435320C157A861D0011A446 /* ManuallyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435320A157A861D0011A446 /* ManuallyParser.m */; };
 		943A81D916381FA000E39298 /* tag_list.png in Resources */ = {isa = PBXBuildFile; fileRef = 943A81D816381FA000E39298 /* tag_list.png */; };
+		943D1FBD17E7695C00BD82E6 /* FileBrowser.png in Resources */ = {isa = PBXBuildFile; fileRef = 943D1FBC17E7695C00BD82E6 /* FileBrowser.png */; };
 		94407B1916E7B26F0011F941 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94407B1816E7B26F0011F941 /* libGoogleAnalytics.a */; };
 		94407B1B16E7BCBD0011F941 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94407B1A16E7BCBD0011F941 /* CoreData.framework */; };
 		94422A3314DD87F50076AC66 /* VirtualizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94422A3114DD87F50076AC66 /* VirtualizeViewController.m */; };
@@ -721,6 +722,8 @@
 		94ADF18114BB27EE00BA807A /* FilePathInfoPopupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D8703014A65888002F2DBB /* FilePathInfoPopupController.xib */; };
 		94ADF18614BB27EE00BA807A /* AnalyzeInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94291E5F14A9FB4A00E44221 /* AnalyzeInfoController.xib */; };
 		94ADF18714BB27EE00BA807A /* linux_0.1 in Resources */ = {isa = PBXBuildFile; fileRef = 94557E5314B05E89004950B4 /* linux_0.1 */; };
+		94B09BB517E77DC600789510 /* FileBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B09BB317E77DC600789510 /* FileBrowserViewController.m */; };
+		94B09BB617E77DC600789510 /* FileBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B09BB417E77DC600789510 /* FileBrowserViewController.xib */; };
 		94B23AD81499025A00A83395 /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B23AD71499025A00A83395 /* HistoryController.m */; };
 		94B4036A14A0DE0300E3A636 /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4033014A0D5EB00E3A636 /* libHttpService.a */; };
 		94B4038114A0ED4700E3A636 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4038014A0ED4700E3A636 /* CFNetwork.framework */; };
@@ -746,6 +749,8 @@
 		94C8C68514FA57D60062750D /* ImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C8C68214FA57D60062750D /* ImagePreviewController.m */; };
 		94C8C68614FA57D60062750D /* ImagePreviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C8C68314FA57D60062750D /* ImagePreviewController.xib */; };
 		94C8C68714FA57D60062750D /* ImagePreviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C8C68314FA57D60062750D /* ImagePreviewController.xib */; };
+		94CB768217E21369009807F9 /* FileListBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CB768117E21369009807F9 /* FileListBrowserController.m */; };
+		94CB768317E21369009807F9 /* FileListBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CB768117E21369009807F9 /* FileListBrowserController.m */; };
 		94CB787F156E80C8009452D8 /* FileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CB787E156E80C8009452D8 /* FileTableViewCell.xib */; };
 		94CB7880156E80C8009452D8 /* FileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CB787E156E80C8009452D8 /* FileTableViewCell.xib */; };
 		94D16DE714C9CC3B007439EB /* ImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D16DE614C9CC3B007439EB /* ImageParser.m */; };
@@ -1141,6 +1146,8 @@
 		94353209157A861D0011A446 /* ManuallyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManuallyParser.h; sourceTree = "<group>"; };
 		9435320A157A861D0011A446 /* ManuallyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManuallyParser.m; sourceTree = "<group>"; };
 		943A81D816381FA000E39298 /* tag_list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag_list.png; sourceTree = "<group>"; };
+		943D1FBA17E721E400BD82E6 /* FileListBrowserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileListBrowserProtocol.h; path = FileListBrowser/FileListBrowserProtocol.h; sourceTree = "<group>"; };
+		943D1FBC17E7695C00BD82E6 /* FileBrowser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FileBrowser.png; sourceTree = "<group>"; };
 		94407B1316E7B26F0011F941 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		94407B1416E7B26F0011F941 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
 		94407B1516E7B26F0011F941 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
@@ -1388,6 +1395,9 @@
 		94AB1E5114AF5E0300451020 /* UnSupportedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnSupportedParser.m; sourceTree = "<group>"; };
 		94ADF18C14BB27EE00BA807A /* CodeNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94ADF18E14BB27EF00BA807A /* CodeNavigatorLite-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CodeNavigatorLite-Info.plist"; path = "/Users/lgz_software/Documents/iOS_Development/CodeNavigator/CodeNavigatorLite-Info.plist"; sourceTree = "<absolute>"; };
+		94B09BB217E77DC600789510 /* FileBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileBrowserViewController.h; path = FileListBrowser/FileBrowserViewController.h; sourceTree = "<group>"; };
+		94B09BB317E77DC600789510 /* FileBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileBrowserViewController.m; path = FileListBrowser/FileBrowserViewController.m; sourceTree = "<group>"; };
+		94B09BB417E77DC600789510 /* FileBrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FileBrowserViewController.xib; path = FileListBrowser/FileBrowserViewController.xib; sourceTree = "<group>"; };
 		94B23AD61499025A00A83395 /* HistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryController.h; sourceTree = "<group>"; };
 		94B23AD71499025A00A83395 /* HistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryController.m; sourceTree = "<group>"; };
 		94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HttpService.xcodeproj; path = HttpService/HttpService.xcodeproj; sourceTree = "<group>"; };
@@ -1451,6 +1461,8 @@
 		94C8C68114FA57D60062750D /* ImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagePreviewController.h; path = CodeNavigator/ImagePreviewController.h; sourceTree = "<group>"; };
 		94C8C68214FA57D60062750D /* ImagePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagePreviewController.m; path = CodeNavigator/ImagePreviewController.m; sourceTree = "<group>"; };
 		94C8C68314FA57D60062750D /* ImagePreviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImagePreviewController.xib; path = CodeNavigator/ImagePreviewController.xib; sourceTree = "<group>"; };
+		94CB768017E21369009807F9 /* FileListBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileListBrowserController.h; path = FileListBrowser/FileListBrowserController.h; sourceTree = "<group>"; };
+		94CB768117E21369009807F9 /* FileListBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileListBrowserController.m; path = FileListBrowser/FileListBrowserController.m; sourceTree = "<group>"; };
 		94CB787E156E80C8009452D8 /* FileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileTableViewCell.xib; sourceTree = "<group>"; };
 		94D16DE514C9CC3B007439EB /* ImageParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageParser.h; sourceTree = "<group>"; };
 		94D16DE614C9CC3B007439EB /* ImageParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageParser.m; sourceTree = "<group>"; };
@@ -1479,6 +1491,7 @@
 		94F4249715387E1E005FC4C8 /* show_masterview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = show_masterview.png; sourceTree = "<group>"; };
 		94F6EEE01587BD30002DE115 /* ResultViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ResultViewController-iPhone.xib"; sourceTree = "<group>"; };
 		94F6EEE21587C19A002DE115 /* HighLightWordController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "HighLightWordController-iPhone.xib"; sourceTree = "<group>"; };
+		94F7B90617F5E21F00A506EE /* FileBrowserViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileBrowserViewProtocol.h; path = FileListBrowser/FileBrowserViewProtocol.h; sourceTree = "<group>"; };
 		94FAC80214C1649400B9A821 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		94FB0FE814BDB3A50084E457 /* HighLightWordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighLightWordController.h; sourceTree = "<group>"; };
 		94FB0FE914BDB3A50084E457 /* HighLightWordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighLightWordController.m; sourceTree = "<group>"; };
@@ -1638,6 +1651,7 @@
 				94AB105217550C5F00359AE8 /* HandleURLController */,
 				94AB106317563CDB00359AE8 /* ASIHTTPRequest */,
 				94AB1056175513D400359AE8 /* FileFormatResolver */,
+				94CB767F17E20662009807F9 /* FileListBrowser */,
 				9431D73E14910B3000B0900E /* CodeNavigator */,
 				9431D73714910B3000B0900E /* Frameworks */,
 				9431D73514910B3000B0900E /* Products */,
@@ -1826,6 +1840,7 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				943D1FBC17E7695C00BD82E6 /* FileBrowser.png */,
 				943A81D816381FA000E39298 /* tag_list.png */,
 				944A5B52160B63B00076410C /* syntax_color_iphone.plist */,
 				9478C6DF15C859F000F443D9 /* help.png */,
@@ -2335,6 +2350,20 @@
 			name = Header;
 			sourceTree = "<group>";
 		};
+		94CB767F17E20662009807F9 /* FileListBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				94CB768017E21369009807F9 /* FileListBrowserController.h */,
+				94CB768117E21369009807F9 /* FileListBrowserController.m */,
+				943D1FBA17E721E400BD82E6 /* FileListBrowserProtocol.h */,
+				94B09BB217E77DC600789510 /* FileBrowserViewController.h */,
+				94B09BB317E77DC600789510 /* FileBrowserViewController.m */,
+				94B09BB417E77DC600789510 /* FileBrowserViewController.xib */,
+				94F7B90617F5E21F00A506EE /* FileBrowserViewProtocol.h */,
+			);
+			name = FileListBrowser;
+			sourceTree = "<group>";
+		};
 		94EED18916331CF1003D9CA3 /* FunctionList */ = {
 			isa = PBXGroup;
 			children = (
@@ -2579,6 +2608,8 @@
 				941B2AC01636D419000BBF59 /* TagItemCell.xib in Resources */,
 				943A81D916381FA000E39298 /* tag_list.png in Resources */,
 				9434A5A7174FC00D004B1A9D /* GitCloneViewController.xib in Resources */,
+				943D1FBD17E7695C00BD82E6 /* FileBrowser.png in Resources */,
+				94B09BB617E77DC600789510 /* FileBrowserViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2955,6 +2986,8 @@
 				94AB10591755146E00359AE8 /* FileFormatResolver.m in Sources */,
 				94AB105C175516C900359AE8 /* ZipFileResolver.m in Sources */,
 				94AB10661756548000359AE8 /* OtherFormatResolver.m in Sources */,
+				94CB768217E21369009807F9 /* FileListBrowserController.m in Sources */,
+				94B09BB517E77DC600789510 /* FileBrowserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3353,6 +3386,7 @@
 				94D4EDD11642B96400601FE4 /* FunctionListViewController.m in Sources */,
 				94D4EDD31642B97200601FE4 /* FunctionListManager.m in Sources */,
 				94C2CDC6167F55C9004FB1FB /* HtmlParser.m in Sources */,
+				94CB768317E21369009807F9 /* FileListBrowserController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

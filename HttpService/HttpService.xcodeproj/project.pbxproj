@@ -193,7 +193,7 @@
 		94B4031214A0D5EA00E3A636 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 94B4031514A0D5EA00E3A636 /* Build configuration list for PBXProject "HttpService" */;
 			compatibilityVersion = "Xcode 3.2";

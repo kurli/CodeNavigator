@@ -141,7 +141,11 @@
         if (locationRange.location + locationRange.length < [fileName length]) {
             extention =  [fileName substringFromIndex:locationRange.location+1];
         }
-        NSString* sourceFullName = [sourceName stringByAppendingPathExtension:extention];
+        NSString* sourceFullName;
+        if (extention != nil)
+            sourceFullName = [sourceName stringByAppendingPathExtension:extention];
+        else
+            sourceFullName = sourceName;
         [((UILabel *)[cell viewWithTag:101]) setTextColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
         [((UILabel *)[cell viewWithTag:101]) setText:sourceFullName];
         [((UILabel *)[cell viewWithTag:102]) setTextColor:[UIColor colorWithRed:0.5 green:0 blue:0.5 alpha:1]];
@@ -185,9 +189,13 @@
         if (locationRange.location + locationRange.length < [fileName length]) {
             extention =  [fileName substringFromIndex:locationRange.location+1];
         }
-        NSString* sourceFullPath = [sourceName stringByAppendingPathExtension:extention];
+        NSString* sourceFullPath;
+        if (extention != NULL)
+            sourceFullPath= [sourceName stringByAppendingPathExtension:extention];
+        else
+            sourceFullPath = sourceName;
         CommentItem* item= (CommentItem*)([self.commentWrapper.commentArray objectAtIndex:indexPath.row]);
-        NSString* line = [NSString stringWithFormat:@"%d", item.line];
+        NSString* line = [NSString stringWithFormat:@"%d", item.line+1];
         
         [[Utils getInstance].detailViewController gotoFile:sourceFullPath andLine:line andKeyword:nil];
         

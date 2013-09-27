@@ -27,14 +27,12 @@
 #import "GAI.h"
 #endif
 #import "GitCloneViewController.h"
+#import "FileListBrowserController.h"
 
 @implementation MasterViewController
 @synthesize fileSearchBar = _fileSearchBar;
 
 @synthesize tableView = _tableView;
-@synthesize currentLocation = _currentLocation;
-@synthesize currentDirectories = _currentDirectories;
-@synthesize currentFiles = _currentFiles;
 @synthesize currentProjectPath = _currentProjectPath;
 @synthesize webServiceController = _webServiceController;
 @synthesize webServicePopOverController = _webServicePopOverController;
@@ -44,12 +42,11 @@
 #endif
 @synthesize versionControllerPopOverController;
 @synthesize commentManagerPopOverController;
-@synthesize searchFileResultArray;
 @synthesize fileInfoPopOverController;
 #ifdef IPHONE_VERSION
 @synthesize fileInfoControlleriPhone;
 #endif
-@synthesize deleteAlertView;
+@synthesize fileListBrowserController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,11 +55,12 @@
         self.title = NSLocalizedString(@"Projects", @"Projects");
 //        self clearsSelectionOnViewWillAppear = NO;
         self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
-        isProjectFolder = NO;
+        fileListBrowserController = [[FileListBrowserController alloc]init];
+        [fileListBrowserController setFileListBrowserDelegate:self];
+        [fileListBrowserController set_tableView:self.tableView];
+        [fileListBrowserController setEnableFileInfoButton:YES];
         // we do not show edit button from v1.8
 //        self.navigationItem.rightBarButtonItem = self.editButtonItem;
-        isCurrentSearchFileMode = NO;
-        deleteItemId = -1;
     }
     return self;
 }
@@ -94,60 +92,7 @@
 
 -(void) reloadData
 {
-    //[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
-    
-    if (nil == self.currentDirectories)
-    {
-        self.currentDirectories = [NSMutableArray array];
-    }
-    else
-    {
-        [self.currentDirectories removeAllObjects];
-    }
-    
-    if (nil == self.currentFiles)
-    {
-        self.currentFiles = [NSMutableArray array];
-    }
-    else
-    {
-        [self.currentFiles removeAllObjects];
-    }
-    
-    //Search projects
-    NSError *error;
-    NSString *projectFolder;
-    if (nil == self.currentLocation)
-    {
-        projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
-        self.currentLocation = [NSString stringWithString:projectFolder];
-    }
-    else
-    {
-        projectFolder = [NSString stringWithString:self.currentLocation];
-    }
-    NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:projectFolder error:&error];
-    for (int i=0; i<[contents count]; i++)
-    {
-        //Hide hidden files such as .git .DS_Store
-        if ([[[contents objectAtIndex:i] substringToIndex:1] compare:@"."] == NSOrderedSame) {
-            continue;
-        }
-        
-        NSString *currentPath = [projectFolder stringByAppendingPathComponent:[contents objectAtIndex:i]];
-        BOOL isFolder = NO;
-        [[NSFileManager defaultManager] fileExistsAtPath:currentPath isDirectory:&isFolder];
-        if (YES == isFolder)
-        {
-            [self.currentDirectories addObject:[contents objectAtIndex:i]];
-        }
-        else
-        {
-            if ([[Utils getInstance] isProjectDatabaseFile:[contents objectAtIndex:i]] == YES)
-                continue;
-            [self.currentFiles addObject:[contents objectAtIndex:i]];
-        }
-    }
+    [fileListBrowserController reloadData];
     [self.tableView reloadData];
 }
 
@@ -183,20 +128,14 @@
 - (void)dealloc
 {
     [self setFileInfoPopOverController:nil];
-    [self.searchFileResultArray removeAllObjects];
-    [self setSearchFileResultArray:nil];
     [self setFileSearchBar:nil];
     [self setCommentManagerPopOverController: nil];
-    [self setCurrentLocation:nil];
-    [self.currentFiles removeAllObjects];
     [self setCurrentProjectPath:nil];
-    [self.currentDirectories removeAllObjects];
-    [self setCurrentDirectories:nil];
-    [self setCurrentFiles: nil];
     [self setWebServiceController:nil];
     [self setWebServicePopOverController:nil];
     [self setTableView:nil];
     [self setAnalyzeButton:nil];
+    [self setFileListBrowserController:nil];
 #ifdef LITE_VERSION
     [self setPurchaseButton:nil];
 #endif
@@ -208,7 +147,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (isProjectFolder)
+    if ([fileListBrowserController getIsCurrentProjectFolder])
     {
         [self.fileSearchBar setHidden:YES];
         [self.analyzeButton setEnabled:NO];
@@ -245,417 +184,56 @@
     return YES;
 }
 
-- (IBAction)fileInfoButtonClicked:(id)sender
-{
-    UIButton *button = (UIButton *)sender;
-    UIView *contentView = [button superview];
-    UITableViewCell *cell = (UITableViewCell*)[contentView superview];
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    
-    if ([self.fileInfoPopOverController isPopoverVisible] == YES) {
-        [self.fileInfoPopOverController dismissPopoverAnimated:NO];
-    }
-    
-    if (indexPath.row < [self.currentDirectories count])
-    {
-        return;
-    }
-    
-    NSString* fileName = [self.currentFiles objectAtIndex:indexPath.row-[self.currentDirectories count]];
-    
-    NSString* path = [self.currentLocation stringByAppendingPathComponent:fileName];
-    
-#ifdef IPHONE_VERSION
-    self.fileInfoControlleriPhone = [[FileInfoControlleriPhone alloc] init];
-    [fileInfoControlleriPhone setMasterViewController:self];
-    [fileInfoControlleriPhone setSourceFile:path];
-#else
-    FileInfoViewController* fileInfoViewController = [[FileInfoViewController alloc] init];
-    [fileInfoViewController setSourceFile:path];
-    [fileInfoViewController setMasterViewController:self];
-    
-    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:fileInfoViewController];
-    fileInfoViewController.title = @"Action";
-    // Setup the popover for use from the navigation bar.
-	fileInfoPopOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
-	fileInfoPopOverController.popoverContentSize = fileInfoViewController.view.frame.size;
-    
-    [fileInfoPopOverController presentPopoverFromRect:button.frame inView:cell permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
-#endif
-}
-
 #pragma mark tableView delegate
 // Customize the number of sections in the table view.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return [fileListBrowserController numberOfSectionsInTableView:tableView];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (isCurrentSearchFileMode == YES) {
-        return [self.searchFileResultArray count];
-    }
-    
-    NSInteger count = 0;
-    if (nil != self.currentDirectories)
-        count += [self.currentDirectories count];
-    if (nil != self.currentFiles)
-        count += [self.currentFiles count];
-    return count;
+    return [fileListBrowserController tableView:tableView numberOfRowsInSection:section];
 }
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (isCurrentSearchFileMode == YES) {
-        static NSString *fileCellIdentifier = @"FileCell";
-        UITableViewCell *cell;
-        
-        cell = [_tableView dequeueReusableCellWithIdentifier:fileCellIdentifier];
-        if (cell == nil) {
-            cell = [[[NSBundle mainBundle] loadNibNamed:@"ResultTableCellView" owner:self options:nil] lastObject];
-            [cell setValue:fileCellIdentifier forKey:@"reuseIdentifier"];
-        }
-        NSString* item = nil;
-        if (indexPath.row < [self.searchFileResultArray count]) {
-            item = [self.searchFileResultArray objectAtIndex:indexPath.row];
-        }
-        NSString* fileName = [item lastPathComponent];
-//        [((UILabel *)[cell viewWithTag:101]) setTextColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
-        [((UILabel *)[cell viewWithTag:101]) setText:fileName];
-//        [((UILabel *)[cell viewWithTag:102]) setTextColor:[UIColor colorWithRed:0 green:0 blue:1 alpha:1]];
-        [((UILabel *)[cell viewWithTag:102]) setText:[[Utils getInstance] getPathFromProject:item]];
-        
-        return cell;
-    }
-    
-    static NSString *itemIdentifier = @"ProjectCell";
-    static NSString *fileIdentifier = @"FileCellIdentifier";
-    UITableViewCell *cell;
-    
-    if (indexPath.row < [self.currentDirectories count])
-    {
-        cell = [tableView dequeueReusableCellWithIdentifier:itemIdentifier];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemIdentifier];
-        }
-        if (isProjectFolder == YES)
-        {
-            cell.imageView.image = [UIImage imageNamed:@"project.png"];
-        }
-        else
-        {
-            cell.imageView.image = [UIImage imageNamed:@"folder.png"];
-        }
-        cell.textLabel.text = [self.currentDirectories objectAtIndex:indexPath.row];
-    }
-    else
-    {
-        UIImageView* imageView;
-        cell = [_tableView dequeueReusableCellWithIdentifier:fileIdentifier];
-        if (cell == nil) {
-            cell = [[[NSBundle mainBundle] loadNibNamed:@"FileTableViewCell" owner:self options:nil] lastObject];
-            [cell setValue:fileIdentifier forKey:@"reuseIdentifier"];
-        }
-        imageView = (UIImageView*)[cell viewWithTag:101];
-        
-        NSString* fileName = [self.currentFiles objectAtIndex:indexPath.row-[self.currentDirectories count]];
-        NSString* extention = [fileName pathExtension];
-        extention = [extention lowercaseString];
-        if ([extention compare:@"cc"] == NSOrderedSame) {
-            imageView.image = [UIImage imageNamed:@"ccFile.png"];
-        }
-        else if ([extention compare:@"c"] == NSOrderedSame) {
-            imageView.image = [UIImage imageNamed:@"cFile.png"];
-        }
-        else if ([extention compare:@"cpp"] == NSOrderedSame) {
-            imageView.image = [UIImage imageNamed:@"cppFile.png"];
-        }
-        else if ([extention compare:@"cs"] == NSOrderedSame) {
-            imageView.image = [UIImage imageNamed:@"csFile.png"];
-        }
-        else if ([extention compare:@"h"] == NSOrderedSame) {
-            imageView.image = [UIImage imageNamed:@"hFile.png"];
-        }
-        else if ([extention compare:@"hpp"] == NSOrderedSame) {
-            imageView.image = [UIImage imageNamed:@"hppFile.png"];
-        }
-        else if ([extention compare:@"java"] == NSOrderedSame) {
-            imageView.image = [UIImage imageNamed:@"javaFile.png"];
-        }
-        else if ([extention compare:@"m"] == NSOrderedSame) {
-            imageView.image = [UIImage imageNamed:@"mFile.png"];
-        }
-        else if ([extention compare:@"s"] == NSOrderedSame) {
-            imageView.image = [UIImage imageNamed:@"sFile.png"];
-        }
-        else if ([extention compare:@"mm"] == NSOrderedSame) {
-            imageView.image = [UIImage imageNamed:@"mmFile.png"];
-        }
-        else {
-            NSString* name = [[fileName pathComponents] lastObject];
-            name = [name lowercaseString];
-            if ([name compare:@"makefile"] == NSOrderedSame)
-                imageView.image = [UIImage imageNamed:@"mkFile.png"];
-            else
-                imageView.image = [UIImage imageNamed:@"File.png"];
-        }
-
-        ((UILabel*)[cell viewWithTag:102]).text = fileName;
-        
-        NSError* error;
-        NSString* filePath = self.currentLocation;
-        filePath = [filePath stringByAppendingPathComponent:fileName];
-        NSDictionary *attributes = [[NSFileManager defaultManager] 
-                                    attributesOfItemAtPath:filePath error:&error];
-        float theSize = [(NSNumber*)[attributes valueForKey:NSFileSize] floatValue];
-        NSString* sizeStr;
-        if (theSize<1023)
-            sizeStr = ([NSString stringWithFormat:@"%1.f bytes",theSize]);
-        else {
-            theSize = theSize / 1024;
-            sizeStr = ([NSString stringWithFormat:@"%1.1f KB",theSize]);
-        }
-        
-        NSDate* date = [attributes valueForKey:NSFileModificationDate];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init]; 
-        [dateFormatter setDateFormat:@"yy/MM/dd HH:mm"];
-
-        ((UILabel*)[cell viewWithTag:103]).text = sizeStr;
-        ((UILabel*)[cell viewWithTag:104]).text = [dateFormatter stringFromDate:date];
-        UIButton* infoButton = (UIButton*)[cell viewWithTag:110];
-        [infoButton addTarget:self action:@selector(fileInfoButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    }
-
-    return cell;
+    return [fileListBrowserController tableView:tableView cellForRowAtIndexPath:indexPath];
 }
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (isCurrentSearchFileMode == YES) {
-        return NO;
-    }
-//    // Return NO if you do not want the specified item to be editable.
-//    if (self.editing)
-//        return YES;
-    return YES;
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (alertView == self.deleteAlertView) {
-        [self setDeleteAlertView:nil];
-        if (deleteItemId == -1)
-            return;
-        if (buttonIndex != 1) {
-            return;
-        }
-        NSError *error;
-        NSString* path = @"";
-        path = [path stringByAppendingString:self.currentLocation];
-        // Delete the row from the data source.
-        if (deleteItemId < [self.currentDirectories count])
-        {
-            path = [path stringByAppendingPathComponent:[self.currentDirectories objectAtIndex:deleteItemId]];
-            [self.currentDirectories removeObjectAtIndex:deleteItemId];
-        }
-        else
-        {
-            path = [path stringByAppendingPathComponent:[self.currentFiles objectAtIndex:deleteItemId-[self.currentDirectories count]]];
-            [self.currentFiles removeObjectAtIndex:deleteItemId - [self.currentDirectories count]];
-            NSString* displayPath = [[Utils getInstance] getDisplayFileBySourceFile:path];
-            [[NSFileManager defaultManager] removeItemAtPath:displayPath error:&error];
-            NSString* tagPath = [[Utils getInstance] getTagFileBySourceFile:path];
-            [[NSFileManager defaultManager] removeItemAtPath:tagPath error:&error];
-            //remove comments file
-            NSString* extention = [path pathExtension];
-            NSString* commentFile = [path stringByDeletingPathExtension];
-            commentFile = [commentFile stringByAppendingFormat:@"_%@", extention];
-            commentFile = [commentFile stringByAppendingPathExtension:@"lgz_comment"];
-            [[NSFileManager defaultManager] removeItemAtPath:commentFile error:&error];
-        }
-        [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
-
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:deleteItemId inSection:0] ] withRowAnimation:UITableViewRowAnimationFade];
-        if (!isProjectFolder)
-            [[Utils getInstance] analyzeProject:path andForceCreate:YES];
-    }
+    return [fileListBrowserController tableView:tableView canEditRowAtIndexPath:indexPath];
 }
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        deleteItemId = indexPath.row;
-        self.deleteAlertView = [[UIAlertView alloc] initWithTitle:@"CodeNavigator" message:@"Would you like to delete this file?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
-        [self.deleteAlertView show];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
+    [fileListBrowserController tableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
 }
 
 -(GLfloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (isCurrentSearchFileMode == YES)
-    {
-        return 65;
-    }
-    else
-    {
-        if (indexPath.row < [self.currentDirectories count])
-            return 50;
-        else {
-            return 60;
-        }
-    }
+    return [fileListBrowserController tableView:tableView heightForRowAtIndexPath:indexPath];
 }
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 - (void) setIsProjectFolder:(BOOL)_isProjectFolder
 {
-    isProjectFolder = _isProjectFolder;
+    [fileListBrowserController setIsCurrentProjectFolder:_isProjectFolder];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (isCurrentSearchFileMode == YES) {
-        if (indexPath.row >= [self.searchFileResultArray count]) {
-            return;
-        }
-        NSString* item = [self.searchFileResultArray objectAtIndex:indexPath.row];
-        NSString* html = [[Utils getInstance] getDisplayFile:item andProjectBase:self.currentProjectPath];
-        NSString* displayPath = [[Utils getInstance] getDisplayPath:item];
-#ifdef IPHONE_VERSION
-        [self presentModalViewController:[Utils getInstance].detailViewController animated:YES];
-#endif
-        if (html != nil)
-        {
-            DetailViewController* controller = [Utils getInstance].detailViewController;
-            [controller setTitle:[item lastPathComponent] andPath:displayPath andContent:html andBaseUrl:nil];
-        }
-        else
-        {
-            DetailViewController* controller = [Utils getInstance].detailViewController;
-            
-            if ([[Utils getInstance] isDocType:item])
-            {
-                [controller displayDocTypeFile:item];
-                return;
-            }
-//            if ([[Utils getInstance] isWebType:item])
-//            {
-//                NSError *error;
-//                NSStringEncoding encoding = NSUTF8StringEncoding;
-//                html = [NSString stringWithContentsOfFile: item usedEncoding:&encoding error: &error];
-//                [controller setTitle:[item lastPathComponent] andPath:item andContent:html];
-//            }
-        }
-        [self.fileSearchBar resignFirstResponder];
-        return;
-    }
-    
-    NSString *selectedItem;
-    NSString *path;
-    NSString *displayPath;
-    NSString* html;
-
-    // For directories
-    if (indexPath.row < [self.currentDirectories count])
-    {
-        MasterViewController* masterViewController;
-#ifdef IPHONE_VERSION
-        masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController-iPhone" bundle:nil];
-#else
-        masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
-#endif
-        selectedItem = [self.currentDirectories objectAtIndex:indexPath.row];
-        path = [self.currentLocation stringByAppendingPathComponent:selectedItem];
-        
-        if (isProjectFolder)
-            [[Utils getInstance] analyzeProject:path andForceCreate:NO];
-        
-        // If current is Project Folder
-        if (isProjectFolder == YES)
-            masterViewController.currentProjectPath = path;
-        else
-            masterViewController.currentProjectPath = self.currentProjectPath;
-        
-        masterViewController.currentLocation = path;
-        masterViewController.title = selectedItem;
-        masterViewController.webServiceController = self.webServiceController;
-        masterViewController.webServicePopOverController = self.webServicePopOverController;
-        [masterViewController reloadData];
-        [self.navigationController pushViewController:masterViewController animated:YES];
-    }
-    else
-    {
-        DetailViewController* controller = [Utils getInstance].detailViewController;
-
-        selectedItem = [self.currentFiles objectAtIndex:indexPath.row-[self.currentDirectories count]];
-        path = [self.currentLocation stringByAppendingPathComponent:selectedItem];
-        html = [[Utils getInstance] getDisplayFile:path andProjectBase:self.currentProjectPath];
-        displayPath = [[Utils getInstance] getDisplayPath:path];
-        
-#ifdef IPHONE_VERSION
-        [self presentModalViewController:[Utils getInstance].detailViewController animated:YES];
-#endif
-        
-        //Help.html special case
-        if (isProjectFolder == YES && [selectedItem compare:@"Help.html"] == NSOrderedSame) {
-            NSError *error;
-            NSStringEncoding encoding = NSUTF8StringEncoding;
-            html = [NSString stringWithContentsOfFile: path usedEncoding:&encoding error: &error];
-            [controller setTitle:selectedItem andPath:path andContent:html andBaseUrl:nil];
-            return;
-        }
-        //other case
-        if (html != nil)
-        {
-            [controller setTitle:selectedItem andPath:displayPath andContent:html andBaseUrl:nil];
-        }
-        else
-        {            
-            if ([[Utils getInstance] isDocType:path])
-            {
-                [controller displayDocTypeFile:path];
-                return;
-            }
-//            if ([[Utils getInstance] isWebType:path])
-//            {
-//                NSError *error;
-//                NSStringEncoding encoding = NSUTF8StringEncoding;
-//                html = [NSString stringWithContentsOfFile: path usedEncoding:&encoding error: &error];
-//                [controller setTitle:selectedItem andPath:path andContent:html];
-//            }
-
-//            NSStringEncoding encoding = NSUTF8StringEncoding;
-//            html = [NSString stringWithContentsOfFile: path usedEncoding:&encoding error: &error];
-//            [controller setTitle:selectedItem andPath:path andContent:html];
-        }
-    }
+    [fileListBrowserController tableView:tableView didSelectRowAtIndexPath: indexPath];
+    [self.fileSearchBar resignFirstResponder];
 }
 
 -(void) gotoFile:(NSString *)filePath
 {
     // If current table view is in search mode, just ignore it
-    if (isCurrentSearchFileMode == YES) {
+    if ([fileListBrowserController getIsCurrentSearchFileMode]) {
         return;
     }
     
@@ -666,7 +244,7 @@
         return;
     }
     NSArray* targetComponents = [filePath pathComponents];
-    NSArray* currentComponents = [self.currentLocation pathComponents];
+    NSArray* currentComponents = [fileListBrowserController.currentLocation pathComponents];
     if ([targetComponents count] == 0 || [currentComponents count] == 0)
     {
         NSLog(@"path components is null");
@@ -697,8 +275,8 @@
     }
     else
         targetViewController = self;
-
-    NSString* path = targetViewController.currentLocation;
+    
+    NSString* path = targetViewController.fileListBrowserController.currentLocation;
     // go to the target directory
     for (int i=index+1; i<[targetComponents count]-1; i++)
     {
@@ -710,12 +288,12 @@
 #endif
         path = [path stringByAppendingPathComponent:[targetComponents objectAtIndex:i]];
         // If current is Project Folder
-        if (isProjectFolder == YES)
+        if ([fileListBrowserController getIsCurrentProjectFolder])
             masterViewController.currentProjectPath = path;
         else
             masterViewController.currentProjectPath = targetViewController.currentProjectPath;
         
-        masterViewController.currentLocation = path;
+        masterViewController.fileListBrowserController.currentLocation = path;
         masterViewController.title = [targetComponents objectAtIndex:i];
         targetViewController.webServiceController = self.webServiceController;
         targetViewController.webServicePopOverController = self.webServicePopOverController;
@@ -728,10 +306,10 @@
     title = [[Utils getInstance] getSourceFileByDisplayFile:title];
     
     BOOL founded = NO;
-    index = [targetViewController.currentDirectories count];
-    for (int i = 0; i<[targetViewController.currentFiles count]; i++)
+    index = [targetViewController.fileListBrowserController getCurrentDirectoriesCount];
+    for (int i = 0; i<[targetViewController.fileListBrowserController.currentFiles count]; i++)
     {
-        if ([title compare:[targetViewController.currentFiles objectAtIndex:i]] == NSOrderedSame)
+        if ([title compare:[targetViewController.fileListBrowserController.currentFiles objectAtIndex:i]] == NSOrderedSame)
         {
             index += i;
             founded = YES;
@@ -867,7 +445,7 @@
         [versionControllerPopOverController dismissPopoverAnimated:YES];
     }
     
-    if (isProjectFolder == YES) {
+    if ([fileListBrowserController getIsCurrentProjectFolder]) {
         [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please select a project"];
         return;
     }
@@ -950,9 +528,8 @@
 
 - (IBAction)searchFileDoneButtonClicked:(id)sender
 {
-    isCurrentSearchFileMode = NO;
-    [self.searchFileResultArray removeAllObjects];
-    [self setSearchFileResultArray:nil];
+    [fileListBrowserController searchFileDoneButtonClicked:sender];
+    
     // ignore it after v1.8
 //    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.rightBarButtonItem = nil;
@@ -962,15 +539,10 @@
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)theSearchBar {
-    if (isCurrentSearchFileMode == YES) {
-        return;
-    }
-    isCurrentSearchFileMode = YES;
-    [self.searchFileResultArray removeAllObjects];
-    [self setSearchFileResultArray:nil];
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(searchFileDoneButtonClicked:)];          
+    [fileListBrowserController searchBarTextDidBeginEditing:theSearchBar];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(searchFileDoneButtonClicked:)];
     self.navigationItem.rightBarButtonItem = doneButton;
-    [self.tableView reloadData];
+    [_tableView reloadData];
 }
 
 - (void) searchBar:(UISearchBar *)theSearchBar textDidChange:(NSString *)searchText {
@@ -980,29 +552,9 @@
     if ([searchText length] == 0) {
         return;
     }
-    NSString* fileList = [self.currentProjectPath stringByAppendingPathComponent:@"search_files.lgz_proj_files"];
+
+    [fileListBrowserController searchBar:theSearchBar textDidChange:searchText andCurrentProjPath:self.currentProjectPath];
     
-    BOOL isExist;
-    BOOL isFolder;
-    NSError* error;
-    
-    isExist = [[NSFileManager defaultManager] fileExistsAtPath:fileList isDirectory:&isFolder];
-    if (isExist == NO) {
-        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please analyze this project first"];
-        return;
-    }
-    searchText = [searchText lowercaseString];
-    NSString* fileListContent = [NSString stringWithContentsOfFile:fileList encoding:NSUTF8StringEncoding error:&error];
-    self.searchFileResultArray = [[NSMutableArray alloc] init];
-    NSArray* array = [fileListContent componentsSeparatedByString:@"\n"];
-    for (int i=0; i<[array count]; i++) {
-        NSString* fileName = [[array objectAtIndex:i] lastPathComponent];
-        fileName = [fileName lowercaseString];
-        if ([fileName rangeOfString:searchText].location != NSNotFound)
-        {
-            [self.searchFileResultArray addObject:[array objectAtIndex:i]];
-        }
-    }
     [self.tableView reloadData];
 }
 
@@ -1018,6 +570,131 @@
     viewController.modalPresentationStyle = UIModalPresentationFormSheet;
     [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
 #endif
+}
+
+- (NSString*)getCurrentLocation
+{
+    return fileListBrowserController.currentLocation;
+}
+
+#pragma mark FileListBrowserDelegate
+
+- (IBAction)fileInfoButtonClicked:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    UIView *contentView = [button superview];
+    UITableViewCell *cell = (UITableViewCell*)[contentView superview];
+    NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+    
+    if ([self.fileInfoPopOverController isPopoverVisible] == YES) {
+        [self.fileInfoPopOverController dismissPopoverAnimated:NO];
+    }
+    
+    if (indexPath.row < [self.fileListBrowserController getCurrentDirectoriesCount])
+    {
+        return;
+    }
+    
+    NSString* fileName = [self.fileListBrowserController getFileNameAtIndex:indexPath.row-[self.fileListBrowserController getCurrentDirectoriesCount]];
+    
+    NSString* path = [fileListBrowserController.currentLocation stringByAppendingPathComponent:fileName];
+    
+#ifdef IPHONE_VERSION
+    self.fileInfoControlleriPhone = [[FileInfoControlleriPhone alloc] init];
+    [fileInfoControlleriPhone setMasterViewController:self];
+    [fileInfoControlleriPhone setSourceFile:path];
+#else
+    FileInfoViewController* fileInfoViewController = [[FileInfoViewController alloc] init];
+    [fileInfoViewController setSourceFile:path];
+    [fileInfoViewController setMasterViewController:self];
+    
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:fileInfoViewController];
+    fileInfoViewController.title = @"Action";
+    // Setup the popover for use from the navigation bar.
+	fileInfoPopOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
+	fileInfoPopOverController.popoverContentSize = fileInfoViewController.view.frame.size;
+    
+    [fileInfoPopOverController presentPopoverFromRect:button.frame inView:cell permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+#endif
+}
+
+-(void) folderClickedDelegate:(NSString*)selectedItem andPath:(NSString*)path
+{
+    MasterViewController* masterViewController;
+#ifdef IPHONE_VERSION
+    masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController-iPhone" bundle:nil];
+#else
+    masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
+#endif
+    
+    if ([fileListBrowserController getIsCurrentProjectFolder])
+        [[Utils getInstance] analyzeProject:path andForceCreate:NO];
+    
+    // If current is Project Folder
+    if ([fileListBrowserController getIsCurrentProjectFolder])
+        masterViewController.currentProjectPath = path;
+    else
+        masterViewController.currentProjectPath = self.currentProjectPath;
+    
+    [masterViewController.fileListBrowserController setCurrentLocation:path];
+    masterViewController.title = selectedItem;
+    masterViewController.webServiceController = self.webServiceController;
+    masterViewController.webServicePopOverController = self.webServicePopOverController;
+    [masterViewController reloadData];
+    [self.navigationController pushViewController:masterViewController animated:YES];
+}
+
+-(void) fileClickedDelegate:(NSString*)selectedItem andPath:(NSString*)path
+{
+    NSString* html;
+    NSString* displayPath;
+    
+    DetailViewController* controller = [Utils getInstance].detailViewController;
+    
+    html = [[Utils getInstance] getDisplayFile:path andProjectBase:self.currentProjectPath];
+    displayPath = [[Utils getInstance] getDisplayPath:path];
+    
+#ifdef IPHONE_VERSION
+    [self presentModalViewController:[Utils getInstance].detailViewController animated:YES];
+#endif
+    
+    //Help.html special case
+    if ([fileListBrowserController getIsCurrentProjectFolder] == YES && [selectedItem compare:@"Help.html"] == NSOrderedSame) {
+        NSError *error;
+        NSStringEncoding encoding = NSUTF8StringEncoding;
+        html = [NSString stringWithContentsOfFile: path usedEncoding:&encoding error: &error];
+        [controller setTitle:selectedItem andPath:path andContent:html andBaseUrl:nil];
+        return;
+    }
+    //other case
+    if (html != nil)
+    {
+        [controller setTitle:selectedItem andPath:displayPath andContent:html andBaseUrl:nil];
+    }
+    else
+    {
+        if ([[Utils getInstance] isDocType:path])
+        {
+            [controller displayDocTypeFile:path];
+            return;
+        }
+        //            if ([[Utils getInstance] isWebType:path])
+        //            {
+        //                NSError *error;
+        //                NSStringEncoding encoding = NSUTF8StringEncoding;
+        //                html = [NSString stringWithContentsOfFile: path usedEncoding:&encoding error: &error];
+        //                [controller setTitle:selectedItem andPath:path andContent:html];
+        //            }
+        
+        //            NSStringEncoding encoding = NSUTF8StringEncoding;
+        //            html = [NSString stringWithContentsOfFile: path usedEncoding:&encoding error: &error];
+        //            [controller setTitle:selectedItem andPath:path andContent:html];
+    }
+}
+
+- (NSString*) getCurrentProjectPath
+{
+    return self.currentProjectPath;
 }
 
 @end

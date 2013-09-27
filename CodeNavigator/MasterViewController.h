@@ -7,26 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FileListBrowserProtocol.h"
 
 @class DetailViewController;
 @class WebServiceController;
 #ifdef IPHONE_VERSION
 @class FileInfoControlleriPhone;
 #endif
+@class FileListBrowserController;
 
 #define MASTER_VIEW_RELOAD @"CodeNavigator_master_view_reload"
 
-@interface MasterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UISearchBarDelegate>
+@interface MasterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, FileListBrowserDelegate>
 {
-    BOOL isProjectFolder;
-    BOOL isCurrentSearchFileMode;
-    int deleteItemId;
 }
-@property (strong, nonatomic) NSString *currentLocation;
-
-@property (strong, nonatomic) NSMutableArray *currentDirectories;
-
-@property (strong, nonatomic) NSMutableArray *currentFiles;
 
 @property (strong, nonatomic) NSString *currentProjectPath;
 
@@ -50,15 +44,13 @@
 
 @property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *fileSearchBar;
 
-@property (strong, nonatomic) NSMutableArray* searchFileResultArray;
-
 @property (strong, nonatomic) UIPopoverController* fileInfoPopOverController;
 
 #ifdef IPHONE_VERSION
 @property (strong, nonatomic) FileInfoControlleriPhone* fileInfoControlleriPhone;
 #endif
 
-@property (strong, nonatomic) UIAlertView* deleteAlertView;
+@property (strong, nonatomic) FileListBrowserController* fileListBrowserController;
 
 - (IBAction)addFileToolBarClicked:(id)sender;
 
@@ -83,6 +75,8 @@
 - (IBAction)helpButtonClicked:(id)sender;
 
 - (void) showGitCloneView;
+
+- (NSString*) getCurrentLocation;
 
 @end
 

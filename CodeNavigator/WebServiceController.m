@@ -98,7 +98,7 @@
     
     if (![self.webServiceSwitcher isOn])
     {
-        NSArray* components = [masterViewController.currentLocation pathComponents];
+        NSArray* components = [[masterViewController getCurrentLocation] pathComponents];
         NSString* path = @"";
         int index = 0;
         for (; index < [components count]; index++)
@@ -133,8 +133,8 @@
     NSError* error;
 	
     if ([sender isOn]){
-        NSString *root = masterViewController.currentLocation;
-        self.uploadToPath = [masterViewController.currentLocation stringByAppendingString:@""];
+        NSString *root = [masterViewController getCurrentLocation];
+        self.uploadToPath = [[masterViewController getCurrentLocation] stringByAppendingString:@""];
         if (_httpServer == nil)
         {
             _httpServer = [[HTTPServer alloc] init];

@@ -15,6 +15,7 @@
 #import "GotoLineViewController.h"
 #import "MGSplitViewController.h"
 #import "DisplayModeController.h"
+#import "FileBrowserViewProtocol.h"
 
 #ifdef LITE_VERSION
 #import "GAI.h"
@@ -34,11 +35,12 @@ typedef enum _JSState {
 @class HistoryListController;
 @class VirtualizeViewController;
 @class FunctionListViewController;
+@class FileBrowserViewController;
 
 #ifdef LITE_VERSION
 @interface DetailViewController : GAITrackedViewController <UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MGSplitViewControllerDelegate>
 #else
-@interface DetailViewController : UIViewController <UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MGSplitViewControllerDelegate>
+@interface DetailViewController : UIViewController <UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MGSplitViewControllerDelegate, FileBrowserViewDelegate>
 #endif
 {
     int currentSearchFocusLine;
@@ -52,6 +54,8 @@ typedef enum _JSState {
     
     BOOL isVirtualizeDisplayed;
     BOOL isFirstDisplay;
+    
+    BOOL needUpdateMasterViewTable;
 }
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *navigateBarButtonItem;
 
@@ -66,6 +70,8 @@ typedef enum _JSState {
 @property (unsafe_unretained, nonatomic) IBOutlet UISegmentedControl *historyBar;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UISegmentedControl *showCommentsSegment;
+
+@property (weak, nonatomic) IBOutlet UIButton *fileBrowserButton;
 
 // search support
 @property (strong, nonatomic) NSString *searchWord;
@@ -111,6 +117,10 @@ typedef enum _JSState {
 @property (strong, nonatomic) UIPopoverController* functionListPopover;
 
 @property (strong, nonatomic) VirtualizeViewController *virtualizeViewController;
+
+@property (strong, nonatomic) FileBrowserViewController *fileBrowserViewController;
+
+@property (strong, nonatomic) UIPopoverController *popoverController;
 
 @property (strong, nonatomic) NSString* jsGotoLineKeyword;
 
@@ -227,5 +237,9 @@ typedef enum _JSState {
 #endif
 
 - (IBAction)functionListClicked:(id)sender;
+
+- (IBAction)fileBrowserButtonClicked:(id)sender;
+
+- (void)fileBrowserViewDisappeared;
 
 @end
