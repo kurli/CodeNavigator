@@ -61,6 +61,7 @@
         [fileListBrowserController setEnableFileInfoButton:YES];
         // we do not show edit button from v1.8
 //        self.navigationItem.rightBarButtonItem = self.editButtonItem;
+        needSelectRowAfterReload = -1;
     }
     return self;
 }
@@ -94,6 +95,10 @@
 {
     [fileListBrowserController reloadData];
     [self.tableView reloadData];
+    if (needSelectRowAfterReload != -1) {
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:needSelectRowAfterReload inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+        needSelectRowAfterReload = -1;
+    }
 }
 
 - (void)viewDidUnload
@@ -147,6 +152,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    // Select table view
+    if (needSelectRowAfterReload != -1) {
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:needSelectRowAfterReload inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+        needSelectRowAfterReload = -1;
+    }
+
     if ([fileListBrowserController getIsCurrentProjectFolder])
     {
         [self.fileSearchBar setHidden:YES];
@@ -276,6 +288,7 @@
     else
         targetViewController = self;
     
+    BOOL founded = NO;
     NSString* path = targetViewController.fileListBrowserController.currentLocation;
     // go to the target directory
     for (int i=index+1; i<[targetComponents count]-1; i++)
@@ -298,6 +311,21 @@
         targetViewController.webServiceController = self.webServiceController;
         targetViewController.webServicePopOverController = self.webServicePopOverController;
         [masterViewController reloadData];
+        // Select Folder
+        int i = 0;
+        for (i = 0; i<[targetViewController.fileListBrowserController.currentDirectories count]; i++)
+        {
+            if ([masterViewController.title compare:[targetViewController.fileListBrowserController.currentDirectories objectAtIndex:i]] == NSOrderedSame)
+            {
+                founded = YES;
+                break;
+            }
+        }
+        if (founded == YES) {
+            [targetViewController setNeedSelectRowAfterReload:i];
+        }
+        // end
+
         [targetViewController.navigationController pushViewController:masterViewController animated:NO];
         targetViewController = masterViewController;
     }
@@ -305,7 +333,7 @@
     NSString* title = [targetComponents lastObject];
     title = [[Utils getInstance] getSourceFileByDisplayFile:title];
     
-    BOOL founded = NO;
+    founded = NO;
     index = [targetViewController.fileListBrowserController getCurrentDirectoriesCount];
     for (int i = 0; i<[targetViewController.fileListBrowserController.currentFiles count]; i++)
     {
@@ -316,8 +344,13 @@
             break;
         }
     }
-    if (founded == YES)
-        [targetViewController.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+    if (founded == YES) {
+        if (targetViewController != self) {
+            [targetViewController setNeedSelectRowAfterReload:index];
+        } else {
+            [targetViewController.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+        }
+    }
 }
 
 - (IBAction)analyzeButtonClicked:(id)sender {
@@ -640,7 +673,7 @@
     masterViewController.title = selectedItem;
     masterViewController.webServiceController = self.webServiceController;
     masterViewController.webServicePopOverController = self.webServicePopOverController;
-    [masterViewController reloadData];
+    //[masterViewController reloadData];
     [self.navigationController pushViewController:masterViewController animated:YES];
 }
 
@@ -695,6 +728,10 @@
 - (NSString*) getCurrentProjectPath
 {
     return self.currentProjectPath;
+}
+
+- (void) setNeedSelectRowAfterReload:(int)index {
+    needSelectRowAfterReload = index;
 }
 
 @end

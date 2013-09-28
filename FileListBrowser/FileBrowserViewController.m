@@ -35,6 +35,7 @@
         [fileListBrowserController setFileListBrowserDelegate:self];
         [fileListBrowserController set_tableView:self.tableView];
         [fileListBrowserController setEnableFileInfoButton:NO];
+        needSelectRowAfterReload = -1;
     }
     return self;
 }
@@ -66,6 +67,13 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    // Select table view
+    if (needSelectRowAfterReload != -1) {
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:needSelectRowAfterReload inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+        needSelectRowAfterReload = -1;
+    }
+
     if ([fileListBrowserController getIsCurrentProjectFolder])
     {
         //Workaround for UI error in pop over view
@@ -99,6 +107,10 @@
 {
     [fileListBrowserController reloadData];
     [self.tableView reloadData];
+    if (needSelectRowAfterReload != -1) {
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:needSelectRowAfterReload inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+        needSelectRowAfterReload = -1;
+    }
 }
 
 #pragma mark tableView delegate
@@ -204,7 +216,7 @@
     [fileBrowserViewController.fileListBrowserController setCurrentLocation:path];
     fileBrowserViewController.title = selectedItem;
     fileBrowserViewController.fileBrowserViewDelegate = fileBrowserViewDelegate;
-    [fileBrowserViewController reloadData];
+    //[fileBrowserViewController reloadData];
     [self.navigationController pushViewController:fileBrowserViewController animated:YES];
 }
 
@@ -297,6 +309,7 @@
     else
         targetViewController = self;
     
+    BOOL founded = NO;
     NSString* path = targetViewController.fileListBrowserController.currentLocation;
     // go to the target directory
     for (int i=index+1; i<[targetComponents count]-1; i++)
@@ -316,6 +329,20 @@
         fileBrowserViewController.title = [targetComponents objectAtIndex:i];
         fileBrowserViewController.fileBrowserViewDelegate = fileBrowserViewDelegate;
         [fileBrowserViewController reloadData];
+        // Select Folder
+        int i = 0;
+        for (i = 0; i<[targetViewController.fileListBrowserController.currentDirectories count]; i++)
+        {
+            if ([fileBrowserViewController.title compare:[targetViewController.fileListBrowserController.currentDirectories objectAtIndex:i]] == NSOrderedSame)
+            {
+                founded = YES;
+                break;
+            }
+        }
+        if (founded == YES) {
+            [targetViewController setNeedSelectRowAfterReload:i];
+        }
+        // end
         [targetViewController.navigationController pushViewController:fileBrowserViewController animated:NO];
         targetViewController = fileBrowserViewController;
     }
@@ -323,7 +350,7 @@
     NSString* title = [targetComponents lastObject];
     title = [[Utils getInstance] getSourceFileByDisplayFile:title];
     
-    BOOL founded = NO;
+    founded = NO;
     index = [targetViewController.fileListBrowserController getCurrentDirectoriesCount];
     for (int i = 0; i<[targetViewController.fileListBrowserController.currentFiles count]; i++)
     {
@@ -334,8 +361,17 @@
             break;
         }
     }
-    if (founded == YES)
-        [targetViewController.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+    if (founded == YES) {
+        if (targetViewController != self) {
+            [targetViewController setNeedSelectRowAfterReload:index];
+        } else {
+            [targetViewController.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+        }
+    }
+}
+
+-(void) setNeedSelectRowAfterReload:(int)index {
+    needSelectRowAfterReload = index;
 }
 
 @end

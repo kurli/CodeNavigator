@@ -13,6 +13,9 @@
 #import "FileListBrowserProtocol.h"
 
 @interface FileBrowserViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FileListBrowserDelegate>
+{
+    int needSelectRowAfterReload;
+}
 
 @property (unsafe_unretained, nonatomic) IBOutlet UITableView *tableView;
 
@@ -29,5 +32,7 @@
 - (void) setIsProjectFolder:(BOOL) _isProjectFolder;
 
 - (void) gotoFile:(NSString *)filePath;
+
+- (void) setNeedSelectRowAfterReload:(int)index;
 
 @end

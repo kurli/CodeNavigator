@@ -20,6 +20,7 @@
 
 @interface MasterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, FileListBrowserDelegate>
 {
+    int needSelectRowAfterReload;
 }
 
 @property (strong, nonatomic) NSString *currentProjectPath;
@@ -77,6 +78,8 @@
 - (void) showGitCloneView;
 
 - (NSString*) getCurrentLocation;
+
+- (void) setNeedSelectRowAfterReload:(int)index;
 
 @end
 
