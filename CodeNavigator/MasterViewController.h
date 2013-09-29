@@ -53,7 +53,7 @@
 
 - (void) setIsProjectFolder:(BOOL) _isProjectFolder;
 
-- (void) gotoFile:(NSString*) filePath;
+- (void) gotoFile:(NSString*) filePath andForce:(BOOL)force;
 
 - (IBAction)analyzeButtonClicked:(id)sender;
 

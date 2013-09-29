@@ -239,8 +239,12 @@
     [self.fileSearchBar resignFirstResponder];
 }
 
--(void) gotoFile:(NSString *)filePath
+-(void) gotoFile:(NSString *)filePath andForce:(BOOL)force
 {
+    if (!force && [[Utils getInstance].splitViewController isShowingMaster] == NO) {
+        return;
+    }
+    
     // If current table view is in search mode, just ignore it
     if ([fileListBrowserController getIsCurrentSearchFileMode]) {
         return;

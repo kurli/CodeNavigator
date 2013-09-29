@@ -117,9 +117,7 @@
     // add drag listener
 	[scrollItem addTarget:self action:@selector(wasDragged:withEvent:) 
      forControlEvents:UIControlEventTouchDragInside];
-    
-    needUpdateMasterViewTable = NO;
-    
+
     [super viewDidLoad];
 #ifdef LITE_VERSION
     self.trackedViewName = @"Browsing Code";
@@ -473,7 +471,7 @@
             jsGotoLine = [line intValue];
             _jsGotoLineKeyword = __keyword;
             
-            [masterViewController gotoFile:displayPath];
+            [masterViewController gotoFile:displayPath andForce:NO];
         }
         else
         {
@@ -568,7 +566,7 @@
     NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
     masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController; 
 #endif
-    [masterViewController gotoFile:url];
+    [masterViewController gotoFile:url andForce:NO];
 }
 
 - (void)goBackHistory {
@@ -1372,14 +1370,12 @@
         [popoverController dismissPopoverAnimated:YES];
     }
     
-    // TableView has been updated by popup fileListBrowser, so need to update masterView
-    // TableView
-    if (needUpdateMasterViewTable) {
-        MasterViewController* masterViewController = nil;
-        NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
-        masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
-        [masterViewController gotoFile:[self getCurrentDisplayFile]];
-    }
+    // We need always update MasterView Tableview
+    // Because when masterview hidden, gotoFile will be blocked in MasterView
+    MasterViewController* masterViewController = nil;
+    NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
+    masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
+    [masterViewController gotoFile:[self getCurrentDisplayFile] andForce:YES];
 }
 
 - (void) showCommentInWebView:(int)_line andComment:(NSString*)_comment
@@ -1696,11 +1692,9 @@
 }
 
 - (void)fileBrowserViewDisappeared {
-    needUpdateMasterViewTable = YES;
 }
 
 - (void)folderSelected:(NSString*)path {
-    
 }
 
 

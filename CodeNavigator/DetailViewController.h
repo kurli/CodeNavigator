@@ -53,9 +53,7 @@ typedef enum _JSState {
     //end
     
     BOOL isVirtualizeDisplayed;
-    BOOL isFirstDisplay;
-    
-    BOOL needUpdateMasterViewTable;
+    BOOL isFirstDisplay;    
 }
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *navigateBarButtonItem;
 
