@@ -45,14 +45,10 @@
 }
 
 - (IBAction)dropboxClicked:(id)sender {
-    [masterViewController.versionControllerPopOverController dismissPopoverAnimated:NO];
-    [masterViewController setVersionControllerPopOverController:nil];
     [masterViewController dropBoxClicked:nil];
 }
 
 - (IBAction)gitClicked:(id)sender {
-    [masterViewController.versionControllerPopOverController dismissPopoverAnimated:NO];
-    [masterViewController setVersionControllerPopOverController:nil];
     [masterViewController gitClicked:nil];
 }
 @end

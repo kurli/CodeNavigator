@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "HTTPServer.h"
+#import "FileBrowserViewProtocol.h"
 
 @class HTTPServer;
 @protocol WebUploadResultDelegate;
 @class MasterViewController;
 
-@interface WebServiceController : UIViewController <WebUploadResultDelegate>
+@interface WebServiceController : UIViewController <WebUploadResultDelegate, UITableViewDelegate, UITableViewDataSource, FileBrowserViewDelegate>
+{
+    BOOL needStopZip;
+}
 
 - (IBAction)selectionChanged:(id)sender;
 
@@ -28,6 +32,8 @@
 -(void) setProgressViewValue: (NSNumber*)value;
 
 -(void) analyzeProject:(NSString*)path;
+
+-(NSString*) getUploadToPathRelative;
 
 #ifdef IPHONE_VERSION
 - (IBAction)doneButtonClicked:(id)sender;
@@ -51,6 +57,19 @@
 
 @property (strong, atomic) NSString* uploadToPath;
 
-- (IBAction)gitCloneClicked:(id)sender;
+@property (strong, nonatomic) UIPopoverController* popOverController;
+
+@property (unsafe_unretained, nonatomic) IBOutlet  UITableView *_tableView;
+
+@property (weak, nonatomic) IBOutlet UIButton *stopButton;
+
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
+
+- (IBAction)onStopClicked:(id)sender;
+
+- (void)fileBrowserViewDisappeared;
+
+- (void)folderSelected:(NSString*)path;
+
 
 @end

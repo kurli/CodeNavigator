@@ -392,6 +392,7 @@
         [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:deleteItemId inSection:0] ] withRowAnimation:UITableViewRowAnimationFade];
         if (!isCurrentProjectFolder)
             [[Utils getInstance] analyzeProject:path andForceCreate:YES];
+        [_tableView reloadData];
     }
 }
 

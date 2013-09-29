@@ -612,6 +612,11 @@
 }
 
 - (void)navigationManagerPopUpWithKeyword:(NSString*)keyword andSourcePath:(NSString*)path {
+    if ([popoverController isPopoverVisible]) {
+        [self releaseAllPopOver];
+        return;
+    }
+
     [self releaseAllPopOver];
     
     _codeNavigationController= [[NavigationController alloc] init];
@@ -778,6 +783,11 @@
 }
 
 - (IBAction)titleTouched:(id)sender {
+    if ([popoverController isPopoverVisible]) {
+        [self releaseAllPopOver];
+        return;
+    }
+    
     [self releaseAllPopOver];
     
     NSString* currentFile = [self getCurrentDisplayFile];
@@ -882,6 +892,11 @@
 
 -(void) resultPopUp:(id)sender
 {
+    if ([popoverController isPopoverVisible]) {
+        [self releaseAllPopOver];
+        return;
+    }
+    
     [self releaseAllPopOver];
     if ([[Utils getInstance].resultFileList count] == 0)
     {
@@ -913,6 +928,11 @@
 
 -(void) gotoLinePopUp:(id)sender
 {
+    if ([popoverController isPopoverVisible]) {
+        [self releaseAllPopOver];
+        return;
+    }
+    
     [self releaseAllPopOver];
     UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
     
@@ -986,6 +1006,11 @@
 }
 
 - (IBAction)highlightWordButtonClicked:(id)sender {
+    if ([popoverController isPopoverVisible]) {
+        [self releaseAllPopOver];
+        return;
+    }
+    
     [self releaseAllPopOver];
     UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
 #ifdef IPHONE_VERSION
@@ -1063,6 +1088,11 @@
 }
 
 - (IBAction)displayModeClicked:(id)sender {
+    if ([popoverController isPopoverVisible]) {
+        [self releaseAllPopOver];
+        return;
+    }
+    
     [self releaseAllPopOver];
     UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
 #ifdef IPHONE_VERSION
@@ -1088,6 +1118,11 @@
 }
 
 - (IBAction)historyListClicked:(id)sender {
+    if ([popoverController isPopoverVisible]) {
+        [self releaseAllPopOver];
+        return;
+    }
+    
     [self releaseAllPopOver];
     UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
     self.historyListController = [[HistoryListController alloc] init];
@@ -1253,6 +1288,11 @@
 }
 
 - (IBAction)functionListClicked:(id)sender {
+    if ([popoverController isPopoverVisible]) {
+        [self releaseAllPopOver];
+        return;
+    }
+    
     [self releaseAllPopOver];
     self.functionListViewController = [[FunctionListViewController alloc] initWithNibName:@"FunctionListViewController" bundle:nil];
     NSString* currentFilePath = [self getCurrentDisplayFile];
@@ -1658,5 +1698,10 @@
 - (void)fileBrowserViewDisappeared {
     needUpdateMasterViewTable = YES;
 }
+
+- (void)folderSelected:(NSString*)path {
+    
+}
+
 
 @end

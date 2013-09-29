@@ -128,7 +128,7 @@
     {
         TWTweetComposeViewController *twitter = [[TWTweetComposeViewController alloc] init];
         [twitter addImage:[UIImage imageNamed:@"Icon-72.png"]];
-        [twitter addURL:[NSURL URLWithString:[NSString stringWithString:@"http://lgzsoftware.blogspot.com/2012/02/2012129-new-features-in-1_8547.html"]]];
+        [twitter addURL:[NSURL URLWithString:@"http://lgzsoftware.blogspot.com/2012/02/2012129-new-features-in-1_8547.html"]];
         [twitter setInitialText:@"I'm enjoying CodeNavigator with my source codes on iPad."];
         [self presentModalViewController:twitter animated:YES];
         // Called when the tweet dialog has been closed

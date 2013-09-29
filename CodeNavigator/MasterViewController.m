@@ -28,6 +28,7 @@
 #endif
 #import "GitCloneViewController.h"
 #import "FileListBrowserController.h"
+#import "UploadSelectionViewController.h"
 
 @implementation MasterViewController
 @synthesize fileSearchBar = _fileSearchBar;
@@ -35,14 +36,11 @@
 @synthesize tableView = _tableView;
 @synthesize currentProjectPath = _currentProjectPath;
 @synthesize webServiceController = _webServiceController;
-@synthesize webServicePopOverController = _webServicePopOverController;
 @synthesize analyzeButton = _analyzeButton;
 #ifdef LITE_VERSION
 @synthesize purchaseButton = _purchaseButton;
 #endif
-@synthesize versionControllerPopOverController;
-@synthesize commentManagerPopOverController;
-@synthesize fileInfoPopOverController;
+@synthesize popOverController;
 #ifdef IPHONE_VERSION
 @synthesize fileInfoControlleriPhone;
 #endif
@@ -57,7 +55,6 @@
         self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
         fileListBrowserController = [[FileListBrowserController alloc]init];
         [fileListBrowserController setFileListBrowserDelegate:self];
-        [fileListBrowserController set_tableView:self.tableView];
         [fileListBrowserController setEnableFileInfoButton:YES];
         // we do not show edit button from v1.8
 //        self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -132,12 +129,10 @@
 
 - (void)dealloc
 {
-    [self setFileInfoPopOverController:nil];
     [self setFileSearchBar:nil];
-    [self setCommentManagerPopOverController: nil];
+    [self setPopOverController: nil];
     [self setCurrentProjectPath:nil];
     [self setWebServiceController:nil];
-    [self setWebServicePopOverController:nil];
     [self setTableView:nil];
     [self setAnalyzeButton:nil];
     [self setFileListBrowserController:nil];
@@ -152,6 +147,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [fileListBrowserController set_tableView:self.tableView];
     
     // Select table view
     if (needSelectRowAfterReload != -1) {
@@ -309,7 +306,6 @@
         masterViewController.fileListBrowserController.currentLocation = path;
         masterViewController.title = [targetComponents objectAtIndex:i];
         targetViewController.webServiceController = self.webServiceController;
-        targetViewController.webServicePopOverController = self.webServicePopOverController;
         [masterViewController reloadData];
         // Select Folder
         int i = 0;
@@ -358,8 +354,8 @@
 }
 
 - (void) showGitCloneView
-{
-    [_webServicePopOverController dismissPopoverAnimated:YES];
+{    
+    [self releaseAllPopover];
     GitCloneViewController* viewController = [[GitCloneViewController alloc] init];
     viewController.modalPresentationStyle = UIModalPresentationFormSheet;
     //[[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
@@ -400,6 +396,7 @@
 
 - (IBAction)dropBoxClicked:(id)sender {
 #ifndef IPHONE_VERSION
+    [self releaseAllPopover];
     DropBoxViewController* dropBoxViewController = [[DropBoxViewController alloc] initWithNibName:@"DropBoxViewController" bundle:[NSBundle mainBundle]];
     [[Utils getInstance] setDropBoxViewController:dropBoxViewController];
     [dropBoxViewController showModualView];
@@ -413,40 +410,42 @@
 #endif
 }
 
+- (void) releaseAllPopover
+{
+    [popOverController dismissPopoverAnimated:YES];
+    [self setPopOverController:nil];
+}
+
 - (IBAction)versionControlButtonClicked:(id)sender {
+    if ([popOverController isPopoverVisible]) {
+        [self releaseAllPopover];
+        return;
+    }
+    
+    [self releaseAllPopover];
 #ifndef LITE_VERSION
     // Ignore Dropbox
     UIBarButtonItem *item = (UIBarButtonItem*)sender;
-
-    if ([versionControllerPopOverController isPopoverVisible] == YES) {
-        [versionControllerPopOverController dismissPopoverAnimated:YES];
-        return;
-    }
-    if ([commentManagerPopOverController isPopoverVisible] == YES) {
-        [commentManagerPopOverController dismissPopoverAnimated:YES];
-    }
     
     VersionControlController* controller = [[VersionControlController alloc] init];
     [controller setMasterViewController:self];
     
-    versionControllerPopOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
-    versionControllerPopOverController.popoverContentSize = controller.view.frame.size;
+    popOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
+    popOverController.popoverContentSize = controller.view.frame.size;
     
-    [versionControllerPopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    [popOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 #else
     [self gitClicked:sender];
 #endif
 }
 
 - (IBAction)lockButtonClicked:(id)sender {
-    if ([commentManagerPopOverController isPopoverVisible] == YES) {
-        [commentManagerPopOverController dismissPopoverAnimated:YES];
+    if ([popOverController isPopoverVisible]) {
+        [self releaseAllPopover];
+        return;
     }
     
-    if ([versionControllerPopOverController isPopoverVisible] == YES) {
-        [versionControllerPopOverController dismissPopoverAnimated:YES];
-    }
-    [self.webServicePopOverController dismissPopoverAnimated:YES];
+    [self releaseAllPopover];
     [[Utils getInstance].detailViewController releaseAllPopOver];
     [[Utils getInstance].analyzeInfoPopover dismissPopoverAnimated:YES];
     
@@ -469,14 +468,12 @@
 #endif
     UIBarButtonItem *item = (UIBarButtonItem*)sender;
     
-    if ([commentManagerPopOverController isPopoverVisible] == YES) {
-        [commentManagerPopOverController dismissPopoverAnimated:YES];
+    if ([popOverController isPopoverVisible]) {
+        [self releaseAllPopover];
         return;
     }
     
-    if ([versionControllerPopOverController isPopoverVisible] == YES) {
-        [versionControllerPopOverController dismissPopoverAnimated:YES];
-    }
+    [self releaseAllPopover];
     
     if ([fileListBrowserController getIsCurrentProjectFolder]) {
         [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please select a project"];
@@ -495,9 +492,9 @@
 #ifdef IPHONE_VERSION
     [self presentModalViewController:navigationController animated:YES];
 #else
-    commentManagerPopOverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
-    commentManagerPopOverController.popoverContentSize = controller.view.frame.size;
-    [commentManagerPopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    popOverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
+    popOverController.popoverContentSize = controller.view.frame.size;
+    [popOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 #endif
 }
 
@@ -508,38 +505,31 @@
 }
 #endif
 
-- (void) hideWebUploadService
+- (void) showWebUploadService
 {
-    [_webServicePopOverController dismissPopoverAnimated:YES];
-}
-
-- (void) showWebUploadService:(id)sender
-{
-    UIBarButtonItem *item = (UIBarButtonItem*)sender;
+    [self releaseAllPopover];
+    
     if (_webServiceController == nil)
     {
 #ifdef IPHONE_VERSION
         _webServiceController = [[WebServiceController alloc] initWithNibName:@"WebServiceController-iPhone" bundle:nil];
 #else
-        _webServiceController = [[WebServiceController alloc]init];
-        _webServicePopOverController = [[UIPopoverController alloc] initWithContentViewController:_webServiceController];
-        _webServicePopOverController.popoverContentSize = _webServiceController.view.frame.size;
+        _webServiceController = [[WebServiceController alloc]initWithNibName:@"WebServiceControllerFormSheet" bundle:nil];
 #endif
     }
-//    if (_webServicePopOverController.popoverVisible == YES)
-//        [_webServicePopOverController dismissPopoverAnimated:YES];
-//    else
-    {
-#ifdef LITE_VERSION
-        [[Utils getInstance] showPurchaseAlert];
+
+#ifndef IPHONE_VERSION
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:_webServiceController];
+    _webServiceController.title = @"Web Upload Service";
+    [_webServiceController setMasterViewController:self];
+    controller.modalPresentationStyle = UIModalPresentationFormSheet;
+    
+    [[Utils getInstance].splitViewController presentModalViewController:controller animated:YES];
 #endif
-        [_webServiceController setMasterViewController:self];
+    
 #ifdef IPHONE_VERSION
-        [self presentModalViewController:_webServiceController animated:YES];
-#else
-        [_webServicePopOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    [self presentModalViewController:_webServiceController animated:YES];
 #endif
-    }
 #ifdef LITE_VERSION
     [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
                                                     withAction:nil
@@ -549,12 +539,26 @@
 }
 
 - (IBAction)addFileToolBarClicked:(id)sender {
-    if (!_webServicePopOverController || _webServicePopOverController.popoverVisible == NO) {
-        [self showWebUploadService:sender];
+    if ([popOverController isPopoverVisible]) {
+        [self releaseAllPopover];
         return;
     }
-    if (_webServicePopOverController.popoverVisible == YES)
-        [_webServicePopOverController dismissPopoverAnimated:YES];
+    [self releaseAllPopover];
+    UIBarButtonItem* barButton = (UIBarButtonItem*)sender;
+    
+#ifdef LITE_VERSION
+    [[Utils getInstance] showPurchaseAlert];
+#endif
+
+    
+    UploadSelectionViewController* uploadSelection = [[UploadSelectionViewController alloc] initWithNibName:@"UploadSelectionViewController" bundle:nil];
+    
+    [uploadSelection setMasterViewController:self];
+    
+    popOverController = [[UIPopoverController alloc] initWithContentViewController:uploadSelection];
+	popOverController.popoverContentSize = uploadSelection.view.frame.size;
+    
+    [popOverController presentPopoverFromBarButtonItem:barButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 #pragma mark SearchDelegate
@@ -619,9 +623,12 @@
     UITableViewCell *cell = (UITableViewCell*)[contentView superview];
     NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
     
-    if ([self.fileInfoPopOverController isPopoverVisible] == YES) {
-        [self.fileInfoPopOverController dismissPopoverAnimated:NO];
+    if ([popOverController isPopoverVisible]) {
+        [self releaseAllPopover];
+        return;
     }
+    
+    [self releaseAllPopover];
     
     if (indexPath.row < [self.fileListBrowserController getCurrentDirectoriesCount])
     {
@@ -644,10 +651,10 @@
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:fileInfoViewController];
     fileInfoViewController.title = @"Action";
     // Setup the popover for use from the navigation bar.
-	fileInfoPopOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
-	fileInfoPopOverController.popoverContentSize = fileInfoViewController.view.frame.size;
+	popOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
+	popOverController.popoverContentSize = fileInfoViewController.view.frame.size;
     
-    [fileInfoPopOverController presentPopoverFromRect:button.frame inView:cell permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+    [popOverController presentPopoverFromRect:button.frame inView:cell permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
 #endif
 }
 
@@ -672,7 +679,6 @@
     [masterViewController.fileListBrowserController setCurrentLocation:path];
     masterViewController.title = selectedItem;
     masterViewController.webServiceController = self.webServiceController;
-    masterViewController.webServicePopOverController = self.webServicePopOverController;
     //[masterViewController reloadData];
     [self.navigationController pushViewController:masterViewController animated:YES];
 }

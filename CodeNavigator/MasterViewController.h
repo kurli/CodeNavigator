@@ -29,11 +29,7 @@
 
 @property (strong, nonatomic) WebServiceController *webServiceController;
 
-@property (strong, nonatomic) UIPopoverController *webServicePopOverController;
-
-@property (strong, nonatomic) UIPopoverController* versionControllerPopOverController; 
-
-@property (strong, nonatomic) UIPopoverController* commentManagerPopOverController;
+@property (strong, nonatomic) UIPopoverController* popOverController;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *analyzeButton;
 
@@ -44,8 +40,6 @@
 #endif
 
 @property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *fileSearchBar;
-
-@property (strong, nonatomic) UIPopoverController* fileInfoPopOverController;
 
 #ifdef IPHONE_VERSION
 @property (strong, nonatomic) FileInfoControlleriPhone* fileInfoControlleriPhone;
@@ -80,6 +74,10 @@
 - (NSString*) getCurrentLocation;
 
 - (void) setNeedSelectRowAfterReload:(int)index;
+
+- (void) showWebUploadService;
+
+- (void) releaseAllPopover;
 
 @end
 

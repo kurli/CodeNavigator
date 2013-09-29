@@ -9,4 +9,5 @@
 
 @protocol FileBrowserViewDelegate <NSObject>
 - (void)fileBrowserViewDisappeared;
+- (void)folderSelected:(NSString*)path;
 @end

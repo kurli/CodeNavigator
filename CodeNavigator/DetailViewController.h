@@ -224,6 +224,8 @@ typedef enum _JSState {
 
 - (IBAction)fileBrowserButtonClicked:(id)sender;
 
+- (void)folderSelected:(NSString*)path;
+
 - (void)fileBrowserViewDisappeared;
 
 @end

@@ -218,6 +218,8 @@
     fileBrowserViewController.fileBrowserViewDelegate = fileBrowserViewDelegate;
     //[fileBrowserViewController reloadData];
     [self.navigationController pushViewController:fileBrowserViewController animated:YES];
+    
+    [fileBrowserViewDelegate folderSelected:[fileBrowserViewController.fileListBrowserController currentLocation]];
 }
 
 -(void) fileClickedDelegate:(NSString*)selectedItem andPath:(NSString*)path

@@ -920,7 +920,7 @@ static Utils *static_utils;
             MasterViewController* _masterViewController = nil;
             NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
             _masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
-            [_masterViewController.webServicePopOverController dismissPopoverAnimated:YES];
+            [_masterViewController releaseAllPopover];
             
             [self.analyzeInfoPopover presentPopoverFromBarButtonItem:self.detailViewController.analyzeInfoBarButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         }

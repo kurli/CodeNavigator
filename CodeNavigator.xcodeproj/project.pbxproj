@@ -262,7 +262,6 @@
 		94636B54155A91E700B1C37F /* CommentWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94636B53155A91E700B1C37F /* CommentWrapper.m */; };
 		94636B55155A91E700B1C37F /* CommentWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94636B53155A91E700B1C37F /* CommentWrapper.m */; };
 		9466466B14A2370700B30CD2 /* WebServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9466466914A2370700B30CD2 /* WebServiceController.m */; };
-		9466466C14A2370700B30CD2 /* WebServiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9466466A14A2370700B30CD2 /* WebServiceController.xib */; };
 		9471D4381630463100629F35 /* readtags.c in Sources */ = {isa = PBXBuildFile; fileRef = 9471D4371630463100629F35 /* readtags.c */; };
 		9473AEF614DACD6A00D39E05 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9473AEF214DACD6A00D39E05 /* Icon-72.png */; };
 		9473AEF714DACD6A00D39E05 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9473AEF314DACD6A00D39E05 /* Icon-Small-50.png */; };
@@ -881,6 +880,9 @@
 		94F4249B15387E1E005FC4C8 /* show_masterview.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F4249715387E1E005FC4C8 /* show_masterview.png */; };
 		94F6EEE11587BD30002DE115 /* ResultViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F6EEE01587BD30002DE115 /* ResultViewController-iPhone.xib */; };
 		94F6EEE31587C19A002DE115 /* HighLightWordController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F6EEE21587C19A002DE115 /* HighLightWordController-iPhone.xib */; };
+		94F7B90D17F7487A00A506EE /* UploadSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F7B90B17F7487A00A506EE /* UploadSelectionViewController.m */; };
+		94F7B90E17F7487A00A506EE /* UploadSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F7B90C17F7487A00A506EE /* UploadSelectionViewController.xib */; };
+		94F7B91617F84A7600A506EE /* WebServiceControllerFormSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F7B91517F84A7600A506EE /* WebServiceControllerFormSheet.xib */; };
 		94FAC80314C1649400B9A821 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 94FAC80214C1649400B9A821 /* settings.png */; };
 		94FAC80414C1649400B9A821 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 94FAC80214C1649400B9A821 /* settings.png */; };
 		94FB0FEB14BDB3A50084E457 /* HighLightWordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FB0FE914BDB3A50084E457 /* HighLightWordController.m */; };
@@ -1492,6 +1494,10 @@
 		94F6EEE01587BD30002DE115 /* ResultViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ResultViewController-iPhone.xib"; sourceTree = "<group>"; };
 		94F6EEE21587C19A002DE115 /* HighLightWordController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "HighLightWordController-iPhone.xib"; sourceTree = "<group>"; };
 		94F7B90617F5E21F00A506EE /* FileBrowserViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileBrowserViewProtocol.h; path = FileListBrowser/FileBrowserViewProtocol.h; sourceTree = "<group>"; };
+		94F7B90A17F7487A00A506EE /* UploadSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadSelectionViewController.h; path = UploadViewController/UploadSelectionViewController.h; sourceTree = "<group>"; };
+		94F7B90B17F7487A00A506EE /* UploadSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadSelectionViewController.m; path = UploadViewController/UploadSelectionViewController.m; sourceTree = "<group>"; };
+		94F7B90C17F7487A00A506EE /* UploadSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UploadSelectionViewController.xib; path = UploadViewController/UploadSelectionViewController.xib; sourceTree = "<group>"; };
+		94F7B91517F84A7600A506EE /* WebServiceControllerFormSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebServiceControllerFormSheet.xib; path = CodeNavigator/WebServiceControllerFormSheet.xib; sourceTree = "<group>"; };
 		94FAC80214C1649400B9A821 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		94FB0FE814BDB3A50084E457 /* HighLightWordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighLightWordController.h; sourceTree = "<group>"; };
 		94FB0FE914BDB3A50084E457 /* HighLightWordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighLightWordController.m; sourceTree = "<group>"; };
@@ -1652,6 +1658,7 @@
 				94AB106317563CDB00359AE8 /* ASIHTTPRequest */,
 				94AB1056175513D400359AE8 /* FileFormatResolver */,
 				94CB767F17E20662009807F9 /* FileListBrowser */,
+				94F7B90917F7482900A506EE /* UploadSelection */,
 				9431D73E14910B3000B0900E /* CodeNavigator */,
 				9431D73714910B3000B0900E /* Frameworks */,
 				9431D73514910B3000B0900E /* Products */,
@@ -1983,6 +1990,7 @@
 				9466466914A2370700B30CD2 /* WebServiceController.m */,
 				9466466A14A2370700B30CD2 /* WebServiceController.xib */,
 				947F86181587A8C2002EAA1E /* WebServiceController-iPhone.xib */,
+				94F7B91517F84A7600A506EE /* WebServiceControllerFormSheet.xib */,
 			);
 			name = WebService;
 			sourceTree = "<group>";
@@ -2377,6 +2385,16 @@
 			name = FunctionList;
 			sourceTree = "<group>";
 		};
+		94F7B90917F7482900A506EE /* UploadSelection */ = {
+			isa = PBXGroup;
+			children = (
+				94F7B90A17F7487A00A506EE /* UploadSelectionViewController.h */,
+				94F7B90B17F7487A00A506EE /* UploadSelectionViewController.m */,
+				94F7B90C17F7487A00A506EE /* UploadSelectionViewController.xib */,
+			);
+			name = UploadSelection;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2518,7 +2536,6 @@
 				9432E3AD149CF9CE00AB5BB7 /* NavigationController.xib in Resources */,
 				94603D08149E041400D72561 /* ResultViewController.xib in Resources */,
 				94EE32D4149FAE0B0088501D /* GotoLineViewController.xib in Resources */,
-				9466466C14A2370700B30CD2 /* WebServiceController.xib in Resources */,
 				9419B87D14A4B3BE00AB679B /* ResultTableCellView.xib in Resources */,
 				94D8703214A65888002F2DBB /* FilePathInfoPopupController.xib in Resources */,
 				94291E6114A9FB4A00E44221 /* AnalyzeInfoController.xib in Resources */,
@@ -2610,6 +2627,8 @@
 				9434A5A7174FC00D004B1A9D /* GitCloneViewController.xib in Resources */,
 				943D1FBD17E7695C00BD82E6 /* FileBrowser.png in Resources */,
 				94B09BB617E77DC600789510 /* FileBrowserViewController.xib in Resources */,
+				94F7B90E17F7487A00A506EE /* UploadSelectionViewController.xib in Resources */,
+				94F7B91617F84A7600A506EE /* WebServiceControllerFormSheet.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2988,6 +3007,7 @@
 				94AB10661756548000359AE8 /* OtherFormatResolver.m in Sources */,
 				94CB768217E21369009807F9 /* FileListBrowserController.m in Sources */,
 				94B09BB517E77DC600789510 /* FileBrowserViewController.m in Sources */,
+				94F7B90D17F7487A00A506EE /* UploadSelectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

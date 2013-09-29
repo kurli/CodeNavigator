@@ -12,6 +12,8 @@
 #import "MyHTTPConnection.h"
 #import "localhostAddresses.h"
 #import "MasterViewController.h"
+#import "FileBrowserViewController.h"
+#import "FileListBrowserController.h"
 
 #import "ZipFile.h"
 #import "ZipException.h"
@@ -30,12 +32,15 @@
 @synthesize httpServer = _httpServer;
 @synthesize internetAddress = _internetAddress;
 @synthesize uploadToPath;
+@synthesize popOverController;
+@synthesize _tableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        needStopZip = NO;
     }
     return self;
 }
@@ -67,6 +72,11 @@
 //    [self setZipFiles:nil];
     [self setMasterViewController:nil];
 //    [self setUploadToPath:nil];
+    [popOverController dismissPopoverAnimated:NO];
+    [self setPopOverController:nil];
+    [self set_tableView:nil];
+    [self setStopButton:nil];
+    [self setIndicator:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -84,49 +94,45 @@
     [self setZipFiles:nil];
     [self setMasterViewController:nil];
     [self setUploadToPath:nil];
+    [popOverController dismissPopoverAnimated:NO];
+    [self setPopOverController:nil];
+    [self set_tableView:nil];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+-(void) DoneButtonClicked:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(DoneButtonClicked:)];
+    self.navigationItem.rightBarButtonItem = doneButton;
+    
     if (![self.webServiceSwitcher isOn])
     {
-        NSArray* components = [[masterViewController getCurrentLocation] pathComponents];
-        NSString* path = @"";
-        int index = 0;
-        for (; index < [components count]; index++)
-        {
-            if ([((NSString*)[components objectAtIndex:index]) compare:@"Projects"] == NSOrderedSame )
-            {
-                break;
-            }
-        }
-        if (index == [components count] -1)
-        {
-            [self.textView setText:@"Current upload as Project\n\nPlease turn on \"Web Upload Service\" to upload Projects"];
-            return;
-        }
-        else
-        {
-            path = [components objectAtIndex:++index];
-            for (index = index + 1; index<[components count]; index++)
-            {
-                path = [path stringByAppendingFormat:@"/%@",[components objectAtIndex:index]];
-            }
-        }
+        // Set upload path
+        [self setUploadToPath:[masterViewController getCurrentLocation]];
+
+        NSString* relativePath = [[Utils getInstance] getPathFromProject:uploadToPath];
         NSString* info = @"";
         
-        info = [info stringByAppendingFormat:@"Current upload to location:  %@\n\nPlease turn on \"Web Upload Service\" to upload files", path];
-        
-        [self.textView setText:info];
+        if (relativePath == nil || [relativePath length] == 0) {
+            [self.textView setText:@"Current upload as a Project\n\nPlease turn on \"Web Upload Service\""];
+            return;
+        } else {
+            info = [info stringByAppendingFormat:@"Current upload to location:  %@\n\nPlease turn on \"Web Upload Service\"", relativePath];
+            
+            [self.textView setText:info];
+
+        }
     }
+}
+
+-(NSString*) getUploadToPathRelative {
+    NSString* str = [[Utils getInstance] getPathFromProject:self.uploadToPath];
+    return str;
 }
 
 - (IBAction)selectionChanged:(id)sender {
@@ -204,7 +210,7 @@
         }
         if (index == [components count] -1)
         {
-            path = @"  Project\n\n Please ZIP your project and upload it.";
+            path = @"  Project\n\n Please ZIP your project folder and upload it.";
         }
         else
         {
@@ -301,10 +307,14 @@
         [self.zipFiles addObject:file];
         if (![thread isExecuting])
         {
+            needStopZip = NO;
             [self setThread:nil];
             thread = [[NSThread alloc] initWithTarget:self selector:@selector(unzipThread) object:nil];
             [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
             [thread start];
+            [self.indicator setHidden:NO];
+            [self.indicator startAnimating];
+            [self.stopButton setHidden:NO];
         }
     }
     else
@@ -339,15 +349,29 @@
     [self.progressView setProgress:[value floatValue]];
 }
 
+-(void) hideIndicatorAndButtons {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.indicator stopAnimating];
+        [self.indicator setHidden:YES];
+        [self.stopButton setHidden:YES];
+        [self.progressView setProgress:0.0f];
+    });
+}
+
 -(void) unzipThread
 {
     NSString* filePath;
-    if (zipFiles == nil)
+    if (zipFiles == nil){
+        [self hideIndicatorAndButtons];
         return;
+    }
     @autoreleasepool {
         while (1) {
             if (zipFiles.count == 0)
                 break;
+            if (needStopZip) {
+                break;
+            }
             filePath = [zipFiles objectAtIndex:0];
             
             NSString* projectFolder = @"";
@@ -389,6 +413,9 @@
                 number = [NSNumber numberWithFloat:0];
                 [self performSelectorOnMainThread:@selector(setProgressViewValue:) withObject:number waitUntilDone:YES];
                 for (FileInZipInfo *info in infos) {
+                    if (needStopZip) {
+                        break;
+                    }
                     @autoreleasepool {
                     count++;
                     number = [NSNumber numberWithFloat:(float)((float)count/(float)[infos count])];
@@ -447,6 +474,7 @@
                         [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
                         [self performSelectorOnMainThread:@selector(log:) withObject:@"\nMaximum number of source files exceeded for Lite Version.\n" waitUntilDone:YES];
                         [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+                        [self hideIndicatorAndButtons];
                         return;
                     }
 #endif
@@ -492,7 +520,7 @@
                         } else
                             break;
                         
-                    } while (YES);
+                    } while (!needStopZip);
                     
                     // Clean up
                     [file closeFile];
@@ -534,6 +562,7 @@
         }
     }
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+    [self hideIndicatorAndButtons];
 }
 
 -(void) analyzeProject:(NSString *)path
@@ -548,7 +577,152 @@
 }
 #endif
 
-- (IBAction)gitCloneClicked:(id)sender {
-    [masterViewController showGitCloneView];
+- (IBAction)onStopClicked:(id)sender {
+    needStopZip = YES;
 }
+
+#pragma mark TableView
+
+- (void) navigateToFileBrowser {
+    if ([self.webServiceSwitcher isOn]) {
+        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please switch off 'Web Upload Service' or'"];
+        return;
+    }
+    
+    if ([thread isExecuting]) {
+        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Zip on progress"];
+        return;
+    }
+
+    if ([self.popOverController isPopoverVisible] == YES)
+    {
+        [self.popOverController dismissPopoverAnimated:YES];
+        return;
+    }
+    FileBrowserViewController* fileBrowserViewController = [[FileBrowserViewController alloc] initWithNibName:@"FileBrowserViewController" bundle:nil];
+    [fileBrowserViewController setFileBrowserViewDelegate:self];
+    [fileBrowserViewController setIsProjectFolder:YES];
+    
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:fileBrowserViewController];
+    
+    NSString* fakeFile = [uploadToPath stringByAppendingPathComponent:@"zzzlgzzzz_fake.zzz"];
+    [fileBrowserViewController setInitialPath:fakeFile];
+    
+    self.popOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
+    
+    [self.popOverController presentPopoverFromRect:self.view.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.section) {
+        case 0:
+            break;
+        case 1:
+            [self navigateToFileBrowser];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *switcherItemIdentifier = @"SwitcherWebServiceViewCell";
+    static NSString *uploadToItemIdentifier = @"UploadToWebServiceViewCell";
+    
+    UITableViewCell *cell;
+    UISwitch *switchview;
+    NSString* path;
+    switch (indexPath.section) {
+        case 0:
+            cell = [tableView dequeueReusableCellWithIdentifier:switcherItemIdentifier];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:switcherItemIdentifier];
+            }
+            cell.textLabel.text = @"Web Upload Service";
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            if (webServiceSwitcher == nil) {
+                switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
+                [self setWebServiceSwitcher:switchview];
+                [webServiceSwitcher addTarget:self action:@selector(selectionChanged:) forControlEvents:UIControlEventValueChanged];
+            }
+            cell.accessoryView = webServiceSwitcher;
+            break;
+        case 1:
+            cell = [tableView dequeueReusableCellWithIdentifier:uploadToItemIdentifier];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:uploadToItemIdentifier];
+            }
+            path = [self getUploadToPathRelative];
+            if (path == nil || [path length] == 0)
+                cell.textLabel.text = @"Upload as a New Project";
+            else
+                cell.textLabel.text = [self getUploadToPathRelative];
+            break;
+        default:
+            break;
+    }
+
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    return @"";
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    static NSString *strWebUploadService = @"Web Upload Service";
+    static NSString *strUploadInfo = @"1: Start 'Web Upload Service' on this device\n2: Open your Browser in your PC and enter the address provided below\n3: You can upload a single source file or a Zip file\n\nClick to change location\nUpload to:";
+    switch (section) {
+        case 0:
+            return strWebUploadService;
+        case 1:
+            return strUploadInfo;
+    }
+    return @"";
+}
+
+- (void) updateInfoWhenPathChanged {
+    NSString* relative = [self getUploadToPathRelative];
+    if (relative == nil || [relative length] == 0) {
+        [self.textView setText:@"Current upload as a Project"];
+    } else {
+        NSString* str = [NSString stringWithFormat:@"Current upload to:\n %@", relative];
+        [self.textView setText:str];
+    }
+}
+
+- (void)fileBrowserViewDisappeared {
+    if ([self.webServiceSwitcher isOn] || [thread isExecuting]) {
+        return;
+    }
+    UINavigationController* controller = (UINavigationController*)[popOverController contentViewController];
+    FileBrowserViewController* curController = [[controller viewControllers] lastObject];
+    
+    
+    [self setUploadToPath:[curController.fileListBrowserController currentLocation]];
+    [_tableView reloadData];
+    
+    [self updateInfoWhenPathChanged];
+}
+
+- (void)folderSelected:(NSString*)path {
+    if ([self.webServiceSwitcher isOn] || [thread isExecuting]) {
+        return;
+    }
+    [self setUploadToPath:path];
+    [_tableView reloadData];
+    
+    [self updateInfoWhenPathChanged];
+}
+
+
 @end

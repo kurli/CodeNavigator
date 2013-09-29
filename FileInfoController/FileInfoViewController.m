@@ -134,7 +134,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DetailViewController* controller = [Utils getInstance].detailViewController;
-    [masterViewController.fileInfoPopOverController dismissPopoverAnimated:YES];
+    [masterViewController.popOverController dismissPopoverAnimated:YES];
     
     switch (fileInfoType) {
         case FILEINFO_SOURCE:
