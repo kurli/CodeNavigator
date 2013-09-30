@@ -128,7 +128,7 @@ typedef enum _JSState {
 
 - (void) displayDocTypeFile: (NSString*) path;
 
-- (void) displayHTMLString: (NSString*)content andBaseURL:(NSString*)baseURL;
+//- (void) displayHTMLString: (NSString*)content andBaseURL:(NSString*)baseURL;
 
 - (int) getCurrentScrollLocation;
 
@@ -150,9 +150,9 @@ typedef enum _JSState {
 
 - (IBAction)sourceSplitClicked:(id)sender;
 
-- (void)goBackHistory;
+//- (void)goBackHistory;
 
-- (void)goForwardHistory;
+//- (void)goForwardHistory;
 
 - (void)restoreToHistory:(NSString*)history;
 
@@ -164,7 +164,7 @@ typedef enum _JSState {
 
 - (IBAction)virtualizeButtonClicked:(id)sender;
 
-- (void)navigationManagerPopUpWithKeyword:(NSString*)keyword andSourcePath:(NSString*)path;
+//- (void)navigationManagerPopUpWithKeyword:(NSString*)keyword andSourcePath:(NSString*)path;
 
 - (IBAction)resultPopUp:(id)sender;
 
@@ -186,11 +186,11 @@ typedef enum _JSState {
 
 - (void) releaseAllPopOver;
 
-- (void) splitWebView;
+//- (void) splitWebView;
 
-- (void) singleWebView;
+//- (void) singleWebView;
 
-- (void) showVirtualizeView;
+//- (void) showVirtualizeView;
 
 - (void) hideVirtualizeView;
 
@@ -206,6 +206,7 @@ typedef enum _JSState {
 
 - (IBAction)fileBrowserButtonClicked:(id)sender;
 
+// FileBrowserViewProtocol
 - (void)folderSelected:(NSString*)path;
 
 - (void)fileBrowserViewDisappeared;

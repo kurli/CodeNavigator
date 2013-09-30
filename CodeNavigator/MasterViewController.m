@@ -13,7 +13,6 @@
 #import "cscope.h"
 #import "GitLogViewCongroller.h"
 #import "DropBoxViewController.h"
-#import "VersionControlController.h"
 #import "SecurityViewController.h"
 #import "CommentManager.h"
 #ifdef IPHONE_VERSION
@@ -427,20 +426,7 @@
     }
     
     [self releaseAllPopover];
-#ifndef LITE_VERSION
-    // Ignore Dropbox
-    UIBarButtonItem *item = (UIBarButtonItem*)sender;
-    
-    VersionControlController* controller = [[VersionControlController alloc] init];
-    [controller setMasterViewController:self];
-    
-    popOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
-    popOverController.popoverContentSize = controller.view.frame.size;
-    
-    [popOverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-#else
     [self gitClicked:sender];
-#endif
 }
 
 - (IBAction)lockButtonClicked:(id)sender {

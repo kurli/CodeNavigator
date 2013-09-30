@@ -4495,19 +4495,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 								<reference key="IBUIToolbar" ref="785694725"/>
 								<int key="IBUISystemItemIdentifier">5</int>
 							</object>
-							<object class="IBUIBarButtonItem" id="957870542">
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">Lock.png</string>
-								</object>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<reference key="IBUIToolbar" ref="785694725"/>
-							</object>
-							<object class="IBUIBarButtonItem" id="267423095">
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<reference key="IBUIToolbar" ref="785694725"/>
-								<int key="IBUISystemItemIdentifier">5</int>
-							</object>
 							<object class="IBUIBarButtonItem" id="380810484">
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
@@ -4516,7 +4503,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<reference key="IBUIToolbar" ref="785694725"/>
 							</object>
-							<object class="IBUIBarButtonItem" id="918377504">
+							<object class="IBUIBarButtonItem" id="267423095">
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<reference key="IBUIToolbar" ref="785694725"/>
 								<int key="IBUISystemItemIdentifier">5</int>
@@ -4529,7 +4516,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<reference key="IBUIToolbar" ref="785694725"/>
 							</object>
-							<object class="IBUIBarButtonItem" id="23730274">
+							<object class="IBUIBarButtonItem" id="918377504">
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<reference key="IBUIToolbar" ref="785694725"/>
 								<int key="IBUISystemItemIdentifier">5</int>
@@ -4539,6 +4526,19 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">cscope.png</string>
+								</object>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<reference key="IBUIToolbar" ref="785694725"/>
+							</object>
+							<object class="IBUIBarButtonItem" id="23730274">
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<reference key="IBUIToolbar" ref="785694725"/>
+								<int key="IBUISystemItemIdentifier">5</int>
+							</object>
+							<object class="IBUIBarButtonItem" id="957870542">
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">Lock.png</string>
 								</object>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<reference key="IBUIToolbar" ref="785694725"/>
@@ -4744,15 +4744,15 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<reference key="object" ref="785694725"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="317788363"/>
-							<reference ref="1027099419"/>
-							<reference ref="375004075"/>
-							<reference ref="957870542"/>
-							<reference ref="380810484"/>
 							<reference ref="67983367"/>
 							<reference ref="267423095"/>
 							<reference ref="918377504"/>
 							<reference ref="877899413"/>
 							<reference ref="40755738"/>
+							<reference ref="957870542"/>
+							<reference ref="1027099419"/>
+							<reference ref="380810484"/>
+							<reference ref="375004075"/>
 							<reference ref="23730274"/>
 						</array>
 						<reference key="parent" ref="380900777"/>

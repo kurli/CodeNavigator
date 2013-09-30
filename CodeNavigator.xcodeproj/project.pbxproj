@@ -109,7 +109,6 @@
 		9431D74314910B3000B0900E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9431D74114910B3000B0900E /* InfoPlist.strings */; };
 		9431D74514910B3000B0900E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74414910B3000B0900E /* main.m */; };
 		9431D74914910B3000B0900E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74814910B3000B0900E /* AppDelegate.m */; };
-		9431D74C14910B3000B0900E /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74B14910B3000B0900E /* MasterViewController.m */; };
 		9431D74F14910B3000B0900E /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74E14910B3000B0900E /* DetailViewController.m */; };
 		9431D75214910B3000B0900E /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9431D75014910B3000B0900E /* MasterViewController.xib */; };
 		9431D75514910B3000B0900E /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9431D75314910B3000B0900E /* DetailViewController.xib */; };
@@ -157,10 +156,6 @@
 		9434A5A7174FC00D004B1A9D /* GitCloneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9434A5A5174FC00D004B1A9D /* GitCloneViewController.xib */; };
 		94352107153EFC1E003F316A /* version_control.png in Resources */ = {isa = PBXBuildFile; fileRef = 94352106153EFC1E003F316A /* version_control.png */; };
 		94352108153EFC1E003F316A /* version_control.png in Resources */ = {isa = PBXBuildFile; fileRef = 94352106153EFC1E003F316A /* version_control.png */; };
-		9435210C153F03D1003F316A /* VersionControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435210A153F03D1003F316A /* VersionControlController.m */; };
-		9435210D153F03D1003F316A /* VersionControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435210A153F03D1003F316A /* VersionControlController.m */; };
-		9435210E153F03D1003F316A /* VersionControlController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9435210B153F03D1003F316A /* VersionControlController.xib */; };
-		9435210F153F03D1003F316A /* VersionControlController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9435210B153F03D1003F316A /* VersionControlController.xib */; };
 		9435320B157A861D0011A446 /* ManuallyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435320A157A861D0011A446 /* ManuallyParser.m */; };
 		9435320C157A861D0011A446 /* ManuallyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435320A157A861D0011A446 /* ManuallyParser.m */; };
 		943A81D916381FA000E39298 /* tag_list.png in Resources */ = {isa = PBXBuildFile; fileRef = 943A81D816381FA000E39298 /* tag_list.png */; };
@@ -216,6 +211,7 @@
 		944DD7F115277877000473BE /* normal.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7EF15277877000473BE /* normal.c */; };
 		944DD7F3152778B9000473BE /* ifdef.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7F2152778B9000473BE /* ifdef.c */; };
 		944DD7F4152778B9000473BE /* ifdef.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7F2152778B9000473BE /* ifdef.c */; };
+		9451D59417F9BD4C00BDAD5E /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9451D59317F9BD4C00BDAD5E /* MasterViewController.m */; };
 		9452B1AA1588FA3C00B9A9F8 /* HighLightWordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */; };
 		9452B1AE1588FF4A00B9A9F8 /* CommentViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9452B1AD1588FF4A00B9A9F8 /* CommentViewController-iPhone.xib */; };
 		9452B1B01589024100B9A9F8 /* CommentManager-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9452B1AF1589024100B9A9F8 /* CommentManager-iPhone.xib */; };
@@ -458,7 +454,6 @@
 		9497F3CC151CEC4F006BCBBF /* RubbyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3CA151CEC4F006BCBBF /* RubbyParser.m */; };
 		949DC1991583E8CF00385796 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74414910B3000B0900E /* main.m */; };
 		949DC19A1583E8CF00385796 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74814910B3000B0900E /* AppDelegate.m */; };
-		949DC19B1583E8CF00385796 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74B14910B3000B0900E /* MasterViewController.m */; };
 		949DC19C1583E8CF00385796 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74E14910B3000B0900E /* DetailViewController.m */; };
 		949DC19D1583E8CF00385796 /* CodeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7651493B36000B0900E /* CodeParser.m */; };
 		949DC19E1583E8CF00385796 /* CPlusPlusParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7681493B36000B0900E /* CPlusPlusParser.m */; };
@@ -533,7 +528,6 @@
 		949DC1E51583E8CF00385796 /* ed.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7EC15277845000473BE /* ed.c */; };
 		949DC1E61583E8CF00385796 /* normal.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7EF15277877000473BE /* normal.c */; };
 		949DC1E71583E8CF00385796 /* ifdef.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7F2152778B9000473BE /* ifdef.c */; };
-		949DC1EE1583E8CF00385796 /* VersionControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435210A153F03D1003F316A /* VersionControlController.m */; };
 		949DC1EF1583E8CF00385796 /* SecurityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9443D1EC154EDA6A008CB52D /* SecurityViewController.m */; };
 		949DC1F01583E8CF00385796 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 948F1C7115583B7600AE4C99 /* CommentViewController.m */; };
 		949DC1F11583E8CF00385796 /* CommentWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94636B53155A91E700B1C37F /* CommentWrapper.m */; };
@@ -656,7 +650,6 @@
 		94AB1E5214AF5E0300451020 /* UnSupportedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB1E5114AF5E0300451020 /* UnSupportedParser.m */; };
 		94ADF13F14BB27EE00BA807A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74414910B3000B0900E /* main.m */; };
 		94ADF14014BB27EE00BA807A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74814910B3000B0900E /* AppDelegate.m */; };
-		94ADF14114BB27EE00BA807A /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74B14910B3000B0900E /* MasterViewController.m */; };
 		94ADF14214BB27EE00BA807A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74E14910B3000B0900E /* DetailViewController.m */; };
 		94ADF14314BB27EE00BA807A /* CodeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7651493B36000B0900E /* CodeParser.m */; };
 		94ADF14414BB27EE00BA807A /* CPlusPlusParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D7681493B36000B0900E /* CPlusPlusParser.m */; };
@@ -1056,7 +1049,6 @@
 		9431D74714910B3000B0900E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9431D74814910B3000B0900E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9431D74A14910B3000B0900E /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		9431D74B14910B3000B0900E /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		9431D74D14910B3000B0900E /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		9431D74E14910B3000B0900E /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		9431D75114910B3000B0900E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController.xib; sourceTree = "<group>"; };
@@ -1142,9 +1134,6 @@
 		9434C01F14A393DB00B34419 /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zlib.h; path = Zip/zlib.h; sourceTree = "<group>"; };
 		9434C02014A393DB00B34419 /* zutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zutil.h; path = Zip/zutil.h; sourceTree = "<group>"; };
 		94352106153EFC1E003F316A /* version_control.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = version_control.png; sourceTree = "<group>"; };
-		94352109153F03D1003F316A /* VersionControlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionControlController.h; sourceTree = "<group>"; };
-		9435210A153F03D1003F316A /* VersionControlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionControlController.m; sourceTree = "<group>"; };
-		9435210B153F03D1003F316A /* VersionControlController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VersionControlController.xib; sourceTree = "<group>"; };
 		94353209157A861D0011A446 /* ManuallyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManuallyParser.h; sourceTree = "<group>"; };
 		9435320A157A861D0011A446 /* ManuallyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManuallyParser.m; sourceTree = "<group>"; };
 		943A81D816381FA000E39298 /* tag_list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag_list.png; sourceTree = "<group>"; };
@@ -1193,6 +1182,7 @@
 		944DD7EC15277845000473BE /* ed.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ed.c; sourceTree = "<group>"; };
 		944DD7EF15277877000473BE /* normal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = normal.c; sourceTree = "<group>"; };
 		944DD7F2152778B9000473BE /* ifdef.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ifdef.c; sourceTree = "<group>"; };
+		9451D59317F9BD4C00BDAD5E /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		9452B1AD1588FF4A00B9A9F8 /* CommentViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "CommentViewController-iPhone.xib"; path = "Comments/CommentViewController-iPhone.xib"; sourceTree = "<group>"; };
 		9452B1AF1589024100B9A9F8 /* CommentManager-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "CommentManager-iPhone.xib"; path = "Comments/CommentManager-iPhone.xib"; sourceTree = "<group>"; };
 		945428AD14F29A8D00353EC8 /* FileManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileManagerController.h; path = CodeNavigator/FileManagerController.h; sourceTree = "<group>"; };
@@ -1697,7 +1687,7 @@
 				9431D74714910B3000B0900E /* AppDelegate.h */,
 				9431D74814910B3000B0900E /* AppDelegate.m */,
 				9431D74A14910B3000B0900E /* MasterViewController.h */,
-				9431D74B14910B3000B0900E /* MasterViewController.m */,
+				9451D59317F9BD4C00BDAD5E /* MasterViewController.m */,
 				9431D74D14910B3000B0900E /* DetailViewController.h */,
 				9431D74E14910B3000B0900E /* DetailViewController.m */,
 				9432E3AE149D02D400AB5BB7 /* NavigationController.h */,
@@ -1716,9 +1706,6 @@
 				94A5BBA814BF47C000F3BA8B /* DisplayModeController.m */,
 				9443BF5214D1A40200355278 /* HistoryListController.h */,
 				9443BF5314D1A40200355278 /* HistoryListController.m */,
-				94352109153F03D1003F316A /* VersionControlController.h */,
-				9435210A153F03D1003F316A /* VersionControlController.m */,
-				9435210B153F03D1003F316A /* VersionControlController.xib */,
 				9429000114D4E16E002793BD /* PercentViewController.xib */,
 				9443BF5414D1A40200355278 /* HistoryListController.xib */,
 				94A5BBA914BF47C000F3BA8B /* DisplayModeController.xib */,
@@ -2599,7 +2586,6 @@
 				94A0FAE3153DDA78004277BF /* cscope.png in Resources */,
 				94A0FAE6153DDAD9004277BF /* virtualize.png in Resources */,
 				94352107153EFC1E003F316A /* version_control.png in Resources */,
-				9435210E153F03D1003F316A /* VersionControlController.xib in Resources */,
 				9404E8F61541E6B000C5E1BA /* 1.jpeg in Resources */,
 				9404E8F81541E6B000C5E1BA /* 2.jpeg in Resources */,
 				9404E8FA1541E6B000C5E1BA /* 3.jpeg in Resources */,
@@ -2804,7 +2790,6 @@
 				94A0FAE4153DDA78004277BF /* cscope.png in Resources */,
 				94A0FAE7153DDAD9004277BF /* virtualize.png in Resources */,
 				94352108153EFC1E003F316A /* version_control.png in Resources */,
-				9435210F153F03D1003F316A /* VersionControlController.xib in Resources */,
 				9404E8F71541E6B000C5E1BA /* 1.jpeg in Resources */,
 				9404E8F91541E6B000C5E1BA /* 2.jpeg in Resources */,
 				9404E8FB1541E6B000C5E1BA /* 3.jpeg in Resources */,
@@ -2835,7 +2820,6 @@
 			files = (
 				9431D74514910B3000B0900E /* main.m in Sources */,
 				9431D74914910B3000B0900E /* AppDelegate.m in Sources */,
-				9431D74C14910B3000B0900E /* MasterViewController.m in Sources */,
 				9431D74F14910B3000B0900E /* DetailViewController.m in Sources */,
 				9431D76C1493B36000B0900E /* CodeParser.m in Sources */,
 				9431D76D1493B36000B0900E /* CPlusPlusParser.m in Sources */,
@@ -2917,7 +2901,6 @@
 				94A51850152DF8D70062DA65 /* DropBoxViewController.m in Sources */,
 				9457C78715307AF500BB9185 /* LocalFileControllerDelegate.m in Sources */,
 				9457C78B15307B1400BB9185 /* RemoteFileControllerDelegate.m in Sources */,
-				9435210C153F03D1003F316A /* VersionControlController.m in Sources */,
 				9443D1EE154EDA6A008CB52D /* SecurityViewController.m in Sources */,
 				948F1C7315583B7600AE4C99 /* CommentViewController.m in Sources */,
 				94636B54155A91E700B1C37F /* CommentWrapper.m in Sources */,
@@ -3008,6 +2991,7 @@
 				94CB768217E21369009807F9 /* FileListBrowserController.m in Sources */,
 				94B09BB517E77DC600789510 /* FileBrowserViewController.m in Sources */,
 				94F7B90D17F7487A00A506EE /* UploadSelectionViewController.m in Sources */,
+				9451D59417F9BD4C00BDAD5E /* MasterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3103,7 +3087,6 @@
 				948E14B416416D2700CBBD5B /* yacc.c in Sources */,
 				949DC1991583E8CF00385796 /* main.m in Sources */,
 				949DC19A1583E8CF00385796 /* AppDelegate.m in Sources */,
-				949DC19B1583E8CF00385796 /* MasterViewController.m in Sources */,
 				949DC19C1583E8CF00385796 /* DetailViewController.m in Sources */,
 				949DC19D1583E8CF00385796 /* CodeParser.m in Sources */,
 				949DC19E1583E8CF00385796 /* CPlusPlusParser.m in Sources */,
@@ -3178,7 +3161,6 @@
 				949DC1E51583E8CF00385796 /* ed.c in Sources */,
 				949DC1E61583E8CF00385796 /* normal.c in Sources */,
 				949DC1E71583E8CF00385796 /* ifdef.c in Sources */,
-				949DC1EE1583E8CF00385796 /* VersionControlController.m in Sources */,
 				949DC1EF1583E8CF00385796 /* SecurityViewController.m in Sources */,
 				949DC1F01583E8CF00385796 /* CommentViewController.m in Sources */,
 				949DC1F11583E8CF00385796 /* CommentWrapper.m in Sources */,
@@ -3299,7 +3281,6 @@
 				94D3B87715E5344E006C28E4 /* HelpViewController.m in Sources */,
 				94ADF13F14BB27EE00BA807A /* main.m in Sources */,
 				94ADF14014BB27EE00BA807A /* AppDelegate.m in Sources */,
-				94ADF14114BB27EE00BA807A /* MasterViewController.m in Sources */,
 				94ADF14214BB27EE00BA807A /* DetailViewController.m in Sources */,
 				94ADF14314BB27EE00BA807A /* CodeParser.m in Sources */,
 				94ADF14414BB27EE00BA807A /* CPlusPlusParser.m in Sources */,
@@ -3382,7 +3363,6 @@
 				94A51851152DF8D70062DA65 /* DropBoxViewController.m in Sources */,
 				9457C78815307AF500BB9185 /* LocalFileControllerDelegate.m in Sources */,
 				9457C78C15307B1400BB9185 /* RemoteFileControllerDelegate.m in Sources */,
-				9435210D153F03D1003F316A /* VersionControlController.m in Sources */,
 				9443D1EF154EDA6A008CB52D /* SecurityViewController.m in Sources */,
 				948F1C7415583B7600AE4C99 /* CommentViewController.m in Sources */,
 				94636B55155A91E700B1C37F /* CommentWrapper.m in Sources */,
