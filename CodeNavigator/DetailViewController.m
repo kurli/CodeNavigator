@@ -45,8 +45,6 @@
 @synthesize titleTextField = _titleTextField;
 @synthesize historyController = _historyController;
 @synthesize historyBar = _historyBar;
-@synthesize codeNavigationController = _codeNavigationController;
-@synthesize resultViewController = _resultViewController;
 @synthesize jsGotoLineKeyword = _jsGotoLineKeyword;
 @synthesize analyzeInfoBarButton = _analyzeInfoBarButton;
 @synthesize topToolBar = _topToolBar;
@@ -59,10 +57,6 @@
 @synthesize historySwipeImageView;
 @synthesize scrollBackgroundView;
 @synthesize scrollItem;
-@synthesize gotoLineViewController = _gotoLineViewController;
-@synthesize filePathInfoController;
-@synthesize highlightWordController;
-@synthesize displayModeController;
 @synthesize historyListController;
 @synthesize secondWebView;
 @synthesize activeWebView;
@@ -73,9 +67,7 @@
 @synthesize highlightLineArray;
 @synthesize scrollBarTapRecognizer;
 @synthesize showCommentsSegment;
-@synthesize functionListViewController;
 @synthesize popoverController;
-@synthesize fileBrowserViewController;
 
 #pragma mark - Managing the detail item
 
@@ -139,17 +131,11 @@
     [self setSearchWord:nil];
     [self setHighlightLineArray:nil];
     [self setHistoryBar:nil];
-    [self setCodeNavigationController:nil];
-    [self setResultViewController:nil];
     [self setResultBarButton:nil];
-    [self setGotoLineViewController:nil];
     [self setNavigateBarButtonItem:nil];
     [self setAnalyzeInfoBarButton:nil];
-    [self setFilePathInfoController:nil];
     [self setJsGotoLineKeyword:nil];
     [self setTitleTextField:nil];
-    [self setHighlightWordController:nil];
-    [self setDisplayModeController:nil];
     [self setTopToolBar:nil];
     [self setBottomToolBar:nil];
     [self setWebViewSegmentController:nil];
@@ -158,7 +144,6 @@
     [self setDivider:nil];
     [self setHideMasterViewButton:nil];
     [self setSplitWebViewButton:nil];
-    [self setFunctionListViewController:nil];
     [self setPopoverController:nil];
     [self setFileBrowserButton:nil];
     [super viewDidUnload];
@@ -185,17 +170,11 @@
     [self setSearchWord:nil];
     [self setHighlightLineArray:nil];
     [self setHistoryBar:nil];
-    [self setCodeNavigationController:nil];
-    [self setResultViewController:nil];
     [self setResultBarButton:nil];
-    [self setGotoLineViewController:nil];
     [self setNavigateBarButtonItem:nil];
     [self setAnalyzeInfoBarButton:nil];
-    [self setFilePathInfoController:nil];
     [self setJsGotoLineKeyword:nil];
     [self setTitleTextField:nil];
-    [self setHighlightWordController:nil];
-    [self setDisplayModeController:nil];
     [self setTopToolBar:nil];
     [self setBottomToolBar:nil];
     [self setWebViewSegmentController:nil];
@@ -617,18 +596,18 @@
 
     [self releaseAllPopOver];
     
-    _codeNavigationController= [[NavigationController alloc] init];
-    [_codeNavigationController setSearchKeyword:keyword];
-    [_codeNavigationController setCurrentSourcePath:path];
+    NavigationController* codeNavigationController= [[NavigationController alloc] init];
+    [codeNavigationController setSearchKeyword:keyword];
+    [codeNavigationController setCurrentSourcePath:path];
     
-    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:_codeNavigationController];
-    _codeNavigationController.title = @"CodeNavigator";
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:codeNavigationController];
+    codeNavigationController.title = @"CodeNavigator";
 #ifdef IPHONE_VERSION
     [self presentModalViewController:controller animated:YES];
 #else
     // Setup the popover for use from the navigation bar.
 	popoverController = [[UIPopoverController alloc] initWithContentViewController:controller];
-	popoverController.popoverContentSize = _codeNavigationController.view.frame.size;
+	popoverController.popoverContentSize = codeNavigationController.view.frame.size;
     
     [popoverController presentPopoverFromBarButtonItem:self.navigateBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 #endif
@@ -647,22 +626,6 @@
     [self setPopoverController:nil];
     
     [self setHistoryListController:nil];
-    
-    [self setCodeNavigationController:nil];
-    
-    [self setResultViewController:nil];
-    
-    [self setGotoLineViewController:nil];
-    
-    [self setFilePathInfoController:nil];
-    
-    [self setHighlightWordController:nil];
-    
-    [self setDisplayModeController:nil];
-    
-    [self setFunctionListViewController:nil];
-    
-    [self setFileBrowserViewController:nil];
 }
 
 - (void) setUpWebViewAsActive
@@ -795,16 +758,16 @@
 //    NSArray* controllers = [self.splitViewController viewControllers];
 //    masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
 //    [masterViewController gotoFile:currentFile];
-    
-    self.filePathInfoController = [[FilePathInfoPopupController alloc] init];
+    FilePathInfoPopupController* filePathInfoController;
+    filePathInfoController = [[FilePathInfoPopupController alloc] init];
 #ifdef IPHONE_VERSION
 #else
-    self.popoverController = [[UIPopoverController alloc] initWithContentViewController:self.filePathInfoController];
+    self.popoverController = [[UIPopoverController alloc] initWithContentViewController:filePathInfoController];
     NSString* realSourceFile = [[Utils getInstance] getPathFromProject:currentFile];
     realSourceFile = [realSourceFile stringByDeletingLastPathComponent];
     realSourceFile = [realSourceFile stringByAppendingPathComponent:self.titleTextField.title];
-    self.filePathInfoController.label.text = realSourceFile;
-    self.popoverController.popoverContentSize = CGSizeMake(640., self.filePathInfoController.view.frame.size.height);
+    filePathInfoController.label.text = realSourceFile;
+    self.popoverController.popoverContentSize = CGSizeMake(640., filePathInfoController.view.frame.size.height);
     [self.popoverController presentPopoverFromBarButtonItem:(UIBarButtonItem*)sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 #endif
 }
@@ -836,9 +799,9 @@
         return;
     }
     
-    _codeNavigationController= [[NavigationController alloc] init];
-    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:_codeNavigationController];
-    _codeNavigationController.title = @"Code Navigator";
+    NavigationController* codeNavigationController= [[NavigationController alloc] init];
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:codeNavigationController];
+    codeNavigationController.title = @"Code Navigator";
 #ifdef IPHONE_VERSION
     [self presentModalViewController:controller animated:YES];
     [_codeNavigationController setCurrentSourcePath:projectPath];
@@ -848,8 +811,8 @@
 	popoverController = [[UIPopoverController alloc] initWithContentViewController:controller];
 	popoverController.popoverContentSize = CGSizeMake(320., 320.);
     
-    [_codeNavigationController setCurrentSourcePath:projectPath];
-    [_codeNavigationController setSearchKeyword:@""];
+    [codeNavigationController setCurrentSourcePath:projectPath];
+    [codeNavigationController setSearchKeyword:@""];
     [popoverController presentPopoverFromBarButtonItem:(UIBarButtonItem*)sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 #endif
 }
@@ -867,14 +830,16 @@
     }
     UIBarButtonItem* barButton = (UIBarButtonItem*)button;
     
+    ResultViewController* resultViewController;
+    
 #ifdef IPHONE_VERSION
-    self.resultViewController = [[ResultViewController alloc] initWithNibName:@"ResultViewController-iPhone" bundle:nil];
+    resultViewController = [[ResultViewController alloc] initWithNibName:@"ResultViewController-iPhone" bundle:nil];
 #else
-    self.resultViewController = [[ResultViewController alloc] init];
+    resultViewController = [[ResultViewController alloc] init];
 #endif
-    self.resultViewController.detailViewController = self;
-    UINavigationController *result_controller = [[UINavigationController alloc] initWithRootViewController:self.resultViewController];
-    self.resultViewController.title = @"Result";
+    resultViewController.detailViewController = self;
+    UINavigationController *result_controller = [[UINavigationController alloc] initWithRootViewController:resultViewController];
+    resultViewController.title = @"Result";
 #ifdef IPHONE_VERSION
     [self presentModalViewController:result_controller animated:YES];
 #else
@@ -903,14 +868,16 @@
     }
     UIBarButtonItem* barButton = (UIBarButtonItem*)sender;
     
+    ResultViewController* resultViewController;
+    
 #ifdef IPHONE_VERSION
-    self.resultViewController = [[ResultViewController alloc] initWithNibName:@"ResultViewController-iPhone" bundle:nil];
+    resultViewController = [[ResultViewController alloc] initWithNibName:@"ResultViewController-iPhone" bundle:nil];
 #else
-    self.resultViewController = [[ResultViewController alloc] init];
+    resultViewController = [[ResultViewController alloc] init];
 #endif
-    self.resultViewController.detailViewController = self;
-    UINavigationController *result_controller = [[UINavigationController alloc] initWithRootViewController:self.resultViewController];
-    self.resultViewController.title = @"Result";
+    resultViewController.detailViewController = self;
+    UINavigationController *result_controller = [[UINavigationController alloc] initWithRootViewController:resultViewController];
+    resultViewController.title = @"Result";
 #ifdef IPHONE_VERSION
     [self presentModalViewController:result_controller animated:NO];
 #else
@@ -934,12 +901,12 @@
     [self releaseAllPopOver];
     UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
     
-    _gotoLineViewController = [[GotoLineViewController alloc] init];
-    _gotoLineViewController.detailViewController = self;
+    GotoLineViewController* gotoLineViewController = [[GotoLineViewController alloc] init];
+    gotoLineViewController.detailViewController = self;
 #ifdef IPHONE_VERSION
     [self presentModalViewController:_gotoLineViewController animated:YES];
 #else
-    popoverController = [[UIPopoverController alloc] initWithContentViewController:_gotoLineViewController];
+    popoverController = [[UIPopoverController alloc] initWithContentViewController:gotoLineViewController];
     popoverController.popoverContentSize = CGSizeMake(250., 45.);
     
     [popoverController presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
@@ -1010,18 +977,19 @@
     }
     
     [self releaseAllPopOver];
+    HighLightWordController * highlightWordController;
     UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
 #ifdef IPHONE_VERSION
-    self.highlightWordController = [[HighLightWordController alloc] initWithNibName:@"HighLightWordController-iPhone" bundle:nil];
+    highlightWordController = [[HighLightWordController alloc] initWithNibName:@"HighLightWordController-iPhone" bundle:nil];
 #else
-    self.highlightWordController = [[HighLightWordController alloc] init];
+    highlightWordController = [[HighLightWordController alloc] init];
 #endif
-    self.highlightWordController.detailViewController = self;
+    highlightWordController.detailViewController = self;
 #ifdef IPHONE_VERSION
     [self presentModalViewController:self.highlightWordController animated:YES];
 #else
-    self.popoverController = [[UIPopoverController alloc] initWithContentViewController:self.highlightWordController];
-    self.popoverController.popoverContentSize = self.highlightWordController.view.frame.size;
+    self.popoverController = [[UIPopoverController alloc] initWithContentViewController:highlightWordController];
+    self.popoverController.popoverContentSize = highlightWordController.view.frame.size;
     
     [self.popoverController presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 #endif
@@ -1093,13 +1061,14 @@
     
     [self releaseAllPopOver];
     UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
+    DisplayModeController* displayModeController;
 #ifdef IPHONE_VERSION
-    self.displayModeController = [[DisplayModeController alloc] initWithNibName:@"DisplayModeController-iPhone" bundle:nil];
-    [self presentModalViewController:self.displayModeController animated:YES];
+    displayModeController = [[DisplayModeController alloc] initWithNibName:@"DisplayModeController-iPhone" bundle:nil];
+    [self presentModalViewController:displayModeController animated:YES];
 #else
-    self.displayModeController = [[DisplayModeController alloc] init];
-    self.popoverController = [[UIPopoverController alloc] initWithContentViewController:self.displayModeController];
-    self.popoverController.popoverContentSize = self.displayModeController.view.frame.size;
+    displayModeController = [[DisplayModeController alloc] init];
+    self.popoverController = [[UIPopoverController alloc] initWithContentViewController:displayModeController];
+    self.popoverController.popoverContentSize = displayModeController.view.frame.size;
     
     if (sender == nil) {
         [popoverController dismissPopoverAnimated:YES];
@@ -1292,12 +1261,13 @@
     }
     
     [self releaseAllPopOver];
-    self.functionListViewController = [[FunctionListViewController alloc] initWithNibName:@"FunctionListViewController" bundle:nil];
+    FunctionListViewController* functionListViewController;
+    functionListViewController = [[FunctionListViewController alloc] initWithNibName:@"FunctionListViewController" bundle:nil];
     NSString* currentFilePath = [self getCurrentDisplayFile];
     currentFilePath = [[Utils getInstance] getSourceFileByDisplayFile:currentFilePath];
-    [self.functionListViewController setCurrentFilePath:currentFilePath];
+    [functionListViewController setCurrentFilePath:currentFilePath];
     
-    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:self.functionListViewController];
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:functionListViewController];
     functionListViewController.title = @"Tag List";
 
 #ifdef IPHONE_VERSION
@@ -1325,14 +1295,15 @@
         return;
     }
     [self releaseAllPopOver];
-    self.fileBrowserViewController = [[FileBrowserViewController alloc] initWithNibName:@"FileBrowserViewController" bundle:nil];
-    [self.fileBrowserViewController setFileBrowserViewDelegate:self];
-    [self.fileBrowserViewController setIsProjectFolder:YES];
+    FileBrowserViewController* fileBrowserViewController;
+    fileBrowserViewController = [[FileBrowserViewController alloc] initWithNibName:@"FileBrowserViewController" bundle:nil];
+    [fileBrowserViewController setFileBrowserViewDelegate:self];
+    [fileBrowserViewController setIsProjectFolder:YES];
     
-    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:self.fileBrowserViewController];
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:fileBrowserViewController];
     
     NSString* currentFilePath = [self getCurrentDisplayFile];
-    [self.fileBrowserViewController setInitialPath:currentFilePath];
+    [fileBrowserViewController setInitialPath:currentFilePath];
     
     self.popoverController = [[UIPopoverController alloc] initWithContentViewController:controller];
     //    self.functionListPopover.popoverContentSize = self.historyListController.view.frame.size;
@@ -1366,9 +1337,7 @@
     [[[Utils getInstance] getBannerViewController] viewDidLayoutSubviews];
 #endif
     [self.fileBrowserButton setHidden:YES];
-    if (popoverController.contentViewController == fileBrowserViewController.parentViewController) {
-        [popoverController dismissPopoverAnimated:YES];
-    }
+    [popoverController dismissPopoverAnimated:YES];
     
     // We need always update MasterView Tableview
     // Because when masterview hidden, gotoFile will be blocked in MasterView

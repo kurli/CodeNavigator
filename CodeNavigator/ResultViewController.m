@@ -84,6 +84,7 @@
     size.height = size.height/3;
     size.width = size.width;
     self.contentSizeForViewInPopover = size;
+    [_tableView reloadData];
 }
 
 -(void)viewWillDisappear:(BOOL)animated

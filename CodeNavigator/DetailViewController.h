@@ -82,25 +82,9 @@ typedef enum _JSState {
 
 @property (strong, nonatomic) HistoryController* downHistoryController;
 
-@property (strong, nonatomic) NavigationController* codeNavigationController;
-
-@property (strong, nonatomic) ResultViewController *resultViewController;
-
-@property (strong, nonatomic) GotoLineViewController *gotoLineViewController;
-
-@property (strong, nonatomic) FilePathInfoPopupController* filePathInfoController;
-
-@property (strong, nonatomic) HighLightWordController* highlightWordController;
-
-@property (strong, nonatomic) DisplayModeController* displayModeController;
-
 @property (strong, nonatomic) HistoryListController* historyListController;
 
-@property (strong, nonatomic) FunctionListViewController* functionListViewController;
-
 @property (strong, nonatomic) VirtualizeViewController *virtualizeViewController;
-
-@property (strong, nonatomic) FileBrowserViewController *fileBrowserViewController;
 
 @property (strong, nonatomic) UIPopoverController *popoverController;
 

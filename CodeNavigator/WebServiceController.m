@@ -99,7 +99,7 @@
     [self set_tableView:nil];
 }
 
--(void) DoneButtonClicked:(id)sender {
+-(void) DoneButtonClickediPad:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -107,7 +107,7 @@
 {
     [super viewWillAppear:animated];
     
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(DoneButtonClicked:)];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(DoneButtonClickediPad:)];
     self.navigationItem.rightBarButtonItem = doneButton;
     
     if (![self.webServiceSwitcher isOn])
@@ -576,6 +576,11 @@
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 #endif
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+	return YES;
+}
 
 - (IBAction)onStopClicked:(id)sender {
     needStopZip = YES;

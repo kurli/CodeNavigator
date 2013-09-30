@@ -578,7 +578,7 @@
         // On iOS 5.0, CGRectZero leaves a popover afterimage before rotation, the code below does not
         // On iOS 5.1, CGRectZero leaves a popover afterimage before rotation, so does the code below
         // Basically, this hack performs slightly better than the CGRectZero hack, and does not cause an ominous warning.
-        [_hiddenPopoverController presentPopoverFromRect:CGRectMake(-2000, -2000, 1, 1) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:NO];
+        [_hiddenPopoverController presentPopoverFromRect:CGRectMake(1, 1, 1, 1) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:NO];
 		
 		// Remove master from popover and destroy popover, if it exists.
 		[_hiddenPopoverController dismissPopoverAnimated:NO];

@@ -1352,7 +1352,6 @@ static Utils *static_utils;
             {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.detailViewController forceResultPopUp:self.detailViewController.resultBarButton];
-                    [self.detailViewController.resultViewController.tableView reloadData];
                 });
             }
             else

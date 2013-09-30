@@ -93,7 +93,7 @@
     [fileListBrowserController reloadData];
     [self.tableView reloadData];
     if (needSelectRowAfterReload != -1) {
-        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:needSelectRowAfterReload inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:needSelectRowAfterReload inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
         needSelectRowAfterReload = -1;
     }
 }
@@ -152,7 +152,7 @@
     
     // Select table view
     if (needSelectRowAfterReload != -1) {
-        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:needSelectRowAfterReload inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:needSelectRowAfterReload inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
         needSelectRowAfterReload = -1;
     }
 
@@ -348,7 +348,7 @@
         if (targetViewController != self) {
             [targetViewController setNeedSelectRowAfterReload:index];
         } else {
-            [targetViewController.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+            [targetViewController.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
         }
     }
 }
