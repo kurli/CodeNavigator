@@ -229,7 +229,7 @@ static Utils *static_utils;
             [[NSFileManager defaultManager] removeItemAtPath:fl error:&error];
         }
     }
-    
+
     {
         NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
         BOOL isFolder = NO;
@@ -239,7 +239,7 @@ static Utils *static_utils;
         {
             [[NSFileManager defaultManager] createDirectoryAtPath:projectFolder withIntermediateDirectories:YES attributes:nil error:&error];
         }
-    
+
         // copy demo
         NSString* demoFolder = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/Projects/linux_0.1/"];
         isExist = [[NSFileManager defaultManager] fileExistsAtPath:demoFolder isDirectory:&isFolder];
@@ -248,7 +248,7 @@ static Utils *static_utils;
         {
             [[NSFileManager defaultManager] copyItemAtPath:demoBundle toPath:demoFolder error:&error];
         }
-        
+
         // copy help files
         NSString* settings = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/"];
         NSString* helpHtml = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/Help.html"];
@@ -263,6 +263,15 @@ static Utils *static_utils;
         [[NSFileManager defaultManager] copyItemAtPath:jpg3 toPath:[settings stringByAppendingPathComponent:@"4.jpeg"] error:&error];
         NSString* jpg4 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/5.jpeg"];
         [[NSFileManager defaultManager] copyItemAtPath:jpg4 toPath:[settings stringByAppendingPathComponent:@"5.jpeg"] error:&error];
+        
+        // Copy BuildInParser
+        NSString* buildInParserPath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/BuildInParser/"];
+        isExist = [[NSFileManager defaultManager] fileExistsAtPath:buildInParserPath isDirectory:&isFolder];
+        NSString* buildInParserPathBundle = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/BuildInParser"];
+        if (isExist == NO || (isExist == YES && isFolder == NO))
+        {
+            [[NSFileManager defaultManager] copyItemAtPath:buildInParserPathBundle toPath:buildInParserPath error:&error];
+        }
     }
 }
 

@@ -1,0 +1,5 @@
+{"keywords":"False None True and assert break class class_ cls continue def del elif else except exec finally for from global if import in is lambda not or pass print raise return self try while yield",
+"extention":"py python",
+"multi_line_comments_start":"\"\"\"",
+"single_line_comments":"#",
+"multi_line_comments_end":"\"\"\""}

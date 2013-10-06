@@ -15,6 +15,7 @@ typedef enum {
 } FileInfoType;
 
 @class MasterViewController;
+@class OpenAsViewController;
 
 @interface FileInfoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
@@ -24,6 +25,8 @@ typedef enum {
 @property (strong, nonatomic) NSMutableArray* selectionList;
 
 @property (strong, nonatomic) NSString* sourceFilePath;
+
+@property (strong, nonatomic) OpenAsViewController* openAsViewController;
 
 @property (nonatomic, unsafe_unretained) MasterViewController* masterViewController;
 

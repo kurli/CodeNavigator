@@ -23,9 +23,11 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIPickerView *parserTypePicker;
 @property (unsafe_unretained, nonatomic) IBOutlet UITextField *nameField;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *deleteButton;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *buttonCopy;
 
 @property (strong, nonatomic) NSString* filePath;
 
+- (IBAction)copyButtonClicked:(id)sender;
 - (IBAction)deleteButtonClicked:(id)sender;
 - (IBAction)cancelButtonClicked:(id)sender;
 - (IBAction)doneButtonClicked:(id)sender;

@@ -1,0 +1,5 @@
+{"keywords":"Array BEGIN Bignum Binding Class Continuation Dir END Exception FalseClass File File::Stat Fixnum Fload Hash IO Integer MatchData Method Module NilClass Numeric Object Proc Range Regexp String Struct::TMS Symbol Thread ThreadGroup Time TrueClass alias and begin break case class def define_method defined do each else elsif end ensure false for if in module new next nil not or raise redo rescue retry return self super then throw true undef unless until when while yield",
+"extention":"rails ror ruby rb",
+"multi_line_comments_start":"=begin",
+"single_line_comments":"#",
+"multi_line_comments_end":"=end"}

@@ -11,8 +11,6 @@
 #import "Utils.h"
 #import "DetailViewController.h"
 
-#define PREDEF_PARSER @"C/C++", @"Objective-C", @"C#", @"Java", @"Delphi", @"Javascript", @"Pythone", @"Ruby", @"Bash"
-
 @interface ManuallyParserViewController ()
 {
     int currentSelected;
@@ -32,6 +30,7 @@
 @synthesize filePath;
 @synthesize manuallyParserArray;
 @synthesize scrollView;
+@synthesize buttonCopy;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -67,6 +66,7 @@
     [self setNameField:nil];
     [self setDeleteButton:nil];
     [self setScrollView:nil];
+    [self setButtonCopy:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -80,23 +80,6 @@
     [self setFilePath:nil];
 }
 
-- (int)checkManuallyParserIndex:(NSString*)extention
-{
-    for (int i=0; i<[manuallyParserArray count]; i++) {
-        NSString* name = [manuallyParserArray objectAtIndex:i];
-        NSDictionary* dictionary = [Parser getParserByName:name];
-        NSString* extentioin = [dictionary objectForKey:EXTENTION];
-        NSArray* array = [extentioin componentsSeparatedByString:@" "];
-        for (int j=0; j<[array count]; j++) {
-            NSString* ext = [array objectAtIndex:j];
-            if ([ext compare:extention] == NSOrderedSame) {
-                return i;
-            }
-        }
-    }
-    return -1;
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 #ifdef IPHONE_VERSION
@@ -105,8 +88,11 @@
 	return YES;
 }
 
+- (IBAction)copyButtonClicked:(id)sender {
+}
+
 - (IBAction)deleteButtonClicked:(id)sender {
-    NSString* manuallyParserPath = [NSHomeDirectory() stringByAppendingFormat:PARSER_PATH];
+    NSString* manuallyParserPath = [NSHomeDirectory() stringByAppendingFormat:MANUALLY_PARSER_PATH];
     manuallyParserPath = [manuallyParserPath stringByAppendingPathComponent:self.nameField.text];
     manuallyParserPath = [manuallyParserPath stringByAppendingPathExtension:@"json"];
     [[NSFileManager defaultManager] removeItemAtPath:manuallyParserPath error:nil];
@@ -143,7 +129,7 @@
     multiLineE = self.multiLineCommentsEndField.text;
     keywords = self.keyworldField.text;
     
-    NSString* manuallyParserPath = [NSHomeDirectory() stringByAppendingFormat:PARSER_PATH];
+    NSString* manuallyParserPath = [NSHomeDirectory() stringByAppendingFormat:MANUALLY_PARSER_PATH];
     manuallyParserPath = [manuallyParserPath stringByAppendingPathComponent:name];
     manuallyParserPath = [manuallyParserPath stringByAppendingPathExtension:@"json"];
     [[NSFileManager defaultManager] removeItemAtPath:manuallyParserPath error:nil];
@@ -155,41 +141,14 @@
 - (IBAction)doneButtonClicked:(id)sender {
     ParserType type = UNKNOWN;
     BOOL succeed;
-    switch (currentSelected) {
-        case 0://CPLUSPLUS:
-            type = CPLUSPLUS;
-            break;
-        case 1://OBJECTIVE_C:
-            type = OBJECTIVE_C;
-            break;
-        case 2://CSHARP:
-            type = CSHARP;
-            break;
-        case 3://JAVA:
-            type = JAVA;
-            break;
-        case 4://DELPHI:
-            type = DELPHI;
-            break;
-        case 5://JAVASCRIPT:
-            type = JAVASCRIPT;
-            break;
-        case 6://PYTHONE:
-            type = PYTHONE;
-            break;
-        case 7://RUBY:
-            type = RUBY;
-            break;
-        case 8://BASH:
-            type = BASH;
-            break;
-        default:
-            succeed = [self saveParser];
-            if (!succeed) {
-                return;
-            }
-            type = -1;
-            break;
+    if (currentSelected < HTML) {
+        type = currentSelected;
+    } else {
+        succeed = [self saveParser];
+        if (!succeed) {
+            return;
+        }
+        type = -1;
     }
 
     Parser* parser = [[Parser alloc] init];
@@ -277,99 +236,40 @@ andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords andEnable:(BO
     NSString* multiLineS = @"";
     NSString* multiLineE = @"";
     NSString* keywords = @"";
-    switch (currentSelected) {
-        case 0://CPLUSPLUS:
-            name = @"C/C++";
-            extention = [CPlusPlusParser getExtentionsStr];
-            singleLine = [CPlusPlusParser getSingleLineCommentsStr];
-            multiLineS = [CPlusPlusParser getMultiLineCommentsStartStr];
-            multiLineE = [CPlusPlusParser getMultiLineCommentsEndStr];
-            keywords = [CPlusPlusParser getKeywordsStr];
-            break;
-        case 1://OBJECTIVE_C:
-            name = @"Objective-c";
-            extention = [ObjectiveCParser getExtentionsStr];
-            singleLine = [ObjectiveCParser getSingleLineCommentsStr];
-            multiLineS = [ObjectiveCParser getMultiLineCommentsStartStr];
-            multiLineE = [ObjectiveCParser getMultiLineCommentsEndStr];
-            keywords = [ObjectiveCParser getKeywordsStr];
-            break;
-        case 2://CSHARP:
-            name = @"C#";
-            extention = [CSharpParser getExtentionsStr:CSHARP];
-            singleLine = [CSharpParser getSingleLineCommentsStr];
-            multiLineS = [CSharpParser getMultiLineCommentsStartStr];
-            multiLineE = [CSharpParser getMultiLineCommentsEndStr];
-            keywords = [CSharpParser getKeywordsStr:CSHARP];
-            break;
-        case 3://JAVA:
-            name = @"Java";
-            extention = [CSharpParser getExtentionsStr:JAVA];
-            singleLine = [CSharpParser getSingleLineCommentsStr];
-            multiLineS = [CSharpParser getMultiLineCommentsStartStr];
-            multiLineE = [CSharpParser getMultiLineCommentsEndStr];
-            keywords = [CSharpParser getKeywordsStr:JAVA];
-            break;
-        case 4://DELPHI:
-            name = @"Delphi";
-            extention = [DelphiParser getExtentionsStr];
-            singleLine = [DelphiParser getSingleLineCommentsStr];
-            multiLineS = [DelphiParser getMultiLineCommentsStartStr];
-            multiLineE = [DelphiParser getMultiLineCommentsEndStr];
-            keywords = [DelphiParser getKeywordsStr];
-            break;
-        case 5://JAVASCRIPT:
-            name = @"Javascript";
-            extention = [CSharpParser getExtentionsStr:JAVASCRIPT];
-            singleLine = [CSharpParser getSingleLineCommentsStr];
-            multiLineS = [CSharpParser getMultiLineCommentsStartStr];
-            multiLineE = [CSharpParser getMultiLineCommentsEndStr];
-            keywords = [CSharpParser getKeywordsStr:JAVASCRIPT];
-            break;
-        case 6://PYTHONE:
-            name = @"Pythone";
-            extention = [PythonParser getExtentionsStr];
-            singleLine = [PythonParser getSingleLineCommentsStr];
-            multiLineS = [PythonParser getMultiLineCommentsStartStr];
-            multiLineE = [PythonParser getMultiLineCommentsEndStr];
-            keywords = [PythonParser getKeywordsStr];
-            break;
-        case 7://RUBY:
-            name = @"Ruby";
-            extention = [RubbyParser getExtentionsStr];
-            singleLine = [RubbyParser getSingleLineCommentsStr];
-            multiLineS = [RubbyParser getMultiLineCommentsStartStr];
-            multiLineE = [RubbyParser getMultiLineCommentsEndStr];
-            keywords = [RubbyParser getKeywordsStr];
-            break;
-        case 8://BASH:
-            name = @"Bash";
-            extention = [BashParser getExtentionsStr];
-            singleLine = [BashParser getSingleLineCommentsStr];
-            multiLineS = [BashParser getMultiLineCommentsStartStr];
-            multiLineE = [BashParser getMultiLineCommentsEndStr];
-            keywords = [BashParser getKeywordsStr];
-            break;
-        default:
-            manuallyParserIndex = currentSelected - [parserArray count];
-            if (manuallyParserIndex > -1 && manuallyParserIndex < [manuallyParserArray count]) {
-                name = [manuallyParserArray objectAtIndex:manuallyParserIndex];
-                
-                NSDictionary* dictionary = [Parser getParserByName:name];
-                extention = [dictionary objectForKey:EXTENTION];
-                singleLine = [dictionary objectForKey:SINGLE_LINE_COMMENTS];
-                multiLineS = [dictionary objectForKey:MULTI_LINE_COMMENTS_START];
-                multiLineE = [dictionary objectForKey:MULTI_LINE_COMMENTS_END];
-                keywords = [dictionary objectForKey:KEYWORDS];
-                [self setField:name andExtention:extention andSingleLine:singleLine andMultiLineS:multiLineS andMultLineE:multiLineE andKeywords:keywords andEnable:YES];
-                return;
-            }
-            else {
-                [self setField:@"" andExtention:@"" andSingleLine:@"" andMultiLineS:@"" andMultLineE:@"" andKeywords:@"" andEnable:YES];
-                return;
-            }
-            break;
+    CodeParser* codeParser;
+    
+    if (currentSelected < HTML) {
+        Parser* parser = [[Parser alloc] init];
+        [parser setParserType:currentSelected];
+        name = [parser.parser getParserName];
+        codeParser = parser.parser;
     }
+    else
+    {
+        manuallyParserIndex = currentSelected - [parserArray count];
+        if (manuallyParserIndex > -1 && manuallyParserIndex < [manuallyParserArray count]) {
+            name = [manuallyParserArray objectAtIndex:manuallyParserIndex];
+    
+            NSDictionary* dictionary = [Parser getManuallyParserByName:name];
+            extention = [dictionary objectForKey:EXTENTION];
+            singleLine = [dictionary objectForKey:SINGLE_LINE_COMMENTS];
+            multiLineS = [dictionary objectForKey:MULTI_LINE_COMMENTS_START];
+            multiLineE = [dictionary objectForKey:MULTI_LINE_COMMENTS_END];
+            keywords = [dictionary objectForKey:KEYWORDS];
+            [self setField:name andExtention:extention andSingleLine:singleLine andMultiLineS:multiLineS andMultLineE:multiLineE andKeywords:keywords andEnable:YES];
+            return;
+        }
+        else {
+            [self setField:@"" andExtention:@"" andSingleLine:@"" andMultiLineS:@"" andMultLineE:@"" andKeywords:@"" andEnable:YES];
+            return;
+        }
+    }
+    extention = [codeParser getExtentionsStr];
+    singleLine = [codeParser getSingleLineCommentsStr];
+    multiLineS = [codeParser getMultiLineCommentsStartStr];
+    multiLineE = [codeParser getMultiLineCommentsEndStr];
+    keywords = [codeParser getKeywordsStr];
+    
     [self setField:name andExtention:extention andSingleLine:singleLine andMultiLineS:multiLineS andMultLineE:multiLineE andKeywords:keywords andEnable:NO];
 }
 
@@ -478,156 +378,25 @@ andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords andEnable:(BO
     ParserType type = UNKNOWN;
     int manuallyIndex = -1;
     
-    if ([[[filePath lastPathComponent] lowercaseString] compare:@"makefile"] == NSOrderedSame) {
-        type = BASH;
-    }
-    else if ([extension isEqualToString:@"c"])
-    {
-        type = CPLUSPLUS;
-    }
-    else if ([extension isEqualToString:@"cc"])
-    {
-        type = CPLUSPLUS;
-    }
-    else if ([extension isEqualToString:@"h"])
-    {
-        NSError *error;
-        NSString* path = [filePath stringByDeletingLastPathComponent];
-        NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:&error];
-        for (int i =0; i<[contents count]; i++) {
-            NSString* tmp = [contents objectAtIndex:i];
-            NSString *ext = [tmp pathExtension];
-            if ([ext compare:@"m"] == NSOrderedSame)
-            {
-                type = OBJECTIVE_C;
-            }
-            if ([ext compare:@"c"] == NSOrderedSame ||
-                [ext compare:@"cpp"] == NSOrderedSame)
-            {
-                type = CPLUSPLUS;
-            }
-        }
-        if (type == UNKNOWN) {
-            type = CPLUSPLUS;
-        }
-    }
-    else if ([extension isEqualToString:@"cpp"])
-    {
-        type = CPLUSPLUS;
-    }
-    else if ([extension isEqualToString:@"m"])
-    {
-        type = OBJECTIVE_C;
-    }
-    else if ([extension isEqualToString:@"cs"])
-    {
-        type = CSHARP;
-    }
-    else if ([extension isEqualToString:@"java"])
-    {
-        type = JAVA;
-        return;
-    }
-    else if ([extension isEqualToString:@"delphi"])
-    {
-        type = DELPHI;
-    }
-    else if ([extension isEqualToString:@"pascal"])
-    {
-        type = DELPHI;
-    }
-    else if ([extension isEqualToString:@"pas"])
-    {
-        type = DELPHI;
-    }
-    else if ([extension isEqualToString:@"mm"])
-    {
-        type = CPLUSPLUS;
-    }
-    else if ([extension isEqualToString:@"hpp"])
-    {
-        type = CPLUSPLUS;
-    }
-    else if ([extension isEqualToString:@"js"] || [extension isEqualToString:@"jscript"] || [extension isEqualToString:@"javascript"])
-    {
-        type = JAVASCRIPT;
-    }
-    else if ([extension isEqualToString:@"py"] || [extension isEqualToString:@"python"])
-    {
-        type = PYTHONE;
-    }
-    else if ([extension isEqualToString:@"rails"] || [extension isEqualToString:@"ror"] || [extension isEqualToString:@"ruby"])
-    {
-        type = RUBY;
-    }
-    else if ([extension isEqualToString:@"sh"] || [extension isEqualToString:@"shell"] || [extension isEqualToString:@"bash"])
-    {
-        type = BASH;
-    }
-    // s xml sql vb
-    else
-    {
-        manuallyIndex = [self checkManuallyParserIndex:extension];
+    type = [Parser getBuildInParserTypeByfilePath:filePath];
+    
+    if (type == UNKNOWN) {
+        manuallyIndex = [Parser checkManuallyParserIndex:extension];
         if (manuallyIndex > -1) {
             type = -1;
         }
     }
     
-    if ( CPLUSPLUS == type )
-    {
-        [self.parserTypePicker selectRow:0 inComponent:0 animated:YES];
-        currentSelected = 0;
-    }
-    else if( UNKNOWN == type )
-    {
+    if (type < HTML) {
+        currentSelected = type;
+    } else if (type == UNKNOWN) {
         currentSelected = [parserArray count]+[manuallyParserArray count];
-        [self.parserTypePicker selectRow:currentSelected inComponent:0 animated:YES];
-    }
-    else if (OBJECTIVE_C == type)
-    {
-        [self.parserTypePicker selectRow:1 inComponent:0 animated:YES];
-        currentSelected = 1;
-    }
-    else if (CSHARP == type)
-    {
-        [self.parserTypePicker selectRow:2 inComponent:0 animated:YES];
-        currentSelected = 2;
-    }
-    else if (JAVA == type)
-    {
-        [self.parserTypePicker selectRow:3 inComponent:0 animated:YES];
-        currentSelected = 3;
-    }
-    else if (DELPHI == type)
-    {
-        [self.parserTypePicker selectRow:4 inComponent:0 animated:YES];
-        currentSelected = 4;
-    }
-    else if (JAVASCRIPT == type)
-    {
-        [self.parserTypePicker selectRow:5 inComponent:0 animated:YES];
-        currentSelected = 5;
-    }
-    else if (PYTHONE == type)
-    {
-        [self.parserTypePicker selectRow:6 inComponent:0 animated:YES];
-        currentSelected = 6;
-    }
-    else if (RUBY == type)
-    {
-        [self.parserTypePicker selectRow:7 inComponent:0 animated:YES];
-        currentSelected = 7;
-    }
-    else if (BASH == type)
-    {
-        [self.parserTypePicker selectRow:8 inComponent:0 animated:YES];
-        currentSelected = 8;
     }
     else {
         //it's a manually type
         currentSelected = [parserArray count] + manuallyIndex;
-        [self.parserTypePicker selectRow:currentSelected inComponent:0 animated:YES];
     }
+    [self.parserTypePicker selectRow:currentSelected inComponent:0 animated:YES];
     
     [self predefParserSelected];
 }

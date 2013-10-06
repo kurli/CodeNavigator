@@ -41,6 +41,9 @@
 		9418F76A14D9B0C4003134E6 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 9418F76614D9B0C4003134E6 /* iTunesArtwork */; };
 		9419B87D14A4B3BE00AB679B /* ResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */; };
 		941B2AC01636D419000BBF59 /* TagItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941B2ABF1636D419000BBF59 /* TagItemCell.xib */; };
+		941E63E01801541C008226F2 /* BuildInParser in Resources */ = {isa = PBXBuildFile; fileRef = 941E63DF1801541C008226F2 /* BuildInParser */; };
+		941E63E418019354008226F2 /* OpenAsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 941E63E218019354008226F2 /* OpenAsViewController.m */; };
+		941E63E518019354008226F2 /* OpenAsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941E63E318019354008226F2 /* OpenAsViewController.xib */; };
 		94205714157B938B00178CBF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94205713157B938B00178CBF /* QuartzCore.framework */; };
 		94205715157B939B00178CBF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94205713157B938B00178CBF /* QuartzCore.framework */; };
 		9424660C1502AA2F001701C4 /* ManuallAddChild.png in Resources */ = {isa = PBXBuildFile; fileRef = 9424660A1502AA2F001701C4 /* ManuallAddChild.png */; };
@@ -450,8 +453,8 @@
 		9497F3AE151B8EBA006BCBBF /* DelphiParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3AC151B8EBA006BCBBF /* DelphiParser.m */; };
 		9497F3B4151BA606006BCBBF /* PythonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3B3151BA606006BCBBF /* PythonParser.m */; };
 		9497F3B5151BA606006BCBBF /* PythonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3B3151BA606006BCBBF /* PythonParser.m */; };
-		9497F3CB151CEC4F006BCBBF /* RubbyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3CA151CEC4F006BCBBF /* RubbyParser.m */; };
-		9497F3CC151CEC4F006BCBBF /* RubbyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3CA151CEC4F006BCBBF /* RubbyParser.m */; };
+		9497F3CB151CEC4F006BCBBF /* RubyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3CA151CEC4F006BCBBF /* RubyParser.m */; };
+		9497F3CC151CEC4F006BCBBF /* RubyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3CA151CEC4F006BCBBF /* RubyParser.m */; };
 		949DC1991583E8CF00385796 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74414910B3000B0900E /* main.m */; };
 		949DC19A1583E8CF00385796 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74814910B3000B0900E /* AppDelegate.m */; };
 		949DC19C1583E8CF00385796 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74E14910B3000B0900E /* DetailViewController.m */; };
@@ -512,7 +515,7 @@
 		949DC1D41583E8CF00385796 /* CSharpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3A7151B85C7006BCBBF /* CSharpParser.m */; };
 		949DC1D51583E8CF00385796 /* DelphiParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3AC151B8EBA006BCBBF /* DelphiParser.m */; };
 		949DC1D61583E8CF00385796 /* PythonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3B3151BA606006BCBBF /* PythonParser.m */; };
-		949DC1D71583E8CF00385796 /* RubbyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3CA151CEC4F006BCBBF /* RubbyParser.m */; };
+		949DC1D71583E8CF00385796 /* RubyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3CA151CEC4F006BCBBF /* RubyParser.m */; };
 		949DC1D81583E8CF00385796 /* BashParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9489196C1524CC9000AB9968 /* BashParser.m */; };
 		949DC1D91583E8CF00385796 /* diff.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C1152772EF000473BE /* diff.c */; };
 		949DC1DA1583E8CF00385796 /* getopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C61527731E000473BE /* getopt.c */; };
@@ -728,6 +731,9 @@
 		94B8EC241546F2FD00931747 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC231546F2FD00931747 /* AudioToolbox.framework */; };
 		94B8EC261546F30900931747 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC251546F30900931747 /* MessageUI.framework */; };
 		94B8EC281546F31700931747 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC271546F31700931747 /* SystemConfiguration.framework */; };
+		94BD81DD18014587002F8153 /* JavaParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81D918014587002F8153 /* JavaParser.m */; };
+		94BD81DE18014587002F8153 /* JavaScriptParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81DC18014587002F8153 /* JavaScriptParser.m */; };
+		94BD81E218014840002F8153 /* PHPParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81E118014840002F8153 /* PHPParser.m */; };
 		94BF7DA4150E727B00FCF653 /* libZip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434BFB314A389BE00B34419 /* libZip.a */; };
 		94BF7DA6150E73B100FCF653 /* libObjectiveGit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BF7924150E398500FCF653 /* libObjectiveGit.a */; };
 		94BF99BC1534887000F4EFFD /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF99BB1534887000F4EFFD /* refresh.png */; };
@@ -992,6 +998,10 @@
 		9418F76614D9B0C4003134E6 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = icon/Free/iTunesArtwork; sourceTree = "<group>"; };
 		9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultTableCellView.xib; sourceTree = "<group>"; };
 		941B2ABF1636D419000BBF59 /* TagItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TagItemCell.xib; path = FunctionListController/TagItemCell.xib; sourceTree = "<group>"; };
+		941E63DF1801541C008226F2 /* BuildInParser */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BuildInParser; sourceTree = "<group>"; };
+		941E63E118019354008226F2 /* OpenAsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenAsViewController.h; path = FileInfoController/OpenAsViewController.h; sourceTree = "<group>"; };
+		941E63E218019354008226F2 /* OpenAsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenAsViewController.m; path = FileInfoController/OpenAsViewController.m; sourceTree = "<group>"; };
+		941E63E318019354008226F2 /* OpenAsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OpenAsViewController.xib; path = FileInfoController/OpenAsViewController.xib; sourceTree = "<group>"; };
 		94205713157B938B00178CBF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9424660A1502AA2F001701C4 /* ManuallAddChild.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ManuallAddChild.png; sourceTree = "<group>"; };
 		9424660B1502AA2F001701C4 /* manuallAddParent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = manuallAddParent.png; sourceTree = "<group>"; };
@@ -1354,8 +1364,8 @@
 		9497F3B2151BA606006BCBBF /* PythonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PythonParser.h; path = CodeNavigator/PythonParser.h; sourceTree = "<group>"; };
 		9497F3B3151BA606006BCBBF /* PythonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PythonParser.m; path = CodeNavigator/PythonParser.m; sourceTree = "<group>"; };
 		9497F3B6151BA636006BCBBF /* PythonDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PythonDefinition.h; path = CodeNavigator/PythonDefinition.h; sourceTree = "<group>"; };
-		9497F3C9151CEC4F006BCBBF /* RubbyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RubbyParser.h; path = CodeNavigator/RubbyParser.h; sourceTree = "<group>"; };
-		9497F3CA151CEC4F006BCBBF /* RubbyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RubbyParser.m; path = CodeNavigator/RubbyParser.m; sourceTree = "<group>"; };
+		9497F3C9151CEC4F006BCBBF /* RubyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RubyParser.h; path = CodeNavigator/RubyParser.h; sourceTree = "<group>"; };
+		9497F3CA151CEC4F006BCBBF /* RubyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RubyParser.m; path = CodeNavigator/RubyParser.m; sourceTree = "<group>"; };
 		9497F3CD151CEC6A006BCBBF /* RubbyDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RubbyDefinition.h; path = CodeNavigator/RubbyDefinition.h; sourceTree = "<group>"; };
 		949DC26B1583E8CF00385796 /* CodeNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A0FAE2153DDA78004277BF /* cscope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cscope.png; sourceTree = "<group>"; };
@@ -1421,6 +1431,15 @@
 		94B8EC231546F2FD00931747 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		94B8EC251546F30900931747 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		94B8EC271546F31700931747 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		94BD81D718014587002F8153 /* JavaDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaDefinition.h; path = CodeNavigator/JavaDefinition.h; sourceTree = "<group>"; };
+		94BD81D818014587002F8153 /* JavaParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaParser.h; path = CodeNavigator/JavaParser.h; sourceTree = "<group>"; };
+		94BD81D918014587002F8153 /* JavaParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JavaParser.m; path = CodeNavigator/JavaParser.m; sourceTree = "<group>"; };
+		94BD81DA18014587002F8153 /* JavaScriptDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaScriptDefinition.h; path = CodeNavigator/JavaScriptDefinition.h; sourceTree = "<group>"; };
+		94BD81DB18014587002F8153 /* JavaScriptParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaScriptParser.h; path = CodeNavigator/JavaScriptParser.h; sourceTree = "<group>"; };
+		94BD81DC18014587002F8153 /* JavaScriptParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JavaScriptParser.m; path = CodeNavigator/JavaScriptParser.m; sourceTree = "<group>"; };
+		94BD81DF18014840002F8153 /* PHPDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHPDefinition.h; path = CodeNavigator/PHPDefinition.h; sourceTree = "<group>"; };
+		94BD81E018014840002F8153 /* PHPParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHPParser.h; path = CodeNavigator/PHPParser.h; sourceTree = "<group>"; };
+		94BD81E118014840002F8153 /* PHPParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHPParser.m; path = CodeNavigator/PHPParser.m; sourceTree = "<group>"; };
 		94BF791F150E398400FCF653 /* ObjectiveGit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveGit.xcodeproj; path = ObjectiveGit/ObjectiveGit/ObjectiveGit.xcodeproj; sourceTree = "<group>"; };
 		94BF7D8D150E6DC200FCF653 /* GTBlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTBlob.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTBlob.h; sourceTree = "<group>"; };
 		94BF7D8E150E6DC200FCF653 /* GTBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTBranch.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTBranch.h; sourceTree = "<group>"; };
@@ -1744,18 +1763,27 @@
 		9431D7621493B31500B0900E /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				9431D7641493B36000B0900E /* CodeParser.h */,
-				9431D7651493B36000B0900E /* CodeParser.m */,
-				9431D7661493B36000B0900E /* CPlusPlusDefination.h */,
-				9431D7671493B36000B0900E /* CPlusPlusParser.h */,
-				9431D7681493B36000B0900E /* CPlusPlusParser.m */,
 				9431D7691493B36000B0900E /* HTMLConst.h */,
 				9431D76A1493B36000B0900E /* Parser.h */,
 				9431D76B1493B36000B0900E /* Parser.m */,
+				9431D7641493B36000B0900E /* CodeParser.h */,
+				9431D7651493B36000B0900E /* CodeParser.m */,
 				94AB1E5014AF5E0300451020 /* UnSupportedParser.h */,
 				94AB1E5114AF5E0300451020 /* UnSupportedParser.m */,
 				94D16DE514C9CC3B007439EB /* ImageParser.h */,
 				94D16DE614C9CC3B007439EB /* ImageParser.m */,
+				94BD81DF18014840002F8153 /* PHPDefinition.h */,
+				94BD81E018014840002F8153 /* PHPParser.h */,
+				94BD81E118014840002F8153 /* PHPParser.m */,
+				94BD81D718014587002F8153 /* JavaDefinition.h */,
+				94BD81D818014587002F8153 /* JavaParser.h */,
+				94BD81D918014587002F8153 /* JavaParser.m */,
+				94BD81DA18014587002F8153 /* JavaScriptDefinition.h */,
+				94BD81DB18014587002F8153 /* JavaScriptParser.h */,
+				94BD81DC18014587002F8153 /* JavaScriptParser.m */,
+				9431D7661493B36000B0900E /* CPlusPlusDefination.h */,
+				9431D7671493B36000B0900E /* CPlusPlusParser.h */,
+				9431D7681493B36000B0900E /* CPlusPlusParser.m */,
 				9497F3A1151A499C006BCBBF /* ObjectiveCParser.h */,
 				9497F3A2151A499D006BCBBF /* ObjectiveCParser.m */,
 				9497F3A5151A4A13006BCBBF /* ObjectiveCDefinition.h */,
@@ -1768,8 +1796,8 @@
 				9497F3B2151BA606006BCBBF /* PythonParser.h */,
 				9497F3B3151BA606006BCBBF /* PythonParser.m */,
 				9497F3B6151BA636006BCBBF /* PythonDefinition.h */,
-				9497F3C9151CEC4F006BCBBF /* RubbyParser.h */,
-				9497F3CA151CEC4F006BCBBF /* RubbyParser.m */,
+				9497F3C9151CEC4F006BCBBF /* RubyParser.h */,
+				9497F3CA151CEC4F006BCBBF /* RubyParser.m */,
 				9497F3CD151CEC6A006BCBBF /* RubbyDefinition.h */,
 				9489196B1524CC9000AB9968 /* BashParser.h */,
 				9489196C1524CC9000AB9968 /* BashParser.m */,
@@ -1834,6 +1862,7 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				941E63DF1801541C008226F2 /* BuildInParser */,
 				943D1FBC17E7695C00BD82E6 /* FileBrowser.png */,
 				943A81D816381FA000E39298 /* tag_list.png */,
 				944A5B52160B63B00076410C /* syntax_color_iphone.plist */,
@@ -2253,6 +2282,9 @@
 				94B7E5A9156FE2BA000F3F34 /* FileInfoViewController.xib */,
 				94A404A8158A1BA00084F645 /* FileInfoControlleriPhone.h */,
 				94A404A9158A1BA00084F645 /* FileInfoControlleriPhone.m */,
+				941E63E118019354008226F2 /* OpenAsViewController.h */,
+				941E63E218019354008226F2 /* OpenAsViewController.m */,
+				941E63E318019354008226F2 /* OpenAsViewController.xib */,
 			);
 			name = FileInfoController;
 			sourceTree = "<group>";
@@ -2615,6 +2647,8 @@
 				94B09BB617E77DC600789510 /* FileBrowserViewController.xib in Resources */,
 				94F7B90E17F7487A00A506EE /* UploadSelectionViewController.xib in Resources */,
 				94F7B91617F84A7600A506EE /* WebServiceControllerFormSheet.xib in Resources */,
+				941E63E01801541C008226F2 /* BuildInParser in Resources */,
+				941E63E518019354008226F2 /* OpenAsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2879,7 +2913,7 @@
 				9497F3A8151B85C7006BCBBF /* CSharpParser.m in Sources */,
 				9497F3AD151B8EBA006BCBBF /* DelphiParser.m in Sources */,
 				9497F3B4151BA606006BCBBF /* PythonParser.m in Sources */,
-				9497F3CB151CEC4F006BCBBF /* RubbyParser.m in Sources */,
+				9497F3CB151CEC4F006BCBBF /* RubyParser.m in Sources */,
 				9489196D1524CC9000AB9968 /* BashParser.m in Sources */,
 				944DD7C2152772EF000473BE /* diff.c in Sources */,
 				944DD7C71527731E000473BE /* getopt.c in Sources */,
@@ -2992,6 +3026,10 @@
 				94B09BB517E77DC600789510 /* FileBrowserViewController.m in Sources */,
 				94F7B90D17F7487A00A506EE /* UploadSelectionViewController.m in Sources */,
 				9451D59417F9BD4C00BDAD5E /* MasterViewController.m in Sources */,
+				94BD81DD18014587002F8153 /* JavaParser.m in Sources */,
+				94BD81DE18014587002F8153 /* JavaScriptParser.m in Sources */,
+				94BD81E218014840002F8153 /* PHPParser.m in Sources */,
+				941E63E418019354008226F2 /* OpenAsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3145,7 +3183,7 @@
 				949DC1D41583E8CF00385796 /* CSharpParser.m in Sources */,
 				949DC1D51583E8CF00385796 /* DelphiParser.m in Sources */,
 				949DC1D61583E8CF00385796 /* PythonParser.m in Sources */,
-				949DC1D71583E8CF00385796 /* RubbyParser.m in Sources */,
+				949DC1D71583E8CF00385796 /* RubyParser.m in Sources */,
 				949DC1D81583E8CF00385796 /* BashParser.m in Sources */,
 				949DC1D91583E8CF00385796 /* diff.c in Sources */,
 				949DC1DA1583E8CF00385796 /* getopt.c in Sources */,
@@ -3341,7 +3379,7 @@
 				9497F3A9151B85C7006BCBBF /* CSharpParser.m in Sources */,
 				9497F3AE151B8EBA006BCBBF /* DelphiParser.m in Sources */,
 				9497F3B5151BA606006BCBBF /* PythonParser.m in Sources */,
-				9497F3CC151CEC4F006BCBBF /* RubbyParser.m in Sources */,
+				9497F3CC151CEC4F006BCBBF /* RubyParser.m in Sources */,
 				9489196E1524CC9000AB9968 /* BashParser.m in Sources */,
 				944DD7C3152772EF000473BE /* diff.c in Sources */,
 				944DD7C81527731E000473BE /* getopt.c in Sources */,

@@ -10,7 +10,7 @@
 #import "Utils.h"
 #import "DetailViewController.h"
 #import "MasterViewController.h"
-#import "ManuallyParserViewController.h"
+#import "OpenAsViewController.h"
 
 //source wrapper
 #define RE_OPEN 0
@@ -31,6 +31,7 @@
 @synthesize masterViewController;
 @synthesize selectionList;
 @synthesize sourceFilePath;
+@synthesize openAsViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,6 +48,7 @@
     [self setSelectionList:nil];
     [self setSourceFilePath:nil];
     [self setMasterViewController:nil];
+    [self setOpenAsViewController:nil];
 }
 
 - (void)viewDidLoad
@@ -61,11 +63,18 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     [self setMasterViewController:nil];
+    [self setOpenAsViewController:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.contentSizeForViewInPopover = self.view.frame.size;
 }
 
 #pragma TableView
@@ -125,20 +134,20 @@
 
 -(void) presentOpenAsView
 {
-    ManuallyParserViewController* viewController = [[ManuallyParserViewController alloc] init];
-    viewController.modalPresentationStyle = UIModalPresentationFormSheet;
-    [viewController setFilePath:sourceFilePath];
-    [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
+    UINavigationController* navigationController = [self navigationController];
+    openAsViewController = [[OpenAsViewController alloc] init];
+    [openAsViewController setFilePath:sourceFilePath];
+    [navigationController pushViewController:openAsViewController animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DetailViewController* controller = [Utils getInstance].detailViewController;
-    [masterViewController.popOverController dismissPopoverAnimated:YES];
     
     switch (fileInfoType) {
         case FILEINFO_SOURCE:
             if (indexPath.row == RE_OPEN) {
+                [masterViewController.popOverController dismissPopoverAnimated:YES];
                 NSError* error;
                 NSString* displayFile = [[Utils getInstance] getDisplayPath:sourceFilePath];
                 [[NSFileManager defaultManager] removeItemAtPath:displayFile error:&error];
@@ -162,6 +171,7 @@
             }
             else if (indexPath.row == SOURCE_DELETE) {
                 [self deleteFile];
+                [masterViewController.popOverController dismissPopoverAnimated:YES];
             }
             break;
             
@@ -188,9 +198,11 @@
             else if (indexPath.row == WEB_DELETE) {
                 [self deleteFile];
             }
+            [masterViewController.popOverController dismissPopoverAnimated:YES];
             break;
         case FILEINFO_OTHER:
             [self deleteFile];
+            [masterViewController.popOverController dismissPopoverAnimated:YES];
             break;
         default:
             break;
