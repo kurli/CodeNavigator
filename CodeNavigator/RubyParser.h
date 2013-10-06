@@ -1,16 +1,16 @@
 //
-//  PythonParser.h
+//  RubbyParser.h
 //  CodeNavigator
 //
-//  Created by Guozhen Li on 3/23/12.
+//  Created by Guozhen Li on 3/24/12.
 //  Copyright (c) 2012 Siemens Corporate Research. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "PythonDefinition.h"
 #import "CodeParser.h"
+#import "RubbyDefinition.h"
 
-@interface PythonParser : CodeParser
+@interface RubyParser : CodeParser
 {
 }
 

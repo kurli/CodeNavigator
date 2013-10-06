@@ -10,41 +10,11 @@
 
 @implementation ObjectiveCParser
 
-+(NSString*) getExtentionsStr
-{
-    return @"m h";
-}
-
-+(NSString*) getSingleLineCommentsStr
-{
-    return COMMENTS_SINGLE;
-}
-
-+(NSString*) getMultiLineCommentsStartStr
-{
-    return COMMENTS_MULTI;
-}
-
-+(NSString*) getMultiLineCommentsEndStr
-{
-    return COMMENTS_MULTI_END;
-}
-
-+(NSString*) getKeywordsStr
-{
-    return KEYWORD_OBJ;
-}
-
 -(id) init
 {
+    [self setParserConfigName:@"Objective-c"];
 	if ( (self = [super init])!=nil )
 	{
-		isCommentsNotEnded = NO;
-        isStringNotEnded = NO;
-        
-        NSString* keywords = KEYWORD_OBJ;
-        keywordsArray = [keywords componentsSeparatedByString:@" "];      
-        preprocessorArray = [NSArray arrayWithObjects: PREPROCESSOR];
 	}
 	return self;
 }

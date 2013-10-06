@@ -10,41 +10,11 @@
 
 @implementation PythonParser
 
-+(NSString*) getExtentionsStr
-{
-    return @"py python";
-}
-
-+(NSString*) getSingleLineCommentsStr
-{
-    return COMMENTS_SINGLE;
-}
-
-+(NSString*) getMultiLineCommentsStartStr
-{
-    return COMMENTS_MULTI;
-}
-
-+(NSString*) getMultiLineCommentsEndStr
-{
-    return COMMENTS_MULTI_END;
-}
-
-+(NSString*) getKeywordsStr
-{
-    return KEYWORD_PYTHON;
-}
-
 -(id) init
 {
+    [self setParserConfigName:@"Python"];
 	if ( (self = [super init])!=nil )
 	{
-		isCommentsNotEnded = NO;
-        isStringNotEnded = NO;
-        
-        NSString* keywords = KEYWORD_PYTHON;
-        keywordsArray = [keywords componentsSeparatedByString:@" "];      
-        preprocessorArray = [NSArray arrayWithObjects: PREPROCESSOR];
 	}
 	return self;
 }

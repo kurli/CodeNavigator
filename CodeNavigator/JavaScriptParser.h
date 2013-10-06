@@ -1,5 +1,5 @@
 //
-//  PythonParser.h
+//  CSharpParser.h
 //  CodeNavigator
 //
 //  Created by Guozhen Li on 3/23/12.
@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PythonDefinition.h"
 #import "CodeParser.h"
+#import "JavaScriptDefinition.h"
+#import "Parser.h"
 
-@interface PythonParser : CodeParser
+@interface JavaScriptParser : CodeParser
 {
 }
 

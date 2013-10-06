@@ -10,41 +10,11 @@
 
 @implementation DelphiParser
 
-+(NSString*) getExtentionsStr
-{
-    return @"delphi pascal pas";
-}
-
-+(NSString*) getSingleLineCommentsStr
-{
-    return COMMENTS_SINGLE;
-}
-
-+(NSString*) getMultiLineCommentsStartStr
-{
-    return COMMENTS_MULTI;
-}
-
-+(NSString*) getMultiLineCommentsEndStr
-{
-    return COMMENTS_MULTI_END;
-}
-
-+(NSString*) getKeywordsStr
-{
-    return KEYWORD_DELPHI;
-}
-
 -(id) init
 {
+    [self setParserConfigName:@"Delphi"];
 	if ( (self = [super init])!=nil )
 	{
-		isCommentsNotEnded = NO;
-        isStringNotEnded = NO;
-        
-        NSString* keywords = KEYWORD_DELPHI;
-        keywordsArray = [keywords componentsSeparatedByString:@" "];      
-        preprocessorArray = [NSArray arrayWithObjects: PREPROCESSOR];
 	}
 	return self;
 }

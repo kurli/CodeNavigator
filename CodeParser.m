@@ -1,8 +1,30 @@
 #import "CodeParser.h"
 #import "HTMLConst.h"
 #import "cscope.h"
+#import "SBJson.h"
+#import "Parser.h"
 
 @implementation CodeParser
+
+@synthesize parserConfig;
+@synthesize parserConfigName;
+
+-(id) init
+{
+	if ( (self = [super init])!=nil )
+    {
+        NSDictionary* _parserConfig = [self getParserByName:parserConfigName];
+        [self setParserConfig:_parserConfig];
+        
+        isCommentsNotEnded = NO;
+        isStringNotEnded = NO;
+        
+        NSString* keywords = [self getKeywordsStr];
+        keywordsArray = [keywords componentsSeparatedByString:@" "];
+        preprocessorArray = [NSArray arrayWithObjects: PREPROCESSOR];
+    }
+    return self;
+}
 
 -(void) setFile:(NSString*)name andProjectBase:(NSString *)base
 {
@@ -50,6 +72,12 @@
     htmlContent = [[NSMutableString alloc] init];
     projectBase = base;
     maxLineCount = MAX_CHAR_IN_LINE;
+}
+
+- (void)dealloc
+{
+    [self setParserConfig:nil];
+    [self setParserConfigName:nil];
 }
 
 -(void) setContent:(NSString *)content andProjectBase:(NSString *)base
@@ -508,6 +536,50 @@
 }
 
 // ---------------- Common Components  END ------------------- 
+
+// ----------------- Parser Config ---------------------------
+-(NSString*) getExtentionsStr {
+   return [parserConfig objectForKey:EXTENTION];
+}
+
+-(NSString*) getSingleLineCommentsStr{
+    return [parserConfig objectForKey:SINGLE_LINE_COMMENTS];
+}
+
+-(NSString*) getMultiLineCommentsStartStr{
+    return [parserConfig objectForKey:MULTI_LINE_COMMENTS_START];
+}
+
+-(NSString*) getMultiLineCommentsEndStr{
+    return [parserConfig objectForKey:MULTI_LINE_COMMENTS_END];
+}
+
+-(NSString*) getKeywordsStr{
+    return [parserConfig objectForKey:KEYWORDS];
+}
+
+-(NSString*) getParserName {
+    return parserConfigName;
+}
+
+-(NSDictionary*) getParserByName:(NSString *)name
+{
+    NSString* buildInParserPath = [NSHomeDirectory() stringByAppendingString:BUILDIN_PARSER_PATH];
+    buildInParserPath = [buildInParserPath stringByAppendingPathComponent:name];
+    buildInParserPath = [buildInParserPath stringByAppendingPathExtension:@"json"];
+    BOOL exist = [[NSFileManager defaultManager] fileExistsAtPath:buildInParserPath];
+    if (exist == NO) {
+        return nil;
+    }
+    NSString* str = [NSString stringWithContentsOfFile:buildInParserPath encoding:NSUTF8StringEncoding error:nil];
+    if ([str length] == 0) {
+        return nil;
+    }
+    SBJsonParser* parser = [[SBJsonParser alloc] init];
+    NSDictionary* dictionary = [parser objectWithString:str];
+    return dictionary;
+}
+// ----------------- Parser Config END -----------------------
 
 
 

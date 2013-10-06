@@ -6,32 +6,37 @@
 #import "CSharpParser.h"
 #import "DelphiParser.h"
 #import "PythonParser.h"
-#import "RubbyParser.h"
+#import "RubyParser.h"
 #import "BashParser.h"
 #import "ManuallyParser.h"
 #import "HtmlParser.h"
+#import "JavaParser.h"
+#import "JavaScriptParser.h"
+#import "PHPParser.h"
 
-#define PARSER_PATH @"/Documents/.settings/ManuallyParser"
+#define MANUALLY_PARSER_PATH @"/Documents/.settings/ManuallyParser"
 #define EXTENTION @"extention"
 #define SINGLE_LINE_COMMENTS @"single_line_comments"
 #define MULTI_LINE_COMMENTS_START @"multi_line_comments_start"
 #define MULTI_LINE_COMMENTS_END @"multi_line_comments_end"
 #define KEYWORDS @"keywords"
 
+#define PREDEF_PARSER @"C/C++", @"Objective-C", @"C#", @"Java", @"Delphi", @"Javascript", @"Pythone", @"Ruby", @"Bash", @"PHP"
+
 typedef enum _ParserType
 {
 	CPLUSPLUS = 0,
-    IMAGE,
     OBJECTIVE_C,
     CSHARP,
     JAVA,
     DELPHI,
     JAVASCRIPT,
-    PYTHONE,
+    PYTHON,
     RUBY,
     BASH,
-    HTML,
     PHP,
+    HTML,
+    IMAGE,
     UNKNOWN
 } ParserType;
 
@@ -57,12 +62,14 @@ typedef enum _ParserType
 
 -(void) checkParseType: (NSString*) file;
 
++(ParserType) getBuildInParserTypeByfilePath:(NSString*)filePath;
+
 #pragma mark manually parser support
 +(BOOL)saveManuallyParser:(NSString*)name andExtention:(NSString*)extention andSingleLine:(NSString*)singleLine andMultiLineS:(NSString*)multilineS andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords;
 
 +(NSArray*) getManuallyParserNames;
 
-+(NSDictionary*) getParserByName:(NSString*)name;
++(NSDictionary*) getManuallyParserByName:(NSString*)name;
 
 + (int)checkManuallyParserIndex:(NSString*)extention;
 @end

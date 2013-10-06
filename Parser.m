@@ -32,17 +32,14 @@
     else if (CSHARP == type)
     {
         parser = [[CSharpParser alloc] init];
-        [(CSharpParser*)parser setType:CSHARP];
     }
     else if (JAVA == type)
     {
-        parser = [[CSharpParser alloc] init];
-        [(CSharpParser*)parser setType:JAVA];
+        parser = [[JavaParser alloc] init];
     }
     else if (PHP == type)
     {
-        parser = [[CSharpParser alloc] init];
-        [(CSharpParser*)parser setType:PHP];
+        parser = [[PHPParser alloc] init];
     }
     else if (DELPHI == type)
     {
@@ -50,16 +47,15 @@
     }
     else if (JAVASCRIPT == type)
     {
-        parser = [[CSharpParser alloc] init];
-        [(CSharpParser*)parser setType:JAVASCRIPT];
+        parser = [[JavaScriptParser alloc] init];
     }
-    else if (PYTHONE == type)
+    else if (PYTHON == type)
     {
         parser = [[PythonParser alloc] init];
     }
     else if (RUBY == type)
     {
-        parser = [[RubbyParser alloc] init];
+        parser = [[RubyParser alloc] init];
     }
     else if (BASH == type)
     {
@@ -80,7 +76,7 @@
     NSArray* manuallyParserArray = [Parser getManuallyParserNames];
     for (int i=0; i<[manuallyParserArray count]; i++) {
         NSString* name = [manuallyParserArray objectAtIndex:i];
-        NSDictionary* dictionary = [Parser getParserByName:name];
+        NSDictionary* dictionary = [Parser getManuallyParserByName:name];
         NSString* extentioin = [dictionary objectForKey:EXTENTION];
         NSArray* array = [extentioin componentsSeparatedByString:@" "];
         for (int j=0; j<[array count]; j++) {
@@ -93,145 +89,131 @@
     return -1;
 }
 
--(void) checkParseType:(NSString *)file
++(ParserType) getBuildInParserTypeByfilePath:(NSString*)filePath
 {
-    NSString *extension = [file pathExtension];
+    NSString *extension = [filePath pathExtension];
     extension = [extension lowercaseString];
-
-    if ([[[file lastPathComponent] lowercaseString] compare:@"makefile"] == NSOrderedSame) {
-        [self setParserType:BASH];
-        return;
+    
+    // For makefile specific case
+    if ([[[filePath lastPathComponent] lowercaseString] compare:@"makefile"] == NSOrderedSame) {
+        return BASH;
     }
     
     //Check manually parser type first
-    int manuType = [Parser checkManuallyParserIndex:extension];
-    if (manuType != -1) {
-        ManuallyParser* mParser = [[ManuallyParser alloc] init];
-        NSArray* manuallyParserArray = [Parser getManuallyParserNames];
-        NSString* name = [manuallyParserArray objectAtIndex:manuType];
-        NSDictionary* dictionary = [Parser getParserByName:name];
-        [mParser setName:name];
-        [mParser setExtentions:[dictionary objectForKey:EXTENTION]];
-        [mParser setSingleLineComments:[dictionary objectForKey:SINGLE_LINE_COMMENTS]];
-        [mParser setMultilineCommentsS:[dictionary objectForKey:MULTI_LINE_COMMENTS_START]];
-        [mParser setMultilineCommentsE:[dictionary objectForKey:MULTI_LINE_COMMENTS_END]];
-        [mParser setKeywords:[dictionary objectForKey:KEYWORDS]];
-        parser = mParser;
-        return;
-    }
-    
     if ([extension isEqualToString:@"c"])
     {
-        [self setParserType:CPLUSPLUS];
-        return;
+        return CPLUSPLUS;
     }
     else if ([extension isEqualToString:@"cc"])
     {
-        [self setParserType:CPLUSPLUS];
-        return;
+        return CPLUSPLUS;
     }
     else if ([extension isEqualToString:@"h"])
     {
         NSError *error;
-        NSString* path = [file stringByDeletingLastPathComponent];
+        NSString* path = [filePath stringByDeletingLastPathComponent];
         NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:&error];
         for (int i =0; i<[contents count]; i++) {
             NSString* tmp = [contents objectAtIndex:i];
             NSString *ext = [tmp pathExtension];
             if ([ext compare:@"m"] == NSOrderedSame)
             {
-                [self setParserType:OBJECTIVE_C];
-                return;
+                return OBJECTIVE_C;
             }
             if ([ext compare:@"c"] == NSOrderedSame ||
                 [ext compare:@"cpp"] == NSOrderedSame)
             {
-                [self setParserType:CPLUSPLUS];
-                return;
+                return CPLUSPLUS;
             }
         }
-        [self setParserType:CPLUSPLUS];
-        return;
+        return CPLUSPLUS;
     }
     else if ([extension isEqualToString:@"cpp"])
     {
-        [self setParserType:CPLUSPLUS];
-        return;
+        return CPLUSPLUS;
     }
     else if ([extension isEqualToString:@"m"])
     {
-        [self setParserType:OBJECTIVE_C];
-        return;
+        return OBJECTIVE_C;
     }
     else if ([extension isEqualToString:@"cs"])
     {
-        [self setParserType:CSHARP];
-        return;
+        return CSHARP;
     }
     else if ([extension isEqualToString:@"java"])
     {
-        [self setParserType:JAVA];
-        return;
+        return JAVA;
     }
     else if ([extension isEqualToString:@"delphi"])
     {
-        [self setParserType:DELPHI];
-        return;
+        return DELPHI;
     }
     else if ([extension isEqualToString:@"pascal"])
     {
-        [self setParserType:DELPHI];
-        return;
+        return DELPHI;
     }
     else if ([extension isEqualToString:@"pas"])
     {
-        [self setParserType:DELPHI];
-        return;
+        return DELPHI;
     }
     else if ([extension isEqualToString:@"mm"])
     {
-        [self setParserType:CPLUSPLUS];
-        return;
+        return CPLUSPLUS;
     }
     else if ([extension isEqualToString:@"hpp"])
     {
-        [self setParserType:CPLUSPLUS];
-        return;
+        return CPLUSPLUS;
     }
     else if ([extension isEqualToString:@"js"] || [extension isEqualToString:@"jscript"] || [extension isEqualToString:@"javascript"])
     {
-        [self setParserType:JAVASCRIPT];
-        return;
+        return JAVASCRIPT;
     }
     else if ([extension isEqualToString:@"py"] || [extension isEqualToString:@"python"])
     {
-        [self setParserType:PYTHONE];
-        return;
+        return PYTHON;
     }
     else if ([extension isEqualToString:@"rails"] || [extension isEqualToString:@"ror"] || [extension isEqualToString:@"ruby"] || [extension isEqualToString:@"rb"])
     {
-        [self setParserType:RUBY];
-        return;
+        return RUBY;
     }
     else if ([extension isEqualToString:@"sh"] || [extension isEqualToString:@"shell"] || [extension isEqualToString:@"bash"])
     {
-        [self setParserType:BASH];
-        return;
+        return BASH;
     }
     else if ([extension isEqualToString:@"html"] || [extension isEqualToString:@"htm"] ||
              [extension isEqualToString:@"xml"])
     {
-        [self setParserType:HTML];
-        return;
+        return HTML;
     }
     else if ([extension isEqualToString:@"php"])
     {
-        [self setParserType:PHP];
-        return;
+        return PHP;
     }
-    // s xml sql vb
-    else
-    {
+    return UNKNOWN;
+}
+
+-(void) checkParseType:(NSString *)file
+{
+    ParserType type = [Parser getBuildInParserTypeByfilePath:file];
+    
+    if (type != UNKNOWN)
+        [self setParserType:type];
+    else {
+        int manuType = [Parser checkManuallyParserIndex:[file pathExtension]];
+        if (manuType != -1) {
+            ManuallyParser* mParser = [[ManuallyParser alloc] init];
+            NSArray* manuallyParserArray = [Parser getManuallyParserNames];
+            NSString* name = [manuallyParserArray objectAtIndex:manuType];
+            NSDictionary* dictionary = [Parser getManuallyParserByName:name];
+            [mParser setName:name];
+            [mParser setExtentions:[dictionary objectForKey:EXTENTION]];
+            [mParser setSingleLineComments:[dictionary objectForKey:SINGLE_LINE_COMMENTS]];
+            [mParser setMultilineCommentsS:[dictionary objectForKey:MULTI_LINE_COMMENTS_START]];
+            [mParser setMultilineCommentsE:[dictionary objectForKey:MULTI_LINE_COMMENTS_END]];
+            [mParser setKeywords:[dictionary objectForKey:KEYWORDS]];
+            parser = mParser;
+            return;
+        }
         [self setParserType:UNKNOWN];
     }
 }
@@ -265,7 +247,7 @@
 
 +(BOOL) saveManuallyParser:(NSString *)name andExtention:(NSString *)extention andSingleLine:(NSString *)singleLine andMultiLineS:(NSString *)multilineS andMultLineE:(NSString *)multilineE andKeywords:(NSString *)keywords
 {
-    NSString* manuallyParserPath = [NSHomeDirectory() stringByAppendingFormat:PARSER_PATH];
+    NSString* manuallyParserPath = [NSHomeDirectory() stringByAppendingFormat:MANUALLY_PARSER_PATH];
     BOOL isDirectory;
     BOOL exist = [[NSFileManager defaultManager] fileExistsAtPath:manuallyParserPath isDirectory:&isDirectory];
     if (exist == NO) {
@@ -307,7 +289,7 @@
 
 +(NSArray*) getManuallyParserNames
 {
-    NSString* manuallyParserPath = [NSHomeDirectory() stringByAppendingFormat:PARSER_PATH];
+    NSString* manuallyParserPath = [NSHomeDirectory() stringByAppendingFormat:MANUALLY_PARSER_PATH];
     NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:manuallyParserPath error:nil];
     NSMutableArray* array = [[NSMutableArray alloc] init];
     for (int i=0; i<[contents count]; i++) {
@@ -319,9 +301,9 @@
     return array;
 }
 
-+(NSDictionary*) getParserByName:(NSString *)name
++(NSDictionary*) getManuallyParserByName:(NSString *)name
 {
-    NSString* manuallyParserPath = [NSHomeDirectory() stringByAppendingFormat:PARSER_PATH];
+    NSString* manuallyParserPath = [NSHomeDirectory() stringByAppendingFormat:MANUALLY_PARSER_PATH];
     manuallyParserPath = [manuallyParserPath stringByAppendingPathComponent:name];
     manuallyParserPath = [manuallyParserPath stringByAppendingPathExtension:@"json"];
     BOOL exist = [[NSFileManager defaultManager] fileExistsAtPath:manuallyParserPath];

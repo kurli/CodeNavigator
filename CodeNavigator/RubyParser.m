@@ -1,25 +1,20 @@
-#import "CPlusPlusParser.h"
+//
+//  RubbyParser.m
+//  CodeNavigator
+//
+//  Created by Guozhen Li on 3/24/12.
+//  Copyright (c) 2012 Siemens Corporate Research. All rights reserved.
+//
 
-@implementation CPlusPlusParser
+#import "RubyParser.h"
+
+@implementation RubyParser
 
 -(id) init
 {
-    [self setParserConfigName:@"CPlusPlus"];
+    [self setParserConfigName:@"Ruby"];
 	if ( (self = [super init])!=nil )
 	{
-        //****
-//        keywords = @"and or xor __FILE__ exception __LINE__ array as break case class const continue declare default die do echo else elseif empty enddeclare endfor endforeach endif endswitch	endwhile eval exit extends for foreach function global if include include_once isset list new print require require_once return static switch unset use var while __FUNCTION__ __CLASS__ __METHOD__ final php_user_filter interface implements extends public private protected abstract clone try catch throw cfunction this __CLASS__ __DIR__ __FILE__ __FUNCTION__ __LINE__ __METHOD__ __NAMESPACE__ __TRAIT__";
-//        keywordsArray = [keywords componentsSeparatedByString:@" "];
-//        keywordsArray = [keywordsArray sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-//            NSComparisonResult result = [a compare:b];
-//            return result;
-//                         }];
-//        NSMutableString* str = [[NSMutableString alloc] init];
-//        for (int i=0; i<[keywordsArray count]; i++) {
-//            [str appendFormat:@"%@ ",[keywordsArray objectAtIndex:i]];
-//        }
-//        NSLog(str);
-        //****
 	}
 	return self;
 }
@@ -32,7 +27,7 @@
     if ( isStringNotEnded == YES )
 		return NO;
 	if ( YES == isCommentsNotEnded )
-    {		
+    {
 		// comments not ended we nned to find "*/"
 		// In this case we assume that we have met /* before
 		NSRange commentEndRange = [needParseLine rangeOfString: COMMENTS_MULTI_END];
@@ -46,7 +41,6 @@
 			isCommentsNotEnded = NO;
 			NSRange range = {0, commentEndRange.location + commentEndRange.length};
 			[needParseLine deleteCharactersInRange: range];
-            
             [self bracesEnded:currentParseLine andToken:COMMENTS_MULTI];
 			return YES;
 		}
@@ -67,7 +61,8 @@
 		NSRange commentSingleRange = [needParseLine rangeOfString: COMMENTS_SINGLE];
 		NSRange commentMultiStartRange = [needParseLine rangeOfString: COMMENTS_MULTI];
 		NSRange commentEndRange = [needParseLine rangeOfString: COMMENTS_MULTI_END];
-		if ( commentSingleRange.location == 0 )
+        NSRange commentSingleRangeNot = [needParseLine rangeOfString: @"#{"];
+		if ( commentSingleRange.location == 0 && commentSingleRangeNot.location != 0)
         {
 			// it's comment line
 			[self commentStart];
@@ -100,7 +95,6 @@
 				NSRange range = {0, commentEndRange.location + commentEndRange.length};
 				[needParseLine deleteCharactersInRange: range];
                 [self bracesEnded:currentParseLine andToken:COMMENTS_MULTI];
-
 				return YES;
             }
         }
@@ -121,7 +115,7 @@
 	[self addEnd];
 	NSRange range = {0, headerKeyword.location + headerKeyword.length};
 	[needParseLine deleteCharactersInRange: range];
-
+    
 	unichar charTemp;
 	while( [needParseLine length] > 0 )
     {
@@ -414,15 +408,6 @@
 		word = [needParseLine substringToIndex: 1];
 		[self addString: word addEnter:NO];
 		[needParseLine deleteCharactersInRange: NSMakeRange(0, 1)];
-        
-        //fold support
-        if ([word compare:BRACE_START] == NSOrderedSame) {
-            [self bracesStarted:lineNumber andToken:BRACE_START];
-        }
-        else if ([word compare:BRACE_END] == NSOrderedSame)
-        {
-            [self bracesEnded:lineNumber andToken:BRACE_START];
-        }
 		return YES;
     }
 	

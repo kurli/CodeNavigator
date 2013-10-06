@@ -11,67 +11,13 @@
 
 @implementation CSharpParser
 
-+(NSString*) getExtentionsStr:(int)type
+-(id) init
 {
-    if (type == CSHARP)
-        return @"cs";
-    else if (type == JAVA)
-        return @"java";
-    else if (type == JAVASCRIPT)
-        return @"js";
-    return @"";
-}
-
-+(NSString*) getSingleLineCommentsStr
-{
-    return COMMENTS_SINGLE;
-}
-
-+(NSString*) getMultiLineCommentsStartStr
-{
-    return COMMENTS_MULTI;
-}
-
-+(NSString*) getMultiLineCommentsEndStr
-{
-    return COMMENTS_MULTI_END;
-}
-
-+(NSString*) getKeywordsStr:(int)type
-{
-    if (type == CSHARP)
-        return KEYWORD_CSHARP;
-    else if (type == JAVA)
-        return KEYWORD_JAVA;
-    else if (type == JAVASCRIPT)
-        return KEYWORD_JAVASCRIPT;
-    return @"";
-}
-
--(id) initWithType:(ParserType)type
-{
+    [self setParserConfigName:@"CSharp"];
 	if ( (self = [super init])!=nil )
 	{
-		isCommentsNotEnded = NO;
-        isStringNotEnded = NO;
 	}
 	return self;
-}
-
--(void) setType:(int)type
-{
-    NSString* keywords;
-    if (type == CSHARP)
-        keywords = KEYWORD_CSHARP;
-    else if (type == JAVA)
-        keywords = KEYWORD_JAVA;
-    else if (type == JAVASCRIPT)
-        keywords = KEYWORD_JAVASCRIPT;
-    else if (type == PHP)
-        keywords = KEYWORD_PHP;
-
-    keywordsArray = [keywords componentsSeparatedByString:@" "];      
-    preprocessorArray = [NSArray arrayWithObjects: PREPROCESSOR];
 }
 
 // return YES, if we need to restart parse

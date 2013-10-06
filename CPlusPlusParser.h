@@ -20,14 +20,4 @@
 
 -(BOOL) checkIsNameValidChar: (unichar) character;
 
-+(NSString*) getExtentionsStr;
-
-+(NSString*) getSingleLineCommentsStr;
-
-+(NSString*) getMultiLineCommentsStartStr;
-
-+(NSString*) getMultiLineCommentsEndStr;
-
-+(NSString*) getKeywordsStr;
-
 @end

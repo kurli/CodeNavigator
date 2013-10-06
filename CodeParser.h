@@ -2,6 +2,7 @@
 
 #define MAX_CHAR_IN_LINE 80
 #define BREAK_STR @"lgz_BR_lgz"
+#define BUILDIN_PARSER_PATH @"/Documents/.settings/BuildInParser"
 
 @interface CodeParser : NSObject
 {
@@ -24,6 +25,10 @@
     
     int maxLineCount;
 }
+
+@property (nonatomic, strong) NSDictionary* parserConfig;
+
+@property (nonatomic, strong) NSString* parserConfigName;
 
 -(void) setFile:(NSString*) name andProjectBase:(NSString*) base;
 
@@ -98,12 +103,28 @@
 
 -(void) numberStart;
 
-// ---------------- HTML Components End ------------------- 
+// ---------------- HTML Components End ----------------------
 
-// ---------------- Common Components ------------------- 
+// ---------------- Common Components ------------------------
 
 -(int) getNextSpaceIndex:(NSMutableString*) content;
 
-// ---------------- Common Components  END ------------------- 
+// ---------------- Common Components  END -------------------
+
+// ----------------- Parser Config ---------------------------
+//-(NSDictionary*) getParserByName:(NSString *)name;
+
+-(NSString*) getExtentionsStr;
+
+-(NSString*) getSingleLineCommentsStr;
+
+-(NSString*) getMultiLineCommentsStartStr;
+
+-(NSString*) getMultiLineCommentsEndStr;
+
+-(NSString*) getKeywordsStr;
+
+-(NSString*) getParserName;
+// ----------------- Parser Config END -----------------------
 
 @end

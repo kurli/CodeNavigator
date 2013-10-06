@@ -11,27 +11,27 @@
 
 @implementation HtmlParser
 
-+(NSString*) getExtentionsStr
+-(NSString*) getExtentionsStr
 {
     return @"html htm";
 }
 
-+(NSString*) getSingleLineCommentsStr
+-(NSString*) getSingleLineCommentsStr
 {
     return @"NONE";
 }
 
-+(NSString*) getMultiLineCommentsStartStr
+-(NSString*) getMultiLineCommentsStartStr
 {
     return COMMENTS_MULTI;
 }
 
-+(NSString*) getMultiLineCommentsEndStr
+-(NSString*) getMultiLineCommentsEndStr
 {
     return COMMENTS_MULTI_END;
 }
 
-+(NSString*) getKeywordsStr
+-(NSString*) getKeywordsStr
 {
     return @"";
 }
@@ -456,6 +456,11 @@
 	range.length = index+1;
 	[needParseLine deleteCharactersInRange: range];
 	return YES;
+}
+
+-(BOOL) checkOthers: (int)lineNumber
+{
+    return YES;
 }
 
 @end

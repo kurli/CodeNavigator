@@ -1,25 +1,21 @@
-#import "CPlusPlusParser.h"
+//
+//  CSharpParser.m
+//  CodeNavigator
+//
+//  Created by Guozhen Li on 3/23/12.
+//  Copyright (c) 2012 Siemens Corporate Research. All rights reserved.
+//
 
-@implementation CPlusPlusParser
+#import "PHPParser.h"
+#import "PHPDefinition.h"
+
+@implementation PHPParser
 
 -(id) init
 {
-    [self setParserConfigName:@"CPlusPlus"];
+    [self setParserConfigName:@"PHP"];
 	if ( (self = [super init])!=nil )
 	{
-        //****
-//        keywords = @"and or xor __FILE__ exception __LINE__ array as break case class const continue declare default die do echo else elseif empty enddeclare endfor endforeach endif endswitch	endwhile eval exit extends for foreach function global if include include_once isset list new print require require_once return static switch unset use var while __FUNCTION__ __CLASS__ __METHOD__ final php_user_filter interface implements extends public private protected abstract clone try catch throw cfunction this __CLASS__ __DIR__ __FILE__ __FUNCTION__ __LINE__ __METHOD__ __NAMESPACE__ __TRAIT__";
-//        keywordsArray = [keywords componentsSeparatedByString:@" "];
-//        keywordsArray = [keywordsArray sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-//            NSComparisonResult result = [a compare:b];
-//            return result;
-//                         }];
-//        NSMutableString* str = [[NSMutableString alloc] init];
-//        for (int i=0; i<[keywordsArray count]; i++) {
-//            [str appendFormat:@"%@ ",[keywordsArray objectAtIndex:i]];
-//        }
-//        NSLog(str);
-        //****
 	}
 	return self;
 }
@@ -46,7 +42,6 @@
 			isCommentsNotEnded = NO;
 			NSRange range = {0, commentEndRange.location + commentEndRange.length};
 			[needParseLine deleteCharactersInRange: range];
-            
             [self bracesEnded:currentParseLine andToken:COMMENTS_MULTI];
 			return YES;
 		}
@@ -100,7 +95,6 @@
 				NSRange range = {0, commentEndRange.location + commentEndRange.length};
 				[needParseLine deleteCharactersInRange: range];
                 [self bracesEnded:currentParseLine andToken:COMMENTS_MULTI];
-
 				return YES;
             }
         }
@@ -121,7 +115,7 @@
 	[self addEnd];
 	NSRange range = {0, headerKeyword.location + headerKeyword.length};
 	[needParseLine deleteCharactersInRange: range];
-
+    
 	unichar charTemp;
 	while( [needParseLine length] > 0 )
     {
@@ -243,6 +237,13 @@
     [self addString: content addEnter:NO];
     [self addEnd];
     [needParseLine deleteCharactersInRange: NSMakeRange(0, [content length])];
+    if ([content compare:@"#region"] == NSOrderedSame) {
+        [self bracesStarted:currentParseLine andToken:@"#region"];
+    }
+    else if ([content compare:@"#endregion"] == NSOrderedSame)
+    {
+        [self bracesEnded:currentParseLine andToken:@"#region"];
+    }
     return YES;
 }
 

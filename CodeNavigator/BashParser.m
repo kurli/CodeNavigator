@@ -10,40 +10,11 @@
 
 @implementation BashParser
 
-+(NSString*) getExtentionsStr
-{
-    return @"sh shell bash";
-}
-
-+(NSString*) getSingleLineCommentsStr
-{
-    return COMMENTS_SINGLE;
-}
-
-+(NSString*) getMultiLineCommentsStartStr
-{
-    return @"";
-}
-
-+(NSString*) getMultiLineCommentsEndStr
-{
-    return @"";
-}
-
-+(NSString*) getKeywordsStr
-{
-    return KEYWORD_COMMANDS;
-}
-
 -(id) init
 {
+    [self setParserConfigName:@"Bash"];
 	if ( (self = [super init])!=nil )
 	{
-		isCommentsNotEnded = NO;
-        isStringNotEnded = NO;
-        
-        NSString* keywords = KEYWORD_BASH;
-        keywordsArray = [keywords componentsSeparatedByString:@" "];
         NSString* commands = KEYWORD_COMMANDS;
         commandsArray = [commands componentsSeparatedByString:@" "];
 	}
