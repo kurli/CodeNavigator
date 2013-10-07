@@ -539,7 +539,7 @@
 
 // ----------------- Parser Config ---------------------------
 -(NSString*) getExtentionsStr {
-   return [parserConfig objectForKey:EXTENTION];
+   return [parserConfig objectForKey:EXTENSION];
 }
 
 -(NSString*) getSingleLineCommentsStr{

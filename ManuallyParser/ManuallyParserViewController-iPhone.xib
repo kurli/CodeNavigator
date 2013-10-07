@@ -469,14 +469,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">extentionsField</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="873132322"/>
-					</object>
-					<int key="connectionID">28</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">nameField</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="829108761"/>
@@ -538,6 +530,14 @@
 						<reference key="destination" ref="712469972"/>
 					</object>
 					<int key="connectionID">38</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">extensionsField</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="873132322"/>
+					</object>
+					<int key="connectionID">42</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -765,7 +765,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">41</int>
+			<int key="maxID">42</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -777,6 +777,7 @@
 						<string key="copyButtonClicked:">id</string>
 						<string key="deleteButtonClicked:">id</string>
 						<string key="doneButtonClicked:">id</string>
+						<string key="editButtonClicked:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="cancelButtonClicked:">
@@ -795,11 +796,16 @@
 							<string key="name">doneButtonClicked:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="editButtonClicked:">
+							<string key="name">editButtonClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="buttonCopy">UIButton</string>
 						<string key="deleteButton">UIButton</string>
-						<string key="extentionsField">UITextField</string>
+						<string key="editButton">UIButton</string>
+						<string key="extensionsField">UITextField</string>
 						<string key="keyworldField">UITextView</string>
 						<string key="multiLineCommentsEndField">UITextField</string>
 						<string key="multiLineCommentsStartField">UITextField</string>
@@ -817,8 +823,12 @@
 							<string key="name">deleteButton</string>
 							<string key="candidateClassName">UIButton</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="extentionsField">
-							<string key="name">extentionsField</string>
+						<object class="IBToOneOutletInfo" key="editButton">
+							<string key="name">editButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="extensionsField">
+							<string key="name">extensionsField</string>
 							<string key="candidateClassName">UITextField</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="keyworldField">

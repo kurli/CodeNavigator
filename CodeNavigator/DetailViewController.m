@@ -502,8 +502,8 @@
         return;
     }
     
-    NSString* extention = [url pathExtension];
-    if (extention != nil && [extention compare:DISPLAY_FILE_EXTENTION] == NSOrderedSame)
+    NSString* extension = [url pathExtension];
+    if (extension != nil && [extension compare:DISPLAY_FILE_EXTENTION] == NSOrderedSame)
     {
         NSString* content = [NSString stringWithContentsOfFile:url encoding:encoding error:&error];
         [self displayHTMLString:content andBaseURL:nil];
@@ -719,9 +719,9 @@
         currentDisplayFile = [self.downHistoryController getUrlFromHistoryFormat:path];
     }
     currentDisplayFile = [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
-    NSString* extention = [currentDisplayFile pathExtension];
+    NSString* extension = [currentDisplayFile pathExtension];
     NSString* commentFile = [currentDisplayFile stringByDeletingPathExtension];
-    commentFile = [commentFile stringByAppendingFormat:@"_%@", extention];
+    commentFile = [commentFile stringByAppendingFormat:@"_%@", extension];
     commentFile = [commentFile stringByAppendingPathExtension:@"lgz_comment"];
     
     CommentWrapper* commentWrapper = [[CommentWrapper alloc] init];
@@ -1377,9 +1377,9 @@
         currentDisplayFile = [self.downHistoryController getUrlFromHistoryFormat:path];
     }
     currentDisplayFile = [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
-    NSString* extention = [currentDisplayFile pathExtension];
+    NSString* extension = [currentDisplayFile pathExtension];
     NSString* commentFile = [currentDisplayFile stringByDeletingPathExtension];
-    commentFile = [commentFile stringByAppendingFormat:@"_%@", extention];
+    commentFile = [commentFile stringByAppendingFormat:@"_%@", extension];
     commentFile = [commentFile stringByAppendingPathExtension:@"lgz_comment"];
     
     CommentWrapper* commentWrapper = [[CommentWrapper alloc] init];

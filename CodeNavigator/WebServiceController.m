@@ -265,8 +265,8 @@
     }
     if (index == [components count] -1)
     {
-        NSString* extention = [file pathExtension];
-        if (extention == nil || [extention compare:@"zip"] != NSOrderedSame)
+        NSString* extension = [file pathExtension];
+        if (extension == nil || [extension compare:@"zip"] != NSOrderedSame)
         {
             NSError *error;
             NSString* myProjectPath = [self.uploadToPath stringByAppendingPathComponent:@"MyProject"];
@@ -288,9 +288,9 @@
         }
     }
 
-    //if a project file uploaded (zip extention)
-    NSString* extention = [file pathExtension];
-    if (extention != nil && [extention compare:@"zip"] == NSOrderedSame)
+    //if a project file uploaded (zip extension)
+    NSString* extension = [file pathExtension];
+    if (extension != nil && [extension compare:@"zip"] == NSOrderedSame)
     {
         info = [info stringByAppendingFormat:@"\nFinish upload %@", file];
         dispatch_async(dispatch_get_main_queue(), ^{

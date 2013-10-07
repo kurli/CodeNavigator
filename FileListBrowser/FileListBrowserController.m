@@ -179,36 +179,36 @@
         imageView = (UIImageView*)[cell viewWithTag:101];
         
         NSString* fileName = [self.currentFiles objectAtIndex:indexPath.row-[self.currentDirectories count]];
-        NSString* extention = [fileName pathExtension];
-        extention = [extention lowercaseString];
-        if ([extention compare:@"cc"] == NSOrderedSame) {
+        NSString* extension = [fileName pathExtension];
+        extension = [extension lowercaseString];
+        if ([extension compare:@"cc"] == NSOrderedSame) {
             imageView.image = [UIImage imageNamed:@"ccFile.png"];
         }
-        else if ([extention compare:@"c"] == NSOrderedSame) {
+        else if ([extension compare:@"c"] == NSOrderedSame) {
             imageView.image = [UIImage imageNamed:@"cFile.png"];
         }
-        else if ([extention compare:@"cpp"] == NSOrderedSame) {
+        else if ([extension compare:@"cpp"] == NSOrderedSame) {
             imageView.image = [UIImage imageNamed:@"cppFile.png"];
         }
-        else if ([extention compare:@"cs"] == NSOrderedSame) {
+        else if ([extension compare:@"cs"] == NSOrderedSame) {
             imageView.image = [UIImage imageNamed:@"csFile.png"];
         }
-        else if ([extention compare:@"h"] == NSOrderedSame) {
+        else if ([extension compare:@"h"] == NSOrderedSame) {
             imageView.image = [UIImage imageNamed:@"hFile.png"];
         }
-        else if ([extention compare:@"hpp"] == NSOrderedSame) {
+        else if ([extension compare:@"hpp"] == NSOrderedSame) {
             imageView.image = [UIImage imageNamed:@"hppFile.png"];
         }
-        else if ([extention compare:@"java"] == NSOrderedSame) {
+        else if ([extension compare:@"java"] == NSOrderedSame) {
             imageView.image = [UIImage imageNamed:@"javaFile.png"];
         }
-        else if ([extention compare:@"m"] == NSOrderedSame) {
+        else if ([extension compare:@"m"] == NSOrderedSame) {
             imageView.image = [UIImage imageNamed:@"mFile.png"];
         }
-        else if ([extention compare:@"s"] == NSOrderedSame) {
+        else if ([extension compare:@"s"] == NSOrderedSame) {
             imageView.image = [UIImage imageNamed:@"sFile.png"];
         }
-        else if ([extention compare:@"mm"] == NSOrderedSame) {
+        else if ([extension compare:@"mm"] == NSOrderedSame) {
             imageView.image = [UIImage imageNamed:@"mmFile.png"];
         }
         else {
@@ -381,9 +381,9 @@
             NSString* tagPath = [[Utils getInstance] getTagFileBySourceFile:path];
             [[NSFileManager defaultManager] removeItemAtPath:tagPath error:&error];
             //remove comments file
-            NSString* extention = [path pathExtension];
+            NSString* extension = [path pathExtension];
             NSString* commentFile = [path stringByDeletingPathExtension];
-            commentFile = [commentFile stringByAppendingFormat:@"_%@", extention];
+            commentFile = [commentFile stringByAppendingFormat:@"_%@", extension];
             commentFile = [commentFile stringByAppendingPathExtension:@"lgz_comment"];
             [[NSFileManager defaultManager] removeItemAtPath:commentFile error:&error];
         }

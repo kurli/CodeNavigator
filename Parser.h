@@ -15,10 +15,11 @@
 #import "PHPParser.h"
 
 #define MANUALLY_PARSER_PATH @"/Documents/.settings/ManuallyParser"
-#define EXTENTION @"extention"
+#define EXTENSION @"extension"
 #define SINGLE_LINE_COMMENTS @"single_line_comments"
 #define MULTI_LINE_COMMENTS_START @"multi_line_comments_start"
 #define MULTI_LINE_COMMENTS_END @"multi_line_comments_end"
+#define TYPE @"type"
 #define KEYWORDS @"keywords"
 
 #define PREDEF_PARSER @"C/C++", @"Objective-C", @"C#", @"Java", @"Delphi", @"Javascript", @"Python", @"Ruby", @"Bash", @"PHP"
@@ -34,7 +35,7 @@ typedef enum _ParserType
     PYTHON,
     RUBY,
     BASH,
-    PHP,
+    PHP,//End
     HTML,
     IMAGE,
     UNKNOWN
@@ -65,11 +66,11 @@ typedef enum _ParserType
 +(ParserType) getBuildInParserTypeByfilePath:(NSString*)filePath;
 
 #pragma mark manually parser support
-+(BOOL)saveParser:(NSString*)path andExtention:(NSString*)extention andSingleLine:(NSString*)singleLine andMultiLineS:(NSString*)multilineS andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords;
++(BOOL)saveParser:(NSString*)path andExtention:(NSString*)extension andSingleLine:(NSString*)singleLine andMultiLineS:(NSString*)multilineS andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords andType:(int)type;
 
 +(NSArray*) getManuallyParserNames;
 
 +(NSDictionary*) getManuallyParserByName:(NSString*)name;
 
-+ (int)checkManuallyParserIndex:(NSString*)extention;
++ (int)checkManuallyParserIndex:(NSString*)extension;
 @end

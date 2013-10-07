@@ -66,9 +66,9 @@
     NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:self.currentProjectFolder error:&error];
     for (int i=0; i<[contents count]; i++)
     {
-        NSString* extention = [contents objectAtIndex:i];
-        extention = [extention pathExtension];
-        if ([extention compare:@"lgz_vir_img"] == NSOrderedSame)
+        NSString* extension = [contents objectAtIndex:i];
+        extension = [extension pathExtension];
+        if ([extension compare:@"lgz_vir_img"] == NSOrderedSame)
         {
             NSString *currentPath = [currentProjectFolder stringByAppendingPathComponent:[contents objectAtIndex:i]];
             [self.imagesPathList addObject:currentPath];

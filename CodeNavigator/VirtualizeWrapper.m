@@ -977,18 +977,18 @@
 -(void) drawLine:(CGPoint)start andEnd:(CGPoint)end
 {
     @autoreleasepool {
-    int extention = 30;
+    int extension = 30;
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, BORDER_WIDTH);
     
     if (start.x > end.x)
-        extention = 30+(start.x-end.x)/5;
+        extension = 30+(start.x-end.x)/5;
     
     CGContextSetStrokeColorWithColor(context, [[UIColor colorWithRed:1 green:1 blue:1 alpha:1] CGColor]);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context,start.x,start.y);
-    CGContextAddCurveToPoint(context, start.x, start.y, start.x+extention, start.y, (start.x+end.x)/2, (start.y+end.y)/2);
-    CGContextAddCurveToPoint(context, (start.x+end.x)/2, (start.y+end.y)/2, end.x-extention, end.y, end.x, end.y);
+    CGContextAddCurveToPoint(context, start.x, start.y, start.x+extension, start.y, (start.x+end.x)/2, (start.y+end.y)/2);
+    CGContextAddCurveToPoint(context, (start.x+end.x)/2, (start.y+end.y)/2, end.x-extension, end.y, end.x, end.y);
     CGContextDrawPath(context,kCGPathStroke);
     }
 }

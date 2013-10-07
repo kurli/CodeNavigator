@@ -11,7 +11,7 @@
 @implementation ManuallyParser
 
 @synthesize name;
-@synthesize extentions;
+@synthesize extensions;
 @synthesize singleLineComments;
 @synthesize multilineCommentsS;
 @synthesize multilineCommentsE;

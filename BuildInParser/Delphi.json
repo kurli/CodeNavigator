@@ -1,5 +1,6 @@
 {"keywords":"abs addr and ansichar ansistring array as asm begin boolean byte cardinal case char class comp const constructor currency destructor div do double downto else end except exports extended false file finalization finally for function goto if implementation in inherited initialization int64 integer interface is label library longint longword mod nil not object of on or packed pansichar pansistring pchar pcurrency pdatetime pextended pint64 pointer private procedure program property protected pshortstring pstring public published pvariant pwidechar pwidestring raise real real48 record repeat set shl shortint shortstring shr single smallint string then threadvar to true try type unit until uses val var varirnt while widechar widestring with word write writeln xor",
-"extention":"delphi pascal pas",
+"extension":"delphi pascal pas",
 "multi_line_comments_start":"(*",
 "single_line_comments":"//",
-"multi_line_comments_end":"*)"}
+"multi_line_comments_end":"*)",
+"type":"4"}

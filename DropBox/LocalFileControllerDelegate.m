@@ -163,36 +163,36 @@
     else
     {
         NSString* fileName = [self.currentFiles objectAtIndex:indexPath.row-[self.currentDirectories count]];
-        NSString* extention = [fileName pathExtension];
-        extention = [extention lowercaseString];
-        if ([extention compare:@"cc"] == NSOrderedSame) {
+        NSString* extension = [fileName pathExtension];
+        extension = [extension lowercaseString];
+        if ([extension compare:@"cc"] == NSOrderedSame) {
             cell.imageView.image = [UIImage imageNamed:@"ccFile.png"];
         }
-        else if ([extention compare:@"c"] == NSOrderedSame) {
+        else if ([extension compare:@"c"] == NSOrderedSame) {
             cell.imageView.image = [UIImage imageNamed:@"cFile.png"];
         }
-        else if ([extention compare:@"cpp"] == NSOrderedSame) {
+        else if ([extension compare:@"cpp"] == NSOrderedSame) {
             cell.imageView.image = [UIImage imageNamed:@"cppFile.png"];
         }
-        else if ([extention compare:@"cs"] == NSOrderedSame) {
+        else if ([extension compare:@"cs"] == NSOrderedSame) {
             cell.imageView.image = [UIImage imageNamed:@"csFile.png"];
         }
-        else if ([extention compare:@"h"] == NSOrderedSame) {
+        else if ([extension compare:@"h"] == NSOrderedSame) {
             cell.imageView.image = [UIImage imageNamed:@"hFile.png"];
         }
-        else if ([extention compare:@"hpp"] == NSOrderedSame) {
+        else if ([extension compare:@"hpp"] == NSOrderedSame) {
             cell.imageView.image = [UIImage imageNamed:@"hppFile.png"];
         }
-        else if ([extention compare:@"java"] == NSOrderedSame) {
+        else if ([extension compare:@"java"] == NSOrderedSame) {
             cell.imageView.image = [UIImage imageNamed:@"javaFile.png"];
         }
-        else if ([extention compare:@"m"] == NSOrderedSame) {
+        else if ([extension compare:@"m"] == NSOrderedSame) {
             cell.imageView.image = [UIImage imageNamed:@"mFile.png"];
         }
-        else if ([extention compare:@"s"] == NSOrderedSame) {
+        else if ([extension compare:@"s"] == NSOrderedSame) {
             cell.imageView.image = [UIImage imageNamed:@"sFile.png"];
         }
-        else if ([extention compare:@"mm"] == NSOrderedSame) {
+        else if ([extension compare:@"mm"] == NSOrderedSame) {
             cell.imageView.image = [UIImage imageNamed:@"mmFile.png"];
         }
         else {

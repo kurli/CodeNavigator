@@ -403,9 +403,9 @@ padding-right: 20px;\
     
     //Comment wrapper
     self.commentWrapper = [[CommentWrapper alloc] init];
-    NSString* extention = [fileName pathExtension];
+    NSString* extension = [fileName pathExtension];
     NSString* commentFile = [fileName stringByDeletingPathExtension];
-    commentFile = [commentFile stringByAppendingFormat:@"_%@", extention];
+    commentFile = [commentFile stringByAppendingFormat:@"_%@", extension];
     commentFile = [commentFile stringByAppendingPathExtension:@"lgz_comment"];
     [commentWrapper readFromFile:commentFile];
 }

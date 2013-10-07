@@ -137,13 +137,13 @@
         fileName = [fileName stringByDeletingPathExtension];
         NSRange locationRange = [fileName rangeOfString:@"_" options:NSBackwardsSearch];
         NSString* sourceName = [fileName substringToIndex:locationRange.location];
-        NSString* extention = nil;
+        NSString* extension = nil;
         if (locationRange.location + locationRange.length < [fileName length]) {
-            extention =  [fileName substringFromIndex:locationRange.location+1];
+            extension =  [fileName substringFromIndex:locationRange.location+1];
         }
         NSString* sourceFullName;
-        if (extention != nil)
-            sourceFullName = [sourceName stringByAppendingPathExtension:extention];
+        if (extension != nil)
+            sourceFullName = [sourceName stringByAppendingPathExtension:extension];
         else
             sourceFullName = sourceName;
         [((UILabel *)[cell viewWithTag:101]) setTextColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
@@ -185,13 +185,13 @@
         fileName = [fileName stringByDeletingPathExtension];
         NSRange locationRange = [fileName rangeOfString:@"_" options:NSBackwardsSearch];
         NSString* sourceName = [fileName substringToIndex:locationRange.location];
-        NSString* extention = nil;
+        NSString* extension = nil;
         if (locationRange.location + locationRange.length < [fileName length]) {
-            extention =  [fileName substringFromIndex:locationRange.location+1];
+            extension =  [fileName substringFromIndex:locationRange.location+1];
         }
         NSString* sourceFullPath;
-        if (extention != NULL)
-            sourceFullPath= [sourceName stringByAppendingPathExtension:extention];
+        if (extension != NULL)
+            sourceFullPath= [sourceName stringByAppendingPathExtension:extension];
         else
             sourceFullPath = sourceName;
         CommentItem* item= (CommentItem*)([self.commentWrapper.commentArray objectAtIndex:indexPath.row]);

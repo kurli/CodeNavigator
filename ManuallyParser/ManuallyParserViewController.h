@@ -22,7 +22,7 @@ typedef enum _EditType
 @property (nonatomic, strong) NSArray* manuallyParserArray;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (unsafe_unretained, nonatomic) IBOutlet UITextField *extentionsField;
+@property (unsafe_unretained, nonatomic) IBOutlet UITextField *extensionsField;
 @property (unsafe_unretained, nonatomic) IBOutlet UITextField *singleLineCommentsField;
 @property (unsafe_unretained, nonatomic) IBOutlet UITextField *multiLineCommentsStartField;
 @property (unsafe_unretained, nonatomic) IBOutlet UITextField *multiLineCommentsEndField;

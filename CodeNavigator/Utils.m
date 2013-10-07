@@ -649,13 +649,13 @@ static Utils *static_utils;
             NSString* name = [tmp substringToIndex:locationRange.location];
             if (locationRange.location+locationRange.length == [tmp length])
             {
-                //No extention found
+                //No extension found
                 tmp = name;
             }
             else
             {
-                NSString* extention = [tmp substringFromIndex:locationRange.location+1];
-                tmp = [NSString stringWithFormat:@"%@.%@", name,extention];
+                NSString* extension = [tmp substringFromIndex:locationRange.location+1];
+                tmp = [NSString stringWithFormat:@"%@.%@", name,extension];
             }
         }
     }
@@ -667,15 +667,15 @@ static Utils *static_utils;
     if (source == nil || [source length] == 0)
         return nil;
     NSString* tmp = [source copy];
-    NSString* extention = [source pathExtension];
-    if (extention == nil || [extention length] == 0)
+    NSString* extension = [source pathExtension];
+    if (extension == nil || [extension length] == 0)
     {
         tmp = [tmp stringByAppendingFormat:@"_.%@", DISPLAY_FILE_EXTENTION];
     }
     else
     {
         tmp = [tmp stringByDeletingPathExtension];
-        tmp = [tmp stringByAppendingFormat:@"_%@.%@", extention, DISPLAY_FILE_EXTENTION];
+        tmp = [tmp stringByAppendingFormat:@"_%@.%@", extension, DISPLAY_FILE_EXTENTION];
     }
     return tmp;
 }
@@ -685,15 +685,15 @@ static Utils *static_utils;
     if (source == nil || [source length] == 0)
         return nil;
     NSString* tmp = [source copy];
-    NSString* extention = [source pathExtension];
-    if (extention == nil || [extention length] == 0)
+    NSString* extension = [source pathExtension];
+    if (extension == nil || [extension length] == 0)
     {
         tmp = [tmp stringByAppendingFormat:@"_.%@", @"lgz_tags"];
     }
     else
     {
         tmp = [tmp stringByDeletingPathExtension];
-        tmp = [tmp stringByAppendingFormat:@"_%@.%@", extention, @"lgz_tags"];
+        tmp = [tmp stringByAppendingFormat:@"_%@.%@", extension, @"lgz_tags"];
     }
     return tmp;
 }

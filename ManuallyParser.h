@@ -10,7 +10,7 @@
 
 @interface ManuallyParser : CodeParser
 
-@property (nonatomic, strong) NSString* extentions;
+@property (nonatomic, strong) NSString* extensions;
 @property (nonatomic, strong) NSString* singleLineComments;
 @property (nonatomic, strong) NSString* multilineCommentsS;
 @property (nonatomic, strong) NSString* multilineCommentsE;

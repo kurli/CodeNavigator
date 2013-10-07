@@ -46,9 +46,9 @@
         [masterViewController reloadData];
         [[Utils getInstance] analyzeProject:proj andForceCreate:YES];
         //remove comments file
-        NSString* extention = [sourceFilePath pathExtension];
+        NSString* extension = [sourceFilePath pathExtension];
         NSString* commentFile = [sourceFilePath stringByDeletingPathExtension];
-        commentFile = [commentFile stringByAppendingFormat:@"_%@", extention];
+        commentFile = [commentFile stringByAppendingFormat:@"_%@", extension];
         commentFile = [commentFile stringByAppendingPathExtension:@"lgz_comment"];
         [[NSFileManager defaultManager] removeItemAtPath:commentFile error:&error];
     }
@@ -78,13 +78,13 @@
 {
     UIActionSheet* alert;
     [self setSourceFilePath:path];
-    NSString* extention = [path pathExtension];
-    extention = [extention lowercaseString];
+    NSString* extension = [path pathExtension];
+    extension = [extension lowercaseString];
     NSString* proj = [[Utils getInstance] getProjectFolder:path];
     if ([proj length] == 0 || [proj compare:path] == NSOrderedSame) {
         return;
     }
-    if ([extention compare:@"html"] == NSOrderedSame) {
+    if ([extension compare:@"html"] == NSOrderedSame) {
         fileInfoType = FILEINFO_WEB;
         //Do not change the order
         alert = [[UIActionSheet alloc] initWithTitle:@"" 

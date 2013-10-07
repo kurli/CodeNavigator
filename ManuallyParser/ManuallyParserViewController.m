@@ -21,7 +21,7 @@
 
 @implementation ManuallyParserViewController
 @synthesize parserArray;
-@synthesize extentionsField;
+@synthesize extensionsField;
 @synthesize singleLineCommentsField;
 @synthesize multiLineCommentsStartField;
 @synthesize multiLineCommentsEndField;
@@ -69,7 +69,7 @@
     [self setManuallyParserArray:nil];
     [self setFilePath:nil];
     
-    [self setExtentionsField:nil];
+    [self setExtensionsField:nil];
     [self setSingleLineCommentsField:nil];
     [self setMultiLineCommentsStartField:nil];
     [self setMultiLineCommentsEndField:nil];
@@ -126,7 +126,7 @@
 - (IBAction)copyButtonClicked:(id)sender {
     int manuallyParserIndex = -1;
     NSString* name = @"";
-    NSString* extention = @"";
+    NSString* extension = @"";
     NSString* singleLine = @"";
     NSString* multiLineS = @"";
     NSString* multiLineE = @"";
@@ -139,7 +139,7 @@
         name = [parser.parser getParserName];
         codeParser = parser.parser;
         
-        extention = [codeParser getExtentionsStr];
+        extension = [codeParser getExtentionsStr];
         singleLine = [codeParser getSingleLineCommentsStr];
         multiLineS = [codeParser getMultiLineCommentsStartStr];
         multiLineE = [codeParser getMultiLineCommentsEndStr];
@@ -152,7 +152,7 @@
             name = [manuallyParserArray objectAtIndex:manuallyParserIndex];
             
             NSDictionary* dictionary = [Parser getManuallyParserByName:name];
-            extention = [dictionary objectForKey:EXTENTION];
+            extension = [dictionary objectForKey:EXTENSION];
             singleLine = [dictionary objectForKey:SINGLE_LINE_COMMENTS];
             multiLineS = [dictionary objectForKey:MULTI_LINE_COMMENTS_START];
             multiLineE = [dictionary objectForKey:MULTI_LINE_COMMENTS_END];
@@ -166,7 +166,7 @@
     currentSelected = [parserArray count]+[manuallyParserArray count];
     [self.parserTypePicker selectRow:currentSelected inComponent:0 animated:YES];
     
-    [self setField:nil andExtention:extention andSingleLine:singleLine andMultiLineS:multiLineS andMultLineE:multiLineE andKeywords:keywords];
+    [self setField:nil andExtention:extension andSingleLine:singleLine andMultiLineS:multiLineS andMultLineE:multiLineE andKeywords:keywords];
     [nameField becomeFirstResponder];
     
     editType = ADD_NEW_PARSER;
@@ -188,15 +188,15 @@
 - (BOOL) checkFields
 {
     NSString* name = @"";
-    NSString* extention = @"";
+    NSString* extension = @"";
     
     name = self.nameField.text;
     if ([name length] == 0) {
         [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please enter the Name"];
         return NO;
     }
-    extention = self.extentionsField.text;
-    if ([extention length] == 0) {
+    extension = self.extensionsField.text;
+    if ([extension length] == 0) {
         [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please enter the Extensions"];
         return NO;
     }
@@ -206,15 +206,15 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1 && alertView.tag == 0) {
         NSString* name = @"";
-        NSString* extention = @"";
+        NSString* extension = @"";
         NSString* singleLine = @"";
         NSString* multiLineS = @"";
         NSString* multiLineE = @"";
         NSString* keywords = @"";
         
         name = self.nameField.text;
-        extention = self.extentionsField.text;
-        extention = [extention lowercaseString];
+        extension = self.extensionsField.text;
+        extension = [extension lowercaseString];
         singleLine = self.singleLineCommentsField.text;
         multiLineS = self.multiLineCommentsStartField.text;
         multiLineE = self.multiLineCommentsEndField.text;
@@ -232,7 +232,7 @@
         
         [[NSFileManager defaultManager] removeItemAtPath:parserPath error:nil];
         
-        [Parser saveParser:parserPath andExtention:extention andSingleLine:singleLine andMultiLineS:multiLineS andMultLineE:multiLineE andKeywords:keywords];
+        [Parser saveParser:parserPath andExtention:extension andSingleLine:singleLine andMultiLineS:multiLineS andMultLineE:multiLineE andKeywords:keywords andType:currentEditItem];
         
         [self dismissModalViewControllerAnimated:YES];
         [self refreshCurrentFileWithNewParser];
@@ -365,8 +365,13 @@
 
 -(void)setFieldsEditable:(BOOL)editable
 {
-    [self.nameField setEnabled:editable];
-    [self.extentionsField setEnabled:editable];
+    // Build in parser name can not be changed
+    if (currentEditItem < HTML) {
+        [self.nameField setEnabled:NO];
+    } else {
+        [self.nameField setEnabled:editable];
+    }
+    [self.extensionsField setEnabled:editable];
     [self.singleLineCommentsField setEnabled:editable];
     [self.multiLineCommentsStartField setEnabled:editable];
     [self.multiLineCommentsEndField setEnabled:editable];
@@ -375,13 +380,13 @@
     if (editable == NO) {
         //Disable fields
         [self.nameField setBorderStyle:UITextBorderStyleLine];
-        [self.extentionsField setBorderStyle:UITextBorderStyleLine];
+        [self.extensionsField setBorderStyle:UITextBorderStyleLine];
         [self.singleLineCommentsField setBorderStyle:UITextBorderStyleLine];
         [self.multiLineCommentsStartField setBorderStyle:UITextBorderStyleLine];
         [self.multiLineCommentsEndField setBorderStyle:UITextBorderStyleLine];
     } else {
         [self.nameField setBorderStyle:UITextBorderStyleRoundedRect];
-        [self.extentionsField setBorderStyle:UITextBorderStyleRoundedRect];
+        [self.extensionsField setBorderStyle:UITextBorderStyleRoundedRect];
         [self.singleLineCommentsField setBorderStyle:UITextBorderStyleRoundedRect];
         [self.multiLineCommentsStartField setBorderStyle:UITextBorderStyleRoundedRect];
         [self.multiLineCommentsEndField setBorderStyle:UITextBorderStyleRoundedRect];
@@ -392,11 +397,11 @@
     }
 }
 
--(void)setField:(NSString*)name andExtention:(NSString*)extention andSingleLine:(NSString*)singleLine andMultiLineS:(NSString*)multilineS
+-(void)setField:(NSString*)name andExtention:(NSString*)extension andSingleLine:(NSString*)singleLine andMultiLineS:(NSString*)multilineS
 andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords
 {
     [self.nameField setText:name];
-    [self.extentionsField setText:extention];
+    [self.extensionsField setText:extension];
     [self.singleLineCommentsField setText:singleLine];
     [self.multiLineCommentsStartField setText:multilineS];
     [self.multiLineCommentsEndField setText:multilineE];
@@ -422,7 +427,7 @@ andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords
 {
     int manuallyParserIndex = -1;
     NSString* name = @"";
-    NSString* extention = @"";
+    NSString* extension = @"";
     NSString* singleLine = @"";
     NSString* multiLineS = @"";
     NSString* multiLineE = @"";
@@ -442,12 +447,12 @@ andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords
             name = [manuallyParserArray objectAtIndex:manuallyParserIndex];
     
             NSDictionary* dictionary = [Parser getManuallyParserByName:name];
-            extention = [dictionary objectForKey:EXTENTION];
+            extension = [dictionary objectForKey:EXTENSION];
             singleLine = [dictionary objectForKey:SINGLE_LINE_COMMENTS];
             multiLineS = [dictionary objectForKey:MULTI_LINE_COMMENTS_START];
             multiLineE = [dictionary objectForKey:MULTI_LINE_COMMENTS_END];
             keywords = [dictionary objectForKey:KEYWORDS];
-            [self setField:name andExtention:extention andSingleLine:singleLine andMultiLineS:multiLineS andMultLineE:multiLineE andKeywords:keywords];
+            [self setField:name andExtention:extension andSingleLine:singleLine andMultiLineS:multiLineS andMultLineE:multiLineE andKeywords:keywords];
             return;
         }
         else {
@@ -455,13 +460,13 @@ andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords
             return;
         }
     }
-    extention = [codeParser getExtentionsStr];
+    extension = [codeParser getExtentionsStr];
     singleLine = [codeParser getSingleLineCommentsStr];
     multiLineS = [codeParser getMultiLineCommentsStartStr];
     multiLineE = [codeParser getMultiLineCommentsEndStr];
     keywords = [codeParser getKeywordsStr];
     
-    [self setField:name andExtention:extention andSingleLine:singleLine andMultiLineS:multiLineS andMultLineE:multiLineE andKeywords:keywords];
+    [self setField:name andExtention:extension andSingleLine:singleLine andMultiLineS:multiLineS andMultLineE:multiLineE andKeywords:keywords];
 }
 
 #pragma mark picker view
@@ -482,7 +487,7 @@ andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords
     //Store fields when previous Manually
     if (currentSelected == [parserArray count] + [manuallyParserArray count]) {
         [self setStoredName:nameField.text];
-        [self setStoredExtensions:extentionsField.text];
+        [self setStoredExtensions:extensionsField.text];
         [self setStoredSingleLineComments:singleLineCommentsField.text];
         [self setStoredMultiLineCommentsEnd:multiLineCommentsEndField.text];
         [self setStoredMultiLineCommentsStart:multiLineCommentsStartField.text];
