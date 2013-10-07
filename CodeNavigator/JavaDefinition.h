@@ -18,17 +18,9 @@
  *
  */
 
-#define COMMENTS_SINGLE @"//"
-
-#define COMMENTS_MULTI @"/*"
-
-#define COMMENTS_MULTI_END @"*/"
-
 #define BRACE_START @"{"
 
 #define BRACE_END @"}"
-
-#define KEYWORD_JAVA @"abstract assert boolean break byte case catch char class const continue default do double else enum extends false final finally float for goto if implements import instanceof int interface long native new null package private protected public return short static strictfp super switch synchronized this throw throws transient true try void volatile while"
 
 #define PREPROCESSOR @"#define",@"#if",@"#ifdef",@"#undef",@"#endif",@"#else",@"#pragma",@"#ifndef", @"#elif", @"#error", @"#region", @"#endregion", nil
 

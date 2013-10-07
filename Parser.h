@@ -21,7 +21,7 @@
 #define MULTI_LINE_COMMENTS_END @"multi_line_comments_end"
 #define KEYWORDS @"keywords"
 
-#define PREDEF_PARSER @"C/C++", @"Objective-C", @"C#", @"Java", @"Delphi", @"Javascript", @"Pythone", @"Ruby", @"Bash", @"PHP"
+#define PREDEF_PARSER @"C/C++", @"Objective-C", @"C#", @"Java", @"Delphi", @"Javascript", @"Python", @"Ruby", @"Bash", @"PHP"
 
 typedef enum _ParserType
 {
@@ -65,7 +65,7 @@ typedef enum _ParserType
 +(ParserType) getBuildInParserTypeByfilePath:(NSString*)filePath;
 
 #pragma mark manually parser support
-+(BOOL)saveManuallyParser:(NSString*)name andExtention:(NSString*)extention andSingleLine:(NSString*)singleLine andMultiLineS:(NSString*)multilineS andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords;
++(BOOL)saveParser:(NSString*)path andExtention:(NSString*)extention andSingleLine:(NSString*)singleLine andMultiLineS:(NSString*)multilineS andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords;
 
 +(NSArray*) getManuallyParserNames;
 

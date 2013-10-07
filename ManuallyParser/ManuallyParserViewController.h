@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ManuallyParserViewController : UIViewController <UIPickerViewDelegate, UITextViewDelegate>
+typedef enum _EditType
+{
+    ADD_NEW_PARSER = 0,
+    EDIT_PARSER,
+    EDIT_NONE
+} EditType;
+
+@interface ManuallyParserViewController : UIViewController <UIPickerViewDelegate, UITextViewDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray* parserArray;
 
@@ -24,9 +31,18 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UITextField *nameField;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *deleteButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *buttonCopy;
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
+
+@property (strong, nonatomic) NSString* storedName;
+@property (strong, nonatomic) NSString* storedExtensions;
+@property (strong, nonatomic) NSString* storedSingleLineComments;
+@property (strong, nonatomic) NSString* storedMultiLineCommentsStart;
+@property (strong, nonatomic) NSString* storedMultiLineCommentsEnd;
+@property (strong, nonatomic) NSString* storedKeywords;
 
 @property (strong, nonatomic) NSString* filePath;
 
+- (IBAction)editButtonClicked:(id)sender;
 - (IBAction)copyButtonClicked:(id)sender;
 - (IBAction)deleteButtonClicked:(id)sender;
 - (IBAction)cancelButtonClicked:(id)sender;

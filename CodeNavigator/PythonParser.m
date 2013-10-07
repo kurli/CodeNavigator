@@ -28,9 +28,9 @@
 		return NO;
 	if ( YES == isCommentsNotEnded )
     {		
-		// comments not ended we nned to find COMMENTS_MULTI_END
+		// comments not ended we nned to find [self getMultiLineCommentsStartStr]_END
 		// In this case we assume that we have met /* before
-		NSRange commentEndRange = [needParseLine rangeOfString: COMMENTS_MULTI_END];
+		NSRange commentEndRange = [needParseLine rangeOfString: [self getMultiLineCommentsEndStr]];
 		// check whether */ exsist
 		if ( commentEndRange.location != NSNotFound )
 		{
@@ -59,15 +59,15 @@
     {
 		// We need to check whether comments in the beginning
 		// check //
-		NSRange commentSingleRange = [needParseLine rangeOfString: COMMENTS_SINGLE];
-		NSRange commentMultiStartRange = [needParseLine rangeOfString: COMMENTS_MULTI];
-        NSRange commentEndRange = [needParseLine rangeOfString: COMMENTS_MULTI_END];
+		NSRange commentSingleRange = [needParseLine rangeOfString: [self getSingleLineCommentsStr]];
+		NSRange commentMultiStartRange = [needParseLine rangeOfString: [self getMultiLineCommentsStartStr]];
+        NSRange commentEndRange = [needParseLine rangeOfString: [self getMultiLineCommentsEndStr]];
         //Python special
         if (commentMultiStartRange.location != NSNotFound) {
             NSRange range;
             range.location = commentMultiStartRange.location + commentMultiStartRange.length;
             range.length = [needParseLine length]-range.location;
-            commentEndRange = [needParseLine rangeOfString:COMMENTS_MULTI_END options:NSLiteralSearch range:range];
+            commentEndRange = [needParseLine rangeOfString:[self getMultiLineCommentsEndStr] options:NSLiteralSearch range:range];
         }
 		if ( commentSingleRange.location == 0 )
         {

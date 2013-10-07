@@ -30,7 +30,7 @@
     {		
 		// comments not ended we nned to find "*/"
 		// In this case we assume that we have met /* before
-		NSRange commentEndRange = [needParseLine rangeOfString: COMMENTS_MULTI_END];
+		NSRange commentEndRange = [needParseLine rangeOfString: [self getMultiLineCommentsEndStr]];
 		// check whether */ exsist
 		if ( commentEndRange.location != NSNotFound )
 		{
@@ -41,7 +41,7 @@
 			isCommentsNotEnded = NO;
 			NSRange range = {0, commentEndRange.location + commentEndRange.length};
 			[needParseLine deleteCharactersInRange: range];
-            [self bracesEnded:currentParseLine andToken:COMMENTS_MULTI];
+            [self bracesEnded:currentParseLine andToken:[self getMultiLineCommentsStartStr]];
 			return YES;
 		}
 		else 
@@ -58,9 +58,9 @@
     {
 		// We need to check whether comments in the beginning
 		// check //
-		NSRange commentSingleRange = [needParseLine rangeOfString: COMMENTS_SINGLE];
-		NSRange commentMultiStartRange = [needParseLine rangeOfString: COMMENTS_MULTI];
-		NSRange commentEndRange = [needParseLine rangeOfString: COMMENTS_MULTI_END];
+		NSRange commentSingleRange = [needParseLine rangeOfString: [self getSingleLineCommentsStr]];
+		NSRange commentMultiStartRange = [needParseLine rangeOfString: [self getMultiLineCommentsStartStr]];
+		NSRange commentEndRange = [needParseLine rangeOfString: [self getMultiLineCommentsEndStr]];
 		if ( commentSingleRange.location == 0 )
         {
 			// it's comment line
@@ -72,7 +72,7 @@
         }
 		else if( commentMultiStartRange.location == 0 )
         {
-            [self bracesStarted:currentParseLine andToken:COMMENTS_MULTI];
+            [self bracesStarted:currentParseLine andToken:[self getMultiLineCommentsStartStr]];
 			// it's comment multi line
 			[self commentStart];
 			// check whether comment line is only this line
@@ -93,7 +93,7 @@
 				[self addEnd];
 				NSRange range = {0, commentEndRange.location + commentEndRange.length};
 				[needParseLine deleteCharactersInRange: range];
-                [self bracesEnded:currentParseLine andToken:COMMENTS_MULTI];
+                [self bracesEnded:currentParseLine andToken:[self getMultiLineCommentsStartStr]];
 				return YES;
             }
         }

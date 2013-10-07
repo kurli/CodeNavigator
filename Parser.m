@@ -245,20 +245,28 @@
   return [parser getHtml];
 }
 
-+(BOOL) saveManuallyParser:(NSString *)name andExtention:(NSString *)extention andSingleLine:(NSString *)singleLine andMultiLineS:(NSString *)multilineS andMultLineE:(NSString *)multilineE andKeywords:(NSString *)keywords
++(BOOL) saveParser:(NSString *)path andExtention:(NSString *)extention andSingleLine:(NSString *)singleLine andMultiLineS:(NSString *)multilineS andMultLineE:(NSString *)multilineE andKeywords:(NSString *)keywords
 {
+    if (path == nil)
+        return NO;
+    if (extention == nil)
+        extention = @"";
+    if (singleLine == nil)
+        singleLine = @"";
+    if (multilineE == nil)
+        multilineE = @"";
+    if (multilineS == nil)
+        multilineS = @"";
+    if (keywords == nil)
+        keywords = @"";
+    
     NSString* manuallyParserPath = [NSHomeDirectory() stringByAppendingFormat:MANUALLY_PARSER_PATH];
     BOOL isDirectory;
     BOOL exist = [[NSFileManager defaultManager] fileExistsAtPath:manuallyParserPath isDirectory:&isDirectory];
     if (exist == NO) {
         [[NSFileManager defaultManager] createDirectoryAtPath:manuallyParserPath withIntermediateDirectories:YES attributes:nil error:nil];
     }
-    manuallyParserPath = [manuallyParserPath stringByAppendingPathComponent:[name stringByAppendingPathExtension:@"json"]];
-    exist= [[NSFileManager defaultManager] fileExistsAtPath:manuallyParserPath];
-    if (exist) {
-        return NO;
-    }
-    
+
     NSArray* keywordsArray = [keywords componentsSeparatedByString:@" "];
     keywordsArray = [keywordsArray sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
             NSComparisonResult result = [a compare:b];
@@ -283,7 +291,7 @@
     [dictionary setObject:str forKey:KEYWORDS];
     
     NSString* jsonContent = [dictionary JSONRepresentation];
-    [jsonContent writeToFile:manuallyParserPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    [jsonContent writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
     return YES;
 }
 

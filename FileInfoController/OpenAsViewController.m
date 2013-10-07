@@ -107,8 +107,7 @@
     if (currentSelected < HTML) {
         type = currentSelected;
     } else {
-        NSLog(@"error");
-        return;
+        type = -1;
     }
     
     Parser* parser = [[Parser alloc] init];
@@ -127,6 +126,8 @@
     NSString* html = [parser getHtml];
     //rc4Result = [self HloveyRC4:html key:@"lgz"];
     [html writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    
+    [[Utils getInstance].detailViewController setTitle:[filePath lastPathComponent] andPath:filePath andContent:html andBaseUrl:nil];
     
     // Release popover controller
     MasterViewController* _masterViewController = nil;
