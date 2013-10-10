@@ -39,24 +39,13 @@
 {
     [super viewDidLoad];
     selectionList = [[NSArray alloc] initWithObjects:@"Highlight in current file", @"Find global definition", @"Find this symbol", @"Find called functions", @"Find f() calling this f()", @"Find text string", nil];
-    if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        for (UIView *subview in [searchBar subviews]) {
-            for (UIView* subview2 in [subview subviews]) {
-                if ([subview2 isKindOfClass:[UIButton class]]) {
-                    [(UIButton *)subview setTitle:@"Search" forState:UIControlStateNormal];
-                    [(UIButton *)subview setEnabled:YES];
-                }
-            }
-        }
-    } else {
-        for (UIView *subview in [searchBar subviews]) {
-            if ([subview isKindOfClass:[UIButton class]]) {
-                [(UIButton *)subview setTitle:@"Search" forState:UIControlStateNormal];
-                [(UIButton *)subview setEnabled:YES];
-            }
-        }
-    }
-
+    // No need, because viewWillAppear will be called later
+//    for (UIView *subview in [searchBar subviews]) {
+//        if ([subview isKindOfClass:[UIButton class]]) {
+//            [(UIButton *)subview setTitle:@"Search" forState:UIControlStateNormal];
+//            [(UIButton *)subview setEnabled:YES];
+//        }
+//    }
     selectedItem = 0;
 }
 
