@@ -80,10 +80,11 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    CGSize size =  self.detailViewController.view.frame.size;
-    size.height = size.height/3;
-    size.width = size.width;
-    self.contentSizeForViewInPopover = size;
+//    CGSize size =  self.detailViewController.view.frame.size;
+//    size.height = size.height/3;
+//    size.width = size.width;
+//    self.contentSizeForViewInPopover = size;
+    self.contentSizeForViewInPopover = self.view.frame.size;
     [_tableView reloadData];
 }
 
@@ -153,6 +154,8 @@
         }
         cell.textLabel.text = ((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:indexPath.row]).fileName;
         cell.textLabel.lineBreakMode |= UILineBreakModeMiddleTruncation;
+        UIColor *color = [[UIColor alloc] initWithRed:0.0 green:0.0 blue:0.0 alpha:0];
+        [cell setBackgroundColor:color];
     }
     else
     {

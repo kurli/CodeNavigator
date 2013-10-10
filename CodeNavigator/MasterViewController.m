@@ -168,6 +168,15 @@
     {
         [self.fileSearchBar setHidden:NO];
         [self.analyzeButton setEnabled:YES];
+        //iOS7 UI bug fix
+        // In iOS 7 the status bar is transparent, so don't adjust for it.
+        CGRect rect;
+        if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+        {
+            rect = self.fileSearchBar.frame;
+            rect.origin.y = 64;
+            [self.fileSearchBar setFrame:rect];
+        }
     }
 }
 
@@ -609,7 +618,12 @@
 - (IBAction)fileInfoButtonClicked:(id)sender
 {
     UIButton *button = (UIButton *)sender;
-    UIView *contentView = [button superview];
+    UIView *contentView;
+    if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        contentView = [[button superview] superview];
+    } else {
+        contentView = [button superview];
+    }
     UITableViewCell *cell = (UITableViewCell*)[contentView superview];
     NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
     

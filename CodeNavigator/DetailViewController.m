@@ -195,8 +195,18 @@
         NSString* html = [NSString stringWithContentsOfFile: help usedEncoding:&encoding error: &error];
         [self setTitle:@"Help.html" andPath:help andContent:html andBaseUrl:nil];
         isFirstDisplay = NO;
+        
+        // Set second webview
+        self.activeWebView = secondWebView;
+        [self setTitle:@"Help.html" andPath:help andContent:html andBaseUrl:nil];
+        self.activeWebView = _webView;
+        
+        // Fix iOS 7 bug
+        CGRect rect = self.secondWebView.frame;
+        rect.size.height = 10;
+        [self.secondWebView setFrame:rect];
+        [super viewWillAppear:animated];
     }
-    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -1128,7 +1138,8 @@
         [self.activeMark setHidden:YES];
         [UIView commitAnimations];
     }
-    [self.splitWebViewButton setTitle:@"日"];
+    //[self.splitWebViewButton setTitle:@"日"];
+    [self.splitWebViewButton setImage:[UIImage imageNamed:@"seperate.png"]];
     self.virtualizeViewController = [[VirtualizeViewController alloc] init];
     [self showVirtualizeView];
     isVirtualizeDisplayed = YES;
@@ -1222,10 +1233,12 @@
     // change bar button item
     if (self.secondWebView.frame.size.height == 10)
     {
-        [self.splitWebViewButton setTitle:@"口"];
+        //[self.splitWebViewButton setTitle:@"口"];
+        [self.splitWebViewButton setImage:[UIImage imageNamed:@"screen.png"]];
     }
     else {
-        [self.splitWebViewButton setTitle:@"日"];
+        //[self.splitWebViewButton setTitle:@"日"];
+        [self.splitWebViewButton setImage:[UIImage imageNamed:@"seperate.png"]];
     }
     
     [UIView beginAnimations:@"WebViewAnimate"context:nil];

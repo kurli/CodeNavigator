@@ -39,12 +39,24 @@
 {
     [super viewDidLoad];
     selectionList = [[NSArray alloc] initWithObjects:@"Highlight in current file", @"Find global definition", @"Find this symbol", @"Find called functions", @"Find f() calling this f()", @"Find text string", nil];
-    for (UIView *subview in [searchBar subviews]) {
-        if ([subview isKindOfClass:[UIButton class]]) {
-            [(UIButton *)subview setTitle:@"Search" forState:UIControlStateNormal];
-            [(UIButton *)subview setEnabled:YES];
+    if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        for (UIView *subview in [searchBar subviews]) {
+            for (UIView* subview2 in [subview subviews]) {
+                if ([subview2 isKindOfClass:[UIButton class]]) {
+                    [(UIButton *)subview setTitle:@"Search" forState:UIControlStateNormal];
+                    [(UIButton *)subview setEnabled:YES];
+                }
+            }
+        }
+    } else {
+        for (UIView *subview in [searchBar subviews]) {
+            if ([subview isKindOfClass:[UIButton class]]) {
+                [(UIButton *)subview setTitle:@"Search" forState:UIControlStateNormal];
+                [(UIButton *)subview setEnabled:YES];
+            }
         }
     }
+
     selectedItem = 0;
 }
 
@@ -245,13 +257,30 @@
 -(void)setSearchItemText:(NSString *)keyword
 {
     [searchBar setText:keyword];
-    for (UIView *subview in [searchBar subviews]) {
-        if ([subview isKindOfClass:[UIButton class]]) {
-            [(UIButton *)subview setTitle:@"Search" forState:UIControlStateNormal];
-            if ([keyword length] > 0)
-                [(UIButton *)subview setEnabled:YES];
-            else
-                [(UIButton *)subview setEnabled:NO];
+    
+    if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        for (UIView *subview in [searchBar subviews]) {
+            for (UIView* subview2 in [subview subviews]) {
+                if ([subview2 isKindOfClass:[UIButton class]]) {
+                    [(UIButton *)subview2 setTitle:@"Search" forState:UIControlStateNormal];
+                    if ([keyword length] > 0)
+                        [(UIButton *)subview2 setEnabled:YES];
+                    else
+                        [(UIButton *)subview2 setEnabled:NO];
+                    return;
+                }
+            }
+        }
+    } else {
+        for (UIView *subview in [searchBar subviews]) {
+            if ([subview isKindOfClass:[UIButton class]]) {
+                [(UIButton *)subview setTitle:@"Search" forState:UIControlStateNormal];
+                if ([keyword length] > 0)
+                    [(UIButton *)subview setEnabled:YES];
+                else
+                    [(UIButton *)subview setEnabled:NO];
+                return;
+            }
         }
     }
 }

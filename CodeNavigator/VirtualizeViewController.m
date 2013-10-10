@@ -235,7 +235,12 @@
     {
         if (buttonIndex == 1)
         {
-            UITextField* textField = (UITextField*)[alertView viewWithTag:123];
+            UITextField* textField;
+            if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+                textField = [alertView textFieldAtIndex:0];
+            } else {
+                textField = (UITextField*)[alertView viewWithTag:123];
+            }
             NSString* str = textField.text;
             
             //New button clicked
@@ -316,12 +321,18 @@
         }
     }
     
-    UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Please enter name!" message:@"\n\n" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-    UITextField *myTextField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 60.0, 260.0, 25.0)];
-    [myTextField setBackgroundColor:[UIColor whiteColor]];
-    [myTextField setTag:123];
-    [myAlertView addSubview:myTextField];
-    [myAlertView show];
+    if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Please enter name!" message:@"\n\n" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+        myAlertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [myAlertView show];
+    } else {
+        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Please enter name!" message:@"\n\n" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+        UITextField *myTextField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 60.0, 260.0, 25.0)];
+        [myTextField setBackgroundColor:[UIColor whiteColor]];
+        [myTextField setTag:123];
+        [myAlertView addSubview:myTextField];
+        [myAlertView show];
+    }
     alertType = ALERT_NEW_FILE;
 }
 

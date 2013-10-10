@@ -167,6 +167,8 @@
             cell.imageView.image = [UIImage imageNamed:@"folder.png"];
         }
         cell.textLabel.text = [self.currentDirectories objectAtIndex:indexPath.row];
+        UIColor *color = [[UIColor alloc] initWithRed:0.0 green:0.0 blue:0.0 alpha:0];
+        [cell setBackgroundColor:color];
     }
     else
     {

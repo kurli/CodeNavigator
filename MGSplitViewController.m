@@ -23,6 +23,7 @@
 #define MG_ANIMATION_CHANGE_SPLIT_ORIENTATION	@"ChangeSplitOrientation"	// Animation ID for internal use.
 #define MG_ANIMATION_CHANGE_SUBVIEWS_ORDER		@"ChangeSubviewsOrder"	// Animation ID for internal use.
 
+#define IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 @interface MGSplitViewController (MGPrivateMethods)
 
@@ -142,12 +143,17 @@
 	_dividerView.splitViewController = self;
 	_dividerView.backgroundColor = MG_DEFAULT_CORNER_COLOR;
 	_dividerStyle = MGSplitViewDividerStyleThin;
+
+    // fix for iOS 6 layout
+    self.view.autoresizesSubviews = NO;
 }
 
 
 - (void)dealloc
 {
 	_delegate = nil;
+	self.masterViewController = nil;
+	self.detailViewController = nil;
 	[self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 	
 }
@@ -163,6 +169,7 @@
     {
         return [self.detailViewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
     }
+
     return YES;
 }
 
@@ -228,6 +235,15 @@
 	// Find status bar height by checking which dimension of the applicationFrame is narrower than screen bounds.
 	// Little bit ugly looking, but it'll still work even if they change the status bar height in future.
 	float statusBarHeight = MAX((fullScreenRect.size.width - appFrame.size.width), (fullScreenRect.size.height - appFrame.size.height));
+    
+    // In iOS 7 the status bar is transparent, so don't adjust for it.
+    if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+        statusBarHeight = 0;
+	
+	float navigationBarHeight = 0;
+	if ((self.navigationController)&&(!self.navigationController.navigationBarHidden)) {
+		navigationBarHeight = self.navigationController.navigationBar.frame.size.height;
+	}
 	
 	// Initially assume portrait orientation.
 	float width = fullScreenRect.size.width;
@@ -241,6 +257,7 @@
 	
 	// Account for status bar, which always subtracts from the height (since it's always at the top of the screen).
 	height -= statusBarHeight;
+	height -= navigationBarHeight;
 	
 	return CGSizeMake(width, height);
 }
@@ -417,8 +434,8 @@
 	}
 	
 	// Create corner views if necessary.
-	MGSplitCornersView *leadingCorners; // top/left of screen in vertical/horizontal split.
-	MGSplitCornersView *trailingCorners; // bottom/right of screen in vertical/horizontal split.
+	MGSplitCornersView *leadingCorners = nil; // top/left of screen in vertical/horizontal split.
+	MGSplitCornersView *trailingCorners = nil; // bottom/right of screen in vertical/horizontal split.
 	if (!_cornerViews) {
 		CGRect cornerRect = CGRectMake(0, 0, 10, 10); // arbitrary, will be resized below.
 		leadingCorners = [[MGSplitCornersView alloc] initWithFrame:cornerRect];
@@ -498,7 +515,6 @@
 	[self.detailViewController viewWillAppear:animated];
 	
 	_reconfigurePopup = YES;
-//	[self layoutSubviews];
 }
 
 
@@ -510,7 +526,7 @@
 		[self.masterViewController viewDidAppear:animated];
 	}
 	[self.detailViewController viewDidAppear:animated];
-    [self layoutSubviews];
+	[self layoutSubviews];
 }
 
 
@@ -560,7 +576,7 @@
 		_barButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Master", nil) 
 														  style:UIBarButtonItemStyleBordered 
 														 target:self 
-														 action:@selector(showMasterPopover:)];
+														 action:(self.togglesMasterPopover ? @selector(toggleMasterPopover:) : @selector(showMasterPopover:))];
 		
 		// Inform delegate of this state of affairs.
 		if (_delegate && [_delegate respondsToSelector:@selector(splitViewController:willHideViewController:withBarButtonItem:forPopoverController:)]) {
@@ -571,14 +587,8 @@
 		}
 		
 	} else if (!inPopover && _hiddenPopoverController && _barButtonItem) {
-        // on iOS 5.1, passing a CGRectZero here produces this following ominous message:
-        // -[UIPopoverController presentPopoverFromRect:inView:permittedArrowDirections:animated:]: the rect passed in to this method must have non-zero width and height. This will be an exception in a future release.
-        // this workaround was tested thusly:
-        // On iOS 4.3, CGRectZero leaves a popover afterimage before rotation, so does the code below
-        // On iOS 5.0, CGRectZero leaves a popover afterimage before rotation, the code below does not
-        // On iOS 5.1, CGRectZero leaves a popover afterimage before rotation, so does the code below
-        // Basically, this hack performs slightly better than the CGRectZero hack, and does not cause an ominous warning.
-        [_hiddenPopoverController presentPopoverFromRect:CGRectMake(1, 1, 1, 1) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:NO];
+		// I know this looks strange, but it fixes a bizarre issue with UIPopoverController leaving masterViewController's views in disarray.
+		[_hiddenPopoverController presentPopoverFromRect:CGRectZero inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:NO];
 		
 		// Remove master from popover and destroy popover, if it exists.
 		[_hiddenPopoverController dismissPopoverAnimated:NO];
@@ -702,6 +712,36 @@
 }
 
 
+- (void) setTogglesMasterPopover:(BOOL)flag {
+
+	togglesMasterPopover = flag;
+
+	if (!_barButtonItem)
+	return;
+		
+	_barButtonItem.action = flag ? @selector(toggleMasterPopover:) : @selector(showMasterPopover:);	
+
+}
+
+- (IBAction)toggleMasterPopover:(id)sender 
+{
+
+	if (!_hiddenPopoverController)
+	return;
+	
+	if (_hiddenPopoverController.popoverVisible) {
+		
+		[self hideMasterPopover:sender];
+		
+	} else {
+	
+		[self showMasterPopover:sender];
+	
+	}
+
+}
+
+
 - (IBAction)showMasterPopover:(id)sender
 {
 	if (_hiddenPopoverController && !(_hiddenPopoverController.popoverVisible)) {
@@ -713,8 +753,26 @@
 		}
 		
 		// Show popover.
-		[_hiddenPopoverController presentPopoverFromBarButtonItem:_barButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+		[_hiddenPopoverController presentPopoverFromBarButtonItem:(sender ? sender : _barButtonItem) permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 	}
+}
+
+
+- (IBAction)hideMasterPopover:(id)sender 
+{
+
+	if(_hiddenPopoverController && _hiddenPopoverController.popoverVisible) {
+		
+		if (_delegate && [_delegate respondsToSelector:@selector(splitViewController:popoverController:willDismissViewController:)]) {
+		
+			[(NSObject <MGSplitViewControllerDelegate> *)_delegate splitViewController:self popoverController:_hiddenPopoverController willDismissViewController:self.masterViewController];
+		
+		}
+		
+		[_hiddenPopoverController dismissPopoverAnimated:YES];
+	
+	}
+
 }
 
 
@@ -934,9 +992,9 @@
 - (UIViewController *)masterViewController
 {
 	if (_viewControllers && [_viewControllers count] > 0) {
-		NSObject *controller = [_viewControllers objectAtIndex:0];
+		UIViewController *controller = (UIViewController *)[_viewControllers objectAtIndex:0];
 		if ([controller isKindOfClass:[UIViewController class]]) {
-			return (UIViewController*)controller;
+			return controller;
 		}
 	}
 	
@@ -976,9 +1034,9 @@
 - (UIViewController *)detailViewController
 {
 	if (_viewControllers && [_viewControllers count] > 1) {
-		NSObject *controller = [_viewControllers objectAtIndex:1];
+		UIViewController *controller = (UIViewController *)[_viewControllers objectAtIndex:1];
 		if ([controller isKindOfClass:[UIViewController class]]) {
-			return (UIViewController*)controller;
+			return controller;
 		}
 	}
 	
@@ -1066,7 +1124,7 @@
 	_dividerStyle = newStyle;
 	
 	// Reconfigure general appearance and behaviour.
-	float cornerRadius;
+	float cornerRadius = 0.0f;
 	if (_dividerStyle == MGSplitViewDividerStyleThin) {
 		cornerRadius = MG_DEFAULT_CORNER_RADIUS;
 		_splitWidth = MG_DEFAULT_SPLIT_WIDTH;
@@ -1118,14 +1176,15 @@
 @synthesize showsMasterInLandscape;
 @synthesize vertical;
 @synthesize delegate;
-@synthesize viewControllers;
+@synthesize viewControllers = _viewControllers;
 @synthesize masterViewController;
 @synthesize detailViewController;
-@synthesize dividerView;
+@synthesize dividerView = _dividerView;
 @synthesize splitPosition;
 @synthesize splitWidth;
 @synthesize allowsDraggingDivider;
 @synthesize dividerStyle;
 
+@synthesize togglesMasterPopover;
 
 @end

@@ -17,6 +17,8 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #define DISPLAY_FILE_EXTENTION @"display_5"
 
+#define IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
 typedef void (^GetFunctionListCallback)(NSArray* array);
 
 @class DetailViewController;
