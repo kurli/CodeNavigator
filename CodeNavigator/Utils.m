@@ -175,7 +175,7 @@ static Utils *static_utils;
     NSError* error;
     BOOL isExist = false;
     BOOL isFolder = NO;
-    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/2_4.version"];
+    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/4_0.version"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:versionFile];
     if (isExist == YES)
     {
