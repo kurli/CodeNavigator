@@ -8,10 +8,46 @@
 
 #import "Utils.h"
 #import "HistoryController.h"
+#import "DetailViewController.h"
 
 @implementation HistoryController
 
 @synthesize historyStack;
+
++(void) writeToFile
+{
+    NSError *error;
+    // Currently there are two history list controller, Up and down
+    NSString* upFilePath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/upHistory.setting"];
+    NSString* downFilePath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/downHistory.setting"];
+    NSString* upFileIndexPath = [upFilePath stringByAppendingString:@"_index"];
+    NSString* downFileIndexPath = [downFileIndexPath stringByAppendingString:@"_index"];
+
+    HistoryController* historyController;
+    DetailViewController* detailViewController = [Utils getInstance].detailViewController;
+    
+    historyController = detailViewController.upHistoryController;
+    [historyController.historyStack writeToFile:upFilePath atomically:YES];
+    NSString* intVaule = [NSString stringWithFormat:@"%d", [historyController getCurrentDisplayIndex]];
+    [intVaule writeToFile:upFileIndexPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    
+    historyController = detailViewController.downHistoryController;
+    [historyController.historyStack writeToFile:downFilePath atomically:YES];
+    intVaule = [NSString stringWithFormat:@"%d", [historyController getCurrentDisplayIndex]];
+    [intVaule writeToFile:downFileIndexPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+}
+
+-(void) readFromFile:(NSString*) filePath
+{
+    BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+    if (isExist) {
+        NSError* error;
+        historyStack = [NSMutableArray arrayWithContentsOfFile:filePath];
+        NSString* indexPath = [filePath stringByAppendingString:@"_index"];
+        NSString* content = [NSString stringWithContentsOfFile:indexPath encoding:NSUTF8StringEncoding error:&error];
+        [self setIndex:[content intValue]];
+    }
+}
 
 -(void) pushUrl:(NSString *)url
 {

@@ -38,4 +38,8 @@
 
 -(void) setIndex:(int)i;
 
++(void) writeToFile;
+
+-(void) readFromFile:(NSString*) filePath;
+
 @end

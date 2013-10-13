@@ -1169,9 +1169,9 @@
 		94422A3014DD87F50076AC66 /* VirtualizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VirtualizeViewController.h; path = CodeNavigator/VirtualizeViewController.h; sourceTree = "<group>"; };
 		94422A3114DD87F50076AC66 /* VirtualizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VirtualizeViewController.m; path = CodeNavigator/VirtualizeViewController.m; sourceTree = "<group>"; };
 		94422A3214DD87F50076AC66 /* VirtualizeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VirtualizeViewController.xib; path = CodeNavigator/VirtualizeViewController.xib; sourceTree = "<group>"; };
-		9443BF5214D1A40200355278 /* HistoryListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryListController.h; sourceTree = "<group>"; };
-		9443BF5314D1A40200355278 /* HistoryListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryListController.m; sourceTree = "<group>"; };
-		9443BF5414D1A40200355278 /* HistoryListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryListController.xib; sourceTree = "<group>"; };
+		9443BF5214D1A40200355278 /* HistoryListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryListController.h; path = CodeNavigator/HistoryListController.h; sourceTree = "<group>"; };
+		9443BF5314D1A40200355278 /* HistoryListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryListController.m; path = CodeNavigator/HistoryListController.m; sourceTree = "<group>"; };
+		9443BF5414D1A40200355278 /* HistoryListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HistoryListController.xib; path = CodeNavigator/HistoryListController.xib; sourceTree = "<group>"; };
 		9443D1EB154EDA6A008CB52D /* SecurityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecurityViewController.h; path = Security/SecurityViewController.h; sourceTree = "<group>"; };
 		9443D1EC154EDA6A008CB52D /* SecurityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecurityViewController.m; path = Security/SecurityViewController.m; sourceTree = "<group>"; };
 		9443D1ED154EDA6A008CB52D /* SecurityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SecurityViewController.xib; path = Security/SecurityViewController.xib; sourceTree = "<group>"; };
@@ -1427,8 +1427,8 @@
 		94B09BB217E77DC600789510 /* FileBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileBrowserViewController.h; path = FileListBrowser/FileBrowserViewController.h; sourceTree = "<group>"; };
 		94B09BB317E77DC600789510 /* FileBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileBrowserViewController.m; path = FileListBrowser/FileBrowserViewController.m; sourceTree = "<group>"; };
 		94B09BB417E77DC600789510 /* FileBrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FileBrowserViewController.xib; path = FileListBrowser/FileBrowserViewController.xib; sourceTree = "<group>"; };
-		94B23AD61499025A00A83395 /* HistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryController.h; sourceTree = "<group>"; };
-		94B23AD71499025A00A83395 /* HistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryController.m; sourceTree = "<group>"; };
+		94B23AD61499025A00A83395 /* HistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryController.h; path = CodeNavigator/HistoryController.h; sourceTree = "<group>"; };
+		94B23AD71499025A00A83395 /* HistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryController.m; path = CodeNavigator/HistoryController.m; sourceTree = "<group>"; };
 		94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HttpService.xcodeproj; path = HttpService/HttpService.xcodeproj; sourceTree = "<group>"; };
 		94B4037614A0E33000E3A636 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncSocket.h; path = HttpService/HttpService/AsyncSocket.h; sourceTree = "<group>"; };
 		94B4037714A0E33000E3A636 /* DDData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDData.h; path = HttpService/HttpService/DDData.h; sourceTree = "<group>"; };
@@ -1692,6 +1692,7 @@
 				94AB1056175513D400359AE8 /* FileFormatResolver */,
 				94CB767F17E20662009807F9 /* FileListBrowser */,
 				94F7B90917F7482900A506EE /* UploadSelection */,
+				948C7464180AE89800065E65 /* History */,
 				9431D73E14910B3000B0900E /* CodeNavigator */,
 				9431D73714910B3000B0900E /* Frameworks */,
 				9431D73514910B3000B0900E /* Products */,
@@ -1725,8 +1726,6 @@
 			children = (
 				94DA0BBC14A624680035DB39 /* Utils.h */,
 				94DA0BBD14A624680035DB39 /* Utils.m */,
-				94B23AD61499025A00A83395 /* HistoryController.h */,
-				94B23AD71499025A00A83395 /* HistoryController.m */,
 				9431D74714910B3000B0900E /* AppDelegate.h */,
 				9431D74814910B3000B0900E /* AppDelegate.m */,
 				9431D74A14910B3000B0900E /* MasterViewController.h */,
@@ -1747,10 +1746,7 @@
 				94FB0FE914BDB3A50084E457 /* HighLightWordController.m */,
 				94A5BBA714BF47C000F3BA8B /* DisplayModeController.h */,
 				94A5BBA814BF47C000F3BA8B /* DisplayModeController.m */,
-				9443BF5214D1A40200355278 /* HistoryListController.h */,
-				9443BF5314D1A40200355278 /* HistoryListController.m */,
 				9429000114D4E16E002793BD /* PercentViewController.xib */,
-				9443BF5414D1A40200355278 /* HistoryListController.xib */,
 				94A5BBA914BF47C000F3BA8B /* DisplayModeController.xib */,
 				947F861615879407002EAA1E /* DisplayModeController-iPhone.xib */,
 				94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */,
@@ -2245,6 +2241,18 @@
 				9418F76614D9B0C4003134E6 /* iTunesArtwork */,
 			);
 			name = iPad_icon;
+			sourceTree = "<group>";
+		};
+		948C7464180AE89800065E65 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				94B23AD61499025A00A83395 /* HistoryController.h */,
+				94B23AD71499025A00A83395 /* HistoryController.m */,
+				9443BF5214D1A40200355278 /* HistoryListController.h */,
+				9443BF5314D1A40200355278 /* HistoryListController.m */,
+				9443BF5414D1A40200355278 /* HistoryListController.xib */,
+			);
+			name = History;
 			sourceTree = "<group>";
 		};
 		948F1C6F15583AD700AE4C99 /* Comment */ = {

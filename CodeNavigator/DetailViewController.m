@@ -87,11 +87,15 @@
     _bannerCounter = 0;
     isVirtualizeDisplayed = NO;
 #endif
-    
+    NSString* upFilePath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/upHistory.setting"];
+    NSString* downFilePath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/downHistory.setting"];
+
     self.upHistoryController = [[HistoryController alloc] init];
+    [self.upHistoryController readFromFile:upFilePath];
     self.downHistoryController = [[HistoryController alloc] init];
+    [self.downHistoryController readFromFile:downFilePath];
     self.historyController = self.upHistoryController;
-    
+
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
 	//_navigationManagerPopover.delegate = self;
     jsState = JS_NONE;
@@ -187,31 +191,43 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    // Only show help html in the first time
+    [super viewWillAppear:animated];
     if (isFirstDisplay) {
-        NSString* help = [NSHomeDirectory() stringByAppendingString:@"/Documents/Projects/Help.html"];
-        NSError *error;
-        NSStringEncoding encoding = NSUTF8StringEncoding;
-        NSString* html = [NSString stringWithContentsOfFile: help usedEncoding:&encoding error: &error];
-        [self setTitle:@"Help.html" andPath:help andContent:html andBaseUrl:nil];
-        isFirstDisplay = NO;
         
-        // Set second webview
-        self.activeWebView = secondWebView;
-        [self setTitle:@"Help.html" andPath:help andContent:html andBaseUrl:nil];
-        self.activeWebView = _webView;
-        
+        self.activeWebView.opaque = NO;
+        self.activeWebView.backgroundColor = [UIColor clearColor];
+        [[Utils getInstance] changeUIViewStyle:self.activeWebView];
+        [self.activeWebView setScalesPageToFit:NO];
+
         // Fix iOS 7 bug
         CGRect rect = self.secondWebView.frame;
         rect.size.height = 10;
         [self.secondWebView setFrame:rect];
-        [super viewWillAppear:animated];
     }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    // Only show help html in the first time
+    if (isFirstDisplay) {
+        NSString* prevHistory = [upHistoryController pickTopLevelUrl];
+        if ([prevHistory length] != 0)
+            [self restoreToHistory:prevHistory];
+        else {
+            NSString* help = [NSHomeDirectory() stringByAppendingString:@"/Documents/Projects/Help.html"];
+            NSError *error;
+            NSStringEncoding encoding = NSUTF8StringEncoding;
+            NSString* html = [NSString stringWithContentsOfFile: help usedEncoding:&encoding error: &error];
+            [self setTitle:@"Help.html" andPath:help andContent:html andBaseUrl:nil];
+            
+            // Set second webview
+            self.activeWebView = secondWebView;
+            [self setTitle:@"Help.html" andPath:help andContent:html andBaseUrl:nil];
+            self.activeWebView = _webView;
+        }
+        isFirstDisplay = NO;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated

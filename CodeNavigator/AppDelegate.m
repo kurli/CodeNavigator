@@ -134,6 +134,13 @@ void uncaughtExceptionHandler(NSException*exception){
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
+    // Write history controller data to file
+    // FIXME: If current active view is down, the location will be failed to updated
+    DetailViewController* detailViewController = [Utils getInstance].detailViewController;
+    int location = [detailViewController getCurrentScrollLocation];
+    [detailViewController.historyController updateCurrentScrollLocation:location];
+    
+    [HistoryController writeToFile];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
