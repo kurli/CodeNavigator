@@ -79,5 +79,7 @@
 
 - (void) releaseAllPopover;
 
+- (void) downloadZipFromGitHub;
+
 @end
 

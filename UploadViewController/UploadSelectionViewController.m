@@ -38,6 +38,12 @@
     [self setMasterViewController:nil];
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //self.contentSizeForViewInPopover = self.view.frame.size;
+}
+
 - (void) dealloc
 {
     [self setMasterViewController:nil];
@@ -60,14 +66,16 @@
         case 2:
             [masterViewController dropBoxClicked:nil];
             break;
-            
+        case 3:
+            [masterViewController downloadZipFromGitHub];
+            break;
         default:
             break;
     }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -85,9 +93,11 @@
     } else if (indexPath.row == 1) {
         //cell.imageView.image = [UIImage imageNamed:@"share.png"];
         cell.textLabel.text = @"Git";
-    } else {
+    } else if (indexPath.row == 2) {
         //cell.imageView.image = [UIImage imageNamed:@"share.png"];
         cell.textLabel.text = @"Dropbox";
+    } else {
+        cell.textLabel.text = @"Download ZIP from GitHub";
     }
     return cell;
 }
