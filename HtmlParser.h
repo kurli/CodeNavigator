@@ -9,11 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "CodeParser.h"
 
+@class JavaScriptParser;
+
 @interface HtmlParser : CodeParser
 {
     BOOL isInTag;
     BOOL isTagNameFound;
+    BOOL isCodeInTagParseEnded;
 }
+
+@property (strong, nonatomic) NSString* lastTagName;
+@property (strong, nonatomic) JavaScriptParser* jsParser;
 
 -(BOOL) checkCommentsLine;
 

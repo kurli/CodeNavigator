@@ -8,8 +8,12 @@
 
 #import "HtmlParser.h"
 #import "HTMLDefination.h"
+#import "Parser.h"
+#import "Utils.h"
 
 @implementation HtmlParser
+@synthesize lastTagName;
+@synthesize jsParser;
 
 -(NSString*) getExtentionsStr
 {
@@ -44,6 +48,8 @@
         isStringNotEnded = NO;
         isInTag = NO;
         isTagNameFound = NO;
+        lastTagName = @"";
+        isCodeInTagParseEnded = YES;
         
 //        NSString* keywords = KEYWORD_PYTHON;
 //        keywordsArray = [keywords componentsSeparatedByString:@" "];      
@@ -56,9 +62,18 @@
 {
     unichar temp = [needParseLine characterAtIndex:0];
     if (temp == '<') {
-        isInTag = YES;
-        isTagNameFound = NO;
-        return YES;
+        // TODO: This is just for standard parse
+        // <script>  will be parsed correct
+        // <
+        //   script> will not be parsed correct
+        NSRange range = [needParseLine rangeOfString:@">"];
+        if (range.location != NSNotFound) {
+            isInTag = YES;
+            isTagNameFound = NO;
+            return YES;
+        } else {
+            //TODO
+        }
     }
     return NO;
 }
@@ -122,11 +137,31 @@
                 }
                 
                 isInTag = [self checkTag:lineNumber];
-                if (isInTag == NO) {
+                if (isInTag == NO || !isCodeInTagParseEnded) {
+                    if (!isCodeInTagParseEnded) {
+                        // The first char must be '<'
+                        isInTag = NO;
+                        [self addString:@"<" addEnter:NO];
+                        [needParseLine deleteCharactersInRange:NSMakeRange(0, 1)];
+                    }
                     NSRange range = [needParseLine rangeOfString:@"<"];
                     if (range.location != NSNotFound) {
                         NSString* subString = [needParseLine substringToIndex:range.location];
-                        [self addString:subString addEnter:NO];
+                        // Special case, '<' is not a tag start signal
+                        if ([subString length] == 0) {
+                            [self addString:@"<" addEnter:NO];
+                            [needParseLine deleteCharactersInRange:NSMakeRange(0, 1)];
+                            continue;
+                        }
+
+                        // Check whether style or script
+                        if ([lastTagName isEqualToString:@"script"] ||
+                            [lastTagName isEqualToString:@"style"]) {
+                            [self parseCode:subString andLineNumber:lineNumber];
+                        } else {
+                            [self addString:subString addEnter:NO];
+                        }
+
                         NSRange range2;
                         range2.location = 0;
                         range2.length = [subString length];
@@ -134,7 +169,15 @@
                         continue;
                     }
                     else {
-                        [self addString:needParseLine addEnter:YES];
+                        // Between tags: html content, should be script or style, or string
+                        // Check whether style or script
+                        if ([lastTagName isEqualToString:@"script"] ||
+                            [lastTagName isEqualToString:@"style"]) {
+                            [self parseCode:needParseLine andLineNumber:lineNumber];
+                        } else {
+                            [self addString:needParseLine addEnter:YES];
+                        }
+
                         [needParseLine setString:@""];
                         break;
                     }
@@ -164,6 +207,7 @@
                     
                     NSString* subString = [needParseLine substringToIndex:index];
                     [self addString:subString addEnter:NO];
+                    self.lastTagName = [subString lowercaseString];
                     [needParseLine deleteCharactersInRange:NSMakeRange(0, [subString length])];
                     [self addEnd];
                     isTagNameFound = YES;
@@ -233,6 +277,25 @@
             }
 		}
 	}	
+}
+
+-(void) parseCode: (NSString*) parseSource andLineNumber:(int)lineNumber
+{
+    // For javascript
+    if ([lastTagName isEqualToString:@"script"]) {
+        if (jsParser == nil) {
+            jsParser = [[JavaScriptParser alloc] init];
+        }
+        [jsParser setContent:parseSource andProjectBase:nil];
+        [jsParser setWithHeaderAndEnder:NO];
+        [jsParser setMaxLineCount:[Utils getInstance].colorScheme.max_line_count];
+        [jsParser startParse];
+        NSString* _htmlContent = [jsParser getHtml];
+        [self addRawHtml:_htmlContent];
+        isCodeInTagParseEnded = [jsParser isStringOrCommentsEnded];
+    } else {
+        [self addString:parseSource addEnter:NO];
+    }
 }
 
 // return YES, if we need to restart parse

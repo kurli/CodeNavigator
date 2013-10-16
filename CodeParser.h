@@ -24,6 +24,7 @@
     int currentParseLine;
     
     int maxLineCount;
+    BOOL withHeaderAndEnder;
 }
 
 @property (nonatomic, strong) NSDictionary* parserConfig;
@@ -36,9 +37,13 @@
 
 -(void) setMaxLineCount:(int)max;
 
+-(BOOL) isStringOrCommentsEnded;
+
 -(BOOL) startParse;
 
 -(BOOL) isProjectDefinedWord:(NSString*) word;
+
+-(void) setWithHeaderAndEnder:(BOOL)enable;
 
 // ---------------- Parser related interface -------------------
 -(BOOL) checkCommentsLine;
@@ -102,6 +107,8 @@
 -(void) systemStart;
 
 -(void) numberStart;
+
+-(void) addRawHtml:(NSString*) html;
 
 // ---------------- HTML Components End ----------------------
 

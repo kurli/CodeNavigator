@@ -346,6 +346,9 @@
 		
 		if ( [needParseLine characterAtIndex:[needParseLine length]-1] != '\\' )
         {
+            // Special treat for JS parse in Html
+            isStringNotEnded = YES;
+            // End
 			[needParseLine setString:@""];
 			return NO;
         }

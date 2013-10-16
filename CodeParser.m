@@ -22,8 +22,15 @@
         NSString* keywords = [self getKeywordsStr];
         keywordsArray = [keywords componentsSeparatedByString:@" "];
         preprocessorArray = [NSArray arrayWithObjects: PREPROCESSOR];
+        
+        withHeaderAndEnder = YES;
     }
     return self;
+}
+
+-(void) setWithHeaderAndEnder:(BOOL)enable
+{
+    withHeaderAndEnder = enable;
 }
 
 -(void) setFile:(NSString*)name andProjectBase:(NSString *)base
@@ -164,7 +171,9 @@
     {
 		return NO;
     }
-	[self addHead];
+    if (withHeaderAndEnder) {
+        [self addHead];
+    }
 
 	NSArray* lineArray = [fileContent componentsSeparatedByString:@"\n"];
 	int i = 0;
@@ -177,18 +186,24 @@
             if (i == 61) {
                 i = i;
             }
-            [self lineStart:i+1 andContent:[lineArray objectAtIndex:i]];
+            if (withHeaderAndEnder) {
+                [self lineStart:i+1 andContent:[lineArray objectAtIndex:i]];
+            }
             NSString* lineString = [lineArray objectAtIndex: i];
             lineString = [self wrapLine:lineString];
             currentParseLine = i;
             [self parseLine: lineString lineNum:i];
-            [self lineEnd];
+            if (withHeaderAndEnder) {
+                [self lineEnd];
+            }
             NSRange range = {start, [htmlContent length]-start};
             [htmlContent replaceOccurrencesOfString:BREAK_STR withString:@"<br>" options:NSCaseInsensitiveSearch range:range];
         }
     }
-    [htmlContent appendString: HTML_END];
-    [self addString:@"" addEnter:YES];
+    if (withHeaderAndEnder) {
+        [htmlContent appendString: HTML_END];
+        [self addString:@"" addEnter:YES];
+    }
 	return YES;
 }
 
@@ -314,6 +329,9 @@
 
 -(void) bracesStarted:(int)lineNumber andToken:(NSString *)token
 {
+    if (!withHeaderAndEnder) {
+        return;
+    }
     if (bracesArray == nil) {
         bracesArray = [[NSMutableArray alloc] init];
     }
@@ -335,6 +353,9 @@
 
 -(void) bracesEnded:(int)lineNumber andToken:(NSString *)token
 {
+    if (!withHeaderAndEnder) {
+        return;
+    }
     if (bracesArray == nil) {
         return;
     }
@@ -499,6 +520,11 @@
     [htmlContent appendString: content];    
 }
 
+-(void) addRawHtml:(NSString *)html
+{
+    [htmlContent appendString:html];
+}
+
 -(void) lineEnd
 {
 	[htmlContent appendString: HTML_LINE_END];
@@ -512,6 +538,11 @@
 -(void) numberStart
 {
     [htmlContent appendString: HTML_NUMBER_START];
+}
+
+-(BOOL) isStringOrCommentsEnded
+{
+    return !isCommentsNotEnded && !isStringNotEnded;
 }
 
 // ---------------- HTML Components End ------------------- 
