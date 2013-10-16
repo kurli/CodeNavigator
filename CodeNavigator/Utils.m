@@ -175,6 +175,10 @@ static Utils *static_utils;
     NSError* error;
     BOOL isExist = false;
     BOOL isFolder = NO;
+    // When below statement changed, we need to change to latest version number
+    // 1: html format changed
+    // 2: cscope file content changed
+    // 3: Added new parser config json file
     NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/4_0.version"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:versionFile];
     if (isExist == YES)
@@ -271,6 +275,25 @@ static Utils *static_utils;
         if (isExist == NO || (isExist == YES && isFolder == NO))
         {
             [[NSFileManager defaultManager] copyItemAtPath:buildInParserPathBundle toPath:buildInParserPath error:&error];
+        }
+        // Append mode
+        if (isExist == YES) {
+            NSArray* contentsInBundle = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:buildInParserPathBundle error:&error];
+            NSArray* contentsInSetting = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:buildInParserPath error:&error];
+            for (NSString* str in contentsInBundle) {
+                int i;
+                for (i = 0; i < [contentsInSetting count]; i++) {
+                    NSString* str2 = [contentsInSetting objectAtIndex:i];
+                    if ([str isEqualToString:str2]) {
+                        continue;
+                    }
+                }
+                if (i == [contentsInSetting count]) {
+                    NSString* srcPath = [buildInParserPathBundle stringByAppendingPathComponent:str];
+                    NSString* desPath = [buildInParserPath stringByAppendingPathComponent:str];
+                    [[NSFileManager defaultManager] copyItemAtPath:srcPath toPath:desPath error:&error];
+                }
+            }
         }
     }
 }
