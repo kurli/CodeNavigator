@@ -179,7 +179,7 @@ static Utils *static_utils;
     // 1: html format changed
     // 2: cscope file content changed
     // 3: Added new parser config json file
-    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/4_0.version"];
+    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/4_1.version"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:versionFile];
     if (isExist == YES)
     {
@@ -285,7 +285,7 @@ static Utils *static_utils;
                 for (i = 0; i < [contentsInSetting count]; i++) {
                     NSString* str2 = [contentsInSetting objectAtIndex:i];
                     if ([str isEqualToString:str2]) {
-                        continue;
+                        break;
                     }
                 }
                 if (i == [contentsInSetting count]) {
