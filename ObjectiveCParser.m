@@ -314,6 +314,10 @@
         {
 			if (index > 0 && [needParseLine characterAtIndex:index-1] == '\\')
             {
+                // Check whether this situation "\\"
+                if (index-2 >= 0 && [needParseLine characterAtIndex:index-2] == '\\') {
+                    break;
+                }
 				continue;
             }
 			else
@@ -374,6 +378,10 @@
         {
 			if (index > 0 && [needParseLine characterAtIndex:index-1] == '\\')
             {
+                // Check whether this situation "\\"
+                if (index-2 >= 0 && [needParseLine characterAtIndex:index-2] == '\\') {
+                    break;
+                }
 				continue;
             }
 			else
