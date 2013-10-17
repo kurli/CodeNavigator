@@ -65,6 +65,10 @@
     {
         parser = [[HtmlParser alloc] init];
     }
+    else if (CSS == type)
+    {
+        parser = [[CSSParser alloc] init];
+    }
 	else
     {
 		parser = nil;

@@ -14,6 +14,7 @@
 @implementation HtmlParser
 @synthesize lastTagName;
 @synthesize jsParser;
+@synthesize cssParser;
 
 -(NSString*) getExtentionsStr
 {
@@ -159,7 +160,7 @@
                             [lastTagName isEqualToString:@"style"]) {
                             [self parseCode:subString andLineNumber:lineNumber];
                         } else {
-                            [self addString:subString addEnter:NO];
+                            [self parseCode:subString andLineNumber:lineNumber];
                         }
 
                         NSRange range2;
@@ -175,7 +176,7 @@
                             [lastTagName isEqualToString:@"style"]) {
                             [self parseCode:needParseLine andLineNumber:lineNumber];
                         } else {
-                            [self addString:needParseLine addEnter:YES];
+                            [self parseCode:needParseLine andLineNumber:lineNumber];
                         }
 
                         [needParseLine setString:@""];
@@ -209,6 +210,7 @@
                     [self addString:subString addEnter:NO];
                     self.lastTagName = [subString lowercaseString];
                     self.jsParser = nil;
+                    self.cssParser = nil;
                     [needParseLine deleteCharactersInRange:NSMakeRange(0, [subString length])];
                     [self addEnd];
                     isTagNameFound = YES;
@@ -295,8 +297,16 @@
         [self addRawHtml:_htmlContent];
         isCodeInTagParseEnded = [jsParser isStringOrCommentsEnded];
     } else {
-        [self addString:parseSource addEnter:NO];
-    }
+        if (cssParser == nil) {
+            cssParser = [[CSSParser alloc] init];
+        }
+        [cssParser setContent:parseSource andProjectBase:nil];
+        [cssParser setWithHeaderAndEnder:NO];
+        [cssParser setMaxLineCount:[Utils getInstance].colorScheme.max_line_count];
+        [cssParser startParse];
+        NSString* _htmlContent = [cssParser getHtml];
+        [self addRawHtml:_htmlContent];
+        isCodeInTagParseEnded = [cssParser isStringOrCommentsEnded];    }
 }
 
 // return YES, if we need to restart parse

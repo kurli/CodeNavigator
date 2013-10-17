@@ -733,6 +733,8 @@
 		94B23AD81499025A00A83395 /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B23AD71499025A00A83395 /* HistoryController.m */; };
 		94B4036A14A0DE0300E3A636 /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4033014A0D5EB00E3A636 /* libHttpService.a */; };
 		94B4038114A0ED4700E3A636 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4038014A0ED4700E3A636 /* CFNetwork.framework */; };
+		94B69881180EEE7A009C7176 /* CSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B69880180EEE7A009C7176 /* CSSParser.m */; };
+		94B69882180EEE7A009C7176 /* CSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B69880180EEE7A009C7176 /* CSSParser.m */; };
 		94B7E5AA156FE2BA000F3F34 /* FileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B7E5A8156FE2BA000F3F34 /* FileInfoViewController.m */; };
 		94B7E5AB156FE2BB000F3F34 /* FileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B7E5A8156FE2BA000F3F34 /* FileInfoViewController.m */; };
 		94B7E5AC156FE2BB000F3F34 /* FileInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B7E5A9156FE2BA000F3F34 /* FileInfoViewController.xib */; };
@@ -1441,6 +1443,8 @@
 		94B4037E14A0E33000E3A636 /* localhostAddresses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = localhostAddresses.h; path = HttpService/localhostAddresses.h; sourceTree = "<group>"; };
 		94B4037F14A0E33000E3A636 /* MyHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyHTTPConnection.h; path = HttpService/MyHTTPConnection.h; sourceTree = "<group>"; };
 		94B4038014A0ED4700E3A636 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		94B6987F180EEE7A009C7176 /* CSSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSSParser.h; sourceTree = "<group>"; };
+		94B69880180EEE7A009C7176 /* CSSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSSParser.m; sourceTree = "<group>"; };
 		94B7E5A7156FE2BA000F3F34 /* FileInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileInfoViewController.h; path = FileInfoController/FileInfoViewController.h; sourceTree = "<group>"; };
 		94B7E5A8156FE2BA000F3F34 /* FileInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileInfoViewController.m; path = FileInfoController/FileInfoViewController.m; sourceTree = "<group>"; };
 		94B7E5A9156FE2BA000F3F34 /* FileInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FileInfoViewController.xib; path = FileInfoController/FileInfoViewController.xib; sourceTree = "<group>"; };
@@ -1793,6 +1797,8 @@
 				94AB1E5114AF5E0300451020 /* UnSupportedParser.m */,
 				94D16DE514C9CC3B007439EB /* ImageParser.h */,
 				94D16DE614C9CC3B007439EB /* ImageParser.m */,
+				94B6987F180EEE7A009C7176 /* CSSParser.h */,
+				94B69880180EEE7A009C7176 /* CSSParser.m */,
 				94BD81DF18014840002F8153 /* PHPDefinition.h */,
 				94BD81E018014840002F8153 /* PHPParser.h */,
 				94BD81E118014840002F8153 /* PHPParser.m */,
@@ -3003,6 +3009,7 @@
 				944DD7CA1527732C000473BE /* fnmatch.c in Sources */,
 				944DD7D415277502000473BE /* util.c in Sources */,
 				944DD7D71527752D000473BE /* io.c in Sources */,
+				94B69881180EEE7A009C7176 /* CSSParser.m in Sources */,
 				944DD7DA15277591000473BE /* dif_dir.c in Sources */,
 				944DD7DD152775FC000473BE /* analyze.c in Sources */,
 				944DD7E115277625000473BE /* cmpbuf.c in Sources */,
@@ -3489,6 +3496,7 @@
 				94636B55155A91E700B1C37F /* CommentWrapper.m in Sources */,
 				9461817A155EEDAB00A25635 /* CommentManager.m in Sources */,
 				94246F5F156BC84600CA4234 /* NSObject+SBJson.m in Sources */,
+				94B69882180EEE7A009C7176 /* CSSParser.m in Sources */,
 				94246F61156BC84600CA4234 /* SBJsonParser.m in Sources */,
 				94246F63156BC84600CA4234 /* SBJsonStreamParser.m in Sources */,
 				94246F65156BC84600CA4234 /* SBJsonStreamParserAccumulator.m in Sources */,

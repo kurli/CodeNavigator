@@ -10,6 +10,7 @@
 #import "CodeParser.h"
 
 @class JavaScriptParser;
+@class CSSParser;
 
 @interface HtmlParser : CodeParser
 {
@@ -20,6 +21,7 @@
 
 @property (strong, nonatomic) NSString* lastTagName;
 @property (strong, nonatomic) JavaScriptParser* jsParser;
+@property (strong, nonatomic) CSSParser* cssParser;
 
 -(BOOL) checkCommentsLine;
 

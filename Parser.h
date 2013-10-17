@@ -13,6 +13,7 @@
 #import "JavaParser.h"
 #import "JavaScriptParser.h"
 #import "PHPParser.h"
+#import "CSSParser.h"
 
 #define MANUALLY_PARSER_PATH @"/Documents/.settings/ManuallyParser"
 #define EXTENSION @"extension"
@@ -22,7 +23,7 @@
 #define TYPE @"type"
 #define KEYWORDS @"keywords"
 
-#define PREDEF_PARSER @"C/C++", @"Objective-C", @"C#", @"Java", @"Delphi", @"Javascript", @"Python", @"Ruby", @"Bash", @"PHP"
+#define PREDEF_PARSER @"C/C++", @"Objective-C", @"C#", @"Java", @"Delphi", @"Javascript", @"Python", @"Ruby", @"Bash", @"PHP", @"CSS"
 
 typedef enum _ParserType
 {
@@ -35,8 +36,9 @@ typedef enum _ParserType
     PYTHON,
     RUBY,
     BASH,
-    PHP,//End
-    HTML,
+    PHP,
+    CSS,
+    HTML,//End
     IMAGE,
     UNKNOWN
 } ParserType;
