@@ -32,15 +32,15 @@
 @synthesize detailViewController;
 #endif
 
-void uncaughtExceptionHandler(NSException*exception){
-    NSLog(@"CRASH: %@", exception);
-    NSLog(@"Stack Trace: %@",[exception callStackSymbols]);
-    // Internal error reporting
-}
+//void uncaughtExceptionHandler(NSException*exception){
+//    NSLog(@"CRASH: %@", exception);
+//    NSLog(@"Stack Trace: %@",[exception callStackSymbols]);
+//    // Internal error reporting
+//}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+//    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
 
     [[Utils getInstance] initVersion];
 

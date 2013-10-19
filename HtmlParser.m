@@ -160,7 +160,7 @@
                             [lastTagName isEqualToString:@"style"]) {
                             [self parseCode:subString andLineNumber:lineNumber];
                         } else {
-                            [self parseCode:subString andLineNumber:lineNumber];
+                            [self addString:subString addEnter:NO];
                         }
 
                         NSRange range2;
@@ -176,7 +176,7 @@
                             [lastTagName isEqualToString:@"style"]) {
                             [self parseCode:needParseLine andLineNumber:lineNumber];
                         } else {
-                            [self parseCode:needParseLine andLineNumber:lineNumber];
+                            [self addString:needParseLine addEnter:NO];
                         }
 
                         [needParseLine setString:@""];

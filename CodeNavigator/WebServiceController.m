@@ -65,18 +65,18 @@
 {
     [self setInternetAddress:nil];
     [self setHttpServer:nil];
-    [self setTextView:nil];
+//    [self setTextView:nil];
     [self setWebServiceSwitcher:nil];
-    [self setProgressView:nil];
+//    [self setProgressView:nil];
 //    [self.zipFiles removeAllObjects];
 //    [self setZipFiles:nil];
     [self setMasterViewController:nil];
 //    [self setUploadToPath:nil];
-    [popOverController dismissPopoverAnimated:NO];
-    [self setPopOverController:nil];
-    [self set_tableView:nil];
-    [self setStopButton:nil];
-    [self setIndicator:nil];
+//    [popOverController dismissPopoverAnimated:NO];
+//    [self setPopOverController:nil];
+//    [self set_tableView:nil];
+//    [self setStopButton:nil];
+//    [self setIndicator:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -125,9 +125,9 @@
             info = [info stringByAppendingFormat:@"Current upload to location:  %@\n\nPlease turn on \"Web Upload Service\"", relativePath];
             
             [self.textView setText:info];
-
         }
     }
+    [_tableView reloadData];
 }
 
 -(NSString*) getUploadToPathRelative {
@@ -139,8 +139,8 @@
     NSError* error;
 	
     if ([sender isOn]){
-        NSString *root = [masterViewController getCurrentLocation];
-        self.uploadToPath = [[masterViewController getCurrentLocation] stringByAppendingString:@""];
+        //NSString *root = [masterViewController getCurrentLocation];
+        //self.uploadToPath = [[masterViewController getCurrentLocation] stringByAppendingString:@""];
         if (_httpServer == nil)
         {
             _httpServer = [[HTTPServer alloc] init];
@@ -151,7 +151,7 @@
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayInfoUpdate:) name:@"LocalhostAdressesResolved" object:nil];
         }
         
-        [_httpServer setDocumentRoot:[NSURL fileURLWithPath:root]];
+        [_httpServer setDocumentRoot:[NSURL fileURLWithPath:uploadToPath]];
         [_httpServer start:&error];
         [textView setText:@"Please Wait..."];
         [localhostAddresses performSelectorInBackground:@selector(list) withObject:nil];
@@ -651,11 +651,12 @@
             cell.textLabel.text = @"Web Upload Service";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             if (webServiceSwitcher == nil) {
-                switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
+                switchview = [[UISwitch alloc] init];
                 [self setWebServiceSwitcher:switchview];
                 [webServiceSwitcher addTarget:self action:@selector(selectionChanged:) forControlEvents:UIControlEventValueChanged];
             }
             cell.accessoryView = webServiceSwitcher;
+            [cell.contentView  addSubview :switchview];
             break;
         case 1:
             cell = [tableView dequeueReusableCellWithIdentifier:uploadToItemIdentifier];
