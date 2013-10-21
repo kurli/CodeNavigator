@@ -226,7 +226,7 @@ typedef enum _AlertConfirmMode{
 
 -(int) getResultViewFileIndex;
 
--(NSString*)HloveyRC4:(NSString*)aInput key:(NSString*)aKey;
++ (NSString*)HloveyRC4:(NSString*)aInput key:(NSString*)aKey;
 
 -(NSString*) getDisplayFile:(NSString*) sourcePath andProjectBase:(NSString*) projectPath;
 

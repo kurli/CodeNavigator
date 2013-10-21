@@ -985,6 +985,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9402E02D18140D70005A97D4 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../ios-openssl/lib/libssl.a"; sourceTree = "<group>"; };
+		9402E0311814147B005A97D4 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../ios-openssl/lib/libcrypto.a"; sourceTree = "<group>"; };
 		9404058514964E56002A0C73 /* lgz_javascript.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = lgz_javascript.js; sourceTree = "<group>"; };
 		9404E8F11541E6B000C5E1BA /* 1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpeg; sourceTree = "<group>"; };
 		9404E8F21541E6B000C5E1BA /* 2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpeg; sourceTree = "<group>"; };
@@ -1716,6 +1718,8 @@
 		9431D73714910B3000B0900E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9402E0311814147B005A97D4 /* libcrypto.a */,
+				9402E02D18140D70005A97D4 /* libssl.a */,
 				9417EB7714AE118000224D2A /* iAd.framework */,
 				94B4038014A0ED4700E3A636 /* CFNetwork.framework */,
 				9431D73814910B3000B0900E /* UIKit.framework */,
@@ -3881,8 +3885,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
-					"\"$(SRCROOT)\"",
+					"\\\"$(SRCROOT)/ObjectiveGit/libgit2\\\"",
+					"$(SRCROOT)",
+					"/Users/lgz_software/Documents/iOS_Development/ios-openssl/lib",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNavigator;
@@ -3911,8 +3916,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
-					"\"$(SRCROOT)\"",
+					"\\\"$(SRCROOT)/ObjectiveGit/libgit2\\\"",
+					"$(SRCROOT)",
+					"/Users/lgz_software/Documents/iOS_Development/ios-openssl/lib",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNavigator;
@@ -3944,8 +3950,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
-					"\"$(SRCROOT)\"",
+					"\\\"$(SRCROOT)/ObjectiveGit/libgit2\\\"",
+					"$(SRCROOT)",
+					"/Users/lgz_software/Documents/iOS_Development/ios-openssl/lib",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNavigator;

@@ -1486,7 +1486,7 @@ FINAL:
 }
 
 #pragma RC4
--(NSString*)HloveyRC4:(NSString*)aInput key:(NSString*)aKey
++ (NSString*)HloveyRC4:(NSString*)aInput key:(NSString*)aKey
 {
     
     NSMutableArray *iS = [[NSMutableArray alloc] initWithCapacity:256];

@@ -15,6 +15,10 @@
 
 - (IBAction)gitCloneClicked:(id)sender;
 
+- (IBAction)saveClicked:(id)sender;
+
+- (IBAction)discardClicked:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
 
 @property (weak, nonatomic) IBOutlet UITextField *projectNameTextField;

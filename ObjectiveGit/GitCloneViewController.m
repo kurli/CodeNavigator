@@ -13,6 +13,9 @@
 #define FETCH_PROGRESS @"CodeNavigator_fetch_progress"
 #define CHECKOUT_PROGRESS @"CodeNavigator_checkout_progress"
 
+#define SEPERATOR @"--lgz_SePeRator--"
+#define KEY @"CodeNavigator--lgz_SePeRator--"
+
 @interface TransferProgress : NSObject
 @property (nonatomic, unsafe_unretained) unsigned int total_objects;
 @property (nonatomic, unsafe_unretained) unsigned int indexed_objects;
@@ -75,11 +78,66 @@ static int cred_acquire(git_cred **cred,
 {
     const char* username = [[Utils getInstance].gitUsername cStringUsingEncoding:NSUTF8StringEncoding];
 	const char* password = [[Utils getInstance].gitPassword cStringUsingEncoding:NSUTF8StringEncoding];
-        
+
 	return git_cred_userpass_plaintext_new(cred, username, password);
 }
 
 @implementation GitCloneViewController
+@synthesize usernameTextField;
+@synthesize passwordTextField;
+
+- (IBAction)discardClicked:(id)sender {
+    NSString* path = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/git.config"];
+    NSError* error;
+
+    [[Utils getInstance] setGitUsername:nil];
+    [[Utils getInstance] setGitPassword:nil];
+    self.usernameTextField.text = @"";
+    self.passwordTextField.text = @"";
+    
+    [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+}
+
+- (IBAction)saveClicked:(id)sender {
+    NSError* error;
+    NSString* path = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/git.config"];
+    NSString* username = self.usernameTextField.text;
+    NSString* password = self.passwordTextField.text;
+    [[Utils getInstance] setGitUsername:username];
+    [[Utils getInstance] setGitPassword:password];
+    
+    if (username.length == 0 || password.length == 0) {
+        [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+        return;
+    }
+    
+    username = [Utils HloveyRC4:username key:KEY];
+    password = [Utils HloveyRC4:password key:KEY];
+    
+    [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+    NSString* content = [NSString stringWithFormat:@"%@%@%@", username, SEPERATOR, password];
+    [content writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    NSError* error;
+    // Get username and paaasword from file
+    NSString* path = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/git.config"];
+    NSString* content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    // Parse content
+    NSArray* array = [content componentsSeparatedByString:SEPERATOR];
+    if ([array count] == 2) {
+        [[Utils getInstance] setGitUsername:[Utils HloveyRC4:[array objectAtIndex:0] key:KEY]];
+        [[Utils getInstance] setGitPassword:[Utils HloveyRC4:[array objectAtIndex:1] key:KEY]];
+    } else {
+        [[Utils getInstance] setGitUsername:@""];
+        [[Utils getInstance] setGitPassword:@""];
+        [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+    }
+    self.usernameTextField.text = [Utils getInstance].gitUsername;
+    self.passwordTextField.text = [Utils getInstance].gitPassword;
+}
 
 - (void) fetch_progress:(NSNotification*) gtp
 {
@@ -105,7 +163,7 @@ static int cred_acquire(git_cred **cred,
     NSString* remoteUrl = self.needCloneRemoteUrl;
     int success;
     
-    git_clone_options g_options;
+    git_clone_options g_options = GIT_CLONE_OPTIONS_INIT;
     //    git_buf path = GIT_BUF_INIT;
 //    git_reference *head;
 //    git_remote *origin;
@@ -113,18 +171,15 @@ static int cred_acquire(git_cred **cred,
     
     bool checkout_progress_cb_was_called = false,
     fetch_progress_cb_was_called = false;
-    
-    memset(&g_options, 0, sizeof(git_clone_options));
 	g_options.version = GIT_CLONE_OPTIONS_VERSION;
-	g_options.checkout_opts = dummy_opts;
-	g_options.checkout_opts.checkout_strategy = GIT_CHECKOUT_SAFE;
-    
+    g_options.transport = 0;
+	g_options.checkout_opts = dummy_opts;    
     g_options.checkout_opts.checkout_strategy = GIT_CHECKOUT_SAFE_CREATE;
 	g_options.checkout_opts.progress_cb = &checkout_progress;
 	g_options.checkout_opts.progress_payload = &checkout_progress_cb_was_called;
 	g_options.fetch_progress_cb = &fetch_progress;
 	g_options.fetch_progress_payload = &fetch_progress_cb_was_called;
-//    g_options.cred_acquire_cb = &cred_acquire;
+    g_options.cred_acquire_cb = &cred_acquire;
     
     NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
     NSString* gitFolder = projectFolder;
@@ -285,15 +340,20 @@ static int cred_acquire(git_cred **cred,
     NSRange range = [remoteURL rangeOfString:@"https://"];
     if (range.location != NSNotFound && range.location == 0)
     {
-        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"HTTPS connection is not supported"];
-        return;
+        if ([self.usernameTextField.text length] == 0 ||
+            [self.passwordTextField.text length] == 0) {
+            [[Utils getInstance] alertWithTitle:@"CodeNavigator"andMessage:@"You must provide Username & Password for this clone" ];
+            return;
+        }
     }
-    range = [remoteURL rangeOfString:@"ssh://"];
-    if (range.location != NSNotFound && range.location == 0)
-    {
-        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"SSH connection is not supported"];
-        return;
-    }
+//    range = [remoteURL rangeOfString:@"ssh://"];
+//    if (range.location != NSNotFound && range.location == 0)
+//    {
+//        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"SSH connection is not supported"];
+//        return;
+//    }
+    [[Utils getInstance] setGitUsername:self.usernameTextField.text];
+    [[Utils getInstance] setGitPassword:self.passwordTextField.text];
     
     NSString* projectName = [remoteURL lastPathComponent];
     projectName = [projectName stringByDeletingPathExtension];
@@ -320,8 +380,6 @@ static int cred_acquire(git_cred **cred,
     [self.cloningIndicator setHidden:NO];
     [self.cloningIndicator startAnimating];
     
-    [[Utils getInstance] setGitUsername:self.usernameTextField.text];
-    [[Utils getInstance] setGitPassword:self.passwordTextField.text];
     if (![self.cloneThread isExecuting])
     {
         [self setCloneThread:nil];
@@ -336,6 +394,7 @@ static int cred_acquire(git_cred **cred,
     [self.passwordTextField setEnabled:NO];
     //[self gitClone:remoteURL andProjectName:projectName];
 }
+
 - (void)viewDidUnload {
     [self setUrlTextField:nil];
     [self setInfoTextView:nil];
