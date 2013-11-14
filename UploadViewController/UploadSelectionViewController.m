@@ -92,7 +92,7 @@
         cell.textLabel.text = @"Web Upload Service";
     } else if (indexPath.row == 1) {
         //cell.imageView.image = [UIImage imageNamed:@"share.png"];
-        cell.textLabel.text = @"Git";
+        cell.textLabel.text = @"Git Clone";
     } else if (indexPath.row == 2) {
         //cell.imageView.image = [UIImage imageNamed:@"share.png"];
         cell.textLabel.text = @"Dropbox";

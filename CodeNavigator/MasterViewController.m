@@ -174,7 +174,7 @@
         if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
         {
             rect = self.fileSearchBar.frame;
-            rect.origin.y = 64;
+            rect.origin.y = 45;
             [self.fileSearchBar setFrame:rect];
         }
     }
