@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9402F56A1840F9B5006033EB /* libObjectiveGit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9402F5631840F88B006033EB /* libObjectiveGit-iOS.a */; };
 		94040588149659C4002A0C73 /* lgz_javascript.js in Resources */ = {isa = PBXBuildFile; fileRef = 9404058514964E56002A0C73 /* lgz_javascript.js */; };
 		9404E8F61541E6B000C5E1BA /* 1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9404E8F11541E6B000C5E1BA /* 1.jpeg */; };
 		9404E8F71541E6B000C5E1BA /* 1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9404E8F11541E6B000C5E1BA /* 1.jpeg */; };
@@ -299,10 +300,6 @@
 		9478596A162C5A08006E4575 /* php.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785928162C5A08006E4575 /* php.c */; };
 		9478596B162C5A08006E4575 /* python.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785929162C5A08006E4575 /* python.c */; };
 		9478596C162C5A08006E4575 /* read.c in Sources */ = {isa = PBXBuildFile; fileRef = 9478592A162C5A08006E4575 /* read.c */; };
-		9478596D162C5A08006E4575 /* regcomp.c in Sources */ = {isa = PBXBuildFile; fileRef = 9478592C162C5A08006E4575 /* regcomp.c */; };
-		9478596E162C5A08006E4575 /* regex_internal.c in Sources */ = {isa = PBXBuildFile; fileRef = 9478592D162C5A08006E4575 /* regex_internal.c */; };
-		9478596F162C5A08006E4575 /* regex.c in Sources */ = {isa = PBXBuildFile; fileRef = 9478592F162C5A08006E4575 /* regex.c */; };
-		94785970162C5A08006E4575 /* regexec.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785931162C5A08006E4575 /* regexec.c */; };
 		94785971162C5A08006E4575 /* rexx.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785932162C5A08006E4575 /* rexx.c */; };
 		94785972162C5A08006E4575 /* routines.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785933162C5A08006E4575 /* routines.c */; };
 		94785973162C5A08006E4575 /* ruby.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785935162C5A08006E4575 /* ruby.c */; };
@@ -320,6 +317,8 @@
 		9478597F162C5A08006E4575 /* vim.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785943162C5A08006E4575 /* vim.c */; };
 		94785980162C5A08006E4575 /* vstring.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785944162C5A08006E4575 /* vstring.c */; };
 		94785981162C5A08006E4575 /* yacc.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785946162C5A08006E4575 /* yacc.c */; };
+		94785A421840FAB90012988B /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94785A411840FAB90012988B /* libiconv.dylib */; };
+		94785A55184519660012988B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94785A54184519660012988B /* libz.dylib */; };
 		9478C6CF15C8093400F443D9 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9478C6CD15C8093400F443D9 /* HelpViewController.m */; };
 		9478C6D015C8093400F443D9 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6CE15C8093400F443D9 /* HelpViewController.xib */; };
 		9478C6D615C8207600F443D9 /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D115C8207600F443D9 /* appstore.png */; };
@@ -428,12 +427,6 @@
 		948E149716416D2600CBBD5B /* python.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785929162C5A08006E4575 /* python.c */; };
 		948E149816416D2600CBBD5B /* read.c in Sources */ = {isa = PBXBuildFile; fileRef = 9478592A162C5A08006E4575 /* read.c */; };
 		948E149916416D2600CBBD5B /* read.h in Sources */ = {isa = PBXBuildFile; fileRef = 9478592B162C5A08006E4575 /* read.h */; };
-		948E149A16416D2600CBBD5B /* regcomp.c in Sources */ = {isa = PBXBuildFile; fileRef = 9478592C162C5A08006E4575 /* regcomp.c */; };
-		948E149B16416D2600CBBD5B /* regex_internal.c in Sources */ = {isa = PBXBuildFile; fileRef = 9478592D162C5A08006E4575 /* regex_internal.c */; };
-		948E149C16416D2600CBBD5B /* regex_internal.h in Sources */ = {isa = PBXBuildFile; fileRef = 9478592E162C5A08006E4575 /* regex_internal.h */; };
-		948E149D16416D2600CBBD5B /* regex.c in Sources */ = {isa = PBXBuildFile; fileRef = 9478592F162C5A08006E4575 /* regex.c */; };
-		948E149E16416D2700CBBD5B /* regex.h in Sources */ = {isa = PBXBuildFile; fileRef = 94785930162C5A08006E4575 /* regex.h */; };
-		948E149F16416D2700CBBD5B /* regexec.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785931162C5A08006E4575 /* regexec.c */; };
 		948E14A016416D2700CBBD5B /* rexx.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785932162C5A08006E4575 /* rexx.c */; };
 		948E14A116416D2700CBBD5B /* routines.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785933162C5A08006E4575 /* routines.c */; };
 		948E14A216416D2700CBBD5B /* routines.h in Sources */ = {isa = PBXBuildFile; fileRef = 94785934162C5A08006E4575 /* routines.h */; };
@@ -637,7 +630,6 @@
 		94A0FAE4153DDA78004277BF /* cscope.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A0FAE2153DDA78004277BF /* cscope.png */; };
 		94A0FAE6153DDAD9004277BF /* virtualize.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A0FAE5153DDAD9004277BF /* virtualize.png */; };
 		94A0FAE7153DDAD9004277BF /* virtualize.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A0FAE5153DDAD9004277BF /* virtualize.png */; };
-		94A3B09A15447C6200C8E132 /* libObjectiveGit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BF7924150E398500FCF653 /* libObjectiveGit.a */; };
 		94A3B09B15447C7500C8E132 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A5184A152DF30A0062DA65 /* Security.framework */; };
 		94A404AA158A1BA00084F645 /* FileInfoControlleriPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A404A9158A1BA00084F645 /* FileInfoControlleriPhone.m */; };
 		94A404AC158A299C0084F645 /* ManuallyParserViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A404AB158A299C0084F645 /* ManuallyParserViewController-iPhone.xib */; };
@@ -748,7 +740,6 @@
 		94BD81DE18014587002F8153 /* JavaScriptParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81DC18014587002F8153 /* JavaScriptParser.m */; };
 		94BD81E218014840002F8153 /* PHPParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81E118014840002F8153 /* PHPParser.m */; };
 		94BF7DA4150E727B00FCF653 /* libZip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434BFB314A389BE00B34419 /* libZip.a */; };
-		94BF7DA6150E73B100FCF653 /* libObjectiveGit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BF7924150E398500FCF653 /* libObjectiveGit.a */; };
 		94BF99BC1534887000F4EFFD /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF99BB1534887000F4EFFD /* refresh.png */; };
 		94BF99BD1534887000F4EFFD /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF99BB1534887000F4EFFD /* refresh.png */; };
 		94BF99BF15348A6700F4EFFD /* refresh_error.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF99BE15348A6700F4EFFD /* refresh_error.png */; };
@@ -839,12 +830,6 @@
 		94D4EDB31642B8AB00601FE4 /* python.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785929162C5A08006E4575 /* python.c */; };
 		94D4EDB41642B8AB00601FE4 /* read.c in Sources */ = {isa = PBXBuildFile; fileRef = 9478592A162C5A08006E4575 /* read.c */; };
 		94D4EDB51642B8AB00601FE4 /* read.h in Sources */ = {isa = PBXBuildFile; fileRef = 9478592B162C5A08006E4575 /* read.h */; };
-		94D4EDB61642B8AB00601FE4 /* regcomp.c in Sources */ = {isa = PBXBuildFile; fileRef = 9478592C162C5A08006E4575 /* regcomp.c */; };
-		94D4EDB71642B8AB00601FE4 /* regex_internal.c in Sources */ = {isa = PBXBuildFile; fileRef = 9478592D162C5A08006E4575 /* regex_internal.c */; };
-		94D4EDB81642B8AB00601FE4 /* regex_internal.h in Sources */ = {isa = PBXBuildFile; fileRef = 9478592E162C5A08006E4575 /* regex_internal.h */; };
-		94D4EDB91642B8AB00601FE4 /* regex.c in Sources */ = {isa = PBXBuildFile; fileRef = 9478592F162C5A08006E4575 /* regex.c */; };
-		94D4EDBA1642B8AB00601FE4 /* regex.h in Sources */ = {isa = PBXBuildFile; fileRef = 94785930162C5A08006E4575 /* regex.h */; };
-		94D4EDBB1642B8AB00601FE4 /* regexec.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785931162C5A08006E4575 /* regexec.c */; };
 		94D4EDBC1642B8AB00601FE4 /* rexx.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785932162C5A08006E4575 /* rexx.c */; };
 		94D4EDBD1642B8AB00601FE4 /* routines.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785933162C5A08006E4575 /* routines.c */; };
 		94D4EDBE1642B8AB00601FE4 /* routines.h in Sources */ = {isa = PBXBuildFile; fileRef = 94785934162C5A08006E4575 /* routines.h */; };
@@ -905,6 +890,41 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		9402F55C1840F88B006033EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9402F54F1840F889006033EB /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = ObjectiveGit;
+		};
+		9402F55E1840F88B006033EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9402F54F1840F889006033EB /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88F05A6B16011E5400B7AD1D;
+			remoteInfo = ObjectiveGitTests;
+		};
+		9402F5601840F88B006033EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9402F54F1840F889006033EB /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 04DB4645133AB57600D9C624;
+			remoteInfo = "ObjectiveGit-iOS";
+		};
+		9402F5621840F88B006033EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9402F54F1840F889006033EB /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F6CBB4A417FFD50500404926;
+			remoteInfo = "ObjectiveGit-iOS-arm64";
+		};
+		9402F5641840F8EF006033EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9402F54F1840F889006033EB /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 04DB4644133AB57600D9C624;
+			remoteInfo = "ObjectiveGit-iOS";
+		};
 		9434BFB214A389BE00B34419 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9434BFAE14A389BC00B34419 /* Zip.xcodeproj */;
@@ -919,6 +939,13 @@
 			remoteGlobalIDString = 9434BF9D14A389BC00B34419;
 			remoteInfo = Zip;
 		};
+		94785A50184516130012988B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9402F54F1840F889006033EB /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 04DB4644133AB57600D9C624;
+			remoteInfo = "ObjectiveGit-iOS";
+		};
 		949DC1951583E8CF00385796 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9434BFAE14A389BC00B34419 /* Zip.xcodeproj */;
@@ -932,13 +959,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 94B4031A14A0D5EA00E3A636;
 			remoteInfo = HttpService;
-		};
-		94A3B09815447C4C00C8E132 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 94BF791F150E398400FCF653 /* ObjectiveGit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 94BF790E150E398400FCF653;
-			remoteInfo = ObjectiveGit;
 		};
 		94ADF13B14BB27EE00BA807A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -968,25 +988,12 @@
 			remoteGlobalIDString = 94B4031A14A0D5EA00E3A636;
 			remoteInfo = HttpService;
 		};
-		94BF7923150E398500FCF653 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 94BF791F150E398400FCF653 /* ObjectiveGit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 94BF790F150E398400FCF653;
-			remoteInfo = ObjectiveGit;
-		};
-		94BF7974150E3DA600FCF653 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 94BF791F150E398400FCF653 /* ObjectiveGit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 94BF790E150E398400FCF653;
-			remoteInfo = ObjectiveGit;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		9402E02D18140D70005A97D4 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../ios-openssl/lib/libssl.a"; sourceTree = "<group>"; };
 		9402E0311814147B005A97D4 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../ios-openssl/lib/libcrypto.a"; sourceTree = "<group>"; };
+		9402F54F1840F889006033EB /* ObjectiveGitFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveGitFramework.xcodeproj; path = "../objective-git/ObjectiveGitFramework.xcodeproj"; sourceTree = "<group>"; };
 		9404058514964E56002A0C73 /* lgz_javascript.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = lgz_javascript.js; sourceTree = "<group>"; };
 		9404E8F11541E6B000C5E1BA /* 1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpeg; sourceTree = "<group>"; };
 		9404E8F21541E6B000C5E1BA /* 2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpeg; sourceTree = "<group>"; };
@@ -1138,26 +1145,6 @@
 		9434A5A4174FC00D004B1A9D /* GitCloneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitCloneViewController.m; path = ObjectiveGit/GitCloneViewController.m; sourceTree = "<group>"; };
 		9434A5A5174FC00D004B1A9D /* GitCloneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GitCloneViewController.xib; path = ObjectiveGit/GitCloneViewController.xib; sourceTree = "<group>"; };
 		9434BFAE14A389BC00B34419 /* Zip.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Zip.xcodeproj; path = Zip/Zip.xcodeproj; sourceTree = "<group>"; };
-		9434C00D14A392AC00B34419 /* FileInZipInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileInZipInfo.h; path = Zip/FileInZipInfo.h; sourceTree = "<group>"; };
-		9434C00E14A392AC00B34419 /* ZipException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipException.h; path = Zip/ZipException.h; sourceTree = "<group>"; };
-		9434C00F14A392AC00B34419 /* ZipFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipFile.h; path = Zip/ZipFile.h; sourceTree = "<group>"; };
-		9434C01014A392AC00B34419 /* ZipReadStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipReadStream.h; path = Zip/ZipReadStream.h; sourceTree = "<group>"; };
-		9434C01114A392AC00B34419 /* ZipWriteStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipWriteStream.h; path = Zip/ZipWriteStream.h; sourceTree = "<group>"; };
-		9434C01214A393DA00B34419 /* crc32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = crc32.h; path = Zip/crc32.h; sourceTree = "<group>"; };
-		9434C01314A393DA00B34419 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = crypt.h; path = Zip/crypt.h; sourceTree = "<group>"; };
-		9434C01414A393DA00B34419 /* deflate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = deflate.h; path = Zip/deflate.h; sourceTree = "<group>"; };
-		9434C01514A393DB00B34419 /* inffast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = inffast.h; path = Zip/inffast.h; sourceTree = "<group>"; };
-		9434C01614A393DB00B34419 /* inffixed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = inffixed.h; path = Zip/inffixed.h; sourceTree = "<group>"; };
-		9434C01714A393DB00B34419 /* inflate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = inflate.h; path = Zip/inflate.h; sourceTree = "<group>"; };
-		9434C01814A393DB00B34419 /* inftrees.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = inftrees.h; path = Zip/inftrees.h; sourceTree = "<group>"; };
-		9434C01914A393DB00B34419 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = Zip/ioapi.h; sourceTree = "<group>"; };
-		9434C01A14A393DB00B34419 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mztools.h; path = Zip/mztools.h; sourceTree = "<group>"; };
-		9434C01B14A393DB00B34419 /* trees.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = trees.h; path = Zip/trees.h; sourceTree = "<group>"; };
-		9434C01C14A393DB00B34419 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = Zip/unzip.h; sourceTree = "<group>"; };
-		9434C01D14A393DB00B34419 /* zconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zconf.h; path = Zip/zconf.h; sourceTree = "<group>"; };
-		9434C01E14A393DB00B34419 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zip.h; path = Zip/zip.h; sourceTree = "<group>"; };
-		9434C01F14A393DB00B34419 /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zlib.h; path = Zip/zlib.h; sourceTree = "<group>"; };
-		9434C02014A393DB00B34419 /* zutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zutil.h; path = Zip/zutil.h; sourceTree = "<group>"; };
 		94352106153EFC1E003F316A /* version_control.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = version_control.png; sourceTree = "<group>"; };
 		94353209157A861D0011A446 /* ManuallyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManuallyParser.h; sourceTree = "<group>"; };
 		9435320A157A861D0011A446 /* ManuallyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManuallyParser.m; sourceTree = "<group>"; };
@@ -1303,12 +1290,6 @@
 		94785929162C5A08006E4575 /* python.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = python.c; path = ctags/python.c; sourceTree = "<group>"; };
 		9478592A162C5A08006E4575 /* read.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = read.c; path = ctags/read.c; sourceTree = "<group>"; };
 		9478592B162C5A08006E4575 /* read.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = read.h; path = ctags/read.h; sourceTree = "<group>"; };
-		9478592C162C5A08006E4575 /* regcomp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = regcomp.c; path = ctags/regcomp.c; sourceTree = "<group>"; };
-		9478592D162C5A08006E4575 /* regex_internal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = regex_internal.c; path = ctags/regex_internal.c; sourceTree = "<group>"; };
-		9478592E162C5A08006E4575 /* regex_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = regex_internal.h; path = ctags/regex_internal.h; sourceTree = "<group>"; };
-		9478592F162C5A08006E4575 /* regex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = regex.c; path = ctags/regex.c; sourceTree = "<group>"; };
-		94785930162C5A08006E4575 /* regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = regex.h; path = ctags/regex.h; sourceTree = "<group>"; };
-		94785931162C5A08006E4575 /* regexec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = regexec.c; path = ctags/regexec.c; sourceTree = "<group>"; };
 		94785932162C5A08006E4575 /* rexx.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rexx.c; path = ctags/rexx.c; sourceTree = "<group>"; };
 		94785933162C5A08006E4575 /* routines.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = routines.c; path = ctags/routines.c; sourceTree = "<group>"; };
 		94785934162C5A08006E4575 /* routines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = routines.h; path = ctags/routines.h; sourceTree = "<group>"; };
@@ -1330,6 +1311,13 @@
 		94785944162C5A08006E4575 /* vstring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vstring.c; path = ctags/vstring.c; sourceTree = "<group>"; };
 		94785945162C5A08006E4575 /* vstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vstring.h; path = ctags/vstring.h; sourceTree = "<group>"; };
 		94785946162C5A08006E4575 /* yacc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yacc.c; path = ctags/yacc.c; sourceTree = "<group>"; };
+		94785A411840FAB90012988B /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		94785A4B184513CA0012988B /* FileInZipInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileInZipInfo.h; path = Zip/FileInZipInfo.h; sourceTree = "<group>"; };
+		94785A4C184513CA0012988B /* ZipException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipException.h; path = Zip/ZipException.h; sourceTree = "<group>"; };
+		94785A4D184513CA0012988B /* ZipReadStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipReadStream.h; path = Zip/ZipReadStream.h; sourceTree = "<group>"; };
+		94785A4E184513CA0012988B /* ZipWriteStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipWriteStream.h; path = Zip/ZipWriteStream.h; sourceTree = "<group>"; };
+		94785A4F184513E50012988B /* ZipFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipFile.h; path = Zip/ZipFile.h; sourceTree = "<group>"; };
+		94785A54184519660012988B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		9478C6CC15C8093400F443D9 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpViewController.h; path = help/HelpViewController.h; sourceTree = "<group>"; };
 		9478C6CD15C8093400F443D9 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpViewController.m; path = help/HelpViewController.m; sourceTree = "<group>"; };
 		9478C6CE15C8093400F443D9 /* HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HelpViewController.xib; path = help/HelpViewController.xib; sourceTree = "<group>"; };
@@ -1376,13 +1364,6 @@
 		948F1C7015583B7600AE4C99 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentViewController.h; path = Comments/CommentViewController.h; sourceTree = "<group>"; };
 		948F1C7115583B7600AE4C99 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentViewController.m; path = Comments/CommentViewController.m; sourceTree = "<group>"; };
 		948F1C7215583B7600AE4C99 /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentViewController.xib; path = Comments/CommentViewController.xib; sourceTree = "<group>"; };
-		949335B916A71BF300E0883E /* GTConfiguration+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GTConfiguration+Private.h"; path = "ObjectiveGit/ObjectiveGit/ObjectiveGit/GTConfiguration+Private.h"; sourceTree = "<group>"; };
-		949335BA16A71BF300E0883E /* GTDiff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTDiff.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTDiff.h; sourceTree = "<group>"; };
-		949335BB16A71BF300E0883E /* GTDiffDelta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTDiffDelta.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTDiffDelta.h; sourceTree = "<group>"; };
-		949335BC16A71BF300E0883E /* GTDiffFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTDiffFile.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTDiffFile.h; sourceTree = "<group>"; };
-		949335BD16A71BF400E0883E /* GTDiffHunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTDiffHunk.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTDiffHunk.h; sourceTree = "<group>"; };
-		949335BE16A71BF400E0883E /* GTDiffLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTDiffLine.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTDiffLine.h; sourceTree = "<group>"; };
-		949335BF16A71BF400E0883E /* GTRemote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTRemote.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTRemote.h; sourceTree = "<group>"; };
 		9497F3A1151A499C006BCBBF /* ObjectiveCParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCParser.h; sourceTree = "<group>"; };
 		9497F3A2151A499D006BCBBF /* ObjectiveCParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectiveCParser.m; sourceTree = "<group>"; };
 		9497F3A5151A4A13006BCBBF /* ObjectiveCDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCDefinition.h; sourceTree = "<group>"; };
@@ -1473,30 +1454,6 @@
 		94BD81DF18014840002F8153 /* PHPDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHPDefinition.h; path = CodeNavigator/PHPDefinition.h; sourceTree = "<group>"; };
 		94BD81E018014840002F8153 /* PHPParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PHPParser.h; path = CodeNavigator/PHPParser.h; sourceTree = "<group>"; };
 		94BD81E118014840002F8153 /* PHPParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PHPParser.m; path = CodeNavigator/PHPParser.m; sourceTree = "<group>"; };
-		94BF791F150E398400FCF653 /* ObjectiveGit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveGit.xcodeproj; path = ObjectiveGit/ObjectiveGit/ObjectiveGit.xcodeproj; sourceTree = "<group>"; };
-		94BF7D8D150E6DC200FCF653 /* GTBlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTBlob.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTBlob.h; sourceTree = "<group>"; };
-		94BF7D8E150E6DC200FCF653 /* GTBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTBranch.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTBranch.h; sourceTree = "<group>"; };
-		94BF7D8F150E6DC200FCF653 /* GTCommit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTCommit.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTCommit.h; sourceTree = "<group>"; };
-		94BF7D90150E6DC200FCF653 /* GTConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTConfiguration.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTConfiguration.h; sourceTree = "<group>"; };
-		94BF7D91150E6DC200FCF653 /* GTEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTEnumerator.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTEnumerator.h; sourceTree = "<group>"; };
-		94BF7D92150E6DC200FCF653 /* GTIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTIndex.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTIndex.h; sourceTree = "<group>"; };
-		94BF7D93150E6DC200FCF653 /* GTIndexEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTIndexEntry.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTIndexEntry.h; sourceTree = "<group>"; };
-		94BF7D94150E6DC200FCF653 /* GTObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTObject.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTObject.h; sourceTree = "<group>"; };
-		94BF7D95150E6DC200FCF653 /* GTObjectDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTObjectDatabase.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTObjectDatabase.h; sourceTree = "<group>"; };
-		94BF7D96150E6DC200FCF653 /* GTOdbObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTOdbObject.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTOdbObject.h; sourceTree = "<group>"; };
-		94BF7D97150E6DC200FCF653 /* GTReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTReference.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTReference.h; sourceTree = "<group>"; };
-		94BF7D98150E6DC200FCF653 /* GTRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTRepository.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTRepository.h; sourceTree = "<group>"; };
-		94BF7D99150E6DC200FCF653 /* GTRepository+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GTRepository+Private.h"; path = "ObjectiveGit/ObjectiveGit/ObjectiveGit/GTRepository+Private.h"; sourceTree = "<group>"; };
-		94BF7D9A150E6DC200FCF653 /* GTSignature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTSignature.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTSignature.h; sourceTree = "<group>"; };
-		94BF7D9B150E6DC200FCF653 /* GTTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTTag.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTTag.h; sourceTree = "<group>"; };
-		94BF7D9C150E6DC200FCF653 /* GTTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTTree.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTTree.h; sourceTree = "<group>"; };
-		94BF7D9D150E6DC200FCF653 /* GTTreeEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTTreeEntry.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/GTTreeEntry.h; sourceTree = "<group>"; };
-		94BF7D9E150E6DC200FCF653 /* ObjectiveGit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectiveGit.h; path = ObjectiveGit/ObjectiveGit/ObjectiveGit/ObjectiveGit.h; sourceTree = "<group>"; };
-		94BF7D9F150E6DD200FCF653 /* NSData+Git.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Git.h"; path = "ObjectiveGit/ObjectiveGit/ObjectiveGit/Categories/NSData+Git.h"; sourceTree = "<group>"; };
-		94BF7DA0150E6DD200FCF653 /* NSError+Git.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSError+Git.h"; path = "ObjectiveGit/ObjectiveGit/ObjectiveGit/Categories/NSError+Git.h"; sourceTree = "<group>"; };
-		94BF7DA1150E6DD200FCF653 /* NSString+Git.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Git.h"; path = "ObjectiveGit/ObjectiveGit/ObjectiveGit/Categories/NSString+Git.h"; sourceTree = "<group>"; };
-		94BF7DA2150E6E7900FCF653 /* git2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = git2.h; path = ObjectiveGit/libgit2/include/git2.h; sourceTree = "<group>"; };
-		94BF7DA3150E6E9900FCF653 /* dct_weak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dct_weak.h; path = ObjectiveGit/dct_weak.h; sourceTree = "<group>"; };
 		94BF99BB1534887000F4EFFD /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
 		94BF99BE15348A6700F4EFFD /* refresh_error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh_error.png; sourceTree = "<group>"; };
 		94C2CDC3167F55C9004FB1FB /* HtmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HtmlParser.h; sourceTree = "<group>"; };
@@ -1552,11 +1509,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94785A55184519660012988B /* libz.dylib in Frameworks */,
+				94785A421840FAB90012988B /* libiconv.dylib in Frameworks */,
+				9402F56A1840F9B5006033EB /* libObjectiveGit-iOS.a in Frameworks */,
 				9478C6DE15C8396300F443D9 /* Twitter.framework in Frameworks */,
 				94205714157B938B00178CBF /* QuartzCore.framework in Frameworks */,
 				94618169155BF85800A25635 /* MessageUI.framework in Frameworks */,
 				94A5184B152DF30A0062DA65 /* Security.framework in Frameworks */,
-				94BF7DA6150E73B100FCF653 /* libObjectiveGit.a in Frameworks */,
 				94BF7DA4150E727B00FCF653 /* libZip.a in Frameworks */,
 				9417EB7814AE118000224D2A /* iAd.framework in Frameworks */,
 				94B4038114A0ED4700E3A636 /* CFNetwork.framework in Frameworks */,
@@ -1596,7 +1555,6 @@
 				94B8EC261546F30900931747 /* MessageUI.framework in Frameworks */,
 				94B8EC241546F2FD00931747 /* AudioToolbox.framework in Frameworks */,
 				94A3B09B15447C7500C8E132 /* Security.framework in Frameworks */,
-				94A3B09A15447C6200C8E132 /* libObjectiveGit.a in Frameworks */,
 				94ADF16E14BB27EE00BA807A /* iAd.framework in Frameworks */,
 				94ADF16F14BB27EE00BA807A /* libZip.a in Frameworks */,
 				94ADF17014BB27EE00BA807A /* CFNetwork.framework in Frameworks */,
@@ -1613,6 +1571,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9402F5501840F889006033EB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9402F55D1840F88B006033EB /* ObjectiveGit.framework */,
+				9402F55F1840F88B006033EB /* ObjectiveGitTests.octest */,
+				9402F5611840F88B006033EB /* libObjectiveGit-iOS.a */,
+				9402F5631840F88B006033EB /* libObjectiveGit-iOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9417EB7914AE15CE00224D2A /* Banner */ = {
 			isa = PBXGroup;
 			children = (
@@ -1658,6 +1627,7 @@
 		9431D72914910B3000B0900E = {
 			isa = PBXGroup;
 			children = (
+				9402F54F1840F889006033EB /* ObjectiveGitFramework.xcodeproj */,
 				94407B1A16E7BCBD0011F941 /* CoreData.framework */,
 				94407B1216E7B2400011F941 /* GoogleAnalytics */,
 				9478C6DD15C8396300F443D9 /* Twitter.framework */,
@@ -1668,7 +1638,6 @@
 				94B8EC231546F2FD00931747 /* AudioToolbox.framework */,
 				94A5184A152DF30A0062DA65 /* Security.framework */,
 				94A51847152DF2AC0062DA65 /* DropboxSDK.framework */,
-				94BF791F150E398400FCF653 /* ObjectiveGit.xcodeproj */,
 				9434BFAE14A389BC00B34419 /* Zip.xcodeproj */,
 				94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */,
 				948C74101806FD6000065E65 /* iPad_icon */,
@@ -1718,6 +1687,8 @@
 		9431D73714910B3000B0900E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				94785A54184519660012988B /* libz.dylib */,
+				94785A411840FAB90012988B /* libiconv.dylib */,
 				9402E0311814147B005A97D4 /* libcrypto.a */,
 				9402E02D18140D70005A97D4 /* libssl.a */,
 				9417EB7714AE118000224D2A /* iAd.framework */,
@@ -1971,26 +1942,11 @@
 		9434C00C14A3925B00B34419 /* ZipInc */ = {
 			isa = PBXGroup;
 			children = (
-				9434C01214A393DA00B34419 /* crc32.h */,
-				9434C01314A393DA00B34419 /* crypt.h */,
-				9434C01414A393DA00B34419 /* deflate.h */,
-				9434C01514A393DB00B34419 /* inffast.h */,
-				9434C01614A393DB00B34419 /* inffixed.h */,
-				9434C01714A393DB00B34419 /* inflate.h */,
-				9434C01814A393DB00B34419 /* inftrees.h */,
-				9434C01914A393DB00B34419 /* ioapi.h */,
-				9434C01A14A393DB00B34419 /* mztools.h */,
-				9434C01B14A393DB00B34419 /* trees.h */,
-				9434C01C14A393DB00B34419 /* unzip.h */,
-				9434C01D14A393DB00B34419 /* zconf.h */,
-				9434C01E14A393DB00B34419 /* zip.h */,
-				9434C01F14A393DB00B34419 /* zlib.h */,
-				9434C02014A393DB00B34419 /* zutil.h */,
-				9434C00D14A392AC00B34419 /* FileInZipInfo.h */,
-				9434C00E14A392AC00B34419 /* ZipException.h */,
-				9434C00F14A392AC00B34419 /* ZipFile.h */,
-				9434C01014A392AC00B34419 /* ZipReadStream.h */,
-				9434C01114A392AC00B34419 /* ZipWriteStream.h */,
+				94785A4F184513E50012988B /* ZipFile.h */,
+				94785A4B184513CA0012988B /* FileInZipInfo.h */,
+				94785A4C184513CA0012988B /* ZipException.h */,
+				94785A4D184513CA0012988B /* ZipReadStream.h */,
+				94785A4E184513CA0012988B /* ZipWriteStream.h */,
 			);
 			name = ZipInc;
 			sourceTree = "<group>";
@@ -2164,12 +2120,6 @@
 				94785929162C5A08006E4575 /* python.c */,
 				9478592A162C5A08006E4575 /* read.c */,
 				9478592B162C5A08006E4575 /* read.h */,
-				9478592C162C5A08006E4575 /* regcomp.c */,
-				9478592D162C5A08006E4575 /* regex_internal.c */,
-				9478592E162C5A08006E4575 /* regex_internal.h */,
-				9478592F162C5A08006E4575 /* regex.c */,
-				94785930162C5A08006E4575 /* regex.h */,
-				94785931162C5A08006E4575 /* regexec.c */,
 				94785932162C5A08006E4575 /* rexx.c */,
 				94785933162C5A08006E4575 /* routines.c */,
 				94785934162C5A08006E4575 /* routines.h */,
@@ -2384,18 +2334,9 @@
 			name = GoogleAds;
 			sourceTree = "<group>";
 		};
-		94BF7920150E398400FCF653 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				94BF7924150E398500FCF653 /* libObjectiveGit.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		94BF7D8B150E6B1C00FCF653 /* Git */ = {
 			isa = PBXGroup;
 			children = (
-				94BF7D8C150E6D6E00FCF653 /* Header */,
 				941656FC1515C3C200838005 /* GitLogViewCongroller.h */,
 				941656FD1515C3C200838005 /* GitLogViewCongroller.m */,
 				941656FE1515C3C200838005 /* GitLogViewCongroller.xib */,
@@ -2415,43 +2356,6 @@
 				9434A5A5174FC00D004B1A9D /* GitCloneViewController.xib */,
 			);
 			name = Git;
-			sourceTree = "<group>";
-		};
-		94BF7D8C150E6D6E00FCF653 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				949335B916A71BF300E0883E /* GTConfiguration+Private.h */,
-				949335BA16A71BF300E0883E /* GTDiff.h */,
-				949335BB16A71BF300E0883E /* GTDiffDelta.h */,
-				949335BC16A71BF300E0883E /* GTDiffFile.h */,
-				949335BD16A71BF400E0883E /* GTDiffHunk.h */,
-				949335BE16A71BF400E0883E /* GTDiffLine.h */,
-				949335BF16A71BF400E0883E /* GTRemote.h */,
-				94BF7DA3150E6E9900FCF653 /* dct_weak.h */,
-				94BF7DA2150E6E7900FCF653 /* git2.h */,
-				94BF7D9F150E6DD200FCF653 /* NSData+Git.h */,
-				94BF7DA0150E6DD200FCF653 /* NSError+Git.h */,
-				94BF7DA1150E6DD200FCF653 /* NSString+Git.h */,
-				94BF7D8D150E6DC200FCF653 /* GTBlob.h */,
-				94BF7D8E150E6DC200FCF653 /* GTBranch.h */,
-				94BF7D8F150E6DC200FCF653 /* GTCommit.h */,
-				94BF7D90150E6DC200FCF653 /* GTConfiguration.h */,
-				94BF7D91150E6DC200FCF653 /* GTEnumerator.h */,
-				94BF7D92150E6DC200FCF653 /* GTIndex.h */,
-				94BF7D93150E6DC200FCF653 /* GTIndexEntry.h */,
-				94BF7D94150E6DC200FCF653 /* GTObject.h */,
-				94BF7D95150E6DC200FCF653 /* GTObjectDatabase.h */,
-				94BF7D96150E6DC200FCF653 /* GTOdbObject.h */,
-				94BF7D97150E6DC200FCF653 /* GTReference.h */,
-				94BF7D98150E6DC200FCF653 /* GTRepository.h */,
-				94BF7D99150E6DC200FCF653 /* GTRepository+Private.h */,
-				94BF7D9A150E6DC200FCF653 /* GTSignature.h */,
-				94BF7D9B150E6DC200FCF653 /* GTTag.h */,
-				94BF7D9C150E6DC200FCF653 /* GTTree.h */,
-				94BF7D9D150E6DC200FCF653 /* GTTreeEntry.h */,
-				94BF7D9E150E6DC200FCF653 /* ObjectiveGit.h */,
-			);
-			name = Header;
 			sourceTree = "<group>";
 		};
 		94CB767F17E20662009807F9 /* FileListBrowser */ = {
@@ -2505,7 +2409,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				94BF7975150E3DA600FCF653 /* PBXTargetDependency */,
+				94785A51184516130012988B /* PBXTargetDependency */,
 				9434BFCB14A38ACD00B34419 /* PBXTargetDependency */,
 				94B4035214A0D75B00E3A636 /* PBXTargetDependency */,
 			);
@@ -2544,7 +2448,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				94A3B09915447C4C00C8E132 /* PBXTargetDependency */,
+				9402F5651840F8EF006033EB /* PBXTargetDependency */,
 				94ADF13A14BB27EE00BA807A /* PBXTargetDependency */,
 				94ADF13C14BB27EE00BA807A /* PBXTargetDependency */,
 			);
@@ -2582,8 +2486,8 @@
 					ProjectRef = 94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */;
 				},
 				{
-					ProductGroup = 94BF7920150E398400FCF653 /* Products */;
-					ProjectRef = 94BF791F150E398400FCF653 /* ObjectiveGit.xcodeproj */;
+					ProductGroup = 9402F5501840F889006033EB /* Products */;
+					ProjectRef = 9402F54F1840F889006033EB /* ObjectiveGitFramework.xcodeproj */;
 				},
 				{
 					ProductGroup = 9434BFAF14A389BC00B34419 /* Products */;
@@ -2600,6 +2504,34 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		9402F55D1840F88B006033EB /* ObjectiveGit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ObjectiveGit.framework;
+			remoteRef = 9402F55C1840F88B006033EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9402F55F1840F88B006033EB /* ObjectiveGitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ObjectiveGitTests.octest;
+			remoteRef = 9402F55E1840F88B006033EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9402F5611840F88B006033EB /* libObjectiveGit-iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libObjectiveGit-iOS.a";
+			remoteRef = 9402F5601840F88B006033EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9402F5631840F88B006033EB /* libObjectiveGit-iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libObjectiveGit-iOS.a";
+			remoteRef = 9402F5621840F88B006033EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		9434BFB314A389BE00B34419 /* libZip.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -2612,13 +2544,6 @@
 			fileType = archive.ar;
 			path = libHttpService.a;
 			remoteRef = 94B4032F14A0D5EB00E3A636 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		94BF7924150E398500FCF653 /* libObjectiveGit.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libObjectiveGit.a;
-			remoteRef = 94BF7923150E398500FCF653 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -3086,10 +3011,6 @@
 				9478596A162C5A08006E4575 /* php.c in Sources */,
 				9478596B162C5A08006E4575 /* python.c in Sources */,
 				9478596C162C5A08006E4575 /* read.c in Sources */,
-				9478596D162C5A08006E4575 /* regcomp.c in Sources */,
-				9478596E162C5A08006E4575 /* regex_internal.c in Sources */,
-				9478596F162C5A08006E4575 /* regex.c in Sources */,
-				94785970162C5A08006E4575 /* regexec.c in Sources */,
 				94785971162C5A08006E4575 /* rexx.c in Sources */,
 				94785972162C5A08006E4575 /* routines.c in Sources */,
 				94785973162C5A08006E4575 /* ruby.c in Sources */,
@@ -3190,12 +3111,6 @@
 				948E149716416D2600CBBD5B /* python.c in Sources */,
 				948E149816416D2600CBBD5B /* read.c in Sources */,
 				948E149916416D2600CBBD5B /* read.h in Sources */,
-				948E149A16416D2600CBBD5B /* regcomp.c in Sources */,
-				948E149B16416D2600CBBD5B /* regex_internal.c in Sources */,
-				948E149C16416D2600CBBD5B /* regex_internal.h in Sources */,
-				948E149D16416D2600CBBD5B /* regex.c in Sources */,
-				948E149E16416D2700CBBD5B /* regex.h in Sources */,
-				948E149F16416D2700CBBD5B /* regexec.c in Sources */,
 				948E14A016416D2700CBBD5B /* rexx.c in Sources */,
 				948E14A116416D2700CBBD5B /* routines.c in Sources */,
 				948E14A216416D2700CBBD5B /* routines.h in Sources */,
@@ -3383,12 +3298,6 @@
 				94D4EDB31642B8AB00601FE4 /* python.c in Sources */,
 				94D4EDB41642B8AB00601FE4 /* read.c in Sources */,
 				94D4EDB51642B8AB00601FE4 /* read.h in Sources */,
-				94D4EDB61642B8AB00601FE4 /* regcomp.c in Sources */,
-				94D4EDB71642B8AB00601FE4 /* regex_internal.c in Sources */,
-				94D4EDB81642B8AB00601FE4 /* regex_internal.h in Sources */,
-				94D4EDB91642B8AB00601FE4 /* regex.c in Sources */,
-				94D4EDBA1642B8AB00601FE4 /* regex.h in Sources */,
-				94D4EDBB1642B8AB00601FE4 /* regexec.c in Sources */,
 				94D4EDBC1642B8AB00601FE4 /* rexx.c in Sources */,
 				94D4EDBD1642B8AB00601FE4 /* routines.c in Sources */,
 				94D4EDBE1642B8AB00601FE4 /* routines.h in Sources */,
@@ -3526,10 +3435,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		9402F5651840F8EF006033EB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ObjectiveGit-iOS";
+			targetProxy = 9402F5641840F8EF006033EB /* PBXContainerItemProxy */;
+		};
 		9434BFCB14A38ACD00B34419 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Zip;
 			targetProxy = 9434BFCA14A38ACD00B34419 /* PBXContainerItemProxy */;
+		};
+		94785A51184516130012988B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ObjectiveGit-iOS";
+			targetProxy = 94785A50184516130012988B /* PBXContainerItemProxy */;
 		};
 		949DC1941583E8CF00385796 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3540,11 +3459,6 @@
 			isa = PBXTargetDependency;
 			name = HttpService;
 			targetProxy = 949DC1971583E8CF00385796 /* PBXContainerItemProxy */;
-		};
-		94A3B09915447C4C00C8E132 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ObjectiveGit;
-			targetProxy = 94A3B09815447C4C00C8E132 /* PBXContainerItemProxy */;
 		};
 		94ADF13A14BB27EE00BA807A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3560,11 +3474,6 @@
 			isa = PBXTargetDependency;
 			name = HttpService;
 			targetProxy = 94B4035114A0D75B00E3A636 /* PBXContainerItemProxy */;
-		};
-		94BF7975150E3DA600FCF653 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ObjectiveGit;
-			targetProxy = 94BF7974150E3DA600FCF653 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3656,6 +3565,7 @@
 		9431D75914910B3000B0900E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -3670,14 +3580,12 @@
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3686,6 +3594,7 @@
 		9431D75A14910B3000B0900E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -3700,14 +3609,12 @@
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3743,6 +3650,7 @@
 		94557DA014B0325C004950B4 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -3758,14 +3666,12 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "DISTRIBUTION=1";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

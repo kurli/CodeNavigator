@@ -7,22 +7,9 @@
 //
 
 #import "GitLogViewCongroller.h"
-#import "GTReference.h"
-#import "GTRepository.h"
-#import "GTIndex.h"
-#import "GTIndexEntry.h"
-#import "GTCommit.h"
-#import "GTTree.h"
-#import "GTSignature.h"
-#import "GTTreeEntry.h"
+#import "ObjectiveGit.h"
 #import "Utils.h"
-#import "GTObjectDatabase.h"
-#import "GTOdbObject.h"
 #import "GitDiffViewController.h"
-#import "GTDiff.h"
-#import "GTDiffFile.h"
-
-#import "git2.h"
 
 #define DETAIL_BUTTON_TAG 101
 #define AUTHOR_TAG 102
@@ -152,9 +139,10 @@
 //    GTIndexEntry* entry = [array objectAtIndex:9];
 
     //commit log
-    self.commitsArray = [repo selectCommitsBeginningAtSha:nil error:&error block:^BOOL(GTCommit *commit, BOOL *stop) {
-		return YES;
-	}];
+    GTEnumerator* enumerator = [[GTEnumerator alloc] initWithRepository:repo error:NULL];
+    GTReference *headRef = [repo headReferenceWithError:NULL];
+    [enumerator pushSHA:headRef.targetSHA error:NULL];
+    self.commitsArray = [enumerator allObjects];
 }
 
 #pragma mark libgit2 related
@@ -244,7 +232,7 @@
         [pendingDiffTree removeObjectAtIndex:0];
         
         NSError *error;
-        GTDiff* diff = [GTDiff diffOldTree:(GTTree*)oldObj withNewTree:(GTTree*)newObj options:NULL error:&error];
+        GTDiff* diff = [GTDiff diffOldTree:(GTTree*)oldObj withNewTree:(GTTree*)newObj inRepository:repo options:NULL error:&error];
         if (diff == NULL || error != NULL)
         {
             continue;
@@ -256,11 +244,13 @@
             }
             git_oid new_oid = delta.git_diff_delta->new_file.oid;
             git_oid old_oid = delta.git_diff_delta->old_file.oid;
-            GTObject* newObj1 = [self.repo lookupObjectByOid:&new_oid error:&error];
+            GTOID* new_OID = [[GTOID alloc] initWithGitOid:&new_oid];
+            GTOID* old_OID = [[GTOID alloc] initWithGitOid:&old_oid];
+            GTObject* newObj1 = [self.repo lookupObjectByOID:new_OID error:&error];
             if (error != nil) {
                 return;
             }
-            GTObject* oldObj1 = [self.repo lookupObjectByOid:&old_oid error:&error];
+            GTObject* oldObj1 = [self.repo lookupObjectByOID:old_OID error:&error];
             if (error != nil) {
                 return;
             }
@@ -420,7 +410,7 @@
         [detailView setHidden:NO];
         NSMutableString* detail2 = [[NSMutableString alloc] initWithString:@""];
         GTTreeEntry* entry;
-        for (int i=0; i<[commit.tree numberOfEntries]; i++) {
+        for (int i=0; i<[commit.tree entryCount]; i++) {
             entry = [[commit tree] entryAtIndex:i];
             [detail2 appendFormat:@"%@\n", entry.name];
         }

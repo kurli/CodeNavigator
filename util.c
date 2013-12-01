@@ -653,8 +653,8 @@ analyze_hunk (hunk, first0, last0, first1, last1, deletes, inserts)
 	    int len = files[0].linbuf[i + 1] - line;
 
 	    for (r = ignore_regexp_list; r; r = r->next)
-	      if (0 <= re_search (&r->buf, line, len, 0, len, 0))
-		break;	/* Found a match.  Ignore this line.  */
+//	      if (0 <= re_search (&r->buf, line, len, 0, len, 0))
+//		break;	/* Found a match.  Ignore this line.  */
 	    /* If we got all the way through the regexp list without
 	       finding a match, then it's nontrivial.  */
 	    if (!r)
@@ -669,8 +669,8 @@ analyze_hunk (hunk, first0, last0, first1, last1, deletes, inserts)
 	    int len = files[1].linbuf[i + 1] - line;
 
 	    for (r = ignore_regexp_list; r; r = r->next)
-	      if (0 <= re_search (&r->buf, line, len, 0, len, 0))
-		break;	/* Found a match.  Ignore this line.  */
+//	      if (0 <= re_search (&r->buf, line, len, 0, len, 0))
+//		break;	/* Found a match.  Ignore this line.  */
 	    /* If we got all the way through the regexp list without
 	       finding a match, then it's nontrivial.  */
 	    if (!r)

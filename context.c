@@ -446,14 +446,14 @@ find_function (file, linenum, linep, lenp)
       char const *line = file->linbuf[i];
       size_t len = file->linbuf[i + 1] - line;
 
-      for (r = function_regexp_list; r; r = r->next)
-	if (0 <= re_search (&r->buf, line, len, 0, len, 0))
-	  {
-	    *linep = line;
-	    *lenp = len;
-	    find_function_last_match = i;
-	    return;
-	  }
+//      for (r = function_regexp_list; r; r = r->next)
+//	if (0 <= re_search (&r->buf, line, len, 0, len, 0))
+//	  {
+//	    *linep = line;
+//	    *lenp = len;
+//	    find_function_last_match = i;
+//	    return;
+//	  }
     }
   /* If we search back to where we started searching the previous time,
      find the line we found last time.  */

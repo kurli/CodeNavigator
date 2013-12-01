@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "git2.h"
+#import "ObjectiveGit.h"
 
 @interface GitCloneViewController : UIViewController
 
@@ -33,9 +33,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *cloneButton;
 
-@property (unsafe_unretained, nonatomic) git_repository *g_repo;
-
-@property (unsafe_unretained, nonatomic) git_remote *g_remote;
+@property (unsafe_unretained, nonatomic) GTRepository* repo;
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 

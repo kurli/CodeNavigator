@@ -44,6 +44,7 @@
 @synthesize fileInfoControlleriPhone;
 #endif
 @synthesize fileListBrowserController;
+@synthesize gitCloneViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -132,6 +133,7 @@
     [self setPopOverController: nil];
     [self setCurrentProjectPath:nil];
     [self setWebServiceController:nil];
+    [self setGitCloneViewController:nil];
     [self setTableView:nil];
     [self setAnalyzeButton:nil];
     [self setFileListBrowserController:nil];
@@ -318,6 +320,7 @@
         masterViewController.fileListBrowserController.currentLocation = path;
         masterViewController.title = [targetComponents objectAtIndex:i];
         targetViewController.webServiceController = self.webServiceController;
+        targetViewController.gitCloneViewController = self.gitCloneViewController;
         [masterViewController reloadData];
         // Select Folder
         int i = 0;
@@ -368,10 +371,12 @@
 - (void) showGitCloneView
 {    
     [self releaseAllPopover];
-    GitCloneViewController* viewController = [[GitCloneViewController alloc] init];
-    viewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    if (gitCloneViewController == NULL) {
+        gitCloneViewController = [[GitCloneViewController alloc] init];
+    }
+    gitCloneViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     //[[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
-    [self presentViewController:viewController animated:YES completion:nil];
+    [self presentViewController:gitCloneViewController animated:YES completion:nil];
 }
 
 - (IBAction)gitClicked:(id)sender {
@@ -664,6 +669,14 @@
 
 -(void) folderClickedDelegate:(NSString*)selectedItem andPath:(NSString*)path
 {
+    // When git clone in progress, stop entering this folder
+    if ([fileListBrowserController getIsCurrentProjectFolder] &&
+        [[gitCloneViewController cloneThread] isExecuting] &&
+        [[gitCloneViewController needCloneProjectName] isEqualToString:[path lastPathComponent]]) {
+        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Git clone in progress in this folder"];
+        return;
+    }
+    
     MasterViewController* masterViewController;
 #ifdef IPHONE_VERSION
     masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController-iPhone" bundle:nil];
@@ -683,6 +696,7 @@
     [masterViewController.fileListBrowserController setCurrentLocation:path];
     masterViewController.title = selectedItem;
     masterViewController.webServiceController = self.webServiceController;
+    masterViewController.gitCloneViewController = self.gitCloneViewController;
     //[masterViewController reloadData];
     [self.navigationController pushViewController:masterViewController animated:YES];
 }

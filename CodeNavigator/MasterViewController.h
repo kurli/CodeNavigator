@@ -11,6 +11,7 @@
 
 @class DetailViewController;
 @class WebServiceController;
+@class GitCloneViewController;
 #ifdef IPHONE_VERSION
 @class FileInfoControlleriPhone;
 #endif
@@ -28,6 +29,8 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) WebServiceController *webServiceController;
+
+@property (strong, nonatomic) GitCloneViewController *gitCloneViewController;
 
 @property (strong, nonatomic) UIPopoverController* popOverController;
 

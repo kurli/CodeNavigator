@@ -9,82 +9,18 @@
 #import "GitCloneViewController.h"
 #import "Utils.h"
 #import "MasterViewController.h"
-
-#define FETCH_PROGRESS @"CodeNavigator_fetch_progress"
-#define CHECKOUT_PROGRESS @"CodeNavigator_checkout_progress"
+#import "GTCredential.h"
 
 #define SEPERATOR @"--lgz_SePeRator--"
 #define KEY @"CodeNavigator--lgz_SePeRator--"
 
-@interface TransferProgress : NSObject
-@property (nonatomic, unsafe_unretained) unsigned int total_objects;
-@property (nonatomic, unsafe_unretained) unsigned int indexed_objects;
-@property (nonatomic, unsafe_unretained) unsigned int received_bytes;
-@property (nonatomic, unsafe_unretained) size_t received_objects;
-@end
-@implementation TransferProgress
-@synthesize total_objects;
-@synthesize indexed_objects;
-@synthesize received_bytes;
-@synthesize received_objects;
-@end
-
-@interface CheckoutProgress : NSObject
-@property (nonatomic, strong) NSString* path;
-@property (nonatomic, unsafe_unretained) unsigned int current;
-@property (nonatomic, unsafe_unretained) unsigned int total;
-@end
-@implementation CheckoutProgress
-@synthesize path;
-@synthesize current;
-@synthesize total;
-@end
-
 @interface GitCloneViewController ()
 @end
-
-static void checkout_progress(const char *path, size_t cur, size_t tot, void *payload)
-{
-	bool *was_called = (bool*)payload;
-	(*was_called) = true;
-    if (path == NULL)
-        return;
-    CheckoutProgress* cp = [[CheckoutProgress alloc] init];
-    [cp setPath:[NSString stringWithCString:path encoding:NSUTF8StringEncoding]];
-    [cp setCurrent:cur];
-    [cp setTotal:tot];
-    [[NSNotificationCenter defaultCenter] postNotificationName:CHECKOUT_PROGRESS object:cp];
-   // printf("checkout_progress %s %9d %9d\n", path, cur, tot);
-}
-
-static void fetch_progress(const git_transfer_progress *stats, void *payload)
-{
-	bool *was_called = (bool*)payload;
-	(*was_called) = true;
-    //printf("\rfetch %9d %9d %9d %9d\n", stats->total_objects, stats->indexed_objects, stats->received_objects, stats->received_bytes);
-    
-    TransferProgress* tp = [[TransferProgress alloc]init];
-    [tp setTotal_objects:stats->total_objects];
-    [tp setIndexed_objects:stats->indexed_objects];
-    [tp setReceived_bytes:stats->received_bytes];
-    [tp setReceived_objects:stats->received_objects];
-    [[NSNotificationCenter defaultCenter] postNotificationName:FETCH_PROGRESS object:tp];
-}
-
-static int cred_acquire(git_cred **cred,
-                        const char *url,
-                        unsigned int allowed_types,
-                        void *payload)
-{
-    const char* username = [[Utils getInstance].gitUsername cStringUsingEncoding:NSUTF8StringEncoding];
-	const char* password = [[Utils getInstance].gitPassword cStringUsingEncoding:NSUTF8StringEncoding];
-
-	return git_cred_userpass_plaintext_new(cred, username, password);
-}
 
 @implementation GitCloneViewController
 @synthesize usernameTextField;
 @synthesize passwordTextField;
+@synthesize repo;
 
 - (IBAction)discardClicked:(id)sender {
     NSString* path = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/git.config"];
@@ -139,55 +75,54 @@ static int cred_acquire(git_cred **cred,
     self.passwordTextField.text = [Utils getInstance].gitPassword;
 }
 
-- (void) fetch_progress:(NSNotification*) gtp
-{
-    TransferProgress *tp = [gtp object];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSString* log = [NSString stringWithFormat:@"remote: Counting objects: %zd/%d.", tp.received_objects, tp.total_objects];
-        [self replaceLastLine:log];
-    });
-}
-
-- (void) checkout_progress:(NSNotification*) cp
-{
-    CheckoutProgress *tp = [cp object];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSString* log = [NSString stringWithFormat:@"Checking out:[%d/%d]%@", tp.current, tp.total, tp.path];
-        [self addLog:log andNewLine:YES];
-    });
-}
-
 - (void) gitClone
 {
     NSString* projectName = self.needCloneProjectName;
     NSString* remoteUrl = self.needCloneRemoteUrl;
-    int success;
+    NSError* error;
     
-    git_clone_options g_options = GIT_CLONE_OPTIONS_INIT;
-    //    git_buf path = GIT_BUF_INIT;
-//    git_reference *head;
-//    git_remote *origin;
-    git_checkout_opts dummy_opts = GIT_CHECKOUT_OPTS_INIT;
-    
-    bool checkout_progress_cb_was_called = false,
-    fetch_progress_cb_was_called = false;
-	g_options.version = GIT_CLONE_OPTIONS_VERSION;
-    g_options.transport = 0;
-	g_options.checkout_opts = dummy_opts;    
-    g_options.checkout_opts.checkout_strategy = GIT_CHECKOUT_SAFE_CREATE;
-	g_options.checkout_opts.progress_cb = &checkout_progress;
-	g_options.checkout_opts.progress_payload = &checkout_progress_cb_was_called;
-	g_options.fetch_progress_cb = &fetch_progress;
-	g_options.fetch_progress_payload = &fetch_progress_cb_was_called;
-    g_options.cred_acquire_cb = &cred_acquire;
-    
+    BOOL isDir;
     NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
     NSString* gitFolder = projectFolder;
     gitFolder = [gitFolder stringByAppendingPathComponent:projectName];
-    
     //"http://github.com/WebKitNix/nix-scripts.git"
-    success = git_clone(&_g_repo, [remoteUrl cStringUsingEncoding:NSUTF8StringEncoding], [gitFolder cStringUsingEncoding:NSUTF8StringEncoding], &g_options, &_g_remote);
-    if (success < GIT_OK) {
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:gitFolder isDirectory:&isDir]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString* msg = [NSString stringWithFormat:@"Project \"%@\" exists, please change to use another project name.", projectName];
+            [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:msg];
+            [self setCloneButtonToClone];
+            [self.urlTextField setEnabled:YES];
+            [self.projectNameTextField setEnabled:YES];
+            [self.usernameTextField setEnabled:YES];
+            [self.passwordTextField setEnabled:YES];
+            [self.cloningIndicator stopAnimating];
+            [[NSNotificationCenter defaultCenter] postNotificationName:MASTER_VIEW_RELOAD object:nil];
+        });
+        return;
+    }
+    
+    GTCredentialProvider* provider = [GTCredentialProvider providerWithBlock:^GTCredential *(GTCredentialType type, NSString *URL, NSString *userName) {
+        NSError* error;
+        GTCredential* credental = [GTCredential credentialWithUserName:[Utils getInstance].gitUsername password:[Utils getInstance].gitPassword error:&error];
+            return credental;
+    }];
+
+    NSDictionary *options = @{ GTRepositoryCloneOptionsCheckout: @YES , GTRepositoryCloneOptionsCredentialProvider: provider, GTRepositoryCloneOptionsTransportFlags : @YES};
+    
+    repo = (GTRepository*)[GTRepository cloneFromURL:[NSURL URLWithString:remoteUrl] toWorkingDirectory:[NSURL fileURLWithPath:gitFolder] options:options error:&error transferProgressBlock:^(const git_transfer_progress *progress) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSString* log = [NSString stringWithFormat:@"remote: Counting objects: %.0f%% (%d/%d).", 100*((float)(progress->received_objects)/(float)(progress->total_objects)), progress->received_objects, progress->total_objects];
+                [self replaceLastLine:log];
+            });
+        } checkoutProgressBlock:^(NSString *path, NSUInteger completedSteps, NSUInteger totalSteps) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSString* log = [NSString stringWithFormat:@"Checking out:[%d/%d] %@", completedSteps, totalSteps, path];
+                [self addLog:log andNewLine:YES];
+            });
+        }];
+    
+    if (error != NULL) {
         const git_error *gitLastError = giterr_last();
         dispatch_async(dispatch_get_main_queue(), ^{
             [self setCloneButtonToClone];
@@ -197,8 +132,9 @@ static int cred_acquire(git_cred **cred,
             [self.passwordTextField setEnabled:YES];
             [self.cloningIndicator stopAnimating];
             [[NSNotificationCenter defaultCenter] postNotificationName:MASTER_VIEW_RELOAD object:nil];
-            [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:[NSString stringWithFormat:@"Clone error(%d)\n%s", success, gitLastError->message]];
+            [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:[NSString stringWithFormat:@"Clone error\n%s", gitLastError->message]];
         });
+        [self setRepo:nil];
         return;
 	}
     
@@ -211,13 +147,13 @@ static int cred_acquire(git_cred **cred,
         [self.cloningIndicator stopAnimating];
         [[NSNotificationCenter defaultCenter] postNotificationName:MASTER_VIEW_RELOAD object:nil];
         [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Cloning finished"];
+        [self setRepo:nil];
     });
 
     //    success = git_buf_joinpath(&path, git_repository_workdir(g_repo), "master.txt")
     
     //    success = git_reference_lookup(&head, g_repo, "HEAD");
     //    success = git_remote_load(&origin, g_repo, "origin");
-    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -233,9 +169,6 @@ static int cred_acquire(git_cred **cred,
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(fetch_progress:) name:FETCH_PROGRESS object:nil];
-    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(checkout_progress:) name:CHECKOUT_PROGRESS object:nil];
-    
     //for test
 //    [self.urlTextField setText:@"http://github.com/libgit2/objective-git.git"];
 }
@@ -279,14 +212,10 @@ static int cred_acquire(git_cred **cred,
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-	return YES;
+	return NO;
 }
 
 - (IBAction)doneClicked:(id)sender {
-    if (self.cloneThread.isExecuting) {
-        [self checkWhetherCancelClone];
-        return;
-    }
     [self dismissModalViewControllerAnimated:YES];
 //    MasterViewController* masterViewController = nil;
 //    NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
@@ -311,14 +240,14 @@ static int cred_acquire(git_cred **cred,
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 1) {
-        if (_g_repo == 0 || _g_remote == 0) {
-            [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please wait a monent and Cancel Again!"];
-            return;
-        }
-        
-        git_remote_stop(_g_remote);
-    }
+//    if (buttonIndex == 1) {
+//        if (_g_repo == 0 || _g_remote == 0) {
+//            [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please wait a monent and Cancel Again!"];
+//            return;
+//        }
+//        
+//        git_remote_stop(_g_remote);
+//    }
 }
 
 - (void) checkWhetherCancelClone
@@ -401,8 +330,6 @@ static int cred_acquire(git_cred **cred,
     [self setProjectNameTextField:nil];
     [self setCloneThread:nil];
     [self setCloneButton:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:FETCH_PROGRESS object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:CHECKOUT_PROGRESS object:nil];
     [self setUsernameTextField:nil];
     [self setPasswordTextField:nil];
     [[Utils getInstance] setGitUsername:nil];
