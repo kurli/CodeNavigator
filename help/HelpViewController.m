@@ -123,27 +123,57 @@
 
 - (void) shareWithTwitter
 {
-    Class twitterClass = (NSClassFromString(@"TWTweetComposeViewController"));
-    if (twitterClass != nil)
-    {
-        TWTweetComposeViewController *twitter = [[TWTweetComposeViewController alloc] init];
-        [twitter addImage:[UIImage imageNamed:@"Icon-72.png"]];
-        [twitter addURL:[NSURL URLWithString:@"http://lgzsoftware.blogspot.com/2012/02/2012129-new-features-in-1_8547.html"]];
-        [twitter setInitialText:@"I'm enjoying CodeNavigator with my source codes on iPad."];
-        [self presentModalViewController:twitter animated:YES];
-        // Called when the tweet dialog has been closed
-        twitter.completionHandler = ^(TWTweetComposeViewControllerResult result) 
-        {
-            // Dismiss the controller
-            [self dismissModalViewControllerAnimated:YES];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self dismissModalViewControllerAnimated:YES];
-            });
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
+        SLComposeViewController *sheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        
+        SLComposeViewControllerCompletionHandler completionBlock = ^(SLComposeViewControllerResult result){
+            if (result == SLComposeViewControllerResultCancelled) {
+                NSLog(@"Cancelled");
+            } else {
+                NSLog(@"Done");
+            }
+            
+            [sheet dismissViewControllerAnimated:YES completion:Nil];
         };
+        sheet.completionHandler = completionBlock;
+        
+        //Adding the Text to the post value from iOS
+        [sheet addImage:[UIImage imageNamed:@"Icon-72.png"]];
+        [sheet addURL:[NSURL URLWithString:@"http://lgzsoftware.blogspot.com/2012/02/2012129-new-features-in-1_8547.html"]];
+        [sheet setInitialText:@"I'm enjoying CodeNavigator with my source codes on iPad."];
+        [self presentViewController:sheet animated:YES completion:Nil];
     }
     else
     {
         [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Twitter is not supported in current iOS version."];
+    }
+}
+
+- (void) shareWithWeibo
+{
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeSinaWeibo]) {
+        SLComposeViewController *sheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeSinaWeibo];
+        
+        SLComposeViewControllerCompletionHandler completionBlock = ^(SLComposeViewControllerResult result){
+            if (result == SLComposeViewControllerResultCancelled) {
+                NSLog(@"Cancelled");
+            } else {
+                NSLog(@"Done");
+            }
+            
+            [sheet dismissViewControllerAnimated:YES completion:Nil];
+        };
+        sheet.completionHandler = completionBlock;
+        
+        //Adding the Text to the post value from iOS
+        [sheet addImage:[UIImage imageNamed:@"Icon-72.png"]];
+        [sheet addURL:[NSURL URLWithString:@"http://guangzhen.cublog.cn"]];
+        [sheet setInitialText:@"我正在使用CodeNavigator在我的iPad上Review我的代码."];
+        [self presentViewController:sheet animated:YES completion:Nil];
+    }
+    else
+    {
+        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Weibo is not supported in current iOS version."];
     }
 }
 
@@ -208,9 +238,7 @@
             }
             else {
                 //Share
-                alertType = ALERT_WEIBO_SHARE;
-                alertConfirmView = [[UIAlertView alloc] initWithTitle:@"Do you want to open Sina Weibo in Safari?" message:@"You need to have Sina Weibo account!" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
-                [alertConfirmView show];
+                [self shareWithWeibo];
             }
 #ifdef LITE_VERSION
             [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"Help Selection"

@@ -652,7 +652,7 @@
                 [self.viewController setIsNeedGetResultFromCscope:YES];
                 NSString* name = entry.entryName;
                 NSString* project = [[Utils getInstance] getProjectFolder:filePath];
-                [[Utils getInstance] cscopeSearch:name andPath:entry.filePath andProject:project andType:1 andFromVir:YES];
+                [[Utils getInstance] cscopeSearch:name andPath:entry.filePath andProject:project andType:FIND_GLOBAL_DEFINITION andFromVir:YES];
                 return;
             }
             // it's a empty entry, we need to get it from source view by user click

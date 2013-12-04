@@ -549,7 +549,7 @@
         project = [[Utils getInstance] getProjectFolder:virtualizeWrapper.filePath];
         sourcePath = nil;
     }
-    [[Utils getInstance] cscopeSearch:name andPath:sourcePath andProject:project andType:2 andFromVir:YES];
+    [[Utils getInstance] cscopeSearch:name andPath:sourcePath andProject:project andType:FIND_CALLED_FUNCTIONS andFromVir:YES];
 }
 
 - (IBAction)entryDeleteButtonClicked:(id)sender {
@@ -598,7 +598,7 @@
     {
         project = [[Utils getInstance] getProjectFolder:virtualizeWrapper.filePath];
     }
-    [[Utils getInstance] cscopeSearch:name andPath:entry.filePath andProject:project andType:3 andFromVir:YES];
+    [[Utils getInstance] cscopeSearch:name andPath:entry.filePath andProject:project andType:FIND_F_CALL_THIS_F andFromVir:YES];
 }
 
 - (void) showEntryButtons:(CGPoint)point

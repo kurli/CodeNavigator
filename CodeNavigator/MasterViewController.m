@@ -312,7 +312,7 @@
 #endif
         path = [path stringByAppendingPathComponent:[targetComponents objectAtIndex:i]];
         // If current is Project Folder
-        if ([fileListBrowserController getIsCurrentProjectFolder])
+        if ([targetViewController.fileListBrowserController getIsCurrentProjectFolder])
             masterViewController.currentProjectPath = path;
         else
             masterViewController.currentProjectPath = targetViewController.currentProjectPath;
@@ -389,19 +389,27 @@
     NSError* error;
     GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewCongroller" bundle:[NSBundle mainBundle]];
     NSString* gitFolder = self.currentProjectPath;
+    BOOL isGitFolder = YES;
     if (![[NSFileManager defaultManager] fileExistsAtPath:[gitFolder stringByAppendingPathComponent:@".git"]]) {
         NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:gitFolder error:&error];
+        isGitFolder = NO;
         for (int i=0; i<[contents count]; i++) {
             NSString* path = [contents objectAtIndex:i];
             path = [self.currentProjectPath stringByAppendingPathComponent:path];
             if ([[NSFileManager defaultManager] fileExistsAtPath:[path stringByAppendingPathComponent:@".git"]]){
                 gitFolder = path;
+                isGitFolder = YES;
                 break;
             }
         }
     }
-    [gitlogView gitLogForProject: gitFolder];
-    [gitlogView showModualView];
+    if (isGitFolder == YES) {
+        [gitlogView gitLogForProject: gitFolder];
+        [gitlogView showModualView];
+    } else {
+        [self showGitCloneView];
+    }
+    
 #endif
 #ifdef LITE_VERSION
     [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"

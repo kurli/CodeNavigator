@@ -48,13 +48,19 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    searchBarUI.text = self.detailViewController.searchWord;
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return YES;
 }
 
--(void) searchWrapper
+-(void) doSearch: (BOOL)doScroll
 {
     NSError* error;
     NSString* currentDisplayFile = [[Utils getInstance].detailViewController getCurrentDisplayFile];
@@ -117,7 +123,9 @@
     }else {
         [self.detailViewController setCurrentSearchFocusLine:-1];
     }
-    [self.detailViewController downSelectButton];
+    if (doScroll) {
+        [self.detailViewController downSelectButton];
+    }
 }
 
 #pragma mark - SearchBar Delegate
@@ -161,7 +169,7 @@
         [searchBar setShowsCancelButton:NO animated:YES];
         [searchBar resignFirstResponder];
 //        [self.detailViewController releaseAllPopOver];
-        [self searchWrapper];
+        [self doSearch:TRUE];
     }
 #ifdef IPHONE_VERSION
     [self dismissViewControllerAnimated:NO completion:nil];

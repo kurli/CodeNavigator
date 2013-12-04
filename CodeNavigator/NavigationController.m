@@ -38,7 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    selectionList = [[NSArray alloc] initWithObjects:@"Highlight in current file", @"Find global definition", @"Find this symbol", @"Find called functions", @"Find f() calling this f()", @"Find text string", nil];
+    selectionList = [[NSArray alloc] initWithObjects:@"Find global definition", @"Find this symbol", @"Find called functions", @"Find f() calling this f()", @"Find text string", nil];
     // No need, because viewWillAppear will be called later
 //    for (UIView *subview in [searchBar subviews]) {
 //        if ([subview isKindOfClass:[UIButton class]]) {
@@ -112,74 +112,6 @@
 
 #pragma mark - SearBar Delegate
 
--(void) highlightInCurrentFile:(NSString*)searchText
-{
-    DetailViewController* detailViewController = [Utils getInstance].detailViewController;
-    [detailViewController setSearchWord:searchText];
-    NSError* error;
-    NSString* currentDisplayFile = [[Utils getInstance].detailViewController getCurrentDisplayFile];
-    currentDisplayFile =  [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
-    NSStringEncoding encoding = NSUTF8StringEncoding;
-    NSString* fileContent = [NSString stringWithContentsOfFile: currentDisplayFile usedEncoding:&encoding error: &error];
-    if (error != nil || fileContent == nil)
-    {
-        // Chinese GB2312 support 
-        error = nil;
-        NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-        fileContent  = [NSString stringWithContentsOfFile:currentDisplayFile encoding:enc error:&error];
-        
-        if (fileContent == nil)
-        {
-            const NSStringEncoding *encodings = [NSString availableStringEncodings];  
-            while ((encoding = *encodings++) != 0)  
-            {
-                fileContent = [NSString stringWithContentsOfFile: currentDisplayFile encoding:encoding error:&error];
-                if (fileContent != nil && error == nil)
-                {
-                    break;
-                }
-            }
-        }
-    }
-    if (fileContent == nil || [fileContent length] == 0) {
-        return;
-    }
-    NSMutableArray* resultArray = [[NSMutableArray alloc] init];
-    NSArray* array =[fileContent componentsSeparatedByString:@"\n"];
-    int index;
-    for (index = 0; index<[array count]; index++) {
-        NSString* item = [array objectAtIndex:index];
-        NSRange range;
-        range = [item rangeOfString:detailViewController.searchWord options:NSCaseInsensitiveSearch];
-        if (range.location != NSNotFound) {
-            [resultArray addObject:[NSString stringWithFormat:@"%d",index+1]];
-        }
-    }
-    detailViewController.highlightLineArray = resultArray;
-    //highlight all
-    if ([resultArray count] == 0) {
-        return;
-    }
-    NSMutableString *str = [[NSMutableString alloc] init];
-    for (int i=0; i<[resultArray count]-1; i++) {
-        [str appendFormat:@"L%@,",[resultArray objectAtIndex:i]];
-    }
-    [str appendString:@"L"];
-    [str appendString:[resultArray objectAtIndex:[resultArray count]-1]];
-    //clear highlight
-    [detailViewController.activeWebView stringByEvaluatingJavaScriptFromString:@"clearHighlight()"];
-    NSString* highlightJS = [NSString stringWithFormat:@"highlight_keyword_by_lines('%@','%@')",str, detailViewController.searchWord];
-    // HAKE way to scroll to position
-    NSString* returnVal = [detailViewController.activeWebView stringByEvaluatingJavaScriptFromString:highlightJS];
-    int currentHighlightLine = [returnVal intValue];
-    if (currentHighlightLine > 0) {
-        [detailViewController setCurrentSearchFocusLine:currentHighlightLine-1];
-    }else {
-        [detailViewController setCurrentSearchFocusLine:-1];
-    }
-    [detailViewController downSelectButton];
-}
-
 -(void) searchBarSearchButtonClicked:(UISearchBar *)_searchBar
 {
     [_searchBar resignFirstResponder];
@@ -193,20 +125,7 @@
     NSString* searchText = _searchBar.text;
     if ([searchText length] <= 0)
         return;
-    
-    if (selectedItem == 0) {
-        [[Utils getInstance].detailViewController dismissPopovers];
-        [self highlightInCurrentFile:searchText];
-        return;
-    }
-    selectedItem = selectedItem -1;
-    if (selectedItem == 0) {
-        selectedItem = 1;
-    } else if (selectedItem == 1)
-    {
-        selectedItem = 0;
-    }
-    
+
     NSString* projectPath = [[Utils getInstance] getProjectFolder:self.currentSourcePath];
     //NSString* sourcePath = [[Utils getInstance] getPathFromProject:self.currentSourcePath];
     [[Utils getInstance] cscopeSearch:searchText andPath:nil andProject:projectPath andType:selectedItem andFromVir:NO];
@@ -224,20 +143,7 @@
     NSString* searchText = _searchBar.text;
     if ([searchText length] <= 0)
         return;
-    
-    if (selectedItem == 0) {
-        [[Utils getInstance].detailViewController dismissPopovers];
-        [self highlightInCurrentFile:searchText];
-        return;
-    }
-    selectedItem = selectedItem -1;
-    if (selectedItem == 0) {
-        selectedItem = 1;
-    } else if (selectedItem == 1)
-    {
-        selectedItem = 0;
-    }
-    
+
     NSString* projectPath = [[Utils getInstance] getProjectFolder:self.currentSourcePath];
     //NSString* sourcePath = [[Utils getInstance] getPathFromProject:self.currentSourcePath];
     [[Utils getInstance] cscopeSearch:searchText andPath:nil andProject:projectPath andType:selectedItem andFromVir:NO];

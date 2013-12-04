@@ -22,4 +22,6 @@
 
 - (IBAction)gotoHighlight:(id)sender;
 
+-(void) doSearch: (BOOL)doScroll;
+
 @end

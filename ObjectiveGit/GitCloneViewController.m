@@ -212,7 +212,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-	return NO;
+	return YES;
 }
 
 - (IBAction)doneClicked:(id)sender {

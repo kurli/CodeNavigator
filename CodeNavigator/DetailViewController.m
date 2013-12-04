@@ -871,7 +871,7 @@
 #else
     popoverController = [[UIPopoverController alloc] initWithContentViewController:result_controller];
     CGSize size = self.view.frame.size;
-    size.height = size.height/3+39;
+    size.height = size.height/3+39+44;
     size.width = size.width;
 	popoverController.popoverContentSize = size;
     
@@ -909,7 +909,7 @@
 #else
     popoverController = [[UIPopoverController alloc] initWithContentViewController:result_controller];
     CGSize size = self.view.frame.size;
-    size.height = size.height/3+39;
+    size.height = size.height/3+39+44;
     size.width = size.width;
 	popoverController.popoverContentSize = size;
     
@@ -1620,12 +1620,21 @@
             
             // Set here before actually call cscope
             [self.virtualizeViewController setIsNeedGetResultFromCscope:YES];
-            [[Utils getInstance] cscopeSearch:[array objectAtIndex:1] andPath:currentDisplayFile andProject:projectFolder andType:1 andFromVir:YES];
+            [[Utils getInstance] cscopeSearch:[array objectAtIndex:1] andPath:currentDisplayFile andProject:projectFolder andType:FIND_GLOBAL_DEFINITION andFromVir:YES];
         }
         else
         {
             currentDisplayFile = [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
-            [self navigationManagerPopUpWithKeyword:[array objectAtIndex:1] andSourcePath:currentDisplayFile];
+            if ([self.searchWord isEqualToString:[array objectAtIndex:1]]) {
+                [self navigationManagerPopUpWithKeyword:[array objectAtIndex:1] andSourcePath:currentDisplayFile];
+                return NO;
+            }
+            // Highlight this keyword
+            [self setSearchWord:[array objectAtIndex:1]];
+            HighLightWordController* highlightTmp = [[HighLightWordController alloc] init];
+            [highlightTmp setDetailViewController:self];
+            [highlightTmp doSearch:NO];
+            // end
         }
         return NO;
     }

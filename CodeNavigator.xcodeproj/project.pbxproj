@@ -319,6 +319,7 @@
 		94785981162C5A08006E4575 /* yacc.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785946162C5A08006E4575 /* yacc.c */; };
 		94785A421840FAB90012988B /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94785A411840FAB90012988B /* libiconv.dylib */; };
 		94785A55184519660012988B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94785A54184519660012988B /* libz.dylib */; };
+		94785A59184B9F350012988B /* MyWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94785A58184B9F350012988B /* MyWebView.m */; };
 		9478C6CF15C8093400F443D9 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9478C6CD15C8093400F443D9 /* HelpViewController.m */; };
 		9478C6D015C8093400F443D9 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6CE15C8093400F443D9 /* HelpViewController.xib */; };
 		9478C6D615C8207600F443D9 /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D115C8207600F443D9 /* appstore.png */; };
@@ -747,6 +748,7 @@
 		94C2CDC5167F55C9004FB1FB /* HtmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2CDC4167F55C9004FB1FB /* HtmlParser.m */; };
 		94C2CDC6167F55C9004FB1FB /* HtmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2CDC4167F55C9004FB1FB /* HtmlParser.m */; };
 		94C2CDC7167F55C9004FB1FB /* HtmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2CDC4167F55C9004FB1FB /* HtmlParser.m */; };
+		94C7C171184E42B3003A8C03 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C7C170184E42B3003A8C03 /* Social.framework */; };
 		94C8C68414FA57D60062750D /* ImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C8C68214FA57D60062750D /* ImagePreviewController.m */; };
 		94C8C68514FA57D60062750D /* ImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C8C68214FA57D60062750D /* ImagePreviewController.m */; };
 		94C8C68614FA57D60062750D /* ImagePreviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C8C68314FA57D60062750D /* ImagePreviewController.xib */; };
@@ -1318,6 +1320,8 @@
 		94785A4E184513CA0012988B /* ZipWriteStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipWriteStream.h; path = Zip/ZipWriteStream.h; sourceTree = "<group>"; };
 		94785A4F184513E50012988B /* ZipFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipFile.h; path = Zip/ZipFile.h; sourceTree = "<group>"; };
 		94785A54184519660012988B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		94785A57184B9F350012988B /* MyWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyWebView.h; path = MyWebView/MyWebView.h; sourceTree = "<group>"; };
+		94785A58184B9F350012988B /* MyWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyWebView.m; path = MyWebView/MyWebView.m; sourceTree = "<group>"; };
 		9478C6CC15C8093400F443D9 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpViewController.h; path = help/HelpViewController.h; sourceTree = "<group>"; };
 		9478C6CD15C8093400F443D9 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpViewController.m; path = help/HelpViewController.m; sourceTree = "<group>"; };
 		9478C6CE15C8093400F443D9 /* HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HelpViewController.xib; path = help/HelpViewController.xib; sourceTree = "<group>"; };
@@ -1459,6 +1463,7 @@
 		94C2CDC3167F55C9004FB1FB /* HtmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HtmlParser.h; sourceTree = "<group>"; };
 		94C2CDC4167F55C9004FB1FB /* HtmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HtmlParser.m; sourceTree = "<group>"; };
 		94C2CDC8167F5991004FB1FB /* HTMLDefination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLDefination.h; sourceTree = "<group>"; };
+		94C7C170184E42B3003A8C03 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		94C8C68114FA57D60062750D /* ImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagePreviewController.h; path = CodeNavigator/ImagePreviewController.h; sourceTree = "<group>"; };
 		94C8C68214FA57D60062750D /* ImagePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagePreviewController.m; path = CodeNavigator/ImagePreviewController.m; sourceTree = "<group>"; };
 		94C8C68314FA57D60062750D /* ImagePreviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImagePreviewController.xib; path = CodeNavigator/ImagePreviewController.xib; sourceTree = "<group>"; };
@@ -1509,6 +1514,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94C7C171184E42B3003A8C03 /* Social.framework in Frameworks */,
 				94785A55184519660012988B /* libz.dylib in Frameworks */,
 				94785A421840FAB90012988B /* libiconv.dylib in Frameworks */,
 				9402F56A1840F9B5006033EB /* libObjectiveGit-iOS.a in Frameworks */,
@@ -1668,6 +1674,7 @@
 				94CB767F17E20662009807F9 /* FileListBrowser */,
 				94F7B90917F7482900A506EE /* UploadSelection */,
 				948C7464180AE89800065E65 /* History */,
+				94785A56184B9EC00012988B /* WebView */,
 				9431D73E14910B3000B0900E /* CodeNavigator */,
 				9431D73714910B3000B0900E /* Frameworks */,
 				9431D73514910B3000B0900E /* Products */,
@@ -1687,6 +1694,7 @@
 		9431D73714910B3000B0900E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				94C7C170184E42B3003A8C03 /* Social.framework */,
 				94785A54184519660012988B /* libz.dylib */,
 				94785A411840FAB90012988B /* libiconv.dylib */,
 				9402E0311814147B005A97D4 /* libcrypto.a */,
@@ -2143,6 +2151,15 @@
 				94785946162C5A08006E4575 /* yacc.c */,
 			);
 			name = ctags;
+			sourceTree = "<group>";
+		};
+		94785A56184B9EC00012988B /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				94785A57184B9F350012988B /* MyWebView.h */,
+				94785A58184B9F350012988B /* MyWebView.m */,
+			);
+			name = WebView;
 			sourceTree = "<group>";
 		};
 		9478C6C615C8086300F443D9 /* Help */ = {
@@ -3003,6 +3020,7 @@
 				94785961162C5A08006E4575 /* lua.c in Sources */,
 				94785963162C5A08006E4575 /* make.c in Sources */,
 				94785964162C5A08006E4575 /* objc.c in Sources */,
+				94785A59184B9F350012988B /* MyWebView.m in Sources */,
 				94785965162C5A08006E4575 /* ocaml.c in Sources */,
 				94785966162C5A08006E4575 /* options.c in Sources */,
 				94785967162C5A08006E4575 /* parse.c in Sources */,

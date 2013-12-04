@@ -8,6 +8,7 @@
 
 #import "RemoteFileControllerDelegate.h"
 #import <DropboxSDK/DropboxSDK.h>
+#import "Utils.h"
 
 @implementation SelectionItem
 
@@ -243,7 +244,12 @@
 - (IBAction)checkBoxButtonClicked:(id)sender
 {
     UIButton* checkBox = (UIButton*)sender;
-    UIView* superView = [checkBox superview];
+    UIView* superView;
+    if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        superView = [[checkBox superview] superview];
+    } else {
+        superView = [checkBox superview];
+    }
     UITableViewCell *cell = (UITableViewCell*)[superView superview];
     
     int index = [self.remoteTableView indexPathForCell:cell].row;

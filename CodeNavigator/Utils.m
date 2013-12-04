@@ -96,7 +96,6 @@ static Utils *static_utils;
 @synthesize storedAnalyzePath;
 @synthesize splitViewController;
 @synthesize colorScheme;
-@synthesize cscopeSearchAlertView;
 @synthesize dropBoxViewController;
 @synthesize masterViewController;
 @synthesize functionListManager;
@@ -1159,7 +1158,7 @@ static Utils *static_utils;
         if ([array count] < 2)
             continue;
         //If we are in find_called_function type, we need to skip other files
-        if (searchType == 2 || searchType == 1)
+        if (searchType == FIND_CALLED_FUNCTIONS || searchType == FIND_GLOBAL_DEFINITION)
         {
             NSString* str = [[Utils getInstance] getPathFromProject:sourcePath];
             if ([str length] == 0) {
@@ -1217,7 +1216,7 @@ static Utils *static_utils;
         NSString* filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
         filePath = [filePath stringByAppendingPathComponent:((ResultFile*)[_resultFileList objectAtIndex:0]).fileName];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (searchType != 2)
+            if (searchType != FIND_CALLED_FUNCTIONS)
                 [self.detailViewController gotoFile:filePath andLine:line andKeyword:keyword];
             else
                 [self.detailViewController gotoFile:filePath andLine:line andKeyword:[components objectAtIndex:0]];
@@ -1279,20 +1278,20 @@ static Utils *static_utils;
         return;
     }
     
-    self.cscopeSearchAlertView = [[UIAlertView alloc]   
-                           initWithTitle:@"CodeNavigator\nSearch in progress"   
-                           message:nil delegate:nil cancelButtonTitle:nil  
-                           otherButtonTitles: nil];  
-    
-    [self.cscopeSearchAlertView show];  
-    
-    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]  
-                                          initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];  
-    
-    indicator.center = CGPointMake(self.cscopeSearchAlertView.bounds.size.width / 2,   
-                                   self.cscopeSearchAlertView.bounds.size.height - 50);  
-    [indicator startAnimating];  
-    [self.cscopeSearchAlertView addSubview:indicator]; 
+//    self.cscopeSearchAlertView = [[UIAlertView alloc]   
+//                           initWithTitle:@"CodeNavigator\nSearch in progress"   
+//                           message:nil delegate:nil cancelButtonTitle:nil  
+//                           otherButtonTitles: nil];  
+//    
+//    [self.cscopeSearchAlertView show];  
+//    
+//    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]  
+//                                          initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];  
+//    
+//    indicator.center = CGPointMake(self.cscopeSearchAlertView.bounds.size.width / 2,   
+//                                   self.cscopeSearchAlertView.bounds.size.height - 50);  
+//    [indicator startAnimating];  
+//    [self.cscopeSearchAlertView addSubview:indicator]; 
     
     cscope_set_base_dir([project UTF8String]);
     searchType = type;
@@ -1322,27 +1321,27 @@ static Utils *static_utils;
     NSString* sourcePath = [(SearchThreadData*)data sourcePath];
 
     switch (searchType) {
-        case 0:
+        case FIND_THIS_SYMBOL:
             _result = cscope_find_this_symble([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
             break;
-        case 1:
+        case FIND_GLOBAL_DEFINITION:
             _result = cscope_find_global([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
             break;
-        case 2:
+        case FIND_CALLED_FUNCTIONS:
             _result = cscope_find_called_functions([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
             break;
-        case 3:
+        case FIND_F_CALL_THIS_F:
             _result = cscope_find_functions_calling_a_function([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
             break;
-        case 4:
+        case FIND_TEXT_STRING:
             _result = cscope_find_text_string([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
             break;
-        case 5:
-            _result = cscope_find_a_file([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
-            break;
-        case 6:
-            _result = cscope_find_files_including_a_file([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
-            break;
+//        case 5:
+//            _result = cscope_find_a_file([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
+//            break;
+//        case 6:
+//            _result = cscope_find_files_including_a_file([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
+//            break;
             
         default:
             break;
@@ -1356,8 +1355,8 @@ static Utils *static_utils;
         {
             if ([result length] == 0) {
                 switch (searchType) {
-                    case 1:
-                    case 3:
+                    case FIND_GLOBAL_DEFINITION:
+                    case FIND_F_CALL_THIS_F:
                         free(_result);
                         _result = 0;
                         _result = cscope_find_this_symble([keyword UTF8String], [dbFile UTF8String], [fileList UTF8String]);
@@ -1402,17 +1401,17 @@ static Utils *static_utils;
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [[Utils getInstance].detailViewController.virtualizeViewController.virtualizeWrapper setIsNeedGetDefinition:NO];
                     });
-                    goto FINAL;
+                    return;
                 }
                 NSString* content = [((ResultFile*)[_resultFileList objectAtIndex:0]).contents objectAtIndex:0];
                 NSArray* components = [content componentsSeparatedByString:@" "];
                 if ([components count] < 3)
-                    goto FINAL;
+                    return;
                 NSString* line = [components objectAtIndex:1];
                 NSString* filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
                 filePath = [filePath stringByAppendingPathComponent:((ResultFile*)[_resultFileList objectAtIndex:0]).fileName];
                 NSString *proj = [self getProjectFolder:filePath];
-                if (searchType != 2 && searchType != 3)
+                if (searchType != FIND_CALLED_FUNCTIONS && searchType != FIND_F_CALL_THIS_F)
                 {
                     if ([[Utils getInstance].detailViewController.virtualizeViewController checkWhetherExistInCurrentEntry:keyword andLine:line] == NO )
                     {
@@ -1425,7 +1424,7 @@ static Utils *static_utils;
                 {
                     NSString* word;
                     //For find called function
-                    if (searchType == 2)
+                    if (searchType == FIND_CALLED_FUNCTIONS)
                     {
                         word = [components objectAtIndex:0];
                     }
@@ -1446,9 +1445,6 @@ static Utils *static_utils;
     {
         [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Low Memorry!"];
     }
-FINAL:
-    [[Utils getInstance].cscopeSearchAlertView dismissWithClickedButtonIndex:0 animated:YES];
-    [[Utils getInstance] setCscopeSearchAlertView:nil];
     }
 }
 

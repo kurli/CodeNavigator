@@ -40,6 +40,14 @@ typedef enum _AlertConfirmMode{
     ALERT_NONE
 } AlertConfirmMode;
 
+typedef enum _SearchType{
+    FIND_GLOBAL_DEFINITION,
+    FIND_THIS_SYMBOL,
+    FIND_CALLED_FUNCTIONS,
+    FIND_F_CALL_THIS_F,
+    FIND_TEXT_STRING,
+} SearchType;
+
 //For Cscope analyze thread
 @interface BuildThreadData : NSObject <UIAlertViewDelegate> {
     BOOL force;
@@ -99,7 +107,7 @@ typedef enum _AlertConfirmMode{
     ADBannerView* _iAdView;
     GADBannerView* _adModView;
     AlertConfirmMode alertConfirmMode;
-    int searchType;
+    SearchType searchType;
     
     // we need to change css version for each theme change
     // add version can do this
@@ -123,8 +131,6 @@ typedef enum _AlertConfirmMode{
 @property (nonatomic, strong) NSThread* analyzeThread;
 
 @property (nonatomic, strong) NSThread* cscopeSearchThread;
-
-@property (nonatomic, strong) UIAlertView* cscopeSearchAlertView;
 
 @property (nonatomic, strong) NSString* analyzePath;
 

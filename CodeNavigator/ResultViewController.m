@@ -55,9 +55,13 @@
         [self.lineModeViewController setTableViewMode:TABLEVIEW_CONTENT];
         [self.lineModeViewController setDetailViewController:self.detailViewController];
         [self.lineModeViewController setFileIndex:currentFileIndex];
-        [self.lineModeViewController.tableView reloadData];
+//        [self.lineModeViewController.tableView reloadData];
         [self.lineModeViewController setTitle:((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:currentFileIndex]).fileName];
-        [self.navigationController pushViewController:self.lineModeViewController animated:NO];
+        CGSize size = self.detailViewController.view.frame.size;
+        size.height = size.height/3+39;
+        size.width = size.width;
+        self.lineModeViewController.contentSizeForViewInPopover = size;
+        [self.navigationController pushViewController:self.lineModeViewController animated:YES];
     }
 }
 
@@ -80,11 +84,10 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    CGSize size =  self.detailViewController.view.frame.size;
-//    size.height = size.height/3;
-//    size.width = size.width;
-//    self.contentSizeForViewInPopover = size;
-    self.contentSizeForViewInPopover = self.view.frame.size;
+    CGSize size = self.detailViewController.view.frame.size;
+    size.height = size.height/3+39;
+    size.width = size.width;
+    self.contentSizeForViewInPopover = size;
     [_tableView reloadData];
 }
 
@@ -112,8 +115,14 @@
 - (IBAction)addButtonClicked:(id)sender
 {
     UIButton *button = (UIButton *)sender;
-    UIView *contentView = [button superview];
+    UIView *contentView;
+    if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        contentView = [[button superview] superview];
+    } else {
+        contentView = [button superview];
+    }
     UITableViewCell *cell = (UITableViewCell*)[contentView superview];
+
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     
     NSString* element = [((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:currentFileIndex]).contents objectAtIndex:indexPath.row];
@@ -129,7 +138,7 @@
     filePath = [filePath stringByAppendingPathComponent:((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:currentFileIndex]).fileName];
     NSString* proj = [[Utils getInstance] getProjectFolder:filePath];
     
-    if ([[Utils getInstance] getSearchType] != 2 && [[Utils getInstance] getSearchType] != 3)
+    if ([[Utils getInstance] getSearchType] != FIND_CALLED_FUNCTIONS && [[Utils getInstance] getSearchType] != FIND_F_CALL_THIS_F)
     {
         [[Utils getInstance].detailViewController.virtualizeViewController addEntry:[Utils getInstance].searchKeyword andFile:filePath andLine:line andProject:proj];
     }
@@ -194,7 +203,7 @@
         if ([[Utils getInstance].detailViewController.virtualizeViewController isNeedGetResultFromCscope] == YES)
         {
             // 2 called, 3 calling
-            if ([[Utils getInstance] getSearchType] != 2 && [[Utils getInstance] getSearchType] != 3)
+            if ([[Utils getInstance] getSearchType] != FIND_CALLED_FUNCTIONS && [[Utils getInstance] getSearchType] != FIND_F_CALL_THIS_F)
             {
                 if ([[Utils getInstance].detailViewController.virtualizeViewController checkWhetherExistInCurrentEntry:[Utils getInstance].searchKeyword andLine:[components objectAtIndex:1]] == NO )
                     [addButton setHidden:NO];
@@ -203,7 +212,7 @@
             {
                 NSString* word;
                 //For find called function
-                if ([[Utils getInstance] getSearchType] == 2)
+                if ([[Utils getInstance] getSearchType] == FIND_CALLED_FUNCTIONS)
                     word = scope;
                 else
                     word = [Utils getInstance].searchKeyword;
@@ -242,8 +251,12 @@
         [self.lineModeViewController setTableViewMode:TABLEVIEW_CONTENT];
         [self.lineModeViewController setDetailViewController:self.detailViewController];
         [self.lineModeViewController setFileIndex:currentFileIndex];
-        [self.lineModeViewController.tableView reloadData];
+//        [self.lineModeViewController.tableView reloadData];
         [self.lineModeViewController setTitle:((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:currentFileIndex]).fileName];
+        CGSize size = self.detailViewController.view.frame.size;
+        size.height = size.height/3+39;
+        size.width = size.width;
+        self.lineModeViewController.contentSizeForViewInPopover = size;
         [self.navigationController pushViewController:self.lineModeViewController animated:YES];
     }
     else
@@ -259,7 +272,7 @@
         NSString* line = [components objectAtIndex:1];
         NSString* filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
         filePath = [filePath stringByAppendingPathComponent:((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:currentFileIndex]).fileName];
-        if ([[Utils getInstance] getSearchType] != 2)
+        if ([[Utils getInstance] getSearchType] != FIND_CALLED_FUNCTIONS)
         [[Utils getInstance].detailViewController gotoFile:filePath andLine:line andKeyword:[Utils getInstance].searchKeyword];
         else
         {
