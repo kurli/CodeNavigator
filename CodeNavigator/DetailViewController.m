@@ -215,20 +215,20 @@
     // Only show help html in the first time
     if (isFirstDisplay) {
         NSString* prevHistory = [upHistoryController pickTopLevelUrl];
-        if ([prevHistory length] != 0)
+        NSString* help = [NSHomeDirectory() stringByAppendingString:@"/Documents/Projects/Help.html"];
+        NSError *error;
+        NSStringEncoding encoding = NSUTF8StringEncoding;
+        NSString* html = [NSString stringWithContentsOfFile: help usedEncoding:&encoding error: &error];
+        if ([prevHistory length] != 0) {
             [self restoreToHistory:prevHistory];
-        else {
-            NSString* help = [NSHomeDirectory() stringByAppendingString:@"/Documents/Projects/Help.html"];
-            NSError *error;
-            NSStringEncoding encoding = NSUTF8StringEncoding;
-            NSString* html = [NSString stringWithContentsOfFile: help usedEncoding:&encoding error: &error];
+        } else {
             [self setTitle:@"Help.html" andPath:help andContent:html andBaseUrl:nil];
-            
-            // Set second webview
-            self.activeWebView = secondWebView;
-            [self setTitle:@"Help.html" andPath:help andContent:html andBaseUrl:nil];
-            self.activeWebView = _webView;
         }
+        
+        // Set second webview
+        self.activeWebView = secondWebView;
+        [self setTitle:@"Help.html" andPath:help andContent:html andBaseUrl:nil];
+        self.activeWebView = _webView;
         isFirstDisplay = NO;
     }
 }
