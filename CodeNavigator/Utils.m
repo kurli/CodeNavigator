@@ -178,7 +178,7 @@ static Utils *static_utils;
     // 1: html format changed
     // 2: cscope file content changed
     // 3: Added new parser config json file
-    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/4_1.version"];
+    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/4_2.version"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:versionFile];
     if (isExist == YES)
     {
@@ -191,7 +191,7 @@ static Utils *static_utils;
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         HelpViewController* viewController = [[HelpViewController alloc] init];
         viewController.modalPresentationStyle = UIModalPresentationFormSheet;
-        [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
+        [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
     });
 #endif
     
@@ -258,15 +258,7 @@ static Utils *static_utils;
         [[NSFileManager defaultManager] copyItemAtPath:helpHtml toPath:[projectFolder stringByAppendingPathComponent:@"Help.html"] error:&error];
         NSString* jpg0 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/1.jpeg"];
         [[NSFileManager defaultManager] copyItemAtPath:jpg0 toPath:[settings stringByAppendingPathComponent:@"1.jpeg"] error:&error];
-        NSString* jpg1 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/2.jpeg"];
-        [[NSFileManager defaultManager] copyItemAtPath:jpg1 toPath:[settings stringByAppendingPathComponent:@"2.jpeg"] error:&error];
-        NSString* jpg2 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/3.jpeg"];
-        [[NSFileManager defaultManager] copyItemAtPath:jpg2 toPath:[settings stringByAppendingPathComponent:@"3.jpeg"] error:&error];
-        NSString* jpg3 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/4.jpeg"];
-        [[NSFileManager defaultManager] copyItemAtPath:jpg3 toPath:[settings stringByAppendingPathComponent:@"4.jpeg"] error:&error];
-        NSString* jpg4 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/5.jpeg"];
-        [[NSFileManager defaultManager] copyItemAtPath:jpg4 toPath:[settings stringByAppendingPathComponent:@"5.jpeg"] error:&error];
-        
+     
         // Copy BuildInParser
         NSString* buildInParserPath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/BuildInParser/"];
         isExist = [[NSFileManager defaultManager] fileExistsAtPath:buildInParserPath isDirectory:&isFolder];

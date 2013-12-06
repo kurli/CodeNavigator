@@ -72,7 +72,8 @@ typedef enum _JSState {
 @property (weak, nonatomic) IBOutlet UIButton *fileBrowserButton;
 
 // search support
-@property (strong, nonatomic) NSString *searchWord;
+@property (strong, nonatomic) NSString *searchWordU;
+@property (strong, nonatomic) NSString *searchWordD;
 
 @property (strong, nonatomic) NSArray* highlightLineArray;
 

@@ -64,9 +64,9 @@
 #ifdef LITE_VERSION
     [picker setSubject:@"CodeNavigatorLite v3.0 feedback"];
 #else
-    [picker setSubject:@"CodeNavigator v4.1 feedback"];
+    [picker setSubject:@"CodeNavigator v4.2 feedback"];
 #endif
-    [self presentModalViewController:picker animated:YES];
+    [self presentViewController:picker animated:YES completion:nil];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error 
@@ -323,7 +323,7 @@
 #ifdef LITE_VERSION
         return @"CodeNavigatorLite 3.0 Guangzhen Li\n@2011-2013";
 #else
-        return @"CodeNavigator 4.1 Guangzhen Li\n@2011-2013";
+        return @"CodeNavigator 4.2 Guangzhen Li\n@2011-2013";
 #endif
     }
     return @"";

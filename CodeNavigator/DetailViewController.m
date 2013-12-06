@@ -41,7 +41,8 @@
 
 @synthesize navigateBarButtonItem = _navigateBarButtonItem;
 @synthesize webView = _webView;
-@synthesize searchWord = _searchWord;
+@synthesize searchWordU;
+@synthesize searchWordD;
 @synthesize titleTextField = _titleTextField;
 @synthesize historyController = _historyController;
 @synthesize historyBar = _historyBar;
@@ -132,7 +133,8 @@
     [self setWebView:nil];
     [self setCountTextField:nil];
     [self setHistoryController:nil];
-    [self setSearchWord:nil];
+    [self setSearchWordU:nil];
+    [self setSearchWordD:nil];
     [self setHighlightLineArray:nil];
     [self setHistoryBar:nil];
     [self setResultBarButton:nil];
@@ -171,7 +173,8 @@
     [self.historyController.historyStack removeAllObjects];
     [self.historyController setHistoryStack:nil];
     [self setHistoryController:nil];
-    [self setSearchWord:nil];
+    [self setSearchWordU:nil];
+    [self setSearchWordD:nil];
     [self setHighlightLineArray:nil];
     [self setHistoryBar:nil];
     [self setResultBarButton:nil];
@@ -1625,15 +1628,25 @@
         else
         {
             currentDisplayFile = [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
-            if ([self.searchWord isEqualToString:[array objectAtIndex:1]]) {
+            NSString* searchWord;
+            if (webView == self.webView) {
+                searchWord = searchWordU;
+            } else {
+                searchWord = searchWordD;
+            }
+            if ([searchWord isEqualToString:[array objectAtIndex:1]]) {
                 [self navigationManagerPopUpWithKeyword:[array objectAtIndex:1] andSourcePath:currentDisplayFile];
                 return NO;
             }
             // Highlight this keyword
-            [self setSearchWord:[array objectAtIndex:1]];
+            if (webView == self.webView) {
+                [self setSearchWordU:[array objectAtIndex:1]];
+            } else {
+                [self setSearchWordD:[array objectAtIndex:1]];
+            }
             HighLightWordController* highlightTmp = [[HighLightWordController alloc] init];
             [highlightTmp setDetailViewController:self];
-            [highlightTmp doSearch:NO];
+            [highlightTmp doSearch:NO andWebView:webView];
             // end
         }
         return NO;

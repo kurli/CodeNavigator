@@ -51,7 +51,11 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    searchBarUI.text = self.detailViewController.searchWord;
+    if (self.detailViewController.activeWebView == self.detailViewController.webView) {
+        searchBarUI.text = self.detailViewController.searchWordU;
+    } else {
+        searchBarUI.text = self.detailViewController.searchWordD;
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -60,10 +64,17 @@
     return YES;
 }
 
--(void) doSearch: (BOOL)doScroll
+-(void) doSearch: (BOOL)doScroll andWebView:(UIWebView *)webView
 {
     NSError* error;
     NSString* currentDisplayFile = [[Utils getInstance].detailViewController getCurrentDisplayFile];
+    if (webView == detailViewController.webView) {
+        NSString* path = [detailViewController.upHistoryController pickTopLevelUrl];
+        currentDisplayFile = [detailViewController.upHistoryController getUrlFromHistoryFormat:path];
+    } else {
+        NSString* path = [detailViewController.downHistoryController pickTopLevelUrl];
+        currentDisplayFile = [detailViewController.downHistoryController getUrlFromHistoryFormat:path];
+    }
     currentDisplayFile =  [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
     NSStringEncoding encoding = NSUTF8StringEncoding;
     NSString* fileContent = [NSString stringWithContentsOfFile: currentDisplayFile usedEncoding:&encoding error: &error];
@@ -93,10 +104,16 @@
     NSMutableArray* resultArray = [[NSMutableArray alloc] init];
     NSArray* array =[fileContent componentsSeparatedByString:@"\n"];
     int index;
+    NSString* searchWord;
+    if (webView == self.detailViewController.webView) {
+        searchWord = self.detailViewController.searchWordU;
+    } else {
+        searchWord = self.detailViewController.searchWordD;
+    }
     for (index = 0; index<[array count]; index++) {
         NSString* item = [array objectAtIndex:index];
         NSRange range;
-        range = [item rangeOfString:self.detailViewController.searchWord options:NSCaseInsensitiveSearch];
+        range = [item rangeOfString:searchWord options:NSCaseInsensitiveSearch];
         if (range.location != NSNotFound) {
             [resultArray addObject:[NSString stringWithFormat:@"%d",index+1]];
         }
@@ -113,10 +130,10 @@
     [str appendString:@"L"];
     [str appendString:[resultArray objectAtIndex:[resultArray count]-1]];
     //clear highlight
-    [self.detailViewController.activeWebView stringByEvaluatingJavaScriptFromString:@"clearHighlight()"];
-    NSString* highlightJS = [NSString stringWithFormat:@"highlight_keyword_by_lines('%@','%@')",str, self.detailViewController.searchWord];
+    [webView stringByEvaluatingJavaScriptFromString:@"clearHighlight()"];
+    NSString* highlightJS = [NSString stringWithFormat:@"highlight_keyword_by_lines('%@','%@')",str, searchWord];
     // HAKE way to scroll to position
-    NSString* returnVal = [self.detailViewController.activeWebView stringByEvaluatingJavaScriptFromString:highlightJS];
+    NSString* returnVal = [webView stringByEvaluatingJavaScriptFromString:highlightJS];
     int currentHighlightLine = [returnVal intValue];
     if (currentHighlightLine > 0) {
         [self.detailViewController setCurrentSearchFocusLine:currentHighlightLine-1];
@@ -165,11 +182,15 @@
 //    returnValue = [self.detailViewController.activeWebView    stringByEvaluatingJavaScriptFromString:highlightJS];
         //NSString* countValue = [NSString stringWithFormat:@"0/%@",returnValue];
         //[self.countTextField setText:countValue];
-        self.detailViewController.searchWord = searchText;
+        if (self.detailViewController.activeWebView == self.detailViewController.webView) {
+            self.detailViewController.searchWordU = searchText;
+        } else {
+            self.detailViewController.searchWordD = searchText;
+        }
         [searchBar setShowsCancelButton:NO animated:YES];
         [searchBar resignFirstResponder];
 //        [self.detailViewController releaseAllPopOver];
-        [self doSearch:TRUE];
+        [self doSearch:TRUE andWebView:self.detailViewController.activeWebView];
     }
 #ifdef IPHONE_VERSION
     [self dismissViewControllerAnimated:NO completion:nil];

@@ -111,12 +111,12 @@
     NSDictionary *options = @{ GTRepositoryCloneOptionsCheckout: @YES , GTRepositoryCloneOptionsCredentialProvider: provider, GTRepositoryCloneOptionsTransportFlags : @YES};
     
     repo = (GTRepository*)[GTRepository cloneFromURL:[NSURL URLWithString:remoteUrl] toWorkingDirectory:[NSURL fileURLWithPath:gitFolder] options:options error:&error transferProgressBlock:^(const git_transfer_progress *progress) {
-            dispatch_async(dispatch_get_main_queue(), ^{
+            dispatch_sync(dispatch_get_main_queue(), ^{
                 NSString* log = [NSString stringWithFormat:@"remote: Counting objects: %.0f%% (%d/%d).", 100*((float)(progress->received_objects)/(float)(progress->total_objects)), progress->received_objects, progress->total_objects];
                 [self replaceLastLine:log];
             });
         } checkoutProgressBlock:^(NSString *path, NSUInteger completedSteps, NSUInteger totalSteps) {
-            dispatch_async(dispatch_get_main_queue(), ^{
+            dispatch_sync(dispatch_get_main_queue(), ^{
                 NSString* log = [NSString stringWithFormat:@"Checking out:[%d/%d] %@", completedSteps, totalSteps, path];
                 [self addLog:log andNewLine:YES];
             });
@@ -231,10 +231,12 @@
 - (void) switchCloneButton
 {
     if ([self.cloneThread isExecuting]) {
-        [self.cloneButton setTitle:@"Cancel" forState:UIControlStateNormal];
+//        [self.cloneButton setTitle:@"Cancel" forState:UIControlStateNormal];
+        [self.cloneButton setHidden:YES];
     }
     else {
         [self.cloneButton setTitle:@"Clone" forState:UIControlStateNormal];
+        [self.cloneButton setHidden:NO];
     }
 }
 
