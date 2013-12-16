@@ -354,6 +354,7 @@ static short shouldStartWrite(char c)
 
 static char* cscope_find(int type, const char* symble_name, const char* out_file_name, 
                         const char* file_list_f){
+    FILE *names;                        /* name file pointer */
     pid_t pid;
     struct stat	stat_buf;
 #if defined(KEY_RESIZE) && !defined(__DJGPP__)
@@ -361,6 +362,11 @@ static char* cscope_find(int type, const char* symble_name, const char* out_file
 #endif
     mode_t orig_umask;
     int c;
+    FILE *oldrefs;        /* old cross-reference file */
+    int        oldnum;                        /* number in old cross-ref */
+    char path[PATHLEN + 1];        /* file path */
+    char *s;
+    unsigned int i;
 
     linemode = YES;
     
@@ -432,29 +438,125 @@ static char* cscope_find(int type, const char* symble_name, const char* out_file
     /* ditto the TERM signal */
     signal(SIGTERM, myexit);
     
-    /* save the file arguments */
-    fileargc = 0;
-    fileargv = NULL;
+    /* Tell build.c about the filenames to create: */
+    reffile = out_file_name;
     
-    /* make the source file list */
-    srcfiles = mymalloc(msrcfiles * sizeof(char *));
-    makefilelist();
-    if (nsrcfiles == 0) {
-        postfatal("cscope: no source files found\n");
+    if ((oldrefs = vpfopen(reffile, "rb")) == NULL) {
+        postfatal("cscope: cannot open file %s\n", reffile);
+        /* NOTREACHED */
+    }
+    /* get the crossref file version but skip the current directory */
+    if (fscanf(oldrefs, "cscope %d %*s", &fileversion) != 1) {
+        postfatal("cscope: cannot read file version from file %s\n",
+                  reffile);
         /* NOTREACHED */
     }
     
+    if (fileversion >= 8) {
+        
+        /* override these command line options */
+        compress = YES;
+        invertedindex = NO;
+        
+        /* see if there are options in the database */
+        for (;;) {
+            getc(oldrefs);        /* skip the blank */
+            if ((c = getc(oldrefs)) != '-') {
+                ungetc(c, oldrefs);
+                break;
+            }
+            switch (c = getc(oldrefs)) {
+                case 'c':        /* ASCII characters only */
+                    compress = NO;
+                    break;
+                case 'q':        /* quick search */
+                    invertedindex = YES;
+                    fscanf(oldrefs, "%ld", &totalterms);
+                    break;
+                case 'T':        /* truncate symbols to 8 characters */
+                    dbtruncated = YES;
+                    trun_syms = YES;
+                    break;
+            }
+        }
+        initcompress();
+        seek_to_trailer(oldrefs);
+    }
     
-    /* initialize the C keyword table */
-    initsymtab();
+    /* skip the source and include directory lists */
+    skiplist(oldrefs);
+    skiplist(oldrefs);
     
-    /* Tell build.c about the filenames to create: */
-    reffile = out_file_name;
-    setup_build_filenames(reffile);
+    /* get the number of source files */
+    if (fscanf(oldrefs, "%lu", &nsrcfiles) != 1) {
+        postfatal("\
+                  cscope: cannot read source file size from file %s\n", reffile);
+        /* NOTREACHED */
+    }
+    /* get the source file list */
+    srcfiles = mymalloc(nsrcfiles * sizeof(char *));
     
-    /* build the cross-reference */
-    initcompress();	    
-    build();
+    if (fileversion >= 9) {
+        
+        /* allocate the string space */
+        if (fscanf(oldrefs, "%d", &oldnum) != 1) {
+            postfatal("\
+                      cscope: cannot read string space size from file %s\n", reffile);
+            /* NOTREACHED */
+        }
+        s = mymalloc(oldnum);
+        getc(oldrefs);        /* skip the newline */
+        
+        /* read the strings */
+        if (fread(s, oldnum, 1, oldrefs) != 1) {
+            postfatal("\
+                      cscope: cannot read source file names from file %s\n", reffile);
+            /* NOTREACHED */
+        }
+        /* change newlines to nulls */
+        for (i = 0; i < nsrcfiles; ++i) {
+            srcfiles[i] = s;
+            for (++s; *s != '\n'; ++s) {
+                ;
+            }
+            *s = '\0';
+            ++s;
+        }
+        /* if there is a file of source file names */
+        if ((namefile != NULL && (names = vpfopen(namefile, "r")) != NULL)
+            || (names = vpfopen(NAMEFILE, "r")) != NULL) {
+            
+            /* read any -p option from it */
+            while (fgets(path, sizeof(path), names) != NULL && *path == '-') {
+                i = path[1];
+                s = path + 2;                /* for "-Ipath" */
+                if (*s == '\0') {        /* if "-I path" */
+                    fgets(path, sizeof(path), names);
+                    s = path;
+                }
+                switch (i) {
+                    case 'p':        /* file path components to display */
+                        if (*s < '0' || *s > '9') {
+                            posterr("cscope: -p option in file %s: missing or invalid numeric value\n",                                                                 namefile);
+                            
+                        }
+                        dispcomponents = atoi(s);
+                }
+            }
+            fclose(names);
+        }
+    } else {
+        for (i = 0; i < nsrcfiles; ++i) {
+            if (!fgets(path, sizeof(path), oldrefs) ) {
+                postfatal("\
+                          cscope: cannot read source file name from file %s\n",
+                          reffile);
+                /* NOTREACHED */
+            }
+            srcfiles[i] = my_strdup(path);
+        }
+    }
+    fclose(oldrefs);
     
     opendatabase();
     
@@ -557,7 +659,6 @@ myexit(int sig)
 		rmdir(tempdirpv);		
 	}
     //Reset to update database
-    isuptodate = NO;
 	/* restore the terminal to its original mode */
 //	if (incurses == YES) {
 //		exitcurses();
@@ -572,6 +673,6 @@ myexit(int sig)
 	freesrclist();
 	freecrossref();
 	free_newbuildfiles();
-        
+    isuptodate = NO;
 	//exit(sig);
 }

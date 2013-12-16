@@ -459,7 +459,6 @@
     
     [self releaseAllPopover];
     [[Utils getInstance].detailViewController releaseAllPopOver];
-    [[Utils getInstance].analyzeInfoPopover dismissPopoverAnimated:YES];
     
     SecurityViewController* viewController = [[SecurityViewController alloc] init];
     [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];

@@ -22,7 +22,6 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 typedef void (^GetFunctionListCallback)(NSArray* array);
 
 @class DetailViewController;
-@class AnalyzeInfoController;
 @class DropBoxViewController;
 @class GADBannerView;
 @class FunctionListManager;
@@ -124,10 +123,6 @@ typedef enum _SearchType{
 
 @property (nonatomic, unsafe_unretained) UINavigationController* masterViewController;
 
-@property (nonatomic, strong) AnalyzeInfoController* analyzeInfoController;
-
-@property (nonatomic, strong) UIPopoverController* analyzeInfoPopover;
-
 @property (nonatomic, strong) NSThread* analyzeThread;
 
 @property (nonatomic, strong) NSThread* cscopeSearchThread;
@@ -148,6 +143,8 @@ typedef enum _SearchType{
 @property (strong, nonatomic) NSString* gitUsername;
 
 @property (strong, nonatomic) NSString* gitPassword;
+
+@property (strong, nonatomic) UIActivityIndicatorView* cscopeIndicator;
 
 +(Utils*)getInstance;
 
@@ -178,7 +175,7 @@ typedef enum _SearchType{
 
 -(BannerViewController*) getBannerViewController;
 
--(void) showAnalyzeInfoPopOver:(BOOL) show;
+-(void) showAnalyzeIndicator:(BOOL) show;
 
 -(NSString*) getProjectFolder:(NSString*)path;
 

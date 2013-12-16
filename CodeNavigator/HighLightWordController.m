@@ -67,7 +67,7 @@
 -(void) doSearch: (BOOL)doScroll andWebView:(UIWebView *)webView
 {
     NSError* error;
-    NSString* currentDisplayFile = [[Utils getInstance].detailViewController getCurrentDisplayFile];
+    NSString* currentDisplayFile;
     if (webView == detailViewController.webView) {
         NSString* path = [detailViewController.upHistoryController pickTopLevelUrl];
         currentDisplayFile = [detailViewController.upHistoryController getUrlFromHistoryFormat:path];

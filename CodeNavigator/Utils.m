@@ -86,8 +86,6 @@
 static Utils *static_utils;
 
 @synthesize detailViewController;
-@synthesize analyzeInfoPopover;
-@synthesize analyzeInfoController;
 @synthesize analyzeThread;
 @synthesize cscopeSearchThread;
 @synthesize analyzePath;
@@ -101,6 +99,7 @@ static Utils *static_utils;
 @synthesize functionListManager;
 @synthesize gitPassword;
 @synthesize gitUsername;
+@synthesize cscopeIndicator;
 
 +(Utils*)getInstance
 {
@@ -925,34 +924,21 @@ static Utils *static_utils;
     return alert;
 }
 
--(void) showAnalyzeInfoPopOver:(BOOL)show
+-(void) showAnalyzeIndicator:(BOOL)show
 {
     if (show == YES)
     {
-        if (self.analyzeInfoPopover == nil)
-        {
-#ifndef IPHONE_VERSION
-            [detailViewController dismissPopovers];
-            self.analyzeInfoController = [[AnalyzeInfoController alloc] init];
-            self.analyzeInfoPopover = [[UIPopoverController alloc] initWithContentViewController:self.analyzeInfoController];
-            self.analyzeInfoPopover.popoverContentSize = CGSizeMake(320, 130);
-#endif
+        if (self.cscopeIndicator == nil) {
+            self.cscopeIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+            self.cscopeIndicator.hidesWhenStopped = YES;
         }
-        if (self.analyzeInfoPopover.popoverVisible == NO)
-        {
-            MasterViewController* _masterViewController = nil;
-            NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
-            _masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
-            [_masterViewController releaseAllPopover];
-            
-            [self.analyzeInfoPopover presentPopoverFromBarButtonItem:self.detailViewController.analyzeInfoBarButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-        }
+        [self.cscopeIndicator startAnimating];
+        
+        [self.detailViewController.analyzeInfoBarButton setCustomView:self.cscopeIndicator];
     }
     else
     {
-#ifndef IPHONE_VERSION
-        [self.analyzeInfoPopover dismissPopoverAnimated:YES];
-#endif
+        [self.cscopeIndicator stopAnimating];
     }
 }
 
@@ -990,7 +976,7 @@ static Utils *static_utils;
     if (forceCreate || isExist == NO || (isExist == YES && isFolder == YES))
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self showAnalyzeInfoPopOver:YES];
+            [self showAnalyzeIndicator:YES];
             [[Utils getInstance].detailViewController.analyzeInfoBarButton setEnabled:YES];
         });
         [[Utils getInstance] createFileList:projectFolder andWriteTo:db_content andSearchDelta:search_delta_content];
@@ -1000,7 +986,7 @@ static Utils *static_utils;
         {
             dispatch_async(dispatch_get_main_queue(), ^{
                 {
-                    [self.analyzeInfoController finishAnalyze];
+                    [self showAnalyzeIndicator:NO];
                     [self alertWithTitle:@"CodeNavigator" andMessage:@"No source file found, stop analyzing"];
                 }
             });
@@ -1049,7 +1035,7 @@ static Utils *static_utils;
         dispatch_async(dispatch_get_main_queue(), ^{
             //if (self.analyzeInfoPopover.isPopoverVisible)
             {
-                [self.analyzeInfoController finishAnalyze];
+                [self showAnalyzeIndicator:NO];
                 [self alertWithTitle:@"CodeNavigator" andMessage:[NSString stringWithFormat:@"Analyze \"%@\" finished", [projectFolder lastPathComponent]]];
             }
         });
@@ -1111,7 +1097,7 @@ static Utils *static_utils;
         {
             NSString* info = [NSString stringWithFormat:@"Project \"%@\" is Analyzing in progress, Please  manually try again later.", [self.analyzePath lastPathComponent]];
             [self alertWithTitle:@"CodeNavigator" andMessage:info];
-            [self showAnalyzeInfoPopOver:YES];
+            [self showAnalyzeIndicator:YES];
             return;
         }
         else
@@ -1232,9 +1218,15 @@ static Utils *static_utils;
         [[Utils getInstance].detailViewController.virtualizeViewController setIsNeedGetResultFromCscope:NO];
     }
     
-    if ([Utils getInstance].analyzeThread.isExecuting == YES)
+    if (self.analyzeThread.isExecuting == YES)
     {
         [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Project Analyzing is in progress, Please wait untile analyze finished"];
+        return;
+    }
+    
+    if (self.cscopeSearchThread.isExecuting == YES)
+    {
+        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Searching in progress, Please wait untile search finished"];
         return;
     }
     
@@ -1294,6 +1286,8 @@ static Utils *static_utils;
     [data setFileList:fileList];
     [data setFromVir:fromVir];
     [data setSourcePath:sourcePath];
+    
+    [self showAnalyzeIndicator:YES];
 
     self.cscopeSearchThread = nil;
     self.cscopeSearchThread = [[NSThread alloc] initWithTarget:self selector:@selector(cscopeSearchMethod:) object:data];
@@ -1338,6 +1332,9 @@ static Utils *static_utils;
         default:
             break;
     }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self showAnalyzeIndicator:NO];
+    });
     if (_result != 0)
     {
         result = [NSString stringWithCString:_result encoding:NSUTF8StringEncoding];
@@ -1435,7 +1432,9 @@ static Utils *static_utils;
     }
     else
     {
-        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Low Memorry!"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Low Memorry!"];
+        });
     }
     }
 }

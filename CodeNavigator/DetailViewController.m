@@ -227,7 +227,11 @@
         
         // Set second webview
         self.activeWebView = secondWebView;
-        [self setTitle:@"Help.html" andPath:help andContent:html andBaseUrl:nil];
+        int location = [self getCurrentScrollLocation];
+        [self.downHistoryController updateCurrentScrollLocation:location];
+        [self.downHistoryController pushUrl:help];
+        [self displayHTMLString:html andBaseURL:nil];
+        html = nil;
         self.activeWebView = _webView;
         isFirstDisplay = NO;
     }
@@ -715,13 +719,6 @@
 }
 
 #pragma Bar Button action
-
-- (IBAction)infoButtonClicked:(id)sender {
-    if ([Utils getInstance].analyzeInfoPopover.isPopoverVisible == YES)
-        [[Utils getInstance] showAnalyzeInfoPopOver:NO];
-    else
-        [[Utils getInstance] showAnalyzeInfoPopOver:YES];
-}
 
 - (IBAction)historyClicked:(id)sender {
     UISegmentedControl* controller = sender;
@@ -1679,7 +1676,6 @@
         //TODO
 //        [[Utils getInstance].webServicePopOverController dismissPopoverAnimated:YES];
         [self releaseAllPopOver];
-        [[Utils getInstance].analyzeInfoPopover dismissPopoverAnimated:YES];
         
 #ifdef IPHONE_VERSION
         CommentViewController* viewController = [[CommentViewController alloc] initWithNibName:@"CommentViewController-iPhone" bundle:nil];

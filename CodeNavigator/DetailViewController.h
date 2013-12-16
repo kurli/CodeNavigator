@@ -137,8 +137,6 @@ typedef enum _JSState {
 
 - (void) downSelectButton;
 
-- (IBAction)infoButtonClicked:(id)sender;
-
 - (IBAction)hideMasterViewClicked:(id)sender;
 
 - (IBAction)highlightWordButtonClicked:(id)sender;
