@@ -141,23 +141,25 @@
     if ([sender isOn]){
         //NSString *root = [masterViewController getCurrentLocation];
         //self.uploadToPath = [[masterViewController getCurrentLocation] stringByAppendingString:@""];
-        if (_httpServer == nil)
+        if (_httpServer != nil)
         {
-            _httpServer = [[HTTPServer alloc] init];
-            [_httpServer setType:@"_http._tcp."];
-            [_httpServer setConnectionClass:[MyHTTPConnection class]];
-            [_httpServer setWebUploadResultDelegate:self];
-        
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayInfoUpdate:) name:@"LocalhostAdressesResolved" object:nil];
+            return;
         }
+        _httpServer = [[HTTPServer alloc] init];
+        [_httpServer setType:@"_http._tcp."];
+        [_httpServer setConnectionClass:[MyHTTPConnection class]];
+        [_httpServer setWebUploadResultDelegate:self];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayInfoUpdate:) name:@"LocalhostAdressesResolved" object:nil];
         [_httpServer setDocumentRoot:[NSURL fileURLWithPath:uploadToPath]];
-        [_httpServer start:&error];
         [textView setText:@"Please Wait..."];
         [localhostAddresses performSelectorInBackground:@selector(list) withObject:nil];
+        [_httpServer start:&error];
         [[[Utils getInstance] getBannerViewController] showBannerView];
     } else {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"LocalhostAdressesResolved" object:nil];
         [_httpServer stop];
+        _httpServer = nil;
         [textView setText:@"Please turn on \"Web Upload Service\" to upload files"];
     }
 }
