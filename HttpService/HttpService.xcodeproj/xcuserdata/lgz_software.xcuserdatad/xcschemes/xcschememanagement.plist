@@ -3,15 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>SchemeUserState</key>
-	<dict/>
+	<dict>
+		<key>HttpService.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>94B4031A14A0D5EA00E3A636</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>94B4035E14A0DD9800E3A636</key>
 		<dict>
 			<key>primary</key>
 			<true/>
