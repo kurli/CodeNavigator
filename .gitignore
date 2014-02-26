@@ -63,7 +63,7 @@ build/
 HttpService/build
 ObjectiveGit/ObjectiveGit/build
 Zip/build
-
+ObjectiveGit/libgit2/libgit2-iOS.a
 
 #####
 # Xcode private settings (window sizes, bookmarks, breakpoints, custom executables, smart groups)
