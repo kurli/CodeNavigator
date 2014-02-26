@@ -1380,6 +1380,9 @@
 {
     NSString* comment = _comment;
     comment = [comment stringByReplacingOccurrencesOfString:@"\n" withString:@"lgz_br_lgz"];
+    comment = [comment stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
+    comment = [comment stringByReplacingOccurrencesOfString:@"\'" withString:@"\\\'"];
+    comment = [comment stringByReplacingOccurrencesOfString:@"\\" withString:@"\\"];
     
     NSString* js = [NSString stringWithFormat:@"showComment('%d','%@');",_line+1, comment];
     [activeWebView stringByEvaluatingJavaScriptFromString:js];
