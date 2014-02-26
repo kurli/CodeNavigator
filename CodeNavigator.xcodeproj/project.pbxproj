@@ -95,8 +95,6 @@
 		94246F75156BC84600CA4234 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 94246F5D156BC84600CA4234 /* SBJsonWriter.m */; };
 		9429000414D4E16E002793BD /* PercentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9429000114D4E16E002793BD /* PercentViewController.xib */; };
 		9429000514D4E16E002793BD /* PercentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9429000114D4E16E002793BD /* PercentViewController.xib */; };
-		94291E6014A9FB4A00E44221 /* AnalyzeInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94291E5E14A9FB4A00E44221 /* AnalyzeInfoController.m */; };
-		94291E6114A9FB4A00E44221 /* AnalyzeInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94291E5F14A9FB4A00E44221 /* AnalyzeInfoController.xib */; };
 		9431D73914910B3000B0900E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9431D73814910B3000B0900E /* UIKit.framework */; };
 		9431D73B14910B3000B0900E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9431D73A14910B3000B0900E /* Foundation.framework */; };
 		9431D73D14910B3000B0900E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9431D73C14910B3000B0900E /* CoreGraphics.framework */; };
@@ -495,7 +493,6 @@
 		949DC1C11583E8CF00385796 /* WebServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9466466914A2370700B30CD2 /* WebServiceController.m */; };
 		949DC1C21583E8CF00385796 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DA0BBD14A624680035DB39 /* Utils.m */; };
 		949DC1C31583E8CF00385796 /* FilePathInfoPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D8702F14A65887002F2DBB /* FilePathInfoPopupController.m */; };
-		949DC1C41583E8CF00385796 /* AnalyzeInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94291E5E14A9FB4A00E44221 /* AnalyzeInfoController.m */; };
 		949DC1C51583E8CF00385796 /* UnSupportedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB1E5114AF5E0300451020 /* UnSupportedParser.m */; };
 		949DC1C61583E8CF00385796 /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECB14BCA4FD00388D68 /* MGSplitCornersView.m */; };
 		949DC1C71583E8CF00385796 /* MGSplitDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECD14BCA4FD00388D68 /* MGSplitDividerView.m */; };
@@ -682,7 +679,6 @@
 		94ADF16714BB27EE00BA807A /* WebServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9466466914A2370700B30CD2 /* WebServiceController.m */; };
 		94ADF16814BB27EE00BA807A /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DA0BBD14A624680035DB39 /* Utils.m */; };
 		94ADF16914BB27EE00BA807A /* FilePathInfoPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D8702F14A65887002F2DBB /* FilePathInfoPopupController.m */; };
-		94ADF16A14BB27EE00BA807A /* AnalyzeInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94291E5E14A9FB4A00E44221 /* AnalyzeInfoController.m */; };
 		94ADF16B14BB27EE00BA807A /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9417EB7B14AE160C00224D2A /* BannerViewController.m */; };
 		94ADF16C14BB27EE00BA807A /* UnSupportedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB1E5114AF5E0300451020 /* UnSupportedParser.m */; };
 		94ADF16E14BB27EE00BA807A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9417EB7714AE118000224D2A /* iAd.framework */; };
@@ -704,7 +700,6 @@
 		94ADF17F14BB27EE00BA807A /* WebServiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9466466A14A2370700B30CD2 /* WebServiceController.xib */; };
 		94ADF18014BB27EE00BA807A /* ResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */; };
 		94ADF18114BB27EE00BA807A /* FilePathInfoPopupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D8703014A65888002F2DBB /* FilePathInfoPopupController.xib */; };
-		94ADF18614BB27EE00BA807A /* AnalyzeInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94291E5F14A9FB4A00E44221 /* AnalyzeInfoController.xib */; };
 		94ADF18714BB27EE00BA807A /* linux_0.1 in Resources */ = {isa = PBXBuildFile; fileRef = 94557E5314B05E89004950B4 /* linux_0.1 */; };
 		94B09BB517E77DC600789510 /* FileBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B09BB317E77DC600789510 /* FileBrowserViewController.m */; };
 		94B09BB617E77DC600789510 /* FileBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B09BB417E77DC600789510 /* FileBrowserViewController.xib */; };
@@ -1050,9 +1045,6 @@
 		94246F5C156BC84600CA4234 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		94246F5D156BC84600CA4234 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		9429000114D4E16E002793BD /* PercentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PercentViewController.xib; sourceTree = "<group>"; };
-		94291E5D14A9FB4A00E44221 /* AnalyzeInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyzeInfoController.h; sourceTree = "<group>"; };
-		94291E5E14A9FB4A00E44221 /* AnalyzeInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyzeInfoController.m; sourceTree = "<group>"; };
-		94291E5F14A9FB4A00E44221 /* AnalyzeInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnalyzeInfoController.xib; sourceTree = "<group>"; };
 		9431D73414910B3000B0900E /* CodeNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9431D73814910B3000B0900E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9431D73A14910B3000B0900E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1709,8 +1701,6 @@
 				94EE32D1149FAE0B0088501D /* GotoLineViewController.m */,
 				94D8702E14A65887002F2DBB /* FilePathInfoPopupController.h */,
 				94D8702F14A65887002F2DBB /* FilePathInfoPopupController.m */,
-				94291E5D14A9FB4A00E44221 /* AnalyzeInfoController.h */,
-				94291E5E14A9FB4A00E44221 /* AnalyzeInfoController.m */,
 				94FB0FE814BDB3A50084E457 /* HighLightWordController.h */,
 				94FB0FE914BDB3A50084E457 /* HighLightWordController.m */,
 				94A5BBA714BF47C000F3BA8B /* DisplayModeController.h */,
@@ -1720,7 +1710,6 @@
 				947F861615879407002EAA1E /* DisplayModeController-iPhone.xib */,
 				94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */,
 				94F6EEE21587C19A002DE115 /* HighLightWordController-iPhone.xib */,
-				94291E5F14A9FB4A00E44221 /* AnalyzeInfoController.xib */,
 				94D8703014A65888002F2DBB /* FilePathInfoPopupController.xib */,
 				9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */,
 				94EE32D2149FAE0B0088501D /* GotoLineViewController.xib */,
@@ -2559,7 +2548,6 @@
 				94EE32D4149FAE0B0088501D /* GotoLineViewController.xib in Resources */,
 				9419B87D14A4B3BE00AB679B /* ResultTableCellView.xib in Resources */,
 				94D8703214A65888002F2DBB /* FilePathInfoPopupController.xib in Resources */,
-				94291E6114A9FB4A00E44221 /* AnalyzeInfoController.xib in Resources */,
 				948C7409180449AE00065E65 /* star.png in Resources */,
 				94557E5414B05E89004950B4 /* linux_0.1 in Resources */,
 				94FB0FED14BDB3A50084E457 /* HighLightWordController.xib in Resources */,
@@ -2769,7 +2757,6 @@
 				94ADF17F14BB27EE00BA807A /* WebServiceController.xib in Resources */,
 				94ADF18014BB27EE00BA807A /* ResultTableCellView.xib in Resources */,
 				94ADF18114BB27EE00BA807A /* FilePathInfoPopupController.xib in Resources */,
-				94ADF18614BB27EE00BA807A /* AnalyzeInfoController.xib in Resources */,
 				94ADF18714BB27EE00BA807A /* linux_0.1 in Resources */,
 				94FB0FF114BDF2EF0084E457 /* syntax_color.plist in Resources */,
 				94A5BBAD14BF47C000F3BA8B /* DisplayModeController.xib in Resources */,
@@ -2893,7 +2880,6 @@
 				9466466B14A2370700B30CD2 /* WebServiceController.m in Sources */,
 				94DA0BBE14A624690035DB39 /* Utils.m in Sources */,
 				94D8703114A65888002F2DBB /* FilePathInfoPopupController.m in Sources */,
-				94291E6014A9FB4A00E44221 /* AnalyzeInfoController.m in Sources */,
 				94AB1E5214AF5E0300451020 /* UnSupportedParser.m in Sources */,
 				94846ED014BCA4FD00388D68 /* MGSplitCornersView.m in Sources */,
 				94846ED214BCA4FD00388D68 /* MGSplitDividerView.m in Sources */,
@@ -3156,7 +3142,6 @@
 				949DC1C11583E8CF00385796 /* WebServiceController.m in Sources */,
 				949DC1C21583E8CF00385796 /* Utils.m in Sources */,
 				949DC1C31583E8CF00385796 /* FilePathInfoPopupController.m in Sources */,
-				949DC1C41583E8CF00385796 /* AnalyzeInfoController.m in Sources */,
 				949DC1C51583E8CF00385796 /* UnSupportedParser.m in Sources */,
 				949DC1C61583E8CF00385796 /* MGSplitCornersView.m in Sources */,
 				949DC1C71583E8CF00385796 /* MGSplitDividerView.m in Sources */,
@@ -3344,7 +3329,6 @@
 				94ADF16714BB27EE00BA807A /* WebServiceController.m in Sources */,
 				94ADF16814BB27EE00BA807A /* Utils.m in Sources */,
 				94ADF16914BB27EE00BA807A /* FilePathInfoPopupController.m in Sources */,
-				94ADF16A14BB27EE00BA807A /* AnalyzeInfoController.m in Sources */,
 				94ADF16B14BB27EE00BA807A /* BannerViewController.m in Sources */,
 				94ADF16C14BB27EE00BA807A /* UnSupportedParser.m in Sources */,
 				94846ED114BCA4FD00388D68 /* MGSplitCornersView.m in Sources */,
