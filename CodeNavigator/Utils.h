@@ -15,8 +15,6 @@ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-#define DISPLAY_FILE_EXTENTION @"display_5"
-
 #define IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 typedef void (^GetFunctionListCallback)(NSArray* array);
@@ -25,6 +23,7 @@ typedef void (^GetFunctionListCallback)(NSArray* array);
 @class DropBoxViewController;
 @class GADBannerView;
 @class FunctionListManager;
+@class DisplayController;
 
 #define MAX_HISTORY_STACK 20
 
@@ -107,7 +106,8 @@ typedef enum _SearchType{
     GADBannerView* _adModView;
     AlertConfirmMode alertConfirmMode;
     SearchType searchType;
-    
+    DisplayController* displayController;
+
     // we need to change css version for each theme change
     // add version can do this
     int cssVersion;

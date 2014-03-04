@@ -24,6 +24,9 @@
 #endif
 
 #import "FunctionListManager.h"
+#import "DisplayController.h"
+
+#define RELEASE_VERSION 1
 
 @implementation BuildThreadData
 
@@ -177,12 +180,40 @@ static Utils *static_utils;
     // 1: html format changed
     // 2: cscope file content changed
     // 3: Added new parser config json file
-    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/4_2.version"];
+    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/version"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:versionFile];
     if (isExist == YES)
     {
+        // Check version file
+        NSString* content = [NSString stringWithContentsOfFile:versionFile encoding:NSUTF8StringEncoding error:nil];
+        NSInteger integer = [content integerValue];
+        // Same version
+        if (integer == RELEASE_VERSION) {
+            return;
+        }
+    } else {
+        // First version from 4.4
+        [[NSFileManager defaultManager] createDirectoryAtPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] withIntermediateDirectories:YES attributes:nil error:&error];
+
+        NSString* content = [NSString stringWithFormat:@"%d", RELEASE_VERSION];
+        [content writeToFile:versionFile atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        
+#ifndef IPHONE_VERSION
+        // Show Help dislog
+        double delayInSeconds = 10;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            HelpViewController* viewController = [[HelpViewController alloc] init];
+            viewController.modalPresentationStyle = UIModalPresentationFormSheet;
+            [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
+        });
+#endif
         return;
     }
+    [[NSFileManager defaultManager] createDirectoryAtPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] withIntermediateDirectories:YES attributes:nil error:&error];
+    NSString* content = [NSString stringWithFormat:@"%d", RELEASE_VERSION];
+    [content writeToFile:versionFile atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    
 #ifndef IPHONE_VERSION
     // Show Help dislog
     double delayInSeconds = 10;
@@ -193,11 +224,6 @@ static Utils *static_utils;
         [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
     });
 #endif
-    
-    // add version file
-    [[NSFileManager defaultManager] createDirectoryAtPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] withIntermediateDirectories:YES attributes:nil error:&error];
-    NSString* tmp = @"";
-    [tmp writeToFile:versionFile atomically:YES encoding:NSUTF8StringEncoding error:&error];
     
     // delete lgz_software.js and theme.css
     NSString* js = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.settings/lgz_javascript.js"];
@@ -622,6 +648,13 @@ static Utils *static_utils;
     [alertView show];
 }
 
+-(DisplayController*) getDisplayController {
+    if (displayController == nil) {
+        displayController = [[DisplayController alloc] init];
+    }
+    return displayController;
+}
+
 -(NSString*)getPathFromProject:(NSString *)path
 {
     NSArray* components;
@@ -649,48 +682,12 @@ static Utils *static_utils;
 
 -(NSString*) getSourceFileByDisplayFile:(NSString *)displayFile
 {
-    if (displayFile == nil || [displayFile length] == 0)
-        return nil;
-    NSString* tmp = [displayFile copy];
-    NSRange locationRange = [tmp rangeOfString:@".display" options:NSBackwardsSearch];
-    if ( locationRange.location != NSNotFound)
-    {
-        tmp = [tmp substringToIndex:locationRange.location];
-        locationRange = [tmp rangeOfString:@"_" options:NSBackwardsSearch];
-        if ( locationRange.location != NSNotFound )
-        {
-            NSString* name = [tmp substringToIndex:locationRange.location];
-            if (locationRange.location+locationRange.length == [tmp length])
-            {
-                //No extension found
-                tmp = name;
-            }
-            else
-            {
-                NSString* extension = [tmp substringFromIndex:locationRange.location+1];
-                tmp = [NSString stringWithFormat:@"%@.%@", name,extension];
-            }
-        }
-    }
-    return tmp;    
+    return [[self getDisplayController] getSourceFileByDisplayFile:displayFile];
 }
 
 -(NSString*) getDisplayFileBySourceFile:(NSString *)source
 {
-    if (source == nil || [source length] == 0)
-        return nil;
-    NSString* tmp = [source copy];
-    NSString* extension = [source pathExtension];
-    if (extension == nil || [extension length] == 0)
-    {
-        tmp = [tmp stringByAppendingFormat:@"_.%@", DISPLAY_FILE_EXTENTION];
-    }
-    else
-    {
-        tmp = [tmp stringByDeletingPathExtension];
-        tmp = [tmp stringByAppendingFormat:@"_%@.%@", extension, DISPLAY_FILE_EXTENTION];
-    }
-    return tmp;
+    return [[self getDisplayController] getDisplayFileBySourceFile:source];
 }
 
 -(NSString*) getTagFileBySourceFile:(NSString *)source
@@ -713,11 +710,7 @@ static Utils *static_utils;
 
 -(void)deleteDisplayFileForSource:(NSString *)source
 {
-    NSError *error;
-    NSString* displayFilePath = [[Utils getInstance] getDisplayFileBySourceFile:source];
-    if (displayFilePath == nil || [displayFilePath length] == 0 )
-        return;
-    [[NSFileManager defaultManager] removeItemAtPath:displayFilePath error:&error];
+    [[self getDisplayController] deleteDisplayFileForSource:source];
 }
 
 -(BOOL)isSupportedType:(NSString *)file
@@ -1533,61 +1526,12 @@ static Utils *static_utils;
 
 -(NSString*) getDisplayPath:(NSString*) path
 {
-    NSString* displayPath;
-    if ([self isDocType:path])
-    {
-        return path;
-    }
-//    if ([self isWebType:path])
-//        return path;
-    
-    displayPath = [path stringByDeletingPathExtension];
-    displayPath = [displayPath stringByAppendingFormat:@"_%@",[path pathExtension]];
-    displayPath = [displayPath stringByAppendingPathExtension:DISPLAY_FILE_EXTENTION];
-    return displayPath;
+    return [[self getDisplayController] getDisplayPath:path];
 }
 
 -(NSString*) getDisplayFile:(NSString*) path andProjectBase:(NSString*)projectPath
 {
-    NSString* displayPath;
-    BOOL isFolder;
-    NSString* html;
-    NSError *error;
-    //NSString* rc4Result;
-
-    displayPath = [self getDisplayPath:path];
-    if (![[NSFileManager defaultManager] fileExistsAtPath:displayPath isDirectory:&isFolder])
-    {
-        @autoreleasepool {        
-            Parser* parser = [[Parser alloc] init];
-            if ([self isImageType:path] == YES)
-                [parser setParserType:IMAGE];
-            else
-                [parser checkParseType:path];
-            [parser setFile: path andProjectBase:projectPath];
-            int maxLineCount = [colorScheme.max_line_count intValue];
-            if (maxLineCount > 0) {
-                [parser setMaxLineCount:maxLineCount];
-            }
-            [parser startParse];
-            html = [parser getHtml];
-            //rc4Result = [self HloveyRC4:html key:@"lgz"];
-            [html writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
-        }
-    }
-    else
-    {
-        if ([self isDocType:path])
-        {
-            return nil;
-        }
-//        if ([self isWebType:path])
-//            return nil;
-        NSStringEncoding encoding = NSUTF8StringEncoding;
-        html = [NSString stringWithContentsOfFile: displayPath usedEncoding:&encoding error: &error];
-        //html = [self HloveyRC4:rc4Result key:@"lgz"];
-    }
-    return html;
+    return [[self getDisplayController] getDisplayFile:path andProjectBase:projectPath];
 }
 
 -(void) showPurchaseAlert

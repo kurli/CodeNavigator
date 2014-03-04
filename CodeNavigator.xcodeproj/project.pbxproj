@@ -717,6 +717,7 @@
 		94B8EC241546F2FD00931747 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC231546F2FD00931747 /* AudioToolbox.framework */; };
 		94B8EC261546F30900931747 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC251546F30900931747 /* MessageUI.framework */; };
 		94B8EC281546F31700931747 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC271546F31700931747 /* SystemConfiguration.framework */; };
+		94BA22B518BE4166006CB7A8 /* DisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22B418BE4166006CB7A8 /* DisplayController.m */; };
 		94BD81DD18014587002F8153 /* JavaParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81D918014587002F8153 /* JavaParser.m */; };
 		94BD81DE18014587002F8153 /* JavaScriptParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81DC18014587002F8153 /* JavaScriptParser.m */; };
 		94BD81E218014840002F8153 /* PHPParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81E118014840002F8153 /* PHPParser.m */; };
@@ -1422,6 +1423,8 @@
 		94B8EC231546F2FD00931747 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		94B8EC251546F30900931747 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		94B8EC271546F31700931747 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		94BA22B318BE4166006CB7A8 /* DisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DisplayController.h; path = DisplayController/DisplayController.h; sourceTree = "<group>"; };
+		94BA22B418BE4166006CB7A8 /* DisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DisplayController.m; path = DisplayController/DisplayController.m; sourceTree = "<group>"; };
 		94BD81D718014587002F8153 /* JavaDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaDefinition.h; path = CodeNavigator/JavaDefinition.h; sourceTree = "<group>"; };
 		94BD81D818014587002F8153 /* JavaParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaParser.h; path = CodeNavigator/JavaParser.h; sourceTree = "<group>"; };
 		94BD81D918014587002F8153 /* JavaParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JavaParser.m; path = CodeNavigator/JavaParser.m; sourceTree = "<group>"; };
@@ -1649,6 +1652,7 @@
 				94F7B90917F7482900A506EE /* UploadSelection */,
 				948C7464180AE89800065E65 /* History */,
 				94785A56184B9EC00012988B /* WebView */,
+				94BA22AB18BE4121006CB7A8 /* DisplayController */,
 				9431D73E14910B3000B0900E /* CodeNavigator */,
 				9431D73714910B3000B0900E /* Frameworks */,
 				9431D73514910B3000B0900E /* Products */,
@@ -2318,6 +2322,16 @@
 			name = GoogleAds;
 			sourceTree = "<group>";
 		};
+		94BA22AB18BE4121006CB7A8 /* DisplayController */ = {
+			isa = PBXGroup;
+			children = (
+				94BA22B318BE4166006CB7A8 /* DisplayController.h */,
+				94BA22B418BE4166006CB7A8 /* DisplayController.m */,
+			);
+			name = DisplayController;
+			path = CodeNavigator;
+			sourceTree = "<group>";
+		};
 		94BF7D8B150E6B1C00FCF653 /* Git */ = {
 			isa = PBXGroup;
 			children = (
@@ -2926,6 +2940,7 @@
 				94636B54155A91E700B1C37F /* CommentWrapper.m in Sources */,
 				94618179155EEDAB00A25635 /* CommentManager.m in Sources */,
 				94246F5E156BC84600CA4234 /* NSObject+SBJson.m in Sources */,
+				94BA22B518BE4166006CB7A8 /* DisplayController.m in Sources */,
 				94246F60156BC84600CA4234 /* SBJsonParser.m in Sources */,
 				94246F62156BC84600CA4234 /* SBJsonStreamParser.m in Sources */,
 				94246F64156BC84600CA4234 /* SBJsonStreamParserAccumulator.m in Sources */,

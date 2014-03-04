@@ -21,6 +21,7 @@
 #import "GAI.h"
 #endif
 #import "FileBrowserViewController.h"
+#import "DisplayController.h"
 
 #define TOOLBAR_X_MASTER_SHOW 55
 #define TOOLBAR_X_MASTER_HIDE 208
