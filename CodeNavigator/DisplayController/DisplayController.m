@@ -9,6 +9,7 @@
 #import "DisplayController.h"
 #import "Utils.h"
 #import "Parser.h"
+#import <CommonCrypto/CommonDigest.h>
 
 @implementation DisplayController
 
@@ -35,6 +36,8 @@
                 NSString* extension = [tmp substringFromIndex:locationRange.location+1];
                 tmp = [NSString stringWithFormat:@"%@.%@", name,extension];
             }
+            // Change the folder
+            tmp = [tmp stringByReplacingOccurrencesOfString:DISPLAY_FOLDER_PATH withString:@"Projects"];
         }
     }
     return tmp;
@@ -55,13 +58,15 @@
         tmp = [tmp stringByDeletingPathExtension];
         tmp = [tmp stringByAppendingFormat:@"_%@.%@", extension, DISPLAY_FILE_EXTENTION];
     }
+    // Change the folder
+    tmp = [tmp stringByReplacingOccurrencesOfString:@"Projects" withString:DISPLAY_FOLDER_PATH];
     return tmp;
 }
 
 -(void)deleteDisplayFileForSource:(NSString *)source
 {
     NSError *error;
-    NSString* displayFilePath = [[Utils getInstance] getDisplayFileBySourceFile:source];
+    NSString* displayFilePath = [self getDisplayFileBySourceFile:source];
     if (displayFilePath == nil || [displayFilePath length] == 0 )
         return;
     [[NSFileManager defaultManager] removeItemAtPath:displayFilePath error:&error];
@@ -77,9 +82,7 @@
     //    if ([self isWebType:path])
     //        return path;
     
-    displayPath = [path stringByDeletingPathExtension];
-    displayPath = [displayPath stringByAppendingFormat:@"_%@",[path pathExtension]];
-    displayPath = [displayPath stringByAppendingPathExtension:DISPLAY_FILE_EXTENTION];
+    displayPath = [self getDisplayFileBySourceFile:path];
     return displayPath;
 }
 
@@ -95,20 +98,7 @@
     if (![[NSFileManager defaultManager] fileExistsAtPath:displayPath isDirectory:&isFolder])
     {
         @autoreleasepool {
-            Parser* parser = [[Parser alloc] init];
-            if ([[Utils getInstance] isImageType:path] == YES)
-                [parser setParserType:IMAGE];
-            else
-                [parser checkParseType:path];
-            [parser setFile: path andProjectBase:projectPath];
-            int maxLineCount = [[Utils getInstance].colorScheme.max_line_count intValue];
-            if (maxLineCount > 0) {
-                [parser setMaxLineCount:maxLineCount];
-            }
-            [parser startParse];
-            html = [parser getHtml];
-            //rc4Result = [self HloveyRC4:html key:@"lgz"];
-            [html writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+            html = [self parseFile:path andProjectBase:projectPath];
         }
     }
     else
@@ -119,11 +109,60 @@
         }
         //        if ([self isWebType:path])
         //            return nil;
+        displayPath = [self getDisplayPath:path];
         NSStringEncoding encoding = NSUTF8StringEncoding;
-        html = [NSString stringWithContentsOfFile: displayPath usedEncoding:&encoding error: &error];
-        //html = [self HloveyRC4:rc4Result key:@"lgz"];
+        NSString* content = [NSString stringWithContentsOfFile: displayPath usedEncoding:&encoding error: &error];
+        NSString* fileContent = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+        NSString* source_md5 = [self getMd5_32Bit_String:fileContent];
+        NSString* pre_md5 = [content substringToIndex:[source_md5 length]];
+        if ([source_md5 compare:pre_md5] == NSOrderedSame) {
+            html = [content substringFromIndex:[source_md5 length]];
+        } else {
+            html = [self parseFile:path andProjectBase:projectPath];
+        }
     }
     return html;
+}
+
+-(NSString*) parseFile:(NSString*) path andProjectBase:(NSString*)projectPath {
+    NSString* html;
+    NSError *error;
+    NSString* displayPath = [self getDisplayPath:path];
+
+    Parser* parser = [[Parser alloc] init];
+    if ([[Utils getInstance] isImageType:path] == YES)
+        [parser setParserType:IMAGE];
+    else
+        [parser checkParseType:path];
+    [parser setFile: path andProjectBase:projectPath];
+    int maxLineCount = [[Utils getInstance].colorScheme.max_line_count intValue];
+    if (maxLineCount > 0) {
+        [parser setMaxLineCount:maxLineCount];
+    }
+    [parser startParse];
+    html = [parser getHtml];
+    NSString* fileContent = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    NSString* outputStr = [self getMd5_32Bit_String:fileContent];
+    outputStr = [outputStr stringByAppendingString:html];
+    //rc4Result = [self HloveyRC4:html key:@"lgz"];
+    [outputStr writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    if (error) {
+        NSString* folder = [displayPath stringByDeletingLastPathComponent];
+        [[NSFileManager defaultManager] createDirectoryAtPath:folder withIntermediateDirectories:YES attributes:Nil error:&error];
+        [outputStr writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    }
+    return html;
+}
+
+- (NSString *)getMd5_32Bit_String:(NSString *)srcString{
+    const char *cStr = [srcString UTF8String];
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5( cStr, strlen(cStr), digest );
+    NSMutableString *result = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [result appendFormat:@"%02x", digest[i]];
+    
+    return result;
 }
 
 @end

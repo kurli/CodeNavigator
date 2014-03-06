@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define DISPLAY_FILE_EXTENTION @"display_5"
+#define DISPLAY_FOLDER_PATH @"._DisplayCache_"
 
 
 @interface DisplayController : NSObject
