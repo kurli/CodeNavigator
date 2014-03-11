@@ -21,14 +21,14 @@
 @interface GitLogViewCongroller : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     int selected;
-    GTObject* newObj;
-    GTObject* oldObj;
 }
 @property (nonatomic, strong) GTRepository* repo;
-@property (nonatomic, strong) NSArray* commitsArray;
-@property (nonatomic, strong) NSMutableArray* pendingDiffTree;
+@property (atomic, strong) NSArray* commitsArray;
 @property (unsafe_unretained, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray* diffFileArray;
+@property (nonatomic, strong) NSString* compareContainsPath;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *showMergesBarButton;
+- (IBAction)showMergesClicked:(id)sender;
 
 -(void) gitLogForProject:(NSString*)project;
 

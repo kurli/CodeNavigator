@@ -251,4 +251,6 @@ typedef enum _SearchType{
 
 -(void) getFunctionListForFile:(NSString*)path andCallback:(GetFunctionListCallback)callback;
 
+-(NSString*) getGitFolder:(NSString*)path;
+
 @end

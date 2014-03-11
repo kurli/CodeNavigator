@@ -86,7 +86,7 @@ typedef enum _changeType
 
 - (IBAction)backbuttonClicked:(id)sender {
     [popOverController dismissPopoverAnimated:NO];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)diffFileListClicked:(id)sender {
@@ -174,19 +174,19 @@ typedef enum _changeType
     NSString* bgColor;
     switch (colorStep % 5) {
         case 0:
-            bgColor = [NSString stringWithString:@"<td style=\"background:#450000\">"];
+            bgColor = @"<td style=\"background:#450000\">";
             break;
         case 1:
-            bgColor = [NSString stringWithString:@"<td style=\"background:#450033\">"];
+            bgColor = @"<td style=\"background:#450033\">";
             break;
         case 2:
-            bgColor = [NSString stringWithString:@"<td style=\"background:#453300\">"];
+            bgColor = @"<td style=\"background:#453300\">";
             break;
         case 3:
-            bgColor = [NSString stringWithString:@"<td style=\"background:#453333\">"];
+            bgColor = @"<td style=\"background:#453333\">";
             break;
         case 4:
-            bgColor = [NSString stringWithString:@"<td style=\"background:#334500\">"];
+            bgColor = @"<td style=\"background:#334500\">";
             break;
         default:
             break;

@@ -148,31 +148,53 @@
         return cell;
     }
 
-    static NSString *itemIdentifier = @"ProjectCell";
+//    static NSString *itemIdentifier = @"ProjectCell";
     static NSString *fileIdentifier = @"FileCellIdentifier";
     UITableViewCell *cell;
+    UIImageView* imageView;
     
     if (indexPath.row < [self.currentDirectories count])
     {
-        cell = [tableView dequeueReusableCellWithIdentifier:itemIdentifier];
+        cell = [tableView dequeueReusableCellWithIdentifier:fileIdentifier];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemIdentifier];
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"FileTableViewCell" owner:self options:nil] lastObject];
+            [cell setValue:fileIdentifier forKey:@"reuseIdentifier"];
         }
+        imageView = (UIImageView*)[cell viewWithTag:101];
         if (isCurrentProjectFolder == YES)
         {
-            cell.imageView.image = [UIImage imageNamed:@"project.png"];
+            imageView.image = [UIImage imageNamed:@"project.png"];
         }
         else
         {
-            cell.imageView.image = [UIImage imageNamed:@"folder.png"];
+            imageView.image = [UIImage imageNamed:@"folder.png"];
         }
-        cell.textLabel.text = [self.currentDirectories objectAtIndex:indexPath.row];
-        UIColor *color = [[UIColor alloc] initWithRed:0.0 green:0.0 blue:0.0 alpha:0];
-        [cell setBackgroundColor:color];
+        NSString* fileName = [self.currentDirectories objectAtIndex:indexPath.row];
+        ((UILabel*)[cell viewWithTag:102]).text = fileName;
+        
+        NSError* error;
+        NSString* filePath = self.currentLocation;
+        filePath = [filePath stringByAppendingPathComponent:fileName];
+        NSDictionary *attributes = [[NSFileManager defaultManager]
+                                    attributesOfItemAtPath:filePath error:&error];
+        
+        NSDate* date = [attributes valueForKey:NSFileModificationDate];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yy/MM/dd HH:mm"];
+        
+        ((UILabel*)[cell viewWithTag:103]).text = @"";
+        ((UILabel*)[cell viewWithTag:104]).text = [dateFormatter stringFromDate:date];
+        UIButton* infoButton = (UIButton*)[cell viewWithTag:110];
+        if (enableFileInfoButton)
+            [infoButton addTarget:self action:@selector(fileInfoButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        else
+        {
+            [infoButton setHidden:YES];
+            [infoButton setEnabled:NO];
+        }
     }
     else
     {
-        UIImageView* imageView;
         cell = [tableView dequeueReusableCellWithIdentifier:fileIdentifier];
         if (cell == nil) {
             cell = [[[NSBundle mainBundle] loadNibNamed:@"FileTableViewCell" owner:self options:nil] lastObject];
@@ -306,11 +328,7 @@
         return 65;
     }
 
-    if (indexPath.row < [self.currentDirectories count])
-        return 50;
-    else {
-        return 60;
-    }
+    return 60;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

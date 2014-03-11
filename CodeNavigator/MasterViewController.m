@@ -28,6 +28,7 @@
 #import "GitCloneViewController.h"
 #import "FileListBrowserController.h"
 #import "UploadSelectionViewController.h"
+#import "DisplayController.h"
 
 @implementation MasterViewController
 @synthesize fileSearchBar = _fileSearchBar;
@@ -52,7 +53,7 @@
     if (self) {
         self.title = NSLocalizedString(@"Projects", @"Projects");
 //        self clearsSelectionOnViewWillAppear = NO;
-        self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
+//        self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
         fileListBrowserController = [[FileListBrowserController alloc]init];
         [fileListBrowserController setFileListBrowserDelegate:self];
         [fileListBrowserController setEnableFileInfoButton:YES];
@@ -255,6 +256,9 @@
         return;
     }
     
+    // If input is a display file, change to source file
+    filePath = [[Utils getInstance] getSourceFileByDisplayFile:filePath];
+    
     // If current table view is in search mode, just ignore it
     if ([fileListBrowserController getIsCurrentSearchFileMode]) {
         return;
@@ -293,6 +297,9 @@
     {
         NSArray* array = [self.navigationController viewControllers];
         int target = [array count] -[currentComponents count]+index;
+        if (target < 0 || target > [array count]) {
+            return;
+        }
         targetViewController = (MasterViewController*)[array objectAtIndex:target];
         [self.navigationController popToViewController:targetViewController animated:NO];
     }
@@ -386,24 +393,9 @@
         [self showGitCloneView];
         return;
     }
-    NSError* error;
     GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewCongroller" bundle:[NSBundle mainBundle]];
-    NSString* gitFolder = self.currentProjectPath;
-    BOOL isGitFolder = YES;
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[gitFolder stringByAppendingPathComponent:@".git"]]) {
-        NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:gitFolder error:&error];
-        isGitFolder = NO;
-        for (int i=0; i<[contents count]; i++) {
-            NSString* path = [contents objectAtIndex:i];
-            path = [self.currentProjectPath stringByAppendingPathComponent:path];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:[path stringByAppendingPathComponent:@".git"]]){
-                gitFolder = path;
-                isGitFolder = YES;
-                break;
-            }
-        }
-    }
-    if (isGitFolder == YES) {
+    NSString* gitFolder = [[Utils getInstance] getGitFolder:self.currentProjectPath];
+    if ([gitFolder length] != 0) {
         [gitlogView gitLogForProject: gitFolder];
         [gitlogView showModualView];
     } else {
@@ -461,7 +453,7 @@
     [[Utils getInstance].detailViewController releaseAllPopOver];
     
     SecurityViewController* viewController = [[SecurityViewController alloc] init];
-    [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
+    [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
 #ifdef LITE_VERSION
     [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
                                                     withAction:nil
@@ -535,7 +527,7 @@
     [_webServiceController setMasterViewController:self];
     controller.modalPresentationStyle = UIModalPresentationFormSheet;
     
-    [[Utils getInstance].splitViewController presentModalViewController:controller animated:YES];
+    [[Utils getInstance].splitViewController presentViewController:controller animated:YES completion:nil];
 #endif
     
 #ifdef IPHONE_VERSION
@@ -616,7 +608,7 @@
 #ifndef IPHONE_VERSION
     HelpViewController* viewController = [[HelpViewController alloc] init];
     viewController.modalPresentationStyle = UIModalPresentationFormSheet;
-    [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
+    [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
 #endif
 }
 
@@ -637,6 +629,10 @@
         contentView = [button superview];
     }
     UITableViewCell *cell = (UITableViewCell*)[contentView superview];
+    if ([cell isKindOfClass:[UITableViewCell class]] == false) {
+        [[Utils getInstance] alertWithTitle:@"Error" andMessage:@"Error code 1, please contact guangzhen@hotmail.com, Thanks"];
+        return;
+    }
     NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
     
     if ([popOverController isPopoverVisible]) {
@@ -646,12 +642,16 @@
     
     [self releaseAllPopover];
     
+    NSString* fileName;
     if (indexPath.row < [self.fileListBrowserController getCurrentDirectoriesCount])
     {
-        return;
+        if (indexPath.row < [self.fileListBrowserController getCurrentDirectoriesCount])
+            fileName = [self.fileListBrowserController getDirectoryAtIndex:indexPath.row];
+        else
+            return;
+    } else {
+        fileName = [self.fileListBrowserController getFileNameAtIndex:indexPath.row-[self.fileListBrowserController getCurrentDirectoriesCount]];
     }
-    
-    NSString* fileName = [self.fileListBrowserController getFileNameAtIndex:indexPath.row-[self.fileListBrowserController getCurrentDirectoriesCount]];
     
     NSString* path = [fileListBrowserController.currentLocation stringByAppendingPathComponent:fileName];
     

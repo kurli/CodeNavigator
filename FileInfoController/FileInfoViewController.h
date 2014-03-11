@@ -11,6 +11,8 @@
 typedef enum {
     FILEINFO_WEB,
     FILEINFO_SOURCE,
+    FILEINFO_FOLDER,
+    FILEINFO_PROJECT,
     FILEINFO_OTHER
 } FileInfoType;
 

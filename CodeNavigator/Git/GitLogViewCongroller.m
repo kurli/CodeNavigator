@@ -38,9 +38,9 @@
 
 @synthesize repo;
 @synthesize commitsArray;
-@synthesize pendingDiffTree;
 @synthesize tableView = _tableView;
 @synthesize diffFileArray;
+@synthesize compareContainsPath;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,8 +48,7 @@
     if (self) {
         // Custom initialization
         selected = -1;
-        pendingDiffTree = [[NSMutableArray alloc] init];
-        diffFileArray = [[NSMutableArray alloc] init]; 
+        diffFileArray = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -66,8 +65,6 @@
 {
     [self setRepo:nil];
     [self setCommitsArray:nil];
-    [self.pendingDiffTree removeAllObjects];
-    [self setPendingDiffTree:nil];
     [self setTableView:nil];
     [self.diffFileArray removeAllObjects];
     [self setDiffFileArray:nil];
@@ -107,14 +104,31 @@
         [[Utils getInstance] alertWithTitle:@"Git" andMessage:@"No Git database found!\n Please upload git database (.git folder) first."];
         return;
     }
-    [[Utils getInstance].splitViewController presentModalViewController:self animated:YES];
+    [[Utils getInstance].splitViewController presentViewController:self animated:YES completion:nil];
 }
 
 - (IBAction)backButtonClicked:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark GitWrapper
+- (IBAction)showMergesClicked:(id)sender {
+    [self.tableView scrollsToTop];
+    if ([self.showMergesBarButton.title compare:@"Show Merges"] == NSOrderedSame) {
+        GTEnumerator* enumerator = [[GTEnumerator alloc] initWithRepository:repo error:NULL];
+        [enumerator resetWithOptions:GTEnumeratorOptionsTimeSort];
+        GTReference *headRef = [repo headReferenceWithError:NULL];
+        [enumerator pushSHA:headRef.targetSHA error:NULL];
+        self.commitsArray = [enumerator allObjects];
+        [self.showMergesBarButton setTitle:@"Hide Merges"];
+        [self.tableView reloadData];
+    } else {
+        [self commitsArrayWithNoMerge];
+        [self.showMergesBarButton setTitle:@"Show Merges"];
+        [self.tableView reloadData];
+    }
+}
+
 - (void)gitLogForProject:(NSString *)project
 {
     if (project == nil || [project length] == 0)
@@ -140,9 +154,27 @@
 
     //commit log
     GTEnumerator* enumerator = [[GTEnumerator alloc] initWithRepository:repo error:NULL];
+    [enumerator resetWithOptions:GTEnumeratorOptionsTimeSort];
     GTReference *headRef = [repo headReferenceWithError:NULL];
     [enumerator pushSHA:headRef.targetSHA error:NULL];
-    self.commitsArray = [enumerator allObjects];
+    if ([compareContainsPath length] != 0 && [compareContainsPath compare:project] != NSOrderedSame) {
+
+    } else {
+        self.commitsArray = [enumerator allObjects];
+        [self commitsArrayWithNoMerge];
+    }
+}
+
+-(void) commitsArrayWithNoMerge {
+    NSMutableArray* result = [[NSMutableArray alloc] init];
+    for (int i=0; i<[self.commitsArray count]; i++) {
+        GTCommit* commit = [self.commitsArray objectAtIndex:i];
+        int parents = git_commit_parentcount(commit.git_commit);
+        if (parents == 1) {
+            [result addObject:commit];
+        }
+    }
+    self.commitsArray = result;
 }
 
 #pragma mark libgit2 related
@@ -197,9 +229,9 @@
         NSString* detail = [NSString stringWithFormat:@"%@", commit.message];
         [summaryView setText:detail];
     }
+    selected = indexPath.row;
     
     NSMutableString* fileList = [[NSMutableString alloc] init];
-    selected = indexPath.row;
     UITableViewCell *cell2 = [tableView cellForRowAtIndexPath:indexPath];
     UITextView* detailView2 = (UITextView*)[cell2 viewWithTag:DETAIL_TAG];
     UILabel* summaryView2 = (UILabel*)[cell2 viewWithTag:SUMMARY_TAG];
@@ -209,12 +241,25 @@
     [detailButton2 setHidden:NO];
     
     GTCommit* commitCurrent = [self.commitsArray objectAtIndex:selected];
-    [summaryView2 setText:commitCurrent.message];
+    [summaryView2 setText:[commitCurrent messageSummary]];
+    [detailView2 setText:[commitCurrent messageDetails]];
+
+    int parents = git_commit_parentcount(commitCurrent.git_commit);
+    if (parents != 1) {
+        [detailButton2 setHidden:YES];
+        [tableView endUpdates];
+        return;
+    }
+
     if (selected+1 >= [self.commitsArray count]) {
         [tableView endUpdates];
         return;
     }
-    GTCommit* commitNext = [self.commitsArray objectAtIndex:selected+1];
+    NSMutableArray* pendingDiffTree = [[NSMutableArray alloc] init];
+
+//    GTCommit* commitNext = [self.commitsArray objectAtIndex:selected+1];
+    NSArray* parentsArray = [commitCurrent parents];
+    GTCommit* commitNext = [parentsArray objectAtIndex:0];
     
     PendingData *pending = [[PendingData alloc] init];
     [pending setNeObj:commitCurrent.tree];
@@ -226,11 +271,14 @@
     [diffFileArray removeAllObjects];
     
     while ([pendingDiffTree count] > 0) {
+        GTObject* newObj;
+        GTObject* oldObj;
+        
         pending = [pendingDiffTree objectAtIndex:0];
         oldObj = pending.oldObj;
         newObj = pending.neObj;
         [pendingDiffTree removeObjectAtIndex:0];
-        
+                
         NSError *error;
         GTDiff* diff = [GTDiff diffOldTree:(GTTree*)oldObj withNewTree:(GTTree*)newObj inRepository:repo options:NULL error:&error];
         if (diff == NULL || error != NULL)
@@ -239,50 +287,53 @@
         }
         [diff enumerateDeltasUsingBlock:^(GTDiffDelta *delta, BOOL *stop){
             NSError *error;
-            if (delta.git_diff_delta == 0) {
-                return;
-            }
-            git_oid new_oid = delta.git_diff_delta->new_file.oid;
-            git_oid old_oid = delta.git_diff_delta->old_file.oid;
+            git_oid new_oid = delta.git_diff_delta.new_file.id;
+            git_oid old_oid = delta.git_diff_delta.old_file.id;
             GTOID* new_OID = [[GTOID alloc] initWithGitOid:&new_oid];
             GTOID* old_OID = [[GTOID alloc] initWithGitOid:&old_oid];
-            GTObject* newObj1 = [self.repo lookupObjectByOID:new_OID error:&error];
-            if (error != nil) {
-                return;
+            NSString* newPath;
+            NSString* oldPath;
+            GTObject* newObj1 = [self.repo lookUpObjectByOID:new_OID error:&error];
+            if (error == nil) {
+                newPath = [NSString stringWithFormat:@"%@%@",pending.path, delta.newFile.path];
             }
-            GTObject* oldObj1 = [self.repo lookupObjectByOID:old_OID error:&error];
-            if (error != nil) {
-                return;
-            }
-
-            NSString* path = [NSString stringWithFormat:@"%@%@",pending.path, delta.oldFile.path];
-            
-            if ([[newObj1 type] compare:@"tree"] == NSOrderedSame) {
-                path = [NSString stringWithFormat:@"%@%@/", pending.path, path];
-                PendingData *pending = [[PendingData alloc] init];
-                [pending setNeObj:newObj1];
-                [pending setOldObj:oldObj1];
-                [pending setPath:path];
-                [pendingDiffTree addObject:pending];
-                return;
+            error = nil;
+            GTObject* oldObj1 = [self.repo lookUpObjectByOID:old_OID error:&error];
+            if (error == nil) {
+                oldPath = [NSString stringWithFormat:@"%@%@",pending.path, delta.oldFile.path];
             }
             
+//            if ([[newObj1 type] compare:@"tree"] == NSOrderedSame) {
+//                path = [NSString stringWithFormat:@"%@%@/", pending.path, path];
+//                PendingData *pending = [[PendingData alloc] init];
+//                [pending setNeObj:newObj1];
+//                [pending setOldObj:oldObj1];
+//                [pending setPath:path];
+//                [pendingDiffTree addObject:pending];
+//                return;
+//            }
+            PendingData *pending = [[PendingData alloc] init];
             switch (delta.type) {
                 case GTDiffFileDeltaAdded:
-                    [fileList appendFormat:@"[A] %@\n", path];
+                    [fileList appendFormat:@"[A] %@\n", newPath];
+                    [pending setPath:newPath];
                     break;
                 case GTDiffFileDeltaModified:                    
-                    [fileList appendFormat:@"[M] %@\n", path];
+                    [fileList appendFormat:@"[M] %@\n", newPath];
+                    [pending setPath:newPath];
                     break;
                 case GTDiffFileDeltaDeleted:
-                    [fileList appendFormat:@"[D] %@\n", path];
+                    [fileList appendFormat:@"[D] %@\n", oldPath];
+                    [pending setPath:oldPath];
+                    break;
+                case GIT_DELTA_RENAMED:
+                    [fileList appendFormat:@"%@-->%@\n", oldPath, newPath];
+                    [pending setPath:newPath];
                     break;
                 default:
                     break;
             }
                         
-            PendingData *pending = [[PendingData alloc] init];
-            [pending setPath:path];
             [pending setNeObj:newObj1];
             [pending setOldObj:oldObj1];
             //add file to array
@@ -345,7 +396,8 @@
 //            }
 //        }];
     }
-    [detailView2 setText:fileList];
+    NSString* str = [NSString stringWithFormat:@"%@\n%@",detailView2.text, fileList];
+    [detailView2 setText:str];
 	[tableView endUpdates];
 }
 
@@ -353,7 +405,7 @@
 {
     GitDiffViewController* gitDiffView = [[GitDiffViewController alloc] initWithNibName:@"GitDiffViewController" bundle:[NSBundle mainBundle]];
     [gitDiffView setDiffFileArray:diffFileArray];
-    [self presentModalViewController:gitDiffView animated:YES];
+    [self presentViewController:gitDiffView animated:YES completion:nil];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -394,7 +446,8 @@
     
     UITextView* detailView = (UITextView*)[cell viewWithTag:DETAIL_TAG];
     UILabel* summaryView = (UILabel*)[cell viewWithTag:SUMMARY_TAG];
-    if (selected != indexPath.row)
+    
+//    if (selected != indexPath.row)
     {
         // set summary
         [summaryView setHidden:NO];
@@ -402,20 +455,20 @@
         NSString* detail = [NSString stringWithFormat:@"%@", commit.messageSummary];
         [summaryView setText:detail];
     }
-    else
-    {
-        [summaryView setHidden:NO];
-        NSString* detail = [NSString stringWithFormat:@"%@", commit.messageSummary];
-        [summaryView setText:detail];
-        [detailView setHidden:NO];
-        NSMutableString* detail2 = [[NSMutableString alloc] initWithString:@""];
-        GTTreeEntry* entry;
-        for (int i=0; i<[commit.tree entryCount]; i++) {
-            entry = [[commit tree] entryAtIndex:i];
-            [detail2 appendFormat:@"%@\n", entry.name];
-        }
-        [detailView setText:detail2];
-    }
+//    else
+//    {
+//        [summaryView setHidden:NO];
+//        NSString* detail = [NSString stringWithFormat:@"%@", commit.messageSummary];
+//        [summaryView setText:detail];
+//        [detailView setHidden:NO];
+//        NSMutableString* detail2 = [[NSMutableString alloc] initWithString:@""];
+//        GTTreeEntry* entry;
+//        for (int i=0; i<[commit.tree entryCount]; i++) {
+//            entry = [[commit tree] entryAtIndex:i];
+//            [detail2 appendFormat:@"%@\n", entry.name];
+//        }
+//        [detailView setText:detail2];
+//    }
     
     return cell;
 }

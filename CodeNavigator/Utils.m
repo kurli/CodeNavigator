@@ -1586,4 +1586,54 @@ static Utils *static_utils;
     [self.functionListManager getFunctionListForFile:path andCallback:callback];
 }
 
+-(NSString*) getGitFolder:(NSString *)_path {
+    NSString* projPath = [self getProjectFolder:_path];
+    NSString* gitFolder = nil;
+    NSError* error;
+    BOOL isGitFolder = NO;
+    
+    if ([_path length] == 0) {
+        return nil;
+    }
+
+    // Look inside when there is project folder passed
+    if ([projPath compare:_path] == NSOrderedSame) {
+        if (![[NSFileManager defaultManager] fileExistsAtPath:[_path stringByAppendingPathComponent:@".git"]]) {
+            NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:_path error:&error];
+            for (int i=0; i<[contents count]; i++) {
+                NSString* path = [contents objectAtIndex:i];
+                path = [projPath stringByAppendingPathComponent:path];
+                if ([[NSFileManager defaultManager] fileExistsAtPath:[path stringByAppendingPathComponent:@".git"]]){
+                    gitFolder = path;
+                    isGitFolder = YES;
+                    break;
+                }
+            }
+        } else {
+            return _path;
+        }
+        if (isGitFolder) {
+            return gitFolder;
+        } else {
+            return nil;
+        }
+    } else {
+        // Look outside
+        while (1) {
+            if ([[NSFileManager defaultManager] fileExistsAtPath:[_path stringByAppendingPathComponent:@".git"] isDirectory:nil]) {
+                return _path;
+            }
+            _path = [_path stringByDeletingLastPathComponent];
+            if ([_path compare:projPath] == NSOrderedSame) {
+                if ([[NSFileManager defaultManager] fileExistsAtPath:[_path stringByAppendingPathComponent:@".git"] isDirectory:nil]) {
+                    return _path;
+                } else {
+                    return nil;
+                }
+            }
+        }
+    }
+
+}
+
 @end

@@ -11,16 +11,28 @@
 #import "DetailViewController.h"
 #import "MasterViewController.h"
 #import "OpenAsViewController.h"
+#import "GitLogViewCongroller.h"
 
 //source wrapper
 #define RE_OPEN 0
 #define OPEN_AS 1
 #define SOURCE_DELETE 2
+#define SOURCE_GIT_LOG 3
+
+//folder wrapper
+#define FOLDER_DELETE 0
+#define FOLDER_GIT_LOG 1
+
+//project wrapper
+#define PROJECT_DELETE 0
+#define PROJECT_GIT_LOG 1
+#define PROJECT_GIT_BRANCH 2
 
 //web wrapper
 #define OPEN_AS_SOURCE 0
 #define PREVIEW 1
 #define WEB_DELETE 2
+#define WEB_GIT_LOG 3
 
 @interface FileInfoViewController ()
 
@@ -108,27 +120,33 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
+        BOOL isFolder = false;
+        [[NSFileManager defaultManager] fileExistsAtPath:sourceFilePath isDirectory:&isFolder];
         NSString* proj = [[Utils getInstance] getProjectFolder:sourceFilePath];
         NSError* error;
         [[NSFileManager defaultManager] removeItemAtPath:sourceFilePath error:&error];
-        NSString* displayPath = [[Utils getInstance] getDisplayFileBySourceFile:sourceFilePath];
-        [[NSFileManager defaultManager] removeItemAtPath:displayPath error:&error];
+        if (!isFolder) {
+            NSString* displayPath = [[Utils getInstance] getDisplayFileBySourceFile:sourceFilePath];
+            [[NSFileManager defaultManager] removeItemAtPath:displayPath error:&error];
+            NSString* tagPath = [[Utils getInstance] getTagFileBySourceFile:sourceFilePath];
+            [[NSFileManager defaultManager] removeItemAtPath:tagPath error:&error];
+            //remove comments file
+            NSString* extension = [sourceFilePath pathExtension];
+            NSString* commentFile = [sourceFilePath stringByDeletingPathExtension];
+            commentFile = [commentFile stringByAppendingFormat:@"_%@", extension];
+            commentFile = [commentFile stringByAppendingPathExtension:@"lgz_comment"];
+            [[NSFileManager defaultManager] removeItemAtPath:commentFile error:&error];
+        }
         [masterViewController reloadData];
-        NSString* tagPath = [[Utils getInstance] getTagFileBySourceFile:sourceFilePath];
-        [[NSFileManager defaultManager] removeItemAtPath:tagPath error:&error];
-        [[Utils getInstance] analyzeProject:proj andForceCreate:YES];
-        //remove comments file
-        NSString* extension = [sourceFilePath pathExtension];
-        NSString* commentFile = [sourceFilePath stringByDeletingPathExtension];
-        commentFile = [commentFile stringByAppendingFormat:@"_%@", extension];
-        commentFile = [commentFile stringByAppendingPathExtension:@"lgz_comment"];
-        [[NSFileManager defaultManager] removeItemAtPath:commentFile error:&error];
+        if ([sourceFilePath compare:proj] != NSOrderedSame) {
+            [[Utils getInstance] analyzeProject:proj andForceCreate:YES];
+        }
     }
 }
 
 -(void) deleteFile
 {
-    UIAlertView *confirmAlert = [[UIAlertView alloc] initWithTitle:@"CodeNavigator" message:@"Would you like to delete this file?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
+    UIAlertView *confirmAlert = [[UIAlertView alloc] initWithTitle:@"CodeNavigator" message:@"Would you like to delete this?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
      [confirmAlert show];
 }
 
@@ -138,6 +156,22 @@
     openAsViewController = [[OpenAsViewController alloc] init];
     [openAsViewController setFilePath:sourceFilePath];
     [navigationController pushViewController:openAsViewController animated:YES];
+}
+
+-(void) presentGitLog {
+    NSString* gitFolder = [[Utils getInstance] getGitFolder:sourceFilePath];
+    if ([gitFolder length] == 0) {
+        return;
+    }
+    // If it's project folder
+    GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewCongroller" bundle:[NSBundle mainBundle]];
+    [gitlogView setCompareContainsPath:sourceFilePath];
+    [gitlogView gitLogForProject: gitFolder];
+    [gitlogView showModualView];
+}
+
+-(void) switchBranch {
+    NSString* gitFolder = [[Utils getInstance] getGitFolder:sourceFilePath];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -170,12 +204,16 @@
                 [self presentOpenAsView];
             }
             else if (indexPath.row == SOURCE_DELETE) {
-                [self deleteFile];
                 [masterViewController.popOverController dismissPopoverAnimated:YES];
+                [self deleteFile];
+            } else if (indexPath.row == SOURCE_GIT_LOG) {
+                [masterViewController.popOverController dismissPopoverAnimated:YES];
+                [self presentGitLog];
             }
             break;
             
         case FILEINFO_WEB:
+            [masterViewController.popOverController dismissPopoverAnimated:YES];
             if (indexPath.row == OPEN_AS_SOURCE) {
                 if ([[Utils getInstance] isWebType:sourceFilePath])
                 {
@@ -197,12 +235,36 @@
             }
             else if (indexPath.row == WEB_DELETE) {
                 [self deleteFile];
+            } else if (indexPath.row == WEB_GIT_LOG) {
+                [self presentGitLog];
             }
-            [masterViewController.popOverController dismissPopoverAnimated:YES];
             break;
         case FILEINFO_OTHER:
-            [self deleteFile];
             [masterViewController.popOverController dismissPopoverAnimated:YES];
+            if (indexPath.row == 0) {
+                [self deleteFile];
+            } else if (indexPath.row == 1) {
+                [self presentGitLog];
+            }
+            break;
+        case FILEINFO_FOLDER:
+            [masterViewController.popOverController dismissPopoverAnimated:YES];
+            if (indexPath.row == FOLDER_DELETE) {
+                [self deleteFile];
+            } else if (indexPath.row == FOLDER_GIT_LOG) {
+                [self presentGitLog];
+            }
+            break;
+        case FILEINFO_PROJECT:
+            if (indexPath.row == PROJECT_DELETE) {
+                [masterViewController.popOverController dismissPopoverAnimated:YES];
+                [self deleteFile];
+            } else if (indexPath.row == PROJECT_GIT_LOG) {
+                [masterViewController.popOverController dismissPopoverAnimated:YES];
+                [self presentGitLog];
+            } else if (indexPath.row == PROJECT_GIT_BRANCH) {
+                [self switchBranch];
+            }
             break;
         default:
             break;
@@ -215,25 +277,59 @@
     NSString* extension = [path pathExtension];
     extension = [extension lowercaseString];
     NSString* proj = [[Utils getInstance] getProjectFolder:path];
-    if ([proj length] == 0 || [proj compare:path] == NSOrderedSame) {
+    NSString* gitFolder = [[Utils getInstance] getGitFolder:path];
+    BOOL isFolder = false;
+    [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isFolder];
+    if ([proj length] == 0) {
         self.selectionList = nil;
         return;
     }
     if ([extension compare:@"html"] == NSOrderedSame) {
         fileInfoType = FILEINFO_WEB;
         //Do not change the order
-        selectionList = [[NSMutableArray alloc] initWithObjects:@"Open as Source File", @"Preview", @"Delete", nil];
+        if ([gitFolder length] == 0) {
+            selectionList = [[NSMutableArray alloc] initWithObjects:@"Open as Source File", @"Preview", @"Delete", nil];
+        } else {
+            selectionList = [[NSMutableArray alloc] initWithObjects:@"Open as Source File", @"Preview", @"Delete", @"Git Log", nil];
+        }
     } else {
         if ([[Utils getInstance] isDocType:path] == YES ||
             [[Utils getInstance] isImageType:path]) {
             fileInfoType = FILEINFO_OTHER;
-            selectionList = [[NSMutableArray alloc] initWithObjects:@"Delete", nil];
+            if ([gitFolder length] == 0) {
+                selectionList = [[NSMutableArray alloc] initWithObjects:@"Delete", nil];
+            } else {
+                selectionList = [[NSMutableArray alloc] initWithObjects:@"Delete", @"Git Log", nil];
+            }
             return;
         }
         
-        fileInfoType = FILEINFO_SOURCE;
-        //Do not change the order
-        selectionList = [[NSMutableArray alloc] initWithObjects:@"Refresh", @"Open As", @"Delete", nil];
+        // Project folder
+        if (isFolder && [path compare:proj] == NSOrderedSame) {
+            fileInfoType = FILEINFO_PROJECT;
+            NSString* gitFolder = [[Utils getInstance] getGitFolder:path];
+            if ([gitFolder length] == 0) {
+                selectionList = [[NSMutableArray alloc] initWithObjects:@"Delete", nil];
+            } else {
+                selectionList = [[NSMutableArray alloc] initWithObjects:@"Delete", @"Git Log", @"Switch to Branch", nil];
+            }
+            return;
+        } else if (isFolder) {
+            fileInfoType = FILEINFO_FOLDER;
+            if ([gitFolder length] == 0) {
+                selectionList = [[NSMutableArray alloc] initWithObjects:@"Delete", nil];
+            } else {
+                selectionList = [[NSMutableArray alloc] initWithObjects: @"Delete", @"Git Log", nil];
+            }
+            return;
+        } else {
+            fileInfoType = FILEINFO_SOURCE;
+            if ([gitFolder length] == 0) {
+                selectionList = [[NSMutableArray alloc] initWithObjects:@"Refresh", @"Open As", @"Delete", nil];
+            } else {
+                selectionList = [[NSMutableArray alloc] initWithObjects:@"Refresh", @"Open As", @"Delete", @"Git Log", nil];
+            }
+        }
     }
 }
 
