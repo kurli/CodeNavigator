@@ -49,6 +49,7 @@
         // Custom initialization
         selected = -1;
         diffFileArray = [[NSMutableArray alloc] init];
+        isLogForProject = NO;
     }
     return self;
 }
@@ -92,6 +93,13 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (!isLogForProject) {
+        [self.showMergesBarButton setEnabled:NO];
+    }
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -115,15 +123,11 @@
 - (IBAction)showMergesClicked:(id)sender {
     [self.tableView scrollsToTop];
     if ([self.showMergesBarButton.title compare:@"Show Merges"] == NSOrderedSame) {
-        GTEnumerator* enumerator = [[GTEnumerator alloc] initWithRepository:repo error:NULL];
-        [enumerator resetWithOptions:GTEnumeratorOptionsTimeSort];
-        GTReference *headRef = [repo headReferenceWithError:NULL];
-        [enumerator pushSHA:headRef.targetSHA error:NULL];
-        self.commitsArray = [enumerator allObjects];
+        self.commitsArray = [self getCommitArray];
         [self.showMergesBarButton setTitle:@"Hide Merges"];
         [self.tableView reloadData];
     } else {
-        [self commitsArrayWithNoMerge];
+        self.commitsArray = [self commitsArrayWithNoMerge:self.commitsArray];
         [self.showMergesBarButton setTitle:@"Show Merges"];
         [self.tableView reloadData];
     }
@@ -153,28 +157,76 @@
 //    GTIndexEntry* entry = [array objectAtIndex:9];
 
     //commit log
-    GTEnumerator* enumerator = [[GTEnumerator alloc] initWithRepository:repo error:NULL];
-    [enumerator resetWithOptions:GTEnumeratorOptionsTimeSort];
-    GTReference *headRef = [repo headReferenceWithError:NULL];
-    [enumerator pushSHA:headRef.targetSHA error:NULL];
     if ([compareContainsPath length] != 0 && [compareContainsPath compare:project] != NSOrderedSame) {
-
+        compareContainsPath = [compareContainsPath stringByReplacingOccurrencesOfString:[project stringByAppendingString:@"/"] withString:@""];
+        [self checkPathSpec];
+        isLogForProject = NO;
     } else {
-        self.commitsArray = [enumerator allObjects];
-        [self commitsArrayWithNoMerge];
+        isLogForProject = YES;
+        self.commitsArray = [self getCommitArray];
+        self.commitsArray = [self commitsArrayWithNoMerge:self.commitsArray];
     }
 }
 
--(void) commitsArrayWithNoMerge {
+-(void) checkPathSpec {
+    NSArray* commitArray = [self getCommitArray];
+    commitArray = [self commitsArrayWithNoMerge:commitArray];
     NSMutableArray* result = [[NSMutableArray alloc] init];
-    for (int i=0; i<[self.commitsArray count]; i++) {
-        GTCommit* commit = [self.commitsArray objectAtIndex:i];
-        int parents = git_commit_parentcount(commit.git_commit);
-        if (parents == 1) {
+    for (int i=0; i<[commitArray count]; i++) {
+        GTCommit* commit = [commitArray objectAtIndex:i];
+        NSArray* parents = [commit parents];
+        if ([parents count] > 1) {
+            continue;
+        }
+        if ([parents count] == 0) {
+            GTTreeEntry* entry;
+            BOOL found = NO;
+            for (int i=0; i<[commit.tree entryCount]; i++) {
+                entry = [[commit tree] entryAtIndex:i];
+                NSRange range;
+                range = [entry.name rangeOfString:compareContainsPath];
+                if (range.location == 0 && range.length == [compareContainsPath length]) {
+                    found = YES;
+                    break;
+                }
+            }
+            if (found) {
+                [result addObject:commit];
+            }
+            continue;
+        }
+        NSError* error;
+        GTCommit* parent = [parents objectAtIndex:0];
+        GTTree* tree1 = commit.tree;
+        GTTree* tree2 = parent.tree;
+        NSArray* pathspec = [[NSArray alloc] initWithObjects:compareContainsPath, nil];
+		NSDictionary *options = @{ GTDiffOptionsPathSpecArrayKey: pathspec};
+        GTDiff* diff = [GTDiff diffOldTree:tree1 withNewTree:tree2 inRepository:repo options:options error:&error];
+        if (diff.deltaCount > 0) {
             [result addObject:commit];
         }
     }
     self.commitsArray = result;
+}
+
+-(NSArray*) getCommitArray {
+    GTEnumerator* enumerator = [[GTEnumerator alloc] initWithRepository:repo error:NULL];
+    [enumerator resetWithOptions:GTEnumeratorOptionsTimeSort];
+    GTReference *headRef = [repo headReferenceWithError:NULL];
+    [enumerator pushSHA:headRef.targetSHA error:NULL];
+    return [enumerator allObjects];
+}
+
+-(NSArray*) commitsArrayWithNoMerge:(NSArray*)commits {
+    NSMutableArray* result = [[NSMutableArray alloc] init];
+    for (int i=0; i<[commits count]; i++) {
+        GTCommit* commit = [commits objectAtIndex:i];
+        int parents = git_commit_parentcount(commit.git_commit);
+        if (parents <= 1) {
+            [result addObject:commit];
+        }
+    }
+    return result;
 }
 
 #pragma mark libgit2 related
@@ -245,16 +297,17 @@
     [detailView2 setText:[commitCurrent messageDetails]];
 
     int parents = git_commit_parentcount(commitCurrent.git_commit);
-    if (parents != 1) {
+    if (parents > 1) {
+        [detailButton2 setHidden:YES];
+        [tableView endUpdates];
+        return;
+    }
+    if (parents == 0) {
         [detailButton2 setHidden:YES];
         [tableView endUpdates];
         return;
     }
 
-    if (selected+1 >= [self.commitsArray count]) {
-        [tableView endUpdates];
-        return;
-    }
     NSMutableArray* pendingDiffTree = [[NSMutableArray alloc] init];
 
 //    GTCommit* commitNext = [self.commitsArray objectAtIndex:selected+1];

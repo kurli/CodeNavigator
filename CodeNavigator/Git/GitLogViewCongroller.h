@@ -21,6 +21,7 @@
 @interface GitLogViewCongroller : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     int selected;
+    BOOL isLogForProject;
 }
 @property (nonatomic, strong) GTRepository* repo;
 @property (atomic, strong) NSArray* commitsArray;
