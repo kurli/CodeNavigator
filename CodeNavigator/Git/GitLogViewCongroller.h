@@ -26,9 +26,13 @@
 @property (nonatomic, strong) GTRepository* repo;
 @property (atomic, strong) NSArray* commitsArray;
 @property (unsafe_unretained, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *branchesBarButton;
 @property (nonatomic, strong) NSMutableArray* diffFileArray;
 @property (nonatomic, strong) NSString* compareContainsPath;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *showMergesBarButton;
+@property (nonatomic, strong) UIPopoverController* popOverController;
+@property (nonatomic, strong) NSString* currentGitFolder;
+
 - (IBAction)showMergesClicked:(id)sender;
 
 -(void) gitLogForProject:(NSString*)project;
@@ -39,4 +43,7 @@
 
 -(IBAction)detailButtonClicked:(id)sender;
 
+- (IBAction)manageBranches:(id)sender;
+
+-(void) update;
 @end

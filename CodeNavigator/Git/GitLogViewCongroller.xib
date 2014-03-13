@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GitLogViewCongroller">
             <connections>
+                <outlet property="branchesBarButton" destination="7QV-QK-OES" id="Nqg-Z9-Qh7"/>
                 <outlet property="showMergesBarButton" destination="MKO-KD-n7u" id="793-HK-ALK"/>
                 <outlet property="tableView" destination="6" id="15"/>
                 <outlet property="view" destination="2" id="3"/>
@@ -35,6 +36,12 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="qe8-L5-yz8"/>
+                        <barButtonItem title="Branches" id="7QV-QK-OES">
+                            <connections>
+                                <action selector="manageBranches:" destination="-1" id="D8O-PX-4dn"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="AON-Tx-zQO"/>
                         <barButtonItem title="Show merges" id="MKO-KD-n7u">
                             <connections>
                                 <action selector="showMergesClicked:" destination="-1" id="mk9-3O-JBP"/>

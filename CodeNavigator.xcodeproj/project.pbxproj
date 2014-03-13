@@ -718,6 +718,12 @@
 		94B8EC261546F30900931747 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC251546F30900931747 /* MessageUI.framework */; };
 		94B8EC281546F31700931747 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC271546F31700931747 /* SystemConfiguration.framework */; };
 		94BA22B518BE4166006CB7A8 /* DisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22B418BE4166006CB7A8 /* DisplayController.m */; };
+		94BA22CC18D081BA006CB7A8 /* GitBranchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22CB18D081BA006CB7A8 /* GitBranchController.m */; };
+		94BA22D718D09212006CB7A8 /* GitBranchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22D518D09212006CB7A8 /* GitBranchViewController.m */; };
+		94BA22D818D09212006CB7A8 /* GitBranchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BA22D618D09212006CB7A8 /* GitBranchViewController.xib */; };
+		94BA22DC18D0CBB7006CB7A8 /* GitBranchsManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22DA18D0CBB7006CB7A8 /* GitBranchsManagerViewController.m */; };
+		94BA22DD18D0CBB7006CB7A8 /* GitBranchsManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BA22DB18D0CBB7006CB7A8 /* GitBranchsManagerViewController.xib */; };
+		94BA22E118D1EDB1006CB7A8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22E018D1EDB1006CB7A8 /* MBProgressHUD.m */; };
 		94BD81DD18014587002F8153 /* JavaParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81D918014587002F8153 /* JavaParser.m */; };
 		94BD81DE18014587002F8153 /* JavaScriptParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81DC18014587002F8153 /* JavaScriptParser.m */; };
 		94BD81E218014840002F8153 /* PHPParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81E118014840002F8153 /* PHPParser.m */; };
@@ -1425,6 +1431,16 @@
 		94B8EC271546F31700931747 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		94BA22B318BE4166006CB7A8 /* DisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DisplayController.h; path = DisplayController/DisplayController.h; sourceTree = "<group>"; };
 		94BA22B418BE4166006CB7A8 /* DisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DisplayController.m; path = DisplayController/DisplayController.m; sourceTree = "<group>"; };
+		94BA22CA18D081BA006CB7A8 /* GitBranchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitBranchController.h; sourceTree = "<group>"; };
+		94BA22CB18D081BA006CB7A8 /* GitBranchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitBranchController.m; sourceTree = "<group>"; };
+		94BA22D418D09212006CB7A8 /* GitBranchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GitBranchViewController.h; path = FileInfoController/GitBranchViewController.h; sourceTree = "<group>"; };
+		94BA22D518D09212006CB7A8 /* GitBranchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitBranchViewController.m; path = FileInfoController/GitBranchViewController.m; sourceTree = "<group>"; };
+		94BA22D618D09212006CB7A8 /* GitBranchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GitBranchViewController.xib; path = FileInfoController/GitBranchViewController.xib; sourceTree = "<group>"; };
+		94BA22D918D0CBB7006CB7A8 /* GitBranchsManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitBranchsManagerViewController.h; sourceTree = "<group>"; };
+		94BA22DA18D0CBB7006CB7A8 /* GitBranchsManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitBranchsManagerViewController.m; sourceTree = "<group>"; };
+		94BA22DB18D0CBB7006CB7A8 /* GitBranchsManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GitBranchsManagerViewController.xib; sourceTree = "<group>"; };
+		94BA22DF18D1EDB1006CB7A8 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
+		94BA22E018D1EDB1006CB7A8 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		94BD81D718014587002F8153 /* JavaDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaDefinition.h; path = CodeNavigator/JavaDefinition.h; sourceTree = "<group>"; };
 		94BD81D818014587002F8153 /* JavaParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaParser.h; path = CodeNavigator/JavaParser.h; sourceTree = "<group>"; };
 		94BD81D918014587002F8153 /* JavaParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JavaParser.m; path = CodeNavigator/JavaParser.m; sourceTree = "<group>"; };
@@ -1635,6 +1651,7 @@
 				9443D1EA154ED9D6008CB52D /* Security */,
 				944DD7C015277276000473BE /* Diff */,
 				94A5184C152DF5150062DA65 /* DropBox */,
+				94BA22DE18D1ED7C006CB7A8 /* MBProgressHUD */,
 				94BF7D8B150E6B1C00FCF653 /* Git */,
 				9431D7C01494CEC300B0900E /* Resources */,
 				9431D773149474EE00B0900E /* cscope */,
@@ -2300,6 +2317,9 @@
 				941E63E118019354008226F2 /* OpenAsViewController.h */,
 				941E63E218019354008226F2 /* OpenAsViewController.m */,
 				941E63E318019354008226F2 /* OpenAsViewController.xib */,
+				94BA22D418D09212006CB7A8 /* GitBranchViewController.h */,
+				94BA22D518D09212006CB7A8 /* GitBranchViewController.m */,
+				94BA22D618D09212006CB7A8 /* GitBranchViewController.xib */,
 			);
 			name = FileInfoController;
 			sourceTree = "<group>";
@@ -2332,6 +2352,15 @@
 			path = CodeNavigator;
 			sourceTree = "<group>";
 		};
+		94BA22DE18D1ED7C006CB7A8 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				94BA22DF18D1EDB1006CB7A8 /* MBProgressHUD.h */,
+				94BA22E018D1EDB1006CB7A8 /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		94BF7D8B150E6B1C00FCF653 /* Git */ = {
 			isa = PBXGroup;
 			children = (
@@ -2352,6 +2381,11 @@
 				9434A5A3174FC00D004B1A9D /* GitCloneViewController.h */,
 				9434A5A4174FC00D004B1A9D /* GitCloneViewController.m */,
 				9434A5A5174FC00D004B1A9D /* GitCloneViewController.xib */,
+				94BA22CA18D081BA006CB7A8 /* GitBranchController.h */,
+				94BA22CB18D081BA006CB7A8 /* GitBranchController.m */,
+				94BA22D918D0CBB7006CB7A8 /* GitBranchsManagerViewController.h */,
+				94BA22DA18D0CBB7006CB7A8 /* GitBranchsManagerViewController.m */,
+				94BA22DB18D0CBB7006CB7A8 /* GitBranchsManagerViewController.xib */,
 			);
 			name = Git;
 			sourceTree = "<group>";
@@ -2586,6 +2620,7 @@
 				9424665B150383C2001701C4 /* cppFile.png in Resources */,
 				9424665D150383C2001701C4 /* csFile.png in Resources */,
 				9424665F150383C2001701C4 /* File.png in Resources */,
+				94BA22D818D09212006CB7A8 /* GitBranchViewController.xib in Resources */,
 				94246661150383C2001701C4 /* hFile.png in Resources */,
 				94246663150383C2001701C4 /* hppFile.png in Resources */,
 				94246665150383C2001701C4 /* javaFile.png in Resources */,
@@ -2653,6 +2688,7 @@
 				94C7C17A1850E170003A8C03 /* 1.jpeg in Resources */,
 				94EED18E16331D99003D9CA3 /* FunctionListViewController.xib in Resources */,
 				941B2AC01636D419000BBF59 /* TagItemCell.xib in Resources */,
+				94BA22DD18D0CBB7006CB7A8 /* GitBranchsManagerViewController.xib in Resources */,
 				948C74231807091700065E65 /* icon-76.png in Resources */,
 				9434A5A7174FC00D004B1A9D /* GitCloneViewController.xib in Resources */,
 				948C741F1807090F00065E65 /* icon-40.png in Resources */,
@@ -2919,12 +2955,15 @@
 				944DD7CA1527732C000473BE /* fnmatch.c in Sources */,
 				944DD7D415277502000473BE /* util.c in Sources */,
 				944DD7D71527752D000473BE /* io.c in Sources */,
+				94BA22E118D1EDB1006CB7A8 /* MBProgressHUD.m in Sources */,
 				94B69881180EEE7A009C7176 /* CSSParser.m in Sources */,
 				944DD7DA15277591000473BE /* dif_dir.c in Sources */,
 				944DD7DD152775FC000473BE /* analyze.c in Sources */,
 				944DD7E115277625000473BE /* cmpbuf.c in Sources */,
 				944DD7E4152776D5000473BE /* version.c in Sources */,
+				94BA22DC18D0CBB7006CB7A8 /* GitBranchsManagerViewController.m in Sources */,
 				944DD7E715277729000473BE /* side.c in Sources */,
+				94BA22D718D09212006CB7A8 /* GitBranchViewController.m in Sources */,
 				944DD7EA1527778E000473BE /* context.c in Sources */,
 				944DD7ED15277845000473BE /* ed.c in Sources */,
 				944DD7F015277877000473BE /* normal.c in Sources */,
@@ -2943,6 +2982,7 @@
 				94BA22B518BE4166006CB7A8 /* DisplayController.m in Sources */,
 				94246F60156BC84600CA4234 /* SBJsonParser.m in Sources */,
 				94246F62156BC84600CA4234 /* SBJsonStreamParser.m in Sources */,
+				94BA22CC18D081BA006CB7A8 /* GitBranchController.m in Sources */,
 				94246F64156BC84600CA4234 /* SBJsonStreamParserAccumulator.m in Sources */,
 				94246F66156BC84600CA4234 /* SBJsonStreamParserAdapter.m in Sources */,
 				94246F68156BC84600CA4234 /* SBJsonStreamParserState.m in Sources */,

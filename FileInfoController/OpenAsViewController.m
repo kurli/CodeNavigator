@@ -170,7 +170,7 @@
     ManuallyParserViewController* viewController = [[ManuallyParserViewController alloc] init];
     viewController.modalPresentationStyle = UIModalPresentationFormSheet;
     [viewController setFilePath:filePath];
-    [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
+    [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
     
     // Release popover controller
     MasterViewController* _masterViewController = nil;

@@ -59,7 +59,8 @@
         tmp = [tmp stringByAppendingFormat:@"_%@.%@", extension, DISPLAY_FILE_EXTENTION];
     }
     // Change the folder
-    tmp = [tmp stringByReplacingOccurrencesOfString:@"Projects" withString:DISPLAY_FOLDER_PATH];
+    NSRange range = [tmp rangeOfString:@"Projects"];
+    tmp = [tmp stringByReplacingOccurrencesOfString:@"Projects" withString:DISPLAY_FOLDER_PATH options:NSLiteralSearch range:range];
     return tmp;
 }
 
@@ -163,6 +164,16 @@
         [result appendFormat:@"%02x", digest[i]];
     
     return result;
+}
+
+-(void) removeDisplayFilesForProject:(NSString *)proj {
+    NSString* path = proj;
+    NSRange range = [path rangeOfString:@"Projects"];
+    path = [path stringByReplacingOccurrencesOfString:@"Projects" withString:DISPLAY_FOLDER_PATH options:NSLiteralSearch range:range];
+    BOOL isFolder = YES;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isFolder]) {
+        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+    }
 }
 
 @end

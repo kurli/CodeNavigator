@@ -253,4 +253,6 @@ typedef enum _SearchType{
 
 -(NSString*) getGitFolder:(NSString*)path;
 
+-(void) removeDisplayFilesForProject:(NSString*)proj;
+
 @end

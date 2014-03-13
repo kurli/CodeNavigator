@@ -630,6 +630,8 @@ static Utils *static_utils;
             projectFolder = [projectFolder stringByAppendingPathComponent:[components objectAtIndex:i]];
             if ([(NSString*)[components objectAtIndex:i] compare:@"Projects"] == NSOrderedSame)
                 break;
+            if ([(NSString*)[components objectAtIndex:i] compare:DISPLAY_FOLDER_PATH] == NSOrderedSame)
+                break;
         }
         if (i == [components count] - 1)
         {
@@ -1634,6 +1636,13 @@ static Utils *static_utils;
         }
     }
 
+}
+
+-(void) removeDisplayFilesForProject:(NSString *)proj {
+    if ([proj length] == 0) {
+        return;
+    }
+    [[self getDisplayController] removeDisplayFilesForProject:proj];
 }
 
 @end

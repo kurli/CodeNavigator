@@ -24,4 +24,6 @@
 
 -(NSString*) getDisplayFile:(NSString*) path andProjectBase:(NSString*)projectPath;
 
+-(void) removeDisplayFilesForProject:(NSString *)proj;
+
 @end

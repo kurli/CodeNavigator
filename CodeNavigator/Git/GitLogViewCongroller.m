@@ -10,6 +10,8 @@
 #import "ObjectiveGit.h"
 #import "Utils.h"
 #import "GitDiffViewController.h"
+#import "GitBranchViewController.h"
+#import "GitBranchController.h"
 
 #define DETAIL_BUTTON_TAG 101
 #define AUTHOR_TAG 102
@@ -41,6 +43,8 @@
 @synthesize tableView = _tableView;
 @synthesize diffFileArray;
 @synthesize compareContainsPath;
+@synthesize popOverController;
+@synthesize currentGitFolder;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -97,6 +101,7 @@
     [super viewWillAppear:animated];
     if (!isLogForProject) {
         [self.showMergesBarButton setEnabled:NO];
+        [self.branchesBarButton setEnabled:NO];
     }
 }
 
@@ -116,6 +121,7 @@
 }
 
 - (IBAction)backButtonClicked:(id)sender {
+    [self.popOverController dismissPopoverAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -133,10 +139,16 @@
     }
 }
 
+-(void) update {
+    [self gitLogForProject:self.currentGitFolder];
+    [self.tableView reloadData];
+}
+
 - (void)gitLogForProject:(NSString *)project
 {
     if (project == nil || [project length] == 0)
         return;
+    [self setCurrentGitFolder:project];
     NSString* gitFolder = [project stringByAppendingPathComponent:@".git"];
     NSError *error = nil;
     NSURL *url = [NSURL fileURLWithPath:gitFolder];
@@ -459,6 +471,26 @@
     GitDiffViewController* gitDiffView = [[GitDiffViewController alloc] initWithNibName:@"GitDiffViewController" bundle:[NSBundle mainBundle]];
     [gitDiffView setDiffFileArray:diffFileArray];
     [self presentViewController:gitDiffView animated:YES completion:nil];
+}
+
+- (IBAction)manageBranches:(id)sender {
+    if ([self.popOverController isPopoverVisible] == YES) {
+        [self.popOverController dismissPopoverAnimated:YES];
+    }
+    GitBranchController* branchController = [[GitBranchController alloc] init];
+    BOOL isValid = [branchController initWithRepo:self.repo];
+    if (!isValid) {
+        return;
+    }
+    GitBranchViewController* branchViewController = [[GitBranchViewController alloc] init];
+    [branchViewController setGitBranchController:branchController];
+    [branchViewController setNeedSwitchBranch:NO];
+    [branchViewController setGitLogViewController:self];
+    UINavigationController* navigationController = [[UINavigationController alloc] init];
+    [navigationController pushViewController:branchViewController animated:YES];
+    self.popOverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
+    [popOverController setContentViewController:navigationController];
+    [popOverController presentPopoverFromBarButtonItem:self.branchesBarButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
