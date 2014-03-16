@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *showMergesBarButton;
 @property (nonatomic, strong) UIPopoverController* popOverController;
 @property (nonatomic, strong) NSString* currentGitFolder;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *updateBarButton;
 
 - (IBAction)showMergesClicked:(id)sender;
 

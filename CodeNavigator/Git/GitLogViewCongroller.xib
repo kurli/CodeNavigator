@@ -9,6 +9,7 @@
                 <outlet property="branchesBarButton" destination="7QV-QK-OES" id="Nqg-Z9-Qh7"/>
                 <outlet property="showMergesBarButton" destination="MKO-KD-n7u" id="793-HK-ALK"/>
                 <outlet property="tableView" destination="6" id="15"/>
+                <outlet property="updateBarButton" destination="wBp-9r-AW0" id="rvq-5e-uhz"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>
@@ -36,6 +37,12 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="qe8-L5-yz8"/>
+                        <barButtonItem title="Update" id="wBp-9r-AW0">
+                            <connections>
+                                <action selector="updateClicked:" destination="-1" id="U7V-BD-oWq"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="Ddo-as-enp"/>
                         <barButtonItem title="Branches" id="7QV-QK-OES">
                             <connections>
                                 <action selector="manageBranches:" destination="-1" id="D8O-PX-4dn"/>

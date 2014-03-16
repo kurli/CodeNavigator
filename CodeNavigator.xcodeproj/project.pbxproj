@@ -850,6 +850,8 @@
 		94D8703114A65888002F2DBB /* FilePathInfoPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D8702F14A65887002F2DBB /* FilePathInfoPopupController.m */; };
 		94D8703214A65888002F2DBB /* FilePathInfoPopupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D8703014A65888002F2DBB /* FilePathInfoPopupController.xib */; };
 		94DA0BBE14A624690035DB39 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DA0BBD14A624680035DB39 /* Utils.m */; };
+		94E3761518D495A5006756A3 /* GitUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E3761318D495A5006756A3 /* GitUpdateViewController.m */; };
+		94E3761618D495A5006756A3 /* GitUpdateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E3761418D495A5006756A3 /* GitUpdateViewController.xib */; };
 		94E6DB61152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */; };
 		94E6DB62152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */; };
 		94E6DB63152C9EFF004DBD87 /* DiffInfoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */; };
@@ -1474,6 +1476,9 @@
 		94D8703014A65888002F2DBB /* FilePathInfoPopupController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilePathInfoPopupController.xib; sourceTree = "<group>"; };
 		94DA0BBC14A624680035DB39 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		94DA0BBD14A624680035DB39 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		94E3761218D495A5006756A3 /* GitUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GitUpdateViewController.h; path = help/GitUpdateViewController.h; sourceTree = "<group>"; };
+		94E3761318D495A5006756A3 /* GitUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitUpdateViewController.m; path = help/GitUpdateViewController.m; sourceTree = "<group>"; };
+		94E3761418D495A5006756A3 /* GitUpdateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GitUpdateViewController.xib; path = help/GitUpdateViewController.xib; sourceTree = "<group>"; };
 		94E6DB5E152C9EFF004DBD87 /* DiffInfoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiffInfoListViewController.h; sourceTree = "<group>"; };
 		94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiffInfoListViewController.m; sourceTree = "<group>"; };
 		94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiffInfoListViewController.xib; sourceTree = "<group>"; };
@@ -2386,6 +2391,9 @@
 				94BA22D918D0CBB7006CB7A8 /* GitBranchsManagerViewController.h */,
 				94BA22DA18D0CBB7006CB7A8 /* GitBranchsManagerViewController.m */,
 				94BA22DB18D0CBB7006CB7A8 /* GitBranchsManagerViewController.xib */,
+				94E3761218D495A5006756A3 /* GitUpdateViewController.h */,
+				94E3761318D495A5006756A3 /* GitUpdateViewController.m */,
+				94E3761418D495A5006756A3 /* GitUpdateViewController.xib */,
 			);
 			name = Git;
 			sourceTree = "<group>";
@@ -2644,6 +2652,7 @@
 				940BE0F21528E64600CBAE18 /* DiffFileListController.xib in Resources */,
 				94E6DB63152C9EFF004DBD87 /* DiffInfoListViewController.xib in Resources */,
 				94E6DB66152CBF41004DBD87 /* GidDiffTableCell.xib in Resources */,
+				94E3761618D495A5006756A3 /* GitUpdateViewController.xib in Resources */,
 				94A51852152DF8D70062DA65 /* DropBoxViewController.xib in Resources */,
 				9457C78E153086FC00BB9185 /* masterView_bg.png in Resources */,
 				9457C7911530923800BB9185 /* nav_backButton_icon.png in Resources */,
@@ -2912,6 +2921,7 @@
 				9431D7AD1494754900B0900E /* help.c in Sources */,
 				9431D7AE1494754900B0900E /* history.c in Sources */,
 				9431D7AF1494754900B0900E /* input.c in Sources */,
+				94E3761518D495A5006756A3 /* GitUpdateViewController.m in Sources */,
 				9431D7B01494754900B0900E /* invlib.c in Sources */,
 				9431D7B11494754900B0900E /* logdir.c in Sources */,
 				9431D7B21494754900B0900E /* lookup.c in Sources */,
@@ -3600,7 +3610,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3629,7 +3639,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3686,7 +3696,7 @@
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DISTRIBUTION=1";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -12,6 +12,9 @@
 #import "MasterViewController.h"
 #import "OpenAsViewController.h"
 #import "GitLogViewCongroller.h"
+#import "GitBranchController.h"
+#import "GitBranchViewController.h"
+#import "GitUpdateViewController.h"
 
 //source wrapper
 #define RE_OPEN 0
@@ -27,6 +30,7 @@
 #define PROJECT_DELETE 0
 #define PROJECT_GIT_LOG 1
 #define PROJECT_GIT_BRANCH 2
+#define PROJECT_GIT_UPDATE 3
 
 //web wrapper
 #define OPEN_AS_SOURCE 0
@@ -164,14 +168,35 @@
         return;
     }
     // If it's project folder
+    NSString* proj = [[Utils getInstance] getProjectFolder:sourceFilePath];
     GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewCongroller" bundle:[NSBundle mainBundle]];
     [gitlogView setCompareContainsPath:sourceFilePath];
-    [gitlogView gitLogForProject: gitFolder];
+    [gitlogView gitLogForProject: proj];
     [gitlogView showModualView];
 }
 
 -(void) switchBranch {
     NSString* gitFolder = [[Utils getInstance] getGitFolder:sourceFilePath];
+    GitBranchController* gitBranchController = [[GitBranchController alloc] init];
+    BOOL isGitValid = [gitBranchController initWithProjectPath:gitFolder];
+    if (isGitValid == NO) {
+        return;
+    }
+    UINavigationController* navigationController = [self navigationController];
+    GitBranchViewController* viewController = [[GitBranchViewController alloc] init];
+    [viewController setGitBranchController:gitBranchController];
+    viewController.contentSizeForViewInPopover = self.view.frame.size;
+    [viewController setNeedSwitchBranch:YES];
+    [navigationController pushViewController:viewController animated:YES];
+}
+
+-(void) updateRepo {
+//    [[[Utils getInstance].splitViewController presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+    GitUpdateViewController* updateController = [[GitUpdateViewController alloc] init];
+    updateController.modalPresentationStyle = UIModalPresentationFormSheet;
+    NSString* gitFolder = [[Utils getInstance] getGitFolder:sourceFilePath];
+    [updateController setGitFolder:gitFolder];
+    [[Utils getInstance].splitViewController presentViewController:updateController animated:YES completion:nil];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -264,6 +289,8 @@
                 [self presentGitLog];
             } else if (indexPath.row == PROJECT_GIT_BRANCH) {
                 [self switchBranch];
+            } else if (indexPath.row == PROJECT_GIT_UPDATE) {
+                [self updateRepo];
             }
             break;
         default:
@@ -307,11 +334,10 @@
         // Project folder
         if (isFolder && [path compare:proj] == NSOrderedSame) {
             fileInfoType = FILEINFO_PROJECT;
-            NSString* gitFolder = [[Utils getInstance] getGitFolder:path];
             if ([gitFolder length] == 0) {
                 selectionList = [[NSMutableArray alloc] initWithObjects:@"Delete", nil];
             } else {
-                selectionList = [[NSMutableArray alloc] initWithObjects:@"Delete", @"Git Log", @"Switch to Branch", nil];
+                selectionList = [[NSMutableArray alloc] initWithObjects:@"Delete", @"Git Log & Manage", @"Switch to Branch", @"Update", nil];
             }
             return;
         } else if (isFolder) {

@@ -92,6 +92,7 @@
         cell.textLabel.text = branch.name;
         [cell.textLabel setTextColor:[UIColor redColor]];
     }
+    [cell.textLabel setLineBreakMode:NSLineBreakByTruncatingMiddle];
     return cell;
 }
 
@@ -103,7 +104,9 @@
     GTBranch* selectedBranch = [self.gitBranchController.branches objectAtIndex:indexPath.row];
     GTBranch* currentBranch = self.gitBranchController.currentBranch;
     if ([selectedBranch.SHA compare:currentBranch.SHA] == NSOrderedSame) {
-        return;
+        if ([selectedBranch.name compare:currentBranch.name] == NSOrderedSame) {
+            return;
+        }
     }
 
     if (needSwitchBranch) {

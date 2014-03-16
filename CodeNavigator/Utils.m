@@ -208,6 +208,60 @@ static Utils *static_utils;
             [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
         });
 #endif
+        {
+            NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+            BOOL isFolder = NO;
+            BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:projectFolder isDirectory:&isFolder];
+            NSError *error;
+            if (isExist == NO || (isExist == YES && isFolder == NO))
+            {
+                [[NSFileManager defaultManager] createDirectoryAtPath:projectFolder withIntermediateDirectories:YES attributes:nil error:&error];
+            }
+            
+            // copy demo
+            NSString* demoFolder = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/Projects/linux_0.1/"];
+            isExist = [[NSFileManager defaultManager] fileExistsAtPath:demoFolder isDirectory:&isFolder];
+            NSString* demoBundle = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/linux_0.1"];
+            if (isExist == NO || (isExist == YES && isFolder == NO))
+            {
+                [[NSFileManager defaultManager] copyItemAtPath:demoBundle toPath:demoFolder error:&error];
+            }
+            
+            // copy help files
+            NSString* settings = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/"];
+            NSString* helpHtml = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/Help.html"];
+            [[NSFileManager defaultManager] copyItemAtPath:helpHtml toPath:[projectFolder stringByAppendingPathComponent:@"Help.html"] error:&error];
+            NSString* jpg0 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/1.jpeg"];
+            [[NSFileManager defaultManager] copyItemAtPath:jpg0 toPath:[settings stringByAppendingPathComponent:@"1.jpeg"] error:&error];
+            
+            // Copy BuildInParser
+            NSString* buildInParserPath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/BuildInParser/"];
+            isExist = [[NSFileManager defaultManager] fileExistsAtPath:buildInParserPath isDirectory:&isFolder];
+            NSString* buildInParserPathBundle = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/BuildInParser"];
+            if (isExist == NO || (isExist == YES && isFolder == NO))
+            {
+                [[NSFileManager defaultManager] copyItemAtPath:buildInParserPathBundle toPath:buildInParserPath error:&error];
+            }
+            // Append mode
+            if (isExist == YES) {
+                NSArray* contentsInBundle = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:buildInParserPathBundle error:&error];
+                NSArray* contentsInSetting = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:buildInParserPath error:&error];
+                for (NSString* str in contentsInBundle) {
+                    int i;
+                    for (i = 0; i < [contentsInSetting count]; i++) {
+                        NSString* str2 = [contentsInSetting objectAtIndex:i];
+                        if ([str isEqualToString:str2]) {
+                            break;
+                        }
+                    }
+                    if (i == [contentsInSetting count]) {
+                        NSString* srcPath = [buildInParserPathBundle stringByAppendingPathComponent:str];
+                        NSString* desPath = [buildInParserPath stringByAppendingPathComponent:str];
+                        [[NSFileManager defaultManager] copyItemAtPath:srcPath toPath:desPath error:&error];
+                    }
+                }
+            }
+        }
         return;
     }
     [[NSFileManager defaultManager] createDirectoryAtPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] withIntermediateDirectories:YES attributes:nil error:&error];

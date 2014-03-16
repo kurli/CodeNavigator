@@ -29,5 +29,7 @@ typedef void (^CheckoutFinishBlock)();
 -(BOOL) initWithProjectPath:(NSString*)projPath;
 -(void) checkoutToBranch:(GTBranch*)branch andFinishBlock:(CheckoutFinishBlock)block;
 -(void) update;
+-(void) updateRepo:(UITextView*) logView andUsername:(NSString*)username andPassword:(NSString*)password;
+-(GTBranch*) getCurrentTrackingBranch;
 
 @end

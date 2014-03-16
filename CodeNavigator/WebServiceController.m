@@ -592,7 +592,7 @@
 
 - (void) navigateToFileBrowser {
     if ([self.webServiceSwitcher isOn]) {
-        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please switch off 'Web Upload Service' or'"];
+        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please switch off 'Web Upload Service."];
         return;
     }
     

@@ -125,7 +125,10 @@
     if (error != NULL) {
         const git_error *gitLastError = giterr_last();
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self setCloneButtonToClone];
+            // Wrong
+//            [self setCloneButtonToClone];
+            [self.cloneButton setTitle:@"Clone" forState:UIControlStateNormal];
+            [self.cloneButton setHidden:NO];
             [self.urlTextField setEnabled:YES];
             [self.projectNameTextField setEnabled:YES];
             [self.usernameTextField setEnabled:YES];
@@ -139,7 +142,9 @@
 	}
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self setCloneButtonToClone];
+//        [self setCloneButtonToClone];
+        [self.cloneButton setTitle:@"Clone" forState:UIControlStateNormal];
+        [self.cloneButton setHidden:NO];
         [self.urlTextField setEnabled:YES];
         [self.projectNameTextField setEnabled:YES];
         [self.usernameTextField setEnabled:YES];

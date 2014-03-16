@@ -90,6 +90,7 @@
         // Switch to branch
 //        [self.gitBranchController setParentView:self.gitLogViewController.view];
         [self.gitBranchController checkoutToBranch:self.selectedBranch andFinishBlock:^(){
+            [self.gitLogViewController update];
             [self.navigationController popViewControllerAnimated:YES];
         }];
     }

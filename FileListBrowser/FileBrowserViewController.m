@@ -278,6 +278,8 @@
         NSLog(@"file path is nil");
         return;
     }
+    filePath = [[Utils getInstance] getSourceFileByDisplayFile:filePath];
+    
     NSArray* targetComponents = [filePath pathComponents];
     NSArray* currentComponents = [fileListBrowserController.currentLocation pathComponents];
     if ([targetComponents count] == 0 || [currentComponents count] == 0)

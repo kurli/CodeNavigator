@@ -12,6 +12,7 @@
 #import "GitDiffViewController.h"
 #import "GitBranchViewController.h"
 #import "GitBranchController.h"
+#import "GitUpdateViewController.h"
 
 #define DETAIL_BUTTON_TAG 101
 #define AUTHOR_TAG 102
@@ -102,6 +103,7 @@
     if (!isLogForProject) {
         [self.showMergesBarButton setEnabled:NO];
         [self.branchesBarButton setEnabled:NO];
+        [self.updateBarButton setEnabled:NO];
     }
 }
 
@@ -148,8 +150,9 @@
 {
     if (project == nil || [project length] == 0)
         return;
+    NSString* gitFolder = [[Utils getInstance] getGitFolder:project];
+    gitFolder = [gitFolder stringByAppendingPathComponent:@".git"];
     [self setCurrentGitFolder:project];
-    NSString* gitFolder = [project stringByAppendingPathComponent:@".git"];
     NSError *error = nil;
     NSURL *url = [NSURL fileURLWithPath:gitFolder];
     repo = [GTRepository repositoryWithURL:url error:&error];
@@ -573,6 +576,16 @@
     if (indexPath.row == selected)
         return 200;
     return kCellHeight;
+}
+
+- (IBAction)updateClicked:(id)sender {
+    NSString* gitFolder = currentGitFolder;
+    [self dismissViewControllerAnimated:YES completion:^(){
+        GitUpdateViewController* updateController = [[GitUpdateViewController alloc] init];
+        updateController.modalPresentationStyle = UIModalPresentationFormSheet;
+        [updateController setGitFolder:gitFolder];
+        [[Utils getInstance].splitViewController presentViewController:updateController animated:YES completion:nil];
+    }];
 }
 
 @end
