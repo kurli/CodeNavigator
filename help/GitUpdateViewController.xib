@@ -82,7 +82,7 @@
                     <rect key="frame" x="161" y="176" width="257" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
                 <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" id="w8F-Ha-S4s">
                     <rect key="frame" x="20" y="247" width="500" height="363"/>

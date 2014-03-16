@@ -11,6 +11,9 @@
 #import "ObjectiveGit.h"
 #import "MBProgressHUD.h"
 
+#define SEPERATOR @"--lgz_SePeRator--"
+#define KEY @"CodeNavigator--lgz_SePeRator--"
+
 @interface GitUpdateViewController ()
 
 @end
@@ -38,6 +41,21 @@
 - (void)viewWillAppear:(BOOL)animated {
     GTBranch* currentBranch = [self.gitBranchController currentBranch];
     GTBranch* trackingBranch = [self.gitBranchController getCurrentTrackingBranch];
+    
+    NSError* error;
+    NSString* path = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/git.config"];
+    NSString* content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    // Parse content
+    NSArray* array = [content componentsSeparatedByString:SEPERATOR];
+    if ([array count] == 2) {
+        [[Utils getInstance] setGitUsername:[Utils HloveyRC4:[array objectAtIndex:0] key:KEY]];
+        [[Utils getInstance] setGitPassword:[Utils HloveyRC4:[array objectAtIndex:1] key:KEY]];
+    } else {
+        [[Utils getInstance] setGitUsername:@""];
+        [[Utils getInstance] setGitPassword:@""];
+        [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+    }
+    
     self.username.text = [Utils getInstance].gitUsername;
     self.password.text = [Utils getInstance].gitPassword;
     if ([currentBranch.shortName length] == 0) {
