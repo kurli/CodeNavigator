@@ -273,15 +273,16 @@
         [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please enter remote url"];
         return;
     }
-    NSRange range = [remoteURL rangeOfString:@"https://"];
-    if (range.location != NSNotFound && range.location == 0)
-    {
-        if ([self.usernameTextField.text length] == 0 ||
-            [self.passwordTextField.text length] == 0) {
-            [[Utils getInstance] alertWithTitle:@"CodeNavigator"andMessage:@"You must provide Username & Password for this clone" ];
-            return;
-        }
-    }
+//    NSRange range = [remoteURL rangeOfString:@"https://"];
+//    if (range.location != NSNotFound && range.location == 0)
+//    {
+//        if ([self.usernameTextField.text length] == 0 ||
+//            [self.passwordTextField.text length] == 0) {
+//            [[Utils getInstance] alertWithTitle:@"CodeNavigator"andMessage:@"You must provide Username & Password for this clone" ];
+//            return;
+//        }
+//    }
+    
 //    range = [remoteURL rangeOfString:@"ssh://"];
 //    if (range.location != NSNotFound && range.location == 0)
 //    {

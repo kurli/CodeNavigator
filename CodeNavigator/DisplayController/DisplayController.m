@@ -114,6 +114,9 @@
         NSStringEncoding encoding = NSUTF8StringEncoding;
         NSString* content = [NSString stringWithContentsOfFile: displayPath usedEncoding:&encoding error: &error];
         NSString* fileContent = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+        if (fileContent == 0) {
+            return nil;
+        }
         NSString* source_md5 = [self getMd5_32Bit_String:fileContent];
         NSString* pre_md5 = [content substringToIndex:[source_md5 length]];
         if ([source_md5 compare:pre_md5] == NSOrderedSame) {
@@ -143,6 +146,10 @@
     [parser startParse];
     html = [parser getHtml];
     NSString* fileContent = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    if (fileContent  ==  nil) {
+        NSLog(@"Wrong: 223");
+        return nil;
+    }
     NSString* outputStr = [self getMd5_32Bit_String:fileContent];
     outputStr = [outputStr stringByAppendingString:html];
     //rc4Result = [self HloveyRC4:html key:@"lgz"];

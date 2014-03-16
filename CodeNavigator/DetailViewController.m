@@ -530,10 +530,17 @@
     BOOL isFolder;
     if (![[NSFileManager defaultManager] fileExistsAtPath:url isDirectory:&isFolder])
     {
-        NSString* filePathFromProject = [[Utils getInstance] getPathFromProject:url];
-        filePathFromProject = [[Utils getInstance] getSourceFileByDisplayFile:filePathFromProject];
-        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:[NSString stringWithFormat:@"%@\n File not found",filePathFromProject]];
-        return;
+        // Fix version error.
+        url = [[Utils getInstance] getSourceFileByDisplayFile:url];
+        [[Utils getInstance] getDisplayFile:url andProjectBase:nil];
+        url = [[Utils getInstance] getDisplayFileBySourceFile:url];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:url isDirectory:&isFolder]){
+            url = [[Utils getInstance] getSourceFileByDisplayFile:url];
+            NSString* filePathFromProject = [[Utils getInstance] getPathFromProject:url];
+            filePathFromProject = [[Utils getInstance] getSourceFileByDisplayFile:filePathFromProject];
+            [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:[NSString stringWithFormat:@"%@\n File not found",filePathFromProject]];
+            return;
+        }
     }
     
     NSString* extension = [url pathExtension];
@@ -779,6 +786,7 @@
     [self releaseAllPopOver];
     
     NSString* currentFile = [self getCurrentDisplayFile];
+    currentFile = [[Utils getInstance] getSourceFileByDisplayFile:currentFile];
     if (currentFile == nil)
         return;
 //    MasterViewController* masterViewController = nil;
@@ -791,8 +799,6 @@
 #else
     self.popoverController = [[UIPopoverController alloc] initWithContentViewController:filePathInfoController];
     NSString* realSourceFile = [[Utils getInstance] getPathFromProject:currentFile];
-    realSourceFile = [realSourceFile stringByDeletingLastPathComponent];
-    realSourceFile = [realSourceFile stringByAppendingPathComponent:self.titleTextField.title];
     filePathInfoController.label.text = realSourceFile;
     self.popoverController.popoverContentSize = CGSizeMake(640., filePathInfoController.view.frame.size.height);
     [self.popoverController presentPopoverFromBarButtonItem:(UIBarButtonItem*)sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
@@ -1615,7 +1621,7 @@
             currentDisplayFile = [self.downHistoryController getUrlFromHistoryFormat:path];
         }
         NSString* projectFolder = [[Utils getInstance] getProjectFolder:currentDisplayFile];
-        
+        currentDisplayFile = [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
         // if just get entry for virtualization
         if ([self.virtualizeViewController isGetEntryFromWebView] == YES)
         {
@@ -1628,7 +1634,6 @@
         }
         else
         {
-            currentDisplayFile = [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
             NSString* searchWord;
             if (webView == self.webView) {
                 searchWord = searchWordU;
