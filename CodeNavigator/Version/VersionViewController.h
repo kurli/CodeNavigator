@@ -1,0 +1,13 @@
+//
+//  VersionViewController.h
+//  CodeNavigator
+//
+//  Created by Guozhen Li on 3/17/14.
+//
+//
+
+#import <UIKit/UIKit.h>
+
+@interface VersionViewController : UIViewController
+
+@end

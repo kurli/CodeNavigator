@@ -15,6 +15,7 @@
 #import "DropBoxViewController.h"
 #import "SecurityViewController.h"
 #import "HandleURLController.h"
+#import "iRate.h"
 
 #ifdef LITE_VERSION
 #import "GAI.h"
