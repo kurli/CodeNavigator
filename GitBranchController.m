@@ -227,9 +227,15 @@ static int cred_acquire_cb(git_cred **out,
     });
 }
 
--(void) appendLog:(UITextView*)logView andStr: (NSString*) str andReplace:(NSString*)replace{
+-(void) appendLog:(UITextView*)logView andStr: (NSString*) _str andReplace:(NSString*)replace{
     dispatch_async(dispatch_get_main_queue(), ^{
         NSArray* array = [logView.text componentsSeparatedByString:@"\n"];
+        NSArray* inArray = [_str componentsSeparatedByString:@"\n"];
+        NSString* str = _str;
+        if ([inArray count] > 1) {
+            str = [NSString stringWithFormat:@"remote: %@\n", [inArray lastObject]];
+        }
+        
         NSMutableString* mulStr = [[NSMutableString alloc] init];
         BOOL appended = NO;
         for (int i=0; i<[array count]; i++) {
@@ -276,7 +282,6 @@ static int cred_acquire_cb(git_cred **out,
         return git_cred_userpass_plaintext_new(_out, [username UTF8String], [password UTF8String]);
     };
     payload.processCB = ^(NSString* str){
-//        [self appendLog:logView andStr:str andReplace:@"remote: "];
         if ([str length] == 0) {
             return;
         }
