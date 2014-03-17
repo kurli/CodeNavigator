@@ -10,4 +10,6 @@
 
 @interface VersionViewController : UIViewController
 
+-(void) checkVersion;
+
 @end

@@ -167,6 +167,10 @@
 		9443D1F1154EDA6A008CB52D /* SecurityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9443D1ED154EDA6A008CB52D /* SecurityViewController.xib */; };
 		9443D1F3154FF4D8008CB52D /* Lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 9443D1F2154FF4D8008CB52D /* Lock.png */; };
 		9443D1F4154FF4D8008CB52D /* Lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 9443D1F2154FF4D8008CB52D /* Lock.png */; };
+		9444595B18D72B8C008A02DB /* VersionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9444595918D72B8C008A02DB /* VersionViewController.m */; };
+		9444595C18D72B8C008A02DB /* VersionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9444595A18D72B8C008A02DB /* VersionViewController.xib */; };
+		9444595F18D74C42008A02DB /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9444595E18D74C42008A02DB /* iRate.m */; };
+		9444596118D7508C008A02DB /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9444596018D7508C008A02DB /* iRate.bundle */; };
 		94472084157534E9002EEA5A /* ManuallyParserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94472082157534E9002EEA5A /* ManuallyParserViewController.m */; };
 		94472085157534E9002EEA5A /* ManuallyParserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94472082157534E9002EEA5A /* ManuallyParserViewController.m */; };
 		94472086157534E9002EEA5A /* ManuallyParserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94472083157534E9002EEA5A /* ManuallyParserViewController.xib */; };
@@ -1151,6 +1155,12 @@
 		9443D1EC154EDA6A008CB52D /* SecurityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecurityViewController.m; path = Security/SecurityViewController.m; sourceTree = "<group>"; };
 		9443D1ED154EDA6A008CB52D /* SecurityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SecurityViewController.xib; path = Security/SecurityViewController.xib; sourceTree = "<group>"; };
 		9443D1F2154FF4D8008CB52D /* Lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lock.png; sourceTree = "<group>"; };
+		9444595818D72B8C008A02DB /* VersionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VersionViewController.h; path = Version/VersionViewController.h; sourceTree = "<group>"; };
+		9444595918D72B8C008A02DB /* VersionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VersionViewController.m; path = Version/VersionViewController.m; sourceTree = "<group>"; };
+		9444595A18D72B8C008A02DB /* VersionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VersionViewController.xib; path = Version/VersionViewController.xib; sourceTree = "<group>"; };
+		9444595D18D74C42008A02DB /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iRate.h; path = Version/iRate/iRate.h; sourceTree = "<group>"; };
+		9444595E18D74C42008A02DB /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iRate.m; path = Version/iRate/iRate.m; sourceTree = "<group>"; };
+		9444596018D7508C008A02DB /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		94472081157534E9002EEA5A /* ManuallyParserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManuallyParserViewController.h; path = ManuallyParser/ManuallyParserViewController.h; sourceTree = "<group>"; };
 		94472082157534E9002EEA5A /* ManuallyParserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManuallyParserViewController.m; path = ManuallyParser/ManuallyParserViewController.m; sourceTree = "<group>"; };
 		94472083157534E9002EEA5A /* ManuallyParserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManuallyParserViewController.xib; path = ManuallyParser/ManuallyParserViewController.xib; sourceTree = "<group>"; };
@@ -1675,6 +1685,7 @@
 				948C7464180AE89800065E65 /* History */,
 				94785A56184B9EC00012988B /* WebView */,
 				94BA22AB18BE4121006CB7A8 /* DisplayController */,
+				9444595018D72A89008A02DB /* Version */,
 				9431D73E14910B3000B0900E /* CodeNavigator */,
 				9431D73714910B3000B0900E /* Frameworks */,
 				9431D73514910B3000B0900E /* Products */,
@@ -1977,6 +1988,20 @@
 				9443D1ED154EDA6A008CB52D /* SecurityViewController.xib */,
 			);
 			name = Security;
+			sourceTree = "<group>";
+		};
+		9444595018D72A89008A02DB /* Version */ = {
+			isa = PBXGroup;
+			children = (
+				9444596018D7508C008A02DB /* iRate.bundle */,
+				9444595D18D74C42008A02DB /* iRate.h */,
+				9444595E18D74C42008A02DB /* iRate.m */,
+				9444595818D72B8C008A02DB /* VersionViewController.h */,
+				9444595918D72B8C008A02DB /* VersionViewController.m */,
+				9444595A18D72B8C008A02DB /* VersionViewController.xib */,
+			);
+			name = Version;
+			path = CodeNavigator;
 			sourceTree = "<group>";
 		};
 		9447208015752EFB002EEA5A /* ManuallyParserController */ = {
@@ -2690,6 +2715,7 @@
 				948C74051804491A00065E65 /* search.png in Resources */,
 				948C74221807091700065E65 /* Icon-50@2x.png in Resources */,
 				9478C6D815C8207600F443D9 /* share.png in Resources */,
+				9444596118D7508C008A02DB /* iRate.bundle in Resources */,
 				9478C6D915C8207600F443D9 /* twitter.png in Resources */,
 				9478C6DA15C8207600F443D9 /* weibo.png in Resources */,
 				9478C6DC15C8213100F443D9 /* feedback.png in Resources */,
@@ -2708,6 +2734,7 @@
 				94F7B90E17F7487A00A506EE /* UploadSelectionViewController.xib in Resources */,
 				94F7B91617F84A7600A506EE /* WebServiceControllerFormSheet.xib in Resources */,
 				941E63E01801541C008226F2 /* BuildInParser in Resources */,
+				9444595C18D72B8C008A02DB /* VersionViewController.xib in Resources */,
 				941E63E518019354008226F2 /* OpenAsViewController.xib in Resources */,
 				948C73FC180443A700065E65 /* binocular.png in Resources */,
 			);
@@ -3030,6 +3057,7 @@
 				9478595C162C5A08006E4575 /* html.c in Sources */,
 				9478595D162C5A08006E4575 /* jscript.c in Sources */,
 				9478595E162C5A08006E4575 /* keyword.c in Sources */,
+				9444595B18D72B8C008A02DB /* VersionViewController.m in Sources */,
 				9478595F162C5A08006E4575 /* lisp.c in Sources */,
 				94785960162C5A08006E4575 /* lregex.c in Sources */,
 				94785961162C5A08006E4575 /* lua.c in Sources */,
@@ -3070,6 +3098,7 @@
 				94AB10591755146E00359AE8 /* FileFormatResolver.m in Sources */,
 				94AB105C175516C900359AE8 /* ZipFileResolver.m in Sources */,
 				94AB10661756548000359AE8 /* OtherFormatResolver.m in Sources */,
+				9444595F18D74C42008A02DB /* iRate.m in Sources */,
 				94CB768217E21369009807F9 /* FileListBrowserController.m in Sources */,
 				94B09BB517E77DC600789510 /* FileBrowserViewController.m in Sources */,
 				94F7B90D17F7487A00A506EE /* UploadSelectionViewController.m in Sources */,
