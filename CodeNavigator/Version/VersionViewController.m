@@ -54,6 +54,7 @@
      2. Git log for single file or folder.\n\
      3. Git pull.\n\
      4. Bug fix. "];
+    [self.versionDetailView setFont:[UIFont systemFontOfSize:16]];
 }
 
 -(void) checkVersion {
@@ -66,7 +67,6 @@
     // 3: Added new parser config json file
     NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/version"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:versionFile];
-    isFolder = YES;
     if (isExist == YES)
     {
         // Check version file

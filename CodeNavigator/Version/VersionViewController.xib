@@ -47,11 +47,11 @@
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="New Features &amp; updates:  1. Switch between git branches.  2. Git log for single file or folder.  3. Git pull.  4. Bug fix. " selectable="NO" id="bWB-WE-oqx">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" id="bWB-WE-oqx">
                     <rect key="frame" x="20" y="180" width="500" height="420"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
             </subviews>
