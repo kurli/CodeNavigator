@@ -11,10 +11,6 @@
 #import "Utils.h"
 #import "DetailViewController.h"
 
-#ifdef LITE_VERSION
-#import "GAI.h"
-#endif
-
 #define HTML_STYLE @" \
 .defination { color: #66D9EF; font-style: italic; }\
 .comment { color: #008424; font-style: italic; }\
@@ -124,12 +120,6 @@ padding-right: 20px;\
     [downTextView setText:downSource];
     [self.commentTextView setText:[self.commentWrapper getCommentByLine:line]];
     [commentTextView becomeFirstResponder];
-#ifdef LITE_VERSION
-    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"Comments"
-                                                    withAction:nil
-                                                     withLabel:@"Comments Added"
-                                                     withValue:nil];
-#endif
 }
 
 - (void)dealloc
@@ -153,6 +143,7 @@ padding-right: 20px;\
     [self.commentWrapper saveToFile];
     [[Utils getInstance].detailViewController showCommentInWebView:line andComment:commentTextView.text];
     [self dismissModalViewControllerAnimated:YES];
+    [[Utils getInstance] addGAEvent:@"Comment" andAction:@"AddComment" andLabel:nil andValue:nil];
 }
 
 #pragma eMail related

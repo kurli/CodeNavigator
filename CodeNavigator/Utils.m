@@ -26,6 +26,9 @@
 #import "FunctionListManager.h"
 #import "DisplayController.h"
 
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
+
 @implementation BuildThreadData
 
 @synthesize path;
@@ -1067,6 +1070,7 @@ static Utils *static_utils;
 
 -(void) cscopeSearch:(NSString *)keyword andPath:(NSString *)sourcePath andProject:(NSString *)project andType:(int)type andFromVir:(BOOL)fromVir
 {
+    [[Utils getInstance] addGAEvent:@"Cscope" andAction:[NSString stringWithFormat:@"Type=%d", type] andLabel:nil andValue:nil];
     if (fromVir == NO)
     {
         // Because result has been changed and not from Virtualization
@@ -1504,6 +1508,15 @@ static Utils *static_utils;
         return;
     }
     [[self getDisplayController] removeDisplayFilesForProject:proj];
+}
+
+-(void) addGAEvent:(NSString*) category andAction:(NSString*) action andLabel:(NSString*)label andValue:(NSNumber*)number {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:category
+                                                          action:action
+                                                           label:label
+                                                           value:number] build]];
 }
 
 @end

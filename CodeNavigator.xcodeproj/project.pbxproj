@@ -151,7 +151,6 @@
 		9435320B157A861D0011A446 /* ManuallyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435320A157A861D0011A446 /* ManuallyParser.m */; };
 		9435320C157A861D0011A446 /* ManuallyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9435320A157A861D0011A446 /* ManuallyParser.m */; };
 		943D1FBD17E7695C00BD82E6 /* FileBrowser.png in Resources */ = {isa = PBXBuildFile; fileRef = 943D1FBC17E7695C00BD82E6 /* FileBrowser.png */; };
-		94407B1916E7B26F0011F941 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94407B1816E7B26F0011F941 /* libGoogleAnalytics.a */; };
 		94407B1B16E7BCBD0011F941 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94407B1A16E7BCBD0011F941 /* CoreData.framework */; };
 		94422A3314DD87F50076AC66 /* VirtualizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94422A3114DD87F50076AC66 /* VirtualizeViewController.m */; };
 		94422A3414DD87F50076AC66 /* VirtualizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94422A3114DD87F50076AC66 /* VirtualizeViewController.m */; };
@@ -728,6 +727,11 @@
 		94BA22DC18D0CBB7006CB7A8 /* GitBranchsManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22DA18D0CBB7006CB7A8 /* GitBranchsManagerViewController.m */; };
 		94BA22DD18D0CBB7006CB7A8 /* GitBranchsManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BA22DB18D0CBB7006CB7A8 /* GitBranchsManagerViewController.xib */; };
 		94BA22E118D1EDB1006CB7A8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22E018D1EDB1006CB7A8 /* MBProgressHUD.m */; };
+		94BC575018D8969B0027B383 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BC574F18D8969B0027B383 /* libGoogleAnalyticsServices.a */; };
+		94BC575118D8969B0027B383 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BC574F18D8969B0027B383 /* libGoogleAnalyticsServices.a */; };
+		94BC575218D897EA0027B383 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94407B1A16E7BCBD0011F941 /* CoreData.framework */; };
+		94BC575318D89B730027B383 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC271546F31700931747 /* SystemConfiguration.framework */; };
+		94BC575518D89BFB0027B383 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BC575418D89BFB0027B383 /* AdSupport.framework */; };
 		94BD81DD18014587002F8153 /* JavaParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81D918014587002F8153 /* JavaParser.m */; };
 		94BD81DE18014587002F8153 /* JavaScriptParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81DC18014587002F8153 /* JavaScriptParser.m */; };
 		94BD81E218014840002F8153 /* PHPParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81E118014840002F8153 /* PHPParser.m */; };
@@ -1138,12 +1142,6 @@
 		9435320A157A861D0011A446 /* ManuallyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManuallyParser.m; sourceTree = "<group>"; };
 		943D1FBA17E721E400BD82E6 /* FileListBrowserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileListBrowserProtocol.h; path = FileListBrowser/FileListBrowserProtocol.h; sourceTree = "<group>"; };
 		943D1FBC17E7695C00BD82E6 /* FileBrowser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FileBrowser.png; sourceTree = "<group>"; };
-		94407B1316E7B26F0011F941 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
-		94407B1416E7B26F0011F941 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
-		94407B1516E7B26F0011F941 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		94407B1616E7B26F0011F941 /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransaction.h; sourceTree = "<group>"; };
-		94407B1716E7B26F0011F941 /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransactionItem.h; sourceTree = "<group>"; };
-		94407B1816E7B26F0011F941 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		94407B1A16E7BCBD0011F941 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		94422A3014DD87F50076AC66 /* VirtualizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VirtualizeViewController.h; path = CodeNavigator/VirtualizeViewController.h; sourceTree = "<group>"; };
 		94422A3114DD87F50076AC66 /* VirtualizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VirtualizeViewController.m; path = CodeNavigator/VirtualizeViewController.m; sourceTree = "<group>"; };
@@ -1453,6 +1451,14 @@
 		94BA22DB18D0CBB7006CB7A8 /* GitBranchsManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GitBranchsManagerViewController.xib; sourceTree = "<group>"; };
 		94BA22DF18D1EDB1006CB7A8 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		94BA22E018D1EDB1006CB7A8 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
+		94BC574918D8969B0027B383 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = GoogleAnalytics/GAI.h; sourceTree = "<group>"; };
+		94BC574A18D8969B0027B383 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAIDictionaryBuilder.h; path = GoogleAnalytics/GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		94BC574B18D8969B0027B383 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAIFields.h; path = GoogleAnalytics/GAIFields.h; sourceTree = "<group>"; };
+		94BC574C18D8969B0027B383 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAILogger.h; path = GoogleAnalytics/GAILogger.h; sourceTree = "<group>"; };
+		94BC574D18D8969B0027B383 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = GoogleAnalytics/GAITrackedViewController.h; sourceTree = "<group>"; };
+		94BC574E18D8969B0027B383 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = GoogleAnalytics/GAITracker.h; sourceTree = "<group>"; };
+		94BC574F18D8969B0027B383 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		94BC575418D89BFB0027B383 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		94BD81D718014587002F8153 /* JavaDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaDefinition.h; path = CodeNavigator/JavaDefinition.h; sourceTree = "<group>"; };
 		94BD81D818014587002F8153 /* JavaParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JavaParser.h; path = CodeNavigator/JavaParser.h; sourceTree = "<group>"; };
 		94BD81D918014587002F8153 /* JavaParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JavaParser.m; path = CodeNavigator/JavaParser.m; sourceTree = "<group>"; };
@@ -1522,7 +1528,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94BC575518D89BFB0027B383 /* AdSupport.framework in Frameworks */,
 				94C7C171184E42B3003A8C03 /* Social.framework in Frameworks */,
+				94BC575218D897EA0027B383 /* CoreData.framework in Frameworks */,
 				94785A55184519660012988B /* libz.dylib in Frameworks */,
 				94785A421840FAB90012988B /* libiconv.dylib in Frameworks */,
 				9402F56A1840F9B5006033EB /* libObjectiveGit-iOS.a in Frameworks */,
@@ -1535,7 +1543,9 @@
 				94B4038114A0ED4700E3A636 /* CFNetwork.framework in Frameworks */,
 				94B4036A14A0DE0300E3A636 /* libHttpService.a in Frameworks */,
 				9431D73914910B3000B0900E /* UIKit.framework in Frameworks */,
+				94BC575318D89B730027B383 /* SystemConfiguration.framework in Frameworks */,
 				9431D73B14910B3000B0900E /* Foundation.framework in Frameworks */,
+				94BC575018D8969B0027B383 /* libGoogleAnalyticsServices.a in Frameworks */,
 				9431D73D14910B3000B0900E /* CoreGraphics.framework in Frameworks */,
 				94A51848152DF2AC0062DA65 /* DropboxSDK.framework in Frameworks */,
 			);
@@ -1576,9 +1586,9 @@
 				94ADF17214BB27EE00BA807A /* UIKit.framework in Frameworks */,
 				94ADF17314BB27EE00BA807A /* Foundation.framework in Frameworks */,
 				94ADF17414BB27EE00BA807A /* CoreGraphics.framework in Frameworks */,
+				94BC575118D8969B0027B383 /* libGoogleAnalyticsServices.a in Frameworks */,
 				94A51849152DF2AC0062DA65 /* DropboxSDK.framework in Frameworks */,
 				94B8EC211546F2B600931747 /* libGoogleAdMobAds.a in Frameworks */,
-				94407B1916E7B26F0011F941 /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1705,6 +1715,7 @@
 		9431D73714910B3000B0900E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				94BC575418D89BFB0027B383 /* AdSupport.framework */,
 				94C7C170184E42B3003A8C03 /* Social.framework */,
 				94785A54184519660012988B /* libz.dylib */,
 				94785A411840FAB90012988B /* libiconv.dylib */,
@@ -1970,12 +1981,13 @@
 		94407B1216E7B2400011F941 /* GoogleAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				94407B1316E7B26F0011F941 /* GAI.h */,
-				94407B1416E7B26F0011F941 /* GAITrackedViewController.h */,
-				94407B1516E7B26F0011F941 /* GAITracker.h */,
-				94407B1616E7B26F0011F941 /* GAITransaction.h */,
-				94407B1716E7B26F0011F941 /* GAITransactionItem.h */,
-				94407B1816E7B26F0011F941 /* libGoogleAnalytics.a */,
+				94BC574918D8969B0027B383 /* GAI.h */,
+				94BC574A18D8969B0027B383 /* GAIDictionaryBuilder.h */,
+				94BC574B18D8969B0027B383 /* GAIFields.h */,
+				94BC574C18D8969B0027B383 /* GAILogger.h */,
+				94BC574D18D8969B0027B383 /* GAITrackedViewController.h */,
+				94BC574E18D8969B0027B383 /* GAITracker.h */,
+				94BC574F18D8969B0027B383 /* libGoogleAnalyticsServices.a */,
 			);
 			name = GoogleAnalytics;
 			sourceTree = "<group>";
@@ -3640,7 +3652,10 @@
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
+				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3669,7 +3684,10 @@
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
+				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3726,7 +3744,10 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "DISTRIBUTION=1";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
+				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3851,9 +3872,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\\\"$(SRCROOT)/ObjectiveGit/libgit2\\\"",
+					"\\\\\\\"$(SRCROOT)/ObjectiveGit/libgit2\\\\\\\"",
 					"$(SRCROOT)",
 					"/Users/lgz_software/Documents/iOS_Development/ios-openssl/lib",
+					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNavigator;
@@ -3882,9 +3904,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\\\"$(SRCROOT)/ObjectiveGit/libgit2\\\"",
+					"\\\\\\\"$(SRCROOT)/ObjectiveGit/libgit2\\\\\\\"",
 					"$(SRCROOT)",
 					"/Users/lgz_software/Documents/iOS_Development/ios-openssl/lib",
+					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNavigator;
@@ -3916,9 +3939,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\\\"$(SRCROOT)/ObjectiveGit/libgit2\\\"",
+					"\\\\\\\"$(SRCROOT)/ObjectiveGit/libgit2\\\\\\\"",
 					"$(SRCROOT)",
 					"/Users/lgz_software/Documents/iOS_Development/ios-openssl/lib",
+					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNavigator;

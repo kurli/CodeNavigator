@@ -8,6 +8,7 @@
 
 #import "UploadSelectionViewController.h"
 #import "MasterViewController.h"
+#import "Utils.h"
 
 @interface UploadSelectionViewController ()
 
@@ -59,15 +60,19 @@
     switch (indexPath.row) {
         case 0:
             [masterViewController showWebUploadService];
+            [[Utils getInstance] addGAEvent:@"Add" andAction:@"WebUploadService" andLabel:nil andValue:nil];
             break;
         case 1:
             [masterViewController showGitCloneView];
+            [[Utils getInstance] addGAEvent:@"Add" andAction:@"GitClone" andLabel:nil andValue:nil];
             break;
         case 2:
             [masterViewController dropBoxClicked:nil];
+            [[Utils getInstance] addGAEvent:@"Add" andAction:@"DropBox" andLabel:nil andValue:nil];
             break;
         case 3:
             [masterViewController downloadZipFromGitHub];
+            [[Utils getInstance] addGAEvent:@"Add" andAction:@"GitHubZip" andLabel:nil andValue:nil];
             break;
         default:
             break;

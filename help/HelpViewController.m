@@ -9,10 +9,6 @@
 #import "HelpViewController.h"
 #import "Utils.h"
 
-#ifdef LITE_VERSION
-#import "GAI.h"
-#endif
-
 #define ALERT_DEMO_VIDEO 0
 #define ALERT_TWITTER_FOLLOW 1
 #define ALERT_WEIBO_FOLLOW 2
@@ -37,9 +33,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-#ifdef LITE_VERSION
-    self.trackedViewName = @"Help Screen";
-#endif
 }
 
 - (void)viewDidUnload
@@ -182,12 +175,7 @@
     UIAlertView* alertConfirmView;
     switch (indexPath.section) {
         case 0:
-#ifdef LITE_VERSION
-            [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"Help Selection"
-                                                            withAction:nil
-                                                             withLabel:@"Demo Video"
-                                                             withValue:nil];
-#endif
+            [[Utils getInstance] addGAEvent:@"Help" andAction:@"Demo Video" andLabel:nil andValue:nil];
             //demoVideo
             alertType = ALERT_DEMO_VIDEO;
             alertConfirmView = [[UIAlertView alloc] initWithTitle:@"Do you want to open this link in Safari?" message:@"http://v.youku.com/v_show/id_XNDEwNTkxOTQ4.html" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
@@ -202,12 +190,7 @@
 #else
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=492480832&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software"]];
 #endif
-#ifdef LITE_VERSION
-            [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"Help Selection"
-                                                            withAction:nil
-                                                             withLabel:@"Rate"
-                                                             withValue:nil];
-#endif
+            [[Utils getInstance] addGAEvent:@"Help" andAction:@"Rate" andLabel:nil andValue:nil];
             break;
         case 3:
             // Twitter
@@ -221,12 +204,6 @@
                 //Share
                 [self shareWithTwitter];
             }
-#ifdef LITE_VERSION
-            [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"Help Selection"
-                                                            withAction:nil
-                                                             withLabel:@"Follow twitter"
-                                                             withValue:nil];
-#endif
             break;
         case 4:
             // Weibo
@@ -240,12 +217,6 @@
                 //Share
                 [self shareWithWeibo];
             }
-#ifdef LITE_VERSION
-            [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"Help Selection"
-                                                            withAction:nil
-                                                             withLabel:@"Follow weibo"
-                                                             withValue:nil];
-#endif
             break;
             
         default:

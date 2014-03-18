@@ -255,4 +255,6 @@ typedef enum _SearchType{
 
 -(void) removeDisplayFilesForProject:(NSString*)proj;
 
+-(void) addGAEvent:(NSString*) category andAction:(NSString*) action andLabel:(NSString*)label andValue:(NSNumber*)number;
+
 @end

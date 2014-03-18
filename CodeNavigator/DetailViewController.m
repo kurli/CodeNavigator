@@ -17,9 +17,6 @@
 #import "CommentViewController.h"
 #import "CommentWrapper.h"
 #import "FunctionListViewController.h"
-#ifdef LITE_VERSION
-#import "GAI.h"
-#endif
 #import "FileBrowserViewController.h"
 #import "DisplayController.h"
 
@@ -117,9 +114,6 @@
      forControlEvents:UIControlEventTouchDragInside];
 
     [super viewDidLoad];
-#ifdef LITE_VERSION
-    self.trackedViewName = @"Browsing Code";
-#endif
 }
 
 - (void)viewDidUnload
@@ -1109,12 +1103,7 @@
         [self.popoverController presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
 #endif
-#ifdef LITE_VERSION
-    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
-                                                    withAction:nil
-                                                     withLabel:@"Settings clicked"
-                                                     withValue:nil];
-#endif
+    [[Utils getInstance] addGAEvent:@"Settings" andAction:@"DisplayMode" andLabel:nil andValue:nil];
 }
 
 - (IBAction)historyListClicked:(id)sender {
@@ -1133,12 +1122,6 @@
     self.popoverController.popoverContentSize = self.historyListController.view.frame.size;
     
     [self.popoverController presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-#endif
-#ifdef LITE_VERSION
-    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
-                                                    withAction:nil
-                                                     withLabel:@"History list clicked"
-                                                     withValue:nil];
 #endif
 }
 
@@ -1166,12 +1149,7 @@
     self.virtualizeViewController = [[VirtualizeViewController alloc] init];
     [self showVirtualizeView];
     isVirtualizeDisplayed = YES;
-#ifdef LITE_VERSION
-    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
-                                                    withAction:nil
-                                                     withLabel:@"Visualize clicked"
-                                                     withValue:nil];
-#endif
+    [[Utils getInstance] addGAEvent:@"Display" andAction:@"Visualize" andLabel:nil andValue:nil];
 }
 
 - (void) showVirtualizeView
@@ -1282,12 +1260,8 @@
         [self.activeMark setHidden:YES];
     }
     [UIView commitAnimations];
-#ifdef LITE_VERSION
-    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
-                                                    withAction:nil
-                                                     withLabel:@"Split Clicked"
-                                                     withValue:nil];
-#endif
+
+    [[Utils getInstance] addGAEvent:@"Display" andAction:@"MultiView" andLabel:nil andValue:nil];
 }
 
 - (IBAction)functionListClicked:(id)sender {
@@ -1315,12 +1289,8 @@
     
     [self.popoverController presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 #endif
-#ifdef LITE_VERSION
-    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
-                                                    withAction:nil
-                                                     withLabel:@"Function List Clicked"
-                                                     withValue:nil];
-#endif
+
+    [[Utils getInstance] addGAEvent:@"Display" andAction:@"FunctionList" andLabel:nil andValue:nil];
 }
 
 - (IBAction)fileBrowserButtonClicked:(id)sender {

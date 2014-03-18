@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -162,7 +162,8 @@
                                 <action selector="historyListClicked:" destination="-1" id="373"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem width="189" style="plain" id="366">
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="gTX-We-dHP"/>
+                        <barButtonItem width="230" style="plain" id="366">
                             <connections>
                                 <action selector="titleTouched:" destination="-1" id="367"/>
                             </connections>
@@ -173,7 +174,6 @@
                                 <action selector="highlightWordButtonClicked:" destination="-1" id="359"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem width="19" style="plain" systemItem="fixedSpace" id="432"/>
                         <barButtonItem image="text-list.png" style="plain" id="423">
                             <connections>
                                 <action selector="functionListClicked:" destination="-1" id="425"/>

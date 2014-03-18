@@ -273,6 +273,7 @@
         [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please enter remote url"];
         return;
     }
+    [[Utils getInstance] addGAEvent:@"GitClone" andAction:remoteURL andLabel:nil andValue:nil];
 //    NSRange range = [remoteURL rangeOfString:@"https://"];
 //    if (range.location != NSNotFound && range.location == 0)
 //    {

@@ -17,10 +17,6 @@
 #import "DisplayModeController.h"
 #import "FileBrowserViewProtocol.h"
 
-#ifdef LITE_VERSION
-#import "GAI.h"
-#endif
-
 typedef enum _JSState {
     JS_NONE,
     JS_GOTO_LINE_AND_FOCUS_KEYWORD,
@@ -37,11 +33,7 @@ typedef enum _JSState {
 @class FunctionListViewController;
 @class FileBrowserViewController;
 
-#ifdef LITE_VERSION
-@interface DetailViewController : GAITrackedViewController <UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MGSplitViewControllerDelegate>
-#else
 @interface DetailViewController : UIViewController <UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MGSplitViewControllerDelegate, FileBrowserViewDelegate>
-#endif
 {
     int currentSearchFocusLine;
     BOOL shownToolBar;

@@ -22,9 +22,6 @@
 #import "HelpViewController.h"
 #import "git2.h"
 #endif
-#ifdef LITE_VERSION
-#import "GAI.h"
-#endif
 #import "GitCloneViewController.h"
 #import "FileListBrowserController.h"
 #import "UploadSelectionViewController.h"
@@ -387,6 +384,7 @@
 }
 
 - (IBAction)gitClicked:(id)sender {
+    [[Utils getInstance] addGAEvent:@"Git" andAction:@"From Toolbar" andLabel:nil andValue:nil];
 #ifndef IPHONE_VERSION
     // If in project list mode, means git clone a project from remote
     if ([self.currentProjectPath length] == 0) {
@@ -403,12 +401,6 @@
     }
     
 #endif
-#ifdef LITE_VERSION
-    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
-                                                    withAction:nil
-                                                     withLabel:@"git clicked"
-                                                     withValue:nil];
-#endif
 }
 
 - (IBAction)dropBoxClicked:(id)sender {
@@ -419,12 +411,7 @@
     [dropBoxViewController showModualView];
     dropBoxViewController = nil;
 #endif
-#ifdef LITE_VERSION
-    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
-                                                    withAction:nil
-                                                     withLabel:@"Dropbox clicked"
-                                                     withValue:nil];
-#endif
+    [[Utils getInstance] addGAEvent:@"Dropbox" andAction:@"Clicked" andLabel:nil andValue:nil];
 }
 
 - (void) releaseAllPopover
@@ -454,21 +441,11 @@
     
     SecurityViewController* viewController = [[SecurityViewController alloc] init];
     [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
-#ifdef LITE_VERSION
-    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
-                                                    withAction:nil
-                                                     withLabel:@"Lock button clicked"
-                                                     withValue:nil];
-#endif
+    [[Utils getInstance] addGAEvent:@"Lock" andAction:@"Clicked" andLabel:nil andValue:nil];
 }
 
 - (IBAction)commentClicked:(id)sender {
-#ifdef LITE_VERSION
-    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
-                                                    withAction:nil
-                                                     withLabel:@"Comments clicked"
-                                                     withValue:nil];
-#endif
+    [[Utils getInstance] addGAEvent:@"Comment" andAction:@"Manage" andLabel:nil andValue:nil];
     UIBarButtonItem *item = (UIBarButtonItem*)sender;
     
     if ([popOverController isPopoverVisible]) {
@@ -532,12 +509,6 @@
     
 #ifdef IPHONE_VERSION
     [self presentModalViewController:_webServiceController animated:YES];
-#endif
-#ifdef LITE_VERSION
-    [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"ToolBar"
-                                                    withAction:nil
-                                                     withLabel:@"Web Upload Service"
-                                                     withValue:nil];
 #endif
 }
 

@@ -474,6 +474,7 @@
     GitDiffViewController* gitDiffView = [[GitDiffViewController alloc] initWithNibName:@"GitDiffViewController" bundle:[NSBundle mainBundle]];
     [gitDiffView setDiffFileArray:diffFileArray];
     [self presentViewController:gitDiffView animated:YES completion:nil];
+    [[Utils getInstance] addGAEvent:@"Git" andAction:@"ShowDiff" andLabel:nil andValue:nil];
 }
 
 - (IBAction)manageBranches:(id)sender {
@@ -485,6 +486,7 @@
     if (!isValid) {
         return;
     }
+    [[Utils getInstance] addGAEvent:@"Git" andAction:@"ManageBranches" andLabel:nil andValue:nil];
     GitBranchViewController* branchViewController = [[GitBranchViewController alloc] init];
     [branchViewController setGitBranchController:branchController];
     [branchViewController setNeedSwitchBranch:NO];
@@ -579,6 +581,7 @@
 }
 
 - (IBAction)updateClicked:(id)sender {
+    [[Utils getInstance] addGAEvent:@"Git" andAction:@"Update" andLabel:nil andValue:nil];
     NSString* gitFolder = currentGitFolder;
     [self dismissViewControllerAnimated:YES completion:^(){
         GitUpdateViewController* updateController = [[GitUpdateViewController alloc] init];

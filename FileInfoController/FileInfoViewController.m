@@ -173,6 +173,7 @@
     [gitlogView setCompareContainsPath:sourceFilePath];
     [gitlogView gitLogForProject: proj];
     [gitlogView showModualView];
+    [[Utils getInstance] addGAEvent:@"FileInfo" andAction:@"GitLog" andLabel:nil andValue:nil];
 }
 
 -(void) switchBranch {
@@ -224,9 +225,11 @@
                         return;
                     }
                 }
+                [[Utils getInstance] addGAEvent:@"FileInfo" andAction:@"Refresh" andLabel:nil andValue:nil];
             }
             else if (indexPath.row == OPEN_AS) {
                 [self presentOpenAsView];
+                [[Utils getInstance] addGAEvent:@"FileInfo" andAction:@"OpenAs" andLabel:nil andValue:nil];
             }
             else if (indexPath.row == SOURCE_DELETE) {
                 [masterViewController.popOverController dismissPopoverAnimated:YES];
@@ -289,8 +292,10 @@
                 [self presentGitLog];
             } else if (indexPath.row == PROJECT_GIT_BRANCH) {
                 [self switchBranch];
+                [[Utils getInstance] addGAEvent:@"FileInfo" andAction:@"GitBranch" andLabel:nil andValue:nil];
             } else if (indexPath.row == PROJECT_GIT_UPDATE) {
                 [self updateRepo];
+                [[Utils getInstance] addGAEvent:@"FileInfo" andAction:@"UpdateGit" andLabel:nil andValue:nil];
             }
             break;
         default:
