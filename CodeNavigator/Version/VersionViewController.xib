@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VersionViewController">
             <connections>
+                <outlet property="versionDetailView" destination="bWB-WE-oqx" id="jy0-Jp-kan"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>
@@ -46,7 +47,7 @@
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="New Features &amp; updates: 1. Switch between git branches. 2. Git log for single file or folder. 3. Git pull. 4. Bug fix.   " selectable="NO" id="bWB-WE-oqx">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="New Features &amp; updates:  1. Switch between git branches.  2. Git log for single file or folder.  3. Git pull.  4. Bug fix. " selectable="NO" id="bWB-WE-oqx">
                     <rect key="frame" x="20" y="180" width="500" height="420"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>

@@ -146,7 +146,7 @@
     [parser startParse];
     html = [parser getHtml];
     NSString* fileContent = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
-    if (fileContent  ==  nil) {
+    if (fileContent  ==  nil && [[Utils getInstance] isImageType:path] == NO) {
         NSLog(@"Wrong: 223");
         return nil;
     }
@@ -163,6 +163,9 @@
 }
 
 - (NSString *)getMd5_32Bit_String:(NSString *)srcString{
+    if ([srcString length] == 0) {
+        return @"";
+    }
     const char *cStr = [srcString UTF8String];
     unsigned char digest[CC_MD5_DIGEST_LENGTH];
     CC_MD5( cStr, strlen(cStr), digest );

@@ -12,4 +12,5 @@
 
 -(void) checkVersion;
 
+@property (weak, nonatomic) IBOutlet UITextView *versionDetailView;
 @end

@@ -1620,8 +1620,8 @@
             NSString* path = [self.downHistoryController pickTopLevelUrl];
             currentDisplayFile = [self.downHistoryController getUrlFromHistoryFormat:path];
         }
-        NSString* projectFolder = [[Utils getInstance] getProjectFolder:currentDisplayFile];
         currentDisplayFile = [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
+        NSString* projectFolder = [[Utils getInstance] getProjectFolder:currentDisplayFile];
         // if just get entry for virtualization
         if ([self.virtualizeViewController isGetEntryFromWebView] == YES)
         {

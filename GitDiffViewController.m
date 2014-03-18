@@ -420,13 +420,19 @@ typedef enum _changeType
     cmd[1] = [diff1FilePath cStringUsingEncoding:NSUTF8StringEncoding];
     cmd[2] = [diffFilePath cStringUsingEncoding:NSUTF8StringEncoding];
     
-    _diff(cmd);
+    if (newBolb.content != nil && oldBolb.content != nil) {
+        _diff(cmd);
+    } else {
+        [[NSFileManager defaultManager] removeItemAtPath:diffFilePath error:&error];
+        [[NSFileManager defaultManager] removeItemAtPath:diff1FilePath error:&error];
+        [[NSFileManager defaultManager] removeItemAtPath:diff2FilePath error:&error];
+    }
     
     NSString* diffContent = [NSString stringWithContentsOfFile:diffFilePath encoding:NSUTF8StringEncoding error:&error];
     //NSLog(diffContent);
-    if ([diffContent length] == 0) {
-        return;
-    }
+//    if ([diffContent length] == 0) {
+//        return;
+//    }
     
     // get html file for new obj
     NSString* newHtml;
