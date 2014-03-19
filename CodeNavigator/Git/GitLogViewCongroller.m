@@ -582,6 +582,7 @@
 
 - (IBAction)updateClicked:(id)sender {
     [[Utils getInstance] addGAEvent:@"Git" andAction:@"Update" andLabel:nil andValue:nil];
+    [self.popOverController dismissPopoverAnimated:YES];
     NSString* gitFolder = currentGitFolder;
     [self dismissViewControllerAnimated:YES completion:^(){
         GitUpdateViewController* updateController = [[GitUpdateViewController alloc] init];

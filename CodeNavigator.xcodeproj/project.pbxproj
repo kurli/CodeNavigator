@@ -684,7 +684,7 @@
 		94ADF16914BB27EE00BA807A /* FilePathInfoPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D8702F14A65887002F2DBB /* FilePathInfoPopupController.m */; };
 		94ADF16B14BB27EE00BA807A /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9417EB7B14AE160C00224D2A /* BannerViewController.m */; };
 		94ADF16C14BB27EE00BA807A /* UnSupportedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB1E5114AF5E0300451020 /* UnSupportedParser.m */; };
-		94ADF16E14BB27EE00BA807A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9417EB7714AE118000224D2A /* iAd.framework */; };
+		94ADF16E14BB27EE00BA807A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9417EB7714AE118000224D2A /* iAd.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		94ADF16F14BB27EE00BA807A /* libZip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434BFB314A389BE00B34419 /* libZip.a */; };
 		94ADF17014BB27EE00BA807A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4038014A0ED4700E3A636 /* CFNetwork.framework */; };
 		94ADF17114BB27EE00BA807A /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4033014A0D5EB00E3A636 /* libHttpService.a */; };
@@ -715,7 +715,7 @@
 		94B7E5AB156FE2BB000F3F34 /* FileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B7E5A8156FE2BA000F3F34 /* FileInfoViewController.m */; };
 		94B7E5AC156FE2BB000F3F34 /* FileInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B7E5A9156FE2BA000F3F34 /* FileInfoViewController.xib */; };
 		94B7E5AD156FE2BB000F3F34 /* FileInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B7E5A9156FE2BA000F3F34 /* FileInfoViewController.xib */; };
-		94B8EC211546F2B600931747 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC1F1546F2B600931747 /* libGoogleAdMobAds.a */; };
+		94B8EC211546F2B600931747 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC1F1546F2B600931747 /* libGoogleAdMobAds.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		94B8EC221546F2B600931747 /* Mediation in Resources */ = {isa = PBXBuildFile; fileRef = 94B8EC201546F2B600931747 /* Mediation */; };
 		94B8EC241546F2FD00931747 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC231546F2FD00931747 /* AudioToolbox.framework */; };
 		94B8EC261546F30900931747 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC251546F30900931747 /* MessageUI.framework */; };
@@ -731,7 +731,7 @@
 		94BC575118D8969B0027B383 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BC574F18D8969B0027B383 /* libGoogleAnalyticsServices.a */; };
 		94BC575218D897EA0027B383 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94407B1A16E7BCBD0011F941 /* CoreData.framework */; };
 		94BC575318D89B730027B383 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC271546F31700931747 /* SystemConfiguration.framework */; };
-		94BC575518D89BFB0027B383 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BC575418D89BFB0027B383 /* AdSupport.framework */; };
+		94BC575518D89BFB0027B383 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BC575418D89BFB0027B383 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		94BD81DD18014587002F8153 /* JavaParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81D918014587002F8153 /* JavaParser.m */; };
 		94BD81DE18014587002F8153 /* JavaScriptParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81DC18014587002F8153 /* JavaScriptParser.m */; };
 		94BD81E218014840002F8153 /* PHPParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81E118014840002F8153 /* PHPParser.m */; };
