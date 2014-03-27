@@ -143,6 +143,14 @@
     [detailViewController.historyController updateCurrentScrollLocation:location];
     
     [HistoryController writeToFile];
+    
+    // Download background.
+//    UIApplication  *app = [UIApplication sharedApplication];
+//    UIBackgroundTaskIdentifier bgTask;
+//    
+//    bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
+//        [app endBackgroundTask:bgTask];
+//    }];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application

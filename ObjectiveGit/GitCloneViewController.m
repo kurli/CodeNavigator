@@ -91,7 +91,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             NSString* msg = [NSString stringWithFormat:@"Project \"%@\" exists, please change to use another project name.", projectName];
             [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:msg];
-            [self setCloneButtonToClone];
+            [self.cloneButton setTitle:@"Clone" forState:UIControlStateNormal];
+            [self.cloneButton setHidden:NO];
             [self.urlTextField setEnabled:YES];
             [self.projectNameTextField setEnabled:YES];
             [self.usernameTextField setEnabled:YES];
@@ -233,18 +234,6 @@
     [self.cloneButton setTitle:@"Clone" forState:UIControlStateNormal];
 }
 
-- (void) switchCloneButton
-{
-    if ([self.cloneThread isExecuting]) {
-//        [self.cloneButton setTitle:@"Cancel" forState:UIControlStateNormal];
-        [self.cloneButton setHidden:YES];
-    }
-    else {
-        [self.cloneButton setTitle:@"Clone" forState:UIControlStateNormal];
-        [self.cloneButton setHidden:NO];
-    }
-}
-
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 //    if (buttonIndex == 1) {
@@ -257,17 +246,14 @@
 //    }
 }
 
-- (void) checkWhetherCancelClone
-{
+- (IBAction)gitCloneClicked:(id)sender {
     if ([self.cloneThread isExecuting]) {
-        UIAlertView *confirmAlert = [[UIAlertView alloc] initWithTitle:@"CodeNavigator" message:@"Clone is in progress\n Would you like to Cancel anyway?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-        [confirmAlert show];
+//        UIAlertView *confirmAlert = [[UIAlertView alloc] initWithTitle:@"CodeNavigator" message:@"Clone is in progress\n Would you like to Cancel anyway?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+//        [confirmAlert show];
+        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Clone is in progress, Please wait until clone finished"];
         return;
     }
-}
-
-- (IBAction)gitCloneClicked:(id)sender {
-    [self checkWhetherCancelClone];
+    
     NSString* remoteURL = self.urlTextField.text;
     if ([remoteURL length] == 0) {
         [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please enter remote url"];
@@ -325,8 +311,9 @@
         [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
         [self.cloneThread start];
     }
-    [self switchCloneButton];
+    [self.cloneButton setHidden:YES];
     [self.urlTextField setEnabled:NO];
+    
     [self.projectNameTextField setEnabled:NO];
     [self.usernameTextField setEnabled:NO];
     [self.passwordTextField setEnabled:NO];
