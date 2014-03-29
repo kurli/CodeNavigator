@@ -87,6 +87,8 @@
     {
         [self.fileSearchBar setHidden:NO];
     }
+    [self.fileSearchBar setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.fileSearchBar setAutocorrectionType:UITextAutocorrectionTypeNo];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

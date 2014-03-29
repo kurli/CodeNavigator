@@ -73,6 +73,13 @@
     }
     self.usernameTextField.text = [Utils getInstance].gitUsername;
     self.passwordTextField.text = [Utils getInstance].gitPassword;
+    
+    [self.urlTextField setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.urlTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
+    [self.usernameTextField setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.usernameTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
+    [self.passwordTextField setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.passwordTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
 }
 
 - (void) gitClone

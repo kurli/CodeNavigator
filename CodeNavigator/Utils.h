@@ -257,4 +257,6 @@ typedef enum _SearchType{
 
 -(void) addGAEvent:(NSString*) category andAction:(NSString*) action andLabel:(NSString*)label andValue:(NSNumber*)number;
 
+-(NSString*) getFileContent:(NSString*)path;
+
 @end

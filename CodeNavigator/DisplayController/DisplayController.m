@@ -113,7 +113,8 @@
         displayPath = [self getDisplayPath:path];
         NSStringEncoding encoding = NSUTF8StringEncoding;
         NSString* content = [NSString stringWithContentsOfFile: displayPath usedEncoding:&encoding error: &error];
-        NSString* fileContent = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+        NSString* fileContent = [[Utils getInstance] getFileContent:path];
+
         if (fileContent == 0) {
             return nil;
         }
@@ -145,7 +146,9 @@
     }
     [parser startParse];
     html = [parser getHtml];
-    NSString* fileContent = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+
+    NSString* fileContent = [[Utils getInstance] getFileContent:path];
+    
     if (fileContent  ==  nil && [[Utils getInstance] isImageType:path] == NO) {
         NSLog(@"Wrong: 223");
         return nil;

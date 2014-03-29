@@ -79,6 +79,9 @@
     }];
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStyleBordered target:self action:@selector(refreshButtonClicked:)];
     self.navigationItem.rightBarButtonItem = refreshButton;
+    
+    [self.searchField setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.searchField setAutocorrectionType:UITextAutocorrectionTypeNo];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

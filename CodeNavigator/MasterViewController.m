@@ -178,6 +178,8 @@
             [self.fileSearchBar setFrame:rect];
         }
     }
+    [self.fileSearchBar setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.fileSearchBar setAutocorrectionType:UITextAutocorrectionTypeNo];
 }
 
 - (void)viewDidAppear:(BOOL)animated

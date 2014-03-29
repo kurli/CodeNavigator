@@ -56,6 +56,8 @@
     } else {
         searchBarUI.text = self.detailViewController.searchWordD;
     }
+    [self.searchBarUI setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.searchBarUI setAutocorrectionType:UITextAutocorrectionTypeNo];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -66,7 +68,6 @@
 
 -(void) doSearch: (BOOL)doScroll andWebView:(UIWebView *)webView
 {
-    NSError* error;
     NSString* currentDisplayFile;
     if (webView == detailViewController.webView) {
         NSString* path = [detailViewController.upHistoryController pickTopLevelUrl];
@@ -76,31 +77,7 @@
         currentDisplayFile = [detailViewController.downHistoryController getUrlFromHistoryFormat:path];
     }
     currentDisplayFile =  [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
-    NSStringEncoding encoding = NSUTF8StringEncoding;
-    NSString* fileContent = [NSString stringWithContentsOfFile: currentDisplayFile usedEncoding:&encoding error: &error];
-    if (error != nil || fileContent == nil)
-    {
-        // Chinese GB2312 support 
-        error = nil;
-        NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-        fileContent  = [NSString stringWithContentsOfFile:currentDisplayFile encoding:enc error:&error];
-        
-        if (fileContent == nil)
-        {
-            const NSStringEncoding *encodings = [NSString availableStringEncodings];  
-            while ((encoding = *encodings++) != 0)  
-            {
-                fileContent = [NSString stringWithContentsOfFile: currentDisplayFile encoding:encoding error:&error];
-                if (fileContent != nil && error == nil)
-                {
-                    break;
-                }
-            }
-        }
-    }
-    if (fileContent == nil || [fileContent length] == 0) {
-        return;
-    }
+    NSString* fileContent = [[Utils getInstance] getFileContent:currentDisplayFile];
     NSMutableArray* resultArray = [[NSMutableArray alloc] init];
     NSArray* array =[fileContent componentsSeparatedByString:@"\n"];
     int index;

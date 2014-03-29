@@ -64,6 +64,9 @@
         self.currentBranch.text = currentBranch.shortName;
     }
     self.remoteBranch.text = trackingBranch.name;
+
+    [self.username setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.password setAutocorrectionType:UITextAutocorrectionTypeNo];
 }
 
 - (void)didReceiveMemoryWarning

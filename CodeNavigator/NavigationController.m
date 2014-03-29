@@ -65,6 +65,9 @@
     if ([searchKeyword length] != 0)
         [self setSearchItemText:searchKeyword];
     [super viewWillAppear:animated];
+    
+    [self.searchBar setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.searchBar setAutocorrectionType:UITextAutocorrectionTypeNo];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

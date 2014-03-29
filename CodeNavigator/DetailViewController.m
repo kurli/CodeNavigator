@@ -34,7 +34,6 @@
     int _bannerCounter;
 }
 
-@synthesize countTextField = _countTextField;
 @synthesize resultBarButton = _resultBarButton;
 
 @synthesize navigateBarButtonItem = _navigateBarButtonItem;
@@ -126,7 +125,6 @@
     [self setSecondWebView:nil];
     [self setHistoryListController:nil];
     [self setWebView:nil];
-    [self setCountTextField:nil];
     [self setHistoryController:nil];
     [self setSearchWordU:nil];
     [self setSearchWordD:nil];
@@ -164,7 +162,6 @@
     [self setSecondWebView:nil];
     [self setHistoryListController:nil];
     [self setWebView:nil];
-    [self setCountTextField:nil];
     [self.historyController.historyStack removeAllObjects];
     [self.historyController setHistoryStack:nil];
     [self setHistoryController:nil];
@@ -1047,7 +1044,6 @@
     js = [NSString stringWithFormat:@"FocusLine('L%d')",tmp];
     [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
 //    NSString* show = [NSString stringWithFormat:@"%d/%d", currentSearchFocusLine, searchLineTotal];
-//    [self.countTextField setText:show];
 }
 
 - (void)downSelectButton {
@@ -1068,7 +1064,6 @@
     js = [NSString stringWithFormat:@"FocusLine('L%d')",tmp];
     [self.activeWebView stringByEvaluatingJavaScriptFromString:js];
 //    NSString* show = [NSString stringWithFormat:@"%d/%d", currentSearchFocusLine, searchLineTotal];
-//    [self.countTextField setText:show];
 }
 
 - (IBAction)gotoHighlight:(id)sender {

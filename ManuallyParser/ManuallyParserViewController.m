@@ -570,7 +570,18 @@ andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords
     [self.parserTypePicker selectRow:currentSelected inComponent:0 animated:YES];
     
     [self predefParserSelected];
-    [self setFieldsEditable:NO];    
+    [self setFieldsEditable:NO];
+    
+    [self.extensionsField setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.extensionsField setAutocorrectionType:UITextAutocorrectionTypeNo];
+    [self.singleLineCommentsField setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.singleLineCommentsField setAutocorrectionType:UITextAutocorrectionTypeNo];
+    [self.multiLineCommentsEndField setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.multiLineCommentsEndField setAutocorrectionType:UITextAutocorrectionTypeNo];
+    [self.multiLineCommentsStartField setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.multiLineCommentsStartField setAutocorrectionType:UITextAutocorrectionTypeNo];
+    [self.nameField setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.nameField setAutocorrectionType:UITextAutocorrectionTypeNo];
 }
 
 #pragma mark text View related

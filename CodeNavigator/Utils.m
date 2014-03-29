@@ -1519,4 +1519,49 @@ static Utils *static_utils;
                                                            value:number] build]];
 }
 
+-(NSString*) getFileContent:(NSString*)path {
+    NSError *error;
+    NSStringEncoding encoding = NSUTF8StringEncoding;
+    NSString* fileContent = [NSString stringWithContentsOfFile: path usedEncoding:&encoding error: &error];
+    if (error != nil || fileContent == nil)
+    {
+        // Chinese GB2312 support
+        error = nil;
+        NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        fileContent  = [NSString stringWithContentsOfFile:path encoding:enc error:&error];
+        
+        if (fileContent == nil)
+        {
+            const NSStringEncoding *encodings = [NSString availableStringEncodings];
+            while ((encoding = *encodings++) != 0)
+            {
+                fileContent = [NSString stringWithContentsOfFile:path encoding:encoding error:&error];
+                if (fileContent != nil && error == nil)
+                {
+                    break;
+                }
+            }
+        }
+        
+        // find a default recognizeable encoding
+        if (error != nil)
+        {
+            const NSStringEncoding *encodings = [NSString availableStringEncodings];
+            while ((encoding = *encodings++) != 0)
+            {
+                fileContent = [NSString stringWithContentsOfFile:path encoding:encoding error:&error];
+                if (fileContent != nil)
+                {
+                    break;
+                }
+            }
+            
+        }
+        
+        if (fileContent == nil)
+            fileContent = @"File Format not supported yet!";
+    }
+    return fileContent;
+}
+
 @end
