@@ -9,11 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BannerViewController.h"
 #import "MGSplitViewController.h"
-
-#define UIColorFromRGB(rgbValue) [UIColor \
-colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
-green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
-blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#import "ThemeManager.h"
 
 #define IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
@@ -66,28 +62,6 @@ typedef enum _SearchType{
 @property (strong, nonatomic) NSString* fileList;
 @end
 
-//For UI style, color scheme
-@interface ColorSchema : NSObject {
-}
-@property (nonatomic, assign) BOOL dayType;
-@property (nonatomic, strong) NSString* day_backgroundColor;
-@property (nonatomic, strong) NSString* night_backgroundColor;
-@property (nonatomic, strong) NSString* day_comment;
-@property (nonatomic, strong) NSString* night_comment;
-@property (nonatomic, strong) NSString* day_header;
-@property (nonatomic, strong) NSString* night_header;
-@property (nonatomic, strong) NSString* day_string;
-@property (nonatomic, strong) NSString* night_string;
-@property (nonatomic, strong) NSString* day_keyword;
-@property (nonatomic, strong) NSString* night_keyword;
-@property (nonatomic, strong) NSString* day_definition;
-@property (nonatomic, strong) NSString* night_definition;
-@property (nonatomic, strong) NSString* font_size;
-@property (nonatomic, strong) NSString* day_other;
-@property (nonatomic, strong) NSString* night_other;
-@property (nonatomic, strong) NSString* max_line_count;
-@end
-
 @interface ResultFile : NSObject {
 }
 @property (strong, nonatomic) NSString* fileName;
@@ -111,7 +85,7 @@ typedef enum _SearchType{
     // we need to change css version for each theme change
     // add version can do this
     int cssVersion;
-    
+
     BOOL is_adMobON;
     
     BOOL isScreenLocked;
@@ -120,6 +94,8 @@ typedef enum _SearchType{
 @property (nonatomic, unsafe_unretained) DetailViewController* detailViewController;
 
 @property (nonatomic, unsafe_unretained) MGSplitViewController *splitViewController;
+
+@property (strong, nonatomic) ColorSchema* currentColorScheme;
 
 @property (nonatomic, unsafe_unretained) UINavigationController* masterViewController;
 
@@ -134,8 +110,6 @@ typedef enum _SearchType{
 @property (strong, nonatomic) NSString* searchKeyword;
 
 @property (strong, nonatomic) NSString* storedAnalyzePath;
-
-@property (strong, nonatomic) ColorSchema* colorScheme;
 
 @property (strong, nonatomic) DropBoxViewController* dropBoxViewController;
 @property (strong, nonatomic) FunctionListManager* functionListManager;
@@ -152,20 +126,9 @@ typedef enum _SearchType{
 
 -(void) initVersion;
 
-// for background syntex color define
--(void) readColorScheme;
-
--(void) writeColorScheme:(BOOL)dayType andDayBackground:(NSString*)dayBG andNightBackground:(NSString*)nightBG andDayComment:(NSString*)dayC andNightComment:(NSString*)nightC andDayString:(NSString*)ds  andNightString:(NSString*)ns andDayKeyword:(NSString*)dk andNightKeyword:(NSString*)nk andFontSize:(NSString*)fs andLineWrapper:(NSString*)lw;
-
--(void) generateCSSScheme;
-
--(void) changeUIViewStyle:(UIView*)view;
-
 -(int) getCSSVersion;
 
--(BOOL) isDayTypeDisplayMode;
-
--(NSString*) getDisplayBackgroundColor;
+-(void) incressCSSVersion;
 
 -(void) initBanner:(UIViewController*)view;
 

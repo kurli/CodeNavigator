@@ -291,7 +291,7 @@
         }
         [jsParser setContent:parseSource andProjectBase:nil];
         [jsParser setWithHeaderAndEnder:NO];
-        [jsParser setMaxLineCount:[Utils getInstance].colorScheme.max_line_count];
+        [jsParser setMaxLineCount:[[Utils getInstance].currentColorScheme.max_line_count intValue]];
         [jsParser startParse];
         NSString* _htmlContent = [jsParser getHtml];
         [self addRawHtml:_htmlContent];
@@ -302,7 +302,7 @@
         }
         [cssParser setContent:parseSource andProjectBase:nil];
         [cssParser setWithHeaderAndEnder:NO];
-        [cssParser setMaxLineCount:[Utils getInstance].colorScheme.max_line_count];
+        [cssParser setMaxLineCount:[[Utils getInstance].currentColorScheme.max_line_count intValue]];
         [cssParser startParse];
         NSString* _htmlContent = [cssParser getHtml];
         [self addRawHtml:_htmlContent];

@@ -540,7 +540,7 @@
     @autoreleasepool {
 
     UIColor* color = nil;
-    NSString*  bgcolor = [[Utils getInstance] getDisplayBackgroundColor];
+    NSString*  bgcolor = [ThemeManager getDisplayBackgroundColor];
     if ([bgcolor length] != 7)
         bgcolor = @"#303040";
     bgcolor = [bgcolor substringFromIndex:1];

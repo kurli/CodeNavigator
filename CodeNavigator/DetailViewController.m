@@ -188,10 +188,9 @@
 {
     [super viewWillAppear:animated];
     if (isFirstDisplay) {
-        
         self.activeWebView.opaque = NO;
         self.activeWebView.backgroundColor = [UIColor clearColor];
-        [[Utils getInstance] changeUIViewStyle:self.activeWebView];
+        [ThemeManager changeUIViewStyle:self.activeWebView];
         [self.activeWebView setScalesPageToFit:NO];
 
         // Fix iOS 7 bug
@@ -424,7 +423,7 @@
     }
     self.activeWebView.opaque = NO;
     self.activeWebView.backgroundColor = [UIColor clearColor];
-    [[Utils getInstance] changeUIViewStyle:self.activeWebView];
+    [ThemeManager changeUIViewStyle:self.activeWebView];
     [self.activeWebView setScalesPageToFit:NO];
     [self.activeWebView loadHTMLString:content baseURL:[baseURL copy]];
 }

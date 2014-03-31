@@ -252,6 +252,10 @@
 		94636B54155A91E700B1C37F /* CommentWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94636B53155A91E700B1C37F /* CommentWrapper.m */; };
 		94636B55155A91E700B1C37F /* CommentWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94636B53155A91E700B1C37F /* CommentWrapper.m */; };
 		9466466B14A2370700B30CD2 /* WebServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9466466914A2370700B30CD2 /* WebServiceController.m */; };
+		946F857818E841DF00CBFA19 /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 946F857718E841DF00CBFA19 /* ThemeManager.m */; };
+		946F857D18E8782900CBFA19 /* DisplayModeController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 946F857918E8782900CBFA19 /* DisplayModeController-iPhone.xib */; };
+		946F857E18E8782900CBFA19 /* DisplayModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 946F857B18E8782900CBFA19 /* DisplayModeController.m */; };
+		946F857F18E8782900CBFA19 /* DisplayModeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 946F857C18E8782900CBFA19 /* DisplayModeController.xib */; };
 		9471D4381630463100629F35 /* readtags.c in Sources */ = {isa = PBXBuildFile; fileRef = 9471D4371630463100629F35 /* readtags.c */; };
 		9473AEF914DACD6A00D39E05 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 9473AEF514DACD6A00D39E05 /* iTunesArtwork */; };
 		94785947162C5A08006E4575 /* ant.c in Sources */ = {isa = PBXBuildFile; fileRef = 947858F1162C5A08006E4575 /* ant.c */; };
@@ -324,7 +328,6 @@
 		947D9F8C158BA930000B5136 /* ResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */; };
 		947F861215863579002EAA1E /* DetailViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947F861015863579002EAA1E /* DetailViewController-iPhone.xib */; };
 		947F861315863579002EAA1E /* MasterViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947F861115863579002EAA1E /* MasterViewController-iPhone.xib */; };
-		947F861715879408002EAA1E /* DisplayModeController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947F861615879407002EAA1E /* DisplayModeController-iPhone.xib */; };
 		947F86191587A8C2002EAA1E /* WebServiceController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947F86181587A8C2002EAA1E /* WebServiceController-iPhone.xib */; };
 		94846ED014BCA4FD00388D68 /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECB14BCA4FD00388D68 /* MGSplitCornersView.m */; };
 		94846ED114BCA4FD00388D68 /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECB14BCA4FD00388D68 /* MGSplitCornersView.m */; };
@@ -501,7 +504,6 @@
 		949DC1C71583E8CF00385796 /* MGSplitDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECD14BCA4FD00388D68 /* MGSplitDividerView.m */; };
 		949DC1C81583E8CF00385796 /* MGSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECF14BCA4FD00388D68 /* MGSplitViewController.m */; };
 		949DC1C91583E8CF00385796 /* HighLightWordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FB0FE914BDB3A50084E457 /* HighLightWordController.m */; };
-		949DC1CA1583E8CF00385796 /* DisplayModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A5BBA814BF47C000F3BA8B /* DisplayModeController.m */; };
 		949DC1CB1583E8CF00385796 /* ImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D16DE614C9CC3B007439EB /* ImageParser.m */; };
 		949DC1CC1583E8CF00385796 /* HistoryListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9443BF5314D1A40200355278 /* HistoryListController.m */; };
 		949DC1CD1583E8CF00385796 /* VirtualizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94422A3114DD87F50076AC66 /* VirtualizeViewController.m */; };
@@ -631,10 +633,6 @@
 		94A51851152DF8D70062DA65 /* DropBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A5184E152DF8D70062DA65 /* DropBoxViewController.m */; };
 		94A51852152DF8D70062DA65 /* DropBoxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A5184F152DF8D70062DA65 /* DropBoxViewController.xib */; };
 		94A51853152DF8D70062DA65 /* DropBoxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A5184F152DF8D70062DA65 /* DropBoxViewController.xib */; };
-		94A5BBAA14BF47C000F3BA8B /* DisplayModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A5BBA814BF47C000F3BA8B /* DisplayModeController.m */; };
-		94A5BBAB14BF47C000F3BA8B /* DisplayModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A5BBA814BF47C000F3BA8B /* DisplayModeController.m */; };
-		94A5BBAC14BF47C000F3BA8B /* DisplayModeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A5BBA914BF47C000F3BA8B /* DisplayModeController.xib */; };
-		94A5BBAD14BF47C000F3BA8B /* DisplayModeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A5BBA914BF47C000F3BA8B /* DisplayModeController.xib */; };
 		94AB105517550CD500359AE8 /* HandleURLController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB105417550CD500359AE8 /* HandleURLController.m */; };
 		94AB10591755146E00359AE8 /* FileFormatResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB10581755146E00359AE8 /* FileFormatResolver.m */; };
 		94AB105C175516C900359AE8 /* ZipFileResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB105B175516C900359AE8 /* ZipFileResolver.m */; };
@@ -1220,6 +1218,12 @@
 		9466466814A2370700B30CD2 /* WebServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebServiceController.h; path = CodeNavigator/WebServiceController.h; sourceTree = "<group>"; };
 		9466466914A2370700B30CD2 /* WebServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebServiceController.m; path = CodeNavigator/WebServiceController.m; sourceTree = "<group>"; };
 		9466466A14A2370700B30CD2 /* WebServiceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebServiceController.xib; path = CodeNavigator/WebServiceController.xib; sourceTree = "<group>"; };
+		946F857618E841DF00CBFA19 /* ThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThemeManager.h; path = Theme/ThemeManager.h; sourceTree = SOURCE_ROOT; };
+		946F857718E841DF00CBFA19 /* ThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThemeManager.m; path = Theme/ThemeManager.m; sourceTree = SOURCE_ROOT; };
+		946F857918E8782900CBFA19 /* DisplayModeController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "DisplayModeController-iPhone.xib"; path = "Theme/DisplayModeController-iPhone.xib"; sourceTree = SOURCE_ROOT; };
+		946F857A18E8782900CBFA19 /* DisplayModeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DisplayModeController.h; path = Theme/DisplayModeController.h; sourceTree = SOURCE_ROOT; };
+		946F857B18E8782900CBFA19 /* DisplayModeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DisplayModeController.m; path = Theme/DisplayModeController.m; sourceTree = SOURCE_ROOT; };
+		946F857C18E8782900CBFA19 /* DisplayModeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DisplayModeController.xib; path = Theme/DisplayModeController.xib; sourceTree = SOURCE_ROOT; };
 		9471D4371630463100629F35 /* readtags.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = readtags.c; path = ctags/readtags.c; sourceTree = "<group>"; };
 		9471D4391630480E00629F35 /* readtags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = readtags.h; path = ctags/readtags.h; sourceTree = "<group>"; };
 		9473AEF214DACD6A00D39E05 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "icon/Icon-72.png"; sourceTree = "<group>"; };
@@ -1325,7 +1329,6 @@
 		9478C6DF15C859F000F443D9 /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
 		947F861015863579002EAA1E /* DetailViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DetailViewController-iPhone.xib"; sourceTree = "<group>"; };
 		947F861115863579002EAA1E /* MasterViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MasterViewController-iPhone.xib"; sourceTree = "<group>"; };
-		947F861615879407002EAA1E /* DisplayModeController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DisplayModeController-iPhone.xib"; sourceTree = "<group>"; };
 		947F86181587A8C2002EAA1E /* WebServiceController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "WebServiceController-iPhone.xib"; path = "CodeNavigator/WebServiceController-iPhone.xib"; sourceTree = "<group>"; };
 		94846ECA14BCA4FD00388D68 /* MGSplitCornersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitCornersView.h; sourceTree = "<group>"; };
 		94846ECB14BCA4FD00388D68 /* MGSplitCornersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitCornersView.m; sourceTree = "<group>"; };
@@ -1388,9 +1391,6 @@
 		94A5184D152DF8D70062DA65 /* DropBoxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropBoxViewController.h; path = DropBox/DropBoxViewController.h; sourceTree = "<group>"; };
 		94A5184E152DF8D70062DA65 /* DropBoxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DropBoxViewController.m; path = DropBox/DropBoxViewController.m; sourceTree = "<group>"; };
 		94A5184F152DF8D70062DA65 /* DropBoxViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DropBoxViewController.xib; path = DropBox/DropBoxViewController.xib; sourceTree = "<group>"; };
-		94A5BBA714BF47C000F3BA8B /* DisplayModeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayModeController.h; sourceTree = "<group>"; };
-		94A5BBA814BF47C000F3BA8B /* DisplayModeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayModeController.m; sourceTree = "<group>"; };
-		94A5BBA914BF47C000F3BA8B /* DisplayModeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisplayModeController.xib; sourceTree = "<group>"; };
 		94AB105317550CD500359AE8 /* HandleURLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HandleURLController.h; path = CodeNavigator/HandleURLController.h; sourceTree = "<group>"; };
 		94AB105417550CD500359AE8 /* HandleURLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HandleURLController.m; path = CodeNavigator/HandleURLController.m; sourceTree = "<group>"; };
 		94AB10571755146E00359AE8 /* FileFormatResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileFormatResolver.h; path = CodeNavigator/FileFormatResolver.h; sourceTree = "<group>"; };
@@ -1696,6 +1696,7 @@
 				94785A56184B9EC00012988B /* WebView */,
 				94BA22AB18BE4121006CB7A8 /* DisplayController */,
 				9444595018D72A89008A02DB /* Version */,
+				946F856E18E841A000CBFA19 /* Theme */,
 				9431D73E14910B3000B0900E /* CodeNavigator */,
 				9431D73714910B3000B0900E /* Frameworks */,
 				9431D73514910B3000B0900E /* Products */,
@@ -1751,11 +1752,7 @@
 				94D8702F14A65887002F2DBB /* FilePathInfoPopupController.m */,
 				94FB0FE814BDB3A50084E457 /* HighLightWordController.h */,
 				94FB0FE914BDB3A50084E457 /* HighLightWordController.m */,
-				94A5BBA714BF47C000F3BA8B /* DisplayModeController.h */,
-				94A5BBA814BF47C000F3BA8B /* DisplayModeController.m */,
 				9429000114D4E16E002793BD /* PercentViewController.xib */,
-				94A5BBA914BF47C000F3BA8B /* DisplayModeController.xib */,
-				947F861615879407002EAA1E /* DisplayModeController-iPhone.xib */,
 				94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */,
 				94F6EEE21587C19A002DE115 /* HighLightWordController-iPhone.xib */,
 				94D8703014A65888002F2DBB /* FilePathInfoPopupController.xib */,
@@ -2093,6 +2090,20 @@
 				945AA453150926A1006729C8 /* Help.html */,
 			);
 			path = help;
+			sourceTree = "<group>";
+		};
+		946F856E18E841A000CBFA19 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				946F857918E8782900CBFA19 /* DisplayModeController-iPhone.xib */,
+				946F857A18E8782900CBFA19 /* DisplayModeController.h */,
+				946F857B18E8782900CBFA19 /* DisplayModeController.m */,
+				946F857C18E8782900CBFA19 /* DisplayModeController.xib */,
+				946F857618E841DF00CBFA19 /* ThemeManager.h */,
+				946F857718E841DF00CBFA19 /* ThemeManager.m */,
+			);
+			name = Theme;
+			path = CodeNavigator;
 			sourceTree = "<group>";
 		};
 		947858F0162C59EA006E4575 /* ctags */ = {
@@ -2645,7 +2656,6 @@
 				94557E5414B05E89004950B4 /* linux_0.1 in Resources */,
 				94FB0FED14BDB3A50084E457 /* HighLightWordController.xib in Resources */,
 				94FB0FF014BDF2EF0084E457 /* syntax_color.plist in Resources */,
-				94A5BBAC14BF47C000F3BA8B /* DisplayModeController.xib in Resources */,
 				94FAC80314C1649400B9A821 /* settings.png in Resources */,
 				9443BF5714D1A40200355278 /* HistoryListController.xib in Resources */,
 				9429000414D4E16E002793BD /* PercentViewController.xib in Resources */,
@@ -2718,6 +2728,7 @@
 				9461817B155EEDAB00A25635 /* CommentManager.xib in Resources */,
 				9456A93F15617BDC0092128D /* Comment.png in Resources */,
 				94CB787F156E80C8009452D8 /* FileTableViewCell.xib in Resources */,
+				946F857D18E8782900CBFA19 /* DisplayModeController-iPhone.xib in Resources */,
 				94B7E5AC156FE2BB000F3F34 /* FileInfoViewController.xib in Resources */,
 				94472086157534E9002EEA5A /* ManuallyParserViewController.xib in Resources */,
 				9478C6D015C8093400F443D9 /* HelpViewController.xib in Resources */,
@@ -2740,6 +2751,7 @@
 				9434A5A7174FC00D004B1A9D /* GitCloneViewController.xib in Resources */,
 				948C741F1807090F00065E65 /* icon-40.png in Resources */,
 				948C74201807091700065E65 /* icon-40@2x.png in Resources */,
+				946F857F18E8782900CBFA19 /* DisplayModeController.xib in Resources */,
 				943D1FBD17E7695C00BD82E6 /* FileBrowser.png in Resources */,
 				94B09BB617E77DC600789510 /* FileBrowserViewController.xib in Resources */,
 				948C74241807091700065E65 /* icon-76@2.png in Resources */,
@@ -2812,7 +2824,6 @@
 				949DC2651583E8CF00385796 /* FileInfoViewController.xib in Resources */,
 				947F861215863579002EAA1E /* DetailViewController-iPhone.xib in Resources */,
 				947F861315863579002EAA1E /* MasterViewController-iPhone.xib in Resources */,
-				947F861715879408002EAA1E /* DisplayModeController-iPhone.xib in Resources */,
 				947F86191587A8C2002EAA1E /* WebServiceController-iPhone.xib in Resources */,
 				94F6EEE11587BD30002DE115 /* ResultViewController-iPhone.xib in Resources */,
 				94F6EEE31587C19A002DE115 /* HighLightWordController-iPhone.xib in Resources */,
@@ -2857,7 +2868,6 @@
 				94ADF18114BB27EE00BA807A /* FilePathInfoPopupController.xib in Resources */,
 				94ADF18714BB27EE00BA807A /* linux_0.1 in Resources */,
 				94FB0FF114BDF2EF0084E457 /* syntax_color.plist in Resources */,
-				94A5BBAD14BF47C000F3BA8B /* DisplayModeController.xib in Resources */,
 				94FAC80414C1649400B9A821 /* settings.png in Resources */,
 				9443BF5814D1A40200355278 /* HistoryListController.xib in Resources */,
 				9429000514D4E16E002793BD /* PercentViewController.xib in Resources */,
@@ -2984,13 +2994,13 @@
 				94846ED214BCA4FD00388D68 /* MGSplitDividerView.m in Sources */,
 				94846ED414BCA4FD00388D68 /* MGSplitViewController.m in Sources */,
 				94FB0FEB14BDB3A50084E457 /* HighLightWordController.m in Sources */,
-				94A5BBAA14BF47C000F3BA8B /* DisplayModeController.m in Sources */,
 				94D16DE714C9CC3B007439EB /* ImageParser.m in Sources */,
 				9443BF5514D1A40200355278 /* HistoryListController.m in Sources */,
 				94422A3314DD87F50076AC66 /* VirtualizeViewController.m in Sources */,
 				94D822D814DEF451004FCDD1 /* VirtualizeWrapper.m in Sources */,
 				945428AF14F29A8D00353EC8 /* FileManagerController.m in Sources */,
 				945428B414F2B51600353EC8 /* ProjectListController.m in Sources */,
+				946F857818E841DF00CBFA19 /* ThemeManager.m in Sources */,
 				94C8C68414FA57D60062750D /* ImagePreviewController.m in Sources */,
 				941656FF1515C3C200838005 /* GitLogViewCongroller.m in Sources */,
 				9497F3A3151A499D006BCBBF /* ObjectiveCParser.m in Sources */,
@@ -3116,6 +3126,7 @@
 				94F7B90D17F7487A00A506EE /* UploadSelectionViewController.m in Sources */,
 				9451D59417F9BD4C00BDAD5E /* MasterViewController.m in Sources */,
 				94BD81DD18014587002F8153 /* JavaParser.m in Sources */,
+				946F857E18E8782900CBFA19 /* DisplayModeController.m in Sources */,
 				94BD81DE18014587002F8153 /* JavaScriptParser.m in Sources */,
 				94BD81E218014840002F8153 /* PHPParser.m in Sources */,
 				941E63E418019354008226F2 /* OpenAsViewController.m in Sources */,
@@ -3253,7 +3264,6 @@
 				949DC1C71583E8CF00385796 /* MGSplitDividerView.m in Sources */,
 				949DC1C81583E8CF00385796 /* MGSplitViewController.m in Sources */,
 				949DC1C91583E8CF00385796 /* HighLightWordController.m in Sources */,
-				949DC1CA1583E8CF00385796 /* DisplayModeController.m in Sources */,
 				949DC1CB1583E8CF00385796 /* ImageParser.m in Sources */,
 				949DC1CC1583E8CF00385796 /* HistoryListController.m in Sources */,
 				949DC1CD1583E8CF00385796 /* VirtualizeViewController.m in Sources */,
@@ -3441,7 +3451,6 @@
 				94846ED314BCA4FD00388D68 /* MGSplitDividerView.m in Sources */,
 				94846ED514BCA4FD00388D68 /* MGSplitViewController.m in Sources */,
 				94FB0FEC14BDB3A50084E457 /* HighLightWordController.m in Sources */,
-				94A5BBAB14BF47C000F3BA8B /* DisplayModeController.m in Sources */,
 				94D16DE814C9CC3B007439EB /* ImageParser.m in Sources */,
 				9443BF5614D1A40200355278 /* HistoryListController.m in Sources */,
 				94422A3414DD87F50076AC66 /* VirtualizeViewController.m in Sources */,

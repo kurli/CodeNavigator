@@ -82,7 +82,7 @@
     [imageView addGestureRecognizer:singleFingerTap];
     [imageView addGestureRecognizer:longPressGesture];
     //[[Utils getInstance] changeUIViewStyle:self.view];
-    [[Utils getInstance] changeUIViewStyle:self.scrollView];  
+    [ThemeManager changeUIViewStyle:self.scrollView];
 }
 
 - (void) viewDidLoad

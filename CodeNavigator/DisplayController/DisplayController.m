@@ -140,7 +140,7 @@
     else
         [parser checkParseType:path];
     [parser setFile: path andProjectBase:projectPath];
-    int maxLineCount = [[Utils getInstance].colorScheme.max_line_count intValue];
+    int maxLineCount = [[Utils getInstance].currentColorScheme.max_line_count intValue];
     if (maxLineCount > 0) {
         [parser setMaxLineCount:maxLineCount];
     }

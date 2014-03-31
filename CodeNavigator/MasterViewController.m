@@ -73,9 +73,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    if ([Utils getInstance].colorScheme == nil)
+    if ([Utils getInstance].currentColorScheme == nil)
     {
-        [[Utils getInstance] readColorScheme];
+        [ThemeManager readColorScheme];
     }
     [self reloadData];
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(reloadData:) name:MASTER_VIEW_RELOAD object:nil];
