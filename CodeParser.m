@@ -394,7 +394,7 @@
     range.length = (startPosition-range.location);
 //    NSString* tmp;
     [htmlContent replaceOccurrencesOfString:@"_*&^" withString:str options:NSLiteralSearch range:range];
-    [htmlContent replaceOccurrencesOfString:@"▓" withString:@"-" options:NSLiteralSearch range:range];
+    [htmlContent replaceOccurrencesOfString:@"<pre> </pre>" withString:@"<pre>-</pre>" options:NSLiteralSearch range:range];
 //    tmp = [htmlContent stringByReplacingOccurrencesOfString:@"_*&^" withString:str options:NSLiteralSearch range:range];
 //    tmp = [tmp stringByReplacingOccurrencesOfString:@"▓" withString:@"-" options:NSLiteralSearch range:range];
 //    htmlContent = [NSMutableString stringWithString:tmp];

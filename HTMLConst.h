@@ -27,42 +27,27 @@ background:-BGCOL-;\n\
 }\n\
 \
 table.code {\n\
- border-spacing: 0;\n\
- border-top: 0;\n\
- empty-cells: show;\n\
+ font-family: monospace;\n\
  font-size: FONT_SIZEpx;\n\
- padding: 0;\n\
- table-layout: fixed;\n\
+table-layout: fixed;\n\
 }\n\
 \
 .highlight{background:green;font-weight:bold;color:white;} \n\
 \
 table.code tbody th {\n\
- background: #-BGCOL-;\n\
- color: #886;\n\
- font-weight: normal;\n\
  padding: 0 .2em;\n\
  text-align: right;\n\
- vertical-align: top;\n\
 }\n\
 table.code tbody th :link, table.code tbody th :visited {\n\
- border: none;\n\
  color: #886;\n\
- text-decoration: none;\n\
-}\n\
-table.code tbody th :link:hover, table.code tbody th :visited:hover {\n\
- color: #000;\n\
 }\n\
 table.code td {\n\
- font: bold FONT_SIZEpx monospace;\n\
- overflow: none;\n\
  padding: 1px 2px;\n\
- vertical-align: top;\n\
- background: -BGCOL-;\n\
- font-weight: bold;\n\
  color: #808080;\n\
- -webkit-user-select: text;\n\
- padding-right: 20px;\n\
+}\n\
+a {\n\
+color: inherit;\n\
+text-decoration: none;\n\
 }\n\
 pre {\n\
 margin-bottom: 0px;\n\
@@ -78,7 +63,7 @@ margin-top: 0px;\n\
 <table class=\"code\"><tbody>\
 "
 
-#define HTML_LINE_START @"<tr id=\"L%d\"><th><a href=\"lgz_comment:%d\"><pre>%d</pre></a></th><th><a href=\"lgz_fold__*&^\"><pre>▓</pre></a></th><td><pre>"
+#define HTML_LINE_START @"<tr id=\"L%d\"><th><a href=\"lgz_comment:%d\"><pre>%d</pre></a></th><th><a href=\"lgz_fold__*&^\"><pre> </pre></a></th><td><pre>"
 
 #define HTML_LINK @"<a href=\"%@=%@\" class=\"%@\" style=\"text-decoration: none\">"
 #define HTML_LINK_END @"</a>"
