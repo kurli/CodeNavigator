@@ -618,8 +618,16 @@
     NSString* html;
     NSString* currentDisplayFile = [self getCurrentDisplayFile];
     NSString* sourceFilePath = [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
-    html = [[Utils getInstance] getDisplayFile:sourceFilePath andProjectBase:nil];
-    [self displayHTMLString:html andBaseURL:nil];
+    NSString* filePath = [[Utils getInstance] getPathFromProject:sourceFilePath];
+    if ([filePath compare:@"Help.html"] == NSOrderedSame) {
+        NSError *error;
+        NSStringEncoding encoding = NSUTF8StringEncoding;
+        NSString* html = [NSString stringWithContentsOfFile: sourceFilePath usedEncoding:&encoding error: &error];
+        [self setTitle:[sourceFilePath lastPathComponent] andPath:sourceFilePath andContent:html andBaseUrl:nil];
+    } else {
+        html = [[Utils getInstance] getDisplayFile:sourceFilePath andProjectBase:nil];
+        [self displayHTMLString:html andBaseURL:nil];
+    }
 }
 
 - (void)navigationManagerPopUpWithKeyword:(NSString*)keyword andSourcePath:(NSString*)path {
