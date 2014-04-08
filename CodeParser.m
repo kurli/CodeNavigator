@@ -140,6 +140,9 @@
             }
             else
                 index = [lineString length];
+            if (index == 0) {
+                break;
+            }
         }
         
         NSString* str = [lineString substringToIndex:index];

@@ -140,7 +140,7 @@
     else
         [parser checkParseType:path];
     [parser setFile: path andProjectBase:projectPath];
-    int maxLineCount = [[Utils getInstance].currentColorScheme.max_line_count intValue];
+    int maxLineCount = [[Utils getInstance].currentThemeSetting.max_line_count intValue];
     if (maxLineCount > 0) {
         [parser setMaxLineCount:maxLineCount];
     }
@@ -187,6 +187,14 @@
     if ([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isFolder]) {
         [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
     }
+}
+
+-(void) removeAllDisplayFiles {
+    NSError* error;
+    NSString* displayFilePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    displayFilePath = [displayFilePath stringByAppendingPathComponent:DISPLAY_FOLDER_PATH];
+    
+    [[NSFileManager defaultManager] removeItemAtPath:displayFilePath error:&error];
 }
 
 @end

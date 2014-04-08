@@ -73,7 +73,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    if ([Utils getInstance].currentColorScheme == nil)
+    if ([Utils getInstance].currentThemeSetting == nil)
     {
         [ThemeManager readColorScheme];
     }

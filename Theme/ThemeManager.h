@@ -15,25 +15,25 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 
 //For UI style, color scheme
-@interface ColorSchema : NSObject {
+@interface ThemeSchema : NSObject {
 }
-@property (nonatomic, assign) BOOL dayType;
-@property (nonatomic, strong) NSString* day_backgroundColor;
-@property (nonatomic, strong) NSString* night_backgroundColor;
-@property (nonatomic, strong) NSString* day_comment;
-@property (nonatomic, strong) NSString* night_comment;
-@property (nonatomic, strong) NSString* day_header;
-@property (nonatomic, strong) NSString* night_header;
-@property (nonatomic, strong) NSString* day_string;
-@property (nonatomic, strong) NSString* night_string;
-@property (nonatomic, strong) NSString* day_keyword;
-@property (nonatomic, strong) NSString* night_keyword;
-@property (nonatomic, strong) NSString* day_definition;
-@property (nonatomic, strong) NSString* night_definition;
+@property (nonatomic, strong) NSString* theme;
+@property (nonatomic, strong) NSString* background;
+@property (nonatomic, strong) NSString* comment;
+@property (nonatomic, strong) NSString* header;
+@property (nonatomic, strong) NSString* string;
+@property (nonatomic, strong) NSString* keyword;
+@property (nonatomic, strong) NSString* definition;
 @property (nonatomic, strong) NSString* font_size;
-@property (nonatomic, strong) NSString* day_other;
-@property (nonatomic, strong) NSString* night_other;
+@property (nonatomic, strong) NSString* other;
 @property (nonatomic, strong) NSString* max_line_count;
+@property (nonatomic, strong) NSString* font_family;
+@property (nonatomic, strong) NSString* lineNumber;
+@property (nonatomic, strong) NSString* number;
+@property (nonatomic, strong) NSString* variable;
+@property (nonatomic, strong) NSString* variable_2;
+@property (nonatomic, strong) NSString* variable_3;
+@property (nonatomic, strong) NSString* version;
 @end
 
 @interface ThemeManager : NSObject {
@@ -41,9 +41,9 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     // add version can do this    
 }
 
-+(NSString*) getDisplayBackgroundColor;
++(void) initThemes;
 
-+(BOOL) isDayTypeDisplayMode;
++(NSString*) getDisplayBackgroundColor;
 
 +(void) changeUIViewStyle:(UIView*)view;
 
@@ -53,6 +53,12 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 +(void) writeColorScheme:(BOOL)dayType andDayBackground:(NSString*)dayBG andNightBackground:(NSString*)nightBG andDayComment:(NSString*)dayC andNightComment:(NSString*)nightC andDayString:(NSString*)ds  andNightString:(NSString*)ns andDayKeyword:(NSString*)dk andNightKeyword:(NSString*)nk andFontSize:(NSString*)fs andLineWrapper:(NSString*)lw;
 
-+(void) generateCSSScheme;
++(NSDictionary*) getThemeByName:(NSString*)name;
+
++(void) readColorSchemeByThemeName:(NSString*)name andScheme:(ThemeSchema*)colorScheme;
+
++(void) generateCSSScheme:(NSString*)css andTheme:(ThemeSchema*) theme;
+
++(void) updateThemeByName:(NSString*)name;
 
 @end

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>font_family</key>
+	<string>Source Code Pro</string>
+	<key>version</key>
+	<string>1</string>
+	<key>font_size</key>
+	<string>18</string>
+	<key>max_line_count</key>
+	<string>80</string>
+	<key>theme</key>
+	<string>default-night</string>
+</dict>
+</plist>

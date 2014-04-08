@@ -19,6 +19,8 @@
 #import "FunctionListViewController.h"
 #import "FileBrowserViewController.h"
 #import "DisplayController.h"
+#import "ThemeSelectorViewController.h"
+#import <CommonCrypto/CommonDigest.h>
 
 #define TOOLBAR_X_MASTER_SHOW 55
 #define TOOLBAR_X_MASTER_HIDE 208
@@ -537,6 +539,8 @@
     if (extension != nil && [extension compare:DISPLAY_FILE_EXTENTION] == NSOrderedSame)
     {
         NSString* content = [NSString stringWithContentsOfFile:url encoding:encoding error:&error];
+        content = [content substringFromIndex:CC_MD5_DIGEST_LENGTH * 2];
+
         [self displayHTMLString:content andBaseURL:nil];
     }
     else
@@ -611,11 +615,10 @@
 
 -(void) reloadCurrentPage
 {
-    NSError *error;
     NSString* html;
     NSString* currentDisplayFile = [self getCurrentDisplayFile];
-    NSStringEncoding encoding = NSUTF8StringEncoding;
-    html = [NSString stringWithContentsOfFile: currentDisplayFile usedEncoding:&encoding error: &error];
+    NSString* sourceFilePath = [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
+    html = [[Utils getInstance] getDisplayFile:sourceFilePath andProjectBase:nil];
     [self displayHTMLString:html andBaseURL:nil];
 }
 
@@ -1081,22 +1084,27 @@
     }
     
     [self releaseAllPopOver];
-    UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
-    DisplayModeController* displayModeController;
-#ifdef IPHONE_VERSION
-    displayModeController = [[DisplayModeController alloc] initWithNibName:@"DisplayModeController-iPhone" bundle:nil];
-    [self presentModalViewController:displayModeController animated:YES];
-#else
-    displayModeController = [[DisplayModeController alloc] init];
-    self.popoverController = [[UIPopoverController alloc] initWithContentViewController:displayModeController];
-    self.popoverController.popoverContentSize = displayModeController.view.frame.size;
+//    UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
     
-    if (sender == nil) {
-        [popoverController dismissPopoverAnimated:YES];
-    } else {
-        [self.popoverController presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    }
-#endif
+    ThemeSelectorViewController* viewController = [[ThemeSelectorViewController alloc] init];
+    viewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
+    
+//    DisplayModeController* displayModeController;
+//#ifdef IPHONE_VERSION
+//    displayModeController = [[DisplayModeController alloc] initWithNibName:@"DisplayModeController-iPhone" bundle:nil];
+//    [self presentModalViewController:displayModeController animated:YES];
+//#else
+//    displayModeController = [[DisplayModeController alloc] init];
+//    self.popoverController = [[UIPopoverController alloc] initWithContentViewController:displayModeController];
+//    self.popoverController.popoverContentSize = displayModeController.view.frame.size;
+//    
+//    if (sender == nil) {
+//        [popoverController dismissPopoverAnimated:YES];
+//    } else {
+//        [self.popoverController presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+//    }
+//#endif
     [[Utils getInstance] addGAEvent:@"Settings" andAction:@"DisplayMode" andLabel:nil andValue:nil];
 }
 
@@ -1428,12 +1436,15 @@
     jsState = JS_NONE;
     js = nil;
     
-    NSString *js1 = @"document.getElementsByTagName('link')[0].setAttribute('href','";
-    NSString* css = [NSString stringWithFormat:@"theme.css?v=%d",[[Utils getInstance] getCSSVersion]];
-    NSString *js2 = [js1 stringByAppendingString:css];
-    NSString *finalJS = [js2 stringByAppendingString:@"');"];
-    [webView stringByEvaluatingJavaScriptFromString:finalJS];
-    
+//    NSString *js1 = @"document.getElementsByTagName('link')[0].setAttribute('href','";
+//    NSString* css = [NSString stringWithFormat:@"theme.css?v=%d",[[Utils getInstance] getCSSVersion]];
+//    NSString *js2 = [js1 stringByAppendingString:css];
+//    NSString *finalJS = [js2 stringByAppendingString:@"');"];
+//    [webView stringByEvaluatingJavaScriptFromString:finalJS];
+//    
+//    // Disable long click on the link
+//    [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';"];
+//    
     // For virtualize controller, highlight all children keyword
     if ([self.virtualizeViewController isNeedHighlightChildKeyword] == YES )
     {

@@ -80,7 +80,7 @@ static Utils *static_utils;
 @synthesize gitPassword;
 @synthesize gitUsername;
 @synthesize cscopeIndicator;
-@synthesize currentColorScheme;
+@synthesize currentThemeSetting;
 
 +(Utils*)getInstance
 {

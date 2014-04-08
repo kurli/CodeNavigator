@@ -95,7 +95,7 @@ typedef enum _SearchType{
 
 @property (nonatomic, unsafe_unretained) MGSplitViewController *splitViewController;
 
-@property (strong, nonatomic) ColorSchema* currentColorScheme;
+@property (strong, nonatomic) ThemeSchema* currentThemeSetting;
 
 @property (nonatomic, unsafe_unretained) UINavigationController* masterViewController;
 

@@ -26,4 +26,6 @@
 
 -(void) removeDisplayFilesForProject:(NSString *)proj;
 
+-(void) removeAllDisplayFiles;
+
 @end

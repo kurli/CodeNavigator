@@ -7,7 +7,7 @@
 <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />\n\
 "
 
-#define HTML_STYLE_LINK @"<link rel=\"stylesheet\" type=\"text/css\" href=\"theme.css?v=1\" />\n"
+#define HTML_STYLE_LINK @"<link rel=\"stylesheet\" type=\"text/css\" href=\"theme.css\" />\n"
 
 #define HTML_JS_LINK @"<script type=\"text/javascript\" src=\"lgz_javascript.js\"></script>\n"
 
@@ -18,43 +18,46 @@
 .string { color: STRING; }\n\
 .keyword { color: KEYWRD; }\n\
 .other { color: -OTHER-; }\n\
-.operator { color: #663300; font-weight: bold; }\n\
 .system { color: #774499; }\n\
-.number { color: #aa5555; }\n\
+.number { color: --NUMBER--; }\n\
 \
 body {\n\
 background:-BGCOL-;\n\
 }\n\
 \
 table.code {\n\
- font-family: monospace;\n\
+ font-family: FONT_FAMILY;\n\
  font-size: FONT_SIZEpx;\n\
-table-layout: fixed;\n\
+ table-layout: fixed;\n\
+ -webkit-border-vertical-spacing: 0px\n\
 }\n\
 \
 .highlight{background:green;font-weight:bold;color:white;} \n\
 \
 table.code tbody th {\n\
- padding: 0 .2em;\n\
  text-align: right;\n\
+ vertical-align: top;\n\
+ margin:0px;\n\
 }\n\
 table.code tbody th :link, table.code tbody th :visited {\n\
- color: #886;\n\
+ color: --LINENUMBER--;\n\
 }\n\
 table.code td {\n\
  padding: 1px 2px;\n\
  color: #808080;\n\
+ vertical-align: top;\n\
 }\n\
 a {\n\
 color: inherit;\n\
 text-decoration: none;\n\
 }\n\
 pre {\n\
-margin-bottom: 0px;\n\
-margin-left: 0px;\n\
-margin-right: 0px;\n\
-margin-top: 0px;\n\
-}\
+margin:0px;\n\
+}\n\
+.linenumber{\n\
+ border-right: solid;\n\
+ border-color:--LINENUMBER--;\n\
+}\n\
 "
 
 #define HTML_HEAD_END @"</head>\n"
@@ -63,7 +66,7 @@ margin-top: 0px;\n\
 <table class=\"code\"><tbody>\
 "
 
-#define HTML_LINE_START @"<tr id=\"L%d\"><th><a href=\"lgz_comment:%d\"><pre>%d</pre></a></th><th><a href=\"lgz_fold__*&^\"><pre> </pre></a></th><td><pre>"
+#define HTML_LINE_START @"<tr id=\"L%d\"><th class=\"linenumber\"><a href=\"lgz_comment:%d\"><pre>%d</pre></a></th><th><a href=\"lgz_fold__*&^\"><pre> </pre></a></th><td><pre>"
 
 #define HTML_LINK @"<a href=\"%@=%@\" class=\"%@\" style=\"text-decoration: none\">"
 #define HTML_LINK_END @"</a>"

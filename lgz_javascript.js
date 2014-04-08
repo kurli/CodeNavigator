@@ -1,3 +1,14 @@
+document.onreadystatechange=function()
+{
+    if(document.readyState == 'interactive'){
+        var value = (new Date()).valueOf();
+        var css = document.getElementsByTagName('link')[0].getAttribute('href');
+        css = css + '?v=' + value;
+        document.getElementsByTagName('link')[0].setAttribute('href',css);
+        document.body.style.webkitTouchCallout='none';
+    }
+}
+
 var returnArray = new Array();
 var index = 0;
 function addResult(id, count)

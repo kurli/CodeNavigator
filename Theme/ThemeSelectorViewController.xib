@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+    <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ThemeSelectorViewController">
+            <connections>
+                <outlet property="fontFamilySegmentController" destination="pdc-Ro-wdo" id="Fyf-CI-dhv"/>
+                <outlet property="fontSizeStepper" destination="qPW-tN-gvB" id="lsu-9y-wjA"/>
+                <outlet property="fontSizeTextField" destination="lus-My-fb4" id="Mre-L9-aKv"/>
+                <outlet property="lineWrapSegmentController" destination="8Ox-Qg-Ami" id="ABe-4R-Dl0"/>
+                <outlet property="lineWrapTextField" destination="PeN-4X-C9g" id="Jjo-2W-dkT"/>
+                <outlet property="themeListView" destination="z6d-uM-i9V" id="jXp-HQ-jVo"/>
+                <outlet property="view" destination="2" id="3"/>
+                <outlet property="webView" destination="PUw-8a-RvG" id="MSR-13-fMc"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="2">
+            <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="XS2-bX-nks">
+                    <rect key="frame" x="0.0" y="0.0" width="540" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <items>
+                        <barButtonItem title="Cancel" id="QDR-yn-ork">
+                            <connections>
+                                <action selector="cancelButtonClicked:" destination="-1" id="cUU-dK-KMt"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="fdS-o8-DMS"/>
+                        <barButtonItem title="Themes" style="plain" id="4bs-xV-9ky"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="V4q-ho-r3W"/>
+                        <barButtonItem title="Apply" id="kDs-lG-GYP">
+                            <connections>
+                                <action selector="applyButtonClicked:" destination="-1" id="voV-15-nl5"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line Wrapping:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CdN-LA-MKB">
+                    <rect key="frame" x="20" y="69" width="116" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="PeN-4X-C9g">
+                    <rect key="frame" x="423" y="65" width="97" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <connections>
+                        <action selector="lineWrapTextFieldFinishEditing:" destination="-1" eventType="editingDidEnd" id="Kpu-vO-ty6"/>
+                    </connections>
+                </textField>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" id="8Ox-Qg-Ami">
+                    <rect key="frame" x="321" y="66" width="199" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="N/A"/>
+                        <segment title="80"/>
+                        <segment title="140"/>
+                        <segment title="Custom"/>
+                    </segments>
+                    <connections>
+                        <action selector="lineWrapSegmentValueChanged:" destination="-1" eventType="valueChanged" id="3nX-RA-5Ky"/>
+                    </connections>
+                </segmentedControl>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Font Size:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E6L-Zi-gPY">
+                    <rect key="frame" x="20" y="119" width="77" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="lus-My-fb4">
+                    <rect key="frame" x="463" y="115" width="57" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                    <connections>
+                        <action selector="fontSizeTextFieldBeginEdit:" destination="-1" eventType="editingDidBegin" id="sFd-zN-NHo"/>
+                        <action selector="fontSizeTextFieldEndEdit:" destination="-1" eventType="editingDidEnd" id="cjX-0P-Ho1"/>
+                    </connections>
+                </textField>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Font:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4rL-R9-6Ua">
+                    <rect key="frame" x="20" y="168" width="40" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" maximumValue="100" id="qPW-tN-gvB">
+                    <rect key="frame" x="321" y="115" width="94" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <connections>
+                        <action selector="fontSizeStepperValueChanged:" destination="-1" eventType="valueChanged" id="faD-hk-g1v"/>
+                    </connections>
+                </stepper>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="z6d-uM-i9V" customClass="JTListView">
+                    <rect key="frame" x="20" y="197" width="500" height="52"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="6W4-sM-Lip"/>
+                        <outlet property="delegate" destination="-1" id="gkI-nh-ON8"/>
+                    </connections>
+                </scrollView>
+                <webView contentMode="scaleToFill" id="PUw-8a-RvG">
+                    <rect key="frame" x="20" y="262" width="500" height="346"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </webView>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" id="pdc-Ro-wdo">
+                    <rect key="frame" x="275" y="161" width="245" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="monospace"/>
+                        <segment title="Source Code Pro"/>
+                    </segments>
+                    <connections>
+                        <action selector="fontFamilyValueChanged:" destination="-1" eventType="valueChanged" id="eED-QW-Qoa"/>
+                    </connections>
+                </segmentedControl>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+            <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>

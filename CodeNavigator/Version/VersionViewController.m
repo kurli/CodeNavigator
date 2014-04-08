@@ -8,8 +8,9 @@
 
 #import "VersionViewController.h"
 #import "Utils.h"
+#import "DisplayController.h"
 
-#define RELEASE_VERSION 1
+#define RELEASE_VERSION 2
 
 @interface VersionViewController ()
 
@@ -57,104 +58,81 @@
     [self.versionDetailView setFont:[UIFont systemFontOfSize:16]];
 }
 
--(void) checkVersion {
-    NSError* error;
-    BOOL isExist = false;
+-(void) createProjectFolder {
+    NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
     BOOL isFolder = NO;
-    // When below statement changed, we need to change to latest version number
-    // 1: html format changed
-    // 2: cscope file content changed
-    // 3: Added new parser config json file
-    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/version"];
-    isExist = [[NSFileManager defaultManager] fileExistsAtPath:versionFile];
-    if (isExist == YES)
+    BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:projectFolder isDirectory:&isFolder];
+    NSError *error;
+    if (isExist == YES && isFolder == YES)
+        return;
+    
+    [[NSFileManager defaultManager] createDirectoryAtPath:projectFolder withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    // copy help files
+    NSString* settings = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/"];
+    NSString* helpHtml = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/Help.html"];
+    [[NSFileManager defaultManager] copyItemAtPath:helpHtml toPath:[projectFolder stringByAppendingPathComponent:@"Help.html"] error:&error];
+    NSString* jpg0 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/1.jpeg"];
+    [[NSFileManager defaultManager] copyItemAtPath:jpg0 toPath:[settings stringByAppendingPathComponent:@"1.jpeg"] error:&error];
+}
+
+-(void) copyDemoToProject {
+    BOOL isExist;
+    BOOL isFolder;
+    // copy demo
+    NSString* demoFolder = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/Projects/linux_0.1/"];
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:demoFolder isDirectory:&isFolder];
+    NSString* demoBundle = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/linux_0.1"];
+    if (isExist == NO || (isExist == YES && isFolder == NO))
     {
-        // Check version file
-        NSString* content = [NSString stringWithContentsOfFile:versionFile encoding:NSUTF8StringEncoding error:nil];
-        NSInteger integer = [content integerValue];
-        // Same version
-        if (integer == RELEASE_VERSION) {
-            return;
-        }
-    } else {
-        // First version from 4.4
-        [[NSFileManager defaultManager] createDirectoryAtPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] withIntermediateDirectories:YES attributes:nil error:&error];
-        
-        NSString* content = [NSString stringWithFormat:@"%d", RELEASE_VERSION];
-        [content writeToFile:versionFile atomically:YES encoding:NSUTF8StringEncoding error:&error];
-        
-#ifndef IPHONE_VERSION
-        // Show Help dislog
-        double delayInSeconds = 10;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            VersionViewController* viewController = [[VersionViewController alloc] init];
-            viewController.modalPresentationStyle = UIModalPresentationFormSheet;
-            [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
-        });
-#endif
-        {
-            NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
-            BOOL isFolder = NO;
-            BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:projectFolder isDirectory:&isFolder];
-            NSError *error;
-            if (isExist == NO || (isExist == YES && isFolder == NO))
-            {
-                [[NSFileManager defaultManager] createDirectoryAtPath:projectFolder withIntermediateDirectories:YES attributes:nil error:&error];
-            }
-            
-            // copy demo
-            NSString* demoFolder = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/Projects/linux_0.1/"];
-            isExist = [[NSFileManager defaultManager] fileExistsAtPath:demoFolder isDirectory:&isFolder];
-            NSString* demoBundle = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/linux_0.1"];
-            if (isExist == NO || (isExist == YES && isFolder == NO))
-            {
-                [[NSFileManager defaultManager] copyItemAtPath:demoBundle toPath:demoFolder error:&error];
-            }
-            
-            // copy help files
-            NSString* settings = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/"];
-            NSString* helpHtml = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/Help.html"];
-            [[NSFileManager defaultManager] copyItemAtPath:helpHtml toPath:[projectFolder stringByAppendingPathComponent:@"Help.html"] error:&error];
-            NSString* jpg0 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/1.jpeg"];
-            [[NSFileManager defaultManager] copyItemAtPath:jpg0 toPath:[settings stringByAppendingPathComponent:@"1.jpeg"] error:&error];
-            
-            // Copy BuildInParser
-            NSString* buildInParserPath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/BuildInParser/"];
-            isExist = [[NSFileManager defaultManager] fileExistsAtPath:buildInParserPath isDirectory:&isFolder];
-            NSString* buildInParserPathBundle = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/BuildInParser"];
-            if (isExist == NO || (isExist == YES && isFolder == NO))
-            {
-                [[NSFileManager defaultManager] copyItemAtPath:buildInParserPathBundle toPath:buildInParserPath error:&error];
-            }
-            // Append mode
-            if (isExist == YES) {
-                NSArray* contentsInBundle = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:buildInParserPathBundle error:&error];
-                NSArray* contentsInSetting = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:buildInParserPath error:&error];
-                for (NSString* str in contentsInBundle) {
-                    int i;
-                    for (i = 0; i < [contentsInSetting count]; i++) {
-                        NSString* str2 = [contentsInSetting objectAtIndex:i];
-                        if ([str isEqualToString:str2]) {
-                            break;
-                        }
-                    }
-                    if (i == [contentsInSetting count]) {
-                        NSString* srcPath = [buildInParserPathBundle stringByAppendingPathComponent:str];
-                        NSString* desPath = [buildInParserPath stringByAppendingPathComponent:str];
-                        [[NSFileManager defaultManager] copyItemAtPath:srcPath toPath:desPath error:&error];
-                    }
+        [[NSFileManager defaultManager] copyItemAtPath:demoBundle toPath:demoFolder error:nil];
+    }
+}
+
+-(void) initBuildInParser {
+    BOOL isExist;
+    BOOL isFolder;
+    NSError* error;
+    
+    // Copy BuildInParser
+    NSString* buildInParserPath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/BuildInParser/"];
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:buildInParserPath isDirectory:&isFolder];
+    NSString* buildInParserPathBundle = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/BuildInParser"];
+    if (isExist == NO || (isExist == YES && isFolder == NO))
+    {
+        [[NSFileManager defaultManager] copyItemAtPath:buildInParserPathBundle toPath:buildInParserPath error:&error];
+    }
+    // Append mode
+    if (isExist == YES) {
+        NSArray* contentsInBundle = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:buildInParserPathBundle error:&error];
+        NSArray* contentsInSetting = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:buildInParserPath error:&error];
+        for (NSString* str in contentsInBundle) {
+            int i;
+            for (i = 0; i < [contentsInSetting count]; i++) {
+                NSString* str2 = [contentsInSetting objectAtIndex:i];
+                if ([str isEqualToString:str2]) {
+                    break;
                 }
             }
+            if (i == [contentsInSetting count]) {
+                NSString* srcPath = [buildInParserPathBundle stringByAppendingPathComponent:str];
+                NSString* desPath = [buildInParserPath stringByAppendingPathComponent:str];
+                [[NSFileManager defaultManager] copyItemAtPath:srcPath toPath:desPath error:&error];
+            }
         }
-        return;
     }
-    [[NSFileManager defaultManager] createDirectoryAtPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] withIntermediateDirectories:YES attributes:nil error:&error];
-    NSString* content = [NSString stringWithFormat:@"%d", RELEASE_VERSION];
-    [content writeToFile:versionFile atomically:YES encoding:NSUTF8StringEncoding error:&error];
-    
-#ifndef IPHONE_VERSION
-    // Show Help dislog
+}
+
+-(void) createSettingFolder {
+    BOOL isExist = NO;
+    NSString* settingsPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"];
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:settingsPath];
+    if (!isExist) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:settingsPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+}
+
+-(void) displayVersionDialog {
     double delayInSeconds = 10;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -162,23 +140,11 @@
         viewController.modalPresentationStyle = UIModalPresentationFormSheet;
         [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
     });
-#endif
-    
-    // delete lgz_software.js and theme.css
-    NSString* js = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.settings/lgz_javascript.js"];
-    isExist = [[NSFileManager defaultManager] fileExistsAtPath:js isDirectory:&isFolder];
-    if (isExist == YES)
-    {
-        [[NSFileManager defaultManager] removeItemAtPath:js error:&error];
-    }
-    
-    NSString* css = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.settings/theme.css"];
-    isExist = [[NSFileManager defaultManager] fileExistsAtPath:css isDirectory:&isFolder];
-    if (isExist == YES)
-    {
-        [[NSFileManager defaultManager] removeItemAtPath:css error:&error];
-    }
-    
+}
+
+-(void) removeAnalyzeDB {
+    NSError* error;
+    BOOL isFolder;
     //for version 1_3 we need to delete all project files
     NSString* projectsFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
     NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:projectsFolder error:&error];
@@ -196,61 +162,101 @@
             [[NSFileManager defaultManager] removeItemAtPath:fl error:&error];
         }
     }
+}
+
+-(void) initJS {
+    NSError* error;
+    //for javascript
+    NSString* js = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/lgz_javascript.js"];
+    NSString* jsPath = [[[NSBundle mainBundle] resourcePath]  stringByAppendingPathComponent:@"lgz_javascript.js"];
+    [[NSFileManager defaultManager] copyItemAtPath:jsPath toPath:js error:&error];
+}
+
+-(void) removeAllDisplayFiles {
+    DisplayController* displayController = [[DisplayController alloc] init];
+    [displayController removeAllDisplayFiles];
+}
+
+-(void) checkVersion {
+    NSError* error;
+    BOOL isExist = false;
+    // When below statement changed, we need to change to latest version number
+    // 1: html format changed
+    // 2: cscope file content changed
+    // 3: Added new parser config json file
     
+    // Create .settings folder
+    [self createSettingFolder];
+    
+    // Init themes
+    [ThemeManager readColorScheme];
+    
+    NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/version"];
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:versionFile];
+    
+    if (isExist == NO)
     {
-        NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
-        BOOL isFolder = NO;
-        BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:projectFolder isDirectory:&isFolder];
-        NSError *error;
-        if (isExist == NO || (isExist == YES && isFolder == NO))
-        {
-            [[NSFileManager defaultManager] createDirectoryAtPath:projectFolder withIntermediateDirectories:YES attributes:nil error:&error];
-        }
+        // First version
         
-        // copy demo
-        NSString* demoFolder = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/Projects/linux_0.1/"];
-        isExist = [[NSFileManager defaultManager] fileExistsAtPath:demoFolder isDirectory:&isFolder];
-        NSString* demoBundle = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/linux_0.1"];
-        if (isExist == NO || (isExist == YES && isFolder == NO))
-        {
-            [[NSFileManager defaultManager] copyItemAtPath:demoBundle toPath:demoFolder error:&error];
-        }
+        // Generate theme file
+        NSString* css = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/theme.css"];
+        [ThemeManager generateCSSScheme:css andTheme:[Utils getInstance].currentThemeSetting];
+
+        // Write version code
+        NSString* content = [NSString stringWithFormat:@"%d", RELEASE_VERSION];
+        [content writeToFile:versionFile atomically:YES encoding:NSUTF8StringEncoding error:&error];
         
-        // copy help files
-        NSString* settings = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/"];
-        NSString* helpHtml = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/Help.html"];
-        [[NSFileManager defaultManager] copyItemAtPath:helpHtml toPath:[projectFolder stringByAppendingPathComponent:@"Help.html"] error:&error];
-        NSString* jpg0 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/1.jpeg"];
-        [[NSFileManager defaultManager] copyItemAtPath:jpg0 toPath:[settings stringByAppendingPathComponent:@"1.jpeg"] error:&error];
+        // lgz_software.js
+        [self initJS];
         
-        // Copy BuildInParser
-        NSString* buildInParserPath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/BuildInParser/"];
-        isExist = [[NSFileManager defaultManager] fileExistsAtPath:buildInParserPath isDirectory:&isFolder];
-        NSString* buildInParserPathBundle = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/BuildInParser"];
-        if (isExist == NO || (isExist == YES && isFolder == NO))
-        {
-            [[NSFileManager defaultManager] copyItemAtPath:buildInParserPathBundle toPath:buildInParserPath error:&error];
-        }
-        // Append mode
-        if (isExist == YES) {
-            NSArray* contentsInBundle = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:buildInParserPathBundle error:&error];
-            NSArray* contentsInSetting = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:buildInParserPath error:&error];
-            for (NSString* str in contentsInBundle) {
-                int i;
-                for (i = 0; i < [contentsInSetting count]; i++) {
-                    NSString* str2 = [contentsInSetting objectAtIndex:i];
-                    if ([str isEqualToString:str2]) {
-                        break;
-                    }
-                }
-                if (i == [contentsInSetting count]) {
-                    NSString* srcPath = [buildInParserPathBundle stringByAppendingPathComponent:str];
-                    NSString* desPath = [buildInParserPath stringByAppendingPathComponent:str];
-                    [[NSFileManager defaultManager] copyItemAtPath:srcPath toPath:desPath error:&error];
-                }
-            }
-        }
+        // Create project folder
+        [self createProjectFolder];
+        
+        // Copy demo
+        [self copyDemoToProject];
+        
+        // Init build parser
+        [self initBuildInParser];
+        
+#ifndef IPHONE_VERSION
+        [self displayVersionDialog];
+#endif
+        return;
     }
+    // Check version file
+    NSString* content = [NSString stringWithContentsOfFile:versionFile encoding:NSUTF8StringEncoding error:nil];
+    NSInteger integer = [content integerValue];
+    
+    // Same version
+    if (integer == RELEASE_VERSION) {
+        return;
+    }
+    
+    if (integer < 2) {
+        // Generate theme file
+        NSString* css = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/theme.css"];
+        [ThemeManager generateCSSScheme:css andTheme:[Utils getInstance].currentThemeSetting];
+        
+        // JS updated after V=1
+        [self initJS];
+        
+        // Remove all display folder
+        [self removeAllDisplayFiles];
+    }
+
+    // Write version code
+    content = [NSString stringWithFormat:@"%d", RELEASE_VERSION];
+    [content writeToFile:versionFile atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    
+#ifndef IPHONE_VERSION
+    [self displayVersionDialog];
+#endif
+    
+//    [self removeAnalyzeDB];
+    
+//    [self createProjectFolder];
+    
+    [self initBuildInParser];
 }
 
 @end

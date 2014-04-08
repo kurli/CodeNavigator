@@ -37,6 +37,7 @@
                                 <action selector="sendButtonClicked:" destination="-1" id="21"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="FlP-n5-qOx"/>
                         <barButtonItem title="Save" style="done" id="16">
                             <connections>
                                 <action selector="saveButtonClicked:" destination="-1" id="20"/>
