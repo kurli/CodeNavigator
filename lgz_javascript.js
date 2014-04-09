@@ -37,15 +37,20 @@ function highlight(s){
     var cnt=loopSearch(s,obj); 
     t=obj.innerHTML
     var r=/{searchHL}(({(?!\/searchHL})|[^{])*){\/searchHL}/g 
-    t=t.replace(r,"<span class='highlight'>$1</span>"); 
+    t=t.replace(r,"<span class='highlight'>$1</span>");
     obj.innerHTML=t; 
     return cnt;
 }
 
 function clearHighlight() {
-    var obj=document.getElementsByTagName("tbody")[0]; 
-    var t=obj.innerHTML.replace(/<span\s+class=.?highlight.?>([^<>]*)<\/span>/gi,"$1"); 
-    obj.innerHTML=t;
+    while (1) {
+        var objs = document.getElementsByClassName('highlight');
+        if (objs.length != 0) {
+            objs[0].className = 'other';
+        } else {
+            break;
+        }
+    }
 }
 
 function highlight_this_line_keyword(line, s){
@@ -54,7 +59,7 @@ function highlight_this_line_keyword(line, s){
     var cnt=loopSearch(s,obj); 
     t=obj.innerHTML 
     var r=/{searchHL}(({(?!\/searchHL})|[^{])*){\/searchHL}/g 
-    t=t.replace(r,"<span class='highlight'>$1</span>"); 
+    t=t.replace(r,"<span class='highlight'>$1</span>");
     obj.innerHTML=t; 
     return cnt;
 }
