@@ -333,7 +333,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (isCurrentSearchFileMode == YES) {        
+    if (isCurrentSearchFileMode == YES) {
         if (indexPath.row >= [self.searchFileResultArray count]) {
             return;
         }

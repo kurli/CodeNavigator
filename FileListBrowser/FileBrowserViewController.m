@@ -219,7 +219,7 @@
     fileBrowserViewController.title = selectedItem;
     fileBrowserViewController.fileBrowserViewDelegate = fileBrowserViewDelegate;
     //[fileBrowserViewController reloadData];
-    [self.navigationController pushViewController:fileBrowserViewController animated:YES];
+    [self.navigationController pushViewController:fileBrowserViewController animated:NO];
     
     [fileBrowserViewDelegate folderSelected:[fileBrowserViewController.fileListBrowserController currentLocation]];
 }

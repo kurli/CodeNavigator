@@ -412,3 +412,15 @@ function showComment(trID, comment)
     row.appendChild(td1);
     tbody.insertBefore(row, trObj.nextSibling);
 }
+
+function addTablePadding(value) {
+    var tbody=document.getElementsByTagName("table")[0];
+    tbody.style.paddingTop=value;
+    tbody.style.paddingBottom=value;
+}
+
+function removeTablePadding() {
+    var tbody=document.getElementsByTagName("table")[0];
+    tbody.style.paddingTop="0px";
+    tbody.style.paddingBottom="0px";
+}

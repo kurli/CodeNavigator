@@ -970,6 +970,14 @@
     [self.bottomToolBar setFrame:frameBottom];
     [UIView commitAnimations];
     shownToolBar = !shownToolBar;
+    if (shownToolBar) {
+        NSString *str =[NSString stringWithFormat:@"addTablePadding('%fpx')", self.topToolBar.frame.size.height];
+        [self.webView stringByEvaluatingJavaScriptFromString:str];
+        [self.secondWebView stringByEvaluatingJavaScriptFromString:str];
+    } else {
+        [self.webView stringByEvaluatingJavaScriptFromString:@"removeTablePadding()"];
+        [self.secondWebView stringByEvaluatingJavaScriptFromString:@"removeTablePadding()"];
+    }
 }
 
 - (IBAction)hideMasterViewClicked:(id)sender {
@@ -1461,6 +1469,12 @@
     
     if ([showCommentsSegment selectedSegmentIndex] == 0) {
         [self showAllComments];
+    }
+    if (shownToolBar) {
+        NSString *str =[NSString stringWithFormat:@"addTablePadding('%fpx')", self.topToolBar.frame.size.height];
+        [webView stringByEvaluatingJavaScriptFromString:str];
+    } else {
+        [webView stringByEvaluatingJavaScriptFromString:@"removeTablePadding()"];
     }
 }
 

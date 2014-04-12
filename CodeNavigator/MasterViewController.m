@@ -678,7 +678,7 @@
     masterViewController.webServiceController = self.webServiceController;
     masterViewController.gitCloneViewController = self.gitCloneViewController;
     //[masterViewController reloadData];
-    [self.navigationController pushViewController:masterViewController animated:YES];
+    [self.navigationController pushViewController:masterViewController animated:NO];
 }
 
 -(void) fileClickedDelegate:(NSString*)selectedItem andPath:(NSString*)path
