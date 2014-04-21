@@ -5,7 +5,7 @@ document.onreadystatechange=function()
         var css = document.getElementsByTagName('link')[0].getAttribute('href');
         css = css + '?v=' + value;
         document.getElementsByTagName('link')[0].setAttribute('href',css);
-        document.body.style.webkitTouchCallout='none';
+        document.body.style.webkitTouchCallout='none';        
     }
 }
 
@@ -351,6 +351,7 @@ function hideLines(token, start,end)
     row.id = rowID;
     
     var th1 = document.createElement("th");
+    th1.className = "linenumber";
     th1.appendChild(document.createTextNode("*"));
     var th2 = document.createElement("th");
     th2.appendChild(document.createTextNode("+"));
@@ -423,4 +424,16 @@ function removeTablePadding() {
     var tbody=document.getElementsByTagName("table")[0];
     tbody.style.paddingTop="0px";
     tbody.style.paddingBottom="0px";
+}
+
+function autoFold() {
+    var folds = document.getElementsByClassName("fold_comment");
+    var i = 0;
+    for (i=0; i<folds.length; i++) {
+        var item = folds[i];
+        var test = item.attributes[0].nodeValue;
+        test = test.replace("lgz_fold_", "");
+        var array = test.split(":");
+        hideLines(array[0], new Number(array[1]), new Number(array[2]));
+    }
 }

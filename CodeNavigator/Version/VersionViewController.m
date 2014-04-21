@@ -51,10 +51,12 @@
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.versionDetailView setText:@"New Features & updates:\n\n\
-     1. Switch between git branches.\n\
-     2. Git log for single file or folder.\n\
-     3. Git pull.\n\
-     4. Bug fix. "];
+     1. 28 themes are currently supported\n\
+     2. Performance improvement for highlight\n\
+     3. Show/Hide Line numbers\n\
+     4. Auto fold multi-line comments\n\
+     5. Remove animation in file browser\n\
+     7. Bug fix."];
     [self.versionDetailView setFont:[UIFont systemFontOfSize:16]];
 }
 

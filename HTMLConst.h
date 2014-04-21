@@ -20,6 +20,8 @@
 .other { color: -OTHER-; }\n\
 .system { color: #774499; }\n\
 .number { color: --NUMBER--; }\n\
+.fold { font-style: italic; }\n\
+.fold_comments { font-style: italic; }\n\
 \
 body {\n\
 background:-BGCOL-;\n\
@@ -57,6 +59,7 @@ margin:0px;\n\
 .linenumber{\n\
  border-right: solid;\n\
  border-color:--LINENUMBER--;\n\
+ display:--DISPLAYLINENUM--;\n\
 }\n\
 "
 
@@ -66,7 +69,7 @@ margin:0px;\n\
 <table class=\"code\"><tbody>\
 "
 
-#define HTML_LINE_START @"<tr id=\"L%d\"><th class=\"linenumber\"><a href=\"lgz_comment:%d\"><pre>%d</pre></a></th><th><a href=\"lgz_fold__*&^\"><pre> </pre></a></th><td><pre>"
+#define HTML_LINE_START @"<tr id=\"L%d\"><th class=\"linenumber\"><a href=\"lgz_comment:%d\"><pre>%d</pre></a></th><th><a href=\"lgz_fold__*&^\" class=\"fold\"><pre> </pre></a></th><td><pre>"
 
 #define HTML_LINK @"<a href=\"%@=%@\" class=\"%@\" style=\"text-decoration: none\">"
 #define HTML_LINK_END @"</a>"

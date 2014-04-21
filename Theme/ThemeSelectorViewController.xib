@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ThemeSelectorViewController">
             <connections>
+                <outlet property="autoFoldCommentsSwitcher" destination="cqD-Uu-F2w" id="U1e-Zh-way"/>
+                <outlet property="displayLinenumberSwitcher" destination="Btp-nZ-IQC" id="16a-Rl-ytC"/>
                 <outlet property="fontFamilySegmentController" destination="pdc-Ro-wdo" id="Fyf-CI-dhv"/>
                 <outlet property="fontSizeStepper" destination="qPW-tN-gvB" id="lsu-9y-wjA"/>
                 <outlet property="fontSizeTextField" destination="lus-My-fb4" id="Mre-L9-aKv"/>
@@ -100,7 +102,7 @@
                     </connections>
                 </stepper>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="z6d-uM-i9V" customClass="JTListView">
-                    <rect key="frame" x="20" y="197" width="500" height="52"/>
+                    <rect key="frame" x="20" y="243" width="500" height="52"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="6W4-sM-Lip"/>
@@ -108,7 +110,7 @@
                     </connections>
                 </scrollView>
                 <webView contentMode="scaleToFill" id="PUw-8a-RvG">
-                    <rect key="frame" x="20" y="262" width="500" height="346"/>
+                    <rect key="frame" x="20" y="303" width="500" height="305"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </webView>
@@ -123,6 +125,33 @@
                         <action selector="fontFamilyValueChanged:" destination="-1" eventType="valueChanged" id="eED-QW-Qoa"/>
                     </connections>
                 </segmentedControl>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Fold Comments:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UkM-CN-Win">
+                    <rect key="frame" x="20" y="209" width="168" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="cqD-Uu-F2w">
+                    <rect key="frame" x="202" y="204" width="51" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <action selector="autoFoldCommentsValueChanged:" destination="-1" eventType="valueChanged" id="sAV-eb-nG3"/>
+                    </connections>
+                </switch>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="Btp-nZ-IQC">
+                    <rect key="frame" x="471" y="204" width="51" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <action selector="displayLinenumberChanged:" destination="-1" eventType="valueChanged" id="8xI-OO-HIT"/>
+                    </connections>
+                </switch>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yZa-ry-aLz">
+                    <rect key="frame" x="321" y="209" width="104" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>

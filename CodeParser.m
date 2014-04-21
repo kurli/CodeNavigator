@@ -398,6 +398,9 @@
 //    NSString* tmp;
     [htmlContent replaceOccurrencesOfString:@"_*&^" withString:str options:NSLiteralSearch range:range];
     [htmlContent replaceOccurrencesOfString:@"<pre> </pre>" withString:@"<pre>-</pre>" options:NSLiteralSearch range:range];
+    if ([token isEqualToString:[self getMultiLineCommentsStartStr]]) {
+        [htmlContent replaceOccurrencesOfString:@"class=\"fold\"" withString:@"class=\"fold_comment\"" options:NSLiteralSearch range:range];
+    }
 //    tmp = [htmlContent stringByReplacingOccurrencesOfString:@"_*&^" withString:str options:NSLiteralSearch range:range];
 //    tmp = [tmp stringByReplacingOccurrencesOfString:@"▓" withString:@"-" options:NSLiteralSearch range:range];
 //    htmlContent = [NSMutableString stringWithString:tmp];

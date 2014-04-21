@@ -17,7 +17,7 @@
 	<key>linenumber</key>
 	<string>#888888</string>
 	<key>number</key>
-	<string>#888888</string>
+	<string>#1340E7</string>
 	<key>variable</key>
 	<string>#888888</string>
 	<key>variable_2</key>
@@ -27,8 +27,8 @@
 	<key>other</key>
 	<string>#666666</string>
 	<key>operator</key>
-    <string>#666666</string>
-    <key>bracket</key>
-    <string>#666666</string>
+	<string>#666666</string>
+	<key>bracket</key>
+	<string>#666666</string>
 </dict>
 </plist>

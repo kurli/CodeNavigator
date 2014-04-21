@@ -1476,6 +1476,10 @@
     } else {
         [webView stringByEvaluatingJavaScriptFromString:@"removeTablePadding()"];
     }
+    
+    if ([Utils getInstance].currentThemeSetting.auto_fold_comments) {
+        [webView stringByEvaluatingJavaScriptFromString:@"autoFold()"];
+    }
 }
 
 #define SWIPE_STEP 350

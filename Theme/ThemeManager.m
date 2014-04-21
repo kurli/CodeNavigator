@@ -30,6 +30,8 @@
 @synthesize variable_2;
 @synthesize variable_3;
 @synthesize version;
+@synthesize auto_fold_comments;
+@synthesize display_linenumber;
 
 -(id)copy{
     ThemeSchema* other_obj = [[ThemeSchema alloc] init];
@@ -50,6 +52,8 @@
     other_obj.variable_2 = [variable_2 copy];
     other_obj.variable_3 = [variable_3 copy];
     other_obj.version = [version copy];
+    other_obj.auto_fold_comments = self.auto_fold_comments;
+    other_obj.display_linenumber = self.display_linenumber;
     return other_obj;
 }
 
@@ -206,6 +210,12 @@
     NSString* version = [documentDictionary objectForKey:@"version"];
     [colorScheme setVersion: version];
     
+    NSNumber* auto_fold = [documentDictionary objectForKey:@"auto_fold_comments"];
+    colorScheme.auto_fold_comments = auto_fold.boolValue;
+    
+    NSNumber* display_linenumber = [documentDictionary objectForKey:@"display_linenumber"];
+    colorScheme.display_linenumber = display_linenumber.boolValue;
+    
     // Get theme file bundle name
     NSString* themeName = [documentDictionary objectForKey:@"theme"];
     NSString* themeBundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Themes"];
@@ -268,6 +278,12 @@
     
     //linenumber
     cssStr = [cssStr stringByReplacingOccurrencesOfString:@"--LINENUMBER--" withString:colorScheme.lineNumber];
+    
+    if (colorScheme.display_linenumber) {
+        cssStr = [cssStr stringByReplacingOccurrencesOfString:@"--DISPLAYLINENUM--" withString:@"table-cell"];
+    } else {
+        cssStr = [cssStr stringByReplacingOccurrencesOfString:@"--DISPLAYLINENUM--" withString:@"none"];
+    }
 
     [cssStr writeToFile:css atomically:YES encoding:NSUTF8StringEncoding error:&error];
     
@@ -291,6 +307,8 @@
     [plist setValue:colorScheme.version forKey:@"version"];
     [plist setValue:colorScheme.font_size forKey:@"font_size"];
     [plist setValue:colorScheme.max_line_count forKey:@"max_line_count"];
+    [plist setValue:[NSNumber numberWithBool:colorScheme.auto_fold_comments] forKey:@"auto_fold_comments"];
+    [plist setValue:[NSNumber numberWithBool:colorScheme.display_linenumber] forKey:@"display_linenumber"];
     [plist setValue:name forKey:@"theme"];
     [plist writeToFile:themePath atomically:YES];
 }

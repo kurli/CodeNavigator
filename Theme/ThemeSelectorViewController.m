@@ -20,8 +20,11 @@
 #define FONT_SOURCE_CODE_PRO @"Source Code Pro"
 
 #define DEMO_SOURCE_CODE @"\
-// CodeNavigator ★★★★★\n\
-// 1. You can not have your cake and eat it too\n\
+/* CodeNavigator ★★★★★\n\
+ *You can not have your cake and eat it too\n\
+ *\n\
+ *CodeNavigaotr 2011-2014\n\
+ */\n\
 \n\
 #include <CodeNavigator.h>\n\
 #include \"BetterAndBetter.h\"\n\
@@ -59,6 +62,8 @@ void main() {\n\
 @property (strong, nonatomic) ThemeSchema* colorScheme;
 @property (strong, nonatomic) NSArray* fonts;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *fontFamilySegmentController;
+@property (weak, nonatomic) IBOutlet UISwitch *autoFoldCommentsSwitcher;
+@property (weak, nonatomic) IBOutlet UISwitch *displayLinenumberSwitcher;
 @end
 
 @implementation ThemeSelectorViewController
@@ -88,12 +93,15 @@ void main() {\n\
     NSString* themeBundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Themes"];
     NSArray* thems = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:themeBundlePath error:nil];
     NSMutableArray* multiThemes = [[NSMutableArray alloc] init];
+    int tmp = 0;
     for (int i=0; i<[thems count]; i++) {
         NSString* item = [thems objectAtIndex:i];
         if ([item isEqualToString:@"theme.plist"] == YES) {
+            //TODO magic ignore theme.plist
+            tmp = 1;
             continue;
         } else if([item isEqualToString:currentThemeName]) {
-            selectedTheme = i;
+            selectedTheme = i + tmp;
         }
         [multiThemes addObject:[item stringByDeletingPathExtension]];
     }
@@ -114,7 +122,8 @@ void main() {\n\
 
 - (IBAction)applyButtonClicked:(id)sender {
     ThemeSchema* currentScheme = [Utils getInstance].currentThemeSetting;
-    if ([currentScheme.max_line_count isEqualToString:self.colorScheme.max_line_count] == NO) {
+    if ([currentScheme.max_line_count isEqualToString:self.colorScheme.max_line_count] == NO ||
+        currentScheme.display_linenumber != self.colorScheme.display_linenumber) {
         DisplayController* displayController = [[DisplayController alloc] init];
         [displayController removeAllDisplayFiles];
     }
@@ -166,6 +175,12 @@ void main() {\n\
     } else if ([FONT_SOURCE_CODE_PRO compare:self.colorScheme.font_family] == NSOrderedSame) {
         [self.fontFamilySegmentController setSelectedSegmentIndex:1];
     }
+    
+    // Auto fold comments
+    [self.autoFoldCommentsSwitcher setOn: self.colorScheme.auto_fold_comments];
+    
+    // Display linenumber
+    [self.displayLinenumberSwitcher setOn:self.colorScheme.display_linenumber];
 }
 
 - (void) displayDemo {
@@ -191,6 +206,18 @@ void main() {\n\
     {
         [self.webView setBackgroundColor:UIColorFromRGB(baseValue)];
     }
+}
+
+- (IBAction)autoFoldCommentsValueChanged:(id)sender {
+    UISwitch* switcher = (UISwitch*)sender;
+    self.colorScheme.auto_fold_comments = switcher.isOn;
+    [self displayDemo];
+}
+
+- (IBAction)displayLinenumberChanged:(id)sender {
+    UISwitch* switcher = (UISwitch*)sender;
+    self.colorScheme.display_linenumber = switcher.isOn;
+    [self displayDemo];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -447,5 +474,12 @@ void main() {\n\
 {
     return self.themeListView.frame.size.height;
 }
+
+-(void) webViewDidFinishLoad:(UIWebView *)webView {
+    if (self.colorScheme.auto_fold_comments) {
+        [webView stringByEvaluatingJavaScriptFromString:@"autoFold()"];
+    }
+}
+
 
 @end

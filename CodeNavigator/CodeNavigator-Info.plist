@@ -86,7 +86,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.5.1</string>
+	<string>4.6.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -99,9 +99,17 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>4.5.1</string>
+	<string>4.6.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SourceCodePro-Black.ttf</string>
+		<string>SourceCodePro-Bold.ttf</string>
+		<string>SourceCodePro-Medium.ttf</string>
+		<string>SourceCodePro-Semibold.ttf</string>
+		<string>SourceCodePro-Regular.ttf</string>
+	</array>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -126,13 +134,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>SourceCodePro-Black.ttf</string>
-		<string>SourceCodePro-Bold.ttf</string>
-		<string>SourceCodePro-Medium.ttf</string>
-		<string>SourceCodePro-Semibold.ttf</string>
-		<string>SourceCodePro-Regular.ttf</string>
-	</array>
 </dict>
 </plist>

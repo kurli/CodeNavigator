@@ -7,7 +7,7 @@
 	<key>comment</key>
 	<string>#3f7f5f</string>
 	<key>header</key>
-	<string>#0000ff</string>
+	<string>#7f0055</string>
 	<key>string</key>
 	<string>#2a00ff</string>
 	<key>keyword</key>
@@ -27,8 +27,8 @@
 	<key>other</key>
 	<string>#000000</string>
 	<key>operator</key>
-    <string>#000000</string>
-    <key>bracket</key>
-    <string>#cccc77</string>
+	<string>#000000</string>
+	<key>bracket</key>
+	<string>#cccc77</string>
 </dict>
 </plist>

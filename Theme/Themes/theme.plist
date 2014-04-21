@@ -11,6 +11,10 @@
 	<key>max_line_count</key>
 	<string>80</string>
 	<key>theme</key>
-	<string>default-night</string>
+	<string>lesser-dark</string>
+	<key>auto_fold_comments</key>
+	<string>NO</string>
+	<key>display_linenumber</key>
+	<string>YES</string>
 </dict>
 </plist>

@@ -34,6 +34,8 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 @property (nonatomic, strong) NSString* variable_2;
 @property (nonatomic, strong) NSString* variable_3;
 @property (nonatomic, strong) NSString* version;
+@property (nonatomic) BOOL auto_fold_comments;
+@property (nonatomic) BOOL display_linenumber;
 @end
 
 @interface ThemeManager : NSObject {
