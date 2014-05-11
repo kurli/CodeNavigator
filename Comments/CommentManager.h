@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef enum _CommentManagerMode{
+    COMMENT_MANAGER_GROUP,
     COMMENT_MANAGER_FILE,
     COMMENT_MANAGER_COMMENTS
 } CommentManagerMode;
@@ -23,13 +24,18 @@ typedef enum _CommentManagerMode{
 
 @property (nonatomic, strong) MasterViewController* masterViewController;
 @property (nonatomic, strong) NSArray* fileArray;
+@property (nonatomic, strong) NSArray* commentsArray;
+@property (nonatomic, strong) NSArray* groupsArray;
 @property (nonatomic, strong) CommentManager* commentManager;
-@property (nonatomic, strong) CommentWrapper* commentWrapper;
+@property (nonatomic, strong) NSString* currentGroup;
+@property (nonatomic, strong) NSString* currentFile;
 @property (unsafe_unretained, nonatomic) IBOutlet UITableView *tableView;
 
 - (void) initWithMasterViewController:(MasterViewController*)controller;
 - (void) setCurrentModeComments;
 - (void) initWithCommentFile:(NSString*)path;
+
++ (NSArray*)parseGroups:(NSString*)groupsStr;
 
 #ifdef IPHONE_VERSION
 - (IBAction)doneButtonClicked:(id)sender;

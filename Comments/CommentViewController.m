@@ -10,6 +10,7 @@
 #import "CommentWrapper.h"
 #import "Utils.h"
 #import "DetailViewController.h"
+#import "SelectGroupViewController.h"
 
 #define HTML_STYLE @" \
 .defination { color: #66D9EF; font-style: italic; }\
@@ -70,6 +71,9 @@ padding-right: 20px;\
 "
 
 @interface CommentViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *groupButton;
+@property (nonatomic, strong) UIPopoverController* popoverController;
+@property (nonatomic, strong) NSString* currentGroup;
 
 @end
 
@@ -83,6 +87,7 @@ padding-right: 20px;\
 @synthesize commentTextView;
 @synthesize downTextView;
 @synthesize commentWrapper;
+@synthesize popoverController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -119,6 +124,10 @@ padding-right: 20px;\
 	[upperTextView scrollRangeToVisible:range];
     [downTextView setText:downSource];
     [self.commentTextView setText:[self.commentWrapper getCommentByLine:line]];
+    NSString* group = [self.commentWrapper getCommentGroupByLine:line];
+    if ([group length] != 0) {
+        [self.groupButton setTitle:group forState:UIControlStateNormal];
+    }
     [commentTextView becomeFirstResponder];
 }
 
@@ -139,7 +148,7 @@ padding-right: 20px;\
 }
 
 - (IBAction)saveButtonClicked:(id)sender {
-    [self.commentWrapper addComment:line andComment:commentTextView.text];
+    [self.commentWrapper addComment:line andComment:commentTextView.text andGroup:self.currentGroup];
     [self.commentWrapper saveToFile];
     [[Utils getInstance].detailViewController showCommentInWebView:line andComment:commentTextView.text];
     [self dismissModalViewControllerAnimated:YES];
@@ -400,4 +409,24 @@ padding-right: 20px;\
     commentFile = [commentFile stringByAppendingPathExtension:@"lgz_comment"];
     [commentWrapper readFromFile:commentFile];
 }
+
+-(void) groupSelected:(NSString*)group {
+    if ([group length] == 0) {
+        return;
+    }
+    [self.groupButton setTitle:group forState:UIControlStateNormal];
+    self.currentGroup = group;
+    [self.popoverController dismissPopoverAnimated:YES];
+}
+
+- (IBAction)selectGroupClicked:(id)sender {
+    SelectGroupViewController* controller = [[SelectGroupViewController alloc] init];
+    [controller setCommentViewController:self];
+    [controller setGroups:commentWrapper.groups];
+    CGSize size = controller.view.frame.size;
+    self.popoverController = [[UIPopoverController alloc] initWithContentViewController:controller];
+    self.popoverController.popoverContentSize = size;
+    [self.popoverController presentPopoverFromRect:self.groupButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
 @end

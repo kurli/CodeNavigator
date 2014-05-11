@@ -30,4 +30,6 @@
 - (IBAction)sendButtonClicked:(id)sender;
 
 - (void) initWithFileName:(NSString *)_fileName;
+
+-(void) groupSelected:(NSString*)group;
 @end

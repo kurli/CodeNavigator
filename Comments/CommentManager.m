@@ -20,8 +20,11 @@
 @synthesize masterViewController;
 @synthesize fileArray;
 @synthesize commentManager;
-@synthesize commentWrapper;
 @synthesize tableView;
+@synthesize groupsArray;
+@synthesize commentsArray;
+@synthesize currentGroup;
+@synthesize currentFile;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,16 +35,44 @@
     return self;
 }
 
++ (NSArray*)parseGroups:(NSString*)groupsStr {
+    if ([groupsStr length] != 0 && [groupsStr rangeOfString:@"groups:"].location == 0) {
+        NSArray* array = [groupsStr componentsSeparatedByString:@"groups:"];
+        if ([array count] == 2) {
+            groupsStr = [array objectAtIndex:1];
+            NSArray* array = [groupsStr componentsSeparatedByString:@";"];
+            return array;
+        }
+    }
+    return nil;
+}
+
 - (void) initWithMasterViewController:(MasterViewController *)controller
 {
-    currentMode = COMMENT_MANAGER_FILE;
-    
     [self setMasterViewController:controller];
     NSError* error;
     NSString* projCommentPath = [masterViewController.currentProjectPath stringByAppendingPathComponent:@"lgz_projects.lgz_comment"];
     
     NSString* projCommentContent = [NSString stringWithContentsOfFile:projCommentPath encoding:NSUTF8StringEncoding error:&error];
     self.fileArray = [projCommentContent componentsSeparatedByString:@"\n"];
+    if ([self.fileArray count] == 0) {
+        return;
+    }
+    NSString* groupsStr = [self.fileArray objectAtIndex:0];
+    NSArray* gArray = [CommentManager parseGroups:groupsStr];
+    if ([gArray count] != 0) {
+        currentMode = COMMENT_MANAGER_GROUP;
+        NSMutableArray* mulArray = [[NSMutableArray alloc] init];
+        [mulArray addObject:@"None Grouped"];
+        for (int i=0; i<[gArray count]; i++) {
+            [mulArray addObject:[gArray objectAtIndex:i]];
+        }
+        self.groupsArray = mulArray;
+        return;
+    } else {
+        currentMode = COMMENT_MANAGER_FILE;
+    }
+    
     NSMutableString* result = [[NSMutableString alloc] init];
     for (int i=0; i<[fileArray count]; i++) {
         if ([[self.fileArray objectAtIndex:i] length] == 0) {
@@ -110,9 +141,11 @@
 {
     if (currentMode == COMMENT_MANAGER_FILE) {
         // last one is a \n, ignore it.
-        return [fileArray count] -1;
+        return [fileArray count] - 1;
+    } else if(currentMode == COMMENT_MANAGER_GROUP) {
+        return [groupsArray count];
     } else {
-        return [self.commentWrapper.commentArray count];
+        return [self.commentsArray count];
     }    
 }
 
@@ -150,6 +183,16 @@
         [((UILabel *)[cell viewWithTag:101]) setText:sourceFullName];
         [((UILabel *)[cell viewWithTag:102]) setTextColor:[UIColor colorWithRed:0.5 green:0 blue:0.5 alpha:1]];
         [((UILabel *)[cell viewWithTag:102]) setText:[[item stringByDeletingLastPathComponent] stringByAppendingPathComponent:sourceFullName]];
+    } else if (currentMode == COMMENT_MANAGER_GROUP) {
+        cell = [_tableView dequeueReusableCellWithIdentifier:fileCellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:fileCellIdentifier];
+        }
+        if (indexPath.row > [groupsArray count]) {
+            cell.textLabel.text = @"**Error**";
+            return cell;
+        }
+        cell.textLabel.text = [groupsArray objectAtIndex:indexPath.row];
     }
     else
     {
@@ -157,7 +200,7 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:fileCellIdentifier];
         }
-        CommentItem* item= (CommentItem*)([self.commentWrapper.commentArray objectAtIndex:indexPath.row]);
+        CommentItem* item= (CommentItem*)([commentsArray objectAtIndex:indexPath.row]);
         cell.textLabel.text = [NSString stringWithFormat:@"%d: %@", item.line+1, item.comment];
     }
     return cell;
@@ -176,12 +219,30 @@
         self.commentManager = [[CommentManager alloc] init];
 #endif
         [self.commentManager setMasterViewController:self.masterViewController];
+        [self.commentManager setCurrentGroup:currentGroup];
         [self.commentManager initWithCommentFile:path];
         [self.commentManager setCurrentModeComments];
+        [self.commentManager setCurrentFile:path];
+        [self.commentManager.tableView reloadData];
+        [self.navigationController pushViewController:self.commentManager animated:YES];
+    }else if (currentMode == COMMENT_MANAGER_GROUP) {
+        if (indexPath.row > [groupsArray count]) {
+            return;
+        }
+#ifdef IPHONE_VERSION
+        self.commentManager = [[CommentManager alloc] initWithNibName:@"CommentManager-iPhone" bundle:nil];
+#else
+        self.commentManager = [[CommentManager alloc] init];
+#endif
+        [self.commentManager setMasterViewController:self.masterViewController];
+        [self.commentManager initWithGroup:[groupsArray objectAtIndex:indexPath.row]];
+        [self.commentManager setGroupsArray:groupsArray];
+        [self.commentManager setCurrentModeGroupComments];
+        self.commentManager.currentGroup = [groupsArray objectAtIndex:indexPath.row];
         [self.commentManager.tableView reloadData];
         [self.navigationController pushViewController:self.commentManager animated:YES];
     } else {
-        NSString* fileName = commentWrapper.filePath;
+        NSString* fileName = currentFile;
         fileName = [fileName stringByDeletingPathExtension];
         NSRange locationRange = [fileName rangeOfString:@"_" options:NSBackwardsSearch];
         NSString* sourceName = [fileName substringToIndex:locationRange.location];
@@ -194,7 +255,7 @@
             sourceFullPath= [sourceName stringByAppendingPathExtension:extension];
         else
             sourceFullPath = sourceName;
-        CommentItem* item= (CommentItem*)([self.commentWrapper.commentArray objectAtIndex:indexPath.row]);
+        CommentItem* item= (CommentItem*)([commentsArray objectAtIndex:indexPath.row]);
         NSString* line = [NSString stringWithFormat:@"%d", item.line+1];
         
         [[Utils getInstance].detailViewController gotoFile:sourceFullPath andLine:line andKeyword:nil];
@@ -217,10 +278,57 @@
     currentMode = COMMENT_MANAGER_COMMENTS;
 }
 
+-(void) setCurrentModeGroupComments {
+    // Need to show file list filtered by group name
+    currentMode = COMMENT_MANAGER_FILE;
+}
+
 - (void) initWithCommentFile:(NSString *)path
 {
-    self.commentWrapper = [[CommentWrapper alloc] init];
-    [self.commentWrapper readFromFile:path];
+    CommentWrapper* commentWrapper = [[CommentWrapper alloc] init];
+    [commentWrapper readFromFile:path];
+    if ([currentGroup isEqualToString:@"None Grouped"]) {
+        self.commentsArray = [commentWrapper getCommentsByGroup:nil];
+    } else {
+        self.commentsArray = [commentWrapper getCommentsByGroup:currentGroup];
+    }
+}
+
+- (void) initWithGroup:(NSString*)group {
+    NSError* error;
+    NSString* projCommentPath = [masterViewController.currentProjectPath stringByAppendingPathComponent:@"lgz_projects.lgz_comment"];
+    
+    NSString* projCommentContent = [NSString stringWithContentsOfFile:projCommentPath encoding:NSUTF8StringEncoding error:&error];
+    self.fileArray = [projCommentContent componentsSeparatedByString:@"\n"];
+    if ([self.fileArray count] == 0) {
+        return;
+    }
+    
+    NSMutableString* result = [[NSMutableString alloc] init];
+    [result appendString:[fileArray objectAtIndex:0]];
+    [result appendString:@"\n"];
+    NSMutableArray* resultFiles = [[NSMutableArray alloc] init];
+    for (int i=1; i<[fileArray count]; i++) {
+        if ([[self.fileArray objectAtIndex:i] length] == 0) {
+            continue;
+        }
+        NSString* path = NSHomeDirectory();
+        path = [path stringByAppendingPathComponent:@"Documents"];
+        path = [path stringByAppendingPathComponent:@"Projects"];
+        path = [path stringByAppendingPathComponent:[self.fileArray objectAtIndex:i]];
+        BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:path];
+        if (isExist) {
+            CommentWrapper* wrapper = [[CommentWrapper alloc] init];
+            [wrapper readFromFile:path];
+            if ([group isEqualToString:@"None Grouped"] || [wrapper isCommentExistsByGroup:group]) {
+                [resultFiles addObject:[self.fileArray objectAtIndex:i]];
+            }
+            [result appendFormat:@"%@\n", [self.fileArray objectAtIndex:i]];
+        }
+    }
+    [resultFiles addObject:@""];
+    self.fileArray = resultFiles;
+    [result writeToFile:projCommentPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
 
 #ifdef IPHONE_VERSION

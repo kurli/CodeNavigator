@@ -18,6 +18,8 @@
 
 @property (nonatomic, strong) NSString* comment;
 
+@property (nonatomic, strong) NSString* group;
+
 @end
 
 @interface CommentWrapper : NSObject
@@ -26,12 +28,20 @@
 
 @property (nonatomic, strong) NSString* filePath;
 
+@property (nonatomic, strong) NSMutableArray* groups;
+
 -(void)readFromFile:(NSString*)path;
 
--(void)addComment:(int)line andComment:(NSString*)comment;
+-(void)addComment:(int)line andComment:(NSString*)comment andGroup:(NSString*)group;
 
 -(void)saveToFile;
 
 -(NSString*) getCommentByLine:(int)line;
+
+-(BOOL) isCommentExistsByGroup:(NSString*) group;
+
+-(NSArray*) getCommentsByGroup:(NSString*) group;
+
+-(NSString*) getCommentGroupByLine:(int)line;
 
 @end
