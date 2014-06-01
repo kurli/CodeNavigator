@@ -169,7 +169,11 @@
     }
     // If it's project folder
     NSString* proj = [[Utils getInstance] getProjectFolder:sourceFilePath];
-    GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewCongroller" bundle:[NSBundle mainBundle]];
+#ifdef IPHONE_VERSION
+    GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewController-iPhone" bundle:[NSBundle mainBundle]];
+#else
+    GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewController" bundle:[NSBundle mainBundle]];
+#endif
     [gitlogView setCompareContainsPath:sourceFilePath];
     [gitlogView gitLogForProject: proj];
     [gitlogView showModualView];
@@ -193,11 +197,19 @@
 
 -(void) updateRepo {
 //    [[[Utils getInstance].splitViewController presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+#ifdef IPHONE_VERSION
+    GitUpdateViewController* updateController = [[GitUpdateViewController alloc] initWithNibName:@"GitUpdateViewController-iPhone" bundle:[NSBundle mainBundle]];
+#else
     GitUpdateViewController* updateController = [[GitUpdateViewController alloc] init];
+#endif
     updateController.modalPresentationStyle = UIModalPresentationFormSheet;
     NSString* gitFolder = [[Utils getInstance] getGitFolder:sourceFilePath];
     [updateController setGitFolder:gitFolder];
+#ifdef IPHONE_VERSION
+    [[Utils getInstance].masterViewController presentViewController:updateController animated:YES completion:nil];
+#else
     [[Utils getInstance].splitViewController presentViewController:updateController animated:YES completion:nil];
+#endif
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

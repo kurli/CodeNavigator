@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FPPopoverController.h"
 
 @class GTRepository;
 @class GTObject;
@@ -30,9 +31,14 @@
 @property (nonatomic, strong) NSMutableArray* diffFileArray;
 @property (nonatomic, strong) NSString* compareContainsPath;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *showMergesBarButton;
+#ifdef IPHONE_VERSION
+@property (nonatomic, strong) FPPopoverController* popOverController;
+#else
 @property (nonatomic, strong) UIPopoverController* popOverController;
+#endif
 @property (nonatomic, strong) NSString* currentGitFolder;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *updateBarButton;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 
 - (IBAction)showMergesClicked:(id)sender;
 

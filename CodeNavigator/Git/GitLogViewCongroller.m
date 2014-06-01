@@ -46,6 +46,7 @@
 @synthesize compareContainsPath;
 @synthesize popOverController;
 @synthesize currentGitFolder;
+@synthesize toolBar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -119,7 +120,12 @@
         [[Utils getInstance] alertWithTitle:@"Git" andMessage:@"No Git database found!\n Please upload git database (.git folder) first."];
         return;
     }
+#ifdef IPHONE_VERSION
+    self.modalPresentationStyle = UIModalPresentationFormSheet;
+    [[Utils getInstance].masterViewController presentViewController:self animated:YES completion:nil];
+#else
     [[Utils getInstance].splitViewController presentViewController:self animated:YES completion:nil];
+#endif
 }
 
 - (IBAction)backButtonClicked:(id)sender {
@@ -493,9 +499,16 @@
     [branchViewController setGitLogViewController:self];
     UINavigationController* navigationController = [[UINavigationController alloc] init];
     [navigationController pushViewController:branchViewController animated:YES];
+#ifdef IPHONE_VERSION
+    self.popOverController = [[FPPopoverController alloc] initWithContentViewController:navigationController];
+    self.popOverController.border = NO;
+    CGSize size = branchViewController.view.frame.size;
+    [self.popOverController setContentSizeForViewInPopover:size];
+    [popOverController presentPopoverFromBarButtonItem:self.branchesBarButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES andToolBar:self.toolBar];
+#else
     self.popOverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
-    [popOverController setContentViewController:navigationController];
     [popOverController presentPopoverFromBarButtonItem:self.branchesBarButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+#endif
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -583,12 +596,20 @@
 - (IBAction)updateClicked:(id)sender {
     [[Utils getInstance] addGAEvent:@"Git" andAction:@"Update" andLabel:nil andValue:nil];
     [self.popOverController dismissPopoverAnimated:YES];
-    NSString* gitFolder = currentGitFolder;
+    NSString* gitFolder = [[Utils getInstance] getGitFolder:currentGitFolder];
     [self dismissViewControllerAnimated:YES completion:^(){
+#ifdef IPHONE_VERSION
+        GitUpdateViewController* updateController = [[GitUpdateViewController alloc] initWithNibName:@"GitUpdateViewController-iPhone" bundle:[NSBundle mainBundle]];
+#else
         GitUpdateViewController* updateController = [[GitUpdateViewController alloc] init];
+#endif
         updateController.modalPresentationStyle = UIModalPresentationFormSheet;
         [updateController setGitFolder:gitFolder];
+#ifdef IPHONE_VERSION
+        [[Utils getInstance].masterViewController presentViewController:updateController animated:YES completion:nil];
+#else
         [[Utils getInstance].splitViewController presentViewController:updateController animated:YES completion:nil];
+#endif
     }];
 }
 

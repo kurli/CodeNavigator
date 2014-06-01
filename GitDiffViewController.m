@@ -28,6 +28,7 @@ typedef enum _changeType
 @synthesize webView;
 @synthesize popOverController;
 @synthesize diffAnalyzeArray;
+@synthesize toolBar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -102,10 +103,20 @@ typedef enum _changeType
     
     [diffFileListController setDiffFileArray:diffFileArray];
     
+#ifdef IPHONE_VERSION
+    self.popOverController = [[FPPopoverController alloc] initWithContentViewController:diffFileListController];
+#else
     self.popOverController = [[UIPopoverController alloc] initWithContentViewController:diffFileListController];
-    popOverController.popoverContentSize = diffFileListController.view.frame.size;
-    
+#endif
+    CGSize size = diffFileListController.view.frame.size;
+    size.width = size.width / 2;
+    size.height = size.height /2;
+    popOverController.popoverContentSize = size;
+#ifdef IPHONE_VERSION
+    [popOverController presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES andToolBar:self.toolBar];
+#else
     [popOverController presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+#endif
 }
 
 - (void) generateDiffItem:(NSString*)diffContent andNewHtml:(NSMutableArray*)newHtml andOldHtml:(NSMutableArray*)oldHtml
@@ -495,10 +506,20 @@ typedef enum _changeType
     
     [diffFileListController setDiffAnalyzeList:diffAnalyzeArray];
     
+#ifdef IPHONE_VERSION
+    self.popOverController = [[FPPopoverController alloc] initWithContentViewController:diffFileListController];
+#else
     self.popOverController = [[UIPopoverController alloc] initWithContentViewController:diffFileListController];
-    popOverController.popoverContentSize = diffFileListController.view.frame.size;
-    
+#endif
+    CGSize size = diffFileListController.view.frame.size;
+    size.width = size.width / 2;
+    size.height = size.height / 2;
+    popOverController.popoverContentSize = size;
+#ifdef IPHONE_VERSION
+    [popOverController presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES andToolBar:self.toolBar];
+#else
     [popOverController presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+#endif
 }
 
 -(void) showDiffInfo:(int)index

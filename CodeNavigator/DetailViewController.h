@@ -17,6 +17,10 @@
 #import "DisplayModeController.h"
 #import "FileBrowserViewProtocol.h"
 
+#ifdef IPHONE_VERSION
+#import "FPPopoverController.h"
+#endif
+
 typedef enum _JSState {
     JS_NONE,
     JS_GOTO_LINE_AND_FOCUS_KEYWORD,
@@ -61,7 +65,7 @@ typedef enum _JSState {
 
 @property (unsafe_unretained, nonatomic) IBOutlet UISegmentedControl *showCommentsSegment;
 
-@property (weak, nonatomic) IBOutlet UIButton *fileBrowserButton;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *fileBrowserButton;
 
 // search support
 @property (strong, nonatomic) NSString *searchWordU;
@@ -79,7 +83,11 @@ typedef enum _JSState {
 
 @property (strong, nonatomic) VirtualizeViewController *virtualizeViewController;
 
+#ifdef IPHONE_VERSION
+@property (strong, nonatomic) FPPopoverController *popoverController;
+#else
 @property (strong, nonatomic) UIPopoverController *popoverController;
+#endif
 
 @property (strong, nonatomic) NSString* jsGotoLineKeyword;
 

@@ -12,6 +12,10 @@
 #import "DetailViewController.h"
 #import "SelectGroupViewController.h"
 
+#ifdef IPHONE_VERSION
+#import "FPPopoverController.h"
+#endif
+
 #define HTML_STYLE @" \
 .defination { color: #66D9EF; font-style: italic; }\
 .comment { color: #008424; font-style: italic; }\
@@ -72,8 +76,14 @@ padding-right: 20px;\
 
 @interface CommentViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *groupButton;
+#ifdef IPHONE_VERSION
+@property (nonatomic, strong) FPPopoverController* popoverController;
+#else
 @property (nonatomic, strong) UIPopoverController* popoverController;
+#endif
 @property (nonatomic, strong) NSString* currentGroup;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *groupButtonItem;
 
 @end
 
@@ -127,6 +137,9 @@ padding-right: 20px;\
     NSString* group = [self.commentWrapper getCommentGroupByLine:line];
     if ([group length] != 0) {
         [self.groupButton setTitle:group forState:UIControlStateNormal];
+#ifdef IPHONE_VERSION
+        self.groupButtonItem.title = group;
+#endif
     }
     [commentTextView becomeFirstResponder];
 }
@@ -144,14 +157,14 @@ padding-right: 20px;\
 }
 
 - (IBAction)closeClicked:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)saveButtonClicked:(id)sender {
     [self.commentWrapper addComment:line andComment:commentTextView.text andGroup:self.currentGroup];
     [self.commentWrapper saveToFile];
     [[Utils getInstance].detailViewController showCommentInWebView:line andComment:commentTextView.text];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     [[Utils getInstance] addGAEvent:@"Comment" andAction:@"AddComment" andLabel:nil andValue:nil];
 }
 
@@ -263,7 +276,7 @@ padding-right: 20px;\
     
     [picker setMessageBody:emailBody isHTML:YES];
     
-    [self presentModalViewController:picker animated:YES];
+    [self presentViewController:picker animated:YES completion:nil];
 }
 
 // Dismisses the email composition interface when users tap Cancel or Send. Proceeds to update the message field with the result of the operation.
@@ -285,7 +298,7 @@ padding-right: 20px;\
         default:
             break;
     }
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -415,6 +428,9 @@ padding-right: 20px;\
         return;
     }
     [self.groupButton setTitle:group forState:UIControlStateNormal];
+#ifdef IPHONE_VERSION
+    self.groupButtonItem.title = group;
+#endif
     self.currentGroup = group;
     [self.popoverController dismissPopoverAnimated:YES];
 }
@@ -424,9 +440,17 @@ padding-right: 20px;\
     [controller setCommentViewController:self];
     [controller setGroups:commentWrapper.groups];
     CGSize size = controller.view.frame.size;
+#ifdef IPHONE_VERSION
+    self.popoverController = [[FPPopoverController alloc] initWithContentViewController:controller];
+    self.popoverController.border = NO;
+    self.popoverController.popoverContentSize = size;
+    UIBarButtonItem* item = (UIBarButtonItem*)sender;
+    [self.popoverController presentPopoverFromBarButtonItem:item permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES andToolBar:self.toolBar];
+#else
     self.popoverController = [[UIPopoverController alloc] initWithContentViewController:controller];
     self.popoverController.popoverContentSize = size;
     [self.popoverController presentPopoverFromRect:self.groupButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+#endif
 }
 
 @end

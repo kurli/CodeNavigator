@@ -17,6 +17,8 @@
 {
     int currentSelected;
 }
+@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+@property (weak, nonatomic) IBOutlet UIButton *infoButton;
 @end
 
 @implementation OpenAsViewController
@@ -99,6 +101,16 @@
     self.navigationItem.rightBarButtonItem = doneButton;
     
     [self.navigationController setTitle:@"Open As"];
+#ifdef IPHONE_VERSION
+    if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+#endif
+#ifdef IPHONE_VERSION
+    [self.infoButton setHidden:YES];
+    [self.infoLabel setHidden:YES];
+    [self.infoLabel setEnabled:NO];
+    [self.infoButton setEnabled:NO];
+#endif
 }
 
 - (IBAction)doneButtonClicked:(id)sender
@@ -131,8 +143,12 @@
     
     // Release popover controller
     MasterViewController* _masterViewController = nil;
+#ifdef IPHONE_VERSION
+    _masterViewController = (MasterViewController*)[[Utils getInstance].masterViewController visibleViewController];
+#else
     NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
     _masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
+#endif
     [_masterViewController releaseAllPopover];
 }
 

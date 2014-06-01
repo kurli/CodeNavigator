@@ -311,6 +311,8 @@
 		94785A421840FAB90012988B /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94785A411840FAB90012988B /* libiconv.dylib */; };
 		94785A55184519660012988B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94785A54184519660012988B /* libz.dylib */; };
 		94785A59184B9F350012988B /* MyWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94785A58184B9F350012988B /* MyWebView.m */; };
+		9478A461190ADFCD0093279F /* SelectGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9478A45F190ADFCD0093279F /* SelectGroupViewController.m */; };
+		9478A462190ADFCD0093279F /* SelectGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9478A460190ADFCD0093279F /* SelectGroupViewController.xib */; };
 		9478C6CF15C8093400F443D9 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9478C6CD15C8093400F443D9 /* HelpViewController.m */; };
 		9478C6D015C8093400F443D9 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6CE15C8093400F443D9 /* HelpViewController.xib */; };
 		9478C6D615C8207600F443D9 /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D115C8207600F443D9 /* appstore.png */; };
@@ -324,7 +326,6 @@
 		947D9F8C158BA930000B5136 /* ResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */; };
 		947F861215863579002EAA1E /* DetailViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947F861015863579002EAA1E /* DetailViewController-iPhone.xib */; };
 		947F861315863579002EAA1E /* MasterViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947F861115863579002EAA1E /* MasterViewController-iPhone.xib */; };
-		947F86191587A8C2002EAA1E /* WebServiceController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947F86181587A8C2002EAA1E /* WebServiceController-iPhone.xib */; };
 		94846ED014BCA4FD00388D68 /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECB14BCA4FD00388D68 /* MGSplitCornersView.m */; };
 		94846ED114BCA4FD00388D68 /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECB14BCA4FD00388D68 /* MGSplitCornersView.m */; };
 		94846ED214BCA4FD00388D68 /* MGSplitDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECD14BCA4FD00388D68 /* MGSplitDividerView.m */; };
@@ -615,7 +616,6 @@
 		94A0FAE6153DDAD9004277BF /* virtualize.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A0FAE5153DDAD9004277BF /* virtualize.png */; };
 		94A0FAE7153DDAD9004277BF /* virtualize.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A0FAE5153DDAD9004277BF /* virtualize.png */; };
 		94A3B09B15447C7500C8E132 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A5184A152DF30A0062DA65 /* Security.framework */; };
-		94A404AA158A1BA00084F645 /* FileInfoControlleriPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A404A9158A1BA00084F645 /* FileInfoControlleriPhone.m */; };
 		94A404AC158A299C0084F645 /* ManuallyParserViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A404AB158A299C0084F645 /* ManuallyParserViewController-iPhone.xib */; };
 		94A404B4158A53C10084F645 /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A404B3158A53C10084F645 /* Icon-57.png */; };
 		94A404CF158A635C0084F645 /* CodeNavigatoriPhone-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94A404CE158A635C0084F645 /* CodeNavigatoriPhone-info.plist */; };
@@ -700,6 +700,107 @@
 		94ADF18714BB27EE00BA807A /* linux_0.1 in Resources */ = {isa = PBXBuildFile; fileRef = 94557E5314B05E89004950B4 /* linux_0.1 */; };
 		94B09BB517E77DC600789510 /* FileBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B09BB317E77DC600789510 /* FileBrowserViewController.m */; };
 		94B09BB617E77DC600789510 /* FileBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B09BB417E77DC600789510 /* FileBrowserViewController.xib */; };
+		94B1DCB2191F5B0000909C3E /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9444595E18D74C42008A02DB /* iRate.m */; };
+		94B1DCBA191F5B0200909C3E /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9444595E18D74C42008A02DB /* iRate.m */; };
+		94B1DCBB191F5B0700909C3E /* VersionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9444595918D72B8C008A02DB /* VersionViewController.m */; };
+		94B1DCBC191F5B0800909C3E /* VersionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9444595918D72B8C008A02DB /* VersionViewController.m */; };
+		94B1DCBD191F62DB00909C3E /* VersionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9444595A18D72B8C008A02DB /* VersionViewController.xib */; };
+		94B1DCC0191F64E100909C3E /* libObjectiveGit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* libObjectiveGit-iOS.a */; };
+		94B1DCC1191F650C00909C3E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94785A54184519660012988B /* libz.dylib */; };
+		94B1DCC2191F655100909C3E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94785A411840FAB90012988B /* libiconv.dylib */; };
+		94B1DCC3191F6D2700909C3E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94407B1A16E7BCBD0011F941 /* CoreData.framework */; };
+		94B1DCC4191F6D2B00909C3E /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9478C6DD15C8396300F443D9 /* Twitter.framework */; };
+		94B1DCC5191F6D7F00909C3E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC271546F31700931747 /* SystemConfiguration.framework */; };
+		94B1DCC7191F6E8000909C3E /* GitLogViewCongroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 941656FD1515C3C200838005 /* GitLogViewCongroller.m */; };
+		94B1DCC8191F6E8700909C3E /* GitDiffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0E01528CEF300CBAE18 /* GitDiffViewController.m */; };
+		94B1DCC9191F6E9500909C3E /* GitLogViewCongroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941656FE1515C3C200838005 /* GitLogViewCongroller.xib */; };
+		94B1DCCA191F6E9E00909C3E /* GitLogTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941657111516280200838005 /* GitLogTableCell.xib */; };
+		94B1DCCB191F6EBB00909C3E /* GitDiffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940BE0E11528CEF300CBAE18 /* GitDiffViewController.xib */; };
+		94B1DCCC191F6EC500909C3E /* DiffFileListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0EE1528E64600CBAE18 /* DiffFileListController.m */; };
+		94B1DCCD191F6ED400909C3E /* DiffFileListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940BE0EF1528E64600CBAE18 /* DiffFileListController.xib */; };
+		94B1DCCE191F6EE400909C3E /* DiffInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */; };
+		94B1DCCF191F6EE900909C3E /* DiffInfoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */; };
+		94B1DCD0191F6EF100909C3E /* GidDiffTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E6DB65152CBF41004DBD87 /* GidDiffTableCell.xib */; };
+		94B1DCD1191F6EF700909C3E /* GitCloneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9434A5A4174FC00D004B1A9D /* GitCloneViewController.m */; };
+		94B1DCD2191F6EFF00909C3E /* GitCloneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9434A5A5174FC00D004B1A9D /* GitCloneViewController.xib */; };
+		94B1DCD3191F6F0300909C3E /* GitBranchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22CB18D081BA006CB7A8 /* GitBranchController.m */; };
+		94B1DCD4191F6F0800909C3E /* GitBranchsManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22DA18D0CBB7006CB7A8 /* GitBranchsManagerViewController.m */; };
+		94B1DCD5191F6F0E00909C3E /* GitBranchsManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BA22DB18D0CBB7006CB7A8 /* GitBranchsManagerViewController.xib */; };
+		94B1DCD6191F6F1200909C3E /* GitUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E3761318D495A5006756A3 /* GitUpdateViewController.m */; };
+		94B1DCD7191F6F1700909C3E /* GitUpdateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E3761418D495A5006756A3 /* GitUpdateViewController.xib */; };
+		94B1DCD8191F6F4F00909C3E /* FileListBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CB768117E21369009807F9 /* FileListBrowserController.m */; };
+		94B1DCD9191F6F5500909C3E /* FileBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B09BB317E77DC600789510 /* FileBrowserViewController.m */; };
+		94B1DCDA191F6F5C00909C3E /* FileBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B09BB417E77DC600789510 /* FileBrowserViewController.xib */; };
+		94B1DCDB191F6F6C00909C3E /* JTListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9BAFB18EDA77700CD7C2C /* JTListView.m */; };
+		94B1DCDD191F6F7800909C3E /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 946F857718E841DF00CBFA19 /* ThemeManager.m */; };
+		94B1DCDE191F6F7C00909C3E /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9BAF618EC5BE100CD7C2C /* ThemeSelectorViewController.m */; };
+		94B1DCDF191F6F7D00909C3E /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9BAF618EC5BE100CD7C2C /* ThemeSelectorViewController.m */; };
+		94B1DCE0191F6F8400909C3E /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 946F857718E841DF00CBFA19 /* ThemeManager.m */; };
+		94B1DCE1191F6F8C00909C3E /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BAF718EC5BE100CD7C2C /* ThemeSelectorViewController.xib */; };
+		94B1DCE2191F6F8D00909C3E /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BAF718EC5BE100CD7C2C /* ThemeSelectorViewController.xib */; };
+		94B1DCE3191F6FF000909C3E /* OpenAsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 941E63E218019354008226F2 /* OpenAsViewController.m */; };
+		94B1DCE4191F6FF100909C3E /* OpenAsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 941E63E218019354008226F2 /* OpenAsViewController.m */; };
+		94B1DCE5191F6FF900909C3E /* OpenAsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941E63E318019354008226F2 /* OpenAsViewController.xib */; };
+		94B1DCE6191F6FFA00909C3E /* OpenAsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941E63E318019354008226F2 /* OpenAsViewController.xib */; };
+		94B1DCE7191F6FFF00909C3E /* GitBranchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22D518D09212006CB7A8 /* GitBranchViewController.m */; };
+		94B1DCE8191F700000909C3E /* GitBranchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22D518D09212006CB7A8 /* GitBranchViewController.m */; };
+		94B1DCE9191F700400909C3E /* GitBranchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BA22D618D09212006CB7A8 /* GitBranchViewController.xib */; };
+		94B1DCEA191F700500909C3E /* GitBranchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BA22D618D09212006CB7A8 /* GitBranchViewController.xib */; };
+		94B1DCEB191F704800909C3E /* JavaScriptParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81DC18014587002F8153 /* JavaScriptParser.m */; };
+		94B1DCEC191F704900909C3E /* JavaScriptParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81DC18014587002F8153 /* JavaScriptParser.m */; };
+		94B1DCED191F704E00909C3E /* JavaParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81D918014587002F8153 /* JavaParser.m */; };
+		94B1DCEE191F704F00909C3E /* JavaParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81D918014587002F8153 /* JavaParser.m */; };
+		94B1DCEF191F705500909C3E /* PHPParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81E118014840002F8153 /* PHPParser.m */; };
+		94B1DCF0191F705600909C3E /* PHPParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD81E118014840002F8153 /* PHPParser.m */; };
+		94B1DCF1191F705A00909C3E /* CSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B69880180EEE7A009C7176 /* CSSParser.m */; };
+		94B1DCF2191F707700909C3E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22E018D1EDB1006CB7A8 /* MBProgressHUD.m */; };
+		94B1DCF3191F707800909C3E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22E018D1EDB1006CB7A8 /* MBProgressHUD.m */; };
+		94B1DCF4191F70CA00909C3E /* SelectGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9478A45F190ADFCD0093279F /* SelectGroupViewController.m */; };
+		94B1DCF5191F70CB00909C3E /* SelectGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9478A45F190ADFCD0093279F /* SelectGroupViewController.m */; };
+		94B1DCF6191F70D000909C3E /* SelectGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9478A460190ADFCD0093279F /* SelectGroupViewController.xib */; };
+		94B1DCF7191F70D000909C3E /* SelectGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9478A460190ADFCD0093279F /* SelectGroupViewController.xib */; };
+		94B1DCF8191F711300909C3E /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BC574F18D8969B0027B383 /* libGoogleAnalyticsServices.a */; };
+		94B1DCFA191F714300909C3E /* HandleURLController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB105417550CD500359AE8 /* HandleURLController.m */; };
+		94B1DCFB191F715800909C3E /* OtherFormatResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB10651756548000359AE8 /* OtherFormatResolver.m */; };
+		94B1DCFC191F715A00909C3E /* OtherFormatResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB10651756548000359AE8 /* OtherFormatResolver.m */; };
+		94B1DCFD191F715F00909C3E /* ZipFileResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB105B175516C900359AE8 /* ZipFileResolver.m */; };
+		94B1DCFE191F716000909C3E /* ZipFileResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB105B175516C900359AE8 /* ZipFileResolver.m */; };
+		94B1DCFF191F716500909C3E /* FileFormatResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB10581755146E00359AE8 /* FileFormatResolver.m */; };
+		94B1DD00191F716600909C3E /* FileFormatResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB10581755146E00359AE8 /* FileFormatResolver.m */; };
+		94B1DD01191F719100909C3E /* DisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22B418BE4166006CB7A8 /* DisplayController.m */; };
+		94B1DD02191F719200909C3E /* DisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22B418BE4166006CB7A8 /* DisplayController.m */; };
+		94B1DD03191F71BA00909C3E /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9451D59317F9BD4C00BDAD5E /* MasterViewController.m */; };
+		94B1DD04191F71BB00909C3E /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9451D59317F9BD4C00BDAD5E /* MasterViewController.m */; };
+		94B1DD05191F71D900909C3E /* UploadSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F7B90B17F7487A00A506EE /* UploadSelectionViewController.m */; };
+		94B1DD06191F71DA00909C3E /* UploadSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F7B90B17F7487A00A506EE /* UploadSelectionViewController.m */; };
+		94B1DD07191F71E000909C3E /* UploadSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F7B90C17F7487A00A506EE /* UploadSelectionViewController.xib */; };
+		94B1DD08191F71E200909C3E /* UploadSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F7B90C17F7487A00A506EE /* UploadSelectionViewController.xib */; };
+		94B1DD09191F738400909C3E /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BB0C18EDE0AE00CD7C2C /* SourceCodePro-Regular.ttf */; };
+		94B1DD0A191F738500909C3E /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BB0C18EDE0AE00CD7C2C /* SourceCodePro-Regular.ttf */; };
+		94B1DD0B191F738A00909C3E /* SourceCodePro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BB0018EDDFC400CD7C2C /* SourceCodePro-Black.ttf */; };
+		94B1DD0C191F738A00909C3E /* SourceCodePro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BB0018EDDFC400CD7C2C /* SourceCodePro-Black.ttf */; };
+		94B1DD0D191F738E00909C3E /* SourceCodePro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BB0118EDDFC400CD7C2C /* SourceCodePro-Bold.ttf */; };
+		94B1DD0E191F739000909C3E /* SourceCodePro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BB0118EDDFC400CD7C2C /* SourceCodePro-Bold.ttf */; };
+		94B1DD0F191F739400909C3E /* SourceCodePro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BB0418EDDFC400CD7C2C /* SourceCodePro-Medium.ttf */; };
+		94B1DD10191F739500909C3E /* SourceCodePro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BB0418EDDFC400CD7C2C /* SourceCodePro-Medium.ttf */; };
+		94B1DD11191F739800909C3E /* SourceCodePro-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BB0518EDDFC400CD7C2C /* SourceCodePro-Semibold.ttf */; };
+		94B1DD12191F739900909C3E /* SourceCodePro-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BB0518EDDFC400CD7C2C /* SourceCodePro-Semibold.ttf */; };
+		94B1DD13191F7EFE00909C3E /* Themes in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BAF218EAF4F200CD7C2C /* Themes */; };
+		94B1DD14191F7F2200909C3E /* BuildInParser in Resources */ = {isa = PBXBuildFile; fileRef = 941E63DF1801541C008226F2 /* BuildInParser */; };
+		94B1DD15191F973B00909C3E /* 1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 94C7C1791850E170003A8C03 /* 1.jpeg */; };
+		94B1DD1D191F99E600909C3E /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B1DD18191F99E600909C3E /* FPPopoverController.m */; };
+		94B1DD1E191F99E600909C3E /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B1DD1A191F99E600909C3E /* FPPopoverView.m */; };
+		94B1DD1F191F99E600909C3E /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B1DD1C191F99E600909C3E /* FPTouchView.m */; };
+		94B1DD24191FE71900909C3E /* WebServiceControllerFormSheet-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B1DD23191FE71900909C3E /* WebServiceControllerFormSheet-iPhone.xib */; };
+		94B1DD261921263900909C3E /* GitCloneViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B1DD251921263900909C3E /* GitCloneViewController-iPhone.xib */; };
+		94B1DD2A1921327200909C3E /* GitLogViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B1DD291921327200909C3E /* GitLogViewController-iPhone.xib */; };
+		94B1DD2C19213DC200909C3E /* GitUpdateViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B1DD2B19213DC200909C3E /* GitUpdateViewController-iPhone.xib */; };
+		94B1DD2D192259FD00909C3E /* DisplayModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 946F857B18E8782900CBFA19 /* DisplayModeController.m */; };
+		94B1DD2E192259FF00909C3E /* DisplayModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 946F857B18E8782900CBFA19 /* DisplayModeController.m */; };
+		94B1DD3019225C7D00909C3E /* ThemeSelectorViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B1DD2F19225C7D00909C3E /* ThemeSelectorViewController-iPhone.xib */; };
+		94B1DD3119226C7B00909C3E /* HighLightWordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */; };
+		94B1DD3219226C9F00909C3E /* text-list.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C73FD1804443700065E65 /* text-list.png */; };
+		94B1DD3319226CCE00909C3E /* binocular.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C73FB180443A700065E65 /* binocular.png */; };
 		94B23AD81499025A00A83395 /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B23AD71499025A00A83395 /* HistoryController.m */; };
 		94B4036A14A0DE0300E3A636 /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4033014A0D5EB00E3A636 /* libHttpService.a */; };
 		94B4038114A0ED4700E3A636 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4038014A0ED4700E3A636 /* CFNetwork.framework */; };
@@ -870,12 +971,10 @@
 		94F4249A15387E1E005FC4C8 /* show_masterview.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F4249715387E1E005FC4C8 /* show_masterview.png */; };
 		94F4249B15387E1E005FC4C8 /* show_masterview.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F4249715387E1E005FC4C8 /* show_masterview.png */; };
 		94F6EEE11587BD30002DE115 /* ResultViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F6EEE01587BD30002DE115 /* ResultViewController-iPhone.xib */; };
-		94F6EEE31587C19A002DE115 /* HighLightWordController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F6EEE21587C19A002DE115 /* HighLightWordController-iPhone.xib */; };
 		94F7B90D17F7487A00A506EE /* UploadSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F7B90B17F7487A00A506EE /* UploadSelectionViewController.m */; };
 		94F7B90E17F7487A00A506EE /* UploadSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F7B90C17F7487A00A506EE /* UploadSelectionViewController.xib */; };
 		94F7B91617F84A7600A506EE /* WebServiceControllerFormSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F7B91517F84A7600A506EE /* WebServiceControllerFormSheet.xib */; };
 		94F9BAF318EAF4F200CD7C2C /* Themes in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BAF218EAF4F200CD7C2C /* Themes */; };
-		94F9BAF418EC5B3800CD7C2C /* DisplayModeController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 946F857918E8782900CBFA19 /* DisplayModeController-iPhone.xib */; };
 		94F9BAF818EC5BE100CD7C2C /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9BAF618EC5BE100CD7C2C /* ThemeSelectorViewController.m */; };
 		94F9BAF918EC5BE100CD7C2C /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BAF718EC5BE100CD7C2C /* ThemeSelectorViewController.xib */; };
 		94F9BAFC18EDA77700CD7C2C /* JTListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9BAFB18EDA77700CD7C2C /* JTListView.m */; };
@@ -968,6 +1067,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 94B4031A14A0D5EA00E3A636;
 			remoteInfo = HttpService;
+		};
+		94B1DCBE191F64D600909C3E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 940D94BB18F99B75006D5D0D /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 04DB4644133AB57600D9C624;
+			remoteInfo = "ObjectiveGit-iOS";
 		};
 		94B4032F14A0D5EB00E3A636 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1312,6 +1418,9 @@
 		94785A54184519660012988B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		94785A57184B9F350012988B /* MyWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyWebView.h; path = MyWebView/MyWebView.h; sourceTree = "<group>"; };
 		94785A58184B9F350012988B /* MyWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyWebView.m; path = MyWebView/MyWebView.m; sourceTree = "<group>"; };
+		9478A45E190ADFCD0093279F /* SelectGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectGroupViewController.h; path = Comments/SelectGroupViewController.h; sourceTree = "<group>"; };
+		9478A45F190ADFCD0093279F /* SelectGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectGroupViewController.m; path = Comments/SelectGroupViewController.m; sourceTree = "<group>"; };
+		9478A460190ADFCD0093279F /* SelectGroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectGroupViewController.xib; path = Comments/SelectGroupViewController.xib; sourceTree = "<group>"; };
 		9478C6CC15C8093400F443D9 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpViewController.h; path = help/HelpViewController.h; sourceTree = "<group>"; };
 		9478C6CD15C8093400F443D9 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpViewController.m; path = help/HelpViewController.m; sourceTree = "<group>"; };
 		9478C6CE15C8093400F443D9 /* HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HelpViewController.xib; path = help/HelpViewController.xib; sourceTree = "<group>"; };
@@ -1380,7 +1489,7 @@
 		94A404AB158A299C0084F645 /* ManuallyParserViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "ManuallyParserViewController-iPhone.xib"; path = "ManuallyParser/ManuallyParserViewController-iPhone.xib"; sourceTree = "<group>"; };
 		94A404B3158A53C10084F645 /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57.png"; sourceTree = "<group>"; };
 		94A404B9158A56B50084F645 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		94A404CE158A635C0084F645 /* CodeNavigatoriPhone-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CodeNavigatoriPhone-info.plist"; sourceTree = "<group>"; };
+		94A404CE158A635C0084F645 /* CodeNavigatoriPhone-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CodeNavigatoriPhone-info.plist"; sourceTree = SOURCE_ROOT; };
 		94A5079214F6AA1C00587A47 /* virbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = virbackground.png; sourceTree = "<group>"; };
 		94A51847152DF2AC0062DA65 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 		94A5184A152DF30A0062DA65 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -1402,6 +1511,18 @@
 		94B09BB217E77DC600789510 /* FileBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileBrowserViewController.h; path = FileListBrowser/FileBrowserViewController.h; sourceTree = "<group>"; };
 		94B09BB317E77DC600789510 /* FileBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileBrowserViewController.m; path = FileListBrowser/FileBrowserViewController.m; sourceTree = "<group>"; };
 		94B09BB417E77DC600789510 /* FileBrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FileBrowserViewController.xib; path = FileListBrowser/FileBrowserViewController.xib; sourceTree = "<group>"; };
+		94B1DD17191F99E600909C3E /* FPPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPPopoverController.h; path = FPPopover/FPPopoverController.h; sourceTree = "<group>"; };
+		94B1DD18191F99E600909C3E /* FPPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPPopoverController.m; path = FPPopover/FPPopoverController.m; sourceTree = "<group>"; };
+		94B1DD19191F99E600909C3E /* FPPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPPopoverView.h; path = FPPopover/FPPopoverView.h; sourceTree = "<group>"; };
+		94B1DD1A191F99E600909C3E /* FPPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPPopoverView.m; path = FPPopover/FPPopoverView.m; sourceTree = "<group>"; };
+		94B1DD1B191F99E600909C3E /* FPTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPTouchView.h; path = FPPopover/FPTouchView.h; sourceTree = "<group>"; };
+		94B1DD1C191F99E600909C3E /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPTouchView.m; path = FPPopover/FPTouchView.m; sourceTree = "<group>"; };
+		94B1DD20191F9C5700909C3E /* ARCMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARCMacros.h; path = FPPopover/ARCMacros.h; sourceTree = "<group>"; };
+		94B1DD23191FE71900909C3E /* WebServiceControllerFormSheet-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "WebServiceControllerFormSheet-iPhone.xib"; path = "CodeNavigator/WebServiceControllerFormSheet-iPhone.xib"; sourceTree = "<group>"; };
+		94B1DD251921263900909C3E /* GitCloneViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GitCloneViewController-iPhone.xib"; sourceTree = "<group>"; };
+		94B1DD291921327200909C3E /* GitLogViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GitLogViewController-iPhone.xib"; sourceTree = "<group>"; };
+		94B1DD2B19213DC200909C3E /* GitUpdateViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "GitUpdateViewController-iPhone.xib"; path = "CodeNavigator/Git/GitUpdateViewController-iPhone.xib"; sourceTree = "<group>"; };
+		94B1DD2F19225C7D00909C3E /* ThemeSelectorViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "ThemeSelectorViewController-iPhone.xib"; path = "Theme/ThemeSelectorViewController-iPhone.xib"; sourceTree = SOURCE_ROOT; };
 		94B23AD61499025A00A83395 /* HistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryController.h; path = CodeNavigator/HistoryController.h; sourceTree = "<group>"; };
 		94B23AD71499025A00A83395 /* HistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryController.m; path = CodeNavigator/HistoryController.m; sourceTree = "<group>"; };
 		94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HttpService.xcodeproj; path = HttpService/HttpService.xcodeproj; sourceTree = "<group>"; };
@@ -1561,14 +1682,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B1DCC2191F655100909C3E /* libiconv.dylib in Frameworks */,
+				94B1DCC1191F650C00909C3E /* libz.dylib in Frameworks */,
+				94B1DCC0191F64E100909C3E /* libObjectiveGit-iOS.a in Frameworks */,
 				949DC2031583E8CF00385796 /* QuartzCore.framework in Frameworks */,
 				949DC2041583E8CF00385796 /* MessageUI.framework in Frameworks */,
+				94B1DCC4191F6D2B00909C3E /* Twitter.framework in Frameworks */,
+				94B1DCC5191F6D7F00909C3E /* SystemConfiguration.framework in Frameworks */,
 				949DC2051583E8CF00385796 /* Security.framework in Frameworks */,
 				949DC2071583E8CF00385796 /* libZip.a in Frameworks */,
 				949DC2081583E8CF00385796 /* iAd.framework in Frameworks */,
 				949DC2091583E8CF00385796 /* CFNetwork.framework in Frameworks */,
+				94B1DCC3191F6D2700909C3E /* CoreData.framework in Frameworks */,
 				949DC20A1583E8CF00385796 /* libHttpService.a in Frameworks */,
 				949DC20B1583E8CF00385796 /* UIKit.framework in Frameworks */,
+				94B1DCF8191F711300909C3E /* libGoogleAnalyticsServices.a in Frameworks */,
 				949DC20C1583E8CF00385796 /* Foundation.framework in Frameworks */,
 				949DC20D1583E8CF00385796 /* CoreGraphics.framework in Frameworks */,
 			);
@@ -1661,7 +1789,6 @@
 				94407B1A16E7BCBD0011F941 /* CoreData.framework */,
 				94407B1216E7B2400011F941 /* GoogleAnalytics */,
 				9478C6DD15C8396300F443D9 /* Twitter.framework */,
-				94A404CE158A635C0084F645 /* CodeNavigatoriPhone-info.plist */,
 				94205713157B938B00178CBF /* QuartzCore.framework */,
 				94B8EC271546F31700931747 /* SystemConfiguration.framework */,
 				94B8EC251546F30900931747 /* MessageUI.framework */,
@@ -1697,12 +1824,13 @@
 				94AB106317563CDB00359AE8 /* ASIHTTPRequest */,
 				94AB1056175513D400359AE8 /* FileFormatResolver */,
 				94CB767F17E20662009807F9 /* FileListBrowser */,
-				94F7B90917F7482900A506EE /* UploadSelection */,
 				948C7464180AE89800065E65 /* History */,
 				94785A56184B9EC00012988B /* WebView */,
 				94BA22AB18BE4121006CB7A8 /* DisplayController */,
 				9444595018D72A89008A02DB /* Version */,
 				946F856E18E841A000CBFA19 /* Theme */,
+				94B1DD16191F99B100909C3E /* FPPopover */,
+				94F7B90917F7482900A506EE /* UploadSelection */,
 				9431D73E14910B3000B0900E /* CodeNavigator */,
 				9431D73714910B3000B0900E /* Frameworks */,
 				9431D73514910B3000B0900E /* Products */,
@@ -1740,16 +1868,22 @@
 		9431D73E14910B3000B0900E /* CodeNavigator */ = {
 			isa = PBXGroup;
 			children = (
-				94DA0BBC14A624680035DB39 /* Utils.h */,
 				94DA0BBD14A624680035DB39 /* Utils.m */,
-				9431D74714910B3000B0900E /* AppDelegate.h */,
-				9431D74814910B3000B0900E /* AppDelegate.m */,
 				9431D74A14910B3000B0900E /* MasterViewController.h */,
 				9451D59317F9BD4C00BDAD5E /* MasterViewController.m */,
 				9431D74D14910B3000B0900E /* DetailViewController.h */,
 				9431D74E14910B3000B0900E /* DetailViewController.m */,
-				9432E3AE149D02D400AB5BB7 /* NavigationController.h */,
 				9432E3AF149D02D400AB5BB7 /* NavigationController.m */,
+				94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */,
+				9431D75014910B3000B0900E /* MasterViewController.xib */,
+				947F861115863579002EAA1E /* MasterViewController-iPhone.xib */,
+				9431D75314910B3000B0900E /* DetailViewController.xib */,
+				947F861015863579002EAA1E /* DetailViewController-iPhone.xib */,
+				94A404CE158A635C0084F645 /* CodeNavigatoriPhone-info.plist */,
+				94DA0BBC14A624680035DB39 /* Utils.h */,
+				9431D74714910B3000B0900E /* AppDelegate.h */,
+				9431D74814910B3000B0900E /* AppDelegate.m */,
+				9432E3AE149D02D400AB5BB7 /* NavigationController.h */,
 				94603D04149E041400D72561 /* ResultViewController.h */,
 				94603D05149E041400D72561 /* ResultViewController.m */,
 				94EE32D0149FAE0B0088501D /* GotoLineViewController.h */,
@@ -1759,17 +1893,12 @@
 				94FB0FE814BDB3A50084E457 /* HighLightWordController.h */,
 				94FB0FE914BDB3A50084E457 /* HighLightWordController.m */,
 				9429000114D4E16E002793BD /* PercentViewController.xib */,
-				94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */,
 				94F6EEE21587C19A002DE115 /* HighLightWordController-iPhone.xib */,
 				94D8703014A65888002F2DBB /* FilePathInfoPopupController.xib */,
 				9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */,
 				94EE32D2149FAE0B0088501D /* GotoLineViewController.xib */,
 				94603D06149E041400D72561 /* ResultViewController.xib */,
 				94F6EEE01587BD30002DE115 /* ResultViewController-iPhone.xib */,
-				9431D75014910B3000B0900E /* MasterViewController.xib */,
-				947F861115863579002EAA1E /* MasterViewController-iPhone.xib */,
-				9431D75314910B3000B0900E /* DetailViewController.xib */,
-				947F861015863579002EAA1E /* DetailViewController-iPhone.xib */,
 				9432E3AC149CF9CE00AB5BB7 /* NavigationController.xib */,
 				94CB787E156E80C8009452D8 /* FileTableViewCell.xib */,
 				948C740D1806E5A300065E65 /* Images.xcassets */,
@@ -2038,6 +2167,7 @@
 				9466466A14A2370700B30CD2 /* WebServiceController.xib */,
 				947F86181587A8C2002EAA1E /* WebServiceController-iPhone.xib */,
 				94F7B91517F84A7600A506EE /* WebServiceControllerFormSheet.xib */,
+				94B1DD23191FE71900909C3E /* WebServiceControllerFormSheet-iPhone.xib */,
 			);
 			name = WebService;
 			sourceTree = "<group>";
@@ -2112,6 +2242,7 @@
 				94F9BAF518EC5BE100CD7C2C /* ThemeSelectorViewController.h */,
 				94F9BAF618EC5BE100CD7C2C /* ThemeSelectorViewController.m */,
 				94F9BAF718EC5BE100CD7C2C /* ThemeSelectorViewController.xib */,
+				94B1DD2F19225C7D00909C3E /* ThemeSelectorViewController-iPhone.xib */,
 			);
 			name = Theme;
 			path = CodeNavigator;
@@ -2297,6 +2428,9 @@
 				94618177155EEDAB00A25635 /* CommentManager.m */,
 				94618178155EEDAB00A25635 /* CommentManager.xib */,
 				9452B1AF1589024100B9A9F8 /* CommentManager-iPhone.xib */,
+				9478A45E190ADFCD0093279F /* SelectGroupViewController.h */,
+				9478A45F190ADFCD0093279F /* SelectGroupViewController.m */,
+				9478A460190ADFCD0093279F /* SelectGroupViewController.xib */,
 			);
 			name = Comment;
 			sourceTree = "<group>";
@@ -2343,6 +2477,20 @@
 			children = (
 			);
 			name = ASIHTTPRequest;
+			sourceTree = "<group>";
+		};
+		94B1DD16191F99B100909C3E /* FPPopover */ = {
+			isa = PBXGroup;
+			children = (
+				94B1DD20191F9C5700909C3E /* ARCMacros.h */,
+				94B1DD1A191F99E600909C3E /* FPPopoverView.m */,
+				94B1DD1C191F99E600909C3E /* FPTouchView.m */,
+				94B1DD17191F99E600909C3E /* FPPopoverController.h */,
+				94B1DD18191F99E600909C3E /* FPPopoverController.m */,
+				94B1DD19191F99E600909C3E /* FPPopoverView.h */,
+				94B1DD1B191F99E600909C3E /* FPTouchView.h */,
+			);
+			name = FPPopover;
 			sourceTree = "<group>";
 		};
 		94B4032C14A0D5EA00E3A636 /* Products */ = {
@@ -2431,6 +2579,7 @@
 				941656FC1515C3C200838005 /* GitLogViewCongroller.h */,
 				941656FD1515C3C200838005 /* GitLogViewCongroller.m */,
 				941656FE1515C3C200838005 /* GitLogViewCongroller.xib */,
+				94B1DD291921327200909C3E /* GitLogViewController-iPhone.xib */,
 				941657111516280200838005 /* GitLogTableCell.xib */,
 				940BE0DF1528CEF300CBAE18 /* GitDiffViewController.h */,
 				940BE0E01528CEF300CBAE18 /* GitDiffViewController.m */,
@@ -2445,6 +2594,7 @@
 				9434A5A3174FC00D004B1A9D /* GitCloneViewController.h */,
 				9434A5A4174FC00D004B1A9D /* GitCloneViewController.m */,
 				9434A5A5174FC00D004B1A9D /* GitCloneViewController.xib */,
+				94B1DD251921263900909C3E /* GitCloneViewController-iPhone.xib */,
 				94BA22CA18D081BA006CB7A8 /* GitBranchController.h */,
 				94BA22CB18D081BA006CB7A8 /* GitBranchController.m */,
 				94BA22D918D0CBB7006CB7A8 /* GitBranchsManagerViewController.h */,
@@ -2453,6 +2603,7 @@
 				94E3761218D495A5006756A3 /* GitUpdateViewController.h */,
 				94E3761318D495A5006756A3 /* GitUpdateViewController.m */,
 				94E3761418D495A5006756A3 /* GitUpdateViewController.xib */,
+				94B1DD2B19213DC200909C3E /* GitUpdateViewController-iPhone.xib */,
 			);
 			name = Git;
 			sourceTree = "<group>";
@@ -2541,6 +2692,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				94B1DCBF191F64D600909C3E /* PBXTargetDependency */,
 				949DC1941583E8CF00385796 /* PBXTargetDependency */,
 				949DC1961583E8CF00385796 /* PBXTargetDependency */,
 			);
@@ -2577,6 +2729,9 @@
 				LastUpgradeCheck = 0430;
 				TargetAttributes = {
 					9431D73314910B3000B0900E = {
+						DevelopmentTeam = KTWHB3SHL5;
+					};
+					949DC1911583E8CF00385796 = {
 						DevelopmentTeam = KTWHB3SHL5;
 					};
 				};
@@ -2674,6 +2829,7 @@
 				94603D08149E041400D72561 /* ResultViewController.xib in Resources */,
 				94EE32D4149FAE0B0088501D /* GotoLineViewController.xib in Resources */,
 				9419B87D14A4B3BE00AB679B /* ResultTableCellView.xib in Resources */,
+				9478A462190ADFCD0093279F /* SelectGroupViewController.xib in Resources */,
 				94D8703214A65888002F2DBB /* FilePathInfoPopupController.xib in Resources */,
 				948C7409180449AE00065E65 /* star.png in Resources */,
 				94557E5414B05E89004950B4 /* linux_0.1 in Resources */,
@@ -2795,39 +2951,59 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B1DD15191F973B00909C3E /* 1.jpeg in Resources */,
+				94B1DD14191F7F2200909C3E /* BuildInParser in Resources */,
+				94B1DD13191F7EFE00909C3E /* Themes in Resources */,
 				949DC2101583E8CF00385796 /* lgz_javascript.js in Resources */,
 				949DC2111583E8CF00385796 /* InfoPlist.strings in Resources */,
 				949DC2141583E8CF00385796 /* folder.png in Resources */,
 				949DC2151583E8CF00385796 /* project.png in Resources */,
+				94B1DD2A1921327200909C3E /* GitLogViewController-iPhone.xib in Resources */,
 				949DC2161583E8CF00385796 /* NavigationController.xib in Resources */,
 				949DC21D1583E8CF00385796 /* linux_0.1 in Resources */,
 				949DC2211583E8CF00385796 /* settings.png in Resources */,
+				94B1DD12191F739900909C3E /* SourceCodePro-Semibold.ttf in Resources */,
 				949DC2241583E8CF00385796 /* bookmark.png in Resources */,
 				949DC2281583E8CF00385796 /* iTunesArtwork in Resources */,
 				949DC2291583E8CF00385796 /* VirtualizeViewController.xib in Resources */,
+				94B1DD3219226C9F00909C3E /* text-list.png in Resources */,
+				94B1DCE6191F6FFA00909C3E /* OpenAsViewController.xib in Resources */,
 				949DC22A1583E8CF00385796 /* ProjectListController.xib in Resources */,
 				949DC22B1583E8CF00385796 /* virbackground.png in Resources */,
 				949DC22C1583E8CF00385796 /* ImagePreviewController.xib in Resources */,
 				949DC22D1583E8CF00385796 /* ManuallAddChild.png in Resources */,
+				94B1DD0E191F739000909C3E /* SourceCodePro-Bold.ttf in Resources */,
 				949DC22E1583E8CF00385796 /* manuallAddParent.png in Resources */,
+				94B1DD3319226CCE00909C3E /* binocular.png in Resources */,
 				949DC22F1583E8CF00385796 /* EntryBg.png in Resources */,
 				949DC2301583E8CF00385796 /* EntryHBg.png in Resources */,
 				949DC2311583E8CF00385796 /* ccFile.png in Resources */,
+				94B1DCC9191F6E9500909C3E /* GitLogViewCongroller.xib in Resources */,
+				94B1DCF7191F70D000909C3E /* SelectGroupViewController.xib in Resources */,
 				949DC2321583E8CF00385796 /* cFile.png in Resources */,
+				94B1DCCA191F6E9E00909C3E /* GitLogTableCell.xib in Resources */,
 				949DC2331583E8CF00385796 /* cppFile.png in Resources */,
 				949DC2341583E8CF00385796 /* csFile.png in Resources */,
 				949DC2351583E8CF00385796 /* File.png in Resources */,
+				94B1DCEA191F700500909C3E /* GitBranchViewController.xib in Resources */,
+				94B1DCCD191F6ED400909C3E /* DiffFileListController.xib in Resources */,
 				949DC2361583E8CF00385796 /* hFile.png in Resources */,
+				94B1DD2C19213DC200909C3E /* GitUpdateViewController-iPhone.xib in Resources */,
 				949DC2371583E8CF00385796 /* hppFile.png in Resources */,
 				949DC2381583E8CF00385796 /* javaFile.png in Resources */,
+				94B1DD08191F71E200909C3E /* UploadSelectionViewController.xib in Resources */,
+				94B1DD10191F739500909C3E /* SourceCodePro-Medium.ttf in Resources */,
 				949DC2391583E8CF00385796 /* mFile.png in Resources */,
 				949DC23A1583E8CF00385796 /* mkFile.png in Resources */,
 				949DC23B1583E8CF00385796 /* mmFile.png in Resources */,
+				94B1DCDA191F6F5C00909C3E /* FileBrowserViewController.xib in Resources */,
 				949DC23C1583E8CF00385796 /* sFile.png in Resources */,
 				949DC23D1583E8CF00385796 /* back.png in Resources */,
 				949DC23E1583E8CF00385796 /* forward.png in Resources */,
 				949DC23F1583E8CF00385796 /* NewEntry.png in Resources */,
+				94B1DD3019225C7D00909C3E /* ThemeSelectorViewController-iPhone.xib in Resources */,
 				949DC2401583E8CF00385796 /* max.png in Resources */,
+				94B1DD0A191F738500909C3E /* SourceCodePro-Regular.ttf in Resources */,
 				949DC2411583E8CF00385796 /* Help.html in Resources */,
 				949DC2421583E8CF00385796 /* Default-Landscape~ipad.png in Resources */,
 				949DC2431583E8CF00385796 /* Default-Portrait~ipad.png in Resources */,
@@ -2836,6 +3012,7 @@
 				949DC24E1583E8CF00385796 /* checkbox_no.png in Resources */,
 				949DC24F1583E8CF00385796 /* checkbox_yes.png in Resources */,
 				949DC2501583E8CF00385796 /* refresh.png in Resources */,
+				94B1DCCB191F6EBB00909C3E /* GitDiffViewController.xib in Resources */,
 				949DC2511583E8CF00385796 /* refresh_error.png in Resources */,
 				949DC2521583E8CF00385796 /* hide_masterview.png in Resources */,
 				949DC2531583E8CF00385796 /* show_masterview.png in Resources */,
@@ -2845,25 +3022,33 @@
 				949DC2571583E8CF00385796 /* virtualize.png in Resources */,
 				949DC2581583E8CF00385796 /* version_control.png in Resources */,
 				949DC25F1583E8CF00385796 /* SecurityViewController.xib in Resources */,
+				94B1DD261921263900909C3E /* GitCloneViewController-iPhone.xib in Resources */,
+				94B1DCD0191F6EF100909C3E /* GidDiffTableCell.xib in Resources */,
 				949DC2601583E8CF00385796 /* Lock.png in Resources */,
 				949DC2631583E8CF00385796 /* Comment.png in Resources */,
 				949DC2641583E8CF00385796 /* FileTableViewCell.xib in Resources */,
 				949DC2651583E8CF00385796 /* FileInfoViewController.xib in Resources */,
+				94B1DCD5191F6F0E00909C3E /* GitBranchsManagerViewController.xib in Resources */,
+				94B1DCE2191F6F8D00909C3E /* ThemeSelectorViewController.xib in Resources */,
 				947F861215863579002EAA1E /* DetailViewController-iPhone.xib in Resources */,
+				94B1DCBD191F62DB00909C3E /* VersionViewController.xib in Resources */,
 				947F861315863579002EAA1E /* MasterViewController-iPhone.xib in Resources */,
-				947F86191587A8C2002EAA1E /* WebServiceController-iPhone.xib in Resources */,
+				94B1DD0C191F738A00909C3E /* SourceCodePro-Black.ttf in Resources */,
 				94F6EEE11587BD30002DE115 /* ResultViewController-iPhone.xib in Resources */,
-				94F6EEE31587C19A002DE115 /* HighLightWordController-iPhone.xib in Resources */,
 				9452B1AE1588FF4A00B9A9F8 /* CommentViewController-iPhone.xib in Resources */,
+				94B1DD3119226C7B00909C3E /* HighLightWordController.xib in Resources */,
 				9452B1B01589024100B9A9F8 /* CommentManager-iPhone.xib in Resources */,
 				94A404AC158A299C0084F645 /* ManuallyParserViewController-iPhone.xib in Resources */,
 				94A404B4158A53C10084F645 /* Icon-57.png in Resources */,
+				94B1DCCF191F6EE900909C3E /* DiffInfoListViewController.xib in Resources */,
+				94B1DCD2191F6EFF00909C3E /* GitCloneViewController.xib in Resources */,
 				94A404CF158A635C0084F645 /* CodeNavigatoriPhone-info.plist in Resources */,
 				94A404D1158A69920084F645 /* Default.png in Resources */,
 				947D9F8C158BA930000B5136 /* ResultTableCellView.xib in Resources */,
 				944A5B4F160B60010076410C /* Default@2x.png in Resources */,
+				94B1DD24191FE71900909C3E /* WebServiceControllerFormSheet-iPhone.xib in Resources */,
 				944A5B51160B60670076410C /* Default-568h@2x.png in Resources */,
-				94F9BAF418EC5B3800CD7C2C /* DisplayModeController-iPhone.xib in Resources */,
+				94B1DCD7191F6F1700909C3E /* GitUpdateViewController.xib in Resources */,
 				948E145A164169FD00CBBD5B /* FunctionListViewController.xib in Resources */,
 				948E145C16416A1200CBBD5B /* TagItemCell.xib in Resources */,
 			);
@@ -2886,16 +3071,20 @@
 				94ADF17814BB27EE00BA807A /* MasterViewController.xib in Resources */,
 				94ADF17914BB27EE00BA807A /* DetailViewController.xib in Resources */,
 				94ADF17A14BB27EE00BA807A /* folder.png in Resources */,
+				94B1DD09191F738400909C3E /* SourceCodePro-Regular.ttf in Resources */,
 				94ADF17B14BB27EE00BA807A /* project.png in Resources */,
 				94ADF17C14BB27EE00BA807A /* NavigationController.xib in Resources */,
 				94ADF17D14BB27EE00BA807A /* ResultViewController.xib in Resources */,
 				94ADF17E14BB27EE00BA807A /* GotoLineViewController.xib in Resources */,
+				94B1DCF6191F70D000909C3E /* SelectGroupViewController.xib in Resources */,
 				94ADF17F14BB27EE00BA807A /* WebServiceController.xib in Resources */,
 				94ADF18014BB27EE00BA807A /* ResultTableCellView.xib in Resources */,
+				94B1DCE1191F6F8C00909C3E /* ThemeSelectorViewController.xib in Resources */,
 				94ADF18114BB27EE00BA807A /* FilePathInfoPopupController.xib in Resources */,
 				94ADF18714BB27EE00BA807A /* linux_0.1 in Resources */,
 				94FAC80414C1649400B9A821 /* settings.png in Resources */,
 				9443BF5814D1A40200355278 /* HistoryListController.xib in Resources */,
+				94B1DD0B191F738A00909C3E /* SourceCodePro-Black.ttf in Resources */,
 				9429000514D4E16E002793BD /* PercentViewController.xib in Resources */,
 				94103DF114D86F1300212EBB /* bookmark.png in Resources */,
 				9418F76714D9B0C4003134E6 /* Icon-72.png in Resources */,
@@ -2909,7 +3098,9 @@
 				9424660D1502AA2F001701C4 /* ManuallAddChild.png in Resources */,
 				9424660F1502AA2F001701C4 /* manuallAddParent.png in Resources */,
 				942466121502D53A001701C4 /* EntryBg.png in Resources */,
+				94B1DD07191F71E000909C3E /* UploadSelectionViewController.xib in Resources */,
 				9424662315034C52001701C4 /* EntryHBg.png in Resources */,
+				94B1DD0D191F738E00909C3E /* SourceCodePro-Bold.ttf in Resources */,
 				94246658150383C2001701C4 /* ccFile.png in Resources */,
 				9424665A150383C2001701C4 /* cFile.png in Resources */,
 				9424665C150383C2001701C4 /* cppFile.png in Resources */,
@@ -2938,11 +3129,14 @@
 				94A51853152DF8D70062DA65 /* DropBoxViewController.xib in Resources */,
 				9457C78F153086FC00BB9185 /* masterView_bg.png in Resources */,
 				9457C7921530923800BB9185 /* nav_backButton_icon.png in Resources */,
+				94B1DCE5191F6FF900909C3E /* OpenAsViewController.xib in Resources */,
 				9457C7951530B91600BB9185 /* SelectionTableCell.xib in Resources */,
 				9457C7991530BA3800BB9185 /* checkbox_no.png in Resources */,
 				9457C79B1530BA3800BB9185 /* checkbox_yes.png in Resources */,
+				94B1DD0F191F739400909C3E /* SourceCodePro-Medium.ttf in Resources */,
 				94BF99BD1534887000F4EFFD /* refresh.png in Resources */,
 				94BF99C015348A6700F4EFFD /* refresh_error.png in Resources */,
+				94B1DD11191F739800909C3E /* SourceCodePro-Semibold.ttf in Resources */,
 				94F4249915387E1E005FC4C8 /* hide_masterview.png in Resources */,
 				94F4249B15387E1E005FC4C8 /* show_masterview.png in Resources */,
 				94D1BF7A153C56420007A8EB /* forward_history.png in Resources */,
@@ -2952,6 +3146,7 @@
 				94352108153EFC1E003F316A /* version_control.png in Resources */,
 				94B8EC221546F2B600931747 /* Mediation in Resources */,
 				9443D1F1154EDA6A008CB52D /* SecurityViewController.xib in Resources */,
+				94B1DCE9191F700400909C3E /* GitBranchViewController.xib in Resources */,
 				9443D1F4154FF4D8008CB52D /* Lock.png in Resources */,
 				948F1C7615583B7600AE4C99 /* CommentViewController.xib in Resources */,
 				9461817C155EEDAB00A25635 /* CommentManager.xib in Resources */,
@@ -3046,6 +3241,7 @@
 				94B69881180EEE7A009C7176 /* CSSParser.m in Sources */,
 				944DD7DA15277591000473BE /* dif_dir.c in Sources */,
 				944DD7DD152775FC000473BE /* analyze.c in Sources */,
+				9478A461190ADFCD0093279F /* SelectGroupViewController.m in Sources */,
 				944DD7E115277625000473BE /* cmpbuf.c in Sources */,
 				944DD7E4152776D5000473BE /* version.c in Sources */,
 				94BA22DC18D0CBB7006CB7A8 /* GitBranchsManagerViewController.m in Sources */,
@@ -3125,6 +3321,7 @@
 				94785971162C5A08006E4575 /* rexx.c in Sources */,
 				94785972162C5A08006E4575 /* routines.c in Sources */,
 				94785973162C5A08006E4575 /* ruby.c in Sources */,
+				94B1DD2D192259FD00909C3E /* DisplayModeController.m in Sources */,
 				94785974162C5A08006E4575 /* scheme.c in Sources */,
 				94785975162C5A08006E4575 /* sh.c in Sources */,
 				94785976162C5A08006E4575 /* slang.c in Sources */,
@@ -3168,8 +3365,12 @@
 				948E146016416D2600CBBD5B /* ant.c in Sources */,
 				948E146116416D2600CBBD5B /* args.c in Sources */,
 				948E146216416D2600CBBD5B /* args.h in Sources */,
+				94B1DD06191F71DA00909C3E /* UploadSelectionViewController.m in Sources */,
+				94B1DD01191F719100909C3E /* DisplayController.m in Sources */,
 				948E146316416D2600CBBD5B /* asm.c in Sources */,
 				948E146416416D2600CBBD5B /* asp.c in Sources */,
+				94B1DCCC191F6EC500909C3E /* DiffFileListController.m in Sources */,
+				94B1DCFA191F714300909C3E /* HandleURLController.m in Sources */,
 				948E146516416D2600CBBD5B /* awk.c in Sources */,
 				948E146616416D2600CBBD5B /* basic.c in Sources */,
 				948E146716416D2600CBBD5B /* beta.c in Sources */,
@@ -3177,7 +3378,9 @@
 				948E146916416D2600CBBD5B /* cobol.c in Sources */,
 				948E146A16416D2600CBBD5B /* config.h in Sources */,
 				948E146B16416D2600CBBD5B /* css.c in Sources */,
+				94B1DCD8191F6F4F00909C3E /* FileListBrowserController.m in Sources */,
 				948E146C16416D2600CBBD5B /* ctags_main.c in Sources */,
+				94B1DCDF191F6F7D00909C3E /* ThemeSelectorViewController.m in Sources */,
 				948E146D16416D2600CBBD5B /* ctags_main.h in Sources */,
 				948E146E16416D2600CBBD5B /* ctags.h in Sources */,
 				948E146F16416D2600CBBD5B /* debug.c in Sources */,
@@ -3185,9 +3388,12 @@
 				948E147116416D2600CBBD5B /* dosbatch.c in Sources */,
 				948E147216416D2600CBBD5B /* e_amiga.h in Sources */,
 				948E147316416D2600CBBD5B /* e_djgpp.h in Sources */,
+				94B1DCE4191F6FF100909C3E /* OpenAsViewController.m in Sources */,
+				94B1DCDD191F6F7800909C3E /* ThemeManager.m in Sources */,
 				948E147416416D2600CBBD5B /* e_mac.h in Sources */,
 				948E147516416D2600CBBD5B /* e_msoft.h in Sources */,
 				948E147616416D2600CBBD5B /* e_os2.h in Sources */,
+				94B1DCC8191F6E8700909C3E /* GitDiffViewController.m in Sources */,
 				948E147716416D2600CBBD5B /* e_qdos.h in Sources */,
 				948E147816416D2600CBBD5B /* e_riscos.h in Sources */,
 				948E147916416D2600CBBD5B /* e_vms.h in Sources */,
@@ -3202,6 +3408,7 @@
 				948E148216416D2600CBBD5B /* get.c in Sources */,
 				948E148316416D2600CBBD5B /* get.h in Sources */,
 				948E148416416D2600CBBD5B /* go.c in Sources */,
+				94B1DCD3191F6F0300909C3E /* GitBranchController.m in Sources */,
 				948E148516416D2600CBBD5B /* html.c in Sources */,
 				948E148616416D2600CBBD5B /* jscript.c in Sources */,
 				948E148716416D2600CBBD5B /* keyword.c in Sources */,
@@ -3210,6 +3417,7 @@
 				948E148A16416D2600CBBD5B /* lregex.c in Sources */,
 				948E148B16416D2600CBBD5B /* lua.c in Sources */,
 				948E148C16416D2600CBBD5B /* make.c in Sources */,
+				94B1DCE8191F700000909C3E /* GitBranchViewController.m in Sources */,
 				948E148D16416D2600CBBD5B /* objc.c in Sources */,
 				948E148E16416D2600CBBD5B /* ocaml.c in Sources */,
 				948E148F16416D2600CBBD5B /* options.c in Sources */,
@@ -3221,6 +3429,8 @@
 				948E149516416D2600CBBD5B /* perl.c in Sources */,
 				948E149616416D2600CBBD5B /* php.c in Sources */,
 				948E149716416D2600CBBD5B /* python.c in Sources */,
+				94B1DD1D191F99E600909C3E /* FPPopoverController.m in Sources */,
+				94B1DCEC191F704900909C3E /* JavaScriptParser.m in Sources */,
 				948E149816416D2600CBBD5B /* read.c in Sources */,
 				948E149916416D2600CBBD5B /* read.h in Sources */,
 				948E14A016416D2700CBBD5B /* rexx.c in Sources */,
@@ -3237,6 +3447,7 @@
 				948E14AB16416D2700CBBD5B /* strlist.c in Sources */,
 				948E14AC16416D2700CBBD5B /* strlist.h in Sources */,
 				948E14AD16416D2700CBBD5B /* tcl.c in Sources */,
+				94B1DCC7191F6E8000909C3E /* GitLogViewCongroller.m in Sources */,
 				948E14AE16416D2700CBBD5B /* tex.c in Sources */,
 				948E14AF16416D2700CBBD5B /* verilog.c in Sources */,
 				948E14B016416D2700CBBD5B /* vhdl.c in Sources */,
@@ -3246,6 +3457,7 @@
 				948E14B416416D2700CBBD5B /* yacc.c in Sources */,
 				949DC1991583E8CF00385796 /* main.m in Sources */,
 				949DC19A1583E8CF00385796 /* AppDelegate.m in Sources */,
+				94B1DCF5191F70CB00909C3E /* SelectGroupViewController.m in Sources */,
 				949DC19C1583E8CF00385796 /* DetailViewController.m in Sources */,
 				949DC19D1583E8CF00385796 /* CodeParser.m in Sources */,
 				949DC19E1583E8CF00385796 /* CPlusPlusParser.m in Sources */,
@@ -3255,6 +3467,7 @@
 				949DC1A21583E8CF00385796 /* build.c in Sources */,
 				949DC1A31583E8CF00385796 /* command.c in Sources */,
 				949DC1A41583E8CF00385796 /* compath.c in Sources */,
+				94B1DCBC191F5B0800909C3E /* VersionViewController.m in Sources */,
 				949DC1A51583E8CF00385796 /* crossref.c in Sources */,
 				949DC1A61583E8CF00385796 /* cscope.c in Sources */,
 				949DC1A71583E8CF00385796 /* dir.c in Sources */,
@@ -3262,9 +3475,11 @@
 				949DC1A91583E8CF00385796 /* edit.c in Sources */,
 				949DC1AA1583E8CF00385796 /* egrep.c in Sources */,
 				949DC1AB1583E8CF00385796 /* exec.c in Sources */,
+				94B1DD1E191F99E600909C3E /* FPPopoverView.m in Sources */,
 				949DC1AC1583E8CF00385796 /* find.c in Sources */,
 				949DC1AD1583E8CF00385796 /* fscanner.c in Sources */,
 				949DC1AE1583E8CF00385796 /* gscope.c in Sources */,
+				94B1DCD6191F6F1200909C3E /* GitUpdateViewController.m in Sources */,
 				949DC1AF1583E8CF00385796 /* help.c in Sources */,
 				949DC1B01583E8CF00385796 /* history.c in Sources */,
 				949DC1B11583E8CF00385796 /* input.c in Sources */,
@@ -3274,15 +3489,21 @@
 				949DC1B51583E8CF00385796 /* mouse.c in Sources */,
 				949DC1B61583E8CF00385796 /* mygetenv.c in Sources */,
 				949DC1B71583E8CF00385796 /* mypopen.c in Sources */,
+				94B1DD1F191F99E600909C3E /* FPTouchView.m in Sources */,
 				949DC1B81583E8CF00385796 /* snprintf.c in Sources */,
 				949DC1B91583E8CF00385796 /* vpaccess.c in Sources */,
 				949DC1BA1583E8CF00385796 /* vpfopen.c in Sources */,
 				949DC1BB1583E8CF00385796 /* vpinit.c in Sources */,
 				949DC1BC1583E8CF00385796 /* vpopen.c in Sources */,
+				94B1DCF1191F705A00909C3E /* CSSParser.m in Sources */,
+				94B1DCCE191F6EE400909C3E /* DiffInfoListViewController.m in Sources */,
 				949DC1BD1583E8CF00385796 /* HistoryController.m in Sources */,
 				949DC1BE1583E8CF00385796 /* NavigationController.m in Sources */,
 				949DC1BF1583E8CF00385796 /* ResultViewController.m in Sources */,
 				949DC1C01583E8CF00385796 /* GotoLineViewController.m in Sources */,
+				94B1DCD1191F6EF700909C3E /* GitCloneViewController.m in Sources */,
+				94B1DCF0191F705600909C3E /* PHPParser.m in Sources */,
+				94B1DD00191F716600909C3E /* FileFormatResolver.m in Sources */,
 				949DC1C11583E8CF00385796 /* WebServiceController.m in Sources */,
 				949DC1C21583E8CF00385796 /* Utils.m in Sources */,
 				949DC1C31583E8CF00385796 /* FilePathInfoPopupController.m in Sources */,
@@ -3296,6 +3517,7 @@
 				949DC1CD1583E8CF00385796 /* VirtualizeViewController.m in Sources */,
 				949DC1CE1583E8CF00385796 /* VirtualizeWrapper.m in Sources */,
 				949DC1CF1583E8CF00385796 /* FileManagerController.m in Sources */,
+				94B1DCD4191F6F0800909C3E /* GitBranchsManagerViewController.m in Sources */,
 				949DC1D01583E8CF00385796 /* ProjectListController.m in Sources */,
 				949DC1D11583E8CF00385796 /* ImagePreviewController.m in Sources */,
 				949DC1D31583E8CF00385796 /* ObjectiveCParser.m in Sources */,
@@ -3310,10 +3532,13 @@
 				949DC1DD1583E8CF00385796 /* util.c in Sources */,
 				949DC1DE1583E8CF00385796 /* io.c in Sources */,
 				949DC1DF1583E8CF00385796 /* dif_dir.c in Sources */,
+				94B1DCFE191F716000909C3E /* ZipFileResolver.m in Sources */,
 				949DC1E01583E8CF00385796 /* analyze.c in Sources */,
 				949DC1E11583E8CF00385796 /* cmpbuf.c in Sources */,
+				94B1DCFB191F715800909C3E /* OtherFormatResolver.m in Sources */,
 				949DC1E21583E8CF00385796 /* version.c in Sources */,
 				949DC1E31583E8CF00385796 /* side.c in Sources */,
+				94B1DCF3191F707800909C3E /* MBProgressHUD.m in Sources */,
 				949DC1E41583E8CF00385796 /* context.c in Sources */,
 				949DC1E51583E8CF00385796 /* ed.c in Sources */,
 				949DC1E61583E8CF00385796 /* normal.c in Sources */,
@@ -3328,16 +3553,21 @@
 				949DC1F61583E8CF00385796 /* SBJsonStreamParserAccumulator.m in Sources */,
 				949DC1F71583E8CF00385796 /* SBJsonStreamParserAdapter.m in Sources */,
 				949DC1F81583E8CF00385796 /* SBJsonStreamParserState.m in Sources */,
+				94B1DCEE191F704F00909C3E /* JavaParser.m in Sources */,
 				949DC1F91583E8CF00385796 /* SBJsonStreamWriter.m in Sources */,
 				949DC1FA1583E8CF00385796 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				949DC1FB1583E8CF00385796 /* SBJsonStreamWriterState.m in Sources */,
 				949DC1FC1583E8CF00385796 /* SBJsonTokeniser.m in Sources */,
 				949DC1FD1583E8CF00385796 /* SBJsonUTF8Stream.m in Sources */,
+				94B1DCD9191F6F5500909C3E /* FileBrowserViewController.m in Sources */,
 				949DC1FE1583E8CF00385796 /* SBJsonWriter.m in Sources */,
+				94B1DD04191F71BB00909C3E /* MasterViewController.m in Sources */,
 				949DC1FF1583E8CF00385796 /* FileInfoViewController.m in Sources */,
 				949DC2001583E8CF00385796 /* ManuallyParserViewController.m in Sources */,
+				94B1DCDB191F6F6C00909C3E /* JTListView.m in Sources */,
 				949DC2011583E8CF00385796 /* ManuallyParser.m in Sources */,
-				94A404AA158A1BA00084F645 /* FileInfoControlleriPhone.m in Sources */,
+				94B1DCB2191F5B0000909C3E /* iRate.m in Sources */,
+				94B1DD2E192259FF00909C3E /* DisplayModeController.m in Sources */,
 				948E1459164169F200CBBD5B /* FunctionListViewController.m in Sources */,
 				948E145B16416A0A00CBBD5B /* FunctionListManager.m in Sources */,
 				948E145D16416CE300CBBD5B /* readtags.c in Sources */,
@@ -3352,12 +3582,14 @@
 				94D4ED7B1642B8AB00601FE4 /* readtags.h in Sources */,
 				94D4ED7C1642B8AB00601FE4 /* ant.c in Sources */,
 				94D4ED7D1642B8AB00601FE4 /* args.c in Sources */,
+				94B1DD02191F719200909C3E /* DisplayController.m in Sources */,
 				94D4ED7E1642B8AB00601FE4 /* args.h in Sources */,
 				94D4ED7F1642B8AB00601FE4 /* asm.c in Sources */,
 				94D4ED801642B8AB00601FE4 /* asp.c in Sources */,
 				94D4ED811642B8AB00601FE4 /* awk.c in Sources */,
 				94D4ED821642B8AB00601FE4 /* basic.c in Sources */,
 				94D4ED831642B8AB00601FE4 /* beta.c in Sources */,
+				94B1DCBA191F5B0200909C3E /* iRate.m in Sources */,
 				94D4ED841642B8AB00601FE4 /* c.c in Sources */,
 				94D4ED851642B8AB00601FE4 /* cobol.c in Sources */,
 				94D4ED861642B8AB00601FE4 /* config.h in Sources */,
@@ -3371,9 +3603,11 @@
 				94D4ED8E1642B8AB00601FE4 /* e_amiga.h in Sources */,
 				94D4ED8F1642B8AB00601FE4 /* e_djgpp.h in Sources */,
 				94D4ED901642B8AB00601FE4 /* e_mac.h in Sources */,
+				94B1DCE0191F6F8400909C3E /* ThemeManager.m in Sources */,
 				94D4ED911642B8AB00601FE4 /* e_msoft.h in Sources */,
 				94D4ED921642B8AB00601FE4 /* e_os2.h in Sources */,
 				94D4ED931642B8AB00601FE4 /* e_qdos.h in Sources */,
+				94B1DCFD191F715F00909C3E /* ZipFileResolver.m in Sources */,
 				94D4ED941642B8AB00601FE4 /* e_riscos.h in Sources */,
 				94D4ED951642B8AB00601FE4 /* e_vms.h in Sources */,
 				94D4ED961642B8AB00601FE4 /* eiffel.c in Sources */,
@@ -3428,6 +3662,7 @@
 				94D4EDCD1642B8AB00601FE4 /* vim.c in Sources */,
 				94D4EDCE1642B8AB00601FE4 /* vstring.c in Sources */,
 				94D4EDCF1642B8AB00601FE4 /* vstring.h in Sources */,
+				94B1DCEB191F704800909C3E /* JavaScriptParser.m in Sources */,
 				94D4EDD01642B8AB00601FE4 /* yacc.c in Sources */,
 				94D3B87715E5344E006C28E4 /* HelpViewController.m in Sources */,
 				94ADF13F14BB27EE00BA807A /* main.m in Sources */,
@@ -3440,6 +3675,7 @@
 				94ADF14714BB27EE00BA807A /* basename.c in Sources */,
 				94ADF14814BB27EE00BA807A /* build.c in Sources */,
 				94ADF14914BB27EE00BA807A /* command.c in Sources */,
+				94B1DCF4191F70CA00909C3E /* SelectGroupViewController.m in Sources */,
 				94ADF14A14BB27EE00BA807A /* compath.c in Sources */,
 				94ADF14B14BB27EE00BA807A /* crossref.c in Sources */,
 				94ADF14C14BB27EE00BA807A /* cscope.c in Sources */,
@@ -3448,11 +3684,14 @@
 				94ADF14F14BB27EE00BA807A /* edit.c in Sources */,
 				94ADF15014BB27EE00BA807A /* egrep.c in Sources */,
 				94ADF15114BB27EE00BA807A /* exec.c in Sources */,
+				94B1DCFF191F716500909C3E /* FileFormatResolver.m in Sources */,
 				94ADF15214BB27EE00BA807A /* find.c in Sources */,
+				94B1DCF2191F707700909C3E /* MBProgressHUD.m in Sources */,
 				94ADF15314BB27EE00BA807A /* fscanner.c in Sources */,
 				94ADF15414BB27EE00BA807A /* gscope.c in Sources */,
 				94ADF15514BB27EE00BA807A /* help.c in Sources */,
 				94ADF15614BB27EE00BA807A /* history.c in Sources */,
+				94B1DCFC191F715A00909C3E /* OtherFormatResolver.m in Sources */,
 				94ADF15714BB27EE00BA807A /* input.c in Sources */,
 				94ADF15814BB27EE00BA807A /* invlib.c in Sources */,
 				94ADF15914BB27EE00BA807A /* logdir.c in Sources */,
@@ -3464,9 +3703,11 @@
 				94ADF15F14BB27EE00BA807A /* vpaccess.c in Sources */,
 				94ADF16014BB27EE00BA807A /* vpfopen.c in Sources */,
 				94ADF16114BB27EE00BA807A /* vpinit.c in Sources */,
+				94B1DD03191F71BA00909C3E /* MasterViewController.m in Sources */,
 				94ADF16214BB27EE00BA807A /* vpopen.c in Sources */,
 				94ADF16314BB27EE00BA807A /* HistoryController.m in Sources */,
 				94ADF16414BB27EE00BA807A /* NavigationController.m in Sources */,
+				94B1DCDE191F6F7C00909C3E /* ThemeSelectorViewController.m in Sources */,
 				94ADF16514BB27EE00BA807A /* ResultViewController.m in Sources */,
 				94ADF16614BB27EE00BA807A /* GotoLineViewController.m in Sources */,
 				94ADF16714BB27EE00BA807A /* WebServiceController.m in Sources */,
@@ -3485,10 +3726,13 @@
 				945428B014F29A8D00353EC8 /* FileManagerController.m in Sources */,
 				945428B514F2B51600353EC8 /* ProjectListController.m in Sources */,
 				94C8C68514FA57D60062750D /* ImagePreviewController.m in Sources */,
+				94B1DCE3191F6FF000909C3E /* OpenAsViewController.m in Sources */,
 				941657001515C3C200838005 /* GitLogViewCongroller.m in Sources */,
 				9497F3A4151A499D006BCBBF /* ObjectiveCParser.m in Sources */,
 				9497F3A9151B85C7006BCBBF /* CSharpParser.m in Sources */,
+				94B1DCEF191F705500909C3E /* PHPParser.m in Sources */,
 				9497F3AE151B8EBA006BCBBF /* DelphiParser.m in Sources */,
+				94B1DCBB191F5B0700909C3E /* VersionViewController.m in Sources */,
 				9497F3B5151BA606006BCBBF /* PythonParser.m in Sources */,
 				9497F3CC151CEC4F006BCBBF /* RubyParser.m in Sources */,
 				9489196E1524CC9000AB9968 /* BashParser.m in Sources */,
@@ -3501,6 +3745,7 @@
 				944DD7DE152775FC000473BE /* analyze.c in Sources */,
 				944DD7E215277625000473BE /* cmpbuf.c in Sources */,
 				944DD7E5152776D5000473BE /* version.c in Sources */,
+				94B1DCED191F704E00909C3E /* JavaParser.m in Sources */,
 				944DD7E815277729000473BE /* side.c in Sources */,
 				944DD7EB1527778E000473BE /* context.c in Sources */,
 				944DD7EE15277845000473BE /* ed.c in Sources */,
@@ -3513,6 +3758,7 @@
 				9457C78815307AF500BB9185 /* LocalFileControllerDelegate.m in Sources */,
 				9457C78C15307B1400BB9185 /* RemoteFileControllerDelegate.m in Sources */,
 				9443D1EF154EDA6A008CB52D /* SecurityViewController.m in Sources */,
+				94B1DD05191F71D900909C3E /* UploadSelectionViewController.m in Sources */,
 				948F1C7415583B7600AE4C99 /* CommentViewController.m in Sources */,
 				94636B55155A91E700B1C37F /* CommentWrapper.m in Sources */,
 				9461817A155EEDAB00A25635 /* CommentManager.m in Sources */,
@@ -3537,6 +3783,7 @@
 				94D4EDD31642B97200601FE4 /* FunctionListManager.m in Sources */,
 				94C2CDC6167F55C9004FB1FB /* HtmlParser.m in Sources */,
 				94CB768317E21369009807F9 /* FileListBrowserController.m in Sources */,
+				94B1DCE7191F6FFF00909C3E /* GitBranchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3572,6 +3819,11 @@
 			isa = PBXTargetDependency;
 			name = HttpService;
 			targetProxy = 94ADF13D14BB27EE00BA807A /* PBXContainerItemProxy */;
+		};
+		94B1DCBF191F64D600909C3E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ObjectiveGit-iOS";
+			targetProxy = 94B1DCBE191F64D600909C3E /* PBXContainerItemProxy */;
 		};
 		94B4035214A0D75B00E3A636 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3673,7 +3925,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Guangzhen Li (KTWHB3SHL5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3689,7 +3941,7 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "C908E86E-F5F4-4EA9-98CC-444A770A5D6D";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
 				VALID_ARCHS = armv7;
@@ -3705,7 +3957,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Guangzhen Li (KTWHB3SHL5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3721,7 +3973,7 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "C908E86E-F5F4-4EA9-98CC-444A770A5D6D";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
 				VALID_ARCHS = armv7;
@@ -3764,7 +4016,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Guangzhen Li (KTWHB3SHL5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3781,7 +4033,7 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "C908E86E-F5F4-4EA9-98CC-444A770A5D6D";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
 				VALID_ARCHS = armv7;
@@ -3792,6 +4044,7 @@
 		949DC2681583E8CF00385796 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -3808,15 +4061,18 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "CodeNavigatoriPhone-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
+					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNav;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3825,6 +4081,7 @@
 		949DC2691583E8CF00385796 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -3837,15 +4094,18 @@
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "IPHONE_VERSION=1";
 				INFOPLIST_FILE = "CodeNavigatoriPhone-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
+					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNav;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3854,9 +4114,10 @@
 		949DC26A1583E8CF00385796 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3869,15 +4130,18 @@
 					"IPHONE_VERSION=1",
 				);
 				INFOPLIST_FILE = "CodeNavigatoriPhone-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
+					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNav;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

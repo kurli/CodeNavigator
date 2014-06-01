@@ -15,13 +15,10 @@
 #import "DropBoxViewController.h"
 #import "SecurityViewController.h"
 #import "CommentManager.h"
-#ifdef IPHONE_VERSION
-#import "FileInfoControlleriPhone.h"
-#else
+
 #import "FileInfoViewController.h"
 #import "HelpViewController.h"
 #import "git2.h"
-#endif
 #import "GitCloneViewController.h"
 #import "FileListBrowserController.h"
 #import "UploadSelectionViewController.h"
@@ -38,11 +35,11 @@
 @synthesize purchaseButton = _purchaseButton;
 #endif
 @synthesize popOverController;
-#ifdef IPHONE_VERSION
-@synthesize fileInfoControlleriPhone;
-#endif
 @synthesize fileListBrowserController;
 @synthesize gitCloneViewController;
+#ifdef IPHONE_VERSION
+@synthesize toolBar;
+#endif
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -138,9 +135,6 @@
 #ifdef LITE_VERSION
     [self setPurchaseButton:nil];
 #endif
-#ifdef IPHONE_VERSION
-    [self setFileInfoControlleriPhone:nil];
-#endif
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -159,6 +153,7 @@
     {
         [self.fileSearchBar setHidden:YES];
         [self.analyzeButton setEnabled:NO];
+        [self.commentButton setEnabled:NO];
         CGRect rect = self.tableView.frame;
         rect.size.height += (rect.origin.y - self.view.frame.origin.y);
         rect.origin.y = self.view.frame.origin.y;
@@ -168,14 +163,19 @@
     {
         [self.fileSearchBar setHidden:NO];
         [self.analyzeButton setEnabled:YES];
+        [self.commentButton setEnabled:YES];
         //iOS7 UI bug fix
         // In iOS 7 the status bar is transparent, so don't adjust for it.
-        CGRect rect;
         if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
         {
+#ifdef IPHONE_VERSION
+            self.edgesForExtendedLayout = UIRectEdgeNone;
+#else
+            CGRect rect;
             rect = self.fileSearchBar.frame;
             rect.origin.y = 45;
             [self.fileSearchBar setFrame:rect];
+#endif
         }
     }
     [self.fileSearchBar setSpellCheckingType:UITextSpellCheckingTypeNo];
@@ -378,7 +378,11 @@
 {    
     [self releaseAllPopover];
     if (gitCloneViewController == NULL) {
+#ifdef IPHONE_VERSION
+        gitCloneViewController = [[GitCloneViewController alloc] initWithNibName:@"GitCloneViewController-iPhone" bundle:[NSBundle mainBundle]];
+#else
         gitCloneViewController = [[GitCloneViewController alloc] init];
+#endif
     }
     gitCloneViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     //[[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
@@ -387,13 +391,18 @@
 
 - (IBAction)gitClicked:(id)sender {
     [[Utils getInstance] addGAEvent:@"Git" andAction:@"From Toolbar" andLabel:nil andValue:nil];
-#ifndef IPHONE_VERSION
+    
     // If in project list mode, means git clone a project from remote
     if ([self.currentProjectPath length] == 0) {
         [self showGitCloneView];
         return;
     }
-    GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewCongroller" bundle:[NSBundle mainBundle]];
+    
+#ifdef IPHONE_VERSION
+    GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewController-iPhone" bundle:[NSBundle mainBundle]];
+#else
+    GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewController" bundle:[NSBundle mainBundle]];
+#endif
     NSString* gitFolder = [[Utils getInstance] getGitFolder:self.currentProjectPath];
     if ([gitFolder length] != 0) {
         [gitlogView gitLogForProject: gitFolder];
@@ -401,8 +410,6 @@
     } else {
         [self showGitCloneView];
     }
-    
-#endif
 }
 
 - (IBAction)dropBoxClicked:(id)sender {
@@ -448,7 +455,6 @@
 
 - (IBAction)commentClicked:(id)sender {
     [[Utils getInstance] addGAEvent:@"Comment" andAction:@"Manage" andLabel:nil andValue:nil];
-    UIBarButtonItem *item = (UIBarButtonItem*)sender;
     
     if ([popOverController isPopoverVisible]) {
         [self releaseAllPopover];
@@ -465,6 +471,7 @@
 #ifdef IPHONE_VERSION
     CommentManager* controller = [[CommentManager alloc] initWithNibName:@"CommentManager-iPhone" bundle:nil];
 #else
+    UIBarButtonItem *item = (UIBarButtonItem*)sender;
     CommentManager* controller = [[CommentManager alloc] init];
 #endif
     [controller initWithMasterViewController:self];
@@ -472,7 +479,7 @@
 
     controller.title = @"Comments";
 #ifdef IPHONE_VERSION
-    [self presentModalViewController:navigationController animated:YES];
+    [self presentViewController:navigationController animated:YES completion:nil];
 #else
     popOverController = [[UIPopoverController alloc] initWithContentViewController:navigationController];
     popOverController.popoverContentSize = controller.view.frame.size;
@@ -494,23 +501,21 @@
     if (_webServiceController == nil)
     {
 #ifdef IPHONE_VERSION
-        _webServiceController = [[WebServiceController alloc] initWithNibName:@"WebServiceController-iPhone" bundle:nil];
+        _webServiceController = [[WebServiceController alloc] initWithNibName:@"WebServiceControllerFormSheet-iPhone" bundle:nil];
 #else
         _webServiceController = [[WebServiceController alloc]initWithNibName:@"WebServiceControllerFormSheet" bundle:nil];
 #endif
     }
-
-#ifndef IPHONE_VERSION
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:_webServiceController];
     _webServiceController.title = @"Web Upload Service";
     [_webServiceController setMasterViewController:self];
+#ifndef IPHONE_VERSION
     controller.modalPresentationStyle = UIModalPresentationFormSheet;
-    
     [[Utils getInstance].splitViewController presentViewController:controller animated:YES completion:nil];
 #endif
     
 #ifdef IPHONE_VERSION
-    [self presentModalViewController:_webServiceController animated:YES];
+    [self presentViewController:controller animated:YES completion:nil];
 #endif
 }
 
@@ -531,10 +536,21 @@
     
     [uploadSelection setMasterViewController:self];
     
+#ifdef IPHONE_VERSION
+    popOverController = [[FPPopoverController alloc] initWithContentViewController:uploadSelection];
+#else
     popOverController = [[UIPopoverController alloc] initWithContentViewController:uploadSelection];
-	popOverController.popoverContentSize = uploadSelection.view.frame.size;
-    
+#endif
+    CGSize size = uploadSelection.view.frame.size;
+    size.height = size.height / 6 * 5;
+	popOverController.popoverContentSize = size;
+#ifdef IPHONE_VERSION
+    popOverController.arrowDirection = FPPopoverArrowDirectionDown;
+    popOverController.border = NO;
+    [popOverController presentPopoverFromBarButtonItem:barButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES andToolBar:self.toolBar];
+#else
     [popOverController presentPopoverFromBarButtonItem:barButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+#endif
 }
 
 #pragma mark SearchDelegate
@@ -627,12 +643,6 @@
     }
     
     NSString* path = [fileListBrowserController.currentLocation stringByAppendingPathComponent:fileName];
-    
-#ifdef IPHONE_VERSION
-    self.fileInfoControlleriPhone = [[FileInfoControlleriPhone alloc] init];
-    [fileInfoControlleriPhone setMasterViewController:self];
-    [fileInfoControlleriPhone setSourceFile:path];
-#else
     FileInfoViewController* fileInfoViewController = [[FileInfoViewController alloc] init];
     [fileInfoViewController setSourceFile:path];
     [fileInfoViewController setMasterViewController:self];
@@ -640,9 +650,16 @@
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:fileInfoViewController];
     fileInfoViewController.title = @"Action";
     // Setup the popover for use from the navigation bar.
-	popOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
-	popOverController.popoverContentSize = fileInfoViewController.view.frame.size;
-    
+#ifdef IPHONE_VERSION
+    popOverController = [[FPPopoverController alloc] initWithViewController:controller];
+#else
+    popOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
+#endif
+    popOverController.popoverContentSize = fileInfoViewController.view.frame.size;
+#ifdef IPHONE_VERSION
+    [popOverController setBorder:NO];
+    [popOverController presentPopoverFromView:button];
+#else
     [popOverController presentPopoverFromRect:button.frame inView:cell permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
 #endif
 }
@@ -692,7 +709,7 @@
     displayPath = [[Utils getInstance] getDisplayPath:path];
     
 #ifdef IPHONE_VERSION
-    [self presentModalViewController:[Utils getInstance].detailViewController animated:YES];
+    [self presentViewController:[Utils getInstance].detailViewController animated:YES completion:nil];
 #endif
     
     //Help.html special case

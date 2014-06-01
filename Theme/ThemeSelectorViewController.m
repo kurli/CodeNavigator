@@ -96,7 +96,7 @@ void main() {\n\
     int tmp = 0;
     for (int i=0; i<[thems count]; i++) {
         NSString* item = [thems objectAtIndex:i];
-        if ([item isEqualToString:@"theme.plist"] == YES) {
+        if ([item isEqualToString:@"theme.plist"] == YES || [item isEqualToString:@"theme-iphone.plist"] == YES) {
             //TODO magic ignore theme.plist
             tmp = 1;
             continue;
@@ -117,7 +117,7 @@ void main() {\n\
 }
 
 - (IBAction)cancelButtonClicked:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)applyButtonClicked:(id)sender {
@@ -142,7 +142,7 @@ void main() {\n\
     [ThemeManager changeUIViewStyle:[Utils getInstance].detailViewController.secondWebView];
     [ThemeManager changeUIViewStyle:[Utils getInstance].detailViewController.view];
 
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -181,6 +181,24 @@ void main() {\n\
     
     // Display linenumber
     [self.displayLinenumberSwitcher setOn:self.colorScheme.display_linenumber];
+}
+
+- (BOOL)shouldAutorotate
+{
+#ifdef IPHONE_VERSION
+    return NO;
+#else
+    return YES;
+#endif
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+#ifdef IPHONE_VERSION
+    return UIInterfaceOrientationMaskPortrait;
+#else
+    return UIInterfaceOrientationMaskAll;
+#endif
 }
 
 - (void) displayDemo {

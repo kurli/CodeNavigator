@@ -68,7 +68,11 @@
     BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:themeRootPath];
     if (isExist) {
         // Check version
+#ifdef IPHONE_VERSION
+        NSString* src = [themeBundlePath stringByAppendingPathComponent:@"theme-iphone.plist"];
+#else
         NSString* src = [themeBundlePath stringByAppendingPathComponent:@"theme.plist"];
+#endif
         NSString* dest = [themeRootPath stringByAppendingPathComponent:@"theme.plist"];
         
         BOOL themeExist = [[NSFileManager defaultManager] fileExistsAtPath:dest];
@@ -89,7 +93,12 @@
     [[NSFileManager defaultManager] createDirectoryAtPath:themeRootPath withIntermediateDirectories:YES attributes:Nil error:nil];
     
     // Copy default theme
+#ifdef IPHONE_VERSION
+    NSString* src = [themeBundlePath stringByAppendingPathComponent:@"theme-iphone.plist"];
+#else
     NSString* src = [themeBundlePath stringByAppendingPathComponent:@"theme.plist"];
+#endif
+
     NSString* dest = [themeRootPath stringByAppendingPathComponent:@"theme.plist"];
     [[NSFileManager defaultManager] copyItemAtPath:src toPath:dest error:nil];
 }

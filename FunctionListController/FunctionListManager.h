@@ -31,7 +31,7 @@ typedef enum _FunctionItemType{
 
 @property (nonatomic, strong) NSThread* ctagsThread;
 
-@property (strong, nonatomic) NSString* path;
+@property (strong, atomic) NSString* path;
 
 -(void) getFunctionListForFile:(NSString*)path andCallback:(GetFunctionListCallback)cb;
 

@@ -12,5 +12,5 @@
 
 -(void) checkVersion;
 
-@property (weak, nonatomic) IBOutlet UITextView *versionDetailView;
+@property (unsafe_unretained, nonatomic) IBOutlet UITextView *versionDetailView;
 @end

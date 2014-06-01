@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HTTPServer.h"
 #import "FileBrowserViewProtocol.h"
+#import "FPPopoverController.h"
 
 @class HTTPServer;
 @protocol WebUploadResultDelegate;
@@ -57,13 +58,17 @@
 
 @property (strong, atomic) NSString* uploadToPath;
 
+#ifdef IPHONE_VERSION
+@property (strong, nonatomic) FPPopoverController* popOverController;
+#else
 @property (strong, nonatomic) UIPopoverController* popOverController;
+#endif
 
 @property (unsafe_unretained, nonatomic) IBOutlet  UITableView *_tableView;
 
-@property (weak, nonatomic) IBOutlet UIButton *stopButton;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *stopButton;
 
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
+@property (unsafe_unretained, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 
 - (IBAction)onStopClicked:(id)sender;
 

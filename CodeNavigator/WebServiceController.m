@@ -100,7 +100,7 @@
 }
 
 -(void) DoneButtonClickediPad:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -126,6 +126,12 @@
             
             [self.textView setText:info];
         }
+    }
+    if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+    {
+#ifdef IPHONE_VERSION
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+#endif
     }
     [_tableView reloadData];
 }
@@ -228,7 +234,8 @@
         });
     }
     dispatch_async(dispatch_get_main_queue(), ^{
-        [textView  setText:info];
+        [textView  setText:@""];
+        [self log:info];
     });}
 
 -(void) startUploadingFile:(NSString *)file{
@@ -579,9 +586,22 @@
 }
 #endif
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (BOOL)shouldAutorotate
 {
-	return YES;
+#ifdef IPHONE_VERSION
+    return NO;
+#else
+    return YES;
+#endif
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+#ifdef IPHONE_VERSION
+    return UIInterfaceOrientationMaskPortrait;
+#else
+    return UIInterfaceOrientationMaskAll;
+#endif
 }
 
 - (IBAction)onStopClicked:(id)sender {
@@ -615,16 +635,26 @@
     NSString* fakeFile = [uploadToPath stringByAppendingPathComponent:@"zzzlgzzzz_fake.zzz"];
     [fileBrowserViewController setInitialPath:fakeFile];
     
+#ifdef IPHONE_VERSION
+    self.popOverController = [[FPPopoverController alloc] initWithContentViewController:controller];
+    self.popOverController.border = NO;
+    CGSize size = self.view.frame.size;
+    size.width = size.width / 5 * 4;
+    size.height = size.height /8 * 7;
+    self.popOverController.arrowDirection = FPPopoverArrowDirectionAny;
+    self.popOverController.popoverContentSize = size;
+#else
     self.popOverController = [[UIPopoverController alloc] initWithContentViewController:controller];
+#endif
     
     [self.popOverController presentPopoverFromRect:self.view.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
-        case 0:
-            break;
         case 1:
+            break;
+        case 0:
             [self navigateToFileBrowser];
             break;
             
@@ -645,7 +675,7 @@
     UISwitch *switchview;
     NSString* path;
     switch (indexPath.section) {
-        case 0:
+        case 1:
             cell = [tableView dequeueReusableCellWithIdentifier:switcherItemIdentifier];
             if (cell == nil) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:switcherItemIdentifier];
@@ -660,7 +690,7 @@
             cell.accessoryView = webServiceSwitcher;
             [cell.contentView  addSubview :switchview];
             break;
-        case 1:
+        case 0:
             cell = [tableView dequeueReusableCellWithIdentifier:uploadToItemIdentifier];
             if (cell == nil) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:uploadToItemIdentifier];
@@ -686,17 +716,54 @@
     return @"";
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    static NSString *strWebUploadService = @"Web Upload Service";
-    static NSString *strUploadInfo = @"1: Start 'Web Upload Service' on this device\n2: Open your Browser in your PC and enter the address provided below\n3: You can upload a single source file or a Zip file\n\nClick to change location\nUpload to:";
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        if (section == 0) {
+            return 95;
+        } else {
+            return 65; // header height
+        }
+    } else {
+        if (section == 0) {
+            return 170;
+        } else {
+            return 170; // header height
+        }
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    static NSString *header = @"customHeader";
+    
+    UITableViewHeaderFooterView *vHeader;
+    
+    vHeader = [tableView dequeueReusableHeaderFooterViewWithIdentifier:header];
+    
+    if (!vHeader) {
+        vHeader = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:header];
+        vHeader.textLabel.numberOfLines = 12;
+    }
+    
     switch (section) {
         case 0:
-            return strWebUploadService;
+            vHeader.textLabel.text = @"Click below to select upload location:\n1) Upload as a new project, please choose project folder.\n2) Upload into an existing project, please choose the folder you want to upload to.";
+            break;
         case 1:
-            return strUploadInfo;
+            vHeader.textLabel.text = @"1) Click below to start 'Web Uplaod Service'\n2)You can now visit the url on your computer.\n3)You can now upload a single source file or a Zip file as a project.";
+            break;
+        default:
+            vHeader.textLabel.text = @"";
+        
     }
-    return @"";
+    return vHeader;
 }
+
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    
+//    return @"";
+//}
 
 - (void) updateInfoWhenPathChanged {
     NSString* relative = [self getUploadToPathRelative];

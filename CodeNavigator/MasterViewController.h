@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "FileListBrowserProtocol.h"
+#ifdef IPHONE_VERSION
+#import "FPPopoverController.h"
+#endif
 
 @class DetailViewController;
 @class WebServiceController;
@@ -16,6 +19,9 @@
 @class FileInfoControlleriPhone;
 #endif
 @class FileListBrowserController;
+#ifdef IPHONE_VERSION
+@class FPPopoverController;
+#endif
 
 #define MASTER_VIEW_RELOAD @"CodeNavigator_master_view_reload"
 
@@ -31,10 +37,15 @@
 @property (strong, nonatomic) WebServiceController *webServiceController;
 
 @property (strong, nonatomic) GitCloneViewController *gitCloneViewController;
-
+#ifdef IPHONE_VERSION
+@property (strong, nonatomic) FPPopoverController* popOverController;
+#else
 @property (strong, nonatomic) UIPopoverController* popOverController;
+#endif
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *analyzeButton;
+
+@property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *commentButton;
 
 #ifdef LITE_VERSION
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *purchaseButton;
@@ -44,11 +55,11 @@
 
 @property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *fileSearchBar;
 
-#ifdef IPHONE_VERSION
-@property (strong, nonatomic) FileInfoControlleriPhone* fileInfoControlleriPhone;
-#endif
-
 @property (strong, nonatomic) FileListBrowserController* fileListBrowserController;
+
+#ifdef IPHONE_VERSION
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
+#endif
 
 - (IBAction)addFileToolBarClicked:(id)sender;
 

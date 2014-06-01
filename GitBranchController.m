@@ -322,10 +322,10 @@ static int cred_acquire_cb(git_cred **out,
         if (ret < 0) {
             [self appendLog:logView andStr:[NSString stringWithFormat:@"Internal error: %d\n", ret]];
         }
+        git_remote_disconnect(remote);
+        git_remote_update_tips(remote, NULL, NULL);
     }
-    
-    git_remote_disconnect(remote);
-    git_remote_update_tips(remote, NULL, NULL);
+
     // Merge branch
     // Workaround: checkout new branch and
     trackingBranch = [trackingBranch reloadedBranchWithError:&error];
@@ -362,7 +362,9 @@ static int cred_acquire_cb(git_cred **out,
         [newBranch deleteWithError:&error];
         [self appendLog:logView andStr:@"Done\n"];
     } else {
-        [self appendLog:logView andStr:@"Already up to date.\n"];
+        if (!networkError) {
+            [self appendLog:logView andStr:@"Already up to date.\n"];
+        }
     }
 }
 

@@ -228,8 +228,25 @@
 	return YES;
 }
 
+- (BOOL) shouldAutorotate {
+#ifdef IPHONE_VERSION
+    return NO;
+#else
+    return YES;
+#endif
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+#ifdef IPHONE_VERSION
+    return UIInterfaceOrientationMaskPortrait;
+#else
+    return UIInterfaceOrientationMaskAll;
+#endif
+}
+
 - (IBAction)doneClicked:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 //    MasterViewController* masterViewController = nil;
 //    NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
 //    masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;

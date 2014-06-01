@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FPPopoverController.h"
 
 #define DIFF_HTML @"<html>\
 <frameset cols=\"50%,50%\">\
@@ -23,8 +24,13 @@
 
 @property (nonatomic, strong) NSMutableArray* diffFileArray;
 @property (unsafe_unretained, nonatomic) IBOutlet UIWebView *webView;
+#ifdef IPHONE_VERSION
+@property (nonatomic, strong) FPPopoverController* popOverController;
+#else
 @property (nonatomic, strong) UIPopoverController* popOverController;
+#endif
 @property (nonatomic, strong) NSMutableArray* diffAnalyzeArray;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 
 - (IBAction)backbuttonClicked:(id)sender;
 

@@ -12,6 +12,7 @@
 #define HTML_JS_LINK @"<script type=\"text/javascript\" src=\"lgz_javascript.js\"></script>\n"
 
 #define HTML_STYLE @" \
+html {-webkit-text-size-adjust: none;}\n\
 .defination { color: DEFINE; font-style: italic; }\n\
 .comment { color: COMENT; font-style: italic; }\n\
 .header { color: HEADER; }\n\

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1024" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController">
             <connections>
                 <outlet property="bottomToolBar" destination="3" id="45"/>
                 <outlet property="historyBar" destination="8" id="19"/>
+                <outlet property="navigateBarButtonItem" destination="10" id="OjY-1F-UtJ"/>
                 <outlet property="scrollBackgroundView" destination="29" id="31"/>
-                <outlet property="scrollItem" destination="30" id="32"/>
+                <outlet property="scrollItem" destination="d7p-KA-foW" id="cMO-DR-whn"/>
                 <outlet property="topToolBar" destination="34" id="44"/>
                 <outlet property="view" destination="1" id="12"/>
                 <outlet property="webView" destination="7" id="13"/>
@@ -21,8 +22,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <webView contentMode="scaleToFill" id="7">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
+                <webView multipleTouchEnabled="YES" contentMode="scaleAspectFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" id="7">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <dataDetectorType key="dataDetectorTypes"/>
@@ -87,12 +88,12 @@
                     <rect key="frame" x="265" y="44" width="53" height="387"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                     <subviews>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="30">
-                            <rect key="frame" x="3" y="0.0" width="47" height="44"/>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="d7p-KA-foW">
+                            <rect key="frame" x="3" y="174" width="47" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <state key="normal" title="三"/>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -111,28 +112,15 @@
                     </connections>
                 </button>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="34">
-                    <rect key="frame" x="101" y="0.0" width="219" height="44"/>
+                    <rect key="frame" x="193" y="0.0" width="125" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <items>
-                        <barButtonItem title="👀" id="39">
+                        <barButtonItem image="binocular.png" id="39">
                             <connections>
                                 <action selector="highlightWordButtonClicked:" destination="-1" id="46"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" id="40">
-                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" momentary="YES" id="41">
-                                <rect key="frame" x="48" y="7" width="110" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="▲"/>
-                                    <segment title="▼"/>
-                                </segments>
-                                <connections>
-                                    <action selector="gotoHighlight:" destination="-1" eventType="valueChanged" id="49"/>
-                                </connections>
-                            </segmentedControl>
-                        </barButtonItem>
-                        <barButtonItem image="tag_list.png" id="53">
+                        <barButtonItem image="text-list.png" id="53">
                             <connections>
                                 <action selector="functionListClicked:" destination="-1" id="54"/>
                             </connections>
@@ -145,8 +133,9 @@
         </view>
     </objects>
     <resources>
+        <image name="binocular.png" width="30" height="30"/>
         <image name="hide_masterview.png" width="15" height="22"/>
         <image name="settings.png" width="26" height="26"/>
-        <image name="tag_list.png" width="20" height="20"/>
+        <image name="text-list.png" width="30" height="30"/>
     </resources>
 </document>

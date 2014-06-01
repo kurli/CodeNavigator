@@ -15,9 +15,7 @@
 #import "MasterViewController.h"
 #import "VirtualizeViewController.h"
 #import "VirtualizeWrapper.h"
-#ifndef IPHONE_VERSION
 #import "VersionViewController.h"
-#endif
 
 #ifdef LITE_VERSION
 #import "GADBannerView.h"
