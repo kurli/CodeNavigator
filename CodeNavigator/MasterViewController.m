@@ -233,7 +233,7 @@
     [fileListBrowserController tableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
 }
 
--(GLfloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [fileListBrowserController tableView:tableView heightForRowAtIndexPath:indexPath];
 }
@@ -278,7 +278,7 @@
     }
     NSString* target_component = nil;
     NSString* current_component = nil;
-    int index = 0;
+    NSInteger index = 0;
     while (1) {
         target_component = [targetComponents objectAtIndex:index];
         current_component = [currentComponents objectAtIndex:index];
@@ -295,7 +295,7 @@
     if (index < [currentComponents count]-1)
     {
         NSArray* array = [self.navigationController viewControllers];
-        int target = [array count] -[currentComponents count]+index;
+        NSInteger target = [array count] -[currentComponents count]+index;
         if (target < 0 || target > [array count]) {
             return;
         }
@@ -308,7 +308,7 @@
     BOOL founded = NO;
     NSString* path = targetViewController.fileListBrowserController.currentLocation;
     // go to the target directory
-    for (int i=index+1; i<[targetComponents count]-1; i++)
+    for (NSInteger i=index+1; i<[targetComponents count]-1; i++)
     {
         MasterViewController* masterViewController;
 #ifdef IPHONE_VERSION
@@ -536,13 +536,15 @@
     
     [uploadSelection setMasterViewController:self];
     
+    CGSize size = uploadSelection.view.frame.size;
+    size.height = size.height / 6 * 5;
+    
 #ifdef IPHONE_VERSION
     popOverController = [[FPPopoverController alloc] initWithContentViewController:uploadSelection];
 #else
     popOverController = [[UIPopoverController alloc] initWithContentViewController:uploadSelection];
 #endif
-    CGSize size = uploadSelection.view.frame.size;
-    size.height = size.height / 6 * 5;
+
 	popOverController.popoverContentSize = size;
 #ifdef IPHONE_VERSION
     popOverController.arrowDirection = FPPopoverArrowDirectionDown;
@@ -612,7 +614,9 @@
 {
     UIButton *button = (UIButton *)sender;
     UIView *contentView;
-    if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+    if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+        contentView = [button superview];
+    } else if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
         contentView = [[button superview] superview];
     } else {
         contentView = [button superview];
@@ -751,7 +755,7 @@
     return self.currentProjectPath;
 }
 
-- (void) setNeedSelectRowAfterReload:(int)index {
+- (void) setNeedSelectRowAfterReload:(NSInteger)index {
     needSelectRowAfterReload = index;
 }
 

@@ -13,7 +13,7 @@
 
 @interface NavigationController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 {
-    int selectedItem;
+    NSInteger selectedItem;
 }
 
 @property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *searchBar;

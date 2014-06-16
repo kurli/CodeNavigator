@@ -21,19 +21,19 @@
     NSString* upFilePath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/upHistory.setting"];
     NSString* downFilePath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/downHistory.setting"];
     NSString* upFileIndexPath = [upFilePath stringByAppendingString:@"_index"];
-    NSString* downFileIndexPath = [downFileIndexPath stringByAppendingString:@"_index"];
+    NSString* downFileIndexPath = [downFilePath stringByAppendingString:@"_index"];
 
     HistoryController* historyController;
     DetailViewController* detailViewController = [Utils getInstance].detailViewController;
     
     historyController = detailViewController.upHistoryController;
     [historyController.historyStack writeToFile:upFilePath atomically:YES];
-    NSString* intVaule = [NSString stringWithFormat:@"%d", [historyController getCurrentDisplayIndex]];
+    NSString* intVaule = [NSString stringWithFormat:@"%ld", (unsigned long)[historyController getCurrentDisplayIndex]];
     [intVaule writeToFile:upFileIndexPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
     
     historyController = detailViewController.downHistoryController;
     [historyController.historyStack writeToFile:downFilePath atomically:YES];
-    intVaule = [NSString stringWithFormat:@"%d", [historyController getCurrentDisplayIndex]];
+    intVaule = [NSString stringWithFormat:@"%ld", (unsigned long)[historyController getCurrentDisplayIndex]];
     [intVaule writeToFile:downFileIndexPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
 }
 
@@ -141,19 +141,19 @@
     return [content substringToIndex:locationRange.location];
 }
 
--(int) getCount
+-(NSUInteger) getCount
 {
     if (historyStack == nil)
         return 0;
     return [historyStack count];
 }
 
--(int) getCurrentDisplayIndex
+-(NSUInteger) getCurrentDisplayIndex
 {
     return index;
 }
 
--(NSString*) getPathByIndex:(int)i
+-(NSString*) getPathByIndex:(NSInteger)i
 {
     if (i < 0)
         return nil;
@@ -164,7 +164,7 @@
     return [historyStack objectAtIndex:i];
 }
 
--(void) setIndex:(int)i
+-(void) setIndex:(NSInteger)i
 {
     if (i < 0)
         return;

@@ -14,7 +14,7 @@
 
 @interface FileBrowserViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FileListBrowserDelegate>
 {
-    int needSelectRowAfterReload;
+    NSInteger needSelectRowAfterReload;
 }
 
 @property (unsafe_unretained, nonatomic) IBOutlet UITableView *tableView;
@@ -33,6 +33,6 @@
 
 - (void) gotoFile:(NSString *)filePath;
 
-- (void) setNeedSelectRowAfterReload:(int)index;
+- (void) setNeedSelectRowAfterReload:(NSInteger)index;
 
 @end

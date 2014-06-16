@@ -104,7 +104,7 @@
     if ([lineString length] <= maxLineCount)
         return lineString;
     int spaceCount = 0;
-    int index = 0;
+    NSInteger index = 0;
     while (true) {
         unichar c = [lineString characterAtIndex:index];
         index++;
@@ -183,7 +183,7 @@
 	for ( i=0; i<[lineArray count]; i++)
     {
         @autoreleasepool {
-            int start = [htmlContent length];
+            NSInteger start = [htmlContent length];
             if (start != 0)
                 start--;
             if (i == 61) {
@@ -338,7 +338,7 @@
     if (bracesArray == nil) {
         bracesArray = [[NSMutableArray alloc] init];
     }
-    NSString* str = [NSString stringWithFormat:@"%@:%d:%d", token, lineNumber+1, [htmlContent length]];
+    NSString* str = [NSString stringWithFormat:@"%@:%d:%ld", token, lineNumber+1, [htmlContent length]];
     //skip when pre fold in this line
     for (int i=0; i<[bracesArray count]; i++) {
         NSString* tmp = [bracesArray objectAtIndex:i];
@@ -365,7 +365,7 @@
     if ([bracesArray count] == 0)
         return;
     lineNumber = lineNumber+1;
-    int index = [bracesArray count]-1;
+    NSInteger index = [bracesArray count]-1;
     for (; index>=0; index--) {
         NSString* str = [bracesArray objectAtIndex:index];
         NSArray* array = [str componentsSeparatedByString:@":"];

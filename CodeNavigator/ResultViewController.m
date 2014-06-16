@@ -162,7 +162,7 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:fileCellIdentifier];
         }
         cell.textLabel.text = ((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:indexPath.row]).fileName;
-        cell.textLabel.lineBreakMode |= UILineBreakModeMiddleTruncation;
+        cell.textLabel.lineBreakMode |= NSLineBreakByTruncatingMiddle;
         UIColor *color = [[UIColor alloc] initWithRed:0.0 green:0.0 blue:0.0 alpha:0];
         [cell setBackgroundColor:color];
     }
@@ -227,7 +227,7 @@
     return cell;
 }
 
--(GLfloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableviewMode == TABLEVIEW_FILE)
     {
@@ -290,7 +290,7 @@
     [[Utils getInstance] setResultViewTableViewMode:mode];
 }
 
--(void) setFileIndex:(int)index
+-(void) setFileIndex:(NSInteger)index
 {
     currentFileIndex = index;
     [[Utils getInstance] setResultViewFileIndex:index];

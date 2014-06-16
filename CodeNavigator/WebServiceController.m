@@ -416,7 +416,9 @@
                 [[NSFileManager defaultManager] createDirectoryAtPath:projectFolder withIntermediateDirectories:YES attributes:nil error:&error];
 
                 int count = 0;
+#ifdef LITE_VERSION
                 int liteLimitCount = 0;
+#endif
 //                NSString* skipPath = nil;
                 NSNumber* number;
                 number = [NSNumber numberWithFloat:0];
@@ -519,7 +521,7 @@
                         [buffer setLength:10240];
                         
                         // Expand next chunk of bytes
-                        int bytesRead= [read readDataWithBuffer:buffer];
+                        NSUInteger bytesRead= [read readDataWithBuffer:buffer];
                         if (bytesRead > 0) {
                             
                             // Write what we have read
@@ -539,7 +541,7 @@
             } @catch (ZipException *ze) {
                 [self performSelectorOnMainThread:@selector(log:) withObject:@"Caught a ZipException (see logs), terminating..." waitUntilDone:YES];
                 
-                NSLog(@"ZipException caught: %d - %@", ze.error, [ze reason]);
+                NSLog(@"ZipException caught: %ld - %@", ze.error, [ze reason]);
                 NSError *error;
                 [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
                 dispatch_async(dispatch_get_main_queue(), ^{

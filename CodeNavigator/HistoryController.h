@@ -11,7 +11,7 @@
 @interface HistoryController : NSObject
 {
     NSMutableArray *historyStack;
-    int index;
+    NSUInteger index;
 }
 
 @property (strong, nonatomic) NSMutableArray* historyStack;
@@ -30,13 +30,13 @@
 
 -(NSString*) getUrlFromHistoryFormat:(NSString*)content;
 
--(int) getCount;
+-(NSUInteger) getCount;
 
--(int) getCurrentDisplayIndex;
+-(NSUInteger) getCurrentDisplayIndex;
 
--(NSString*) getPathByIndex:(int)i;
+-(NSString*) getPathByIndex:(NSInteger)i;
 
--(void) setIndex:(int)i;
+-(void) setIndex:(NSInteger)i;
 
 +(void) writeToFile;
 

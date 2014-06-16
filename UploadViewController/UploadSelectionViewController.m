@@ -66,6 +66,12 @@
             [masterViewController showGitCloneView];
             [[Utils getInstance] addGAEvent:@"Add" andAction:@"GitClone" andLabel:nil andValue:nil];
             break;
+#ifdef IPHONE_VERSION
+        case 2:
+            [masterViewController downloadZipFromGitHub];
+            [[Utils getInstance] addGAEvent:@"Add" andAction:@"GitHubZip" andLabel:nil andValue:nil];
+            break;
+#else
         case 2:
             [masterViewController dropBoxClicked:nil];
             [[Utils getInstance] addGAEvent:@"Add" andAction:@"DropBox" andLabel:nil andValue:nil];
@@ -74,13 +80,18 @@
             [masterViewController downloadZipFromGitHub];
             [[Utils getInstance] addGAEvent:@"Add" andAction:@"GitHubZip" andLabel:nil andValue:nil];
             break;
+#endif
         default:
             break;
     }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+#ifdef IPHONE_VERSION
+    return 3;
+#else
     return 4;
+#endif
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -91,19 +102,24 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemIdentifier];
     }
-    //Twitter
     if (indexPath.row == 0) {
         //cell.imageView.image = [UIImage imageNamed:@"twitter.png"];
         cell.textLabel.text = @"Web Upload Service";
     } else if (indexPath.row == 1) {
         //cell.imageView.image = [UIImage imageNamed:@"share.png"];
         cell.textLabel.text = @"Git Clone";
+#ifdef IPHONE_VERSION
+    } else {
+        cell.textLabel.text = @"Download ZIP from GitHub";
+    }
+#else
     } else if (indexPath.row == 2) {
         //cell.imageView.image = [UIImage imageNamed:@"share.png"];
         cell.textLabel.text = @"Dropbox";
     } else {
         cell.textLabel.text = @"Download ZIP from GitHub";
     }
+#endif
     return cell;
 }
 

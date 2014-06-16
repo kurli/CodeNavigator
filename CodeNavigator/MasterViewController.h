@@ -27,7 +27,7 @@
 
 @interface MasterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, FileListBrowserDelegate>
 {
-    int needSelectRowAfterReload;
+    NSInteger needSelectRowAfterReload;
 }
 
 @property (strong, nonatomic) NSString *currentProjectPath;
@@ -87,7 +87,7 @@
 
 - (NSString*) getCurrentLocation;
 
-- (void) setNeedSelectRowAfterReload:(int)index;
+- (void) setNeedSelectRowAfterReload:(NSInteger)index;
 
 - (void) showWebUploadService;
 

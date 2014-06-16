@@ -213,7 +213,7 @@ static int cred_acquire_cb(git_cred **out,
     if (payload == NULL) {
         return 0;
     }
-    struct GTUpdatePayload *_payload = (struct GTUpdatePayload *)_payload;
+    struct GTUpdatePayload *_payload = (struct GTUpdatePayload *)payload;
 	return _payload->credAcquireCB(out);
 }
 

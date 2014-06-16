@@ -13,8 +13,8 @@
 
 @interface ManuallyParserViewController ()
 {
-    int currentSelected;
-    int currentEditItem;
+    NSInteger currentSelected;
+    NSInteger currentEditItem;
     EditType editType;
 }
 @end
@@ -124,7 +124,7 @@
 }
 
 - (IBAction)copyButtonClicked:(id)sender {
-    int manuallyParserIndex = -1;
+    NSInteger manuallyParserIndex = -1;
     NSString* name = @"";
     NSString* extension = @"";
     NSString* singleLine = @"";
@@ -182,7 +182,7 @@
 }
 
 - (IBAction)cancelButtonClicked:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (BOOL) checkFields
@@ -234,7 +234,7 @@
         
         [Parser saveParser:parserPath andExtention:extension andSingleLine:singleLine andMultiLineS:multiLineS andMultLineE:multiLineE andKeywords:keywords andType:currentEditItem];
         
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
         [self refreshCurrentFileWithNewParser];
         return;
     }
@@ -246,7 +246,7 @@
         manuallyParserPath = [manuallyParserPath stringByAppendingPathExtension:@"json"];
         [[NSFileManager defaultManager] removeItemAtPath:manuallyParserPath error:nil];
         
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
         [self refreshCurrentFileWithNewParser];
         return;
     }
@@ -302,7 +302,7 @@
 - (IBAction)doneButtonClicked:(id)sender {
     // Do nothing, just dismiss
     if (editType == EDIT_NONE) {
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
         return;
     }
     
@@ -425,7 +425,7 @@ andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords
 
 -(void)predefParserSelected
 {
-    int manuallyParserIndex = -1;
+    NSInteger manuallyParserIndex = -1;
     NSString* name = @"";
     NSString* extension = @"";
     NSString* singleLine = @"";
@@ -475,7 +475,7 @@ andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords
     if (row < [parserArray count]) {
         return [parserArray objectAtIndex:row];
     }
-    int index = row - [parserArray count];
+    NSInteger index = row - [parserArray count];
     if (index > -1 && index < [manuallyParserArray count]) {
         return [manuallyParserArray objectAtIndex:index];
     }
@@ -510,7 +510,7 @@ andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords
         return;
     }
     //Manually parser
-    int index = row - [parserArray count];
+    NSInteger index = row - [parserArray count];
     if (index > -1 && index < [manuallyParserArray count]) {
         [self switchToManuallyParserButtonMode];
         [self predefParserSelected];

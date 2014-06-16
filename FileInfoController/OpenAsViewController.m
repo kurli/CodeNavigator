@@ -15,7 +15,7 @@
 
 @interface OpenAsViewController ()
 {
-    int currentSelected;
+    NSInteger currentSelected;
 }
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
@@ -95,7 +95,7 @@
     }
     [self.parserTypePicker selectRow:currentSelected inComponent:0 animated:YES];
     
-    self.contentSizeForViewInPopover = self.view.frame.size;
+//    self.contentSizeForViewInPopover = self.view.frame.size;
     
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonClicked:)];
     self.navigationItem.rightBarButtonItem = doneButton;
@@ -158,7 +158,7 @@
     if (row < [parserArray count]) {
         return [parserArray objectAtIndex:row];
     }
-    int index = row - [parserArray count];
+    NSInteger index = row - [parserArray count];
     if (index > -1 && index < [manuallyParserArray count]) {
         return [manuallyParserArray objectAtIndex:index];
     }

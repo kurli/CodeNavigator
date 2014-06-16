@@ -144,7 +144,7 @@ static boolean recurseUsingOpendir (const char *const dirName)
 	boolean resize = FALSE;
 	DIR *const dir = opendir (dirName);
 	if (dir == NULL)
-		error (WARNING | PERROR, "cannot recurse into directory \"%s\"", dirName);
+		printf("cannot recurse into directory \"%s\"", dirName);
 	else
 	{
 		struct dirent *entry;
@@ -294,7 +294,7 @@ static boolean createTagsForEntry (const char *const entryName)
 	else if (status->isSymbolicLink  &&  ! Option.followLinks)
 		verbose ("ignoring \"%s\" (symbolic link)\n", entryName);
 	else if (! status->exists)
-		error (WARNING | PERROR, "cannot open source file \"%s\"", entryName);
+		printf("cannot open source file \"%s\"", entryName);
 	else if (status->isDirectory)
 		resize = recurseIntoDirectory (entryName);
 	else if (! status->isNormalFile)
@@ -391,7 +391,7 @@ static boolean createTagsFromListFile (const char *const fileName)
 	{
 		FILE *const fp = fopen (fileName, "r");
 		if (fp == NULL)
-			error (FATAL | PERROR, "cannot open list file \"%s\"", fileName);
+			printf ( "cannot open list file \"%s\"", fileName);
 		resize = createTagsFromFileInput (fp, FALSE);
 		fclose (fp);
 	}
@@ -476,7 +476,7 @@ static void makeTags (cookedArgs *args)
 	if (! files)
 	{
 		if (filesRequired ())
-			error (FATAL, "No files specified. Try \"%s --help\".",
+			printf("No files specified. Try \"%s --help\".",
 				getExecutableName ());
 		else if (! Option.recurse && ! etagsInclude ())
 			return;
@@ -522,7 +522,7 @@ static void makeTags (cookedArgs *args)
  *		Start up code
  */
 
-extern int ctags_main (int __unused__ argc, char **argv, const char* fn)
+int ctags_main (int argc, char **argv, const char* fn)
 {
     fileName = fn;
 	cookedArgs *args;

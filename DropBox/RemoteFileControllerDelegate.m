@@ -202,8 +202,8 @@
 
 - (void) deleteFolderInArray:(NSString*)path
 {
-    int count = [selectedArray count];
-    for (int i = 0; i<count; i++) {
+    NSInteger count = [selectedArray count];
+    for (NSInteger i = 0; i<count; i++) {
         SelectionItem* item = [selectedArray objectAtIndex:i];
         NSRange range = [item.path rangeOfString:path];
         if (range.location == 0) {
@@ -252,7 +252,7 @@
     }
     UITableViewCell *cell = (UITableViewCell*)[superView superview];
     
-    int index = [self.remoteTableView indexPathForCell:cell].row;
+    NSInteger index = [self.remoteTableView indexPathForCell:cell].row;
     SelectionItem* selectionItem = [[SelectionItem alloc] init];
         
     if (index < [self.currentDirectories count]) {
@@ -295,7 +295,7 @@
             }
             //deselect all the upper folder
             NSString* checkPath = selectionItem.path;
-            int length = [checkPath length];
+            NSInteger length = [checkPath length];
             checkPath = [checkPath stringByDeletingLastPathComponent];
             if (length == [checkPath length]) {
                 return;
@@ -306,7 +306,7 @@
                 if (index != -1) {
                     [selectedArray removeObjectAtIndex:index];
                 }
-                int length = [checkPath length];
+                NSInteger length = [checkPath length];
                 checkPath = [checkPath stringByDeletingLastPathComponent];
                 if (length == [checkPath length]) {
                     break;

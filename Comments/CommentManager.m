@@ -126,7 +126,7 @@
     return 1;
 }
 
--(GLfloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (currentMode == COMMENT_MANAGER_FILE)
     {
@@ -201,7 +201,7 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:fileCellIdentifier];
         }
         CommentItem* item= (CommentItem*)([commentsArray objectAtIndex:indexPath.row]);
-        cell.textLabel.text = [NSString stringWithFormat:@"%d: %@", item.line+1, item.comment];
+        cell.textLabel.text = [NSString stringWithFormat:@"%ld: %@", item.line+1, item.comment];
     }
     return cell;
 }
@@ -256,7 +256,7 @@
         else
             sourceFullPath = sourceName;
         CommentItem* item= (CommentItem*)([commentsArray objectAtIndex:indexPath.row]);
-        NSString* line = [NSString stringWithFormat:@"%d", item.line+1];
+        NSString* line = [NSString stringWithFormat:@"%ld", item.line+1];
         
         [[Utils getInstance].detailViewController gotoFile:sourceFullPath andLine:line andKeyword:nil];
         

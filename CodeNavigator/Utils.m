@@ -765,9 +765,9 @@ static Utils *static_utils;
     return YES;
 }
 
--(void) cscopeSearch:(NSString *)keyword andPath:(NSString *)sourcePath andProject:(NSString *)project andType:(int)type andFromVir:(BOOL)fromVir
+-(void) cscopeSearch:(NSString *)keyword andPath:(NSString *)sourcePath andProject:(NSString *)project andType:(NSInteger)type andFromVir:(BOOL)fromVir
 {
-    [[Utils getInstance] addGAEvent:@"Cscope" andAction:[NSString stringWithFormat:@"Type=%d", type] andLabel:nil andValue:nil];
+    [[Utils getInstance] addGAEvent:@"Cscope" andAction:[NSString stringWithFormat:@"Type=%ld", type] andLabel:nil andValue:nil];
     if (fromVir == NO)
     {
         // Because result has been changed and not from Virtualization
@@ -1009,7 +1009,7 @@ static Utils *static_utils;
 
 #pragma ResultViewController storage
 
--(void) setResultViewFileIndex:(int)index
+-(void) setResultViewFileIndex:(NSInteger)index
 {
     resultCurrentFileIndex = index;
 }
@@ -1024,7 +1024,7 @@ static Utils *static_utils;
     return resultTableviewMode;
 }
 
--(int) getResultViewFileIndex
+-(NSInteger) getResultViewFileIndex
 {
     return resultCurrentFileIndex;
 }

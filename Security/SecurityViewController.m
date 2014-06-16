@@ -94,13 +94,13 @@
 	return YES;
 }
 
-- (void)passwordEntered:(int)number
+- (void)passwordEntered:(NSInteger)number
 {
     if ([password length] == 4) {
         return;
     }
     
-    [password appendFormat:@"%d", number];
+    [password appendFormat:@"%ld", number];
     switch ([password length]) {
         case 1:
             [pas1 setText:@"*"];
@@ -123,7 +123,7 @@
         }
         if ([password compare:[[Utils getInstance] isPasswardSet]] == NSOrderedSame) {
             [[Utils getInstance] setIsScreenLocked:NO];
-            [[Utils getInstance].splitViewController dismissModalViewControllerAnimated:YES];
+            [[Utils getInstance].splitViewController dismissViewControllerAnimated:YES completion:nil];
         }
         else {
             [informationLabel setText:@"!!!Password Error"];
@@ -172,7 +172,7 @@
             [self setPasToFile];
             [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Password erased"];
             [[Utils getInstance] setIsScreenLocked:NO];
-            [[Utils getInstance].splitViewController dismissModalViewControllerAnimated:YES];
+            [[Utils getInstance].splitViewController dismissViewControllerAnimated:YES completion:nil];
             return;
         }
         needConfirmPassword = password;
@@ -193,7 +193,7 @@
             [self setPasToFile];
             [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Password set finished"];
             [[Utils getInstance] setIsScreenLocked:NO];
-            [[Utils getInstance].splitViewController dismissModalViewControllerAnimated:YES];
+            [[Utils getInstance].splitViewController dismissViewControllerAnimated:YES completion:nil];
             return;
         } else {
             [informationLabel setText:@"Password don't match, Try again"];
@@ -256,7 +256,7 @@
         //reset
         if (passwordStat == RESET_PASSWORD || passwordStat == RESET_PASSWORD_CONFIRM) {
             [[Utils getInstance] setIsScreenLocked:NO];
-            [[Utils getInstance].splitViewController dismissModalViewControllerAnimated:YES];
+            [[Utils getInstance].splitViewController dismissViewControllerAnimated:YES completion:nil];
             return;
         }
         password = [[NSMutableString alloc] initWithString:@""];

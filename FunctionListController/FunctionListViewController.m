@@ -179,11 +179,11 @@
     [[Utils getInstance].detailViewController.activeWebView stringByEvaluatingJavaScriptFromString:js];
     js = [NSString stringWithFormat:@"FocusLine('L%d')",line];
     [[Utils getInstance].detailViewController.activeWebView  stringByEvaluatingJavaScriptFromString:js];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     [self.searchField resignFirstResponder];
 }
 
--(GLfloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 50;
 }

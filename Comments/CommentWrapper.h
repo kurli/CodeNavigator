@@ -14,7 +14,7 @@
 
 @property (nonatomic, unsafe_unretained) int time;
 
-@property (nonatomic, unsafe_unretained) int line;
+@property (nonatomic, unsafe_unretained) NSInteger line;
 
 @property (nonatomic, strong) NSString* comment;
 
@@ -32,16 +32,16 @@
 
 -(void)readFromFile:(NSString*)path;
 
--(void)addComment:(int)line andComment:(NSString*)comment andGroup:(NSString*)group;
+-(void)addComment:(NSInteger)line andComment:(NSString*)comment andGroup:(NSString*)group;
 
 -(void)saveToFile;
 
--(NSString*) getCommentByLine:(int)line;
+-(NSString*) getCommentByLine:(NSInteger)line;
 
 -(BOOL) isCommentExistsByGroup:(NSString*) group;
 
 -(NSArray*) getCommentsByGroup:(NSString*) group;
 
--(NSString*) getCommentGroupByLine:(int)line;
+-(NSString*) getCommentGroupByLine:(NSInteger)line;
 
 @end

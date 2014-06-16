@@ -57,7 +57,7 @@
     
     self.splitViewController = [[MGSplitViewController alloc] init];
     [[Utils getInstance] setSplitViewController:self.splitViewController];
-    self.splitViewController.delegate = detailViewController;
+    self.splitViewController.splitDelegate = detailViewController;
     self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailViewController, nil];
 #else
     MasterViewController *masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController-iPhone" bundle:nil];
@@ -91,7 +91,7 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         if ([[Utils getInstance] isScreenLocked] == NO && [[Utils getInstance] isPasswardSet] != nil) {
             SecurityViewController* viewController = [[SecurityViewController alloc] init];
-            [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
+            [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
         }
     });
     
@@ -106,7 +106,11 @@
 #ifdef LITE_VERSION
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-39030094-1"];
 #else
+#ifdef IPHONE_VERSION
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-39030094-5"];
+#else
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-39030094-2"];
+#endif
 #endif
     
     // do not display divider
@@ -123,7 +127,7 @@
      */
     if ([[Utils getInstance] isScreenLocked] == NO && [[Utils getInstance] isPasswardSet] != nil) {
         SecurityViewController* viewController = [[SecurityViewController alloc] init];
-        [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
+        [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
     }
 #ifdef LITE_VERSION
     [[[Utils getInstance] getBannerViewController] showBannerView];

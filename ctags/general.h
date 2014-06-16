@@ -122,6 +122,8 @@ extern void *unlink (const char *);
 extern char *getenv (const char *);
 #endif
 
+#define error printf
+
 #endif  /* _GENERAL_H */
 
 /* vi:set tabstop=4 shiftwidth=4: */

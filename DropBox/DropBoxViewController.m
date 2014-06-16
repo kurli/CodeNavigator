@@ -655,7 +655,8 @@
 
 - (void) showModualView
 {
-    [[Utils getInstance].splitViewController presentModalViewController:self animated:YES];
+    [[Utils getInstance].splitViewController presentViewController:self animated:YES completion:nil];
+    
     [self authentication];
 }
 
@@ -669,7 +670,7 @@
         [[DBSession sharedSession] unlinkAll];
         [self setRestClient:nil];
         self.relinkUserId = nil;
-        [[Utils getInstance].splitViewController dismissModalViewControllerAnimated:YES];
+        [[Utils getInstance].splitViewController dismissViewControllerAnimated:YES completion:nil];
         
         MasterViewController* masterViewController = nil;
         NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
@@ -683,7 +684,7 @@
 //        [[DBSession sharedSession] unlinkAll];
 //        self.relinkUserId = nil;
 //    }
-    [[Utils getInstance].splitViewController dismissModalViewControllerAnimated:YES];
+    [[Utils getInstance].splitViewController dismissViewControllerAnimated:YES completion:nil];
     MasterViewController* masterViewController = nil;
     NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
     masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;

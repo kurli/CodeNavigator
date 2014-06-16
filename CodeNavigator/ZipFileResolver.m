@@ -127,7 +127,7 @@
                             [buffer setLength:10240];
                             
                             // Expand next chunk of bytes
-                            int bytesRead= [read readDataWithBuffer:buffer];
+                            NSInteger bytesRead= [read readDataWithBuffer:buffer];
                             if (bytesRead > 0) {
                                 
                                 // Write what we have read
@@ -145,7 +145,7 @@
                     }
                 }
             } @catch (ZipException *ze) {
-                NSLog(@"ZipException caught: %d - %@", ze.error, [ze reason]);
+                NSLog(@"ZipException caught: %ld - %@", (long)ze.error, [ze reason]);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:MASTER_VIEW_RELOAD object:nil];
                 });

@@ -39,7 +39,7 @@ typedef enum _JSState {
 
 @interface DetailViewController : UIViewController <UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverControllerDelegate, MGSplitViewControllerDelegate, FileBrowserViewDelegate>
 {
-    int currentSearchFocusLine;
+    NSUInteger currentSearchFocusLine;
     BOOL shownToolBar;
     
     //JSState related
@@ -193,7 +193,7 @@ typedef enum _JSState {
 
 - (void) hideVirtualizeView;
 
-- (void) showCommentInWebView:(int)_line andComment:(NSString*)_comment;
+- (void) showCommentInWebView:(NSInteger)_line andComment:(NSString*)_comment;
 
 - (void) showAllComments;
 

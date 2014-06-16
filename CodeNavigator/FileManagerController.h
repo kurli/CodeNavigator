@@ -26,7 +26,7 @@
 
 -(void) searchVirtualizeFiles;
 
--(void) displayImage:(int)index;
+-(void) displayImage:(NSInteger)index;
 
 -(void) clearScreen;
 

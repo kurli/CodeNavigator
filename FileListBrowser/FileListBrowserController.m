@@ -321,14 +321,14 @@
     }
 }
 
--(GLfloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (isCurrentSearchFileMode == YES)
     {
-        return 65;
+        return 65.0f;
     }
 
-    return 60;
+    return 60.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -416,17 +416,17 @@
     }
 }
 
-- (int)getCurrentDirectoriesCount
+- (NSInteger)getCurrentDirectoriesCount
 {
     return [self.currentDirectories count];
 }
 
-- (NSString*) getFileNameAtIndex:(int)index
+- (NSString*) getFileNameAtIndex:(NSInteger)index
 {
     return [currentFiles objectAtIndex:index];
 }
 
-- (NSString*) getDirectoryAtIndex:(int)index
+- (NSString*) getDirectoryAtIndex:(NSInteger)index
 {
     return [currentDirectories objectAtIndex:index];
 }

@@ -125,7 +125,7 @@
             });
         } checkoutProgressBlock:^(NSString *path, NSUInteger completedSteps, NSUInteger totalSteps) {
             dispatch_sync(dispatch_get_main_queue(), ^{
-                NSString* log = [NSString stringWithFormat:@"Checking out:[%d/%d] %@", completedSteps, totalSteps, path];
+                NSString* log = [NSString stringWithFormat:@"Checking out:[%ld/%ld] %@", (unsigned long)completedSteps, totalSteps, path];
                 [self addLog:log andNewLine:YES];
             });
         }];

@@ -231,7 +231,7 @@ padding-right: 20px;\
     
     NSString* path = [[Utils getInstance] getPathFromProject:fileName];
     
-    [picker setSubject:[NSString stringWithFormat:@"%@--Comments L%d", path, line+1]];
+    [picker setSubject:[NSString stringWithFormat:@"%@--Comments L%ld", path, line+1]];
     
     [emailBody appendString:@"<html><body>"];
     //File path
@@ -385,14 +385,14 @@ padding-right: 20px;\
     if (line>=[array count]) {
         line = [array count] -1;
     }
-    int upperStart;
+    NSInteger upperStart;
     if (line >= 5) {
         upperStart = line - 5;
     } else {
         upperStart = 0;
     }
-    for (int i=upperStart; i<=line; i++) {
-        [str appendFormat:@"%4d: %@", i+1, [array objectAtIndex:i]];
+    for (NSInteger i=upperStart; i<=line; i++) {
+        [str appendFormat:@"%4ld: %@", i+1, [array objectAtIndex:i]];
         if (i != line) {
             [str appendString:@"\n"];
         }
@@ -400,14 +400,14 @@ padding-right: 20px;\
     [self setUpperSource:str];
     
     NSMutableString* str2 = [[NSMutableString alloc] init];
-    int downEnd;
+    NSInteger downEnd;
     if ([array count] - line > 5) {
         downEnd = line + 5;
     } else {
         downEnd = [array count] - 1;
     }
-    for (int i = line+1; i<=downEnd; i++) {
-        [str2 appendFormat:@"%4d %@", i+1, [array objectAtIndex:i]];
+    for (NSInteger i = line+1; i<=downEnd; i++) {
+        [str2 appendFormat:@"%4ld %@", i+1, [array objectAtIndex:i]];
         if (i != downEnd) {
             [str2 appendString:@"\n"];
         }

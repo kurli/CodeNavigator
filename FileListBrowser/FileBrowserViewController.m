@@ -152,7 +152,7 @@
     [fileListBrowserController tableView:_tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
 }
 
--(GLfloat) tableView:(UITableView *)_tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+-(CGFloat) tableView:(UITableView *)_tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [fileListBrowserController tableView:_tableView heightForRowAtIndexPath:indexPath];
 }
@@ -298,7 +298,7 @@
     }
     NSString* target_component = nil;
     NSString* current_component = nil;
-    int index = 0;
+    NSInteger index = 0;
     while (1) {
         target_component = [targetComponents objectAtIndex:index];
         current_component = [currentComponents objectAtIndex:index];
@@ -315,7 +315,7 @@
     if (index < [currentComponents count]-1)
     {
         NSArray* array = [self.navigationController viewControllers];
-        int target = [array count] -[currentComponents count]+index;
+        NSInteger target = [array count] -[currentComponents count]+index;
         targetViewController = (FileBrowserViewController*)[array objectAtIndex:target];
         [self.navigationController popToViewController:targetViewController animated:NO];
     }
@@ -325,7 +325,7 @@
     BOOL founded = NO;
     NSString* path = targetViewController.fileListBrowserController.currentLocation;
     // go to the target directory
-    for (int i=index+1; i<[targetComponents count]-1; i++)
+    for (NSInteger i=index+1; i<[targetComponents count]-1; i++)
     {
         FileBrowserViewController* fileBrowserViewController;
 
@@ -383,7 +383,7 @@
     }
 }
 
--(void) setNeedSelectRowAfterReload:(int)index {
+-(void) setNeedSelectRowAfterReload:(NSInteger)index {
     needSelectRowAfterReload = index;
 }
 

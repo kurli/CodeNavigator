@@ -425,18 +425,19 @@
     [self.activeWebView loadRequest:request];
 }
 
--(void) displayHTMLString:(NSString *)content andBaseURL:(NSString *)baseURL
+-(void) displayHTMLString:(NSString *)content andBaseURL:(NSString *)baseURLStr
 {
-    if (baseURL == nil) {
+    NSURL* baseURL;
+    if (baseURLStr == nil) {
         baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
     } else {
-        baseURL = [NSURL fileURLWithPath:baseURL isDirectory:YES];
+        baseURL = [NSURL fileURLWithPath:baseURLStr isDirectory:YES];
     }
     self.activeWebView.opaque = NO;
     self.activeWebView.backgroundColor = [UIColor clearColor];
     [ThemeManager changeUIViewStyle:self.activeWebView];
     [self.activeWebView setScalesPageToFit:NO];
-    [self.activeWebView loadHTMLString:content baseURL:[baseURL copy]];
+    [self.activeWebView loadHTMLString:content baseURL:baseURL];
 }
 
 - (void) gotoFile:(NSString *)filePath andLine:(NSString *)line andKeyword:(NSString *)__keyword
@@ -745,7 +746,7 @@
 
 - (IBAction)historyClicked:(id)sender {
     UISegmentedControl* controller = sender;
-    int index = [controller selectedSegmentIndex];
+    NSInteger index = [controller selectedSegmentIndex];
     if (index == 0)
         [self goBackHistory];
     else
@@ -783,7 +784,7 @@
 
 - (IBAction)showCommentsClicked:(id)sender {
     UISegmentedControl* controller = sender;
-    int index = [controller selectedSegmentIndex];
+    NSInteger index = [controller selectedSegmentIndex];
     if (index == 0) {
         [self showAllComments];
     }
@@ -1108,7 +1109,7 @@
 
 - (IBAction)gotoHighlight:(id)sender {
     UISegmentedControl* controller = sender;
-    int index = [controller selectedSegmentIndex];
+    NSInteger index = [controller selectedSegmentIndex];
     if (index == 0)
         [self upSelectButton];
     else
@@ -1406,7 +1407,7 @@
     [masterViewController gotoFile:[self getCurrentDisplayFile] andForce:YES];
 }
 
-- (void) showCommentInWebView:(int)_line andComment:(NSString*)_comment
+- (void) showCommentInWebView:(NSInteger)_line andComment:(NSString*)_comment
 {
     NSString* comment = _comment;
     comment = [comment stringByReplacingOccurrencesOfString:@"\n" withString:@"lgz_br_lgz"];
@@ -1414,7 +1415,7 @@
     comment = [comment stringByReplacingOccurrencesOfString:@"\'" withString:@"\\\'"];
     comment = [comment stringByReplacingOccurrencesOfString:@"\\" withString:@"\\"];
     
-    NSString* js = [NSString stringWithFormat:@"showComment('%d','%@');",_line+1, comment];
+    NSString* js = [NSString stringWithFormat:@"showComment('%ld','%@');",_line+1, comment];
     [activeWebView stringByEvaluatingJavaScriptFromString:js];
 }
 
@@ -1745,7 +1746,7 @@
 #ifdef IPHONE_VERSION
         [self presentViewController:viewController animated:YES completion:nil];
 #else
-        [[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
+        [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
 #endif
         return NO;
     }

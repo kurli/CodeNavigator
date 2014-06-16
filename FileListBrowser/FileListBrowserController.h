@@ -12,7 +12,7 @@
 @interface FileListBrowserController : NSObject <UIAlertViewDelegate>
 {
     BOOL isCurrentProjectFolder;
-    int deleteItemId;
+    NSInteger deleteItemId;
     BOOL enableFileInfoButton;
     BOOL isCurrentSearchFileMode;
 }
@@ -26,16 +26,16 @@
 @property (strong, nonatomic) NSMutableArray* searchFileResultArray;
 
 - (BOOL) getIsCurrentSearchFileMode;
-- (NSString*) getDirectoryAtIndex:(int)index;
-- (NSString*) getFileNameAtIndex:(int)index;
-- (int)getCurrentDirectoriesCount;
+- (NSString*) getDirectoryAtIndex:(NSInteger)index;
+- (NSString*) getFileNameAtIndex:(NSInteger)index;
+- (NSInteger)getCurrentDirectoriesCount;
 - (void) reloadData;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath;
-- (GLfloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void) setIsCurrentProjectFolder:(BOOL)_isProjectFolder;
 - (BOOL) getIsCurrentProjectFolder;

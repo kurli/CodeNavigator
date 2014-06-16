@@ -52,10 +52,6 @@
 
 -(void) parseLine: (NSString*) line lineNum:(int)lineNumber;
 
--(BOOL) checkCommentsLine;
-
--(BOOL) checkPreprocessor:(int) lineNumber;
-
 -(BOOL) checkString;
 
 -(BOOL) checkChar;

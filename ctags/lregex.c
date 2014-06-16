@@ -616,7 +616,7 @@ extern boolean processRegexOption (const char *const option,
 		else
 			processLanguageRegex (language, parameter);
 #else
-		error (WARNING, "regex support not available; required for --%s option",
+		printf ( "regex support not available; required for --%s option",
 		   option);
 #endif
 		handled = TRUE;

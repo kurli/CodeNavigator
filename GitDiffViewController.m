@@ -393,7 +393,7 @@ typedef enum _changeType
     }
 }
 
-- (void) setCurrentDisplayIndex:(int)index
+- (void) setCurrentDisplayIndex:(NSInteger)index
 {
     colorStep = 0;
     currentDisplayIndex = index;
@@ -488,7 +488,7 @@ typedef enum _changeType
     [self.webView loadHTMLString:html baseURL:baseURL];
 }
 
-- (int) getCurrentDisplayIndex
+- (NSInteger) getCurrentDisplayIndex
 {
     return currentDisplayIndex;
 }
@@ -522,7 +522,7 @@ typedef enum _changeType
 #endif
 }
 
--(void) showDiffInfo:(int)index
+-(void) showDiffInfo:(NSInteger)index
 {
     if (index >= [diffAnalyzeArray count]) {
         return;
@@ -533,7 +533,7 @@ typedef enum _changeType
         return;
     }
     NSString* diff = [array objectAtIndex:0];
-    int i = 0;
+    NSInteger i = 0;
     while (true) {
         if (i >= [diff length]) {
             return;
@@ -546,12 +546,12 @@ typedef enum _changeType
         break;
     }
     
-    int linePos = [[diff substringToIndex:i] intValue];
+    NSInteger linePos = [[diff substringToIndex:i] intValue];
     if (linePos > 5) {
         linePos -= 5;
     }
     
-    NSString* js = [NSString stringWithFormat:@"var elm = top.window.frames['oldFile'].document.getElementById('L%d');\
+    NSString* js = [NSString stringWithFormat:@"var elm = top.window.frames['oldFile'].document.getElementById('L%ld');\
                     var y = elm.offsetTop;\
                     var node = elm;\
                     while (node.offsetParent && node.offsetParent != document.body) {\

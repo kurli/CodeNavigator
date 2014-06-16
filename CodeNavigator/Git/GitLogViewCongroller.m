@@ -282,7 +282,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	[tableView beginUpdates];
-    int index = indexPath.row;
+    NSInteger index = indexPath.row;
     if (index > [self.commitsArray count])
     {
         [tableView endUpdates];
@@ -523,7 +523,7 @@
         UIButton* detailButton = (UIButton*)[cell viewWithTag:DETAIL_BUTTON_TAG];
         [detailButton addTarget:self action:@selector(detailButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
-    int index = indexPath.row;
+    NSInteger index = indexPath.row;
     if (index > [self.commitsArray count])
         return cell;
     UIButton* detailButton = (UIButton*)[cell viewWithTag:DETAIL_BUTTON_TAG];
@@ -586,7 +586,7 @@
     return [self.commitsArray count];
 }
 
-- (GLfloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == selected)
         return 200;

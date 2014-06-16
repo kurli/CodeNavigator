@@ -76,7 +76,7 @@
     }
 }
 
--(void) displayImage:(int)index
+-(void) displayImage:(NSInteger)index
 {
     if (index >= [self.imagesPathList count])
         return;

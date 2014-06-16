@@ -16,7 +16,7 @@
 @interface DropBoxViewController : UIViewController
 {
     BOOL isCurrentAlertCancelType;
-    int downloadFileCount;
+    NSInteger downloadFileCount;
 }
 
 @property (nonatomic, strong) NSString *relinkUserId;

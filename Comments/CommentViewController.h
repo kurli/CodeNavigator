@@ -13,7 +13,7 @@
 @class CommentWrapper;
 @interface CommentViewController : UIViewController <MFMailComposeViewControllerDelegate>
 
-@property (nonatomic, unsafe_unretained) int line;
+@property (nonatomic, unsafe_unretained) NSInteger line;
 @property (nonatomic, strong) NSString* fileName;
 @property (nonatomic, strong) NSString* upperSource;
 @property (nonatomic, strong) NSString* downSource;

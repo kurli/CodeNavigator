@@ -170,12 +170,12 @@
 		9444595C18D72B8C008A02DB /* VersionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9444595A18D72B8C008A02DB /* VersionViewController.xib */; };
 		9444595F18D74C42008A02DB /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9444595E18D74C42008A02DB /* iRate.m */; };
 		9444596118D7508C008A02DB /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9444596018D7508C008A02DB /* iRate.bundle */; };
+		9445C8AF193CAF1C00924D41 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 948C740D1806E5A300065E65 /* Images.xcassets */; };
+		9445C8B7193CB85200924D41 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 9445C8B6193CB85200924D41 /* Icon-120.png */; };
 		94472084157534E9002EEA5A /* ManuallyParserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94472082157534E9002EEA5A /* ManuallyParserViewController.m */; };
 		94472085157534E9002EEA5A /* ManuallyParserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94472082157534E9002EEA5A /* ManuallyParserViewController.m */; };
 		94472086157534E9002EEA5A /* ManuallyParserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94472083157534E9002EEA5A /* ManuallyParserViewController.xib */; };
 		94472087157534E9002EEA5A /* ManuallyParserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94472083157534E9002EEA5A /* ManuallyParserViewController.xib */; };
-		944A5B4F160B60010076410C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 944A5B4E160B60010076410C /* Default@2x.png */; };
-		944A5B51160B60670076410C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 944A5B50160B60670076410C /* Default-568h@2x.png */; };
 		944DD7C2152772EF000473BE /* diff.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C1152772EF000473BE /* diff.c */; };
 		944DD7C3152772EF000473BE /* diff.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C1152772EF000473BE /* diff.c */; };
 		944DD7C71527731E000473BE /* getopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C61527731E000473BE /* getopt.c */; };
@@ -326,12 +326,6 @@
 		947D9F8C158BA930000B5136 /* ResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */; };
 		947F861215863579002EAA1E /* DetailViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947F861015863579002EAA1E /* DetailViewController-iPhone.xib */; };
 		947F861315863579002EAA1E /* MasterViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947F861115863579002EAA1E /* MasterViewController-iPhone.xib */; };
-		94846ED014BCA4FD00388D68 /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECB14BCA4FD00388D68 /* MGSplitCornersView.m */; };
-		94846ED114BCA4FD00388D68 /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECB14BCA4FD00388D68 /* MGSplitCornersView.m */; };
-		94846ED214BCA4FD00388D68 /* MGSplitDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECD14BCA4FD00388D68 /* MGSplitDividerView.m */; };
-		94846ED314BCA4FD00388D68 /* MGSplitDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECD14BCA4FD00388D68 /* MGSplitDividerView.m */; };
-		94846ED414BCA4FD00388D68 /* MGSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECF14BCA4FD00388D68 /* MGSplitViewController.m */; };
-		94846ED514BCA4FD00388D68 /* MGSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECF14BCA4FD00388D68 /* MGSplitViewController.m */; };
 		9489196D1524CC9000AB9968 /* BashParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9489196C1524CC9000AB9968 /* BashParser.m */; };
 		9489196E1524CC9000AB9968 /* BashParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9489196C1524CC9000AB9968 /* BashParser.m */; };
 		948C73FC180443A700065E65 /* binocular.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C73FB180443A700065E65 /* binocular.png */; };
@@ -497,9 +491,6 @@
 		949DC1C21583E8CF00385796 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DA0BBD14A624680035DB39 /* Utils.m */; };
 		949DC1C31583E8CF00385796 /* FilePathInfoPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D8702F14A65887002F2DBB /* FilePathInfoPopupController.m */; };
 		949DC1C51583E8CF00385796 /* UnSupportedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB1E5114AF5E0300451020 /* UnSupportedParser.m */; };
-		949DC1C61583E8CF00385796 /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECB14BCA4FD00388D68 /* MGSplitCornersView.m */; };
-		949DC1C71583E8CF00385796 /* MGSplitDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECD14BCA4FD00388D68 /* MGSplitDividerView.m */; };
-		949DC1C81583E8CF00385796 /* MGSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94846ECF14BCA4FD00388D68 /* MGSplitViewController.m */; };
 		949DC1C91583E8CF00385796 /* HighLightWordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FB0FE914BDB3A50084E457 /* HighLightWordController.m */; };
 		949DC1CB1583E8CF00385796 /* ImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D16DE614C9CC3B007439EB /* ImageParser.m */; };
 		949DC1CC1583E8CF00385796 /* HistoryListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9443BF5314D1A40200355278 /* HistoryListController.m */; };
@@ -565,7 +556,6 @@
 		949DC21D1583E8CF00385796 /* linux_0.1 in Resources */ = {isa = PBXBuildFile; fileRef = 94557E5314B05E89004950B4 /* linux_0.1 */; };
 		949DC2211583E8CF00385796 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 94FAC80214C1649400B9A821 /* settings.png */; };
 		949DC2241583E8CF00385796 /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 94103DEF14D86F1300212EBB /* bookmark.png */; };
-		949DC2281583E8CF00385796 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 9473AEF514DACD6A00D39E05 /* iTunesArtwork */; };
 		949DC2291583E8CF00385796 /* VirtualizeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94422A3214DD87F50076AC66 /* VirtualizeViewController.xib */; };
 		949DC22A1583E8CF00385796 /* ProjectListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945428B314F2B51600353EC8 /* ProjectListController.xib */; };
 		949DC22B1583E8CF00385796 /* virbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5079214F6AA1C00587A47 /* virbackground.png */; };
@@ -591,8 +581,6 @@
 		949DC23F1583E8CF00385796 /* NewEntry.png in Resources */ = {isa = PBXBuildFile; fileRef = 945AA40D1508DE9C006729C8 /* NewEntry.png */; };
 		949DC2401583E8CF00385796 /* max.png in Resources */ = {isa = PBXBuildFile; fileRef = 945AA44A1508E3CA006729C8 /* max.png */; };
 		949DC2411583E8CF00385796 /* Help.html in Resources */ = {isa = PBXBuildFile; fileRef = 945AA453150926A1006729C8 /* Help.html */; };
-		949DC2421583E8CF00385796 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 943486E0150A3DA600370AE3 /* Default-Landscape~ipad.png */; };
-		949DC2431583E8CF00385796 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 943486DE150A3D4000370AE3 /* Default-Portrait~ipad.png */; };
 		949DC24B1583E8CF00385796 /* masterView_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9457C78D153086FC00BB9185 /* masterView_bg.png */; };
 		949DC24C1583E8CF00385796 /* nav_backButton_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9457C7901530923800BB9185 /* nav_backButton_icon.png */; };
 		949DC24E1583E8CF00385796 /* checkbox_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 9457C7961530BA3800BB9185 /* checkbox_no.png */; };
@@ -617,9 +605,7 @@
 		94A0FAE7153DDAD9004277BF /* virtualize.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A0FAE5153DDAD9004277BF /* virtualize.png */; };
 		94A3B09B15447C7500C8E132 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A5184A152DF30A0062DA65 /* Security.framework */; };
 		94A404AC158A299C0084F645 /* ManuallyParserViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A404AB158A299C0084F645 /* ManuallyParserViewController-iPhone.xib */; };
-		94A404B4158A53C10084F645 /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A404B3158A53C10084F645 /* Icon-57.png */; };
 		94A404CF158A635C0084F645 /* CodeNavigatoriPhone-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94A404CE158A635C0084F645 /* CodeNavigatoriPhone-info.plist */; };
-		94A404D1158A69920084F645 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A404B9158A56B50084F645 /* Default.png */; };
 		94A5079314F6AA1C00587A47 /* virbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5079214F6AA1C00587A47 /* virbackground.png */; };
 		94A5079414F6AA1C00587A47 /* virbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5079214F6AA1C00587A47 /* virbackground.png */; };
 		94A51848152DF2AC0062DA65 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A51847152DF2AC0062DA65 /* DropboxSDK.framework */; };
@@ -804,6 +790,12 @@
 		94B23AD81499025A00A83395 /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B23AD71499025A00A83395 /* HistoryController.m */; };
 		94B4036A14A0DE0300E3A636 /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4033014A0D5EB00E3A636 /* libHttpService.a */; };
 		94B4038114A0ED4700E3A636 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4038014A0ED4700E3A636 /* CFNetwork.framework */; };
+		94B40390194456F8002B8E26 /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4038B194456F8002B8E26 /* MGSplitCornersView.m */; };
+		94B40391194456F8002B8E26 /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4038B194456F8002B8E26 /* MGSplitCornersView.m */; };
+		94B40392194456F8002B8E26 /* MGSplitDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4038D194456F8002B8E26 /* MGSplitDividerView.m */; };
+		94B40393194456F8002B8E26 /* MGSplitDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4038D194456F8002B8E26 /* MGSplitDividerView.m */; };
+		94B40394194456F8002B8E26 /* MGSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4038F194456F8002B8E26 /* MGSplitViewController.m */; };
+		94B40395194456F8002B8E26 /* MGSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4038F194456F8002B8E26 /* MGSplitViewController.m */; };
 		94B69881180EEE7A009C7176 /* CSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B69880180EEE7A009C7176 /* CSSParser.m */; };
 		94B69882180EEE7A009C7176 /* CSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B69880180EEE7A009C7176 /* CSSParser.m */; };
 		94B7E5AA156FE2BA000F3F34 /* FileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B7E5A8156FE2BA000F3F34 /* FileInfoViewController.m */; };
@@ -1260,6 +1252,7 @@
 		9444595D18D74C42008A02DB /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iRate.h; path = Version/iRate/iRate.h; sourceTree = "<group>"; };
 		9444595E18D74C42008A02DB /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iRate.m; path = Version/iRate/iRate.m; sourceTree = "<group>"; };
 		9444596018D7508C008A02DB /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
+		9445C8B6193CB85200924D41 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-120.png"; path = "icon/iPhone/Icon-120.png"; sourceTree = "<group>"; };
 		94472081157534E9002EEA5A /* ManuallyParserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManuallyParserViewController.h; path = ManuallyParser/ManuallyParserViewController.h; sourceTree = "<group>"; };
 		94472082157534E9002EEA5A /* ManuallyParserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManuallyParserViewController.m; path = ManuallyParser/ManuallyParserViewController.m; sourceTree = "<group>"; };
 		94472083157534E9002EEA5A /* ManuallyParserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ManuallyParserViewController.xib; path = ManuallyParser/ManuallyParserViewController.xib; sourceTree = "<group>"; };
@@ -1435,12 +1428,6 @@
 		947F861015863579002EAA1E /* DetailViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DetailViewController-iPhone.xib"; sourceTree = "<group>"; };
 		947F861115863579002EAA1E /* MasterViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MasterViewController-iPhone.xib"; sourceTree = "<group>"; };
 		947F86181587A8C2002EAA1E /* WebServiceController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "WebServiceController-iPhone.xib"; path = "CodeNavigator/WebServiceController-iPhone.xib"; sourceTree = "<group>"; };
-		94846ECA14BCA4FD00388D68 /* MGSplitCornersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitCornersView.h; sourceTree = "<group>"; };
-		94846ECB14BCA4FD00388D68 /* MGSplitCornersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitCornersView.m; sourceTree = "<group>"; };
-		94846ECC14BCA4FD00388D68 /* MGSplitDividerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitDividerView.h; sourceTree = "<group>"; };
-		94846ECD14BCA4FD00388D68 /* MGSplitDividerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitDividerView.m; sourceTree = "<group>"; };
-		94846ECE14BCA4FD00388D68 /* MGSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitViewController.h; sourceTree = "<group>"; };
-		94846ECF14BCA4FD00388D68 /* MGSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitViewController.m; sourceTree = "<group>"; };
 		9489196B1524CC9000AB9968 /* BashParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BashParser.h; path = CodeNavigator/BashParser.h; sourceTree = "<group>"; };
 		9489196C1524CC9000AB9968 /* BashParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BashParser.m; path = CodeNavigator/BashParser.m; sourceTree = "<group>"; };
 		9489196F1524CCB300AB9968 /* BashDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BashDefinition.h; path = CodeNavigator/BashDefinition.h; sourceTree = "<group>"; };
@@ -1487,7 +1474,6 @@
 		94A404A8158A1BA00084F645 /* FileInfoControlleriPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileInfoControlleriPhone.h; path = FileInfoController/FileInfoControlleriPhone.h; sourceTree = "<group>"; };
 		94A404A9158A1BA00084F645 /* FileInfoControlleriPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileInfoControlleriPhone.m; path = FileInfoController/FileInfoControlleriPhone.m; sourceTree = "<group>"; };
 		94A404AB158A299C0084F645 /* ManuallyParserViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "ManuallyParserViewController-iPhone.xib"; path = "ManuallyParser/ManuallyParserViewController-iPhone.xib"; sourceTree = "<group>"; };
-		94A404B3158A53C10084F645 /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57.png"; sourceTree = "<group>"; };
 		94A404B9158A56B50084F645 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		94A404CE158A635C0084F645 /* CodeNavigatoriPhone-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CodeNavigatoriPhone-info.plist"; sourceTree = SOURCE_ROOT; };
 		94A5079214F6AA1C00587A47 /* virbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = virbackground.png; sourceTree = "<group>"; };
@@ -1537,6 +1523,12 @@
 		94B4037E14A0E33000E3A636 /* localhostAddresses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = localhostAddresses.h; path = HttpService/localhostAddresses.h; sourceTree = "<group>"; };
 		94B4037F14A0E33000E3A636 /* MyHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyHTTPConnection.h; path = HttpService/MyHTTPConnection.h; sourceTree = "<group>"; };
 		94B4038014A0ED4700E3A636 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		94B4038A194456F8002B8E26 /* MGSplitCornersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSplitCornersView.h; path = MGSplitViewController/Classes/MGSplitCornersView.h; sourceTree = "<group>"; };
+		94B4038B194456F8002B8E26 /* MGSplitCornersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSplitCornersView.m; path = MGSplitViewController/Classes/MGSplitCornersView.m; sourceTree = "<group>"; };
+		94B4038C194456F8002B8E26 /* MGSplitDividerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSplitDividerView.h; path = MGSplitViewController/Classes/MGSplitDividerView.h; sourceTree = "<group>"; };
+		94B4038D194456F8002B8E26 /* MGSplitDividerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSplitDividerView.m; path = MGSplitViewController/Classes/MGSplitDividerView.m; sourceTree = "<group>"; };
+		94B4038E194456F8002B8E26 /* MGSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGSplitViewController.h; path = MGSplitViewController/Classes/MGSplitViewController.h; sourceTree = "<group>"; };
+		94B4038F194456F8002B8E26 /* MGSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGSplitViewController.m; path = MGSplitViewController/Classes/MGSplitViewController.m; sourceTree = "<group>"; };
 		94B6987F180EEE7A009C7176 /* CSSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSSParser.h; sourceTree = "<group>"; };
 		94B69880180EEE7A009C7176 /* CSSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSSParser.m; sourceTree = "<group>"; };
 		94B7E5A7156FE2BA000F3F34 /* FileInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileInfoViewController.h; path = FileInfoController/FileInfoViewController.h; sourceTree = "<group>"; };
@@ -1869,20 +1861,19 @@
 			isa = PBXGroup;
 			children = (
 				94DA0BBD14A624680035DB39 /* Utils.m */,
-				9431D74A14910B3000B0900E /* MasterViewController.h */,
-				9451D59317F9BD4C00BDAD5E /* MasterViewController.m */,
-				9431D74D14910B3000B0900E /* DetailViewController.h */,
-				9431D74E14910B3000B0900E /* DetailViewController.m */,
-				9432E3AF149D02D400AB5BB7 /* NavigationController.m */,
-				94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */,
-				9431D75014910B3000B0900E /* MasterViewController.xib */,
-				947F861115863579002EAA1E /* MasterViewController-iPhone.xib */,
-				9431D75314910B3000B0900E /* DetailViewController.xib */,
-				947F861015863579002EAA1E /* DetailViewController-iPhone.xib */,
-				94A404CE158A635C0084F645 /* CodeNavigatoriPhone-info.plist */,
 				94DA0BBC14A624680035DB39 /* Utils.h */,
 				9431D74714910B3000B0900E /* AppDelegate.h */,
 				9431D74814910B3000B0900E /* AppDelegate.m */,
+				9431D74A14910B3000B0900E /* MasterViewController.h */,
+				9451D59317F9BD4C00BDAD5E /* MasterViewController.m */,
+				9431D75014910B3000B0900E /* MasterViewController.xib */,
+				947F861115863579002EAA1E /* MasterViewController-iPhone.xib */,
+				9431D74D14910B3000B0900E /* DetailViewController.h */,
+				9431D74E14910B3000B0900E /* DetailViewController.m */,
+				9431D75314910B3000B0900E /* DetailViewController.xib */,
+				947F861015863579002EAA1E /* DetailViewController-iPhone.xib */,
+				9432E3AF149D02D400AB5BB7 /* NavigationController.m */,
+				94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */,
 				9432E3AE149D02D400AB5BB7 /* NavigationController.h */,
 				94603D04149E041400D72561 /* ResultViewController.h */,
 				94603D05149E041400D72561 /* ResultViewController.m */,
@@ -1910,6 +1901,7 @@
 		9431D73F14910B3000B0900E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				94A404CE158A635C0084F645 /* CodeNavigatoriPhone-info.plist */,
 				94ADF18E14BB27EF00BA807A /* CodeNavigatorLite-Info.plist */,
 				9431D74014910B3000B0900E /* CodeNavigator-Info.plist */,
 				9431D74114910B3000B0900E /* InfoPlist.strings */,
@@ -2358,12 +2350,12 @@
 		94846EA914BC9A9A00388D68 /* MGSplitViewController */ = {
 			isa = PBXGroup;
 			children = (
-				94846ECA14BCA4FD00388D68 /* MGSplitCornersView.h */,
-				94846ECB14BCA4FD00388D68 /* MGSplitCornersView.m */,
-				94846ECC14BCA4FD00388D68 /* MGSplitDividerView.h */,
-				94846ECD14BCA4FD00388D68 /* MGSplitDividerView.m */,
-				94846ECE14BCA4FD00388D68 /* MGSplitViewController.h */,
-				94846ECF14BCA4FD00388D68 /* MGSplitViewController.m */,
+				94B4038A194456F8002B8E26 /* MGSplitCornersView.h */,
+				94B4038B194456F8002B8E26 /* MGSplitCornersView.m */,
+				94B4038C194456F8002B8E26 /* MGSplitDividerView.h */,
+				94B4038D194456F8002B8E26 /* MGSplitDividerView.m */,
+				94B4038E194456F8002B8E26 /* MGSplitViewController.h */,
+				94B4038F194456F8002B8E26 /* MGSplitViewController.m */,
 			);
 			name = MGSplitViewController;
 			sourceTree = "<group>";
@@ -2371,7 +2363,6 @@
 		948C740F1806FD3D00065E65 /* iPhone_icon */ = {
 			isa = PBXGroup;
 			children = (
-				94A404B3158A53C10084F645 /* Icon-57.png */,
 				944A5B4E160B60010076410C /* Default@2x.png */,
 				94A404B9158A56B50084F645 /* Default.png */,
 				944A5B50160B60670076410C /* Default-568h@2x.png */,
@@ -2383,6 +2374,7 @@
 			isa = PBXGroup;
 			children = (
 				948C741B1807044400065E65 /* icon-29.png */,
+				9445C8B6193CB85200924D41 /* Icon-120.png */,
 				948C741C1807044400065E65 /* icon-29@2.png */,
 				948C7419180703A600065E65 /* icon-40.png */,
 				948C741A180703A600065E65 /* icon-40@2x.png */,
@@ -2726,7 +2718,7 @@
 		9431D72B14910B3000B0900E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0600;
 				TargetAttributes = {
 					9431D73314910B3000B0900E = {
 						DevelopmentTeam = KTWHB3SHL5;
@@ -2964,7 +2956,6 @@
 				949DC2211583E8CF00385796 /* settings.png in Resources */,
 				94B1DD12191F739900909C3E /* SourceCodePro-Semibold.ttf in Resources */,
 				949DC2241583E8CF00385796 /* bookmark.png in Resources */,
-				949DC2281583E8CF00385796 /* iTunesArtwork in Resources */,
 				949DC2291583E8CF00385796 /* VirtualizeViewController.xib in Resources */,
 				94B1DD3219226C9F00909C3E /* text-list.png in Resources */,
 				94B1DCE6191F6FFA00909C3E /* OpenAsViewController.xib in Resources */,
@@ -2978,6 +2969,7 @@
 				949DC22F1583E8CF00385796 /* EntryBg.png in Resources */,
 				949DC2301583E8CF00385796 /* EntryHBg.png in Resources */,
 				949DC2311583E8CF00385796 /* ccFile.png in Resources */,
+				9445C8AF193CAF1C00924D41 /* Images.xcassets in Resources */,
 				94B1DCC9191F6E9500909C3E /* GitLogViewCongroller.xib in Resources */,
 				94B1DCF7191F70D000909C3E /* SelectGroupViewController.xib in Resources */,
 				949DC2321583E8CF00385796 /* cFile.png in Resources */,
@@ -3005,8 +2997,6 @@
 				949DC2401583E8CF00385796 /* max.png in Resources */,
 				94B1DD0A191F738500909C3E /* SourceCodePro-Regular.ttf in Resources */,
 				949DC2411583E8CF00385796 /* Help.html in Resources */,
-				949DC2421583E8CF00385796 /* Default-Landscape~ipad.png in Resources */,
-				949DC2431583E8CF00385796 /* Default-Portrait~ipad.png in Resources */,
 				949DC24B1583E8CF00385796 /* masterView_bg.png in Resources */,
 				949DC24C1583E8CF00385796 /* nav_backButton_icon.png in Resources */,
 				949DC24E1583E8CF00385796 /* checkbox_no.png in Resources */,
@@ -3021,6 +3011,7 @@
 				949DC2561583E8CF00385796 /* cscope.png in Resources */,
 				949DC2571583E8CF00385796 /* virtualize.png in Resources */,
 				949DC2581583E8CF00385796 /* version_control.png in Resources */,
+				9445C8B7193CB85200924D41 /* Icon-120.png in Resources */,
 				949DC25F1583E8CF00385796 /* SecurityViewController.xib in Resources */,
 				94B1DD261921263900909C3E /* GitCloneViewController-iPhone.xib in Resources */,
 				94B1DCD0191F6EF100909C3E /* GidDiffTableCell.xib in Resources */,
@@ -3039,15 +3030,11 @@
 				94B1DD3119226C7B00909C3E /* HighLightWordController.xib in Resources */,
 				9452B1B01589024100B9A9F8 /* CommentManager-iPhone.xib in Resources */,
 				94A404AC158A299C0084F645 /* ManuallyParserViewController-iPhone.xib in Resources */,
-				94A404B4158A53C10084F645 /* Icon-57.png in Resources */,
 				94B1DCCF191F6EE900909C3E /* DiffInfoListViewController.xib in Resources */,
 				94B1DCD2191F6EFF00909C3E /* GitCloneViewController.xib in Resources */,
 				94A404CF158A635C0084F645 /* CodeNavigatoriPhone-info.plist in Resources */,
-				94A404D1158A69920084F645 /* Default.png in Resources */,
 				947D9F8C158BA930000B5136 /* ResultTableCellView.xib in Resources */,
-				944A5B4F160B60010076410C /* Default@2x.png in Resources */,
 				94B1DD24191FE71900909C3E /* WebServiceControllerFormSheet-iPhone.xib in Resources */,
-				944A5B51160B60670076410C /* Default-568h@2x.png in Resources */,
 				94B1DCD7191F6F1700909C3E /* GitUpdateViewController.xib in Resources */,
 				948E145A164169FD00CBBD5B /* FunctionListViewController.xib in Resources */,
 				948E145C16416A1200CBBD5B /* TagItemCell.xib in Resources */,
@@ -3211,9 +3198,6 @@
 				94DA0BBE14A624690035DB39 /* Utils.m in Sources */,
 				94D8703114A65888002F2DBB /* FilePathInfoPopupController.m in Sources */,
 				94AB1E5214AF5E0300451020 /* UnSupportedParser.m in Sources */,
-				94846ED014BCA4FD00388D68 /* MGSplitCornersView.m in Sources */,
-				94846ED214BCA4FD00388D68 /* MGSplitDividerView.m in Sources */,
-				94846ED414BCA4FD00388D68 /* MGSplitViewController.m in Sources */,
 				94FB0FEB14BDB3A50084E457 /* HighLightWordController.m in Sources */,
 				94D16DE714C9CC3B007439EB /* ImageParser.m in Sources */,
 				94F9BAFC18EDA77700CD7C2C /* JTListView.m in Sources */,
@@ -3246,6 +3230,7 @@
 				944DD7E4152776D5000473BE /* version.c in Sources */,
 				94BA22DC18D0CBB7006CB7A8 /* GitBranchsManagerViewController.m in Sources */,
 				944DD7E715277729000473BE /* side.c in Sources */,
+				94B40394194456F8002B8E26 /* MGSplitViewController.m in Sources */,
 				94BA22D718D09212006CB7A8 /* GitBranchViewController.m in Sources */,
 				944DD7EA1527778E000473BE /* context.c in Sources */,
 				944DD7ED15277845000473BE /* ed.c in Sources */,
@@ -3303,6 +3288,7 @@
 				9478595C162C5A08006E4575 /* html.c in Sources */,
 				9478595D162C5A08006E4575 /* jscript.c in Sources */,
 				9478595E162C5A08006E4575 /* keyword.c in Sources */,
+				94B40392194456F8002B8E26 /* MGSplitDividerView.m in Sources */,
 				9444595B18D72B8C008A02DB /* VersionViewController.m in Sources */,
 				9478595F162C5A08006E4575 /* lisp.c in Sources */,
 				94785960162C5A08006E4575 /* lregex.c in Sources */,
@@ -3334,6 +3320,7 @@
 				9478597D162C5A08006E4575 /* verilog.c in Sources */,
 				9478597E162C5A08006E4575 /* vhdl.c in Sources */,
 				9478597F162C5A08006E4575 /* vim.c in Sources */,
+				94B40390194456F8002B8E26 /* MGSplitCornersView.m in Sources */,
 				94785980162C5A08006E4575 /* vstring.c in Sources */,
 				94785981162C5A08006E4575 /* yacc.c in Sources */,
 				9471D4381630463100629F35 /* readtags.c in Sources */,
@@ -3508,9 +3495,6 @@
 				949DC1C21583E8CF00385796 /* Utils.m in Sources */,
 				949DC1C31583E8CF00385796 /* FilePathInfoPopupController.m in Sources */,
 				949DC1C51583E8CF00385796 /* UnSupportedParser.m in Sources */,
-				949DC1C61583E8CF00385796 /* MGSplitCornersView.m in Sources */,
-				949DC1C71583E8CF00385796 /* MGSplitDividerView.m in Sources */,
-				949DC1C81583E8CF00385796 /* MGSplitViewController.m in Sources */,
 				949DC1C91583E8CF00385796 /* HighLightWordController.m in Sources */,
 				949DC1CB1583E8CF00385796 /* ImageParser.m in Sources */,
 				949DC1CC1583E8CF00385796 /* HistoryListController.m in Sources */,
@@ -3592,6 +3576,7 @@
 				94B1DCBA191F5B0200909C3E /* iRate.m in Sources */,
 				94D4ED841642B8AB00601FE4 /* c.c in Sources */,
 				94D4ED851642B8AB00601FE4 /* cobol.c in Sources */,
+				94B40395194456F8002B8E26 /* MGSplitViewController.m in Sources */,
 				94D4ED861642B8AB00601FE4 /* config.h in Sources */,
 				94D4ED871642B8AB00601FE4 /* css.c in Sources */,
 				94D4ED881642B8AB00601FE4 /* ctags_main.c in Sources */,
@@ -3640,6 +3625,7 @@
 				94D4EDB11642B8AB00601FE4 /* perl.c in Sources */,
 				94D4EDB21642B8AB00601FE4 /* php.c in Sources */,
 				94D4EDB31642B8AB00601FE4 /* python.c in Sources */,
+				94B40393194456F8002B8E26 /* MGSplitDividerView.m in Sources */,
 				94D4EDB41642B8AB00601FE4 /* read.c in Sources */,
 				94D4EDB51642B8AB00601FE4 /* read.h in Sources */,
 				94D4EDBC1642B8AB00601FE4 /* rexx.c in Sources */,
@@ -3715,9 +3701,6 @@
 				94ADF16914BB27EE00BA807A /* FilePathInfoPopupController.m in Sources */,
 				94ADF16B14BB27EE00BA807A /* BannerViewController.m in Sources */,
 				94ADF16C14BB27EE00BA807A /* UnSupportedParser.m in Sources */,
-				94846ED114BCA4FD00388D68 /* MGSplitCornersView.m in Sources */,
-				94846ED314BCA4FD00388D68 /* MGSplitDividerView.m in Sources */,
-				94846ED514BCA4FD00388D68 /* MGSplitViewController.m in Sources */,
 				94FB0FEC14BDB3A50084E457 /* HighLightWordController.m in Sources */,
 				94D16DE814C9CC3B007439EB /* ImageParser.m in Sources */,
 				9443BF5614D1A40200355278 /* HistoryListController.m in Sources */,
@@ -3764,6 +3747,7 @@
 				9461817A155EEDAB00A25635 /* CommentManager.m in Sources */,
 				94246F5F156BC84600CA4234 /* NSObject+SBJson.m in Sources */,
 				94B69882180EEE7A009C7176 /* CSSParser.m in Sources */,
+				94B40391194456F8002B8E26 /* MGSplitCornersView.m in Sources */,
 				94246F61156BC84600CA4234 /* SBJsonParser.m in Sources */,
 				94246F63156BC84600CA4234 /* SBJsonStreamParser.m in Sources */,
 				94246F65156BC84600CA4234 /* SBJsonStreamParserAccumulator.m in Sources */,
@@ -3864,11 +3848,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -3878,10 +3869,15 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DHAVE_CONFIG_H";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -3894,15 +3890,26 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = (
@@ -3925,7 +3932,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Guangzhen Li (KTWHB3SHL5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3934,17 +3941,17 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C908E86E-F5F4-4EA9-98CC-444A770A5D6D";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3957,7 +3964,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Guangzhen Li (KTWHB3SHL5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3966,17 +3973,17 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C908E86E-F5F4-4EA9-98CC-444A770A5D6D";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -3985,15 +3992,26 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Guangzhen Li (PQJKU5VVU3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Guangzhen Li (PQJKU5VVU3)";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = (
@@ -4016,7 +4034,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Guangzhen Li (KTWHB3SHL5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4026,17 +4044,17 @@
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DISTRIBUTION=1";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C908E86E-F5F4-4EA9-98CC-444A770A5D6D";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;
@@ -4045,6 +4063,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -4073,7 +4093,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4082,6 +4102,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -4106,7 +4128,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -4115,6 +4137,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -4142,7 +4166,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;

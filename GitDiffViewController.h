@@ -18,7 +18,7 @@
 
 @interface GitDiffViewController : UIViewController
 {
-    int currentDisplayIndex;
+    NSInteger currentDisplayIndex;
     int colorStep;
 }
 
@@ -36,12 +36,12 @@
 
 - (IBAction)diffFileListClicked:(id)sender;
 
-- (void) setCurrentDisplayIndex:(int)index;
+- (void) setCurrentDisplayIndex:(NSInteger)index;
 
-- (int) getCurrentDisplayIndex;
+- (NSInteger) getCurrentDisplayIndex;
 
 - (IBAction)diffInfoClicked:(id)sender;
 
-- (void) showDiffInfo:(int) index;
+- (void) showDiffInfo:(NSInteger) index;
 
 @end

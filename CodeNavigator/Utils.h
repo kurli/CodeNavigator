@@ -73,7 +73,7 @@ typedef enum _SearchType{
 {
     //for result view controller table contrel
     TableViewMode resultTableviewMode;
-    int resultCurrentFileIndex;
+    NSInteger resultCurrentFileIndex;
     BOOL storedForceAnalyze;
     BannerViewController *_bannerViewController;
     ADBannerView* _iAdView;
@@ -178,7 +178,7 @@ typedef enum _SearchType{
 
 -(void) pauseAnalyze;
 
--(void) cscopeSearch:(NSString*)keyword andPath:(NSString*)path andProject:(NSString*)project andType:(int) type andFromVir:(BOOL)fromVir;
+-(void) cscopeSearch:(NSString*)keyword andPath:(NSString*)path andProject:(NSString*)project andType:(NSInteger) type andFromVir:(BOOL)fromVir;
 
 -(BOOL) setResultListAndAnalyze: (NSArray*) list andKeyword:keyword andSourcePath:(NSString*)sourcePath;
 
@@ -186,11 +186,11 @@ typedef enum _SearchType{
 
 -(void) setResultViewTableViewMode:(TableViewMode) mode;
 
--(void) setResultViewFileIndex:(int)index;
+-(void) setResultViewFileIndex:(NSInteger)index;
 
 -(TableViewMode) getResultViewTableViewMode;
 
--(int) getResultViewFileIndex;
+-(NSInteger) getResultViewFileIndex;
 
 + (NSString*)HloveyRC4:(NSString*)aInput key:(NSString*)aKey;
 

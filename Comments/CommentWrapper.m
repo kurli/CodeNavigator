@@ -134,7 +134,7 @@
     }
 }
 
--(void)addComment:(int)line andComment:(NSString *)comment andGroup:(NSString*)group
+-(void)addComment:(NSInteger)line andComment:(NSString *)comment andGroup:(NSString*)group
 {
     BOOL needChangeProjFile = NO;
 
@@ -258,7 +258,7 @@
         [dictionary setObject:item.userName forKey:COMMENT_USER_NAME];
         [dictionary setObject:[NSString stringWithFormat:@"%d", item.time] forKey:COMMENT_TIME];
         [dictionary setObject:item.comment forKey:COMMENT_COMMENT];
-        [dictionary setObject:[NSString stringWithFormat:@"%d", item.line] forKey:COMMENT_LINE];
+        [dictionary setObject:[NSString stringWithFormat:@"%ld", (long)item.line] forKey:COMMENT_LINE];
         [dictionary setObject:item.group forKey:COMMENT_GROUP];
         [mutableArray addObject:dictionary];
     }
@@ -269,9 +269,9 @@
     }
 }
 
--(NSString*) getCommentByLine:(int)line
+-(NSString*) getCommentByLine:(NSInteger)line
 {
-    for (int i=0; i<[commentArray count]; i++) {
+    for (NSInteger i=0; i<[commentArray count]; i++) {
         CommentItem* item = [commentArray objectAtIndex:i];
         if (item.line == line) {
             return item.comment;
@@ -283,9 +283,9 @@
     return nil;
 }
 
--(NSString*) getCommentGroupByLine:(int)line
+-(NSString*) getCommentGroupByLine:(NSInteger)line
 {
-    for (int i=0; i<[commentArray count]; i++) {
+    for (NSInteger i=0; i<[commentArray count]; i++) {
         CommentItem* item = [commentArray objectAtIndex:i];
         if (item.line == line) {
             return item.group;

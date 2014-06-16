@@ -14,7 +14,7 @@
 @interface ResultViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     TableViewMode tableviewMode;
-    int currentFileIndex;
+    NSInteger currentFileIndex;
 }
 
 @property (strong, nonatomic) DetailViewController* detailViewController;
@@ -27,7 +27,7 @@
 
 -(void) setTableViewMode:(TableViewMode) mode;
 
--(void) setFileIndex: (int)index;
+-(void) setFileIndex: (NSInteger)index;
 #ifdef IPHONE_VERSION
 - (IBAction)doneButtonClicked:(id)sender;
 #endif
