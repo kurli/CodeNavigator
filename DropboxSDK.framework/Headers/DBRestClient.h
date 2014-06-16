@@ -71,6 +71,15 @@
    compatibility reasons only */
 - (void)uploadFile:(NSString*)filename toPath:(NSString*)path fromPath:(NSString *)sourcePath __attribute__((deprecated));
 
+/* These calls allow you to upload files in chunks, which is better for file larger than a few megabytes.
+   You can append bytes to the file using -[DBRestClient uploadFileChunk:offset:uploadId:] and then call
+   -[DBRestClient uploadFile:toPath:withParentRev:fromUploadId:] to turn the bytes appended at that uploadId
+   into an actual file in the user's Dropbox.
+   Use a nil uploadId to start uploading a new file. */
+- (void)uploadFileChunk:(NSString *)uploadId offset:(unsigned long long)offset fromPath:(NSString *)localPath;
+- (void)uploadFile:(NSString *)filename toPath:(NSString *)parentFolder withParentRev:(NSString *)parentRev
+	fromUploadId:(NSString *)uploadId;
+
 
 /* Loads a list of up to 10 DBMetadata objects representing past revisions of the file at path */
 - (void)loadRevisionsForFile:(NSString *)path;
@@ -99,6 +108,7 @@
 - (void)searchPath:(NSString*)path forKeyword:(NSString*)keyword;
 
 - (void)loadSharableLinkForFile:(NSString *)path;
+- (void)loadSharableLinkForFile:(NSString *)path shortUrl:(BOOL)createShortUrl;
 
 - (void)loadStreamableURLForFile:(NSString *)path;
 
@@ -148,6 +158,16 @@
 - (void)restClient:(DBRestClient*)client uploadFileFailedWithError:(NSError*)error;
 // [error userInfo] contains the sourcePath
 
+- (void)restClient:(DBRestClient *)client uploadedFileChunk:(NSString *)uploadId newOffset:(unsigned long long)offset
+	fromFile:(NSString *)localPath expires:(NSDate *)expiresDate;
+- (void)restClient:(DBRestClient *)client uploadFileChunkFailedWithError:(NSError *)error;
+- (void)restClient:(DBRestClient *)client uploadFileChunkProgress:(CGFloat)progress
+	forFile:(NSString *)uploadId offset:(unsigned long long)offset fromPath:(NSString *)localPath;
+
+- (void)restClient:(DBRestClient *)client uploadedFile:(NSString *)destPath fromUploadId:(NSString *)uploadId
+    metadata:(DBMetadata *)metadata;
+- (void)restClient:(DBRestClient *)client uploadFromUploadIdFailedWithError:(NSError *)error;
+
 // Deprecated upload callback
 - (void)restClient:(DBRestClient*)client uploadedFile:(NSString*)destPath from:(NSString*)srcPath;
 
@@ -174,8 +194,11 @@
 - (void)restClient:(DBRestClient*)client copyPathFailedWithError:(NSError*)error;
 // [error userInfo] contains the root and path
 
-- (void)restClient:(DBRestClient*)client createdCopyRef:(NSString *)copyRef;
+- (void)restClient:(DBRestClient*)client createdCopyRef:(NSString *)copyRef forPath:(NSString *)path;
 - (void)restClient:(DBRestClient*)client createCopyRefFailedWithError:(NSError *)error;
+
+// Deprecated copy ref callback
+- (void)restClient:(DBRestClient*)client createdCopyRef:(NSString *)copyRef;
 
 - (void)restClient:(DBRestClient*)client copiedRef:(NSString *)copyRef to:(DBMetadata *)to;
 - (void)restClient:(DBRestClient*)client copyFromRefFailedWithError:(NSError*)error;
