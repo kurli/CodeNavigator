@@ -295,7 +295,7 @@ static int cred_acquire_cb(git_cred **out,
     };
 
     callbacks.update_tips = &update_cb;
-	callbacks.progress = &progress_cb;
+	callbacks.sideband_progress = &progress_cb;
 	callbacks.credentials = &cred_acquire_cb;
     callbacks.payload = &payload;
 	git_remote_set_callbacks(remote, &callbacks);
