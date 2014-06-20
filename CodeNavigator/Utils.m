@@ -320,6 +320,8 @@ static Utils *static_utils;
         return YES;
     else if ([extension isEqualToString:@"php"])
         return YES;
+    else if ([extension isEqualToString:@"go"])
+        return YES;
     int index = [Parser checkManuallyParserIndex:extension];
     if (index != -1) {
         return YES;

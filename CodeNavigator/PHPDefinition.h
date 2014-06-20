@@ -7,7 +7,7 @@
 //
 
 #ifndef CodeNavigator_PHPDefinition_h
-#define CodeNavigator_PHPaDefinition_h
+#define CodeNavigator_PHPDefinition_h
 
 /*
  *  CPlusPlusDefination.h

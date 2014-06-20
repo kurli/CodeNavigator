@@ -77,7 +77,7 @@
         [self.tableView reloadData];
         });
     }];
-    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStyleBordered target:self action:@selector(refreshButtonClicked:)];
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(refreshButtonClicked:)];
     self.navigationItem.rightBarButtonItem = refreshButton;
     
     [self.searchField setSpellCheckingType:UITextSpellCheckingTypeNo];
@@ -159,7 +159,8 @@
     CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
 
     rect.origin.y = 5;
-    [item.type drawInRect:rect withFont:[UIFont boldSystemFontOfSize:20] lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
+    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:NSLineBreakByWordWrapping, NSTextAlignmentCenter, nil];
+    [item.type drawInRect:rect withAttributes:dict];
     imageView.image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return cell;

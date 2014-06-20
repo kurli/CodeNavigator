@@ -386,7 +386,11 @@
     }
     gitCloneViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     //[[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
+#ifdef IPHONE_VERSION
     [self presentViewController:gitCloneViewController animated:YES completion:nil];
+#else
+    [[Utils getInstance].splitViewController presentViewController:gitCloneViewController animated:YES completion:nil];
+#endif
 }
 
 - (IBAction)gitClicked:(id)sender {

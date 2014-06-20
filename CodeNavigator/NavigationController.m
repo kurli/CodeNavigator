@@ -68,10 +68,8 @@
     
     [self.searchBar setSpellCheckingType:UITextSpellCheckingTypeNo];
     [self.searchBar setAutocorrectionType:UITextAutocorrectionTypeNo];
-#ifdef IPHONE_VERSION
     if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
         self.edgesForExtendedLayout = UIRectEdgeNone;
-#endif
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

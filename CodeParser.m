@@ -307,27 +307,27 @@
 // ---------------- Parser related interface  -------------------
 -(BOOL) checkCommentsLine
 {
-    return YES;
+    return NO;
 }
 
 -(BOOL) checkPreprocessor:(int) lineNumber
 {
-    return YES;
+    return NO;
 }
 
 -(BOOL) checkString
 {
-    return YES;
+    return NO;
 }
 
 -(BOOL) checkChar
 {
-    return YES;
+    return NO;
 }
 
 -(BOOL) checkOthers: (int)lineNumber
 {
-    return YES;
+    return NO;
 }
 
 -(void) bracesStarted:(int)lineNumber andToken:(NSString *)token

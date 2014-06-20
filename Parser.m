@@ -69,6 +69,9 @@
     {
         parser = [[CSSParser alloc] init];
     }
+    else if (Go == type) {
+        parser = [[GoParser alloc] init];
+    }
 	else
     {
 		parser = nil;
