@@ -87,11 +87,10 @@
     return displayPath;
 }
 
--(NSString*) getDisplayFile:(NSString*) path andProjectBase:(NSString*)projectPath
+-(void) getDisplayFile:(NSString*) path andProjectBase:(NSString*)projectPath andFinishBlock:(ParseFileFinishedCallback)finishCallback
 {
     NSString* displayPath;
     BOOL isFolder;
-    NSString* html;
     NSError *error;
     //NSString* rc4Result;
     
@@ -99,14 +98,17 @@
     if (![[NSFileManager defaultManager] fileExistsAtPath:displayPath isDirectory:&isFolder])
     {
         @autoreleasepool {
-            html = [self parseFile:path andProjectBase:projectPath];
+            [self parseFile:path andProjectBase:projectPath andFinishBlock:^(NSString* html) {
+                finishCallback(html);
+            }];
         }
     }
     else
     {
         if ([[Utils getInstance] isDocType:path])
         {
-            return nil;
+            finishCallback(nil);
+            return;
         }
         //        if ([self isWebType:path])
         //            return nil;
@@ -116,22 +118,23 @@
         NSString* fileContent = [[Utils getInstance] getFileContent:path];
 
         if (fileContent == 0) {
-            return nil;
+            finishCallback(nil);
+            return;
         }
         NSString* source_md5 = [self getMd5_32Bit_String:fileContent];
         NSString* pre_md5 = [content substringToIndex:[source_md5 length]];
         if ([source_md5 compare:pre_md5] == NSOrderedSame) {
-            html = [content substringFromIndex:[source_md5 length]];
+            finishCallback([content substringFromIndex:[source_md5 length]]);
         } else {
-            html = [self parseFile:path andProjectBase:projectPath];
+            [self parseFile:path andProjectBase:projectPath andFinishBlock:^(NSString* html){
+                finishCallback(html);
+            }];
         }
     }
-    return html;
 }
 
--(NSString*) parseFile:(NSString*) path andProjectBase:(NSString*)projectPath {
-    NSString* html;
-    NSError *error;
+-(void) parseFile:(NSString*) path andProjectBase:(NSString*)projectPath andFinishBlock:(ParseFileFinishedCallback)onParseFileFinished {
+
     NSString* displayPath = [self getDisplayPath:path];
 
     Parser* parser = [[Parser alloc] init];
@@ -144,25 +147,31 @@
     if (maxLineCount > 0) {
         [parser setMaxLineCount:maxLineCount];
     }
-    [parser startParse];
-    html = [parser getHtml];
-
-    NSString* fileContent = [[Utils getInstance] getFileContent:path];
     
-    if (fileContent  ==  nil && [[Utils getInstance] isImageType:path] == NO) {
-        NSLog(@"Wrong: 223");
-        return nil;
-    }
-    NSString* outputStr = [self getMd5_32Bit_String:fileContent];
-    outputStr = [outputStr stringByAppendingString:html];
-    //rc4Result = [self HloveyRC4:html key:@"lgz"];
-    [outputStr writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
-    if (error) {
-        NSString* folder = [displayPath stringByDeletingLastPathComponent];
-        [[NSFileManager defaultManager] createDirectoryAtPath:folder withIntermediateDirectories:YES attributes:Nil error:&error];
+    [parser startParse:^(){
+        NSString* html;
+        NSError *error;
+        
+        html = [parser getHtml];
+        
+        NSString* fileContent = [[Utils getInstance] getFileContent:path];
+        
+        if (fileContent  ==  nil && [[Utils getInstance] isImageType:path] == NO) {
+            NSLog(@"Wrong: 223");
+            onParseFileFinished(nil);
+            return;
+        }
+        NSString* outputStr = [self getMd5_32Bit_String:fileContent];
+        outputStr = [outputStr stringByAppendingString:html];
+        //rc4Result = [self HloveyRC4:html key:@"lgz"];
         [outputStr writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
-    }
-    return html;
+        if (error) {
+            NSString* folder = [displayPath stringByDeletingLastPathComponent];
+            [[NSFileManager defaultManager] createDirectoryAtPath:folder withIntermediateDirectories:YES attributes:Nil error:&error];
+            [outputStr writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        }
+        onParseFileFinished(html);
+    }];
 }
 
 - (NSString *)getMd5_32Bit_String:(NSString *)srcString{

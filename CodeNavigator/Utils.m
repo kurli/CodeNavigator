@@ -1095,9 +1095,9 @@ static Utils *static_utils;
     return [[self getDisplayController] getDisplayPath:path];
 }
 
--(NSString*) getDisplayFile:(NSString*) path andProjectBase:(NSString*)projectPath
+-(void) getDisplayFile:(NSString*) path andProjectBase:(NSString*) projectPath andFinishBlock:(ParseFileFinishedCallback)callback
 {
-    return [[self getDisplayController] getDisplayFile:path andProjectBase:projectPath];
+    [[self getDisplayController] getDisplayFile:path andProjectBase:projectPath andFinishBlock:callback];
 }
 
 -(void) showPurchaseAlert

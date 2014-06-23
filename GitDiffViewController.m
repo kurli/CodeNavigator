@@ -395,6 +395,8 @@ typedef enum _changeType
 
 - (void) setCurrentDisplayIndex:(NSInteger)index
 {
+    NSError* error;
+    
     colorStep = 0;
     currentDisplayIndex = index;
     [popOverController dismissPopoverAnimated:YES];
@@ -417,7 +419,6 @@ typedef enum _changeType
     GTBlob* newBolb = (GTBlob*)newObj;
     GTBlob* oldBolb = (GTBlob*)oldObj;
     
-    NSError* error;
     NSString *tempPath = NSTemporaryDirectory();
     NSString* diff1FilePath = [tempPath stringByAppendingPathComponent:@"diff1.tmp"];
     NSString* diff2FilePath = [tempPath stringByAppendingPathComponent:@"diff2.tmp"];
@@ -446,46 +447,52 @@ typedef enum _changeType
 //    }
     
     // get html file for new obj
-    NSString* newHtml;
-    NSString* oldHtml;
+
     Parser* parser = [[Parser alloc] init];
     [parser checkParseType:data.path];
     [parser setContent:newBolb.content andProjectBase:nil];
     [parser setMaxLineCount:35];
-    [parser startParse];
-    newHtml = [parser getHtml];
+    [parser startParseAndWait];
     
     // get html file for old obj
     parser = [[Parser alloc] init];
     [parser checkParseType:data.path];
     [parser setContent:oldBolb.content andProjectBase:nil];
     [parser setMaxLineCount:35];
-    [parser startParse];
-    oldHtml = [parser getHtml];
-    
-    NSMutableArray* oldHtmlArray = [[NSMutableArray alloc] initWithArray:[oldHtml componentsSeparatedByString:@"<tr id="]];
-    NSMutableArray* newHtmlArray = [[NSMutableArray alloc] initWithArray:[newHtml componentsSeparatedByString:@"<tr id="]];
-    
-    [self generateDiff:diffContent andNewHtml:newHtmlArray andOldHtml:oldHtmlArray];
-    
-    NSMutableString* outNewHtml = [[NSMutableString alloc] init];
-    [outNewHtml appendString:[newHtmlArray objectAtIndex:0]];
-    for (int i=1; i<[newHtmlArray count]; i++) {
-        [outNewHtml appendFormat:@"<tr id=%@", [newHtmlArray objectAtIndex:i]];
-    }
-    NSMutableString* outOldHtml = [[NSMutableString alloc] init];
-    [outOldHtml appendString:[oldHtmlArray objectAtIndex:0]];
-    for (int i=1; i<[oldHtmlArray count]; i++) {
-        [outOldHtml appendFormat:@"<tr id=%@", [oldHtmlArray objectAtIndex:i]];
-    }
-    
-    NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
-    [outNewHtml writeToFile:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/1.html"] atomically:YES encoding:NSUTF8StringEncoding error:&error];
-    [outOldHtml writeToFile:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/2.html"] atomically:YES encoding:NSUTF8StringEncoding error:&error];
-    
-    NSString* html = [NSString stringWithFormat:DIFF_HTML, @"./1.html", @"./2.html"];
-    
-    [self.webView loadHTMLString:html baseURL:baseURL];
+    [parser startParse:^(){
+        dispatch_async(dispatch_get_main_queue(), ^{
+        NSString* newHtml;
+        NSString* oldHtml;
+        NSError* error;
+
+        newHtml = [parser getHtml];
+        oldHtml = [parser getHtml];
+        
+        NSMutableArray* oldHtmlArray = [[NSMutableArray alloc] initWithArray:[oldHtml componentsSeparatedByString:@"<tr id="]];
+        NSMutableArray* newHtmlArray = [[NSMutableArray alloc] initWithArray:[newHtml componentsSeparatedByString:@"<tr id="]];
+        
+        [self generateDiff:diffContent andNewHtml:newHtmlArray andOldHtml:oldHtmlArray];
+        
+        NSMutableString* outNewHtml = [[NSMutableString alloc] init];
+        [outNewHtml appendString:[newHtmlArray objectAtIndex:0]];
+        for (int i=1; i<[newHtmlArray count]; i++) {
+            [outNewHtml appendFormat:@"<tr id=%@", [newHtmlArray objectAtIndex:i]];
+        }
+        NSMutableString* outOldHtml = [[NSMutableString alloc] init];
+        [outOldHtml appendString:[oldHtmlArray objectAtIndex:0]];
+        for (int i=1; i<[oldHtmlArray count]; i++) {
+            [outOldHtml appendFormat:@"<tr id=%@", [oldHtmlArray objectAtIndex:i]];
+        }
+        
+        NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
+        [outNewHtml writeToFile:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/1.html"] atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        [outOldHtml writeToFile:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/2.html"] atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        
+        NSString* html = [NSString stringWithFormat:DIFF_HTML, @"./1.html", @"./2.html"];
+        
+        [self.webView loadHTMLString:html baseURL:baseURL];
+        });
+    }];
 }
 
 - (NSInteger) getCurrentDisplayIndex

@@ -10,6 +10,7 @@
 #import "BannerViewController.h"
 #import "MGSplitViewController.h"
 #import "ThemeManager.h"
+#import "DisplayController.h"
 
 #define IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
@@ -194,7 +195,7 @@ typedef enum _SearchType{
 
 + (NSString*)HloveyRC4:(NSString*)aInput key:(NSString*)aKey;
 
--(NSString*) getDisplayFile:(NSString*) sourcePath andProjectBase:(NSString*) projectPath;
+-(void) getDisplayFile:(NSString*) sourcePath andProjectBase:(NSString*) projectPath andFinishBlock:(ParseFileFinishedCallback)callback;
 
 -(NSString*) getDisplayPath:(NSString*) path;
 

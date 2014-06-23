@@ -205,25 +205,33 @@ void main() {\n\
     NSString* css = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/theme_tmp.css"];
     [ThemeManager generateCSSScheme:css andTheme:self.colorScheme];
     
-    Parser* parser = [[Parser alloc] init];
-    [parser setParserType:CPLUSPLUS];
-    [parser setContent:DEMO_SOURCE_CODE andProjectBase:nil];
-    [parser setMaxLineCount:[self.colorScheme.max_line_count intValue]];
-    [parser startParse];
-    NSString* html = [parser getHtml];
-    html = [html stringByReplacingOccurrencesOfString:@"theme.css" withString:@"theme_tmp.css"];
+    NSString *tempPath = NSTemporaryDirectory();
+    tempPath = [tempPath stringByAppendingPathComponent:@"testTheme.c"];
+    NSString* content = DEMO_SOURCE_CODE;
+    [content writeToFile:tempPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
     
-    NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
-    [self.webView loadHTMLString:html baseURL:baseURL];
-    NSString*  bgcolor = self.colorScheme.background;
-    if ([bgcolor length] != 7)
-        return;
-    bgcolor = [bgcolor substringFromIndex:1];
-    unsigned int baseValue;
-    if ([[NSScanner scannerWithString:bgcolor] scanHexInt:&baseValue])
-    {
-        [self.webView setBackgroundColor:UIColorFromRGB(baseValue)];
-    }
+    Parser* parser = [[Parser alloc] init];
+    [parser checkParseType:tempPath];
+    [parser setFile:tempPath andProjectBase:nil];
+    [parser setMaxLineCount:[self.colorScheme.max_line_count intValue]];
+    [parser startParse:^(){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString* html = [parser getHtml];
+            html = [html stringByReplacingOccurrencesOfString:@"theme.css" withString:@"theme_tmp.css"];
+        
+            NSURL *baseURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingString:@"/Documents/.settings/"] isDirectory:YES];
+            [self.webView loadHTMLString:html baseURL:baseURL];
+            NSString*  bgcolor = self.colorScheme.background;
+            if ([bgcolor length] != 7)
+                return;
+            bgcolor = [bgcolor substringFromIndex:1];
+            unsigned int baseValue;
+            if ([[NSScanner scannerWithString:bgcolor] scanHexInt:&baseValue])
+            {
+                [self.webView setBackgroundColor:UIColorFromRGB(baseValue)];
+            }
+        });
+    }];
 }
 
 - (IBAction)autoFoldCommentsValueChanged:(id)sender {

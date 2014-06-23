@@ -84,12 +84,10 @@
     [self.searchField setAutocorrectionType:UITextAutocorrectionTypeNo];
     
 
-#ifdef IPHONE_VERSION
     if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
     {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
-#endif
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -159,7 +157,13 @@
     CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
 
     rect.origin.y = 5;
-    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:NSLineBreakByWordWrapping, NSTextAlignmentCenter, nil];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineBreakMode:NSLineBreakByWordWrapping];
+    [paragraphStyle setAlignment:NSTextAlignmentCenter];
+    NSDictionary *dict = @{NSFontAttributeName: [UIFont systemFontOfSize:16.0f],
+                                     NSParagraphStyleAttributeName : paragraphStyle,
+                           NSForegroundColorAttributeName: [UIColor whiteColor]};
+    
     [item.type drawInRect:rect withAttributes:dict];
     imageView.image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

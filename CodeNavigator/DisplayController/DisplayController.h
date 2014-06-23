@@ -11,6 +11,7 @@
 #define DISPLAY_FILE_EXTENTION @"display_5"
 #define DISPLAY_FOLDER_PATH @"._DisplayCache_"
 
+typedef void (^ParseFileFinishedCallback)(NSString* html);
 
 @interface DisplayController : NSObject
 
@@ -22,7 +23,7 @@
 
 -(NSString*) getDisplayPath:(NSString*) path;
 
--(NSString*) getDisplayFile:(NSString*) path andProjectBase:(NSString*)projectPath;
+-(void) getDisplayFile:(NSString*) path andProjectBase:(NSString*)projectPath andFinishBlock:(ParseFileFinishedCallback)finishCallback;
 
 -(void) removeDisplayFilesForProject:(NSString *)proj;
 

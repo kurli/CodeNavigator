@@ -59,7 +59,9 @@ typedef enum _ParserType
 
 -(void) setMaxLineCount:(int)max;
 
--(BOOL) startParse;
+-(BOOL) startParse:(ParseFinishedCallback)onParseFinished;
+
+-(BOOL) startParseAndWait;
 
 -(NSString*) getHtml;
 
@@ -70,7 +72,7 @@ typedef enum _ParserType
 +(ParserType) getBuildInParserTypeByfilePath:(NSString*)filePath;
 
 #pragma mark manually parser support
-+(BOOL)saveParser:(NSString*)path andExtention:(NSString*)extension andSingleLine:(NSString*)singleLine andMultiLineS:(NSString*)multilineS andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords andType:(int)type;
++(BOOL)saveParser:(NSString*)path andExtention:(NSString*)extension andSingleLine:(NSString*)singleLine andMultiLineS:(NSString*)multilineS andMultLineE:(NSString*)multilineE andKeywords:(NSString*)keywords andType:(NSInteger)type;
 
 +(NSArray*) getManuallyParserNames;
 

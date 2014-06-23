@@ -3,11 +3,14 @@
 #import "cscope.h"
 #import "SBJson.h"
 #import "Parser.h"
+#import "Utils.h"
 
 @implementation CodeParser
 
 @synthesize parserConfig;
 @synthesize parserConfigName;
+@synthesize tagsArray;
+@synthesize filePath;
 
 -(id) init
 {
@@ -38,6 +41,7 @@
     NSError *error;
     NSStringEncoding encoding = NSUTF8StringEncoding;
     fileContent = [NSString stringWithContentsOfFile: name usedEncoding:&encoding error: &error];
+    self.filePath = name;
     if (error != nil || fileContent == nil)
     {
         // Chinese GB2312 support 
@@ -168,19 +172,14 @@
     return returnStr;
 }
 
--(BOOL) startParse
-{
-	if ( nil == fileContent )
-    {
-		return NO;
-    }
+-(BOOL) parseToHtml {
     if (withHeaderAndEnder) {
         [self addHead];
     }
-
-	NSArray* lineArray = [fileContent componentsSeparatedByString:@"\n"];
-	int i = 0;
-	for ( i=0; i<[lineArray count]; i++)
+    
+    NSArray* lineArray = [fileContent componentsSeparatedByString:@"\n"];
+    int i = 0;
+    for ( i=0; i<[lineArray count]; i++)
     {
         @autoreleasepool {
             NSInteger start = [htmlContent length];
@@ -207,6 +206,38 @@
         [htmlContent appendString: HTML_END];
         [self addString:@"" addEnter:YES];
     }
+    return YES;
+}
+
+-(BOOL) startParseAndWait {
+    NSCondition* condition = [[NSCondition alloc] init];
+    [condition lock];
+    BOOL result = [self startParse:^(){
+        [condition lock];
+        [condition signal];
+    }];
+    [condition wait];
+    [condition unlock];
+    return result;
+}
+
+-(BOOL) startParse:(ParseFinishedCallback)onParseFinished
+{
+	if ( nil == fileContent )
+    {
+		return NO;
+    }
+    [[Utils getInstance] showAnalyzeIndicator:YES];
+
+    [[Utils getInstance] getFunctionListForFile:self.filePath andCallback:^(NSArray* array){
+            self.tagsArray = array;
+            [self parseToHtml];
+            onParseFinished();
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[Utils getInstance] showAnalyzeIndicator:NO];
+            });
+    }];
+
 	return YES;
 }
 

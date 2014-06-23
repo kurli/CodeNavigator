@@ -709,13 +709,10 @@
 -(void) fileClickedDelegate:(NSString*)selectedItem andPath:(NSString*)path
 {
     NSString* html;
-    NSString* displayPath;
     
     DetailViewController* controller = [Utils getInstance].detailViewController;
     
-    html = [[Utils getInstance] getDisplayFile:path andProjectBase:self.currentProjectPath];
-    displayPath = [[Utils getInstance] getDisplayPath:path];
-    
+
 #ifdef IPHONE_VERSION
     [self presentViewController:[Utils getInstance].detailViewController animated:YES completion:nil];
 #endif
@@ -728,18 +725,27 @@
         [controller setTitle:selectedItem andPath:path andContent:html andBaseUrl:nil];
         return;
     }
-    //other case
-    if (html != nil)
+    
+    if ([[Utils getInstance] isDocType:path])
     {
-        [controller setTitle:selectedItem andPath:displayPath andContent:html andBaseUrl:nil];
+        [controller displayDocTypeFile:path];
+        return;
     }
-    else
+    
+    [[Utils getInstance] getDisplayFile:path andProjectBase:self.currentProjectPath andFinishBlock:^(NSString* html) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString* displayPath;
+
+            displayPath = [[Utils getInstance] getDisplayPath:path];
+            if (html != nil)
+            {
+                [controller setTitle:selectedItem andPath:displayPath andContent:html andBaseUrl:nil];
+            }
+        });
+    }];
+    
+    //other case
     {
-        if ([[Utils getInstance] isDocType:path])
-        {
-            [controller displayDocTypeFile:path];
-            return;
-        }
         //            if ([[Utils getInstance] isWebType:path])
         //            {
         //                NSError *error;

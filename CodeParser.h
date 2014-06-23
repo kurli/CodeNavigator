@@ -4,6 +4,8 @@
 #define BREAK_STR @"lgz_BR_lgz"
 #define BUILDIN_PARSER_PATH @"/Documents/.settings/BuildInParser"
 
+typedef void (^ParseFinishedCallback)();
+
 @interface CodeParser : NSObject
 {
 	NSString* fileContent;
@@ -31,6 +33,10 @@
 
 @property (nonatomic, strong) NSString* parserConfigName;
 
+@property (strong, atomic) NSArray* tagsArray;
+
+@property (strong, atomic) NSString* filePath;
+
 -(void) setFile:(NSString*) name andProjectBase:(NSString*) base;
 
 -(void) setContent:(NSString*) content andProjectBase:(NSString*) base;
@@ -39,7 +45,9 @@
 
 -(BOOL) isStringOrCommentsEnded;
 
--(BOOL) startParse;
+-(BOOL) startParse:(ParseFinishedCallback)onParseFinished;
+
+-(BOOL) startParseAndWait;
 
 -(BOOL) isProjectDefinedWord:(NSString*) word;
 

@@ -264,11 +264,15 @@
     [[NSFileManager defaultManager] removeItemAtPath:displayPath error:&error];
     
     [parser setFile: filePath andProjectBase:projPath];
-    [parser startParse];
-    NSString* html = [parser getHtml];
-    //rc4Result = [self HloveyRC4:html key:@"lgz"];
-    [html writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
-    [[Utils getInstance].detailViewController setTitle:[filePath lastPathComponent] andPath:filePath andContent:html andBaseUrl:nil];
+    [parser startParse:^(){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSError* error;
+            NSString* html = [parser getHtml];
+            //rc4Result = [self HloveyRC4:html key:@"lgz"];
+            [html writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+            [[Utils getInstance].detailViewController setTitle:[filePath lastPathComponent] andPath:filePath andContent:html andBaseUrl:nil];
+        });
+    }];
 }
 
 - (void) saveForEditParser

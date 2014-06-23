@@ -234,12 +234,8 @@
 -(void) fileClickedDelegate:(NSString*)selectedItem andPath:(NSString*)path
 {
     NSString* html;
-    NSString* displayPath;
     
     DetailViewController* controller = [Utils getInstance].detailViewController;
-    
-    html = [[Utils getInstance] getDisplayFile:path andProjectBase:self.currentProjectPath];
-    displayPath = [[Utils getInstance] getDisplayPath:path];
     
     //Help.html special case
     if ([fileListBrowserController getIsCurrentProjectFolder] == YES && [selectedItem compare:@"Help.html"] == NSOrderedSame) {
@@ -249,19 +245,24 @@
         [controller setTitle:selectedItem andPath:path andContent:html andBaseUrl:nil];
         return;
     }
-    //other case
-    if (html != nil)
+    
+    if ([[Utils getInstance] isDocType:path])
     {
-        [controller setTitle:selectedItem andPath:displayPath andContent:html andBaseUrl:nil];
+        [controller displayDocTypeFile:path];
+        return;
     }
-    else
-    {
-        if ([[Utils getInstance] isDocType:path])
-        {
-            [controller displayDocTypeFile:path];
-            return;
-        }
-    }
+    
+    [[Utils getInstance] getDisplayFile:path andProjectBase:self.currentProjectPath andFinishBlock:^(NSString* html) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString* displayPath;
+            displayPath = [[Utils getInstance] getDisplayPath:path];
+            //other case
+            if (html != nil)
+            {
+                [controller setTitle:selectedItem andPath:displayPath andContent:html andBaseUrl:nil];
+            }
+        });
+    }];
 }
 
 - (NSString*) getCurrentProjectPath

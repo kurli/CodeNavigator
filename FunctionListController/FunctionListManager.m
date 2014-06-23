@@ -148,9 +148,8 @@ int ctags_main (int argc, char **argv, const char* fn);
     self.callback = cb;
     self.path = p;
 
-    if (ctagsThread.isExecuting) {
-//        [ctagsThread cancel];
-        return;
+    while (ctagsThread.isExecuting) {
+        sleep(1);
     }
     ctagsThread = [[NSThread alloc] initWithTarget:self selector:@selector(ctagsThread:) object:callback];
 

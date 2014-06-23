@@ -215,7 +215,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DetailViewController* controller = [Utils getInstance].detailViewController;
-    
     switch (fileInfoType) {
         case FILEINFO_SOURCE:
             if (indexPath.row == RE_OPEN) {
@@ -224,19 +223,22 @@
                 NSString* displayFile = [[Utils getInstance] getDisplayPath:sourceFilePath];
                 [[NSFileManager defaultManager] removeItemAtPath:displayFile error:&error];
                 NSString* projPath = [[Utils getInstance] getProjectFolder:sourceFilePath];
-                NSString* html = [[Utils getInstance] getDisplayFile:sourceFilePath andProjectBase:projPath];
-                if (html != nil)
-                {
-                    [controller setTitle:[sourceFilePath lastPathComponent] andPath:displayFile andContent:html andBaseUrl:nil];
-                }
-                else
-                {            
-                    if ([[Utils getInstance] isDocType:sourceFilePath])
-                    {
-                        [controller displayDocTypeFile:sourceFilePath];
-                        return;
-                    }
-                }
+                [[Utils getInstance] getDisplayFile:sourceFilePath andProjectBase:projPath andFinishBlock:^(NSString* html) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (html != nil)
+                        {
+                            [controller setTitle:[sourceFilePath lastPathComponent] andPath:displayFile andContent:html andBaseUrl:nil];
+                        }
+                        else {
+                            if ([[Utils getInstance] isDocType:sourceFilePath])
+                            {
+                                [controller displayDocTypeFile:sourceFilePath];
+                                return;
+                            }
+                        }
+                    });
+                }];
+
                 [[Utils getInstance] addGAEvent:@"FileInfo" andAction:@"Refresh" andLabel:nil andValue:nil];
             }
             else if (indexPath.row == OPEN_AS) {
@@ -258,13 +260,16 @@
                 if ([[Utils getInstance] isWebType:sourceFilePath])
                 {
                     NSString* projPath = [[Utils getInstance] getProjectFolder:sourceFilePath];
-                    NSString* html = [[Utils getInstance] getDisplayFile:sourceFilePath andProjectBase:projPath];
-                    NSString* displayPath = [[Utils getInstance] getDisplayPath:sourceFilePath];
-                    if (html != nil)
-                    {
-                        DetailViewController* controller = [Utils getInstance].detailViewController;
-                        [controller setTitle:[sourceFilePath lastPathComponent] andPath:displayPath andContent:html andBaseUrl:nil];
-                    }
+                    [[Utils getInstance] getDisplayFile:sourceFilePath andProjectBase:projPath andFinishBlock:^(NSString* html) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            NSString* displayPath = [[Utils getInstance] getDisplayPath:sourceFilePath];
+                            if (html != nil)
+                            {
+                                DetailViewController* controller = [Utils getInstance].detailViewController;
+                                [controller setTitle:[sourceFilePath lastPathComponent] andPath:displayPath andContent:html andBaseUrl:nil];
+                            }
+                        });
+                    }];
                 }
             }
             else if (indexPath.row == PREVIEW) {

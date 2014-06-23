@@ -452,7 +452,6 @@
     
     NSString* displayPath;
     BOOL isFolder = NO;
-    NSString* html;
     NSString* title = [[filePath pathComponents] lastObject];
     
     //check whether file exist
@@ -476,17 +475,19 @@
         displayPath = [[Utils getInstance] getDisplayPath:filePath];
         [self.historyController pushUrl:displayPath];
         
-        html = [[Utils getInstance] getDisplayFile:filePath andProjectBase:nil];
-        
         if (currentDisplayFile == nil || !([currentDisplayFile compare:displayPath] == NSOrderedSame))
         {
-            [self displayHTMLString:html andBaseURL:nil];
-
-            jsState = JS_GOTO_LINE_AND_FOCUS_KEYWORD;
-            jsGotoLine = [line intValue];
-            _jsGotoLineKeyword = __keyword;
-            
-            [masterViewController gotoFile:displayPath andForce:NO];
+            [[Utils getInstance] getDisplayFile:filePath andProjectBase:nil andFinishBlock:^(NSString* html){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self displayHTMLString:html andBaseURL:nil];
+                
+                    jsState = JS_GOTO_LINE_AND_FOCUS_KEYWORD;
+                    jsGotoLine = [line intValue];
+                    _jsGotoLineKeyword = __keyword;
+                
+                    [masterViewController gotoFile:displayPath andForce:NO];
+                });
+            }];
         }
         else
         {
@@ -514,6 +515,7 @@
     NSString* url = nil;
     NSStringEncoding encoding = NSUTF8StringEncoding;
     NSError* error;
+    BOOL isFolder;
     
     int historyLocation = [self.historyController getLocationFromHistoryFormat:history];
     if( historyLocation != -1 )
@@ -529,12 +531,22 @@
         jsHistoryModeScrollY = 0;
     }
     //check whether file exist
-    BOOL isFolder;
     if (![[NSFileManager defaultManager] fileExistsAtPath:url isDirectory:&isFolder])
     {
         // Fix version error.
         url = [[Utils getInstance] getSourceFileByDisplayFile:url];
-        [[Utils getInstance] getDisplayFile:url andProjectBase:nil];
+        NSCondition* condition = [[NSCondition alloc] init];
+        [condition lock];
+        [[Utils getInstance] getDisplayFile:url andProjectBase:nil andFinishBlock:^(NSString* html) {
+            [condition lock];
+            [condition signal];
+            [condition unlock];
+         }];
+        [condition wait];
+        [condition unlock];
+        NSString* url = nil;
+        BOOL isFolder;
+        
         url = [[Utils getInstance] getDisplayFileBySourceFile:url];
         if (![[NSFileManager defaultManager] fileExistsAtPath:url isDirectory:&isFolder]){
             url = [[Utils getInstance] getSourceFileByDisplayFile:url];
@@ -543,6 +555,7 @@
             [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:[NSString stringWithFormat:@"%@\n File not found",filePathFromProject]];
             return;
         }
+
     }
     
     NSString* extension = [url pathExtension];
@@ -625,7 +638,6 @@
 
 -(void) reloadCurrentPage
 {
-    NSString* html;
     NSString* currentDisplayFile = [self getCurrentDisplayFile];
     NSString* sourceFilePath = [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
     NSString* filePath = [[Utils getInstance] getPathFromProject:sourceFilePath];
@@ -635,8 +647,11 @@
         NSString* html = [NSString stringWithContentsOfFile: sourceFilePath usedEncoding:&encoding error: &error];
         [self setTitle:[sourceFilePath lastPathComponent] andPath:sourceFilePath andContent:html andBaseUrl:nil];
     } else {
-        html = [[Utils getInstance] getDisplayFile:sourceFilePath andProjectBase:nil];
-        [self displayHTMLString:html andBaseURL:nil];
+        [[Utils getInstance] getDisplayFile:sourceFilePath andProjectBase:nil andFinishBlock:^(NSString* html) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self displayHTMLString:html andBaseURL:nil];
+            });
+        }];
     }
 }
 

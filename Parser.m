@@ -204,10 +204,23 @@
     [parser setMaxLineCount:max];
 }
 
--(BOOL) startParse
+-(BOOL) startParse:(ParseFinishedCallback)onParseFinished
 {
-	BOOL result = [parser startParse];
+    BOOL result = [parser startParse:onParseFinished];
 	return result;
+}
+
+-(BOOL) startParseAndWait {
+    NSCondition* condition = [[NSCondition alloc] init];
+    [condition lock];
+    BOOL result = [parser startParse:^(){
+        [condition lock];
+        [condition signal];
+        [condition unlock];
+    }];
+    [condition wait];
+    [condition unlock];
+    return result;
 }
 
 -(NSString*) getHtml
@@ -215,7 +228,7 @@
   return [parser getHtml];
 }
 
-+(BOOL) saveParser:(NSString *)path andExtention:(NSString *)extension andSingleLine:(NSString *)singleLine andMultiLineS:(NSString *)multilineS andMultLineE:(NSString *)multilineE andKeywords:(NSString *)keywords andType:(int)type
++(BOOL) saveParser:(NSString *)path andExtention:(NSString *)extension andSingleLine:(NSString *)singleLine andMultiLineS:(NSString *)multilineS andMultLineE:(NSString *)multilineE andKeywords:(NSString *)keywords andType:(NSInteger)type
 {
     if (path == nil)
         return NO;
@@ -253,7 +266,7 @@
         [str appendString:[keywordsArray lastObject]];
     }
     
-    NSString* tmp = [NSString stringWithFormat:@"%d", type];
+    NSString* tmp = [NSString stringWithFormat:@"%ld", type];
     
     NSMutableDictionary* dictionary = [[NSMutableDictionary alloc] init];
     [dictionary setObject:extension forKey:EXTENSION];
