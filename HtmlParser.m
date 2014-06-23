@@ -292,7 +292,7 @@
         [jsParser setContent:parseSource andProjectBase:nil];
         [jsParser setWithHeaderAndEnder:NO];
         [jsParser setMaxLineCount:[[Utils getInstance].currentThemeSetting.max_line_count intValue]];
-        [jsParser startParse];
+        [jsParser parseToHtml];
         NSString* _htmlContent = [jsParser getHtml];
         [self addRawHtml:_htmlContent];
         isCodeInTagParseEnded = [jsParser isStringOrCommentsEnded];
@@ -303,7 +303,7 @@
         [cssParser setContent:parseSource andProjectBase:nil];
         [cssParser setWithHeaderAndEnder:NO];
         [cssParser setMaxLineCount:[[Utils getInstance].currentThemeSetting.max_line_count intValue]];
-        [cssParser startParse];
+        [cssParser parseToHtml];
         NSString* _htmlContent = [cssParser getHtml];
         [self addRawHtml:_htmlContent];
         isCodeInTagParseEnded = [cssParser isStringOrCommentsEnded];    }

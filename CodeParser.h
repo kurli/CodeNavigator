@@ -47,6 +47,8 @@ typedef void (^ParseFinishedCallback)();
 
 -(BOOL) startParse:(ParseFinishedCallback)onParseFinished;
 
+-(BOOL) parseToHtml;
+
 -(BOOL) startParseAndWait;
 
 -(BOOL) isProjectDefinedWord:(NSString*) word;

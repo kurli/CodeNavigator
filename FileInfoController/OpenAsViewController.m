@@ -134,22 +134,28 @@
     [[NSFileManager defaultManager] removeItemAtPath:displayPath error:&error];
     
     [parser setFile: filePath andProjectBase:projPath];
-    [parser startParse];
-    NSString* html = [parser getHtml];
-    //rc4Result = [self HloveyRC4:html key:@"lgz"];
-    [html writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
-    
-    [[Utils getInstance].detailViewController setTitle:[filePath lastPathComponent] andPath:filePath andContent:html andBaseUrl:nil];
-    
-    // Release popover controller
-    MasterViewController* _masterViewController = nil;
+    [parser startParseAndWait];
+    [parser startParse:^(){
+        dispatch_async(dispatch_get_main_queue(), ^{
+        NSString* html = [parser getHtml];
+        NSError* error;
+        //rc4Result = [self HloveyRC4:html key:@"lgz"];
+        [html writeToFile:displayPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        
+        [[Utils getInstance].detailViewController setTitle:[filePath lastPathComponent] andPath:filePath andContent:html andBaseUrl:nil];
+        
+        // Release popover controller
+        MasterViewController* _masterViewController = nil;
 #ifdef IPHONE_VERSION
-    _masterViewController = (MasterViewController*)[[Utils getInstance].masterViewController visibleViewController];
+        _masterViewController = (MasterViewController*)[[Utils getInstance].masterViewController visibleViewController];
 #else
-    NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
-    _masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
+        NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
+        _masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
 #endif
-    [_masterViewController releaseAllPopover];
+        [_masterViewController releaseAllPopover];
+        });
+    }];
+    
 }
 
 #pragma mark picker view
