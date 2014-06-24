@@ -23,6 +23,8 @@ typedef enum _FunctionItemType{
 
 @property (strong, nonatomic) NSString* type;
 
+@property (strong, nonatomic) NSString* keyword;
+
 @end
 
 @interface FunctionListManager : NSObject

@@ -68,6 +68,7 @@
         
         FunctionItem* item = [[FunctionItem alloc] init];
         [item setType:[detailArray objectAtIndex:srcEndIndex+1]];
+        [item setKeyword:[detailArray objectAtIndex:0]];
         NSString* name;
         if ([item.type compare:@"v"] == NSOrderedSame || [item.type compare:@"f"] == NSOrderedSame) {
             name = [detailArray objectAtIndex:2];

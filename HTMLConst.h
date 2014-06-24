@@ -19,6 +19,7 @@ html {-webkit-text-size-adjust: none;}\n\
 .string { color: STRING; }\n\
 .keyword { color: KEYWRD; }\n\
 .other { color: -OTHER-; }\n\
+.function { color: -FUNCTION-COLOR-; font-size: --FONT_FUNCTION_SIZE--px; font-style: italic;}\n\
 .system { color: #774499; }\n\
 .number { color: --NUMBER--; }\n\
 .fold { font-style: italic; }\n\
@@ -91,6 +92,8 @@ margin:0px;\n\
 #define HTML_KEYWORD_START @"<span class=\"keyword\">"
 
 #define HTML_OTHER_WORD @"<span class=\"other\" onmousedown=\"mousedown(this);\">"
+
+#define HTML_FUNCTION_WORD @"<span class=\"function\" onmousedown=\"mousedown(this);\">"
 
 #define HTML_SYSTEM_START @"<span class=\"system\">"
 

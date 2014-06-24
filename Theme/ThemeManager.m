@@ -78,11 +78,12 @@
         BOOL themeExist = [[NSFileManager defaultManager] fileExistsAtPath:dest];
         if (themeExist) {
             NSData* data = [[NSData alloc] initWithContentsOfFile:src];
-            NSDictionary *documentDictionary = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListImmutable format:NULL errorDescription:NULL];
+            NSDictionary *documentDictionary = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:NULL];
+
             int currentVersion = [[documentDictionary objectForKey:@"version"] intValue];
             
             data = [[NSData alloc] initWithContentsOfFile:dest];
-            documentDictionary = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListImmutable format:NULL errorDescription:NULL];
+            documentDictionary = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:NULL];
             int bundleVersion = [[documentDictionary objectForKey:@"version"] intValue];
             if (bundleVersion == currentVersion) {
                 return;
@@ -136,7 +137,7 @@
     }
     NSData* data = [[NSData alloc] initWithContentsOfFile:bundlePath];
 
-    NSDictionary* documentDictionary = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListImmutable format:NULL errorDescription:NULL];
+    NSDictionary *documentDictionary = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:NULL];
 
     return documentDictionary;
 }
@@ -196,7 +197,7 @@
     
     ThemeSchema* colorScheme = [[ThemeSchema alloc] init];
     NSData* data = [[NSData alloc] initWithContentsOfFile:themePath];
-    NSDictionary *documentDictionary = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListImmutable format:NULL errorDescription:NULL];
+    NSDictionary *documentDictionary = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:NULL];
     
     NSString* font_size = [documentDictionary objectForKey:@"font_size"];
     [colorScheme setFont_size:font_size];
@@ -287,6 +288,15 @@
     
     //linenumber
     cssStr = [cssStr stringByReplacingOccurrencesOfString:@"--LINENUMBER--" withString:colorScheme.lineNumber];
+    
+    //function font size
+    float size = [colorScheme.font_size intValue] * 1.5;
+    NSString* sizeStr = [NSString stringWithFormat:@"%f", size];
+    cssStr = [cssStr stringByReplacingOccurrencesOfString:@"--FONT_FUNCTION_SIZE--" withString:sizeStr];
+    
+    //function color
+    //other
+    cssStr = [cssStr stringByReplacingOccurrencesOfString:@"-FUNCTION-COLOR-" withString:colorScheme.variable_2];
     
     if (colorScheme.display_linenumber) {
         cssStr = [cssStr stringByReplacingOccurrencesOfString:@"--DISPLAYLINENUM--" withString:@"table-cell"];

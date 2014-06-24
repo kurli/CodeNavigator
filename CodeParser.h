@@ -33,7 +33,7 @@ typedef void (^ParseFinishedCallback)();
 
 @property (nonatomic, strong) NSString* parserConfigName;
 
-@property (strong, atomic) NSArray* tagsArray;
+@property (strong, atomic) NSMutableDictionary* tagsDict;
 
 @property (strong, atomic) NSString* filePath;
 
@@ -88,6 +88,8 @@ typedef void (^ParseFinishedCallback)();
 
 -(void) otherWordStart;
 
+-(void) functionStart;
+
 -(void) addHead;
 
 -(void) addBlankLine;
@@ -115,6 +117,8 @@ typedef void (^ParseFinishedCallback)();
 -(void) numberStart;
 
 -(void) addRawHtml:(NSString*) html;
+
+-(void) parseOtherWord:(int) lineNumber andWord:(NSString*)word;
 
 // ---------------- HTML Components End ----------------------
 

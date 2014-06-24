@@ -4,12 +4,13 @@
 #import "SBJson.h"
 #import "Parser.h"
 #import "Utils.h"
+#import "FunctionListManager.h"
 
 @implementation CodeParser
 
 @synthesize parserConfig;
 @synthesize parserConfigName;
-@synthesize tagsArray;
+@synthesize tagsDict;
 @synthesize filePath;
 
 -(id) init
@@ -89,6 +90,8 @@
 {
     [self setParserConfig:nil];
     [self setParserConfigName:nil];
+    [self.tagsDict removeAllObjects];
+    [self setTagsDict:nil];
 }
 
 -(void) setContent:(NSString *)content andProjectBase:(NSString *)base
@@ -221,6 +224,19 @@
     return result;
 }
 
+-(void) parseTags:(NSArray*) tagsList {
+    self.tagsDict = nil;
+    if (tagsList == nil || [tagsList count] == 0) {
+        return;
+    }
+    self.tagsDict = [[NSMutableDictionary alloc] init];
+    for (int i=0; i<[tagsList count]; i++) {
+        FunctionItem* item = (FunctionItem*)[tagsList objectAtIndex:i];
+        NSNumber* lineNum = [[NSNumber alloc] initWithInt:item.line];
+        [self.tagsDict setObject:item forKey:lineNum];
+    }
+}
+
 -(BOOL) startParse:(ParseFinishedCallback)onParseFinished
 {
 	if ( nil == fileContent )
@@ -230,7 +246,7 @@
     [[Utils getInstance] showAnalyzeIndicator:YES];
 
     [[Utils getInstance] getFunctionListForFile:self.filePath andCallback:^(NSArray* array){
-            self.tagsArray = array;
+            [self parseTags:array];
             [self parseToHtml];
             onParseFinished();
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -541,6 +557,12 @@
     [htmlContent appendString:HTML_OTHER_WORD];
 }
 
+-(void) functionStart
+{
+    [htmlContent appendString:HTML_FUNCTION_WORD];
+}
+
+
 -(void) addUnknownLine:(NSString *)content
 {
 //    NSMutableString* mutableString = [content mutableCopy];
@@ -582,7 +604,24 @@
     return !isCommentsNotEnded && !isStringNotEnded;
 }
 
-// ---------------- HTML Components End ------------------- 
+-(void) parseOtherWord:(int) lineNumber andWord:(NSString*)word {
+    NSNumber* number = [[NSNumber alloc] initWithInt:lineNumber+1];
+    FunctionItem* item = [self.tagsDict objectForKey:number];
+    if (item != nil && [item.keyword compare:word] == NSOrderedSame) {
+//        if ([item.type compare:@"F"] == NSOrderedSame) {
+//            [self functionStart];
+//        } else {
+//            [self otherWordStart];
+//        }
+        [self functionStart];
+    } else {
+        [self otherWordStart];
+    }
+    [self addString:word addEnter:NO];
+    [self addEnd];
+}
+
+// ---------------- HTML Components End -------------------
 
 // ---------------- Common Components ------------------- 
 
