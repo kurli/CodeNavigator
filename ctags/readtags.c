@@ -1,5 +1,5 @@
 /*
-*   $Id: readtags.c 592 2007-07-31 03:30:41Z dhiebert $
+*   $Id$
 *
 *   Copyright (c) 1996-2003, Darren Hiebert
 *
@@ -784,6 +784,8 @@ extern tagResult tagsClose (tagFile *const file)
 *  TEST FRAMEWORK
 */
 
+#ifdef READTAGS_MAIN
+
 static const char *TagFileName = "/Users/lgz_software/Library/Application Support/iPhone Simulator/5.1/Applications/4346DB17-91B5-4775-8A5C-D3C6AA0AE2E4/Documents/Projects/linux_0.1/tags";
 static const char *ProgramName;
 static int extensionFields;
@@ -806,7 +808,7 @@ static void printTag (const tagEntry *entry)
 			printf ("%s\tkind:%s", sep, entry->kind);
 		if (entry->fileScope)
 			printf ("%s\tfile:", sep);
-#if 1
+#if 0
 		if (entry->address.lineNumber > 0)
 			printf ("%s\tline:%lu", sep, entry->address.lineNumber);
 #endif
@@ -951,5 +953,7 @@ extern int readtags_main (int argc, char **argv)
 	}
 	return 0;
 }
+
+#endif
 
 /* vi:set tabstop=4 shiftwidth=4: */

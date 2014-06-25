@@ -48,18 +48,17 @@ static hashEntry **HashTable = NULL;
 
 static hashEntry **getHashTable (void)
 {
-
-	if (! HashTable)
-	{
-		unsigned int i;
-
-		HashTable = xMalloc (TableSize, hashEntry*);
-
-		for (i = 0  ;  i < TableSize  ;  ++i)
-			HashTable [i] = NULL;
-
-	}
-	return HashTable;
+    if (! HashTable)
+    {
+        unsigned int i;
+        
+        HashTable = xMalloc (TableSize, hashEntry*);
+        
+        for (i = 0  ;  i < TableSize  ;  ++i)
+            HashTable [i] = NULL;
+        
+    }
+    return HashTable;
 }
 
 static hashEntry *getHashTableEntry (unsigned long hashedValue)

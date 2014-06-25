@@ -20,6 +20,10 @@
 #include <stdio.h>
 #include <ctype.h>  /* to declare isspace () */
 
+#if defined(HAVE_SCANDIR)
+#include <dirent.h>
+#endif
+
 #include "ctags.h"
 #include "debug.h"
 #include "ctags_main.h"
@@ -345,10 +349,67 @@ static const char *const Features [] = {
 *   FUNCTION PROTOTYPES
 */
 static boolean parseFileOptions (const char *const fileName);
+static boolean parseAllConfigurationFilesOptionsInDirectory(const char *const fileName);
 
 /*
 *   FUNCTION DEFINITIONS
 */
+
+
+
+#if defined(_WIN32)
+
+/* Some versions of MinGW are missing _vscprintf's declaration, although they
+ * still provide the symbol in the import library.
+ */
+#ifdef __MINGW32__
+_CRTIMP int _vscprintf(const char *format, va_list argptr);
+#endif
+
+#ifndef va_copy
+#define va_copy(dest, src) (dest = src)
+#endif
+
+int asprintf(char **strp, const char *fmt, ...)
+{
+	va_list args;
+	va_list args_copy;
+	int length;
+	size_t size;
+
+	va_start(args, fmt);
+
+	va_copy(args_copy, args);
+
+#ifdef _WIN32
+	/* We need to use _vcsprintf to calculate the length as vsnprintf returns -1
+	 * if the number of characters to write is greater than count.
+	 */
+	length = _vscprintf(fmt, args_copy);
+#else
+	char dummy;
+	length = vsnprintf(&dummy, sizeof dummy, fmt, args_copy);
+#endif
+
+	va_end(args_copy);
+
+	Assert(length >= 0);
+	size = length + 1;
+
+	*strp = malloc(size);
+	if (!*strp) {
+		return -1;
+	}
+
+	va_start(args, fmt);
+	vsnprintf(*strp, size, fmt, args);
+	va_end(args);
+
+	return length;
+}
+#endif
+
+
 #if (defined (__SVR4) && defined (__sun))
 int vasprintf(char **ret, const char *format, va_list args)
 {
@@ -424,13 +485,12 @@ extern void freeList (stringList** const pList)
 
 extern void setDefaultTagFileName (void)
 {
-    //Kurry
 	if (Option.tagFileName != NULL)
 		;  /* accept given name */
 	else if (Option.etags)
 		Option.tagFileName = stringCopy (ETAGS_FILE);
 	else
-		Option.tagFileName = stringCopy (fileName);
+        Option.tagFileName = stringCopy (fileName);
 }
 
 extern boolean filesRequired (void)
@@ -868,6 +928,12 @@ static void processExtraTagsOption (
 	}
 }
 
+static void resetFieldsOption (
+		struct sExtFields *field, boolean mode)
+{
+	memset(field, mode? ~0: 0, sizeof(*field));
+}
+
 static void processFieldsOption (
 		const char *const option, const char *const parameter)
 {
@@ -876,19 +942,16 @@ static void processFieldsOption (
 	boolean mode = TRUE;
 	int c;
 
-	if (*p != '+'  &&  *p != '-')
+
+	if (*p == '*')
 	{
-		field->access           = FALSE;
-		field->fileScope        = FALSE;
-		field->implementation   = FALSE;
-		field->inheritance      = FALSE;
-		field->kind             = FALSE;
-		field->kindKey          = FALSE;
-		field->kindLong         = FALSE;
-		field->language         = FALSE;
-		field->scope            = FALSE;
-		field->typeRef          = FALSE;
+		resetFieldsOption(field, TRUE);
+		p++;
 	}
+	else if (*p != '+'  &&  *p != '-')
+		resetFieldsOption(field, FALSE);
+
+
 	while ((c = *p++) != '\0') switch (c)
 	{
 		case '+': mode = TRUE;                  break;
@@ -1240,10 +1303,18 @@ static void processListLanguagesOption (
 static void processOptionFile (
 		const char *const option, const char *const parameter)
 {
+	boolean opened_as_file, opened_as_dir;
 	if (parameter [0] == '\0')
 		error (WARNING, "no option file supplied for \"%s\"", option);
-	else if (! parseFileOptions (parameter))
-		error (FATAL | PERROR, "cannot open option file \"%s\"", parameter);
+	else
+	{
+
+		opened_as_file = parseFileOptions (parameter);
+		opened_as_dir  = parseAllConfigurationFilesOptionsInDirectory (parameter);
+
+		if ((opened_as_file == FALSE) && (opened_as_dir == FALSE))
+			error (FATAL | PERROR, "cannot open option file \"%s\"", parameter);
+	}
 }
 
 static void processSortOption (
@@ -1748,7 +1819,7 @@ static void parseConfigurationFileOptionsInDirectoryWithLeafname (const char* di
 static void parseConfigurationFileOptionsInDirectory (const char* directory)
 {
 	char	*leafname = NULL;
-	
+
 	asprintf (&leafname,".%s",(Option.configFilename)?Option.configFilename:"ctags");
 	parseConfigurationFileOptionsInDirectoryWithLeafname (directory, leafname);
 	free (leafname);
@@ -1759,30 +1830,109 @@ static void parseConfigurationFileOptionsInDirectory (const char* directory)
 #endif
 }
 
+#if defined(HAVE_SCANDIR)
+static int accept_only_dot_ctags(const struct dirent* dent)
+{
+	size_t len;
+
+	/* Ignore a file which name is started from dot. */
+	if (*dent->d_name == '.')
+		return 0;
+
+	/* accept only a file ended with ".conf" or ".ctags" */
+	len = strlen(dent->d_name);
+
+	if (len < 6)
+		return 0;
+	if (strcmp(dent->d_name + (len - 5), ".conf") == 0)
+		return 1;
+
+	if (len < 7)
+		return 0;
+	if (strcmp(dent->d_name + (len - 6), ".ctags") == 0)
+		return 1;
+
+	return 0;
+}
+
+static boolean parseAllConfigurationFilesOptionsInDirectory (const char* const dirName)
+{
+	struct dirent **dents;
+	int i, n;
+
+	n = scandir (dirName, &dents, accept_only_dot_ctags, alphasort);
+	if (n < 0)
+		return FALSE;
+	
+	for (i = 0; i < n; i++)
+	{
+		parseConfigurationFileOptionsInDirectoryWithLeafname (dirName,
+								      dents[i]->d_name);
+		free (dents[i]);
+	}
+	free (dents);
+	return TRUE;
+}
+#else
+static boolean parseAllConfigurationFilesOptionsInDirectory (const char* const dirName)
+{
+	return FALSE;
+}
+#endif
+
 static void parseConfigurationFileOptions (void)
 {
 	/* We parse .ctags on all systems, and additionally ctags.cnf on DOS. */
 	const char* const home = getenv ("HOME");
 	char *filename = NULL;
-	
+	char *filename_body;
+
 #ifdef CUSTOM_CONFIGURATION_FILE
 	parseFileOptions (CUSTOM_CONFIGURATION_FILE);
 #endif
+	filename_body = (Option.configFilename)?Option.configFilename:"ctags";
 #ifdef MSDOS_STYLE_PATH
-	
-	asprintf (&filename,"/%s.cnf",(Option.configFilename)?Option.configFilename:"ctags");
+
+	asprintf (&filename,"/%s.cnf", filename_body);
 	parseFileOptions (filename);
 	free (filename);
 #endif
-	asprintf (&filename,"/etc/%s.conf",(Option.configFilename)?Option.configFilename:"ctags");
+	asprintf (&filename,"/etc/%s.conf", filename_body);
 	parseFileOptions (filename);
 	free (filename);
-	asprintf (&filename,"/usr/local/etc/%s.conf",(Option.configFilename)?Option.configFilename:"ctags");
+
+#ifndef MSDOS_STYLE_PATH
+	if (!Option.configFilename)
+	{
+		asprintf (&filename,"/etc/%s.conf.d", filename_body);
+		parseAllConfigurationFilesOptionsInDirectory(filename);
+		free (filename);
+	}
+#endif
+
+	asprintf (&filename,"/usr/local/etc/%s.conf", filename_body);
 	parseFileOptions (filename);
 	free (filename);
+
+#ifndef MSDOS_STYLE_PATH
+	if (!Option.configFilename)
+	{
+		asprintf (&filename,"/usr/local/etc/%s.conf.d", filename_body);
+		parseAllConfigurationFilesOptionsInDirectory(filename);
+		free (filename);
+	}
+#endif
+
 	if (home != NULL)
 	{
 		parseConfigurationFileOptionsInDirectory (home);
+#ifndef MSDOS_STYLE_PATH
+		{
+			vString* const pathname = combinePathAndFile (home, ".ctags.d");
+			parseAllConfigurationFilesOptionsInDirectory(vStringValue (pathname));
+			vStringDelete (pathname);
+		}
+#endif
 	}
 	else
 	{
@@ -1887,15 +2037,6 @@ extern void freeOptionResources (void)
 	freeList (&Option.headerExt);
 	freeList (&Option.etagsInclude);
 	freeList (&OptionFiles);
-    //kurry
-    Option.tagFileName = 0;
-    Option.fileList = 0;
-    Option.filterTerminator = 0;
-//    Excluded = 0;
-//    Option.ignore = 0;
-//    Option.headerExt = 0;
-//    Option.etagsInclude = 0;
-//    OptionFiles = 0;
 }
 
 /* vi:set tabstop=4 shiftwidth=4: */

@@ -39,24 +39,24 @@ static fpos_t StartOfLine;  /* holds deferred position of start of line */
 extern void freeSourceFileResources (void)
 {
     //kurry
-	if (File.name != NULL){
-		vStringDelete (File.name);
+    if (File.name != NULL){
+        vStringDelete (File.name);
         File.name = 0;
     }
-	if (File.path != NULL){
-		vStringDelete (File.path);
+    if (File.path != NULL){
+        vStringDelete (File.path);
         File.path = 0;
     }
-	if (File.source.name != NULL){
-		vStringDelete (File.source.name);
+    if (File.source.name != NULL){
+        vStringDelete (File.source.name);
         File.source.name = 0;
     }
-	if (File.source.tagPath != NULL){
-		eFree (File.source.tagPath);
+    if (File.source.tagPath != NULL){
+        eFree (File.source.tagPath);
         File.source.tagPath = 0;
     }
-	if (File.line != NULL){
-		vStringDelete (File.line);
+    if (File.line != NULL){
+        vStringDelete (File.line);
         File.line = 0;
     }
 }

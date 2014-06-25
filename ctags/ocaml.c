@@ -1311,7 +1311,7 @@ static void mayRedeclare (vString * const ident, ocaToken what)
 	switch (what)
 	{
     case OcaKEYWORD_value:
-        // let globalScope handle it
+        /* let globalScope handle it */
         globalScope (ident, what);
         break;
 
@@ -1732,8 +1732,14 @@ static void localScope (vString * const ident, ocaToken what)
 		break;
 
 	case OcaKEYWORD_and:
-		popLastNamed ();
-		toDoNext = &localLet;
+		popSoftContext ();
+		if (toDoNext != &mayRedeclare)
+			toDoNext(ident, what);
+		else
+		{
+			pushEmptyContext(localScope);
+			toDoNext = &localLet;
+		}
 		break;
 
 	case OcaKEYWORD_else:

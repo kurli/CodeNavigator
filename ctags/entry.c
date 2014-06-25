@@ -183,7 +183,7 @@ static void updateSortedFlag (
 			fpos_t nextLine;
 
 			if (fgetpos (fp, &nextLine) == -1 || fsetpos (fp, &startOfLine) == -1)
-				printf ("Failed to update 'sorted' pseudo-tag");
+                printf ("Failed to update 'sorted' pseudo-tag");
 			else
 			{
 				fpos_t flagLocation;
@@ -279,7 +279,7 @@ static boolean isCtagsLine (const char *const line)
 	char *const fields = xMalloc (NUM_FIELDS * fieldLength, char);
 
 	if (fields == NULL)
-		printf ( "Cannot analyze tag file");
+        printf ( "Cannot analyze tag file");
 	else
 	{
 #define field(x)		(fields + ((size_t) (x) * fieldLength))
@@ -351,7 +351,7 @@ extern void copyBytes (FILE* const fromFp, FILE* const toFp, const long size)
 					remaining : (long) BufferSize;
 		numRead = fread (buffer, (size_t) 1, (size_t) toRead, fromFp);
 		if (fwrite (buffer, (size_t)1, (size_t)numRead, toFp) < (size_t)numRead)
-			printf ("cannot complete write");
+            printf ("cannot complete write");
 		if (remaining > 0)
 			remaining -= numRead;
 	} while (numRead == toRead  &&  remaining != 0);
@@ -362,12 +362,12 @@ extern void copyFile (const char *const from, const char *const to, const long s
 {
 	FILE* const fromFp = fopen (from, "rb");
 	if (fromFp == NULL)
-		printf( "cannot open file to copy");
+        printf( "cannot open file to copy");
 	else
 	{
 		FILE* const toFp = fopen (to, "wb");
 		if (toFp == NULL)
-			printf ( "cannot open copy destination");
+            printf ( "cannot open copy destination");
 		else
 		{
 			copyBytes (fromFp, toFp, size);
@@ -397,7 +397,7 @@ extern void openTagFile (void)
 		TagFile.name = eStrdup (Option.tagFileName);
 		fileExists = doesFileExist (TagFile.name);
 		if (fileExists  &&  ! isTagFile (TagFile.name))
-			printf (
+            printf (
 			  "\"%s\" doesn't look like a tag file; I refuse to overwrite it.",
 				  TagFile.name);
 
@@ -429,7 +429,7 @@ extern void openTagFile (void)
 		}
 		if (TagFile.fp == NULL)
 		{
-			printf ( "cannot open tag file");
+            printf ( "cannot open tag file");
 			exit (1);
 		}
 	}
@@ -684,7 +684,7 @@ static int writeEtagsEntry (const tagEntryInfo *const tag)
 {
 	int length;
 
-	if (tag->isFileEntry)
+	if (tag->isFileEntry || (tag->lineNumberEntry && (tag->lineNumber == 1)))
 		length = fprintf (TagFile.etags.fp, "\177%s\001%lu,0\n",
 				tag->name, tag->lineNumber);
 	else
@@ -777,7 +777,7 @@ static int writePatternEntry (const tagEntryInfo *const tag)
 	int length = 0;
 
 	if (line == NULL)
-		printf ( "bad tag in %s", vStringValue (File.name));
+        printf ( "bad tag in %s", vStringValue (File.name));
 	if (tag->truncateLine)
 		truncateTagLine (line, tag->name, FALSE);
 	newlineTerminated = (boolean) (line [strlen (line) - 1] == '\n');
@@ -816,7 +816,7 @@ extern void makeTagEntry (const tagEntryInfo *const tag)
 {
 	Assert (tag->name != NULL);
 	if (tag->name [0] == '\0')
-		printf ( "ignoring null tag in %s", vStringValue (File.name));
+        printf ( "ignoring null tag in %s", vStringValue (File.name));
 	else
 	{
 		int length = 0;

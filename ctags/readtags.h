@@ -1,5 +1,5 @@
 /*
-*   $Id: readtags.h 443 2006-05-30 04:37:13Z darren $
+*   $Id$
 *
 *   Copyright (c) 1996-2003, Darren Hiebert
 *
