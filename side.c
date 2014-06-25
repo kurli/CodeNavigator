@@ -120,14 +120,13 @@ print_half_line (line, indent, out_bound)
 
 	case '\b':
 	  if (in_position != 0 && --in_position < out_bound)
-	    if (out_position <= in_position)
-	      /* Add spaces to make up for suppressed tab past out_bound.  */
-	      for (;  out_position < in_position;  out_position++)
-		putc (' ', out);
-	    else
-	      {
-		out_position = in_position;
-		putc (c, out);
+          if (out_position <= in_position) {
+              /* Add spaces to make up for suppressed tab past out_bound.  */
+              for (;  out_position < in_position;  out_position++)
+                  putc (' ', out);
+          } else {
+              out_position = in_position;
+              putc (c, out);
 	      }
 	  break;
 

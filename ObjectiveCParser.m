@@ -552,9 +552,8 @@
         //end
         
         // for others
-        [self otherWordStart];
-        [self addString:word addEnter:NO];
-        [self addEnd];
+        [self parseOtherWord:lineNumber andWord:word];
+
         [needParseLine deleteCharactersInRange: NSMakeRange(0, index)];
         return YES;
     }

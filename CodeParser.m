@@ -246,12 +246,12 @@
     [[Utils getInstance] showAnalyzeIndicator:YES];
 
     [[Utils getInstance] getFunctionListForFile:self.filePath andCallback:^(NSArray* array){
-            [self parseTags:array];
-            [self parseToHtml];
-            onParseFinished();
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[Utils getInstance] showAnalyzeIndicator:NO];
-            });
+        [self parseTags:array];
+        [self parseToHtml];
+        onParseFinished();
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[Utils getInstance] showAnalyzeIndicator:NO];
+        });
     }];
 
 	return YES;
