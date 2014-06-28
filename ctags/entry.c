@@ -430,7 +430,7 @@ extern void openTagFile (void)
 		if (TagFile.fp == NULL)
 		{
             printf ( "cannot open tag file");
-			exit (1);
+            return;
 		}
 	}
 	if (TagsToStdout)
@@ -527,6 +527,10 @@ extern void closeTagFile (const boolean resize)
 {
 	long desiredSize, size;
 
+    //kurry
+    if (TagFile.fp == 0) {
+        return;
+    }
 	if (Option.etags)
 		writeEtagsIncludes (TagFile.fp);
 	desiredSize = ftell (TagFile.fp);

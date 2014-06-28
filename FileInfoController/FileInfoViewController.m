@@ -222,6 +222,8 @@
                 NSError* error;
                 NSString* displayFile = [[Utils getInstance] getDisplayPath:sourceFilePath];
                 [[NSFileManager defaultManager] removeItemAtPath:displayFile error:&error];
+                NSString* tagFile = [[Utils getInstance] getTagFileBySourceFile:sourceFilePath];
+                [[NSFileManager defaultManager] removeItemAtPath:tagFile error:&error];
                 NSString* projPath = [[Utils getInstance] getProjectFolder:sourceFilePath];
                 [[Utils getInstance] getDisplayFile:sourceFilePath andProjectBase:projPath andFinishBlock:^(NSString* html) {
                     dispatch_async(dispatch_get_main_queue(), ^{

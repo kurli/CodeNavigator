@@ -607,12 +607,7 @@
 -(void) parseOtherWord:(int) lineNumber andWord:(NSString*)word {
     NSNumber* number = [[NSNumber alloc] initWithInt:lineNumber+1];
     FunctionItem* item = [self.tagsDict objectForKey:number];
-    if (item != nil && [item.keyword compare:word] == NSOrderedSame) {
-//        if ([item.type compare:@"F"] == NSOrderedSame) {
-//            [self functionStart];
-//        } else {
-//            [self otherWordStart];
-//        }
+    if (item != nil && [word compare:item.keyword ] == NSOrderedSame) {
         [self functionStart];
     } else {
         [self otherWordStart];

@@ -60,7 +60,11 @@
     }
     // Change the folder
     NSRange range = [tmp rangeOfString:@"Projects"];
-    tmp = [tmp stringByReplacingOccurrencesOfString:@"Projects" withString:DISPLAY_FOLDER_PATH options:NSLiteralSearch range:range];
+    if (range.location != NSNotFound) {
+        tmp = [tmp stringByReplacingOccurrencesOfString:@"Projects" withString:DISPLAY_FOLDER_PATH options:NSLiteralSearch range:range];
+    } else {
+        
+    }
     return tmp;
 }
 

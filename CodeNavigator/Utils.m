@@ -257,7 +257,7 @@ static Utils *static_utils;
 {
     if (source == nil || [source length] == 0)
         return nil;
-    NSString* tmp = [source copy];
+    NSString* tmp = [self getDisplayPath:source];
     NSString* extension = [source pathExtension];
     if (extension == nil || [extension length] == 0)
     {
@@ -266,7 +266,7 @@ static Utils *static_utils;
     else
     {
         tmp = [tmp stringByDeletingPathExtension];
-        tmp = [tmp stringByAppendingFormat:@"_%@.%@", extension, @"lgz_tags"];
+        tmp = [tmp stringByAppendingFormat:@".%@", @"lgz_tags"];
     }
     return tmp;
 }

@@ -7,6 +7,7 @@
 //
 
 #import "ObjectiveCParser.h"
+#import "FunctionListManager.h"
 
 @implementation ObjectiveCParser
 
@@ -558,6 +559,39 @@
         return YES;
     }
 	return YES;
+}
+
+-(void) parseOtherWord:(int) lineNumber andWord:(NSString*)word {
+    NSNumber* number = [[NSNumber alloc] initWithInt:lineNumber+1];
+    FunctionItem* item = [self.tagsDict objectForKey:number];
+    if (item == nil) {
+        [self otherWordStart];
+        [self addString:word addEnter:NO];
+        [self addEnd];
+        return;
+    }
+    NSString* key = item.keyword;
+    if ([key length] > 1 && ([key characterAtIndex:0] == '-' || [key characterAtIndex:0] == '+')) {
+        key = [key substringFromIndex:1];
+    }
+    
+    if ([word compare:key] == NSOrderedSame) {
+        [self functionStart];
+    } else {
+        NSArray* keys = [key componentsSeparatedByString:@":"];
+        for (int i=0; i<[keys count]; i++) {
+            NSString* tmpKey = [keys objectAtIndex:i];
+            if ([word compare:tmpKey] == NSOrderedSame) {
+                [self functionStart];
+                [self addString:word addEnter:NO];
+                [self addEnd];
+                return;
+            }
+        }
+        [self otherWordStart];
+    }
+    [self addString:word addEnter:NO];
+    [self addEnd];
 }
 
 @end

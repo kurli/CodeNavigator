@@ -1,4 +1,5 @@
 #import "CPlusPlusParser.h"
+#import "FunctionListManager.h"
 
 @implementation CPlusPlusParser
 
@@ -496,6 +497,29 @@
         return YES;
     }
 	return YES;
+}
+
+-(void) parseOtherWord:(int) lineNumber andWord:(NSString*)word {
+    NSNumber* number = [[NSNumber alloc] initWithInt:lineNumber+1];
+    FunctionItem* item = [self.tagsDict objectForKey:number];
+    if (item == nil) {
+        [self otherWordStart];
+        [self addString:word addEnter:NO];
+        [self addEnd];
+        return;
+    }
+    NSString* key = item.keyword;
+    if ([key length] > 1 && [key characterAtIndex:0] == '~') {
+        key = [key substringFromIndex:1];
+    }
+    
+    if ([word compare:key] == NSOrderedSame) {
+        [self functionStart];
+    } else {
+        [self otherWordStart];
+    }
+    [self addString:word addEnter:NO];
+    [self addEnd];
 }
 
 @end

@@ -134,6 +134,13 @@ int ctags_main (int argc, char **argv, const char* fn);
         [self analyzeCtagFile:cb];
         return;
     }
+    NSString* extension = [self.path pathExtension];
+    if ([extension length] == 0) {
+        cb(nil);
+        return;
+    }
+    NSString* folder = [ctagFile stringByDeletingLastPathComponent];
+    [[NSFileManager defaultManager] createDirectoryAtPath:folder withIntermediateDirectories:YES attributes:Nil error:nil];
 
     const char *argv[4];
     argv[0] = "ctags";
