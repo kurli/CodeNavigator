@@ -228,6 +228,23 @@
         self.activeWebView = _webView;
         isFirstDisplay = NO;
     }
+    [self adjustTitle];
+}
+
+- (void) adjustTitle {
+#ifndef IPHONE_VERSION
+    if(UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) &&
+       [[Utils getInstance].splitViewController isShowingMaster] == YES) {
+        [self.titleTextField setTitle:@""];
+    } else {
+        if([self.titleTextField.title length] == 0) {
+            NSString* tmp = [self getCurrentDisplayFile];
+            tmp = [tmp lastPathComponent];
+            tmp = [[Utils getInstance] getSourceFileByDisplayFile:tmp];
+            [self.titleTextField setTitle:tmp];
+        }
+    }
+#endif
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -270,31 +287,31 @@
 -(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
 #ifndef IPHONE_VERSION
-    CGRect frameTop = self.topToolBar.frame;
-    CGRect frameBottom = self.bottomToolBar.frame;
-    if ([[Utils getInstance].splitViewController isShowingMaster] == YES)
-    {
-        frameTop.origin.x = TOOLBAR_X_MASTER_SHOW;
-        frameBottom.origin.x = TOOLBAR_X_MASTER_SHOW;
-    }
-    else
-    {
-        UIDeviceOrientation  orientation = [UIDevice currentDevice].orientation;
-        if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) {
-            frameTop.origin.x = TOOLBAR_X_MASTER_SHOW;
-            frameBottom.origin.x = TOOLBAR_X_MASTER_SHOW;
-        }
-        else {
-            frameTop.origin.x = TOOLBAR_X_MASTER_HIDE;
-            frameBottom.origin.x = TOOLBAR_X_MASTER_HIDE;
-        }
-    }
-    [UIView beginAnimations:@"ToolBarPosX"context:nil];         
-    [UIView setAnimationDuration:0.30];           
-    [UIView setAnimationDelegate:self];          
-    [self.topToolBar setFrame:frameTop];
-    [self.bottomToolBar setFrame:frameBottom];
-    [UIView commitAnimations];
+//    CGRect frameTop = self.topToolBar.frame;
+//    CGRect frameBottom = self.bottomToolBar.frame;
+//    if ([[Utils getInstance].splitViewController isShowingMaster] == YES)
+//    {
+//        frameTop.origin.x = TOOLBAR_X_MASTER_SHOW;
+//        frameBottom.origin.x = TOOLBAR_X_MASTER_SHOW;
+//    }
+//    else
+//    {
+//        UIDeviceOrientation  orientation = [UIDevice currentDevice].orientation;
+//        if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) {
+//            frameTop.origin.x = TOOLBAR_X_MASTER_SHOW;
+//            frameBottom.origin.x = TOOLBAR_X_MASTER_SHOW;
+//        }
+//        else {
+//            frameTop.origin.x = TOOLBAR_X_MASTER_HIDE;
+//            frameBottom.origin.x = TOOLBAR_X_MASTER_HIDE;
+//        }
+//    }
+//    [UIView beginAnimations:@"ToolBarPosX"context:nil];         
+//    [UIView setAnimationDuration:0.30];           
+//    [UIView setAnimationDelegate:self];          
+//    [self.topToolBar setFrame:frameTop];
+//    [self.bottomToolBar setFrame:frameBottom];
+//    [UIView commitAnimations];
     
     //for split view
     int height = self.secondWebView.frame.size.height;
@@ -318,6 +335,8 @@
 //    NSString *js2 = [js1 stringByAppendingString:css];
 //    NSString *finalJS = [js2 stringByAppendingString:@"');"];
 //    [activeWebView stringByEvaluatingJavaScriptFromString:finalJS];
+    
+    [self adjustTitle];
 }
 
 - (void)willBeginBannerViewActionNotification:(NSNotification *)notification
@@ -885,7 +904,7 @@
 #endif
 }
 
--(void) forceResultPopUp:(id)button
+- (void)forceResultPopUp:(id)button
 {
     if ([popoverController isPopoverVisible] == YES)
     {
@@ -989,15 +1008,15 @@
     {
         frameTop.origin.y = -frameTop.size.height;
         frameBottom.origin.y = frameBottom.origin.y+frameBottom.size.height;
-        [button setTitle:@"⬇" forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"show_toolbar.png"] forState:UIControlStateNormal];
     }
     else
     {
         frameTop.origin.y = 0;
         frameBottom.origin.y = frameBottom.origin.y-frameBottom.size.height;
-        [button setTitle:@"⬆" forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"hide_toolbar.png"] forState:UIControlStateNormal];
     }
-    [UIView beginAnimations:@"ToolBarShowHide"context:nil];         
+    [UIView beginAnimations:@"ToolBarShowHide"context:nil];
     [UIView setAnimationDuration:0.30];           
     [UIView setAnimationDelegate:self];          
     [self.topToolBar setFrame:frameTop];
@@ -1016,34 +1035,38 @@
 
 - (IBAction)hideMasterViewClicked:(id)sender {
     UIBarButtonItem* toolBar = (UIBarButtonItem*)sender;
-    CGRect frameTop = self.topToolBar.frame;
-    CGRect frameBottom = self.bottomToolBar.frame;
+//    CGRect frameTop = self.topToolBar.frame;
+//    CGRect frameBottom = self.bottomToolBar.frame;
+    
     [[Utils getInstance].splitViewController toggleMasterView:nil];
+    
+    [self adjustTitle];
+    
     if ([[Utils getInstance].splitViewController isShowingMaster] == YES)
     {
-        frameTop.origin.x = TOOLBAR_X_MASTER_SHOW;
-        frameBottom.origin.x = TOOLBAR_X_MASTER_SHOW;
+//        frameTop.origin.x = TOOLBAR_X_MASTER_SHOW;
+//        frameBottom.origin.x = TOOLBAR_X_MASTER_SHOW;
         [toolBar setImage:[UIImage imageNamed:@"hide_masterview.png"]];
     }
     else
     {
         [toolBar setImage:[UIImage imageNamed:@"show_masterview.png"]];
-        UIDeviceOrientation  orientation = [UIDevice currentDevice].orientation;
-        if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) {
-            frameTop.origin.x = TOOLBAR_X_MASTER_SHOW;
-            frameBottom.origin.x = TOOLBAR_X_MASTER_SHOW;
-        }
-        else {
-            frameTop.origin.x = TOOLBAR_X_MASTER_HIDE;
-            frameBottom.origin.x = TOOLBAR_X_MASTER_HIDE;
-        }
+//        UIDeviceOrientation  orientation = [UIDevice currentDevice].orientation;
+//        if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) {
+//            frameTop.origin.x = TOOLBAR_X_MASTER_SHOW;
+//            frameBottom.origin.x = TOOLBAR_X_MASTER_SHOW;
+//        }
+//        else {
+//            frameTop.origin.x = TOOLBAR_X_MASTER_HIDE;
+//            frameBottom.origin.x = TOOLBAR_X_MASTER_HIDE;
+//        }
     }
-    [UIView beginAnimations:@"ToolBarPosX"context:nil];
-    [UIView setAnimationDuration:0.30];           
-    [UIView setAnimationDelegate:self];          
-    [self.topToolBar setFrame:frameTop];
-    [self.bottomToolBar setFrame:frameBottom];
-    [UIView commitAnimations];
+//    [UIView beginAnimations:@"ToolBarPosX"context:nil];
+//    [UIView setAnimationDuration:0.30];           
+//    [UIView setAnimationDelegate:self];          
+//    [self.topToolBar setFrame:frameTop];
+//    [self.bottomToolBar setFrame:frameBottom];
+//    [UIView commitAnimations];
 }
 
 - (IBAction)highlightWordButtonClicked:(id)sender {

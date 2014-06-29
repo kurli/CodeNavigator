@@ -93,6 +93,9 @@
 		94246F73156BC84600CA4234 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 94246F5B156BC84600CA4234 /* SBJsonUTF8Stream.m */; };
 		94246F74156BC84600CA4234 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 94246F5D156BC84600CA4234 /* SBJsonWriter.m */; };
 		94246F75156BC84600CA4234 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 94246F5D156BC84600CA4234 /* SBJsonWriter.m */; };
+		9425885319532EB7006CD33B /* GoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9425885219532EB7006CD33B /* GoParser.m */; };
+		9425885419532EB7006CD33B /* GoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9425885219532EB7006CD33B /* GoParser.m */; };
+		9425885519532EB7006CD33B /* GoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9425885219532EB7006CD33B /* GoParser.m */; };
 		9429000414D4E16E002793BD /* PercentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9429000114D4E16E002793BD /* PercentViewController.xib */; };
 		9429000514D4E16E002793BD /* PercentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9429000114D4E16E002793BD /* PercentViewController.xib */; };
 		9431D73914910B3000B0900E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9431D73814910B3000B0900E /* UIKit.framework */; };
@@ -248,6 +251,10 @@
 		9461817A155EEDAB00A25635 /* CommentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 94618177155EEDAB00A25635 /* CommentManager.m */; };
 		9461817B155EEDAB00A25635 /* CommentManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94618178155EEDAB00A25635 /* CommentManager.xib */; };
 		9461817C155EEDAB00A25635 /* CommentManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94618178155EEDAB00A25635 /* CommentManager.xib */; };
+		9461D46419602BD800F0B0A1 /* show_toolbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9461D46319602BD800F0B0A1 /* show_toolbar.png */; };
+		9461D46519602BD800F0B0A1 /* show_toolbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9461D46319602BD800F0B0A1 /* show_toolbar.png */; };
+		9461D46D1960372100F0B0A1 /* hide_toolbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9461D46C1960372100F0B0A1 /* hide_toolbar.png */; };
+		9461D46E1960372100F0B0A1 /* hide_toolbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9461D46C1960372100F0B0A1 /* hide_toolbar.png */; };
 		94636B54155A91E700B1C37F /* CommentWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94636B53155A91E700B1C37F /* CommentWrapper.m */; };
 		94636B55155A91E700B1C37F /* CommentWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94636B53155A91E700B1C37F /* CommentWrapper.m */; };
 		9466466B14A2370700B30CD2 /* WebServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9466466914A2370700B30CD2 /* WebServiceController.m */; };
@@ -1004,13 +1011,6 @@
 			remoteGlobalIDString = 04DB4645133AB57600D9C624;
 			remoteInfo = "ObjectiveGit-iOS";
 		};
-		940D94CC18F99B75006D5D0D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 940D94BB18F99B75006D5D0D /* ObjectiveGitFramework.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F6CBB4A417FFD50500404926;
-			remoteInfo = "ObjectiveGit-iOS-arm64";
-		};
 		940D94D318F99D70006D5D0D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 940D94BB18F99B75006D5D0D /* ObjectiveGitFramework.xcodeproj */;
@@ -1154,6 +1154,8 @@
 		94246F5B156BC84600CA4234 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		94246F5C156BC84600CA4234 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		94246F5D156BC84600CA4234 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		9425885119532EB7006CD33B /* GoParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoParser.h; sourceTree = "<group>"; };
+		9425885219532EB7006CD33B /* GoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoParser.m; sourceTree = "<group>"; };
 		9429000114D4E16E002793BD /* PercentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PercentViewController.xib; sourceTree = "<group>"; };
 		9431D73414910B3000B0900E /* CodeNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9431D73814910B3000B0900E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -1308,6 +1310,8 @@
 		94618176155EEDAB00A25635 /* CommentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentManager.h; path = Comments/CommentManager.h; sourceTree = "<group>"; };
 		94618177155EEDAB00A25635 /* CommentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentManager.m; path = Comments/CommentManager.m; sourceTree = "<group>"; };
 		94618178155EEDAB00A25635 /* CommentManager.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentManager.xib; path = Comments/CommentManager.xib; sourceTree = "<group>"; };
+		9461D46319602BD800F0B0A1 /* show_toolbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = show_toolbar.png; sourceTree = "<group>"; };
+		9461D46C1960372100F0B0A1 /* hide_toolbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hide_toolbar.png; sourceTree = "<group>"; };
 		94636B52155A91E700B1C37F /* CommentWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentWrapper.h; path = Comments/CommentWrapper.h; sourceTree = "<group>"; };
 		94636B53155A91E700B1C37F /* CommentWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentWrapper.m; path = Comments/CommentWrapper.m; sourceTree = "<group>"; };
 		9466466814A2370700B30CD2 /* WebServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebServiceController.h; path = CodeNavigator/WebServiceController.h; sourceTree = "<group>"; };
@@ -1725,9 +1729,8 @@
 			isa = PBXGroup;
 			children = (
 				940D94C718F99B75006D5D0D /* ObjectiveGit.framework */,
-				940D94C918F99B75006D5D0D /* ObjectiveGitTests.octest */,
 				940D94CB18F99B75006D5D0D /* libObjectiveGit-iOS.a */,
-				940D94CD18F99B75006D5D0D /* libObjectiveGit-iOS.a */,
+				940D94C918F99B75006D5D0D /* ObjectiveGitTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1860,8 +1863,8 @@
 		9431D73E14910B3000B0900E /* CodeNavigator */ = {
 			isa = PBXGroup;
 			children = (
-				94DA0BBD14A624680035DB39 /* Utils.m */,
 				94DA0BBC14A624680035DB39 /* Utils.h */,
+				94DA0BBD14A624680035DB39 /* Utils.m */,
 				9431D74714910B3000B0900E /* AppDelegate.h */,
 				9431D74814910B3000B0900E /* AppDelegate.m */,
 				9431D74A14910B3000B0900E /* MasterViewController.h */,
@@ -1872,26 +1875,26 @@
 				9431D74E14910B3000B0900E /* DetailViewController.m */,
 				9431D75314910B3000B0900E /* DetailViewController.xib */,
 				947F861015863579002EAA1E /* DetailViewController-iPhone.xib */,
-				9432E3AF149D02D400AB5BB7 /* NavigationController.m */,
-				94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */,
 				9432E3AE149D02D400AB5BB7 /* NavigationController.h */,
+				9432E3AF149D02D400AB5BB7 /* NavigationController.m */,
+				9432E3AC149CF9CE00AB5BB7 /* NavigationController.xib */,
 				94603D04149E041400D72561 /* ResultViewController.h */,
 				94603D05149E041400D72561 /* ResultViewController.m */,
+				94603D06149E041400D72561 /* ResultViewController.xib */,
+				94F6EEE01587BD30002DE115 /* ResultViewController-iPhone.xib */,
+				9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */,
 				94EE32D0149FAE0B0088501D /* GotoLineViewController.h */,
 				94EE32D1149FAE0B0088501D /* GotoLineViewController.m */,
 				94D8702E14A65887002F2DBB /* FilePathInfoPopupController.h */,
 				94D8702F14A65887002F2DBB /* FilePathInfoPopupController.m */,
 				94FB0FE814BDB3A50084E457 /* HighLightWordController.h */,
 				94FB0FE914BDB3A50084E457 /* HighLightWordController.m */,
+				94CB787E156E80C8009452D8 /* FileTableViewCell.xib */,
+				94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */,
 				9429000114D4E16E002793BD /* PercentViewController.xib */,
 				94F6EEE21587C19A002DE115 /* HighLightWordController-iPhone.xib */,
 				94D8703014A65888002F2DBB /* FilePathInfoPopupController.xib */,
-				9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */,
 				94EE32D2149FAE0B0088501D /* GotoLineViewController.xib */,
-				94603D06149E041400D72561 /* ResultViewController.xib */,
-				94F6EEE01587BD30002DE115 /* ResultViewController-iPhone.xib */,
-				9432E3AC149CF9CE00AB5BB7 /* NavigationController.xib */,
-				94CB787E156E80C8009452D8 /* FileTableViewCell.xib */,
 				948C740D1806E5A300065E65 /* Images.xcassets */,
 				9431D73F14910B3000B0900E /* Supporting Files */,
 			);
@@ -1923,6 +1926,8 @@
 				94AB1E5114AF5E0300451020 /* UnSupportedParser.m */,
 				94D16DE514C9CC3B007439EB /* ImageParser.h */,
 				94D16DE614C9CC3B007439EB /* ImageParser.m */,
+				9425885119532EB7006CD33B /* GoParser.h */,
+				9425885219532EB7006CD33B /* GoParser.m */,
 				94B6987F180EEE7A009C7176 /* CSSParser.h */,
 				94B69880180EEE7A009C7176 /* CSSParser.m */,
 				94BD81DF18014840002F8153 /* PHPDefinition.h */,
@@ -2015,6 +2020,8 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9461D46C1960372100F0B0A1 /* hide_toolbar.png */,
+				9461D46319602BD800F0B0A1 /* show_toolbar.png */,
 				94F9BAFF18EDDFC400CD7C2C /* FontSourceCodePro */,
 				94F9BAF218EAF4F200CD7C2C /* Themes */,
 				9478C6D115C8207600F443D9 /* appstore.png */,
@@ -2783,13 +2790,6 @@
 			remoteRef = 940D94CA18F99B75006D5D0D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		940D94CD18F99B75006D5D0D /* libObjectiveGit-iOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libObjectiveGit-iOS.a";
-			remoteRef = 940D94CC18F99B75006D5D0D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		9434BFB314A389BE00B34419 /* libZip.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -2837,6 +2837,7 @@
 				94A5079314F6AA1C00587A47 /* virbackground.png in Resources */,
 				948C73FE1804443700065E65 /* text-list.png in Resources */,
 				94C8C68614FA57D60062750D /* ImagePreviewController.xib in Resources */,
+				9461D46D1960372100F0B0A1 /* hide_toolbar.png in Resources */,
 				9424660C1502AA2F001701C4 /* ManuallAddChild.png in Resources */,
 				9424660E1502AA2F001701C4 /* manuallAddParent.png in Resources */,
 				94F9BB0618EDDFC400CD7C2C /* SourceCodePro-Black.ttf in Resources */,
@@ -2879,6 +2880,7 @@
 				94F9BAF318EAF4F200CD7C2C /* Themes in Resources */,
 				9457C7911530923800BB9185 /* nav_backButton_icon.png in Resources */,
 				9457C7941530B91600BB9185 /* SelectionTableCell.xib in Resources */,
+				9461D46419602BD800F0B0A1 /* show_toolbar.png in Resources */,
 				9457C7981530BA3800BB9185 /* checkbox_no.png in Resources */,
 				948C740E1806E5A300065E65 /* Images.xcassets in Resources */,
 				9457C79A1530BA3800BB9185 /* checkbox_yes.png in Resources */,
@@ -3050,6 +3052,7 @@
 				94D3B87E15E539A6006C28E4 /* twitter.png in Resources */,
 				94D3B87D15E5399A006C28E4 /* appstore.png in Resources */,
 				94D3B87C15E53984006C28E4 /* feedback.png in Resources */,
+				9461D46E1960372100F0B0A1 /* hide_toolbar.png in Resources */,
 				94D3B87B15E53979006C28E4 /* demoVideo.png in Resources */,
 				94D3B87A15E53928006C28E4 /* help.png in Resources */,
 				94D3B87915E53487006C28E4 /* HelpViewController.xib in Resources */,
@@ -3071,6 +3074,7 @@
 				94ADF18714BB27EE00BA807A /* linux_0.1 in Resources */,
 				94FAC80414C1649400B9A821 /* settings.png in Resources */,
 				9443BF5814D1A40200355278 /* HistoryListController.xib in Resources */,
+				9461D46519602BD800F0B0A1 /* show_toolbar.png in Resources */,
 				94B1DD0B191F738A00909C3E /* SourceCodePro-Black.ttf in Resources */,
 				9429000514D4E16E002793BD /* PercentViewController.xib in Resources */,
 				94103DF114D86F1300212EBB /* bookmark.png in Resources */,
@@ -3330,6 +3334,7 @@
 				9434A5A6174FC00D004B1A9D /* GitCloneViewController.m in Sources */,
 				94AB105517550CD500359AE8 /* HandleURLController.m in Sources */,
 				94AB10591755146E00359AE8 /* FileFormatResolver.m in Sources */,
+				9425885319532EB7006CD33B /* GoParser.m in Sources */,
 				94AB105C175516C900359AE8 /* ZipFileResolver.m in Sources */,
 				94AB10661756548000359AE8 /* OtherFormatResolver.m in Sources */,
 				9444595F18D74C42008A02DB /* iRate.m in Sources */,
@@ -3457,6 +3462,7 @@
 				94B1DCBC191F5B0800909C3E /* VersionViewController.m in Sources */,
 				949DC1A51583E8CF00385796 /* crossref.c in Sources */,
 				949DC1A61583E8CF00385796 /* cscope.c in Sources */,
+				9425885519532EB7006CD33B /* GoParser.m in Sources */,
 				949DC1A71583E8CF00385796 /* dir.c in Sources */,
 				949DC1A81583E8CF00385796 /* display.c in Sources */,
 				949DC1A91583E8CF00385796 /* edit.c in Sources */,
@@ -3585,6 +3591,7 @@
 				94D4ED8B1642B8AB00601FE4 /* debug.c in Sources */,
 				94D4ED8C1642B8AB00601FE4 /* debug.h in Sources */,
 				94D4ED8D1642B8AB00601FE4 /* dosbatch.c in Sources */,
+				9425885419532EB7006CD33B /* GoParser.m in Sources */,
 				94D4ED8E1642B8AB00601FE4 /* e_amiga.h in Sources */,
 				94D4ED8F1642B8AB00601FE4 /* e_djgpp.h in Sources */,
 				94D4ED901642B8AB00601FE4 /* e_mac.h in Sources */,
@@ -3941,7 +3948,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
@@ -3973,7 +3980,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
@@ -4044,7 +4051,7 @@
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DISTRIBUTION=1";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,

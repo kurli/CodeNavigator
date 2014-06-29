@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController">
@@ -60,14 +60,14 @@
                     </connections>
                 </segmentedControl>
                 <webView multipleTouchEnabled="YES" contentMode="scaleAspectFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="378">
-                    <rect key="frame" x="0.0" y="757" width="703" height="10"/>
+                    <rect key="frame" x="-5" y="757" width="708" height="10"/>
                     <dataDetectorType key="dataDetectorTypes"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="383"/>
                     </connections>
                 </webView>
                 <webView multipleTouchEnabled="YES" contentMode="scaleAspectFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="172">
-                    <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
+                    <rect key="frame" x="-5" y="0.0" width="708" height="768"/>
                     <gestureRecognizers/>
                     <dataDetectorType key="dataDetectorTypes"/>
                     <connections>
@@ -77,11 +77,11 @@
                 <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="395">
                     <rect key="frame" x="659" y="47" width="44" height="674"/>
                     <subviews>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="396">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="396">
                             <rect key="frame" x="0.0" y="103" width="38" height="44"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="44" id="H22-bi-zJq"/>
+                                <constraint firstAttribute="height" constant="44" id="oPz-9T-cMj"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                             <state key="normal" title="三"/>
@@ -89,10 +89,10 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="396" firstAttribute="leading" secondItem="395" secondAttribute="leading" constant="3" id="ETF-Tq-K2T"/>
+                        <constraint firstItem="396" firstAttribute="leading" secondItem="395" secondAttribute="leading" id="THv-c8-1bu"/>
                         <constraint firstAttribute="width" constant="44" id="Ts9-is-GVa"/>
-                        <constraint firstItem="396" firstAttribute="centerX" secondItem="395" secondAttribute="centerX" id="r4H-Vi-Yaf"/>
-                        <constraint firstItem="396" firstAttribute="top" secondItem="395" secondAttribute="top" constant="102" id="zm6-d2-zkL"/>
+                        <constraint firstItem="396" firstAttribute="top" secondItem="395" secondAttribute="top" constant="103" id="Uic-Dr-X8R"/>
+                        <constraint firstAttribute="trailing" secondItem="396" secondAttribute="trailing" constant="6" id="jB9-av-9e7"/>
                     </constraints>
                 </view>
                 <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="217" userLabel="Bottom Toolbar">
@@ -147,14 +147,9 @@
                 <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="252" userLabel="Top Toolbar">
                     <rect key="frame" x="56" y="0.0" width="644" height="44"/>
                     <items>
-                        <barButtonItem image="hide_masterview.png" width="35" style="plain" id="331">
-                            <connections>
-                                <action selector="hideMasterViewClicked:" destination="-1" id="335"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem title="history" style="plain" id="272">
                             <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" momentary="YES" id="271">
-                                <rect key="frame" x="61" y="7" width="110" height="30"/>
+                                <rect key="frame" x="20" y="6" width="97" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="" image="forward.png"/>
@@ -192,16 +187,21 @@
                                 <action selector="sourceSplitClicked:" destination="-1" id="377"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem image="hide_masterview.png" width="35" style="plain" id="331">
+                            <connections>
+                                <action selector="hideMasterViewClicked:" destination="-1" id="335"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
-                <button alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="370">
-                    <rect key="frame" x="0.0" y="-3" width="47" height="47"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                    <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                    <inset key="contentEdgeInsets" minX="0.0" minY="25" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="⬆">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
+                <button alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="370">
+                    <rect key="frame" x="0.0" y="0.0" width="61" height="44"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="61" id="aX4-6j-D44"/>
+                        <constraint firstAttribute="height" constant="44" id="xP2-aY-Rye"/>
+                    </constraints>
+                    <state key="normal" image="hide_toolbar.png"/>
                     <connections>
                         <action selector="showHideTopToolBarClicked:" destination="-1" eventType="touchUpInside" id="371"/>
                     </connections>
@@ -212,11 +212,12 @@
                         <constraint firstAttribute="width" constant="32" id="6X6-Wm-f04"/>
                     </constraints>
                 </imageView>
-                <button hidden="YES" opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="434">
-                    <rect key="frame" x="0.0" y="61" width="47" height="45"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <button hidden="YES" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="434">
+                    <rect key="frame" x="0.0" y="61" width="61" height="44"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="45" id="pGj-tN-qCn"/>
+                        <constraint firstAttribute="height" constant="44" id="WG3-d4-MNN"/>
+                        <constraint firstAttribute="width" constant="61" id="ceY-nK-3yA"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                     <state key="normal" image="FileBrowser.png">
@@ -234,9 +235,8 @@
             <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="hwf-mb-ocV" firstAttribute="top" secondItem="252" secondAttribute="bottom" constant="230" id="1bY-K5-emY"/>
-                <constraint firstItem="434" firstAttribute="leading" secondItem="370" secondAttribute="leading" id="3MP-kE-wRk"/>
-                <constraint firstAttribute="bottom" secondItem="217" secondAttribute="bottom" constant="20" symbolic="YES" id="3PC-Ig-bvS"/>
-                <constraint firstItem="370" firstAttribute="trailing" secondItem="434" secondAttribute="trailing" id="6Tc-aS-ScD"/>
+                <constraint firstAttribute="bottom" secondItem="217" secondAttribute="bottom" id="3PC-Ig-bvS"/>
+                <constraint firstItem="370" firstAttribute="leading" secondItem="8" secondAttribute="leading" id="4M2-Ot-mQb"/>
                 <constraint firstItem="172" firstAttribute="bottom" secondItem="217" secondAttribute="bottom" id="6rh-Os-YHs"/>
                 <constraint firstItem="252" firstAttribute="top" secondItem="8" secondAttribute="top" id="87C-VT-9EP"/>
                 <constraint firstItem="172" firstAttribute="top" secondItem="8" secondAttribute="top" id="8O2-34-6YM"/>
@@ -248,32 +248,34 @@
                 <constraint firstItem="hwf-mb-ocV" firstAttribute="leading" secondItem="8" secondAttribute="leading" constant="34" id="MGx-wn-iB6"/>
                 <constraint firstItem="217" firstAttribute="leading" secondItem="8" secondAttribute="leading" constant="56" id="PYx-6T-204"/>
                 <constraint firstItem="395" firstAttribute="trailing" secondItem="378" secondAttribute="trailing" id="PfP-Ah-aob"/>
+                <constraint firstItem="370" firstAttribute="top" secondItem="252" secondAttribute="top" id="Pus-1a-iH1"/>
+                <constraint firstItem="434" firstAttribute="leading" secondItem="370" secondAttribute="leading" id="Rdl-5S-Au7"/>
                 <constraint firstItem="172" firstAttribute="centerY" secondItem="395" secondAttribute="centerY" id="TBm-ed-EgZ"/>
+                <constraint firstItem="434" firstAttribute="trailing" secondItem="370" secondAttribute="trailing" id="TEx-EL-Iph"/>
                 <constraint firstAttribute="trailing" secondItem="252" secondAttribute="trailing" constant="3" id="VHS-Wl-ze4"/>
-                <constraint firstItem="172" firstAttribute="leading" secondItem="8" secondAttribute="leading" id="VVo-kN-x12"/>
+                <constraint firstItem="172" firstAttribute="leading" secondItem="8" secondAttribute="leading" constant="-5" id="VVo-kN-x12"/>
                 <constraint firstAttribute="trailing" secondItem="172" secondAttribute="trailing" id="WTP-uQ-AEF"/>
                 <constraint firstItem="391" firstAttribute="leading" secondItem="8" secondAttribute="leading" constant="18" id="ZV9-8O-6QW"/>
                 <constraint firstAttribute="trailing" secondItem="385" secondAttribute="trailing" constant="-21" id="aK3-Xl-tqF"/>
                 <constraint firstItem="252" firstAttribute="top" secondItem="8" secondAttribute="top" id="aQh-Ie-KxR"/>
-                <constraint firstItem="378" firstAttribute="leading" secondItem="434" secondAttribute="leading" id="cy6-sK-FEs"/>
-                <constraint firstItem="172" firstAttribute="leading" secondItem="434" secondAttribute="leading" id="f20-Xb-Y1m"/>
+                <constraint firstItem="370" firstAttribute="bottom" secondItem="252" secondAttribute="bottom" id="cN9-sm-cC7"/>
+                <constraint firstItem="378" firstAttribute="leading" secondItem="172" secondAttribute="leading" id="e2h-90-j8b"/>
                 <constraint firstItem="400" firstAttribute="leading" secondItem="8" secondAttribute="leading" constant="9" id="f75-iO-fIL"/>
-                <constraint firstItem="434" firstAttribute="top" secondItem="370" secondAttribute="bottom" constant="17" id="gdr-Ob-U27"/>
                 <constraint firstAttribute="bottom" secondItem="172" secondAttribute="bottom" id="i08-Yn-vt0"/>
+                <constraint firstItem="434" firstAttribute="top" secondItem="370" secondAttribute="bottom" constant="17" id="jX0-nA-jLa"/>
                 <constraint firstItem="172" firstAttribute="trailing" secondItem="378" secondAttribute="trailing" id="k2x-7u-tH3"/>
                 <constraint firstAttribute="bottom" secondItem="217" secondAttribute="bottom" id="mAC-fC-dYd"/>
                 <constraint firstItem="385" firstAttribute="top" secondItem="8" secondAttribute="top" constant="12" id="mjO-rj-2Ve"/>
                 <constraint firstAttribute="bottom" secondItem="378" secondAttribute="bottom" constant="1" id="ppZ-Yf-WLn"/>
                 <constraint firstItem="378" firstAttribute="top" secondItem="395" secondAttribute="bottom" constant="36" id="rea-hm-RLR"/>
-                <constraint firstItem="370" firstAttribute="bottom" secondItem="252" secondAttribute="bottom" id="t8Q-ip-Rhi"/>
                 <constraint firstItem="385" firstAttribute="bottom" secondItem="252" secondAttribute="bottom" id="vM6-S3-Z5P"/>
                 <constraint firstItem="172" firstAttribute="top" secondItem="252" secondAttribute="top" id="wpA-rF-hwG"/>
                 <constraint firstItem="252" firstAttribute="trailing" secondItem="217" secondAttribute="trailing" id="yMo-E7-JsY"/>
-                <constraint firstItem="252" firstAttribute="leading" secondItem="370" secondAttribute="trailing" constant="9" id="z70-Jw-GBM"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
             <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="139.5" y="153"/>
         </view>
     </objects>
     <resources>
@@ -283,7 +285,8 @@
         <image name="bookmark.png" width="20" height="20"/>
         <image name="forward.png" width="40" height="43"/>
         <image name="forward_history.png" width="128" height="128"/>
-        <image name="hide_masterview.png" width="15" height="22"/>
+        <image name="hide_masterview.png" width="30" height="30"/>
+        <image name="hide_toolbar.png" width="30" height="30"/>
         <image name="search.png" width="26" height="26"/>
         <image name="seperate.png" width="30" height="30"/>
         <image name="settings.png" width="26" height="26"/>

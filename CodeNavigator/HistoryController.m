@@ -119,6 +119,9 @@
 
 -(NSString*) pickTopLevelUrl
 {
+    if (index >= [historyStack count]) {
+        return nil;
+    }
     return [historyStack objectAtIndex:index];
 }
 

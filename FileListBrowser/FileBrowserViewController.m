@@ -76,21 +76,17 @@
 
     if ([fileListBrowserController getIsCurrentProjectFolder])
     {
-#ifdef IPHONE_VERSION
         CGRect rect = self.tableView.frame;
         rect.size.height += (rect.origin.y - self.view.frame.origin.y);
         rect.origin.y = self.view.frame.origin.y;
         [self.tableView setFrame:rect];
-#endif
         [self.fileSearchBar setHidden:YES];
     }
     else
     {
         if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
         {
-#ifdef IPHONE_VERSION
             self.edgesForExtendedLayout = UIRectEdgeNone;
-#endif
         }
         [self.fileSearchBar setHidden:NO];
     }

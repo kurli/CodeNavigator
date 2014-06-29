@@ -81,7 +81,8 @@
 - (BOOL)shouldShowMasterForInterfaceOrientation:(UIInterfaceOrientation)theOrientation
 {
 	// Returns YES if master view should be shown directly embedded in the splitview, instead of hidden in a popover.
-	return ((UIInterfaceOrientationIsLandscape(theOrientation)) ? _showsMasterInLandscape : _showsMasterInPortrait);
+//	return ((UIInterfaceOrientationIsLandscape(theOrientation)) ? _showsMasterInLandscape : _showsMasterInPortrait);
+    return _showsMaster;
 }
 
 
@@ -132,8 +133,8 @@
 	// Configure default behaviour.
 	_viewControllers = [[NSMutableArray alloc] initWithObjects:[NSNull null], [NSNull null], nil];
 	_splitWidth = MG_DEFAULT_SPLIT_WIDTH;
-	_showsMasterInPortrait = YES;
-	_showsMasterInLandscape = YES;
+//	_showsMasterInPortrait = YES;
+	_showsMaster = YES;
 	_reconfigurePopup = NO;
 	_vertical = YES;
 	_masterBeforeDetail = YES;
@@ -322,7 +323,8 @@
 			theView = controller.view;
 			if (theView) {
 				theView.frame = masterRect;
-				if (!theView.superview) {
+				//if (!theView.superview) {
+                if (masterRect.origin.x >= 0) {
 					[controller viewWillAppear:NO];
 					[self.view addSubview:theView];
 					[controller viewDidAppear:NO];
@@ -562,12 +564,12 @@
 		// Create and configure popover for our masterViewController.
 		_hiddenPopoverController = nil;
 		[self.masterViewController viewWillDisappear:NO];
-//		_hiddenPopoverController = [[UIPopoverController alloc] initWithContentViewController:self.masterViewController];
+		_hiddenPopoverController = [[UIPopoverController alloc] initWithContentViewController:self.masterViewController];
 		[self.masterViewController viewDidDisappear:NO];
 		
 		// Create and configure _barButtonItem.
 		_barButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Master", nil) 
-														  style:UIBarButtonItemStyleBordered 
+														  style:UIBarButtonItemStylePlain
 														 target:self 
 														 action:@selector(showMasterPopover:)];
 		
@@ -696,11 +698,12 @@
 	
 	// This action functions on the current primary orientation; it is independent of the other primary orientation.
 	[UIView beginAnimations:@"toggleMaster" context:nil];
-	if (self.isLandscape) {
-		self.showsMasterInLandscape = !_showsMasterInLandscape;
-	} else {
-		self.showsMasterInPortrait = !_showsMasterInPortrait;
-	}
+//	if (self.isLandscape) {
+//		self.showsMasterInLandscape = !_showsMasterInLandscape;
+//	} else {
+//		self.showsMasterInPortrait = !_showsMasterInPortrait;
+//	}
+    self.showsMaster = !_showsMaster;
 	[UIView commitAnimations];
 }
 
@@ -742,14 +745,14 @@
 
 - (BOOL)showsMasterInPortrait
 {
-	return _showsMasterInPortrait;
+	return _showsMaster;
 }
 
 
 - (void)setShowsMasterInPortrait:(BOOL)flag
 {
-	if (flag != _showsMasterInPortrait) {
-		_showsMasterInPortrait = flag;
+	if (flag != _showsMaster) {
+		_showsMaster = flag;
 		
 		if (![self isLandscape]) { // i.e. if this will cause a visual change.
 			if (_hiddenPopoverController && _hiddenPopoverController.popoverVisible) {
@@ -766,14 +769,14 @@
 
 - (BOOL)showsMasterInLandscape
 {
-	return _showsMasterInLandscape;
+	return _showsMaster;
 }
 
 
 - (void)setShowsMasterInLandscape:(BOOL)flag
 {
-	if (flag != _showsMasterInLandscape) {
-		_showsMasterInLandscape = flag;
+	if (flag != _showsMaster) {
+		_showsMaster = flag;
 		
 		if ([self isLandscape]) { // i.e. if this will cause a visual change.
 			if (_hiddenPopoverController && _hiddenPopoverController.popoverVisible) {
@@ -787,6 +790,22 @@
 	}
 }
 
+- (void)setShowsMaster:(BOOL)flag
+{
+    if (flag != _showsMaster) {
+        _showsMaster = flag;
+        
+//        if ([self isLandscape]) { // i.e. if this will cause a visual change.
+            if (_hiddenPopoverController && _hiddenPopoverController.popoverVisible) {
+                [_hiddenPopoverController dismissPopoverAnimated:NO];
+            }
+            
+            // Rearrange views.
+            _reconfigurePopup = YES;
+            [self layoutSubviews];
+//        }
+    }
+}
 
 - (BOOL)isVertical
 {
@@ -1119,9 +1138,9 @@
 	return nil;
 }
 
-
-@synthesize showsMasterInPortrait;
-@synthesize showsMasterInLandscape;
+@synthesize showsMaster;
+//@synthesize showsMasterInPortrait;
+//@synthesize showsMasterInLandscape;
 @synthesize vertical;
 @synthesize splitDelegate;
 @synthesize viewControllers;

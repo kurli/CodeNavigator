@@ -17,8 +17,8 @@ typedef enum _MGSplitViewDividerStyle {
 @class MGSplitDividerView;
 @protocol MGSplitViewControllerDelegate;
 @interface MGSplitViewController : UIViewController <UIPopoverControllerDelegate> {
-	BOOL _showsMasterInPortrait;
-	BOOL _showsMasterInLandscape;
+//	BOOL _showsMasterInPortrait;
+	BOOL _showsMaster;
 	float _splitWidth;
 	id _splitDelegate;
 	BOOL _vertical;
@@ -34,8 +34,9 @@ typedef enum _MGSplitViewDividerStyle {
 }
 
 @property (nonatomic, unsafe_unretained) IBOutlet id <MGSplitViewControllerDelegate> splitDelegate;
-@property (nonatomic, assign) BOOL showsMasterInPortrait; // applies to both portrait orientations (default NO)
-@property (nonatomic, assign) BOOL showsMasterInLandscape; // applies to both landscape orientations (default YES)
+//@property (nonatomic, assign) BOOL showsMasterInPortrait; // applies to both portrait orientations (default NO)
+//@property (nonatomic, assign) BOOL showsMasterInLandscape; // applies to both landscape orientations (default YES)
+@property (nonatomic, assign) BOOL showsMaster;
 @property (nonatomic, assign, getter=isVertical) BOOL vertical; // if NO, split is horizontal, i.e. master above detail (default YES)
 @property (nonatomic, assign, getter=isMasterBeforeDetail) BOOL masterBeforeDetail; // if NO, master view is below/right of detail (default YES)
 @property (nonatomic, assign) float splitPosition; // starting position of split in pixels, relative to top/left (depending on .isVertical setting) if masterBeforeDetail is YES, else relative to bottom/right.
