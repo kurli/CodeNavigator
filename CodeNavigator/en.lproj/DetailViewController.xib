@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
@@ -34,23 +34,18 @@
             <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ " textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="391">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ " textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="391">
                     <rect key="frame" x="18" y="359" width="986" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="29" id="AFv-81-u3w"/>
-                        <constraint firstAttribute="width" constant="986" id="g8x-8f-Kqk"/>
-                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                     <color key="shadowColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                 </label>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hwf-mb-ocV">
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="hwf-mb-ocV">
                     <rect key="frame" x="34" y="274" width="123" height="29"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="123" id="8yh-aW-ELr"/>
-                    </constraints>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <segments>
                         <segment title="Up"/>
                         <segment title="Down"/>
@@ -59,44 +54,26 @@
                         <action selector="webViewSegmentChanged:" destination="-1" eventType="valueChanged" id="fBg-UV-m92"/>
                     </connections>
                 </segmentedControl>
-                <webView multipleTouchEnabled="YES" contentMode="scaleAspectFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="378">
-                    <rect key="frame" x="-5" y="757" width="708" height="10"/>
+                <webView multipleTouchEnabled="YES" contentMode="scaleAspectFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" id="378">
+                    <rect key="frame" x="0.0" y="757" width="708" height="10"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <dataDetectorType key="dataDetectorTypes"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="383"/>
                     </connections>
                 </webView>
-                <webView multipleTouchEnabled="YES" contentMode="scaleAspectFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="172">
-                    <rect key="frame" x="-5" y="0.0" width="708" height="768"/>
+                <webView multipleTouchEnabled="YES" contentMode="scaleAspectFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" id="172">
+                    <rect key="frame" x="0.0" y="0.0" width="708" height="768"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <gestureRecognizers/>
                     <dataDetectorType key="dataDetectorTypes"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="174"/>
                     </connections>
                 </webView>
-                <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="395">
-                    <rect key="frame" x="659" y="47" width="44" height="674"/>
-                    <subviews>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="396">
-                            <rect key="frame" x="0.0" y="103" width="38" height="44"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="44" id="oPz-9T-cMj"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                            <state key="normal" title="三"/>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="396" firstAttribute="leading" secondItem="395" secondAttribute="leading" id="THv-c8-1bu"/>
-                        <constraint firstAttribute="width" constant="44" id="Ts9-is-GVa"/>
-                        <constraint firstItem="396" firstAttribute="top" secondItem="395" secondAttribute="top" constant="103" id="Uic-Dr-X8R"/>
-                        <constraint firstAttribute="trailing" secondItem="396" secondAttribute="trailing" constant="6" id="jB9-av-9e7"/>
-                    </constraints>
-                </view>
-                <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="217" userLabel="Bottom Toolbar">
-                    <rect key="frame" x="56" y="724" width="644" height="44"/>
+                <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="217" userLabel="Bottom Toolbar">
+                    <rect key="frame" x="0.0" y="724" width="700" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
                         <barButtonItem title="Line" id="316">
                             <connections>
@@ -144,8 +121,9 @@
                         </barButtonItem>
                     </items>
                 </toolbar>
-                <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="252" userLabel="Top Toolbar">
-                    <rect key="frame" x="56" y="0.0" width="644" height="44"/>
+                <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="252" userLabel="Top Toolbar">
+                    <rect key="frame" x="0.0" y="0.0" width="659" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <items>
                         <barButtonItem title="history" style="plain" id="272">
                             <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" momentary="YES" id="271">
@@ -194,31 +172,23 @@
                         </barButtonItem>
                     </items>
                 </toolbar>
-                <button alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="370">
-                    <rect key="frame" x="0.0" y="0.0" width="61" height="44"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="61" id="aX4-6j-D44"/>
-                        <constraint firstAttribute="height" constant="44" id="xP2-aY-Rye"/>
-                    </constraints>
+                <button alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="370">
+                    <rect key="frame" x="659" y="0.0" width="44" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.1098039299249649" green="0.1098039299249649" blue="0.1098039299249649" alpha="1" colorSpace="deviceRGB"/>
                     <state key="normal" image="hide_toolbar.png"/>
                     <connections>
                         <action selector="showHideTopToolBarClicked:" destination="-1" eventType="touchUpInside" id="371"/>
                     </connections>
                 </button>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="bookmark.png" translatesAutoresizingMaskIntoConstraints="NO" id="385">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="bookmark.png" id="385">
                     <rect key="frame" x="692" y="12" width="32" height="32"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="32" id="6X6-Wm-f04"/>
-                    </constraints>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <button hidden="YES" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="434">
+                <button hidden="YES" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="434">
                     <rect key="frame" x="0.0" y="61" width="61" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="WG3-d4-MNN"/>
-                        <constraint firstAttribute="width" constant="61" id="ceY-nK-3yA"/>
-                    </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                     <state key="normal" image="FileBrowser.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -227,51 +197,27 @@
                         <action selector="fileBrowserButtonClicked:" destination="-1" eventType="touchUpInside" id="438"/>
                     </connections>
                 </button>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="forward_history.png" translatesAutoresizingMaskIntoConstraints="NO" id="400">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="forward_history.png" id="400">
                     <rect key="frame" x="9" y="310" width="128" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <view alpha="0.30000001192092896" contentMode="scaleToFill" id="395" userLabel="Scroll">
+                    <rect key="frame" x="659" y="47" width="44" height="674"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
+                    <subviews>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="396">
+                            <rect key="frame" x="0.0" y="103" width="38" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <state key="normal" title="三"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
             <gestureRecognizers/>
-            <constraints>
-                <constraint firstItem="hwf-mb-ocV" firstAttribute="top" secondItem="252" secondAttribute="bottom" constant="230" id="1bY-K5-emY"/>
-                <constraint firstAttribute="bottom" secondItem="217" secondAttribute="bottom" id="3PC-Ig-bvS"/>
-                <constraint firstItem="370" firstAttribute="leading" secondItem="8" secondAttribute="leading" id="4M2-Ot-mQb"/>
-                <constraint firstItem="172" firstAttribute="bottom" secondItem="217" secondAttribute="bottom" id="6rh-Os-YHs"/>
-                <constraint firstItem="252" firstAttribute="top" secondItem="8" secondAttribute="top" id="87C-VT-9EP"/>
-                <constraint firstItem="172" firstAttribute="top" secondItem="8" secondAttribute="top" id="8O2-34-6YM"/>
-                <constraint firstItem="217" firstAttribute="leading" secondItem="252" secondAttribute="leading" id="AHE-u8-g0x"/>
-                <constraint firstItem="400" firstAttribute="top" secondItem="hwf-mb-ocV" secondAttribute="bottom" constant="8" symbolic="YES" id="Ann-K9-UaR"/>
-                <constraint firstItem="391" firstAttribute="top" secondItem="hwf-mb-ocV" secondAttribute="bottom" constant="57" id="CfD-wT-dT9"/>
-                <constraint firstItem="395" firstAttribute="top" secondItem="8" secondAttribute="top" constant="47" id="E5d-bs-YGg"/>
-                <constraint firstItem="hwf-mb-ocV" firstAttribute="top" secondItem="8" secondAttribute="top" constant="274" id="M3T-QG-Doa"/>
-                <constraint firstItem="hwf-mb-ocV" firstAttribute="leading" secondItem="8" secondAttribute="leading" constant="34" id="MGx-wn-iB6"/>
-                <constraint firstItem="217" firstAttribute="leading" secondItem="8" secondAttribute="leading" constant="56" id="PYx-6T-204"/>
-                <constraint firstItem="395" firstAttribute="trailing" secondItem="378" secondAttribute="trailing" id="PfP-Ah-aob"/>
-                <constraint firstItem="370" firstAttribute="top" secondItem="252" secondAttribute="top" id="Pus-1a-iH1"/>
-                <constraint firstItem="434" firstAttribute="leading" secondItem="370" secondAttribute="leading" id="Rdl-5S-Au7"/>
-                <constraint firstItem="172" firstAttribute="centerY" secondItem="395" secondAttribute="centerY" id="TBm-ed-EgZ"/>
-                <constraint firstItem="434" firstAttribute="trailing" secondItem="370" secondAttribute="trailing" id="TEx-EL-Iph"/>
-                <constraint firstAttribute="trailing" secondItem="252" secondAttribute="trailing" constant="3" id="VHS-Wl-ze4"/>
-                <constraint firstItem="172" firstAttribute="leading" secondItem="8" secondAttribute="leading" constant="-5" id="VVo-kN-x12"/>
-                <constraint firstAttribute="trailing" secondItem="172" secondAttribute="trailing" id="WTP-uQ-AEF"/>
-                <constraint firstItem="391" firstAttribute="leading" secondItem="8" secondAttribute="leading" constant="18" id="ZV9-8O-6QW"/>
-                <constraint firstAttribute="trailing" secondItem="385" secondAttribute="trailing" constant="-21" id="aK3-Xl-tqF"/>
-                <constraint firstItem="252" firstAttribute="top" secondItem="8" secondAttribute="top" id="aQh-Ie-KxR"/>
-                <constraint firstItem="370" firstAttribute="bottom" secondItem="252" secondAttribute="bottom" id="cN9-sm-cC7"/>
-                <constraint firstItem="378" firstAttribute="leading" secondItem="172" secondAttribute="leading" id="e2h-90-j8b"/>
-                <constraint firstItem="400" firstAttribute="leading" secondItem="8" secondAttribute="leading" constant="9" id="f75-iO-fIL"/>
-                <constraint firstAttribute="bottom" secondItem="172" secondAttribute="bottom" id="i08-Yn-vt0"/>
-                <constraint firstItem="434" firstAttribute="top" secondItem="370" secondAttribute="bottom" constant="17" id="jX0-nA-jLa"/>
-                <constraint firstItem="172" firstAttribute="trailing" secondItem="378" secondAttribute="trailing" id="k2x-7u-tH3"/>
-                <constraint firstAttribute="bottom" secondItem="217" secondAttribute="bottom" id="mAC-fC-dYd"/>
-                <constraint firstItem="385" firstAttribute="top" secondItem="8" secondAttribute="top" constant="12" id="mjO-rj-2Ve"/>
-                <constraint firstAttribute="bottom" secondItem="378" secondAttribute="bottom" constant="1" id="ppZ-Yf-WLn"/>
-                <constraint firstItem="378" firstAttribute="top" secondItem="395" secondAttribute="bottom" constant="36" id="rea-hm-RLR"/>
-                <constraint firstItem="385" firstAttribute="bottom" secondItem="252" secondAttribute="bottom" id="vM6-S3-Z5P"/>
-                <constraint firstItem="172" firstAttribute="top" secondItem="252" secondAttribute="top" id="wpA-rF-hwG"/>
-                <constraint firstItem="252" firstAttribute="trailing" secondItem="217" secondAttribute="trailing" id="yMo-E7-JsY"/>
-            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
             <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

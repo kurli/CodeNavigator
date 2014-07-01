@@ -30,7 +30,6 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="21">
                     <rect key="frame" x="0.0" y="44" width="320" height="276"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="22"/>
                         <outlet property="delegate" destination="-1" id="23"/>

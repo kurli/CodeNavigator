@@ -455,6 +455,8 @@
 		9497F3B5151BA606006BCBBF /* PythonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3B3151BA606006BCBBF /* PythonParser.m */; };
 		9497F3CB151CEC4F006BCBBF /* RubyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3CA151CEC4F006BCBBF /* RubyParser.m */; };
 		9497F3CC151CEC4F006BCBBF /* RubyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3CA151CEC4F006BCBBF /* RubyParser.m */; };
+		949CB5E21961A96200A95AEC /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 949CB5E11961A96200A95AEC /* back_arrow.png */; };
+		949CB5E31961A96200A95AEC /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 949CB5E11961A96200A95AEC /* back_arrow.png */; };
 		949DC1991583E8CF00385796 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74414910B3000B0900E /* main.m */; };
 		949DC19A1583E8CF00385796 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74814910B3000B0900E /* AppDelegate.m */; };
 		949DC19C1583E8CF00385796 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74E14910B3000B0900E /* DetailViewController.m */; };
@@ -1472,6 +1474,7 @@
 		9497F3C9151CEC4F006BCBBF /* RubyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RubyParser.h; path = CodeNavigator/RubyParser.h; sourceTree = "<group>"; };
 		9497F3CA151CEC4F006BCBBF /* RubyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RubyParser.m; path = CodeNavigator/RubyParser.m; sourceTree = "<group>"; };
 		9497F3CD151CEC6A006BCBBF /* RubbyDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RubbyDefinition.h; path = CodeNavigator/RubbyDefinition.h; sourceTree = "<group>"; };
+		949CB5E11961A96200A95AEC /* back_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_arrow.png; sourceTree = "<group>"; };
 		949DC26B1583E8CF00385796 /* CodeNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A0FAE2153DDA78004277BF /* cscope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cscope.png; sourceTree = "<group>"; };
 		94A0FAE5153DDAD9004277BF /* virtualize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = virtualize.png; sourceTree = "<group>"; };
@@ -2020,6 +2023,7 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				949CB5E11961A96200A95AEC /* back_arrow.png */,
 				9461D46C1960372100F0B0A1 /* hide_toolbar.png */,
 				9461D46319602BD800F0B0A1 /* show_toolbar.png */,
 				94F9BAFF18EDDFC400CD7C2C /* FontSourceCodePro */,
@@ -2839,6 +2843,7 @@
 				94C8C68614FA57D60062750D /* ImagePreviewController.xib in Resources */,
 				9461D46D1960372100F0B0A1 /* hide_toolbar.png in Resources */,
 				9424660C1502AA2F001701C4 /* ManuallAddChild.png in Resources */,
+				949CB5E21961A96200A95AEC /* back_arrow.png in Resources */,
 				9424660E1502AA2F001701C4 /* manuallAddParent.png in Resources */,
 				94F9BB0618EDDFC400CD7C2C /* SourceCodePro-Black.ttf in Resources */,
 				942466111502D53A001701C4 /* EntryBg.png in Resources */,
@@ -3087,6 +3092,7 @@
 				94A5079414F6AA1C00587A47 /* virbackground.png in Resources */,
 				94C8C68714FA57D60062750D /* ImagePreviewController.xib in Resources */,
 				9424660D1502AA2F001701C4 /* ManuallAddChild.png in Resources */,
+				949CB5E31961A96200A95AEC /* back_arrow.png in Resources */,
 				9424660F1502AA2F001701C4 /* manuallAddParent.png in Resources */,
 				942466121502D53A001701C4 /* EntryBg.png in Resources */,
 				94B1DD07191F71E000909C3E /* UploadSelectionViewController.xib in Resources */,

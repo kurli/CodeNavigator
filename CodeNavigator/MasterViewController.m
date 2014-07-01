@@ -24,6 +24,9 @@
 #import "UploadSelectionViewController.h"
 #import "DisplayController.h"
 
+@interface MasterViewController ()
+
+@end
 @implementation MasterViewController
 @synthesize fileSearchBar = _fileSearchBar;
 
@@ -149,18 +152,31 @@
         needSelectRowAfterReload = -1;
     }
 
+    [self.fileSearchBar setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.fileSearchBar setAutocorrectionType:UITextAutocorrectionTypeNo];
+    [self adjustViewContent];
+}
+
+-(void) adjustViewContent {
     if ([fileListBrowserController getIsCurrentProjectFolder])
     {
+        if ([self.fileSearchBar isHidden] == YES) {
+            return;
+        }
+        self.edgesForExtendedLayout = UIRectEdgeNone;
         [self.fileSearchBar setHidden:YES];
         [self.analyzeButton setEnabled:NO];
         [self.commentButton setEnabled:NO];
         CGRect rect = self.tableView.frame;
-        rect.size.height += (rect.origin.y - self.view.frame.origin.y);
-        rect.origin.y = self.view.frame.origin.y;
+        rect.size.height += rect.origin.y;
+        rect.origin.y = 0;
         [self.tableView setFrame:rect];
     }
     else
     {
+        if ([self.fileSearchBar isHidden] == NO) {
+            return;
+        }
         [self.fileSearchBar setHidden:NO];
         [self.analyzeButton setEnabled:YES];
         [self.commentButton setEnabled:YES];
@@ -168,33 +184,13 @@
         // In iOS 7 the status bar is transparent, so don't adjust for it.
         if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
         {
-#ifdef IPHONE_VERSION
             self.edgesForExtendedLayout = UIRectEdgeNone;
-#else
-            CGRect rect;
-            rect = self.fileSearchBar.frame;
-            rect.origin.y = 45;
-            [self.fileSearchBar setFrame:rect];
-#endif
+            CGRect rect = self.tableView.frame;
+            rect.origin.y = self.fileSearchBar.frame.origin.y + self.fileSearchBar.frame.size.height;
+            rect.size.height -= rect.origin.y;
+            [self.tableView setFrame:rect];
         }
     }
-    [self.fileSearchBar setSpellCheckingType:UITextSpellCheckingTypeNo];
-    [self.fileSearchBar setAutocorrectionType:UITextAutocorrectionTypeNo];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -269,6 +265,12 @@
         NSLog(@"file path is nil");
         return;
     }
+    
+    [self setCurrentPath:filePath];
+    return;
+    
+    
+    /*
     NSArray* targetComponents = [filePath pathComponents];
     NSArray* currentComponents = [fileListBrowserController.currentLocation pathComponents];
     if ([targetComponents count] == 0 || [currentComponents count] == 0)
@@ -368,6 +370,98 @@
             [targetViewController.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
         }
     }
+     */
+}
+
+-(void) setCurrentPath:(NSString*)path {
+    if ([path length] == 0) {
+        return;
+    }
+    path = [[Utils getInstance] getSourceFileByDisplayFile:path];
+    
+    // Set project path
+    NSString* projPath = [[Utils getInstance] getProjectFolder:path];
+    self.currentProjectPath = projPath;
+    if (projPath == nil) {
+        [self.fileListBrowserController setIsCurrentProjectFolder:YES];
+    } else {
+        [self .fileListBrowserController setIsCurrentProjectFolder:NO];
+    }
+    
+    // Set path
+    NSString* folderPath;
+    BOOL isDirectory = NO;
+    if(![[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDirectory]) {
+        NSLog(@"File not exist: %@", path);
+        return;
+    }
+    if (isDirectory) {
+        folderPath = path;
+    } else {
+        folderPath = [path stringByDeletingLastPathComponent];
+    }
+
+    self.fileListBrowserController.currentLocation = folderPath;
+    self.title = [folderPath lastPathComponent];
+    [self reloadData];
+    
+    // Set Left navigation bar
+    if (projPath != nil) {
+        NSString* preFolder = [folderPath stringByDeletingLastPathComponent];
+        preFolder = [preFolder lastPathComponent];
+        if (self.navigationItem.leftBarButtonItem == nil) {
+            UIImage *buttonImage = [UIImage imageNamed:@"back_arrow.png"];
+            UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            [leftButton setImage:buttonImage forState:UIControlStateNormal];
+            leftButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+            [leftButton setTitle:preFolder forState:UIControlStateNormal];
+            leftButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+            [leftButton.titleLabel setTextAlignment:NSTextAlignmentLeft];
+            [leftButton setTitleColor:[UIColor colorWithRed:86/255.0 green:121/255.0 blue:183/255.0 alpha:1.0] forState:UIControlStateNormal];
+            leftButton.frame = CGRectMake(0, 0, buttonImage.size.width*6, buttonImage.size.height);
+            [leftButton addTarget:self action:@selector(leftNavigationButtonClicked:)
+                    forControlEvents:UIControlEventTouchUpInside];
+            
+            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+                                                      initWithCustomView:leftButton];
+        } else {
+            UIView* customView = self.navigationItem.leftBarButtonItem.customView;
+            if ([customView isKindOfClass:[UIButton class]]) {
+                UIButton* button = (UIButton*)customView;
+                [button setTitle:preFolder forState:UIControlStateNormal];
+            }
+        }
+    } else {
+        self.navigationItem.leftBarButtonItem = nil;
+    }
+
+    // Select file
+    if (!isDirectory) {
+        BOOL founded = NO;
+        NSInteger index = [fileListBrowserController getCurrentDirectoriesCount];
+        NSString* title = [path lastPathComponent];
+        for (int i = 0; i<[fileListBrowserController.currentFiles count]; i++)
+        {
+            if ([title compare:[fileListBrowserController.currentFiles objectAtIndex:i]] == NSOrderedSame)
+            {
+                index += i;
+                founded = YES;
+                break;
+            }
+        }
+        if (founded == YES) {
+            [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+        }
+    }
+
+    // Adjust view
+    [self adjustViewContent];
+}
+
+- (IBAction)leftNavigationButtonClicked:(id)sender
+{
+    NSString* prePath = [self.fileListBrowserController.currentLocation stringByDeletingLastPathComponent];
+    [self setCurrentPath:prePath];
 }
 
 - (IBAction)analyzeButtonClicked:(id)sender {
@@ -570,13 +664,15 @@
     self.navigationItem.rightBarButtonItem = nil;
     [self.fileSearchBar setText:@""];
     [self.fileSearchBar resignFirstResponder];
-    [self.tableView reloadData];
+    [self setCurrentPath:self.fileListBrowserController.currentLocation];
+//    [self.tableView reloadData];
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)theSearchBar {
     [fileListBrowserController searchBarTextDidBeginEditing:theSearchBar];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(searchFileDoneButtonClicked:)];
     self.navigationItem.rightBarButtonItem = doneButton;
+    self.navigationItem.leftBarButtonItem = nil;
     [_tableView reloadData];
 }
 
@@ -682,28 +778,33 @@
         return;
     }
     
-    MasterViewController* masterViewController;
-#ifdef IPHONE_VERSION
-    masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController-iPhone" bundle:nil];
-#else
-    masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
-#endif
-    
     if ([fileListBrowserController getIsCurrentProjectFolder])
         [[Utils getInstance] analyzeProject:path andForceCreate:NO];
     
-    // If current is Project Folder
-    if ([fileListBrowserController getIsCurrentProjectFolder])
-        masterViewController.currentProjectPath = path;
-    else
-        masterViewController.currentProjectPath = self.currentProjectPath;
+    [self setCurrentPath:path];
     
-    [masterViewController.fileListBrowserController setCurrentLocation:path];
-    masterViewController.title = selectedItem;
-    masterViewController.webServiceController = self.webServiceController;
-    masterViewController.gitCloneViewController = self.gitCloneViewController;
-    //[masterViewController reloadData];
-    [self.navigationController pushViewController:masterViewController animated:NO];
+//    MasterViewController* masterViewController;
+//#ifdef IPHONE_VERSION
+//    masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController-iPhone" bundle:nil];
+//#else
+//    masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
+//#endif
+//    
+//    if ([fileListBrowserController getIsCurrentProjectFolder])
+//        [[Utils getInstance] analyzeProject:path andForceCreate:NO];
+//    
+//    // If current is Project Folder
+//    if ([fileListBrowserController getIsCurrentProjectFolder])
+//        masterViewController.currentProjectPath = path;
+//    else
+//        masterViewController.currentProjectPath = self.currentProjectPath;
+//    
+//    [masterViewController.fileListBrowserController setCurrentLocation:path];
+//    masterViewController.title = selectedItem;
+//    masterViewController.webServiceController = self.webServiceController;
+//    masterViewController.gitCloneViewController = self.gitCloneViewController;
+//    //[masterViewController reloadData];
+//    [self.navigationController pushViewController:masterViewController animated:NO];
 }
 
 -(void) fileClickedDelegate:(NSString*)selectedItem andPath:(NSString*)path
