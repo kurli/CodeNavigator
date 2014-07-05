@@ -59,12 +59,13 @@
     [[Utils getInstance] setSplitViewController:self.splitViewController];
     self.splitViewController.splitDelegate = detailViewController;
     self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailViewController, nil];
+    [[Utils getInstance] setMasterViewController:masterViewController];
 #else
     MasterViewController *masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController-iPhone" bundle:nil];
     self.masterNavigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
     [self.masterNavigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
     [masterViewController setIsProjectFolder:YES];
-    [[Utils getInstance] setMasterViewController:self.masterNavigationController];
+    [[Utils getInstance] setMasterViewController:masterViewController];
     
     self.detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController-iPhone" bundle:nil];
     [[Utils getInstance] setDetailViewController:self.detailViewController];

@@ -26,8 +26,11 @@
 
 @interface MasterViewController ()
 
+@property (strong, nonatomic) FileBrowserTreeViewController* fileBrowserTreeViewController;
+
 @end
-@implementation MasterViewController
+@implementation MasterViewController {
+}
 @synthesize fileSearchBar = _fileSearchBar;
 
 @synthesize tableView = _tableView;
@@ -40,9 +43,8 @@
 @synthesize popOverController;
 @synthesize fileListBrowserController;
 @synthesize gitCloneViewController;
-#ifdef IPHONE_VERSION
 @synthesize toolBar;
-#endif
+@synthesize fileBrowserTreeViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -158,22 +160,32 @@
 }
 
 -(void) adjustViewContent {
-    if ([fileListBrowserController getIsCurrentProjectFolder])
-    {
-        if ([self.fileSearchBar isHidden] == YES) {
-            return;
-        }
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-        [self.fileSearchBar setHidden:YES];
-        [self.analyzeButton setEnabled:NO];
-        [self.commentButton setEnabled:NO];
-        CGRect rect = self.tableView.frame;
-        rect.size.height += rect.origin.y;
-        rect.origin.y = 0;
-        [self.tableView setFrame:rect];
+    if ([fileListBrowserController getIsCurrentProjectFolder]) {
+        [self showFileSearchBar:NO];
     }
-    else
-    {
+    else {
+        if (fileBrowserTreeViewController != nil) {
+            [self showFileSearchBar:NO];
+        } else {
+            [self showFileSearchBar:YES];
+        }
+    }
+    
+    
+    if (![self.fileListBrowserController getIsCurrentSearchFileMode]) {
+        if (self.fileBrowserTreeViewController == nil) {
+            UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+            if (UIInterfaceOrientationIsLandscape(orientation)) {
+                [self showRightNavigationBar:YES];
+            } else {
+                [self showRightNavigationBar:NO];
+            }
+        }
+    }
+}
+
+-(void) showFileSearchBar:(BOOL)show {
+    if (show) {
         if ([self.fileSearchBar isHidden] == NO) {
             return;
         }
@@ -190,6 +202,37 @@
             rect.size.height -= rect.origin.y;
             [self.tableView setFrame:rect];
         }
+    } else {
+        if ([self.fileSearchBar isHidden] == YES) {
+            return;
+        }
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        [self.fileSearchBar setHidden:YES];
+        [self.analyzeButton setEnabled:NO];
+        [self.commentButton setEnabled:NO];
+        CGRect rect = self.tableView.frame;
+        rect.size.height += rect.origin.y;
+        rect.origin.y = 0;
+        [self.tableView setFrame:rect];
+    }
+}
+
+-(void) showRightNavigationBar:(BOOL)show {
+    if (show) {
+        UIImage *buttonImage = [UIImage imageNamed:@"treeView.png"];
+//        UIButton *rightBar = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [rightBar setImage:buttonImage forState:UIControlStateNormal];
+//        rightBar.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//        rightBar.frame = CGRectMake(0, 0, buttonImage.size.width*6, buttonImage.size.height);
+//        [rightBar addTarget:self action:@selector(rightNavigationButtonClicked:)
+//             forControlEvents:UIControlEventTouchUpInside];
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:buttonImage style:UIBarButtonItemStylePlain target:self action:@selector(rightNavigationButtonClicked:)];
+
+//        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+//                                                 initWithCustomView:rightBar];
+    } else {
+        self.navigationItem.rightBarButtonItem = nil;
     }
 }
 
@@ -259,7 +302,6 @@
         return;
     }
     
-    MasterViewController* targetViewController = nil;
     if (filePath == nil)
     {
         NSLog(@"file path is nil");
@@ -271,6 +313,7 @@
     
     
     /*
+    MasterViewController* targetViewController = nil;
     NSArray* targetComponents = [filePath pathComponents];
     NSArray* currentComponents = [fileListBrowserController.currentLocation pathComponents];
     if ([targetComponents count] == 0 || [currentComponents count] == 0)
@@ -405,8 +448,30 @@
     self.title = [folderPath lastPathComponent];
     [self reloadData];
     
+    // Select file
+    if (!isDirectory) {
+        BOOL founded = NO;
+        NSInteger index = [fileListBrowserController getCurrentDirectoriesCount];
+        NSString* title = [path lastPathComponent];
+        for (int i = 0; i<[fileListBrowserController.currentFiles count]; i++)
+        {
+            if ([title compare:[fileListBrowserController.currentFiles objectAtIndex:i]] == NSOrderedSame)
+            {
+                index += i;
+                founded = YES;
+                break;
+            }
+        }
+        if (founded == YES) {
+            [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+        }
+    }
+    
+    // Set left bar button
+    [[NSFileManager defaultManager] fileExistsAtPath:projPath isDirectory:&isDirectory];
+    
     // Set Left navigation bar
-    if (projPath != nil) {
+    if (projPath != nil && isDirectory) {
         NSString* preFolder = [folderPath stringByDeletingLastPathComponent];
         preFolder = [preFolder lastPathComponent];
         if (self.navigationItem.leftBarButtonItem == nil) {
@@ -435,25 +500,6 @@
         self.navigationItem.leftBarButtonItem = nil;
     }
 
-    // Select file
-    if (!isDirectory) {
-        BOOL founded = NO;
-        NSInteger index = [fileListBrowserController getCurrentDirectoriesCount];
-        NSString* title = [path lastPathComponent];
-        for (int i = 0; i<[fileListBrowserController.currentFiles count]; i++)
-        {
-            if ([title compare:[fileListBrowserController.currentFiles objectAtIndex:i]] == NSOrderedSame)
-            {
-                index += i;
-                founded = YES;
-                break;
-            }
-        }
-        if (founded == YES) {
-            [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
-        }
-    }
-
     // Adjust view
     [self adjustViewContent];
 }
@@ -462,6 +508,35 @@
 {
     NSString* prePath = [self.fileListBrowserController.currentLocation stringByDeletingLastPathComponent];
     [self setCurrentPath:prePath];
+    
+    if (self.fileBrowserTreeViewController) {
+        [self.fileBrowserTreeViewController pathBack];
+    }
+}
+
+- (IBAction)rightNavigationButtonClicked:(id)sender
+{
+    if (self.navigationItem.rightBarButtonItem == nil) {
+        return;
+    }
+    
+    // Change MasterView size
+    CGSize size = [Utils getInstance].splitViewController.view.frame.size;
+    size.width = size.width / 4;
+    [[Utils getInstance].splitViewController setSplitPosition:size.width];
+    
+    [self.fileListBrowserController setEnableFileInfoButton:NO];
+    
+    // Show file browser tree
+    fileBrowserTreeViewController = [[Utils getInstance].detailViewController showFileBrowserTreeView:YES];
+    
+    // Hide right navigation bar
+    [self showRightNavigationBar:NO];
+    
+    // Hide search bar
+    [self showFileSearchBar:NO];
+    
+    [self.toolBar setUserInteractionEnabled:NO];
 }
 
 - (IBAction)analyzeButtonClicked:(id)sender {
@@ -659,12 +734,10 @@
 {
     [fileListBrowserController searchFileDoneButtonClicked:sender];
     
-    // ignore it after v1.8
-//    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.navigationItem.rightBarButtonItem = nil;
     [self.fileSearchBar setText:@""];
     [self.fileSearchBar resignFirstResponder];
     [self setCurrentPath:self.fileListBrowserController.currentLocation];
+    [self showRightNavigationBar:YES];
 //    [self.tableView reloadData];
 }
 
@@ -768,8 +841,13 @@
 #endif
 }
 
--(void) folderClickedDelegate:(NSString*)selectedItem andPath:(NSString*)path
+- (void) folderClickedDelegate:(UITableView*) tableView andSelectedItem:(NSString*)selectedItem andPath:(NSString*)path
 {
+    if (self.fileBrowserTreeViewController) {
+        [self.fileBrowserTreeViewController changeToPath:path];
+        return;
+    }
+    
     // When git clone in progress, stop entering this folder
     if ([fileListBrowserController getIsCurrentProjectFolder] &&
         [[gitCloneViewController cloneThread] isExecuting] &&
@@ -807,7 +885,7 @@
 //    [self.navigationController pushViewController:masterViewController animated:NO];
 }
 
--(void) fileClickedDelegate:(NSString*)selectedItem andPath:(NSString*)path
+- (void) fileClickedDelegate:(UITableView*) tableView andSelectedItem:(NSString*)selectedItem andPath:(NSString*)path
 {
     NSString* html;
     
@@ -817,6 +895,12 @@
 #ifdef IPHONE_VERSION
     [self presentViewController:[Utils getInstance].detailViewController animated:YES completion:nil];
 #endif
+    
+    // Close file browser tree view
+    if (self.fileBrowserTreeViewController) {
+        [[Utils getInstance].detailViewController showFileBrowserTreeView:NO];
+        [self onTreeViewDismissed];
+    }
     
     //Help.html special case
     if ([fileListBrowserController getIsCurrentProjectFolder] == YES && [selectedItem compare:@"Help.html"] == NSOrderedSame) {
@@ -873,6 +957,34 @@
 -(void) downloadZipFromGitHub {
     [self releaseAllPopover];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.github.com"]];
+}
+
+#pragma FileBrowserTreeViewDelegate
+
+-(void) onParentNeedChangePath:(NSString *)path {
+    [self setCurrentPath:path];
+}
+
+-(void) onTreeViewDismissed {
+    self.fileBrowserTreeViewController = nil;
+    [self adjustViewContent];
+    [self showRightNavigationBar:YES];
+    [self.fileListBrowserController setEnableFileInfoButton:YES];
+    
+    [self.toolBar setUserInteractionEnabled:YES];
+    
+    CGSize size = [Utils getInstance].splitViewController.view.frame.size;
+    size.width = size.width / 4;
+    [[Utils getInstance].splitViewController setSplitPosition:320];
+}
+
+- (void) setFocusItem:(NSString*)path {
+    [self.fileListBrowserController setFocusItem:path];
+}
+
+- (void) onFileClickedFromTreeView:(NSString*)selectedItem andPath:(NSString*)path {
+    [self gotoFile:path andForce:YES];
+    [self fileClickedDelegate:self.tableView andSelectedItem:selectedItem andPath:path];
 }
 
 @end

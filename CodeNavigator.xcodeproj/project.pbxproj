@@ -37,6 +37,8 @@
 		941E63E518019354008226F2 /* OpenAsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941E63E318019354008226F2 /* OpenAsViewController.xib */; };
 		94205714157B938B00178CBF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94205713157B938B00178CBF /* QuartzCore.framework */; };
 		94205715157B939B00178CBF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94205713157B938B00178CBF /* QuartzCore.framework */; };
+		9421EACA196853D100EFD7E2 /* treeView.png in Resources */ = {isa = PBXBuildFile; fileRef = 9421EAC9196853D100EFD7E2 /* treeView.png */; };
+		9421EACB196853D100EFD7E2 /* treeView.png in Resources */ = {isa = PBXBuildFile; fileRef = 9421EAC9196853D100EFD7E2 /* treeView.png */; };
 		9424660C1502AA2F001701C4 /* ManuallAddChild.png in Resources */ = {isa = PBXBuildFile; fileRef = 9424660A1502AA2F001701C4 /* ManuallAddChild.png */; };
 		9424660D1502AA2F001701C4 /* ManuallAddChild.png in Resources */ = {isa = PBXBuildFile; fileRef = 9424660A1502AA2F001701C4 /* ManuallAddChild.png */; };
 		9424660E1502AA2F001701C4 /* manuallAddParent.png in Resources */ = {isa = PBXBuildFile; fileRef = 9424660B1502AA2F001701C4 /* manuallAddParent.png */; };
@@ -457,6 +459,10 @@
 		9497F3CC151CEC4F006BCBBF /* RubyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497F3CA151CEC4F006BCBBF /* RubyParser.m */; };
 		949CB5E21961A96200A95AEC /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 949CB5E11961A96200A95AEC /* back_arrow.png */; };
 		949CB5E31961A96200A95AEC /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 949CB5E11961A96200A95AEC /* back_arrow.png */; };
+		949CB5EE19630C6500A95AEC /* FileBrowserTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 949CB5EC19630C6500A95AEC /* FileBrowserTreeViewController.m */; };
+		949CB5EF19630C6500A95AEC /* FileBrowserTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 949CB5EC19630C6500A95AEC /* FileBrowserTreeViewController.m */; };
+		949CB5F019630C6500A95AEC /* FileBrowserTreeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949CB5ED19630C6500A95AEC /* FileBrowserTreeViewController.xib */; };
+		949CB5F119630C6500A95AEC /* FileBrowserTreeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949CB5ED19630C6500A95AEC /* FileBrowserTreeViewController.xib */; };
 		949DC1991583E8CF00385796 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74414910B3000B0900E /* main.m */; };
 		949DC19A1583E8CF00385796 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74814910B3000B0900E /* AppDelegate.m */; };
 		949DC19C1583E8CF00385796 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9431D74E14910B3000B0900E /* DetailViewController.m */; };
@@ -1115,6 +1121,7 @@
 		941E63E218019354008226F2 /* OpenAsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenAsViewController.m; path = FileInfoController/OpenAsViewController.m; sourceTree = "<group>"; };
 		941E63E318019354008226F2 /* OpenAsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OpenAsViewController.xib; path = FileInfoController/OpenAsViewController.xib; sourceTree = "<group>"; };
 		94205713157B938B00178CBF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9421EAC9196853D100EFD7E2 /* treeView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = treeView.png; sourceTree = "<group>"; };
 		9424660A1502AA2F001701C4 /* ManuallAddChild.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ManuallAddChild.png; sourceTree = "<group>"; };
 		9424660B1502AA2F001701C4 /* manuallAddParent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = manuallAddParent.png; sourceTree = "<group>"; };
 		942466101502D53A001701C4 /* EntryBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EntryBg.png; sourceTree = "<group>"; };
@@ -1475,6 +1482,9 @@
 		9497F3CA151CEC4F006BCBBF /* RubyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RubyParser.m; path = CodeNavigator/RubyParser.m; sourceTree = "<group>"; };
 		9497F3CD151CEC6A006BCBBF /* RubbyDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RubbyDefinition.h; path = CodeNavigator/RubbyDefinition.h; sourceTree = "<group>"; };
 		949CB5E11961A96200A95AEC /* back_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_arrow.png; sourceTree = "<group>"; };
+		949CB5EB19630C6500A95AEC /* FileBrowserTreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileBrowserTreeViewController.h; path = FileBrowserTreeView/FileBrowserTreeViewController.h; sourceTree = "<group>"; };
+		949CB5EC19630C6500A95AEC /* FileBrowserTreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileBrowserTreeViewController.m; path = FileBrowserTreeView/FileBrowserTreeViewController.m; sourceTree = "<group>"; };
+		949CB5ED19630C6500A95AEC /* FileBrowserTreeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FileBrowserTreeViewController.xib; path = FileBrowserTreeView/FileBrowserTreeViewController.xib; sourceTree = "<group>"; };
 		949DC26B1583E8CF00385796 /* CodeNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A0FAE2153DDA78004277BF /* cscope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cscope.png; sourceTree = "<group>"; };
 		94A0FAE5153DDAD9004277BF /* virtualize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = virtualize.png; sourceTree = "<group>"; };
@@ -1829,6 +1839,7 @@
 				946F856E18E841A000CBFA19 /* Theme */,
 				94B1DD16191F99B100909C3E /* FPPopover */,
 				94F7B90917F7482900A506EE /* UploadSelection */,
+				949CB5EA19630C0600A95AEC /* FileBrowserTreeView */,
 				9431D73E14910B3000B0900E /* CodeNavigator */,
 				9431D73714910B3000B0900E /* Frameworks */,
 				9431D73514910B3000B0900E /* Products */,
@@ -2023,6 +2034,7 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9421EAC9196853D100EFD7E2 /* treeView.png */,
 				949CB5E11961A96200A95AEC /* back_arrow.png */,
 				9461D46C1960372100F0B0A1 /* hide_toolbar.png */,
 				9461D46319602BD800F0B0A1 /* show_toolbar.png */,
@@ -2438,6 +2450,16 @@
 			name = Comment;
 			sourceTree = "<group>";
 		};
+		949CB5EA19630C0600A95AEC /* FileBrowserTreeView */ = {
+			isa = PBXGroup;
+			children = (
+				949CB5EB19630C6500A95AEC /* FileBrowserTreeViewController.h */,
+				949CB5EC19630C6500A95AEC /* FileBrowserTreeViewController.m */,
+				949CB5ED19630C6500A95AEC /* FileBrowserTreeViewController.xib */,
+			);
+			name = FileBrowserTreeView;
+			sourceTree = "<group>";
+		};
 		94A5184C152DF5150062DA65 /* DropBox */ = {
 			isa = PBXGroup;
 			children = (
@@ -2821,6 +2843,7 @@
 				9431D75514910B3000B0900E /* DetailViewController.xib in Resources */,
 				9431D7C71494D1E300B0900E /* folder.png in Resources */,
 				9431D7C81494D1E300B0900E /* project.png in Resources */,
+				949CB5F019630C6500A95AEC /* FileBrowserTreeViewController.xib in Resources */,
 				9432E3AD149CF9CE00AB5BB7 /* NavigationController.xib in Resources */,
 				94603D08149E041400D72561 /* ResultViewController.xib in Resources */,
 				94EE32D4149FAE0B0088501D /* GotoLineViewController.xib in Resources */,
@@ -2868,6 +2891,7 @@
 				945AA40E1508DE9C006729C8 /* NewEntry.png in Resources */,
 				945AA44B1508E3CA006729C8 /* max.png in Resources */,
 				948C74211807091700065E65 /* Icon-50.png in Resources */,
+				9421EACA196853D100EFD7E2 /* treeView.png in Resources */,
 				945AA45E150926A1006729C8 /* Help.html in Resources */,
 				948C741E1807090C00065E65 /* icon-29@2.png in Resources */,
 				943486E2150A42A000370AE3 /* Default-Landscape~ipad.png in Resources */,
@@ -3054,6 +3078,7 @@
 			files = (
 				94D3B88015E539B8006C28E4 /* share.png in Resources */,
 				94D3B87F15E539AD006C28E4 /* weibo.png in Resources */,
+				9421EACB196853D100EFD7E2 /* treeView.png in Resources */,
 				94D3B87E15E539A6006C28E4 /* twitter.png in Resources */,
 				94D3B87D15E5399A006C28E4 /* appstore.png in Resources */,
 				94D3B87C15E53984006C28E4 /* feedback.png in Resources */,
@@ -3072,6 +3097,7 @@
 				94ADF17D14BB27EE00BA807A /* ResultViewController.xib in Resources */,
 				94ADF17E14BB27EE00BA807A /* GotoLineViewController.xib in Resources */,
 				94B1DCF6191F70D000909C3E /* SelectGroupViewController.xib in Resources */,
+				949CB5F119630C6500A95AEC /* FileBrowserTreeViewController.xib in Resources */,
 				94ADF17F14BB27EE00BA807A /* WebServiceController.xib in Resources */,
 				94ADF18014BB27EE00BA807A /* ResultTableCellView.xib in Resources */,
 				94B1DCE1191F6F8C00909C3E /* ThemeSelectorViewController.xib in Resources */,
@@ -3317,6 +3343,7 @@
 				94785971162C5A08006E4575 /* rexx.c in Sources */,
 				94785972162C5A08006E4575 /* routines.c in Sources */,
 				94785973162C5A08006E4575 /* ruby.c in Sources */,
+				949CB5EE19630C6500A95AEC /* FileBrowserTreeViewController.m in Sources */,
 				94B1DD2D192259FD00909C3E /* DisplayModeController.m in Sources */,
 				94785974162C5A08006E4575 /* scheme.c in Sources */,
 				94785975162C5A08006E4575 /* sh.c in Sources */,
@@ -3755,6 +3782,7 @@
 				9457C78C15307B1400BB9185 /* RemoteFileControllerDelegate.m in Sources */,
 				9443D1EF154EDA6A008CB52D /* SecurityViewController.m in Sources */,
 				94B1DD05191F71D900909C3E /* UploadSelectionViewController.m in Sources */,
+				949CB5EF19630C6500A95AEC /* FileBrowserTreeViewController.m in Sources */,
 				948F1C7415583B7600AE4C99 /* CommentViewController.m in Sources */,
 				94636B55155A91E700B1C37F /* CommentWrapper.m in Sources */,
 				9461817A155EEDAB00A25635 /* CommentManager.m in Sources */,

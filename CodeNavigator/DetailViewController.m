@@ -272,7 +272,11 @@
         [self.secondWebView setScalesPageToFit:NO];
         //[self reloadCurrentPage];
     }
-    return YES;
+    if (self.fileBrowserTreeViewController == nil) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 - (BOOL)shouldAutorotate {
@@ -281,7 +285,11 @@
         [self.secondWebView setScalesPageToFit:NO];
         //[self reloadCurrentPage];
     }
-    return YES;
+    if (self.fileBrowserTreeViewController == nil) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 -(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
@@ -1797,5 +1805,37 @@
 - (void)folderSelected:(NSString*)path {
 }
 
+#pragma File browser tree view
+
+- (FileBrowserTreeViewController*) showFileBrowserTreeView:(BOOL)show {
+    if (show) {
+        self.fileBrowserTreeViewController = [[FileBrowserTreeViewController alloc] init];
+        [self.fileBrowserTreeViewController setParentDelegate:[Utils getInstance].masterViewController];
+
+        // Set path
+        NSString* masterPath = [[Utils getInstance].masterViewController getCurrentLocation];
+        [self.fileBrowserTreeViewController setCurrentPath:masterPath];
+        
+        // Add view and animate
+        CGRect rect = self.fileBrowserTreeViewController.view.frame;
+        rect.origin.x = -rect.size.width;
+        [self.fileBrowserTreeViewController.view setFrame:rect];
+        [self.view insertSubview:self.fileBrowserTreeViewController.view atIndex:100];
+        
+        [UIView beginAnimations:@"ShowFileBrowserTreeView"context:nil];
+        [UIView setAnimationDuration:0.30];
+        [UIView setAnimationDelegate:self];
+        
+        rect = self.fileBrowserTreeViewController.view.frame;
+        rect.origin.x = 0;
+        [self.fileBrowserTreeViewController.view setFrame:rect];
+        [UIView commitAnimations];
+        return self.fileBrowserTreeViewController;
+    } else {
+        [self.fileBrowserTreeViewController.view removeFromSuperview];
+        self.fileBrowserTreeViewController = nil;
+    }
+    return nil;
+}
 
 @end

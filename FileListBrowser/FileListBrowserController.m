@@ -44,6 +44,11 @@
     [self setSearchFileResultArray:nil];
 }
 
+- (void) clearData {
+    [self.currentDirectories removeAllObjects];
+    [self.currentFiles removeAllObjects];
+}
+
 - (void)reloadData
 {
     //[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
@@ -185,9 +190,11 @@
         ((UILabel*)[cell viewWithTag:103]).text = @"";
         ((UILabel*)[cell viewWithTag:104]).text = [dateFormatter stringFromDate:date];
         UIButton* infoButton = (UIButton*)[cell viewWithTag:110];
-        if (enableFileInfoButton)
+        if (enableFileInfoButton) {
             [infoButton addTarget:self action:@selector(fileInfoButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        else
+            [infoButton setHidden:NO];
+            [infoButton setEnabled:YES];
+        } else
         {
             [infoButton setHidden:YES];
             [infoButton setEnabled:NO];
@@ -340,7 +347,7 @@
         
         NSString* item = [self.searchFileResultArray objectAtIndex:indexPath.row];
         
-        [fileListBrowserDelegate fileClickedDelegate:[item lastPathComponent] andPath:item];
+        [fileListBrowserDelegate fileClickedDelegate:tableView andSelectedItem:[item lastPathComponent] andPath:item];
         return;
     }
 
@@ -353,20 +360,29 @@
         selectedItem = [self getDirectoryAtIndex:indexPath.row];
         path = [currentLocation stringByAppendingPathComponent:selectedItem];
         
-        [fileListBrowserDelegate folderClickedDelegate:selectedItem andPath:path];
+        [fileListBrowserDelegate folderClickedDelegate:tableView andSelectedItem: selectedItem andPath:path];
     }
     else
     {
         selectedItem = [self getFileNameAtIndex:indexPath.row-[self getCurrentDirectoriesCount]];
         path = [currentLocation stringByAppendingPathComponent:selectedItem];
 
-        [fileListBrowserDelegate fileClickedDelegate: selectedItem andPath:path];
+        [fileListBrowserDelegate fileClickedDelegate: tableView andSelectedItem: selectedItem andPath:path];
     }
 }
 
 - (void) setIsCurrentProjectFolder:(BOOL)_isProjectFolder
 {
     isCurrentProjectFolder = _isProjectFolder;
+}
+
+-(void) setCurrentLocation:(NSString *)currentLocation_ {
+    currentLocation = currentLocation_;
+    if ([[Utils getInstance] getProjectFolder:currentLocation_] == nil) {
+        isCurrentProjectFolder = YES;
+    } else {
+        isCurrentProjectFolder = NO;
+    }
 }
 
 - (BOOL) getIsCurrentProjectFolder
@@ -434,6 +450,7 @@
 - (void) setEnableFileInfoButton:(BOOL)enable
 {
     enableFileInfoButton = enable;
+    [self._tableView reloadData];
 }
 
 - (IBAction)fileInfoButtonClicked:(id)sender
@@ -484,6 +501,50 @@
         if ([fileName rangeOfString:searchText].location != NSNotFound)
         {
             [self.searchFileResultArray addObject:[array objectAtIndex:i]];
+        }
+    }
+}
+
+- (void) setFocusItem:(NSString*)path {
+    BOOL isDirectory;
+    BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDirectory];
+    
+    if (!isExist) {
+        return;
+    }
+    
+    // Select file
+    if (!isDirectory) {
+        BOOL founded = NO;
+        NSInteger index = [self getCurrentDirectoriesCount];
+        NSString* title = [path lastPathComponent];
+        for (int i = 0; i<[self.currentFiles count]; i++)
+        {
+            if ([title compare:[self.currentFiles objectAtIndex:i]] == NSOrderedSame)
+            {
+                index += i;
+                founded = YES;
+                break;
+            }
+        }
+        if (founded == YES) {
+            [self._tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+        }
+    } else {
+        BOOL founded = NO;
+        NSInteger index = 0;
+        NSString* title = [path lastPathComponent];
+        for (int i = 0; i<[self.currentDirectories count]; i++)
+        {
+            if ([title compare:[self.currentDirectories objectAtIndex:i]] == NSOrderedSame)
+            {
+                index += i;
+                founded = YES;
+                break;
+            }
+        }
+        if (founded == YES) {
+            [self._tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
         }
     }
 }

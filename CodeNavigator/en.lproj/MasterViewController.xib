@@ -10,6 +10,7 @@
                 <outlet property="commentButton" destination="36" id="PPn-Q7-HYT"/>
                 <outlet property="fileSearchBar" destination="rFg-ob-xKa" id="bsq-rN-OBg"/>
                 <outlet property="tableView" destination="2" id="9"/>
+                <outlet property="toolBar" destination="7" id="ERK-QM-ODc"/>
                 <outlet property="view" destination="6" id="10"/>
             </connections>
         </placeholder>
@@ -66,6 +67,7 @@
                             </connections>
                         </barButtonItem>
                     </items>
+                    <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </toolbar>
                 <searchBar hidden="YES" contentMode="redraw" placeholder="Search files" id="rFg-ob-xKa">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

@@ -8,6 +8,7 @@
 
 #import "ImageParser.h"
 #import "HTMLConst.h"
+#import "Utils.h"
 
 @implementation ImageParser
 
@@ -26,7 +27,7 @@
     projectBase = base;
 }
 
--(BOOL) startParse
+-(BOOL) startParse:(ParseFinishedCallback)onParseFinished
 {
 	if ( nil == fileContent )
     {
@@ -36,6 +37,10 @@
     [self addImage:fileContent];
     [htmlContent appendString: HTML_END];
     [self addString:@"" addEnter:YES];
+    onParseFinished();
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[Utils getInstance] showAnalyzeIndicator:NO];
+    });
 	return YES;
 }
 @end

@@ -19,6 +19,8 @@
 
 #ifdef IPHONE_VERSION
 #import "FPPopoverController.h"
+#else
+#import "FileBrowserTreeViewController.h"
 #endif
 
 typedef enum _JSState {
@@ -121,6 +123,8 @@ typedef enum _JSState {
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *historySwipeImageView;
 
+@property (strong, nonatomic) FileBrowserTreeViewController* fileBrowserTreeViewController;
+
 - (IBAction)webViewSegmentChanged:(id)sender;
 
 - (void) setCurrentSearchFocusLine:(int)line;
@@ -209,5 +213,9 @@ typedef enum _JSState {
 - (void)folderSelected:(NSString*)path;
 
 - (void)fileBrowserViewDisappeared;
+
+#pragma File browser tree view
+
+- (FileBrowserTreeViewController*) showFileBrowserTreeView:(BOOL)show;
 
 @end

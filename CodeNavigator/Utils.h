@@ -21,6 +21,7 @@ typedef void (^GetFunctionListCallback)(NSArray* array);
 @class GADBannerView;
 @class FunctionListManager;
 @class DisplayController;
+@class MasterViewController;
 
 #define MAX_HISTORY_STACK 20
 
@@ -98,7 +99,7 @@ typedef enum _SearchType{
 
 @property (strong, nonatomic) ThemeSchema* currentThemeSetting;
 
-@property (nonatomic, unsafe_unretained) UINavigationController* masterViewController;
+@property (nonatomic, unsafe_unretained) MasterViewController* masterViewController;
 
 @property (nonatomic, strong) NSThread* analyzeThread;
 

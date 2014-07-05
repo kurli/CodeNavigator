@@ -176,6 +176,15 @@
     return YES;
 }
 
+- (BOOL) shouldAutorotate {
+    if (self.detailViewController)
+    {
+        return [self.detailViewController shouldAutorotate];
+    }
+    
+    return YES;
+}
+
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {

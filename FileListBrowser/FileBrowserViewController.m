@@ -204,7 +204,7 @@
 {
 }
 
--(void) folderClickedDelegate:(NSString*)selectedItem andPath:(NSString*)path
+- (void) folderClickedDelegate:(UITableView*) tableView andSelectedItem:(NSString*)selectedItem andPath:(NSString*)path
 {
     FileBrowserViewController* fileBrowserViewController;
     fileBrowserViewController = [[FileBrowserViewController alloc] initWithNibName:@"FileBrowserViewController" bundle:nil];
@@ -227,7 +227,7 @@
     [fileBrowserViewDelegate folderSelected:[fileBrowserViewController.fileListBrowserController currentLocation]];
 }
 
--(void) fileClickedDelegate:(NSString*)selectedItem andPath:(NSString*)path
+- (void) fileClickedDelegate:(UITableView*) tableView andSelectedItem:(NSString*)selectedItem andPath:(NSString*)path
 {
     NSString* html;
     

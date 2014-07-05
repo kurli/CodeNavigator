@@ -10,6 +10,8 @@
 #import "FileListBrowserProtocol.h"
 #ifdef IPHONE_VERSION
 #import "FPPopoverController.h"
+#else
+#import "FileBrowserTreeViewController.h"
 #endif
 
 @class DetailViewController;
@@ -25,7 +27,7 @@
 
 #define MASTER_VIEW_RELOAD @"CodeNavigator_master_view_reload"
 
-@interface MasterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, FileListBrowserDelegate>
+@interface MasterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, FileListBrowserDelegate, FileBrowserTreeDelegate>
 {
     NSInteger needSelectRowAfterReload;
 }
@@ -57,9 +59,7 @@
 
 @property (strong, nonatomic) FileListBrowserController* fileListBrowserController;
 
-#ifdef IPHONE_VERSION
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
-#endif
 
 - (IBAction)addFileToolBarClicked:(id)sender;
 

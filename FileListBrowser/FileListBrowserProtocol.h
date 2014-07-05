@@ -10,7 +10,7 @@
 
 @protocol FileListBrowserDelegate <NSObject>
 - (IBAction) fileInfoButtonClicked:(id)sender;
-- (void) folderClickedDelegate:(NSString*)selectedItem andPath:(NSString*)path;
-- (void) fileClickedDelegate:(NSString*)selectedItem andPath:(NSString*)path;
+- (void) folderClickedDelegate:(UITableView*) tableView andSelectedItem:(NSString*)selectedItem andPath:(NSString*)path;
+- (void) fileClickedDelegate:(UITableView*) tableView andSelectedItem:(NSString*)selectedItem andPath:(NSString*)path;
 - (NSString*) getCurrentProjectPath;
 @end

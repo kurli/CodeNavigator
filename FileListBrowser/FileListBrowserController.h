@@ -43,5 +43,6 @@
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)theSearchBar;
 - (IBAction)searchFileDoneButtonClicked:(id)sender;
 - (void) searchBar:(UISearchBar *)theSearchBar textDidChange:(NSString *)searchText andCurrentProjPath:(NSString*)currentProjectPath;
-
+- (void) clearData;
+- (void) setFocusItem:(NSString*)path;
 @end
