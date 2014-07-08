@@ -241,7 +241,12 @@
 {
 	if ( nil == fileContent )
     {
-		return NO;
+        [[Utils getInstance] getFunctionListForFile:self.filePath andCallback:^(NSArray* array){
+            onParseFinished();
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[Utils getInstance] showAnalyzeIndicator:NO];
+            });
+        }];		return NO;
     }
     [[Utils getInstance] showAnalyzeIndicator:YES];
 

@@ -448,25 +448,25 @@ typedef enum _changeType
     
     // get html file for new obj
 
-    Parser* parser = [[Parser alloc] init];
-    [parser checkParseType:data.path];
-    [parser setContent:newBolb.content andProjectBase:nil];
-    [parser setMaxLineCount:35];
-    [parser startParseAndWait];
+    Parser* parserNew = [[Parser alloc] init];
+    [parserNew checkParseType:data.path];
+    [parserNew setContent:newBolb.content andProjectBase:nil];
+    [parserNew setMaxLineCount:35];
+    [parserNew startParseAndWait];
     
     // get html file for old obj
-    parser = [[Parser alloc] init];
-    [parser checkParseType:data.path];
-    [parser setContent:oldBolb.content andProjectBase:nil];
-    [parser setMaxLineCount:35];
-    [parser startParse:^(){
+    Parser* parserOld = [[Parser alloc] init];
+    [parserOld checkParseType:data.path];
+    [parserOld setContent:oldBolb.content andProjectBase:nil];
+    [parserOld setMaxLineCount:35];
+    [parserOld startParse:^(){
         dispatch_async(dispatch_get_main_queue(), ^{
         NSString* newHtml;
         NSString* oldHtml;
         NSError* error;
 
-        newHtml = [parser getHtml];
-        oldHtml = [parser getHtml];
+        newHtml = [parserNew getHtml];
+        oldHtml = [parserOld getHtml];
         
         NSMutableArray* oldHtmlArray = [[NSMutableArray alloc] initWithArray:[oldHtml componentsSeparatedByString:@"<tr id="]];
         NSMutableArray* newHtmlArray = [[NSMutableArray alloc] initWithArray:[newHtml componentsSeparatedByString:@"<tr id="]];
