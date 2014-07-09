@@ -68,6 +68,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    
     // Select table view
     if (needSelectRowAfterReload != -1) {
         [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:needSelectRowAfterReload inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
@@ -76,19 +81,23 @@
 
     if ([fileListBrowserController getIsCurrentProjectFolder])
     {
-        CGRect rect = self.tableView.frame;
-        rect.size.height += (rect.origin.y - self.view.frame.origin.y);
-        rect.origin.y = self.view.frame.origin.y;
-        [self.tableView setFrame:rect];
+//        CGRect rect = self.tableView.frame;
+//        rect.size.height += (rect.origin.y - self.view.frame.origin.y);
+//        rect.origin.y = self.view.frame.origin.y;
+//        [self.tableView setFrame:rect];
         [self.fileSearchBar setHidden:YES];
+        CGRect rect = self.tableView.frame;
+        rect.origin.y = 0;
+        rect.size.height = self.view.frame.size.height;
+        [self.tableView setFrame:rect];
     }
     else
     {
-        if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
-        {
-            self.edgesForExtendedLayout = UIRectEdgeNone;
-        }
         [self.fileSearchBar setHidden:NO];
+        CGRect rect = self.tableView.frame;
+        rect.origin.y = self.fileSearchBar.frame.size.height;
+        rect.size.height = self.view.frame.size.height - self.fileSearchBar.frame.size.height;
+        [self.tableView setFrame:rect];
     }
     [self.fileSearchBar setSpellCheckingType:UITextSpellCheckingTypeNo];
     [self.fileSearchBar setAutocorrectionType:UITextAutocorrectionTypeNo];
