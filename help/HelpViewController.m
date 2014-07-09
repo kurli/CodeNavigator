@@ -188,7 +188,7 @@
 #ifdef LITE_VERSION
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/us/app/codenavigator/id492480832?mt=8"]];
 #else
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=492480832&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=492480832"]];
 #endif
             [[Utils getInstance] addGAEvent:@"Help" andAction:@"Rate" andLabel:nil andValue:nil];
             break;
@@ -330,7 +330,7 @@
 #ifdef LITE_VERSION
     NSString* url = @"http://itunes.apple.com/us/app/codenavigatorlite/id494004821?mt=8";
 #else
-    NSString* url = @"http://itunes.apple.com/us/app/codenavigator/id492480832?mt=8";
+    NSString* url = @"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=492480832";
 #endif
     switch (alertType) {
         case ALERT_DEMO_VIDEO:
