@@ -113,6 +113,8 @@
 #endif
 #endif
     
+//    [iRate sharedInstance].previewMode = YES;
+    
     // do not display divider
 //    MGSplitViewDividerStyle newStyle = ((self.splitViewController.dividerStyle == MGSplitViewDividerStyleThin) ? MGSplitViewDividerStylePaneSplitter : MGSplitViewDividerStyleThin);
 //	[self.splitViewController setDividerStyle:newStyle animated:YES];

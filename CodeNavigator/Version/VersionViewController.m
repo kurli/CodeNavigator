@@ -10,7 +10,7 @@
 #import "Utils.h"
 #import "DisplayController.h"
 
-#define RELEASE_VERSION 2
+#define RELEASE_VERSION 3
 
 @interface VersionViewController ()
 
@@ -51,12 +51,12 @@
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.versionDetailView setText:@"New Features & updates:\n\n\
-     1. 28 themes are currently supported\n\
-     2. Performance improvement for highlight\n\
-     3. Show/Hide Line numbers\n\
-     4. Auto fold multi-line comments\n\
-     5. Remove animation in file browser\n\
-     7. Bug fix."];
+     1. 'Go' language is now supported.\n\
+     2. Async parse source code.\n\
+     3. Improved beautiful code viewer.\n\
+     4. Folder Tree View is now supported.\n\
+     5. UI/UE enhancement.\n\n\
+     More features will be comming soon. Enjoy it. :-)"];
     [self.versionDetailView setFont:[UIFont systemFontOfSize:16]];
 }
 
@@ -220,6 +220,9 @@
         // Init build parser
         [self initBuildInParser];
         
+        // Remove analyze file
+        [self removeAnalyzeDB];
+        
 #ifndef IPHONE_VERSION
         [self displayVersionDialog];
 #endif
@@ -254,7 +257,7 @@
     [self displayVersionDialog];
 #endif
     
-//    [self removeAnalyzeDB];
+    [self removeAnalyzeDB];
     
 //    [self createProjectFolder];
     

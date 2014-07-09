@@ -21,8 +21,8 @@
 		94103DF114D86F1300212EBB /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 94103DEF14D86F1300212EBB /* bookmark.png */; };
 		941656FF1515C3C200838005 /* GitLogViewCongroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 941656FD1515C3C200838005 /* GitLogViewCongroller.m */; };
 		941657001515C3C200838005 /* GitLogViewCongroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 941656FD1515C3C200838005 /* GitLogViewCongroller.m */; };
-		941657011515C3C200838005 /* GitLogViewCongroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941656FE1515C3C200838005 /* GitLogViewCongroller.xib */; };
-		941657021515C3C200838005 /* GitLogViewCongroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941656FE1515C3C200838005 /* GitLogViewCongroller.xib */; };
+		941657011515C3C200838005 /* GitLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941656FE1515C3C200838005 /* GitLogViewController.xib */; };
+		941657021515C3C200838005 /* GitLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941656FE1515C3C200838005 /* GitLogViewController.xib */; };
 		941657121516280200838005 /* GitLogTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941657111516280200838005 /* GitLogTableCell.xib */; };
 		941657131516280200838005 /* GitLogTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941657111516280200838005 /* GitLogTableCell.xib */; };
 		9417EB7814AE118000224D2A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9417EB7714AE118000224D2A /* iAd.framework */; };
@@ -714,7 +714,7 @@
 		94B1DCC5191F6D7F00909C3E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC271546F31700931747 /* SystemConfiguration.framework */; };
 		94B1DCC7191F6E8000909C3E /* GitLogViewCongroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 941656FD1515C3C200838005 /* GitLogViewCongroller.m */; };
 		94B1DCC8191F6E8700909C3E /* GitDiffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0E01528CEF300CBAE18 /* GitDiffViewController.m */; };
-		94B1DCC9191F6E9500909C3E /* GitLogViewCongroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941656FE1515C3C200838005 /* GitLogViewCongroller.xib */; };
+		94B1DCC9191F6E9500909C3E /* GitLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941656FE1515C3C200838005 /* GitLogViewController.xib */; };
 		94B1DCCA191F6E9E00909C3E /* GitLogTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941657111516280200838005 /* GitLogTableCell.xib */; };
 		94B1DCCB191F6EBB00909C3E /* GitDiffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940BE0E11528CEF300CBAE18 /* GitDiffViewController.xib */; };
 		94B1DCCC191F6EC500909C3E /* DiffFileListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0EE1528E64600CBAE18 /* DiffFileListController.m */; };
@@ -1105,7 +1105,7 @@
 		94103DEF14D86F1300212EBB /* bookmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookmark.png; sourceTree = "<group>"; };
 		941656FC1515C3C200838005 /* GitLogViewCongroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GitLogViewCongroller.h; path = CodeNavigator/Git/GitLogViewCongroller.h; sourceTree = "<group>"; };
 		941656FD1515C3C200838005 /* GitLogViewCongroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitLogViewCongroller.m; path = CodeNavigator/Git/GitLogViewCongroller.m; sourceTree = "<group>"; };
-		941656FE1515C3C200838005 /* GitLogViewCongroller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GitLogViewCongroller.xib; path = CodeNavigator/Git/GitLogViewCongroller.xib; sourceTree = "<group>"; };
+		941656FE1515C3C200838005 /* GitLogViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GitLogViewController.xib; path = CodeNavigator/Git/GitLogViewController.xib; sourceTree = "<group>"; };
 		941657111516280200838005 /* GitLogTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GitLogTableCell.xib; path = CodeNavigator/Git/GitLogTableCell.xib; sourceTree = "<group>"; };
 		9417EB7714AE118000224D2A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		9417EB7A14AE160C00224D2A /* BannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BannerViewController.h; path = Banner/BannerViewController.h; sourceTree = "<group>"; };
@@ -1831,7 +1831,6 @@
 				94AB105217550C5F00359AE8 /* HandleURLController */,
 				94AB106317563CDB00359AE8 /* ASIHTTPRequest */,
 				94AB1056175513D400359AE8 /* FileFormatResolver */,
-				94CB767F17E20662009807F9 /* FileListBrowser */,
 				948C7464180AE89800065E65 /* History */,
 				94785A56184B9EC00012988B /* WebView */,
 				94BA22AB18BE4121006CB7A8 /* DisplayController */,
@@ -1839,6 +1838,7 @@
 				946F856E18E841A000CBFA19 /* Theme */,
 				94B1DD16191F99B100909C3E /* FPPopover */,
 				94F7B90917F7482900A506EE /* UploadSelection */,
+				94CB767F17E20662009807F9 /* FileListBrowser */,
 				949CB5EA19630C0600A95AEC /* FileBrowserTreeView */,
 				9431D73E14910B3000B0900E /* CodeNavigator */,
 				9431D73714910B3000B0900E /* Frameworks */,
@@ -2603,7 +2603,7 @@
 			children = (
 				941656FC1515C3C200838005 /* GitLogViewCongroller.h */,
 				941656FD1515C3C200838005 /* GitLogViewCongroller.m */,
-				941656FE1515C3C200838005 /* GitLogViewCongroller.xib */,
+				941656FE1515C3C200838005 /* GitLogViewController.xib */,
 				94B1DD291921327200909C3E /* GitLogViewController-iPhone.xib */,
 				941657111516280200838005 /* GitLogTableCell.xib */,
 				940BE0DF1528CEF300CBAE18 /* GitDiffViewController.h */,
@@ -2896,7 +2896,7 @@
 				948C741E1807090C00065E65 /* icon-29@2.png in Resources */,
 				943486E2150A42A000370AE3 /* Default-Landscape~ipad.png in Resources */,
 				943486E3150A42A500370AE3 /* Default-Portrait~ipad.png in Resources */,
-				941657011515C3C200838005 /* GitLogViewCongroller.xib in Resources */,
+				941657011515C3C200838005 /* GitLogViewController.xib in Resources */,
 				941657121516280200838005 /* GitLogTableCell.xib in Resources */,
 				948C74001804460700065E65 /* seperate.png in Resources */,
 				940BE0E41528CEF300CBAE18 /* GitDiffViewController.xib in Resources */,
@@ -3001,7 +3001,7 @@
 				949DC2301583E8CF00385796 /* EntryHBg.png in Resources */,
 				949DC2311583E8CF00385796 /* ccFile.png in Resources */,
 				9445C8AF193CAF1C00924D41 /* Images.xcassets in Resources */,
-				94B1DCC9191F6E9500909C3E /* GitLogViewCongroller.xib in Resources */,
+				94B1DCC9191F6E9500909C3E /* GitLogViewController.xib in Resources */,
 				94B1DCF7191F70D000909C3E /* SelectGroupViewController.xib in Resources */,
 				949DC2321583E8CF00385796 /* cFile.png in Resources */,
 				94B1DCCA191F6E9E00909C3E /* GitLogTableCell.xib in Resources */,
@@ -3143,7 +3143,7 @@
 				945AA45F150926A1006729C8 /* Help.html in Resources */,
 				943486DF150A3D4000370AE3 /* Default-Portrait~ipad.png in Resources */,
 				943486E1150A3DA600370AE3 /* Default-Landscape~ipad.png in Resources */,
-				941657021515C3C200838005 /* GitLogViewCongroller.xib in Resources */,
+				941657021515C3C200838005 /* GitLogViewController.xib in Resources */,
 				941657131516280200838005 /* GitLogTableCell.xib in Resources */,
 				940BE0E51528CEF300CBAE18 /* GitDiffViewController.xib in Resources */,
 				940BE0F31528E64600CBAE18 /* DiffFileListController.xib in Resources */,
@@ -3982,7 +3982,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
@@ -4014,7 +4014,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
@@ -4085,7 +4085,7 @@
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DISTRIBUTION=1";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
