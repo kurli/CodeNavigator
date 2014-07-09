@@ -80,7 +80,6 @@
 #ifndef IPHONE_VERSION
     //[self.window addSubview:self.splitViewController.view];
     [self.window setRootViewController:self.splitViewController];
-    //self.window.rootViewController = self.splitViewController;
     [self.window makeKeyAndVisible];
 #else
     self.window.rootViewController = self.masterNavigationController;

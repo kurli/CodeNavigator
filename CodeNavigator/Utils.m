@@ -196,7 +196,7 @@ static Utils *static_utils;
         }
         if (i == [components count] - 1)
         {
-            NSLog(@"Project folder analyze failed");
+//            NSLog(@"Project folder analyze failed");
             return nil;
         }
         projectFolder = [projectFolder stringByAppendingPathComponent:[components objectAtIndex:i+1]];

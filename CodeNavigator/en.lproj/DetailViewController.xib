@@ -34,7 +34,7 @@
             <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ ∰ " textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="391">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="391">
                     <rect key="frame" x="18" y="359" width="986" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
@@ -43,20 +43,22 @@
                     <nil key="highlightedColor"/>
                     <color key="shadowColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                 </label>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="hwf-mb-ocV">
+                <segmentedControl clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="hwf-mb-ocV">
                     <rect key="frame" x="34" y="274" width="123" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <segments>
                         <segment title="Up"/>
                         <segment title="Down"/>
                     </segments>
+                    <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <connections>
                         <action selector="webViewSegmentChanged:" destination="-1" eventType="valueChanged" id="fBg-UV-m92"/>
                     </connections>
                 </segmentedControl>
                 <webView multipleTouchEnabled="YES" contentMode="scaleAspectFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" id="378">
-                    <rect key="frame" x="0.0" y="757" width="708" height="10"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <rect key="frame" x="0.0" y="757.00000003483149" width="708" height="10"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <dataDetectorType key="dataDetectorTypes"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="383"/>
@@ -72,8 +74,9 @@
                     </connections>
                 </webView>
                 <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="217" userLabel="Bottom Toolbar">
-                    <rect key="frame" x="0.0" y="724" width="700" height="44"/>
+                    <rect key="frame" x="-1" y="724" width="704" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <items>
                         <barButtonItem title="Line" id="316">
                             <connections>
@@ -91,7 +94,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="429"/>
                         <barButtonItem style="plain" id="407">
                             <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" id="406">
-                                <rect key="frame" x="222" y="7" width="199" height="30"/>
+                                <rect key="frame" x="252" y="7" width="199" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Show Comments"/>
@@ -124,6 +127,7 @@
                 <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="252" userLabel="Top Toolbar">
                     <rect key="frame" x="0.0" y="0.0" width="659" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <items>
                         <barButtonItem title="history" style="plain" id="272">
                             <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" momentary="YES" id="271">

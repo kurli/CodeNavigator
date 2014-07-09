@@ -29,7 +29,8 @@
                 </tableView>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="7">
                     <rect key="frame" x="0.0" y="744" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <items>
                         <barButtonItem style="plain" systemItem="add" id="8">
                             <connections>
@@ -67,7 +68,6 @@
                             </connections>
                         </barButtonItem>
                     </items>
-                    <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </toolbar>
                 <searchBar hidden="YES" contentMode="redraw" placeholder="Search files" id="rFg-ob-xKa">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -78,7 +78,7 @@
                     </connections>
                 </searchBar>
             </subviews>
-            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
             <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

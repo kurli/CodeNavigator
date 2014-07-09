@@ -157,6 +157,10 @@
     [self.fileSearchBar setSpellCheckingType:UITextSpellCheckingTypeNo];
     [self.fileSearchBar setAutocorrectionType:UITextAutocorrectionTypeNo];
     [self adjustViewContent];
+    if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 
 -(void) adjustViewContent {
@@ -196,7 +200,6 @@
         // In iOS 7 the status bar is transparent, so don't adjust for it.
         if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
         {
-            self.edgesForExtendedLayout = UIRectEdgeNone;
             CGRect rect = self.tableView.frame;
             rect.origin.y = self.fileSearchBar.frame.origin.y + self.fileSearchBar.frame.size.height;
             rect.size.height -= rect.origin.y;
@@ -206,7 +209,6 @@
         if ([self.fileSearchBar isHidden] == YES) {
             return;
         }
-        self.edgesForExtendedLayout = UIRectEdgeNone;
         [self.fileSearchBar setHidden:YES];
         [self.analyzeButton setEnabled:NO];
         [self.commentButton setEnabled:NO];
@@ -240,6 +242,14 @@
 {
     // Return YES for supported orientations
     return YES;
+}
+
+- (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+        [self showRightNavigationBar:YES];
+    } else {
+        [self showRightNavigationBar:NO];
+    }
 }
 
 #pragma mark tableView delegate
@@ -521,7 +531,19 @@
     }
     
     // Change MasterView size
-    CGSize size = [Utils getInstance].splitViewController.view.frame.size;
+    CGRect bounds = [[UIScreen mainScreen] bounds];
+    
+	// Correct for orientation.
+    if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+        
+    } else {
+        if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
+            NSInteger tmp = bounds.size.height;
+            bounds.size.height = bounds.size.width;
+            bounds.size.width = tmp;
+        }
+    }
+    CGSize size = bounds.size;
     size.width = size.width / 4;
     [[Utils getInstance].splitViewController setSplitPosition:size.width];
     

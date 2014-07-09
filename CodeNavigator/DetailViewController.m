@@ -237,12 +237,12 @@
        [[Utils getInstance].splitViewController isShowingMaster] == YES) {
         [self.titleTextField setTitle:@""];
     } else {
-        if([self.titleTextField.title length] == 0) {
+//        if([self.titleTextField.title length] == 0) {
             NSString* tmp = [self getCurrentDisplayFile];
             tmp = [tmp lastPathComponent];
             tmp = [[Utils getInstance] getSourceFileByDisplayFile:tmp];
             [self.titleTextField setTitle:tmp];
-        }
+//        }
     }
 #endif
 }
@@ -432,17 +432,16 @@
 - (void)setTitle:(NSString *)title andPath:(NSString*)path andContent:(NSString *)content andBaseUrl:(NSString *)baseURL
 {
     int location = [self getCurrentScrollLocation];
-    [self.titleTextField setTitle:title];
     [self.historyController updateCurrentScrollLocation:location];
     [self.historyController pushUrl:path];
     [self displayHTMLString:content andBaseURL:baseURL];
+    [self adjustTitle];
     content = nil;
 }
 
 -(void) displayDocTypeFile:(NSString *)path
 {
     int location = [self getCurrentScrollLocation];
-    [self.titleTextField setTitle:[path lastPathComponent]];
     [self.historyController updateCurrentScrollLocation:location];
     [self.historyController pushUrl:path];
     
@@ -450,6 +449,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.activeWebView setScalesPageToFit:YES];
     [self.activeWebView loadRequest:request];
+    [self adjustTitle];
 }
 
 -(void) displayHTMLString:(NSString *)content andBaseURL:(NSString *)baseURLStr
@@ -479,7 +479,6 @@
     
     NSString* displayPath;
     BOOL isFolder = NO;
-    NSString* title = [[filePath pathComponents] lastObject];
     
     //check whether file exist
     if (![[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:&isFolder])
@@ -494,13 +493,13 @@
     {
         // save current display status to history stack
         int location = [self getCurrentScrollLocation];
-        [self.titleTextField setTitle:title];        
         [self.historyController updateCurrentScrollLocation:location];
         
         NSString* currentDisplayFile = [self getCurrentDisplayFile];
         
         displayPath = [[Utils getInstance] getDisplayPath:filePath];
         [self.historyController pushUrl:displayPath];
+        [self adjustTitle];
         
         if (currentDisplayFile == nil || !([currentDisplayFile compare:displayPath] == NSOrderedSame))
         {
@@ -617,11 +616,7 @@
             }
         }
     }
-
-    NSArray* array = [url pathComponents];
-    NSString* title = [array lastObject];
-    title = [[Utils getInstance] getSourceFileByDisplayFile:title];
-    [self.titleTextField setTitle:title];
+    [self adjustTitle];
     
 #ifdef IPHONE_VERSION
     MasterViewController* masterViewController = (MasterViewController*)[Utils getInstance].masterViewController.topViewController;
@@ -731,11 +726,12 @@
 {
     self.activeWebView = self.webView;
     self.historyController = self.upHistoryController;
-    NSString* path = [self.upHistoryController pickTopLevelUrl];
-    NSString* currentDisplayFile = [self.upHistoryController getUrlFromHistoryFormat:path];
-    NSString* title = [currentDisplayFile lastPathComponent];
-    title = [[Utils getInstance] getSourceFileByDisplayFile:title];
-    self.titleTextField.title = title;
+//    NSString* path = [self.upHistoryController pickTopLevelUrl];
+//    NSString* currentDisplayFile = [self.upHistoryController getUrlFromHistoryFormat:path];
+//    NSString* title = [currentDisplayFile lastPathComponent];
+//    title = [[Utils getInstance] getSourceFileByDisplayFile:title];
+//    self.titleTextField.title = title;
+    [self adjustTitle];
     
     CGRect rect = self.activeMark.frame;
     rect.origin.x = 5;
@@ -748,11 +744,12 @@
 {
     self.activeWebView = self.secondWebView;
     self.historyController = self.downHistoryController;
-    NSString* path = [self.downHistoryController pickTopLevelUrl];
-    NSString* currentDisplayFile = [self.upHistoryController getUrlFromHistoryFormat:path];
-    NSString* title = [currentDisplayFile lastPathComponent];
-    title = [[Utils getInstance] getSourceFileByDisplayFile:title];
-    self.titleTextField.title = title;
+//    NSString* path = [self.downHistoryController pickTopLevelUrl];
+//    NSString* currentDisplayFile = [self.upHistoryController getUrlFromHistoryFormat:path];
+//    NSString* title = [currentDisplayFile lastPathComponent];
+//    title = [[Utils getInstance] getSourceFileByDisplayFile:title];
+//    self.titleTextField.title = title;
+    [self adjustTitle];
     
     CGRect rect = self.activeMark.frame;
     rect.origin.x = 5;
@@ -1281,16 +1278,16 @@
 {
     CGRect rect = self.webView.frame;
     rect.size.height = self.view.frame.size.height/2;
-    rect.size.height -= self.webViewSegmentController.frame.size.height/2;
+    rect.size.height -= (self.webViewSegmentController.frame.size.height/2);
     [self.webView setFrame:rect];
     CGRect sRect = self.webViewSegmentController.frame;
-    sRect.origin.x = 10;
+    sRect.origin.x = 5;
     sRect.origin.y = rect.origin.y + rect.size.height;
     [self.webViewSegmentController setFrame:sRect];
     rect.origin.y = rect.size.height + self.webViewSegmentController.frame.size.height;
     [self.secondWebView setFrame:rect];
     rect = self.divider.frame;
-    rect.origin.y = self.webViewSegmentController.frame.origin.y;
+    rect.origin.y = self.webViewSegmentController.frame.origin.y ;
     rect.origin.x = self.webViewSegmentController.frame.origin.x+self.webViewSegmentController.frame.size.width;
     [self.divider setFrame:rect];
     
@@ -1326,7 +1323,7 @@
     if (isVirtualizeDisplayed == YES)
         return;
     // change bar button item
-    if (self.secondWebView.frame.size.height == 10)
+    if (self.secondWebView.frame.size.height <= 10)
     {
         //[self.splitWebViewButton setTitle:@"口"];
         [self.splitWebViewButton setImage:[UIImage imageNamed:@"screen.png"]];
@@ -1339,7 +1336,7 @@
     [UIView beginAnimations:@"WebViewAnimate"context:nil];
     [UIView setAnimationDuration:0.30];
     [UIView setAnimationDelegate:self];
-    if (self.secondWebView.frame.size.height == 10)
+    if (self.secondWebView.frame.size.height <= 10)
     {
         // Split webview
         [self splitWebView];
