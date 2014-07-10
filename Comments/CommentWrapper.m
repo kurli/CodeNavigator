@@ -138,6 +138,10 @@
 {
     BOOL needChangeProjFile = NO;
 
+    if (group == nil) {
+        group = @"";
+    }
+    
     CommentItem* newItem = [[CommentItem alloc] init];
     newItem.line = line;
     newItem.comment = comment;
@@ -259,6 +263,9 @@
         [dictionary setObject:[NSString stringWithFormat:@"%d", item.time] forKey:COMMENT_TIME];
         [dictionary setObject:item.comment forKey:COMMENT_COMMENT];
         [dictionary setObject:[NSString stringWithFormat:@"%ld", (long)item.line] forKey:COMMENT_LINE];
+        if (item.group == nil) {
+            item.group = @"";
+        }
         [dictionary setObject:item.group forKey:COMMENT_GROUP];
         [mutableArray addObject:dictionary];
     }

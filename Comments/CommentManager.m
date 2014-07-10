@@ -40,6 +40,9 @@
         NSArray* array = [groupsStr componentsSeparatedByString:@"groups:"];
         if ([array count] == 2) {
             groupsStr = [array objectAtIndex:1];
+            if ([groupsStr length] == 0) {
+                return nil;
+            }
             NSArray* array = [groupsStr componentsSeparatedByString:@";"];
             return array;
         }
@@ -63,9 +66,13 @@
     if ([gArray count] != 0) {
         currentMode = COMMENT_MANAGER_GROUP;
         NSMutableArray* mulArray = [[NSMutableArray alloc] init];
-        [mulArray addObject:@"None Grouped"];
+        [mulArray addObject:@"All"];
         for (int i=0; i<[gArray count]; i++) {
-            [mulArray addObject:[gArray objectAtIndex:i]];
+            NSString* groupItem = [gArray objectAtIndex:i];
+            if ([groupItem length] == 0) {
+                continue;
+            }
+            [mulArray addObject:groupItem];
         }
         self.groupsArray = mulArray;
         return;
@@ -287,7 +294,7 @@
 {
     CommentWrapper* commentWrapper = [[CommentWrapper alloc] init];
     [commentWrapper readFromFile:path];
-    if ([currentGroup isEqualToString:@"None Grouped"]) {
+    if ([currentGroup isEqualToString:@"All"]) {
         self.commentsArray = [commentWrapper getCommentsByGroup:nil];
     } else {
         self.commentsArray = [commentWrapper getCommentsByGroup:currentGroup];
@@ -320,7 +327,7 @@
         if (isExist) {
             CommentWrapper* wrapper = [[CommentWrapper alloc] init];
             [wrapper readFromFile:path];
-            if ([group isEqualToString:@"None Grouped"] || [wrapper isCommentExistsByGroup:group]) {
+            if ([group isEqualToString:@"All"] || [wrapper isCommentExistsByGroup:group]) {
                 [resultFiles addObject:[self.fileArray objectAtIndex:i]];
             }
             [result appendFormat:@"%@\n", [self.fileArray objectAtIndex:i]];
