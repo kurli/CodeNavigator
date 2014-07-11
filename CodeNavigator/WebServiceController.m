@@ -211,7 +211,7 @@
         int index = 0;
         for (; index < [components count]; index++)
         {
-            if ([((NSString*)[components objectAtIndex:index]) compare:@"Projects"] == NSOrderedSame )
+            if ([((NSString*)[components objectAtIndex:index]) compare:@".Projects"] == NSOrderedSame )
             {
                 break;
             }
@@ -267,7 +267,7 @@
     int index = 0;
     for (; index < [components count]; index++)
     {
-        if ([((NSString*)[components objectAtIndex:index]) compare:@"Projects"] == NSOrderedSame )
+        if ([((NSString*)[components objectAtIndex:index]) compare:@".Projects"] == NSOrderedSame )
         {
             break;
         }

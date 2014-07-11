@@ -668,7 +668,7 @@
 {
     [self.projectListPopoverController dismissPopoverAnimated:YES];
     
-    NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+    NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
     [self setCurrentProjectFolder:[projectFolder stringByAppendingPathComponent:project]];
     
     [fileManagerController setCurrentProjectFolder:currentProjectFolder];

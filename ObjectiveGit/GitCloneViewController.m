@@ -89,7 +89,7 @@
     NSError* error;
     
     BOOL isDir;
-    NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+    NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
     NSString* gitFolder = projectFolder;
     gitFolder = [gitFolder stringByAppendingPathComponent:projectName];
     //"http://github.com/WebKitNix/nix-scripts.git"

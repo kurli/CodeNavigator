@@ -76,7 +76,7 @@
     NSString *projectFolder;
     if (nil == self.currentLocation)
     {
-        projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+        projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
         self.currentLocation = [NSString stringWithString:projectFolder];
     }
     else

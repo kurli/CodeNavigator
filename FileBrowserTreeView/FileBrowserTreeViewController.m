@@ -287,7 +287,7 @@
     
     // Parse path
     NSString* parentPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-    parentPath = [parentPath stringByAppendingPathComponent:@"Projects"];
+    parentPath = [parentPath stringByAppendingPathComponent:@".Projects"];
     NSString* pathFromProject = [[Utils getInstance] getPathFromProject:currentPath];
     NSArray* array = [pathFromProject pathComponents];
     if ([array count] == 0) {

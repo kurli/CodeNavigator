@@ -40,7 +40,7 @@
             NSString* projectFolder = @"";
             NSURL* url = [[NSURL alloc] initWithString:self.filePath];
             NSData* data = [[NSData alloc] initWithContentsOfURL:url];
-            NSString* path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+            NSString* path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
             path = [path stringByAppendingPathComponent:[self.filePath lastPathComponent]];
             [data writeToFile:path atomically:YES];
             @try
@@ -54,7 +54,7 @@
                 NSError* error;
                 
                 //Create Project Folder
-                projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+                projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
 
                 NSString* _tmp = [path lastPathComponent];
                 _tmp = [_tmp stringByReplacingOccurrencesOfString:@" " withString:@"_"];

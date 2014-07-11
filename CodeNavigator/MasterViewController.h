@@ -95,5 +95,7 @@
 
 - (void) downloadZipFromGitHub;
 
+- (void) uploadFromITunes;
+
 @end
 

@@ -90,7 +90,7 @@
 
 - (IBAction)updateButtonClicked:(id)sender {
     self.log.text = @"";
-    MBProgressHUD* hud = hud = [[MBProgressHUD alloc] initWithView:self.view];
+    MBProgressHUD* hud = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:hud];
     [hud showWhileExecuting:@selector(updateTask) onTarget:self withObject:nil animated:YES];
 }

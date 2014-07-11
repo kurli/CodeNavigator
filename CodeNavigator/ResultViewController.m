@@ -134,7 +134,7 @@
     }
     int line = [[components objectAtIndex:1] intValue];
 
-    NSString* filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+    NSString* filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
     filePath = [filePath stringByAppendingPathComponent:((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:currentFileIndex]).fileName];
     NSString* proj = [[Utils getInstance] getProjectFolder:filePath];
     
@@ -270,7 +270,7 @@
         if ([components count] < 3)
             return;
         NSString* line = [components objectAtIndex:1];
-        NSString* filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+        NSString* filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
         filePath = [filePath stringByAppendingPathComponent:((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:currentFileIndex]).fileName];
         if ([[Utils getInstance] getSearchType] != FIND_CALLED_FUNCTIONS)
         [[Utils getInstance].detailViewController gotoFile:filePath andLine:line andKeyword:[Utils getInstance].searchKeyword];

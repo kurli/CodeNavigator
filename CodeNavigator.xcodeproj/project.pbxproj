@@ -621,6 +621,8 @@
 		94A3B09B15447C7500C8E132 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A5184A152DF30A0062DA65 /* Security.framework */; };
 		94A404AC158A299C0084F645 /* ManuallyParserViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A404AB158A299C0084F645 /* ManuallyParserViewController-iPhone.xib */; };
 		94A404CF158A635C0084F645 /* CodeNavigatoriPhone-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94A404CE158A635C0084F645 /* CodeNavigatoriPhone-info.plist */; };
+		94A430E9196EF328003497CB /* UploadFromITunesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A430E7196EF328003497CB /* UploadFromITunesViewController.m */; };
+		94A430EA196EF328003497CB /* UploadFromITunesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A430E8196EF328003497CB /* UploadFromITunesViewController.xib */; };
 		94A5079314F6AA1C00587A47 /* virbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5079214F6AA1C00587A47 /* virbackground.png */; };
 		94A5079414F6AA1C00587A47 /* virbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5079214F6AA1C00587A47 /* virbackground.png */; };
 		94A51848152DF2AC0062DA65 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A51847152DF2AC0062DA65 /* DropboxSDK.framework */; };
@@ -1493,6 +1495,9 @@
 		94A404AB158A299C0084F645 /* ManuallyParserViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "ManuallyParserViewController-iPhone.xib"; path = "ManuallyParser/ManuallyParserViewController-iPhone.xib"; sourceTree = "<group>"; };
 		94A404B9158A56B50084F645 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		94A404CE158A635C0084F645 /* CodeNavigatoriPhone-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CodeNavigatoriPhone-info.plist"; sourceTree = SOURCE_ROOT; };
+		94A430E6196EF328003497CB /* UploadFromITunesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadFromITunesViewController.h; path = UploadFromITunes/UploadFromITunesViewController.h; sourceTree = "<group>"; };
+		94A430E7196EF328003497CB /* UploadFromITunesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadFromITunesViewController.m; path = UploadFromITunes/UploadFromITunesViewController.m; sourceTree = "<group>"; };
+		94A430E8196EF328003497CB /* UploadFromITunesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UploadFromITunesViewController.xib; path = UploadFromITunes/UploadFromITunesViewController.xib; sourceTree = "<group>"; };
 		94A5079214F6AA1C00587A47 /* virbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = virbackground.png; sourceTree = "<group>"; };
 		94A51847152DF2AC0062DA65 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 		94A5184A152DF30A0062DA65 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -1840,6 +1845,7 @@
 				94F7B90917F7482900A506EE /* UploadSelection */,
 				94CB767F17E20662009807F9 /* FileListBrowser */,
 				949CB5EA19630C0600A95AEC /* FileBrowserTreeView */,
+				94A430E5196EF2D1003497CB /* UploadFromITunes */,
 				9431D73E14910B3000B0900E /* CodeNavigator */,
 				9431D73714910B3000B0900E /* Frameworks */,
 				9431D73514910B3000B0900E /* Products */,
@@ -2460,6 +2466,16 @@
 			name = FileBrowserTreeView;
 			sourceTree = "<group>";
 		};
+		94A430E5196EF2D1003497CB /* UploadFromITunes */ = {
+			isa = PBXGroup;
+			children = (
+				94A430E6196EF328003497CB /* UploadFromITunesViewController.h */,
+				94A430E7196EF328003497CB /* UploadFromITunesViewController.m */,
+				94A430E8196EF328003497CB /* UploadFromITunesViewController.xib */,
+			);
+			name = UploadFromITunes;
+			sourceTree = "<group>";
+		};
 		94A5184C152DF5150062DA65 /* DropBox */ = {
 			isa = PBXGroup;
 			children = (
@@ -2891,6 +2907,7 @@
 				945AA40E1508DE9C006729C8 /* NewEntry.png in Resources */,
 				945AA44B1508E3CA006729C8 /* max.png in Resources */,
 				948C74211807091700065E65 /* Icon-50.png in Resources */,
+				94A430EA196EF328003497CB /* UploadFromITunesViewController.xib in Resources */,
 				9421EACA196853D100EFD7E2 /* treeView.png in Resources */,
 				945AA45E150926A1006729C8 /* Help.html in Resources */,
 				948C741E1807090C00065E65 /* icon-29@2.png in Resources */,
@@ -3342,6 +3359,7 @@
 				9478596C162C5A08006E4575 /* read.c in Sources */,
 				94785971162C5A08006E4575 /* rexx.c in Sources */,
 				94785972162C5A08006E4575 /* routines.c in Sources */,
+				94A430E9196EF328003497CB /* UploadFromITunesViewController.m in Sources */,
 				94785973162C5A08006E4575 /* ruby.c in Sources */,
 				949CB5EE19630C6500A95AEC /* FileBrowserTreeViewController.m in Sources */,
 				94B1DD2D192259FD00909C3E /* DisplayModeController.m in Sources */,

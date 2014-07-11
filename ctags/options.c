@@ -40,7 +40,7 @@
 #define CTAGS_ENVIRONMENT  "CTAGS"
 #define ETAGS_ENVIRONMENT  "ETAGS"
 
-#define CTAGS_FILE  "/Users/lgz_software/Library/Application Support/iPhone Simulator/5.1/Applications/4346DB17-91B5-4775-8A5C-D3C6AA0AE2E4/Documents/Projects/linux_0.1/tags"
+#define CTAGS_FILE  "/Users/lgz_software/Library/Application Support/iPhone Simulator/5.1/Applications/4346DB17-91B5-4775-8A5C-D3C6AA0AE2E4/Documents/.Projects/linux_0.1/tags"
 #define ETAGS_FILE  "TAGS"
 
 #ifndef ETAGS

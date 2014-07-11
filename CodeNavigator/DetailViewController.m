@@ -208,7 +208,7 @@
     // Only show help html in the first time
     if (isFirstDisplay) {
         NSString* prevHistory = [upHistoryController pickTopLevelUrl];
-        NSString* help = [NSHomeDirectory() stringByAppendingString:@"/Documents/Projects/Help.html"];
+        NSString* help = [NSHomeDirectory() stringByAppendingString:@"/Documents/.Projects/Help.html"];
         NSError *error;
         NSStringEncoding encoding = NSUTF8StringEncoding;
         NSString* html = [NSString stringWithContentsOfFile: help usedEncoding:&encoding error: &error];

@@ -37,7 +37,7 @@
         int i = 0;
         for (; i< [components count]; i++)
         {
-            if ( [(NSString*)[components objectAtIndex:i] compare:@"Projects"] == NSOrderedSame )
+            if ( [(NSString*)[components objectAtIndex:i] compare:@".Projects"] == NSOrderedSame )
             {
                 break;
             }

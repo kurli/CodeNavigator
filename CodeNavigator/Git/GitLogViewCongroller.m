@@ -162,12 +162,15 @@
     NSError *error = nil;
     NSURL *url = [NSURL fileURLWithPath:gitFolder];
     repo = [GTRepository repositoryWithURL:url error:&error];
+    if (repo == nil) {
+        return;
+    }
     
     // enumlate remote names
     //NSArray* array = [repo remoteNames];
     
     //create repository
-    //    NSURL *newRepoURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingFormat:@"/Documents/Projects/objgitsample.git"]];
+    //    NSURL *newRepoURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingFormat:@"/Documents/.Projects/objgitsample.git"]];
     //    [GTRepository initializeEmptyRepositoryAtURL:newRepoURL error:&error];
     //    GTRepository *newRepo = [GTRepository repositoryWithURL:newRepoURL error:&error];
     //    newRepo = nil;

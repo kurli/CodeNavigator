@@ -23,6 +23,7 @@
 #import "FileListBrowserController.h"
 #import "UploadSelectionViewController.h"
 #import "DisplayController.h"
+#import "UploadFromITunesViewController.h"
 
 @interface MasterViewController ()
 
@@ -455,7 +456,12 @@
     }
 
     self.fileListBrowserController.currentLocation = folderPath;
-    self.title = [folderPath lastPathComponent];
+    NSString* title_ = [folderPath lastPathComponent];
+    if ([title_ isEqualToString:@".Projects"] == YES) {
+        self.title = @"Projects";
+    } else {
+        self.title = [folderPath lastPathComponent];
+    }
     [self reloadData];
     
     // Select file
@@ -979,6 +985,14 @@
 -(void) downloadZipFromGitHub {
     [self releaseAllPopover];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.github.com"]];
+}
+
+-(void) uploadFromITunes {
+    [self.popOverController dismissPopoverAnimated:YES];
+    
+    UploadFromITunesViewController* controller = [[UploadFromITunesViewController alloc] init];
+    controller.modalPresentationStyle = UIModalPresentationFormSheet;
+    [[Utils getInstance].splitViewController presentViewController:controller animated:YES completion:nil];
 }
 
 #pragma FileBrowserTreeViewDelegate

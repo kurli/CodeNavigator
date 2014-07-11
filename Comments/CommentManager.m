@@ -87,7 +87,7 @@
         }
         NSString* path = NSHomeDirectory();
         path = [path stringByAppendingPathComponent:@"Documents"];
-        path = [path stringByAppendingPathComponent:@"Projects"];
+        path = [path stringByAppendingPathComponent:@".Projects"];
         path = [path stringByAppendingPathComponent:[self.fileArray objectAtIndex:i]];
         BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:path];
         if (isExist) {
@@ -218,7 +218,7 @@
     if (currentMode == COMMENT_MANAGER_FILE) {
         NSString* path = NSHomeDirectory();
         path = [path stringByAppendingPathComponent:@"Documents"];
-        path = [path stringByAppendingPathComponent:@"Projects"];
+        path = [path stringByAppendingPathComponent:@".Projects"];
         path = [path stringByAppendingPathComponent:[fileArray objectAtIndex:indexPath.row]];
 #ifdef IPHONE_VERSION
         self.commentManager = [[CommentManager alloc] initWithNibName:@"CommentManager-iPhone" bundle:nil];
@@ -321,7 +321,7 @@
         }
         NSString* path = NSHomeDirectory();
         path = [path stringByAppendingPathComponent:@"Documents"];
-        path = [path stringByAppendingPathComponent:@"Projects"];
+        path = [path stringByAppendingPathComponent:@".Projects"];
         path = [path stringByAppendingPathComponent:[self.fileArray objectAtIndex:i]];
         BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:path];
         if (isExist) {

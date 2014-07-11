@@ -1327,7 +1327,7 @@
         tmp = [tmpArray2 objectAtIndex:1];
         if (!(tmp == nil || [tmp length] == 0))
         {
-            tmp = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/Projects"];
+            tmp = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.Projects"];
             tmp = [tmp stringByAppendingPathComponent:[tmpArray2 objectAtIndex:1]];
             [entry setFilePath:tmp];
         }

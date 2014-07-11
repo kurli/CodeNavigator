@@ -275,7 +275,7 @@
     }
 #endif
 
-    NSString* localPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+    NSString* localPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
     localPath = [localPath stringByAppendingPathComponent:item.path];
     localPath = [localPath stringByAppendingPathComponent:item.fileName];
     NSString* remotePath = [item.path stringByAppendingPathComponent:item.fileName];
@@ -294,7 +294,7 @@
 //    if (item2.fileName == nil) {
 //        return YES;
 //    }
-//    NSString* localPath2 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+//    NSString* localPath2 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
 //    localPath2 = [localPath2 stringByAppendingPathComponent:item2.path];
 //    localPath2 = [localPath2 stringByAppendingPathComponent:item2.fileName];
 //    NSString* remotePath2 = [item2.path stringByAppendingPathComponent:item2.fileName];
@@ -611,7 +611,7 @@
         return;
     }
     
-    NSString* localPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+    NSString* localPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
     localPath = [localPath stringByAppendingFormat:@"/%@", [array objectAtIndex:1]];
 
     NSString* databaseFile = [localPath stringByAppendingPathComponent:@"db_files.lgz_proj_files"];

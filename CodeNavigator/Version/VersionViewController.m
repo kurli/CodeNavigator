@@ -61,7 +61,7 @@
 }
 
 -(void) createProjectFolder {
-    NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+    NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
     BOOL isFolder = NO;
     BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:projectFolder isDirectory:&isFolder];
     NSError *error;
@@ -82,7 +82,7 @@
     BOOL isExist;
     BOOL isFolder;
     // copy demo
-    NSString* demoFolder = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/Projects/linux_0.1/"];
+    NSString* demoFolder = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.Projects/linux_0.1/"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:demoFolder isDirectory:&isFolder];
     NSString* demoBundle = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/linux_0.1"];
     if (isExist == NO || (isExist == YES && isFolder == NO))
@@ -148,7 +148,7 @@
     NSError* error;
     BOOL isFolder;
     //for version 1_3 we need to delete all project files
-    NSString* projectsFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+    NSString* projectsFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
     NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:projectsFolder error:&error];
     for (int i=0; i<[contents count]; i++)
     {
@@ -179,6 +179,16 @@
     [displayController removeAllDisplayFiles];
 }
 
+-(void) renameProjectsFolderIfNeeded {
+    BOOL isExist = NO;
+    NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:projectFolder];
+    if (isExist) {
+        NSString* dotProjectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
+        [[NSFileManager defaultManager] moveItemAtPath:projectFolder toPath:dotProjectFolder error:nil];
+    }
+}
+
 -(void) checkVersion {
     NSError* error;
     BOOL isExist = false;
@@ -186,6 +196,9 @@
     // 1: html format changed
     // 2: cscope file content changed
     // 3: Added new parser config json file
+    
+    // Check Projects folder, need rename as .Projects
+    [self renameProjectsFolderIfNeeded];
     
     // Create .settings folder
     [self createSettingFolder];

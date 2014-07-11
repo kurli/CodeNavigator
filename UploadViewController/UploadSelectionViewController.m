@@ -80,6 +80,10 @@
             [masterViewController downloadZipFromGitHub];
             [[Utils getInstance] addGAEvent:@"Add" andAction:@"GitHubZip" andLabel:nil andValue:nil];
             break;
+        case 4:
+            [masterViewController uploadFromITunes];
+            [[Utils getInstance] addGAEvent:@"Add" andAction:@"iTunes Transfer" andLabel:nil andValue:nil];
+            break;
 #endif
         default:
             break;
@@ -90,7 +94,7 @@
 #ifdef IPHONE_VERSION
     return 3;
 #else
-    return 4;
+    return 5;
 #endif
 }
 
@@ -116,8 +120,10 @@
     } else if (indexPath.row == 2) {
         //cell.imageView.image = [UIImage imageNamed:@"share.png"];
         cell.textLabel.text = @"Dropbox";
-    } else {
+    } else if (indexPath.row == 3) {
         cell.textLabel.text = @"Download ZIP from GitHub";
+    } else if (indexPath.row == 4) {
+        cell.textLabel.text = @"iTunes Transfer";
     }
 #endif
     return cell;
@@ -132,7 +138,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Sync your source code with";
+    return @"Sync your project with:";
 }
 
 

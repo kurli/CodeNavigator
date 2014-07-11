@@ -189,12 +189,12 @@ static Utils *static_utils;
         for (i = 0; i<[components count]; i++)
         {
             projectFolder = [projectFolder stringByAppendingPathComponent:[components objectAtIndex:i]];
-            if ([(NSString*)[components objectAtIndex:i] compare:@"Projects"] == NSOrderedSame)
+            if ([(NSString*)[components objectAtIndex:i] compare:@".Projects"] == NSOrderedSame)
                 break;
             if ([(NSString*)[components objectAtIndex:i] compare:DISPLAY_FOLDER_PATH] == NSOrderedSame)
                 break;
         }
-        if (i == [components count] - 1)
+        if (i >= [components count] - 1)
         {
 //            NSLog(@"Project folder analyze failed");
             return nil;
@@ -229,7 +229,7 @@ static Utils *static_utils;
         int i = 0;
         for (; i< [components count]; i++)
         {
-            if ( [(NSString*)[components objectAtIndex:i] compare:@"Projects"] == NSOrderedSame )
+            if ( [(NSString*)[components objectAtIndex:i] compare:@".Projects"] == NSOrderedSame )
             {
                 break;
             }
@@ -749,7 +749,7 @@ static Utils *static_utils;
         if ([components count] < 3)
             return NO;
         NSString* line = [components objectAtIndex:1];
-        NSString* filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+        NSString* filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
         filePath = [filePath stringByAppendingPathComponent:((ResultFile*)[_resultFileList objectAtIndex:0]).fileName];
         dispatch_async(dispatch_get_main_queue(), ^{
             if (searchType != FIND_CALLED_FUNCTIONS)
@@ -956,7 +956,7 @@ static Utils *static_utils;
                 if ([components count] < 3)
                     return;
                 NSString* line = [components objectAtIndex:1];
-                NSString* filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+                NSString* filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
                 filePath = [filePath stringByAppendingPathComponent:((ResultFile*)[_resultFileList objectAtIndex:0]).fileName];
                 NSString *proj = [self getProjectFolder:filePath];
                 if (searchType != FIND_CALLED_FUNCTIONS && searchType != FIND_F_CALL_THIS_F)

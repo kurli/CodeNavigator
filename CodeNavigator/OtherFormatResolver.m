@@ -20,7 +20,7 @@
     NSURL* url = [[NSURL alloc] initWithString:self.filePath];
     NSData* data = [[NSData alloc] initWithContentsOfURL:url];
     
-    NSString* path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+    NSString* path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
     path = [path stringByAppendingPathComponent:@"MyProject"];
     
     NSError* error;

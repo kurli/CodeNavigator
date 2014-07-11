@@ -786,7 +786,7 @@ extern tagResult tagsClose (tagFile *const file)
 
 #ifdef READTAGS_MAIN
 
-static const char *TagFileName = "/Users/lgz_software/Library/Application Support/iPhone Simulator/5.1/Applications/4346DB17-91B5-4775-8A5C-D3C6AA0AE2E4/Documents/Projects/linux_0.1/tags";
+static const char *TagFileName = "/Users/lgz_software/Library/Application Support/iPhone Simulator/5.1/Applications/4346DB17-91B5-4775-8A5C-D3C6AA0AE2E4/Documents/.Projects/linux_0.1/tags";
 static const char *ProgramName;
 static int extensionFields;
 static int SortOverride;

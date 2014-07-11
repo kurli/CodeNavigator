@@ -37,7 +37,7 @@
                 tmp = [NSString stringWithFormat:@"%@.%@", name,extension];
             }
             // Change the folder
-            tmp = [tmp stringByReplacingOccurrencesOfString:DISPLAY_FOLDER_PATH withString:@"Projects"];
+            tmp = [tmp stringByReplacingOccurrencesOfString:DISPLAY_FOLDER_PATH withString:@".Projects"];
         }
     }
     return tmp;
@@ -59,9 +59,9 @@
         tmp = [tmp stringByAppendingFormat:@"_%@.%@", extension, DISPLAY_FILE_EXTENTION];
     }
     // Change the folder
-    NSRange range = [tmp rangeOfString:@"Projects"];
+    NSRange range = [tmp rangeOfString:@".Projects"];
     if (range.location != NSNotFound) {
-        tmp = [tmp stringByReplacingOccurrencesOfString:@"Projects" withString:DISPLAY_FOLDER_PATH options:NSLiteralSearch range:range];
+        tmp = [tmp stringByReplacingOccurrencesOfString:@".Projects" withString:DISPLAY_FOLDER_PATH options:NSLiteralSearch range:range];
     } else {
         
     }
@@ -194,8 +194,8 @@
 
 -(void) removeDisplayFilesForProject:(NSString *)proj {
     NSString* path = proj;
-    NSRange range = [path rangeOfString:@"Projects"];
-    path = [path stringByReplacingOccurrencesOfString:@"Projects" withString:DISPLAY_FOLDER_PATH options:NSLiteralSearch range:range];
+    NSRange range = [path rangeOfString:@".Projects"];
+    path = [path stringByReplacingOccurrencesOfString:@".Projects" withString:DISPLAY_FOLDER_PATH options:NSLiteralSearch range:range];
     BOOL isFolder = YES;
     if ([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isFolder]) {
         [[NSFileManager defaultManager] removeItemAtPath:path error:nil];

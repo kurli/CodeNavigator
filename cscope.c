@@ -334,7 +334,7 @@ void cscope_build(const char* out_file_name, const char* file_list_f)
 
 static short shouldStartWrite(char c)
 {
-    static char* projects = "/Projects/";
+    static char* projects = "/.Projects/";
     static int foundIndex = 0;
     if (projects[foundIndex] == c)
     {

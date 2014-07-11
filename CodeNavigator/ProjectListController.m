@@ -21,7 +21,7 @@
     if (self) {
         // Custom initialization
         NSError *error;
-        NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Projects"];
+        NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
         NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:projectFolder error:&error];
         self.projectList = [[NSMutableArray alloc] init ];
         for (int i=0; i<[contents count]; i++)
