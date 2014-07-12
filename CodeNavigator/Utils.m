@@ -700,6 +700,9 @@ static Utils *static_utils;
             if ([str length] == 0) {
                 str = sourcePath;
             }
+            if ([str length] > 0 && [str characterAtIndex:0] != '/') {
+                str = [NSString stringWithFormat:@"/%@", str];
+            }
             if ([str compare:[array objectAtIndex:0]] != NSOrderedSame)
             {
                 continue;

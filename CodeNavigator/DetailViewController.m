@@ -1411,7 +1411,7 @@
     self.popoverController = [[UIPopoverController alloc] initWithContentViewController:controller];
     //    self.functionListPopover.popoverContentSize = self.historyListController.view.frame.size;
     
-    [self.popoverController presentPopoverFromRect:CGRectMake(1, 1, 1, 1) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    [self.popoverController presentPopoverFromRect:[self.fileBrowserButton frame] inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 #pragma mark - Split view
