@@ -274,10 +274,11 @@
         ((UILabel*)[cell viewWithTag:103]).text = sizeStr;
         ((UILabel*)[cell viewWithTag:104]).text = [dateFormatter stringFromDate:date];
         UIButton* infoButton = (UIButton*)[cell viewWithTag:110];
-        if (enableFileInfoButton)
+        if (enableFileInfoButton) {
             [infoButton addTarget:self action:@selector(fileInfoButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        else
-        {
+            [infoButton setHidden:NO];
+            [infoButton setEnabled:YES];
+        } else {
             [infoButton setHidden:YES];
             [infoButton setEnabled:NO];
         }
