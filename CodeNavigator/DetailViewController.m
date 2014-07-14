@@ -473,8 +473,7 @@
     MasterViewController* masterViewController = (MasterViewController*)[Utils getInstance].masterViewController.topViewController;
 #else
     MasterViewController* masterViewController = nil;
-    NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
-    masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
+    masterViewController = [Utils getInstance].masterViewController;
 #endif
     
     NSString* displayPath;
@@ -622,8 +621,7 @@
     MasterViewController* masterViewController = (MasterViewController*)[Utils getInstance].masterViewController.topViewController;
 #else
     MasterViewController* masterViewController = nil;
-    NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
-    masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController; 
+    masterViewController = [Utils getInstance].masterViewController;
 #endif
     [masterViewController gotoFile:url andForce:NO];
 }
@@ -874,8 +872,7 @@
     
 #ifndef IPHONE_VERSION
     MasterViewController* masterViewController = nil;
-    NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
-    masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
+    masterViewController = [Utils getInstance].masterViewController;
 #else
     MasterViewController* masterViewController = (MasterViewController*)[Utils getInstance].masterViewController.topViewController;
 #endif
@@ -1445,8 +1442,7 @@
     // We need always update MasterView Tableview
     // Because when masterview hidden, gotoFile will be blocked in MasterView
     MasterViewController* masterViewController = nil;
-    NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
-    masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
+    masterViewController = [Utils getInstance].masterViewController;
     [masterViewController gotoFile:[self getCurrentDisplayFile] andForce:YES];
 }
 

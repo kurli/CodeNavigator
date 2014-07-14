@@ -149,8 +149,7 @@
 #ifdef IPHONE_VERSION
         _masterViewController = (MasterViewController*)[[Utils getInstance].masterViewController visibleViewController];
 #else
-        NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
-        _masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
+        _masterViewController = [Utils getInstance].masterViewController;
 #endif
         [_masterViewController releaseAllPopover];
         });
@@ -196,8 +195,7 @@
     
     // Release popover controller
     MasterViewController* _masterViewController = nil;
-    NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
-    _masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
+    _masterViewController = [Utils getInstance].masterViewController;
     [_masterViewController releaseAllPopover];
 }
 @end

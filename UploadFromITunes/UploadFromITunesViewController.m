@@ -10,6 +10,7 @@
 #import "FileListBrowserController.h"
 #import "Utils.h"
 #import "MBProgressHUD.h"
+#import "MasterViewController.h"
 
 @interface UploadFromITunesViewController ()
 
@@ -367,12 +368,13 @@
 }
 
 - (IBAction)doneButtonClicked:(id)sender {
+    [[Utils getInstance].masterViewController reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)refreshClicked:(id)sender {
-    [self.iPadFileListBrowserController reloadData];
-    [self.iPadTableView reloadData];
+    [self.iTunesFileListBroserController reloadData];
+    [self.itunesTableView reloadData];
 }
 - (IBAction)infoButtonClicked:(id)sender {
     [[Utils getInstance] alertWithTitle:@"iTunes Transfer" andMessage:@"Connect your device with iTunes, Use Apps->File Sharing to share files/folders."];

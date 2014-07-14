@@ -34,7 +34,7 @@ void main() {\n\
 	\n\
 	unsigned char *action = \"Rate me to make me better\";\n\
     \n\
-	unsigned char *lineWrap = \"1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890 1234567890\";\n\
+	unsigned char *lineWrap = \"abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij\";\n\
 \n\
 	for (int i=0; i<365; i++) {\n\
 		*action = \"Better work\";\n\

@@ -61,8 +61,7 @@
         isCurrentFileManager = YES;
         
         MasterViewController* masterViewController = nil;
-        NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
-        masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;    
+        masterViewController = [Utils getInstance].masterViewController;
         [self setCurrentProjectFolder:[masterViewController.currentProjectPath copy]];
 
         self.fileManagerController = [[FileManagerController alloc] init];
@@ -196,8 +195,7 @@
     if (currentProjectFolder == nil)
     {
         MasterViewController* masterViewController = nil;
-        NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
-        masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;    
+        masterViewController = [Utils getInstance].masterViewController;
         NSString* currentProject = [masterViewController.currentProjectPath lastPathComponent];
         [projectListController setCurrentProject:currentProject];
         [self setCurrentProjectFolder:[masterViewController.currentProjectPath copy]];

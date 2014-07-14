@@ -322,6 +322,12 @@ static Utils *static_utils;
         return YES;
     else if ([extension isEqualToString:@"go"])
         return YES;
+    else if ([extension isEqualToString:@"js"])
+        return YES;
+    else if ([extension isEqualToString:@"html"])
+        return YES;
+    else if ([extension isEqualToString:@"css"])
+        return YES;
     int index = [Parser checkManuallyParserIndex:extension];
     if (index != -1) {
         return YES;
@@ -549,6 +555,7 @@ static Utils *static_utils;
                 }
             });
             [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+            [@"" writeToFile:databaseFile atomically:YES encoding:NSUTF8StringEncoding error:&error];
             return;
         }
         
@@ -665,6 +672,12 @@ static Utils *static_utils;
     BOOL isFolder;
     BOOL isExist;
     NSString* projectFolder = [[Utils getInstance] getProjectFolder:path];
+    [[NSFileManager defaultManager] fileExistsAtPath:projectFolder isDirectory:&isFolder];
+    if (!isFolder) {
+        [[Utils getInstance] alertWithTitle:@"Warning" andMessage:@"Please put this file under a Project (Folder under Projects)."];
+        return;
+    }
+    
     databaseFile = [projectFolder stringByAppendingPathComponent:@"db_files.lgz_proj_files"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:databaseFile isDirectory:&isFolder];
     
@@ -674,8 +687,9 @@ static Utils *static_utils;
         storedAnalyzePath = path;
         storedForceAnalyze = forceCreate;
         alertConfirmMode = ALERT_ANALYZE;
-        UIAlertView *confirmAlert = [[UIAlertView alloc] initWithTitle:@"CodeNavigator" message:[NSString stringWithFormat:@"Would you like to analyze \"%@\" for code navigation?",project] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
-        [confirmAlert show];
+//        UIAlertView *confirmAlert = [[UIAlertView alloc] initWithTitle:@"CodeNavigator" message:[NSString stringWithFormat:@"Would you like to analyze \"%@\" for code navigation?",project] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
+//        [confirmAlert show];
+        [self analyzeProjectConfirmed:storedAnalyzePath andForceCreate:storedForceAnalyze];
     }
 }
 

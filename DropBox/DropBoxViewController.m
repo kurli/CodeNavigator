@@ -673,8 +673,7 @@
         [[Utils getInstance].splitViewController dismissViewControllerAnimated:YES completion:nil];
         
         MasterViewController* masterViewController = nil;
-        NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
-        masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
+        masterViewController = [Utils getInstance].masterViewController;
         [masterViewController reloadData];
     }
 }
@@ -686,8 +685,7 @@
 //    }
     [[Utils getInstance].splitViewController dismissViewControllerAnimated:YES completion:nil];
     MasterViewController* masterViewController = nil;
-    NSArray* controllers = [[Utils getInstance].splitViewController viewControllers];
-    masterViewController = (MasterViewController*)((UINavigationController*)[controllers objectAtIndex:0]).visibleViewController;
+    masterViewController = [Utils getInstance].masterViewController;
     [masterViewController reloadData];
     [[Utils getInstance] setDropBoxViewController:nil];
 }

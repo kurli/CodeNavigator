@@ -4010,7 +4010,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
-				VALID_ARCHS = "armv7 arm64";
+				VALID_ARCHS = "armv7 arm64 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4042,7 +4042,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
-				VALID_ARCHS = "armv7 arm64";
+				VALID_ARCHS = "armv7 arm64 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -4113,7 +4113,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
-				VALID_ARCHS = "armv7 arm64";
+				VALID_ARCHS = "armv7 arm64 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;

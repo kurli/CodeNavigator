@@ -57,7 +57,7 @@
 #ifdef LITE_VERSION
     [picker setSubject:@"CodeNavigatorLite v3.0 feedback"];
 #else
-    [picker setSubject:@"CodeNavigator v4.9.0 feedback"];
+    [picker setSubject:@"CodeNavigator v5.0 feedback"];
 #endif
     [self presentViewController:picker animated:YES completion:nil];
 }
@@ -178,7 +178,7 @@
             [[Utils getInstance] addGAEvent:@"Help" andAction:@"Demo Video" andLabel:nil andValue:nil];
             //demoVideo
             alertType = ALERT_DEMO_VIDEO;
-            alertConfirmView = [[UIAlertView alloc] initWithTitle:@"Do you want to open this link in Safari?" message:@"http://v.youku.com/v_show/id_XNDEwNTkxOTQ4.html" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
+            alertConfirmView = [[UIAlertView alloc] initWithTitle:@"Do you want to open this link in Safari?" message:@"http://v.youku.com/v_show/id_XNzQwMDEyMjE2.html" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
             [alertConfirmView show];
             break;
         case 1:
@@ -294,7 +294,7 @@
 #ifdef LITE_VERSION
         return @"CodeNavigatorLite 3.0 Guangzhen Li\n@2011-2013";
 #else
-        return @"CodeNavigator 4.9.0 Guangzhen Li\n@2011-2014";
+        return @"CodeNavigator 5.0 Guangzhen Li\n@2011-2014";
 #endif
     }
     return @"";
@@ -319,7 +319,7 @@
 
 - (void) doneButtonClicked:(id)sender
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -334,7 +334,7 @@
 #endif
     switch (alertType) {
         case ALERT_DEMO_VIDEO:
-            url = @"http://v.youku.com/v_show/id_XNDEwNTkxOTQ4.html";
+            url = @"http://v.youku.com/v_show/id_XNzQwMDEyMjE2.html";
             break;
         case ALERT_TWITTER_FOLLOW:
             url = @"http://twitter.com/intent/user?screen_name=CodeNavigator";

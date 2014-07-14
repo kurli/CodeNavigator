@@ -55,8 +55,12 @@
      2. Async parse source code.\n\
      3. Improved beautiful code viewer.\n\
      4. Folder Tree View is now supported.\n\
-     5. UI/UE enhancement.\n\n\
-     More features will be comming soon. Enjoy it. :-)"];
+     5. UI/UE enhancement.\n\
+     6. Bug fixes.\n\n\
+     More features will be comming soon. Enjoy it. :-)\n\n\
+     Demos:\n\
+     Youku (China): http://v.youku.com/v_show/id_XNzQwMDEyMjE2.html\n\
+     YouTube: http://youtu.be/S4FU_EZKs8Y"];
     [self.versionDetailView setFont:[UIFont systemFontOfSize:16]];
 }
 
@@ -258,6 +262,11 @@
         // JS updated after V=1
         [self initJS];
         
+        // Remove all display folder
+        [self removeAllDisplayFiles];
+    }
+    
+    if (integer == 2) {
         // Remove all display folder
         [self removeAllDisplayFiles];
     }
