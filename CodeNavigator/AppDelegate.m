@@ -101,7 +101,7 @@
     [GAI sharedInstance].dispatchInterval = 120;
     // Optional: set debug to YES for extra debugging information.
     // Create tracker instance.
-    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelError];
+//    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
 
 #ifdef LITE_VERSION
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-39030094-1"];

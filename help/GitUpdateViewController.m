@@ -69,6 +69,23 @@
     [self.password setAutocorrectionType:UITextAutocorrectionTypeNo];
 }
 
+- (BOOL) shouldAutorotate {
+#ifdef IPHONE_VERSION
+    return NO;
+#else
+    return YES;
+#endif
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+#ifdef IPHONE_VERSION
+    return UIInterfaceOrientationMaskPortrait;
+#else
+    return UIInterfaceOrientationMaskAll;
+#endif
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

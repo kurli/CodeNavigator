@@ -339,7 +339,7 @@
 
         path = [path stringByAppendingPathComponent:[targetComponents objectAtIndex:i]];
         // If current is Project Folder
-        if ([fileListBrowserController getIsCurrentProjectFolder])
+        if ([targetViewController.fileListBrowserController getIsCurrentProjectFolder])
             fileBrowserViewController.currentProjectPath = path;
         else
             fileBrowserViewController.currentProjectPath = targetViewController.currentProjectPath;

@@ -123,7 +123,9 @@ typedef enum _JSState {
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *historySwipeImageView;
 
+#ifndef IPHONE_VERSION
 @property (strong, nonatomic) FileBrowserTreeViewController* fileBrowserTreeViewController;
+#endif
 
 - (IBAction)webViewSegmentChanged:(id)sender;
 
@@ -216,6 +218,8 @@ typedef enum _JSState {
 
 #pragma File browser tree view
 
+#ifndef IPHONE_VERSION
 - (FileBrowserTreeViewController*) showFileBrowserTreeView:(BOOL)show;
+#endif
 
 @end

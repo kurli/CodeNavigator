@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -7,7 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController">
             <connections>
+                <outlet property="analyzeInfoBarButton" destination="x4s-D0-uHJ" id="pZi-tR-v5f"/>
                 <outlet property="bottomToolBar" destination="3" id="45"/>
+                <outlet property="fileBrowserButton" destination="3h3-Wf-6Ir" id="Lci-7s-cNZ"/>
                 <outlet property="historyBar" destination="8" id="19"/>
                 <outlet property="navigateBarButtonItem" destination="10" id="OjY-1F-UtJ"/>
                 <outlet property="scrollBackgroundView" destination="29" id="31"/>
@@ -34,26 +36,39 @@
                 <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="42">
                     <rect key="frame" x="0.0" y="438" width="43" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <state key="normal" image="hide_masterview.png">
+                    <state key="normal" image="back_arrow.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="filesButtonClicked:" destination="-1" eventType="touchUpInside" id="43"/>
                     </connections>
                 </button>
+                <button alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3h3-Wf-6Ir">
+                    <rect key="frame" x="0.0" y="44" width="61" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                    <state key="normal" image="FileBrowser.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="fileBrowserButtonClicked:" destination="-1" eventType="touchUpInside" id="Meo-YJ-zjZ"/>
+                    </connections>
+                </button>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="3">
                     <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
-                        <barButtonItem image="hide_masterview.png" style="plain" id="4">
+                        <barButtonItem image="back_arrow.png" style="plain" id="4">
                             <connections>
                                 <action selector="filesButtonClicked:" destination="-1" id="25"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem width="22" style="plain" systemItem="fixedSpace" id="50"/>
+                        <barButtonItem enabled="NO" style="plain" id="x4s-D0-uHJ"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Wqu-MK-WRr"/>
                         <barButtonItem style="plain" id="9">
                             <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" momentary="YES" id="8">
-                                <rect key="frame" x="63" y="7" width="110" height="30"/>
+                                <rect key="frame" x="79" y="7" width="110" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="&lt;"/>
@@ -64,19 +79,17 @@
                                 </connections>
                             </segmentedControl>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="17"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="9GM-N1-DZF"/>
                         <barButtonItem image="settings.png" style="plain" id="23">
                             <connections>
                                 <action selector="displayModeClicked:" destination="-1" id="24"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem width="13" style="plain" systemItem="fixedSpace" id="51"/>
                         <barButtonItem style="plain" systemItem="search" id="10">
                             <connections>
                                 <action selector="navigationButtonClicked:" destination="-1" id="14"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem width="19" style="plain" systemItem="fixedSpace" id="52"/>
                         <barButtonItem style="plain" systemItem="bookmarks" id="11">
                             <connections>
                                 <action selector="resultPopUp:" destination="-1" id="15"/>
@@ -85,12 +98,12 @@
                     </items>
                 </toolbar>
                 <view alpha="0.30000001192092896" contentMode="scaleToFill" id="29">
-                    <rect key="frame" x="265" y="44" width="53" height="387"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
+                    <rect key="frame" x="279.00000002980232" y="44" width="39" height="387"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="d7p-KA-foW">
-                            <rect key="frame" x="3" y="174" width="47" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <rect key="frame" x="0.0" y="174" width="39" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                             <state key="normal" title="三"/>
@@ -98,13 +111,12 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <button alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="33">
-                    <rect key="frame" x="0.0" y="-4" width="43" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="33">
+                    <rect key="frame" x="283" y="-19" width="30" height="55"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                     <inset key="contentEdgeInsets" minX="0.0" minY="25" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="⬆">
+                    <state key="normal" image="hide_toolbar.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -112,7 +124,7 @@
                     </connections>
                 </button>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="34">
-                    <rect key="frame" x="193" y="0.0" width="125" height="44"/>
+                    <rect key="frame" x="183" y="0.0" width="98" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <items>
                         <barButtonItem image="binocular.png" id="39">
@@ -133,8 +145,10 @@
         </view>
     </objects>
     <resources>
+        <image name="FileBrowser.png" width="26" height="26"/>
+        <image name="back_arrow.png" width="15" height="22"/>
         <image name="binocular.png" width="30" height="30"/>
-        <image name="hide_masterview.png" width="15" height="22"/>
+        <image name="hide_toolbar.png" width="30" height="30"/>
         <image name="settings.png" width="26" height="26"/>
         <image name="text-list.png" width="30" height="30"/>
     </resources>

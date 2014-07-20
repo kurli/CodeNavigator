@@ -272,11 +272,14 @@
         [self.secondWebView setScalesPageToFit:NO];
         //[self reloadCurrentPage];
     }
+#ifndef IPHONE_VERSION
     if (self.fileBrowserTreeViewController == nil) {
         return YES;
     } else {
         return NO;
     }
+#endif
+    return YES;
 }
 
 - (BOOL)shouldAutorotate {
@@ -285,11 +288,14 @@
         [self.secondWebView setScalesPageToFit:NO];
         //[self reloadCurrentPage];
     }
+#ifndef IPHONE_VERSION
     if (self.fileBrowserTreeViewController == nil) {
         return YES;
     } else {
         return NO;
     }
+#endif
+    return YES;
 }
 
 -(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
@@ -470,7 +476,7 @@
 - (void) gotoFile:(NSString *)filePath andLine:(NSString *)line andKeyword:(NSString *)__keyword
 {
 #ifdef IPHONE_VERSION
-    MasterViewController* masterViewController = (MasterViewController*)[Utils getInstance].masterViewController.topViewController;
+    MasterViewController* masterViewController = [Utils getInstance].masterViewController;
 #else
     MasterViewController* masterViewController = nil;
     masterViewController = [Utils getInstance].masterViewController;
@@ -618,7 +624,7 @@
     [self adjustTitle];
     
 #ifdef IPHONE_VERSION
-    MasterViewController* masterViewController = (MasterViewController*)[Utils getInstance].masterViewController.topViewController;
+    MasterViewController* masterViewController = [Utils getInstance].masterViewController;
 #else
     MasterViewController* masterViewController = nil;
     masterViewController = [Utils getInstance].masterViewController;
@@ -874,7 +880,7 @@
     MasterViewController* masterViewController = nil;
     masterViewController = [Utils getInstance].masterViewController;
 #else
-    MasterViewController* masterViewController = (MasterViewController*)[Utils getInstance].masterViewController.topViewController;
+    MasterViewController* masterViewController = [Utils getInstance].masterViewController;
 #endif
     NSString* projectPath = [[Utils getInstance] getProjectFolder:[masterViewController getCurrentLocation]];
     
@@ -1405,7 +1411,17 @@
     NSString* currentFilePath = [self getCurrentDisplayFile];
     [fileBrowserViewController setInitialPath:currentFilePath];
     
+#ifdef IPHONE_VERSION
+    self.popoverController = [[FPPopoverController alloc] initWithContentViewController:controller];
+    popoverController.arrowDirection = FPPopoverArrowDirectionLeft;
+    popoverController.border = NO;
+    CGSize size = self.view.frame.size;
+    size.width = size.width / 5 * 4;
+    size.height = size.height /8 * 7;
+    popoverController.popoverContentSize = size;
+#else
     self.popoverController = [[UIPopoverController alloc] initWithContentViewController:controller];
+#endif
     //    self.functionListPopover.popoverContentSize = self.historyListController.view.frame.size;
     
     [self.popoverController presentPopoverFromRect:[self.fileBrowserButton frame] inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
@@ -1800,6 +1816,7 @@
 
 #pragma File browser tree view
 
+#ifndef IPHONE_VERSION
 - (FileBrowserTreeViewController*) showFileBrowserTreeView:(BOOL)show {
     if (show) {
         self.fileBrowserTreeViewController = [[FileBrowserTreeViewController alloc] init];
@@ -1830,5 +1847,6 @@
     }
     return nil;
 }
+#endif
 
 @end

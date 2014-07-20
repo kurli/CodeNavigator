@@ -857,6 +857,14 @@
 		94CB768317E21369009807F9 /* FileListBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CB768117E21369009807F9 /* FileListBrowserController.m */; };
 		94CB787F156E80C8009452D8 /* FileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CB787E156E80C8009452D8 /* FileTableViewCell.xib */; };
 		94CB7880156E80C8009452D8 /* FileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CB787E156E80C8009452D8 /* FileTableViewCell.xib */; };
+		94D0A9291976CE38002EEFCE /* UploadFromITunesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A430E7196EF328003497CB /* UploadFromITunesViewController.m */; };
+		94D0A9301976CE39002EEFCE /* UploadFromITunesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A430E7196EF328003497CB /* UploadFromITunesViewController.m */; };
+		94D0A9311976D277002EEFCE /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 949CB5E11961A96200A95AEC /* back_arrow.png */; };
+		94D0A9321976D27D002EEFCE /* hide_toolbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9461D46C1960372100F0B0A1 /* hide_toolbar.png */; };
+		94D0A9331976D282002EEFCE /* show_toolbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9461D46319602BD800F0B0A1 /* show_toolbar.png */; };
+		94D0A9341976E47A002EEFCE /* FileBrowser.png in Resources */ = {isa = PBXBuildFile; fileRef = 943D1FBC17E7695C00BD82E6 /* FileBrowser.png */; };
+		94D0A9351976E47B002EEFCE /* FileBrowser.png in Resources */ = {isa = PBXBuildFile; fileRef = 943D1FBC17E7695C00BD82E6 /* FileBrowser.png */; };
+		94D0A9371976E8D3002EEFCE /* UploadFromITunesViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D0A9361976E8D3002EEFCE /* UploadFromITunesViewController-iPhone.xib */; };
 		94D16DE714C9CC3B007439EB /* ImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D16DE614C9CC3B007439EB /* ImageParser.m */; };
 		94D16DE814C9CC3B007439EB /* ImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D16DE614C9CC3B007439EB /* ImageParser.m */; };
 		94D1BF79153C56420007A8EB /* forward_history.png in Resources */ = {isa = PBXBuildFile; fileRef = 94D1BF78153C56420007A8EB /* forward_history.png */; };
@@ -1612,6 +1620,7 @@
 		94CB768017E21369009807F9 /* FileListBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileListBrowserController.h; path = FileListBrowser/FileListBrowserController.h; sourceTree = "<group>"; };
 		94CB768117E21369009807F9 /* FileListBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileListBrowserController.m; path = FileListBrowser/FileListBrowserController.m; sourceTree = "<group>"; };
 		94CB787E156E80C8009452D8 /* FileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileTableViewCell.xib; sourceTree = "<group>"; };
+		94D0A9361976E8D3002EEFCE /* UploadFromITunesViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "UploadFromITunesViewController-iPhone.xib"; path = "UploadFromITunes/UploadFromITunesViewController-iPhone.xib"; sourceTree = "<group>"; };
 		94D16DE514C9CC3B007439EB /* ImageParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageParser.h; sourceTree = "<group>"; };
 		94D16DE614C9CC3B007439EB /* ImageParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageParser.m; sourceTree = "<group>"; };
 		94D1BF78153C56420007A8EB /* forward_history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward_history.png; sourceTree = "<group>"; };
@@ -2472,6 +2481,7 @@
 				94A430E6196EF328003497CB /* UploadFromITunesViewController.h */,
 				94A430E7196EF328003497CB /* UploadFromITunesViewController.m */,
 				94A430E8196EF328003497CB /* UploadFromITunesViewController.xib */,
+				94D0A9361976E8D3002EEFCE /* UploadFromITunesViewController-iPhone.xib */,
 			);
 			name = UploadFromITunes;
 			sourceTree = "<group>";
@@ -3017,8 +3027,11 @@
 				949DC22F1583E8CF00385796 /* EntryBg.png in Resources */,
 				949DC2301583E8CF00385796 /* EntryHBg.png in Resources */,
 				949DC2311583E8CF00385796 /* ccFile.png in Resources */,
+				94D0A9331976D282002EEFCE /* show_toolbar.png in Resources */,
 				9445C8AF193CAF1C00924D41 /* Images.xcassets in Resources */,
+				94D0A9351976E47B002EEFCE /* FileBrowser.png in Resources */,
 				94B1DCC9191F6E9500909C3E /* GitLogViewController.xib in Resources */,
+				94D0A9311976D277002EEFCE /* back_arrow.png in Resources */,
 				94B1DCF7191F70D000909C3E /* SelectGroupViewController.xib in Resources */,
 				949DC2321583E8CF00385796 /* cFile.png in Resources */,
 				94B1DCCA191F6E9E00909C3E /* GitLogTableCell.xib in Resources */,
@@ -3046,6 +3059,7 @@
 				94B1DD0A191F738500909C3E /* SourceCodePro-Regular.ttf in Resources */,
 				949DC2411583E8CF00385796 /* Help.html in Resources */,
 				949DC24B1583E8CF00385796 /* masterView_bg.png in Resources */,
+				94D0A9371976E8D3002EEFCE /* UploadFromITunesViewController-iPhone.xib in Resources */,
 				949DC24C1583E8CF00385796 /* nav_backButton_icon.png in Resources */,
 				949DC24E1583E8CF00385796 /* checkbox_no.png in Resources */,
 				949DC24F1583E8CF00385796 /* checkbox_yes.png in Resources */,
@@ -3082,6 +3096,7 @@
 				94B1DCD2191F6EFF00909C3E /* GitCloneViewController.xib in Resources */,
 				94A404CF158A635C0084F645 /* CodeNavigatoriPhone-info.plist in Resources */,
 				947D9F8C158BA930000B5136 /* ResultTableCellView.xib in Resources */,
+				94D0A9321976D27D002EEFCE /* hide_toolbar.png in Resources */,
 				94B1DD24191FE71900909C3E /* WebServiceControllerFormSheet-iPhone.xib in Resources */,
 				94B1DCD7191F6F1700909C3E /* GitUpdateViewController.xib in Resources */,
 				948E145A164169FD00CBBD5B /* FunctionListViewController.xib in Resources */,
@@ -3100,6 +3115,7 @@
 				94D3B87D15E5399A006C28E4 /* appstore.png in Resources */,
 				94D3B87C15E53984006C28E4 /* feedback.png in Resources */,
 				9461D46E1960372100F0B0A1 /* hide_toolbar.png in Resources */,
+				94D0A9341976E47A002EEFCE /* FileBrowser.png in Resources */,
 				94D3B87B15E53979006C28E4 /* demoVideo.png in Resources */,
 				94D3B87A15E53928006C28E4 /* help.png in Resources */,
 				94D3B87915E53487006C28E4 /* HelpViewController.xib in Resources */,
@@ -3546,6 +3562,7 @@
 				949DC1BF1583E8CF00385796 /* ResultViewController.m in Sources */,
 				949DC1C01583E8CF00385796 /* GotoLineViewController.m in Sources */,
 				94B1DCD1191F6EF700909C3E /* GitCloneViewController.m in Sources */,
+				94D0A9301976CE39002EEFCE /* UploadFromITunesViewController.m in Sources */,
 				94B1DCF0191F705600909C3E /* PHPParser.m in Sources */,
 				94B1DD00191F716600909C3E /* FileFormatResolver.m in Sources */,
 				949DC1C11583E8CF00385796 /* WebServiceController.m in Sources */,
@@ -3658,6 +3675,7 @@
 				94D4ED981642B8AB00601FE4 /* entry.h in Sources */,
 				94D4ED991642B8AB00601FE4 /* erlang.c in Sources */,
 				94D4ED9A1642B8AB00601FE4 /* falcon.c in Sources */,
+				94D0A9291976CE38002EEFCE /* UploadFromITunesViewController.m in Sources */,
 				94D4ED9B1642B8AB00601FE4 /* flex.c in Sources */,
 				94D4ED9C1642B8AB00601FE4 /* fortran.c in Sources */,
 				94D4ED9D1642B8AB00601FE4 /* general.h in Sources */,
@@ -4140,7 +4158,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "CodeNavigatoriPhone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
@@ -4175,7 +4193,7 @@
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "IPHONE_VERSION=1";
 				INFOPLIST_FILE = "CodeNavigatoriPhone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
@@ -4213,7 +4231,7 @@
 					"IPHONE_VERSION=1",
 				);
 				INFOPLIST_FILE = "CodeNavigatoriPhone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",

@@ -56,7 +56,7 @@
                     </connections>
                 </segmentedControl>
                 <webView multipleTouchEnabled="YES" contentMode="scaleAspectFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" id="378">
-                    <rect key="frame" x="0.0" y="757.00000003483149" width="708" height="10"/>
+                    <rect key="frame" x="0.0" y="757" width="708" height="10"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <dataDetectorType key="dataDetectorTypes"/>
                     <connections>

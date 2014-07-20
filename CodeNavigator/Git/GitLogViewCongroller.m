@@ -14,6 +14,10 @@
 #import "GitBranchController.h"
 #import "GitUpdateViewController.h"
 
+#ifdef IPHONE_VERSION
+#import "MasterViewController.h"
+#endif
+
 #define DETAIL_BUTTON_TAG 101
 #define AUTHOR_TAG 102
 #define DETAIL_TAG 103

@@ -71,6 +71,10 @@
             [masterViewController downloadZipFromGitHub];
             [[Utils getInstance] addGAEvent:@"Add" andAction:@"GitHubZip" andLabel:nil andValue:nil];
             break;
+        case 3:
+            [masterViewController uploadFromITunes];
+            [[Utils getInstance] addGAEvent:@"Add" andAction:@"iTunes Transfer" andLabel:nil andValue:nil];
+            break;
 #else
         case 2:
             [masterViewController dropBoxClicked:nil];
@@ -92,7 +96,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #ifdef IPHONE_VERSION
-    return 3;
+    return 4;
 #else
     return 5;
 #endif
@@ -113,8 +117,10 @@
         //cell.imageView.image = [UIImage imageNamed:@"share.png"];
         cell.textLabel.text = @"Git Clone";
 #ifdef IPHONE_VERSION
-    } else {
+    } else if (indexPath.row == 2) {
         cell.textLabel.text = @"Download ZIP from GitHub";
+    } else {
+        cell.textLabel.text = @"iTunes Transfer";
     }
 #else
     } else if (indexPath.row == 2) {

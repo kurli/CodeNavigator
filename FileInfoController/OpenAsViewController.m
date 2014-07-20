@@ -146,11 +146,7 @@
         
         // Release popover controller
         MasterViewController* _masterViewController = nil;
-#ifdef IPHONE_VERSION
-        _masterViewController = (MasterViewController*)[[Utils getInstance].masterViewController visibleViewController];
-#else
         _masterViewController = [Utils getInstance].masterViewController;
-#endif
         [_masterViewController releaseAllPopover];
         });
     }];

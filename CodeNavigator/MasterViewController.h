@@ -27,10 +27,18 @@
 
 #define MASTER_VIEW_RELOAD @"CodeNavigator_master_view_reload"
 
+#ifdef IPHONE_VERSION
+@interface MasterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, FileListBrowserDelegate>
+{
+    NSInteger needSelectRowAfterReload;
+}
+
+#else
 @interface MasterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, FileListBrowserDelegate, FileBrowserTreeDelegate>
 {
     NSInteger needSelectRowAfterReload;
 }
+#endif
 
 @property (strong, nonatomic) NSString *currentProjectPath;
 

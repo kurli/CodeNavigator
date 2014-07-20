@@ -68,6 +68,24 @@
     self.currentiTunesPath = documentPath;
 }
 
+- (BOOL) shouldAutorotate {
+#ifdef IPHONE_VERSION
+    return NO;
+#else
+    return YES;
+#endif
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+#ifdef IPHONE_VERSION
+    return UIInterfaceOrientationMaskLandscape;
+#else
+    return UIInterfaceOrientationMaskAll;
+#endif
+}
+
+
 - (void) setCurrentiPadPath:(NSString *)currentiPadPath_ {
     NSString* documentPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     documentPath = [documentPath stringByAppendingPathComponent:@".Projects"];

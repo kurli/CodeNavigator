@@ -27,7 +27,9 @@
 
 @interface MasterViewController ()
 
+#ifndef IPHONE_VERSION
 @property (strong, nonatomic) FileBrowserTreeViewController* fileBrowserTreeViewController;
+#endif
 
 @end
 @implementation MasterViewController {
@@ -45,7 +47,9 @@
 @synthesize fileListBrowserController;
 @synthesize gitCloneViewController;
 @synthesize toolBar;
+#ifndef IPHONE_VERSION
 @synthesize fileBrowserTreeViewController;
+#endif
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -169,15 +173,20 @@
         [self showFileSearchBar:NO];
     }
     else {
+#ifndef IPHONE_VERSION
         if (fileBrowserTreeViewController != nil) {
             [self showFileSearchBar:NO];
         } else {
             [self showFileSearchBar:YES];
         }
+#else
+        [self showFileSearchBar:YES];
+#endif
     }
     
     
     if (![self.fileListBrowserController getIsCurrentSearchFileMode]) {
+#ifndef IPHONE_VERSION
         if (self.fileBrowserTreeViewController == nil) {
             UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
             if (UIInterfaceOrientationIsLandscape(orientation)) {
@@ -186,6 +195,7 @@
                 [self showRightNavigationBar:NO];
             }
         }
+#endif
     }
 }
 
@@ -199,7 +209,7 @@
         [self.commentButton setEnabled:YES];
         //iOS7 UI bug fix
         // In iOS 7 the status bar is transparent, so don't adjust for it.
-        if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+//        if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
         {
             CGRect rect = self.tableView.frame;
             rect.origin.y = self.fileSearchBar.frame.origin.y + self.fileSearchBar.frame.size.height;
@@ -525,9 +535,11 @@
     NSString* prePath = [self.fileListBrowserController.currentLocation stringByDeletingLastPathComponent];
     [self setCurrentPath:prePath];
     
+#ifndef IPHONE_VERSION
     if (self.fileBrowserTreeViewController) {
         [self.fileBrowserTreeViewController pathBack];
     }
+#endif
 }
 
 - (IBAction)rightNavigationButtonClicked:(id)sender
@@ -555,8 +567,10 @@
     
     [self.fileListBrowserController setEnableFileInfoButton:NO];
     
+#ifndef IPHONE_VERSION
     // Show file browser tree
     fileBrowserTreeViewController = [[Utils getInstance].detailViewController showFileBrowserTreeView:YES];
+#endif
     
     // Hide right navigation bar
     [self showRightNavigationBar:NO];
@@ -871,10 +885,12 @@
 
 - (void) folderClickedDelegate:(UITableView*) tableView andSelectedItem:(NSString*)selectedItem andPath:(NSString*)path
 {
+#ifndef IPHONE_VERSION
     if (self.fileBrowserTreeViewController) {
         [self.fileBrowserTreeViewController changeToPath:path];
         return;
     }
+#endif
     
     // When git clone in progress, stop entering this folder
     if ([fileListBrowserController getIsCurrentProjectFolder] &&
@@ -924,11 +940,13 @@
     [self presentViewController:[Utils getInstance].detailViewController animated:YES completion:nil];
 #endif
     
+#ifndef IPHONE_VERSION
     // Close file browser tree view
     if (self.fileBrowserTreeViewController) {
         [[Utils getInstance].detailViewController showFileBrowserTreeView:NO];
         [self onTreeViewDismissed];
     }
+#endif
     
     //Help.html special case
     if ([fileListBrowserController getIsCurrentProjectFolder] == YES && [selectedItem compare:@"Help.html"] == NSOrderedSame) {
@@ -990,9 +1008,17 @@
 -(void) uploadFromITunes {
     [self.popOverController dismissPopoverAnimated:YES];
     
+#ifdef IPHONE_VERSION
+    UploadFromITunesViewController* controller = [[UploadFromITunesViewController alloc] initWithNibName:@"UploadFromITunesViewController-iPhone" bundle:nil];
+#else
     UploadFromITunesViewController* controller = [[UploadFromITunesViewController alloc] init];
+#endif
     controller.modalPresentationStyle = UIModalPresentationFormSheet;
+#ifdef IPHONE_VERSION
+    [self presentViewController:controller animated:YES completion:nil];
+#else
     [[Utils getInstance].splitViewController presentViewController:controller animated:YES completion:nil];
+#endif
 }
 
 #pragma FileBrowserTreeViewDelegate
@@ -1002,6 +1028,7 @@
 }
 
 -(void) onTreeViewDismissed {
+#ifndef IPHONE_VERSION
     self.fileBrowserTreeViewController = nil;
     [self adjustViewContent];
     [self showRightNavigationBar:YES];
@@ -1012,6 +1039,7 @@
     CGSize size = [Utils getInstance].splitViewController.view.frame.size;
     size.width = size.width / 4;
     [[Utils getInstance].splitViewController setSplitPosition:320];
+#endif
 }
 
 - (void) setFocusItem:(NSString*)path {
