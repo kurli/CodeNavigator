@@ -690,6 +690,8 @@ static Utils *static_utils;
 //        UIAlertView *confirmAlert = [[UIAlertView alloc] initWithTitle:@"CodeNavigator" message:[NSString stringWithFormat:@"Would you like to analyze \"%@\" for code navigation?",project] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
 //        [confirmAlert show];
         [self analyzeProjectConfirmed:storedAnalyzePath andForceCreate:storedForceAnalyze];
+        storedForceAnalyze = NO;
+        self.storedAnalyzePath = nil;
     }
 }
 

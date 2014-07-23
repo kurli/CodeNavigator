@@ -57,7 +57,11 @@
 #ifdef LITE_VERSION
     [picker setSubject:@"CodeNavigatorLite v3.0 feedback"];
 #else
+#ifdef IPHONE_VERSION
+    [picker setSubject:@"CodeNavigator iPhone v5.0.1 feedback"];
+#else
     [picker setSubject:@"CodeNavigator v5.0.1 feedback"];
+#endif
 #endif
     [self presentViewController:picker animated:YES completion:nil];
 }
@@ -188,7 +192,11 @@
 #ifdef LITE_VERSION
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/us/app/codenavigator/id492480832?mt=8"]];
 #else
+#ifdef IPHONE_VERSION
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=536268810"]];
+#else
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=492480832"]];
+#endif
 #endif
             [[Utils getInstance] addGAEvent:@"Help" andAction:@"Rate" andLabel:nil andValue:nil];
             break;
@@ -247,7 +255,7 @@
             break;
         case 1:
             cell.imageView.image = [UIImage imageNamed:@"feedback.png"];
-            cell.textLabel.text = @"Feedback via Email";
+            cell.textLabel.text = @"Contact Developer";
             break;
         case 2:
             cell.imageView.image = [UIImage imageNamed:@"appstore.png"];

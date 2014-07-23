@@ -811,10 +811,12 @@
 
 - (void) helpButtonClicked:(id)sender
 {
-#ifndef IPHONE_VERSION
     HelpViewController* viewController = [[HelpViewController alloc] init];
     viewController.modalPresentationStyle = UIModalPresentationFormSheet;
+#ifndef IPHONE_VERSION
     [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
+#else
+    [self presentViewController:viewController animated:YES completion:nil];
 #endif
 }
 

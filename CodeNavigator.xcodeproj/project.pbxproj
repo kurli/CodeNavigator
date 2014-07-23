@@ -844,6 +844,10 @@
 		94BF99BD1534887000F4EFFD /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF99BB1534887000F4EFFD /* refresh.png */; };
 		94BF99BF15348A6700F4EFFD /* refresh_error.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF99BE15348A6700F4EFFD /* refresh_error.png */; };
 		94BF99C015348A6700F4EFFD /* refresh_error.png in Resources */ = {isa = PBXBuildFile; fileRef = 94BF99BE15348A6700F4EFFD /* refresh_error.png */; };
+		94C07F15197FFF0D00DC1A6D /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9478C6CD15C8093400F443D9 /* HelpViewController.m */; };
+		94C07F16197FFF1200DC1A6D /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6CE15C8093400F443D9 /* HelpViewController.xib */; };
+		94C07F17197FFF6500DC1A6D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C7C170184E42B3003A8C03 /* Social.framework */; };
+		94C07F181980040200DC1A6D /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6DF15C859F000F443D9 /* help.png */; };
 		94C2CDC5167F55C9004FB1FB /* HtmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2CDC4167F55C9004FB1FB /* HtmlParser.m */; };
 		94C2CDC6167F55C9004FB1FB /* HtmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2CDC4167F55C9004FB1FB /* HtmlParser.m */; };
 		94C2CDC7167F55C9004FB1FB /* HtmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2CDC4167F55C9004FB1FB /* HtmlParser.m */; };
@@ -1705,6 +1709,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94C07F17197FFF6500DC1A6D /* Social.framework in Frameworks */,
 				94B1DCC2191F655100909C3E /* libiconv.dylib in Frameworks */,
 				94B1DCC1191F650C00909C3E /* libz.dylib in Frameworks */,
 				94B1DCC0191F64E100909C3E /* libObjectiveGit-iOS.a in Frameworks */,
@@ -3063,6 +3068,7 @@
 				949DC24C1583E8CF00385796 /* nav_backButton_icon.png in Resources */,
 				949DC24E1583E8CF00385796 /* checkbox_no.png in Resources */,
 				949DC24F1583E8CF00385796 /* checkbox_yes.png in Resources */,
+				94C07F181980040200DC1A6D /* help.png in Resources */,
 				949DC2501583E8CF00385796 /* refresh.png in Resources */,
 				94B1DCCB191F6EBB00909C3E /* GitDiffViewController.xib in Resources */,
 				949DC2511583E8CF00385796 /* refresh_error.png in Resources */,
@@ -3083,6 +3089,7 @@
 				949DC2651583E8CF00385796 /* FileInfoViewController.xib in Resources */,
 				94B1DCD5191F6F0E00909C3E /* GitBranchsManagerViewController.xib in Resources */,
 				94B1DCE2191F6F8D00909C3E /* ThemeSelectorViewController.xib in Resources */,
+				94C07F16197FFF1200DC1A6D /* HelpViewController.xib in Resources */,
 				947F861215863579002EAA1E /* DetailViewController-iPhone.xib in Resources */,
 				94B1DCBD191F62DB00909C3E /* VersionViewController.xib in Resources */,
 				947F861315863579002EAA1E /* MasterViewController-iPhone.xib in Resources */,
@@ -3548,6 +3555,7 @@
 				949DC1B41583E8CF00385796 /* lookup.c in Sources */,
 				949DC1B51583E8CF00385796 /* mouse.c in Sources */,
 				949DC1B61583E8CF00385796 /* mygetenv.c in Sources */,
+				94C07F15197FFF0D00DC1A6D /* HelpViewController.m in Sources */,
 				949DC1B71583E8CF00385796 /* mypopen.c in Sources */,
 				94B1DD1F191F99E600909C3E /* FPTouchView.m in Sources */,
 				949DC1B81583E8CF00385796 /* snprintf.c in Sources */,
@@ -4158,7 +4166,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "CodeNavigatoriPhone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
@@ -4193,7 +4201,7 @@
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "IPHONE_VERSION=1";
 				INFOPLIST_FILE = "CodeNavigatoriPhone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
@@ -4231,7 +4239,7 @@
 					"IPHONE_VERSION=1",
 				);
 				INFOPLIST_FILE = "CodeNavigatoriPhone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
