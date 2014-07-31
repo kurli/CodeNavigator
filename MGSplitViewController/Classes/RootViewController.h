@@ -1,0 +1,22 @@
+//
+//  RootViewController.h
+//  MGSplitView
+//
+//  Created by Matt Gemmell on 26/07/2010.
+//  Copyright Instinctive Code 2010.
+//
+
+#import <UIKit/UIKit.h>
+
+@class DetailViewController;
+
+@interface RootViewController : UIViewController {
+    DetailViewController *detailViewController;
+}
+
+@property (nonatomic, strong) IBOutlet DetailViewController *detailViewController;
+
+- (void)selectFirstRow;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@end
