@@ -544,6 +544,7 @@
 
 - (IBAction)rightNavigationButtonClicked:(id)sender
 {
+#ifndef IPHONE_VERSION
     if (self.navigationItem.rightBarButtonItem == nil) {
         return;
     }
@@ -567,10 +568,8 @@
     
     [self.fileListBrowserController setEnableFileInfoButton:NO];
     
-#ifndef IPHONE_VERSION
     // Show file browser tree
     fileBrowserTreeViewController = [[Utils getInstance].detailViewController showFileBrowserTreeView:YES];
-#endif
     
     // Hide right navigation bar
     [self showRightNavigationBar:NO];
@@ -579,6 +578,7 @@
     [self showFileSearchBar:NO];
     
     [self.toolBar setUserInteractionEnabled:NO];
+#endif
 }
 
 - (IBAction)analyzeButtonClicked:(id)sender {

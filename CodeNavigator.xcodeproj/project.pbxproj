@@ -2406,6 +2406,7 @@
 		948C740F1806FD3D00065E65 /* iPhone_icon */ = {
 			isa = PBXGroup;
 			children = (
+				9445C8B6193CB85200924D41 /* Icon-120.png */,
 				944A5B4E160B60010076410C /* Default@2x.png */,
 				94A404B9158A56B50084F645 /* Default.png */,
 				944A5B50160B60670076410C /* Default-568h@2x.png */,
@@ -2417,7 +2418,6 @@
 			isa = PBXGroup;
 			children = (
 				948C741B1807044400065E65 /* icon-29.png */,
-				9445C8B6193CB85200924D41 /* Icon-120.png */,
 				948C741C1807044400065E65 /* icon-29@2.png */,
 				948C7419180703A600065E65 /* icon-40.png */,
 				948C741A180703A600065E65 /* icon-40@2x.png */,
@@ -4178,7 +4178,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
-				VALID_ARCHS = "armv7 arm64";
+				VALID_ARCHS = "armv7 arm64 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4213,7 +4213,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
-				VALID_ARCHS = "armv7 arm64";
+				VALID_ARCHS = "armv7 arm64 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -4251,7 +4251,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
-				VALID_ARCHS = "armv7 arm64";
+				VALID_ARCHS = "armv7 arm64 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;
