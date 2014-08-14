@@ -10,8 +10,10 @@
 
 @interface DayChartControllerHelper : NSObject
 
--(void) initView:(UIView*) parentView andToolHeight:(int)height;
+-(void) initView:(UIView*) parentView andToolHeight:(int)height andLabel:(UILabel*)codeNavigatorLabel;
 
 -(void) setHidden:(BOOL)hidden;
+
+-(UIImage*) screenshot;
 
 @end

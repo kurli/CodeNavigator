@@ -42,6 +42,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
 @property (nonatomic, strong) NSDate* earlistDate;
 @property (nonatomic, strong) NSDate* minStartDate;
 @property (nonatomic, strong) NSDate* maxEndDate;
+@property (nonatomic, strong) UIView* parentView;
 
 // Helpers
 - (void)initData;
@@ -158,7 +159,8 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
 //    [self debugLog];
 }
 
--(void) initView:(UIView*) parentView andToolHeight:(int)height {
+-(void) initView:(UIView*) parentView andToolHeight:(int)height andLabel:(UILabel*)codeNavigatorLabel {
+    self.parentView = parentView;
     parentView.backgroundColor = kJBColorBarChartControllerBackground;
     
     self.lineChartView = [[JBLineChartView alloc] init];
@@ -213,6 +215,12 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
     [self.informationView setTextShadowColor:nil];
     [self.informationView setSeparatorColor:kJBColorBarChartHeaderSeparatorColor];
     [parentView addSubview:self.informationView];
+    
+    rect = codeNavigatorLabel.frame;
+    rect.origin.x = 10;
+    rect.origin.y = parentView.frame.size.height - rect.size.height - 10;
+    [codeNavigatorLabel setFrame:rect];
+    [parentView addSubview:codeNavigatorLabel];
     
     [self.lineChartView reloadData];
     
@@ -398,5 +406,19 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
     }
 }
 
+-(UIImage*) screenshot {
+//    NSString  *pngPath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"Documents/Test.png"];
+    UIImage* image = [self getImageFromView:self.parentView];
+//    [UIImagePNGRepresentation(image) writeToFile:pngPath atomically:YES];
+    return image;
+}
+
+-(UIImage *)getImageFromView:(UIView *)view{
+    UIGraphicsBeginImageContext(view.bounds.size);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
 
 @end

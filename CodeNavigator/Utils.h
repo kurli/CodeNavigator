@@ -11,6 +11,7 @@
 #import "MGSplitViewController.h"
 #import "ThemeManager.h"
 #import "DisplayController.h"
+#import "DBManager.h"
 
 #define IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
@@ -121,6 +122,8 @@ typedef enum _SearchType{
 @property (strong, nonatomic) NSString* gitPassword;
 
 @property (strong, nonatomic) UIActivityIndicatorView* cscopeIndicator;
+
+@property (strong, nonatomic) DBManager* dbManager;
 
 +(Utils*)getInstance;
 

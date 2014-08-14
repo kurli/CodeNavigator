@@ -33,6 +33,7 @@ NSInteger const kJBBarChartViewControllerMinBarHeight = 5;
 @property (nonatomic, strong) JBChartInformationView *informationView;
 @property (nonatomic, strong) NSArray *chartData;
 @property (nonatomic, strong) NSArray *weeklySymbols;
+@property (nonatomic, strong) UIView* parentView;
 
 @end
 
@@ -53,7 +54,8 @@ NSInteger const kJBBarChartViewControllerMinBarHeight = 5;
     self.weeklySymbols = [[[NSDateFormatter alloc] init] shortWeekdaySymbols];
 }
 
--(void) initView:(UIView*) parentView andToolHeight:(int)height {
+-(void) initView:(UIView*) parentView andToolHeight:(int)height andLabel:(UILabel*)codeNavigatorLabel {
+    self.parentView = parentView;
     
     parentView.backgroundColor = kJBColorBarChartControllerBackground;
     
@@ -80,8 +82,14 @@ NSInteger const kJBBarChartViewControllerMinBarHeight = 5;
     footerView.rightLabel.textColor = [UIColor whiteColor];
     self.barChartView.footerView = footerView;
     
-    self.informationView = [[JBChartInformationView alloc] initWithFrame:CGRectMake(parentView.bounds.origin.x, CGRectGetMaxY(self.barChartView.frame) , parentView.bounds.size.width, parentView.bounds.size.height - height - CGRectGetMaxY(self.barChartView.frame) - (20))];
+    self.informationView = [[JBChartInformationView alloc] initWithFrame:CGRectMake(parentView.bounds.origin.x, CGRectGetMaxY(self.barChartView.frame) , parentView.bounds.size.width, parentView.bounds.size.height - height - CGRectGetMaxY(self.barChartView.frame) - (80))];
     [parentView addSubview:self.informationView];
+    
+    CGRect rect = codeNavigatorLabel.frame;
+    rect.origin.x = 10;
+    rect.origin.y = parentView.frame.size.height - rect.size.height - 10;
+    [codeNavigatorLabel setFrame:rect];
+    [parentView addSubview:codeNavigatorLabel];
     
     [parentView addSubview:self.barChartView];
     [self.barChartView reloadData];
@@ -184,6 +192,21 @@ NSInteger const kJBBarChartViewControllerMinBarHeight = 5;
     } else {
         [self.barChartView setState:JBChartViewStateExpanded animated:YES];
     }
+}
+
+-(UIImage*) screenshot {
+//    NSString  *pngPath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"Documents/Test.png"];
+    UIImage* image = [self getImageFromView:self.parentView];
+//    [UIImagePNGRepresentation(image) writeToFile:pngPath atomically:YES];
+    return image;
+}
+
+-(UIImage *)getImageFromView:(UIView *)view{
+    UIGraphicsBeginImageContext(view.bounds.size);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
 }
 
 @end

@@ -95,6 +95,8 @@ static Utils *static_utils;
 #ifdef LITE_VERSION
     is_adMobON = YES; 
 #endif
+    self.dbManager = [[DBManager alloc] init];
+    [self.dbManager appStarted:nil];
     return self;
 }
 
@@ -112,6 +114,7 @@ static Utils *static_utils;
     [self setDetailViewController:nil];
     [self setSplitViewController:nil];
     [self.resultFileList removeAllObjects];
+    [self setDbManager:nil];
 }
 
 -(BOOL) isAdModOn

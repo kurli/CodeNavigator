@@ -857,6 +857,7 @@
 		94C8C68514FA57D60062750D /* ImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C8C68214FA57D60062750D /* ImagePreviewController.m */; };
 		94C8C68614FA57D60062750D /* ImagePreviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C8C68314FA57D60062750D /* ImagePreviewController.xib */; };
 		94C8C68714FA57D60062750D /* ImagePreviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C8C68314FA57D60062750D /* ImagePreviewController.xib */; };
+		94C95FEC198A8A8A005260B5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C95FEB198A8A8A005260B5 /* libsqlite3.dylib */; };
 		94CB768217E21369009807F9 /* FileListBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CB768117E21369009807F9 /* FileListBrowserController.m */; };
 		94CB768317E21369009807F9 /* FileListBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CB768117E21369009807F9 /* FileListBrowserController.m */; };
 		94CB787F156E80C8009452D8 /* FileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CB787E156E80C8009452D8 /* FileTableViewCell.xib */; };
@@ -974,6 +975,63 @@
 		94D8703114A65888002F2DBB /* FilePathInfoPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D8702F14A65887002F2DBB /* FilePathInfoPopupController.m */; };
 		94D8703214A65888002F2DBB /* FilePathInfoPopupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D8703014A65888002F2DBB /* FilePathInfoPopupController.xib */; };
 		94DA0BBE14A624690035DB39 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DA0BBD14A624680035DB39 /* Utils.m */; };
+		94DDE5FF1997CAC20034B193 /* ChartBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5D41997CAC20034B193 /* ChartBoardViewController.m */; };
+		94DDE6001997CAC20034B193 /* ChartBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5D41997CAC20034B193 /* ChartBoardViewController.m */; };
+		94DDE6011997CAC20034B193 /* ChartBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5D41997CAC20034B193 /* ChartBoardViewController.m */; };
+		94DDE6021997CAC20034B193 /* ChartBoardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DDE5D51997CAC20034B193 /* ChartBoardViewController.xib */; };
+		94DDE6031997CAC20034B193 /* ChartBoardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DDE5D51997CAC20034B193 /* ChartBoardViewController.xib */; };
+		94DDE6041997CAC20034B193 /* ChartBoardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DDE5D51997CAC20034B193 /* ChartBoardViewController.xib */; };
+		94DDE6051997CAC20034B193 /* DayChartControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5DD1997CAC20034B193 /* DayChartControllerHelper.m */; };
+		94DDE6061997CAC20034B193 /* DayChartControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5DD1997CAC20034B193 /* DayChartControllerHelper.m */; };
+		94DDE6071997CAC20034B193 /* DayChartControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5DD1997CAC20034B193 /* DayChartControllerHelper.m */; };
+		94DDE6081997CAC20034B193 /* JBBarChartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5E01997CAC20034B193 /* JBBarChartFooterView.m */; };
+		94DDE6091997CAC20034B193 /* JBBarChartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5E01997CAC20034B193 /* JBBarChartFooterView.m */; };
+		94DDE60A1997CAC20034B193 /* JBBarChartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5E01997CAC20034B193 /* JBBarChartFooterView.m */; };
+		94DDE60B1997CAC20034B193 /* JBLineChartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5E21997CAC20034B193 /* JBLineChartFooterView.m */; };
+		94DDE60C1997CAC20034B193 /* JBLineChartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5E21997CAC20034B193 /* JBLineChartFooterView.m */; };
+		94DDE60D1997CAC20034B193 /* JBLineChartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5E21997CAC20034B193 /* JBLineChartFooterView.m */; };
+		94DDE60E1997CAC20034B193 /* JBChartHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5E51997CAC20034B193 /* JBChartHeaderView.m */; };
+		94DDE60F1997CAC20034B193 /* JBChartHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5E51997CAC20034B193 /* JBChartHeaderView.m */; };
+		94DDE6101997CAC20034B193 /* JBChartHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5E51997CAC20034B193 /* JBChartHeaderView.m */; };
+		94DDE6111997CAC20034B193 /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5E81997CAC20034B193 /* JBBarChartView.m */; };
+		94DDE6121997CAC20034B193 /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5E81997CAC20034B193 /* JBBarChartView.m */; };
+		94DDE6131997CAC20034B193 /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5E81997CAC20034B193 /* JBBarChartView.m */; };
+		94DDE6141997CAC20034B193 /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5EA1997CAC20034B193 /* JBChartView.m */; };
+		94DDE6151997CAC20034B193 /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5EA1997CAC20034B193 /* JBChartView.m */; };
+		94DDE6161997CAC20034B193 /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5EA1997CAC20034B193 /* JBChartView.m */; };
+		94DDE6171997CAC20034B193 /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5EC1997CAC20034B193 /* JBLineChartView.m */; };
+		94DDE6181997CAC20034B193 /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5EC1997CAC20034B193 /* JBLineChartView.m */; };
+		94DDE6191997CAC20034B193 /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5EC1997CAC20034B193 /* JBLineChartView.m */; };
+		94DDE61A1997CAC20034B193 /* JBChartInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5EF1997CAC20034B193 /* JBChartInformationView.m */; };
+		94DDE61B1997CAC20034B193 /* JBChartInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5EF1997CAC20034B193 /* JBChartInformationView.m */; };
+		94DDE61C1997CAC20034B193 /* JBChartInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5EF1997CAC20034B193 /* JBChartInformationView.m */; };
+		94DDE61D1997CAC20034B193 /* JBChartTooltipTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5F11997CAC20034B193 /* JBChartTooltipTipView.m */; };
+		94DDE61E1997CAC20034B193 /* JBChartTooltipTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5F11997CAC20034B193 /* JBChartTooltipTipView.m */; };
+		94DDE61F1997CAC20034B193 /* JBChartTooltipTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5F11997CAC20034B193 /* JBChartTooltipTipView.m */; };
+		94DDE6201997CAC20034B193 /* JBChartTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5F31997CAC20034B193 /* JBChartTooltipView.m */; };
+		94DDE6211997CAC20034B193 /* JBChartTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5F31997CAC20034B193 /* JBChartTooltipView.m */; };
+		94DDE6221997CAC20034B193 /* JBChartTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5F31997CAC20034B193 /* JBChartTooltipView.m */; };
+		94DDE6231997CAC20034B193 /* SAResizibleBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5F61997CAC20034B193 /* SAResizibleBubble.m */; };
+		94DDE6241997CAC20034B193 /* SAResizibleBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5F61997CAC20034B193 /* SAResizibleBubble.m */; };
+		94DDE6251997CAC20034B193 /* SAResizibleBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5F61997CAC20034B193 /* SAResizibleBubble.m */; };
+		94DDE6261997CAC20034B193 /* SASliderLeft.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5F81997CAC20034B193 /* SASliderLeft.m */; };
+		94DDE6271997CAC20034B193 /* SASliderLeft.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5F81997CAC20034B193 /* SASliderLeft.m */; };
+		94DDE6281997CAC20034B193 /* SASliderLeft.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5F81997CAC20034B193 /* SASliderLeft.m */; };
+		94DDE6291997CAC20034B193 /* SASliderRight.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5FA1997CAC20034B193 /* SASliderRight.m */; };
+		94DDE62A1997CAC20034B193 /* SASliderRight.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5FA1997CAC20034B193 /* SASliderRight.m */; };
+		94DDE62B1997CAC20034B193 /* SASliderRight.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5FA1997CAC20034B193 /* SASliderRight.m */; };
+		94DDE62C1997CAC20034B193 /* SAVideoRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5FC1997CAC20034B193 /* SAVideoRangeSlider.m */; };
+		94DDE62D1997CAC20034B193 /* SAVideoRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5FC1997CAC20034B193 /* SAVideoRangeSlider.m */; };
+		94DDE62E1997CAC20034B193 /* SAVideoRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5FC1997CAC20034B193 /* SAVideoRangeSlider.m */; };
+		94DDE62F1997CAC20034B193 /* WeekChartControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5FE1997CAC20034B193 /* WeekChartControllerHelper.m */; };
+		94DDE6301997CAC20034B193 /* WeekChartControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5FE1997CAC20034B193 /* WeekChartControllerHelper.m */; };
+		94DDE6311997CAC20034B193 /* WeekChartControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5FE1997CAC20034B193 /* WeekChartControllerHelper.m */; };
+		94DDE6351997CAD40034B193 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE6341997CAD40034B193 /* DBManager.m */; };
+		94DDE6361997CAD40034B193 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE6341997CAD40034B193 /* DBManager.m */; };
+		94DDE6371997CAD40034B193 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE6341997CAD40034B193 /* DBManager.m */; };
+		94DDE6961997CD8E0034B193 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DDE6951997CD8D0034B193 /* CoreTelephony.framework */; };
+		94DDE6981997CD990034B193 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DDE6971997CD990034B193 /* libicucore.dylib */; };
+		94DDE69A1997CDA10034B193 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DDE6991997CDA10034B193 /* libz.1.2.5.dylib */; };
 		94E3761518D495A5006756A3 /* GitUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E3761318D495A5006756A3 /* GitUpdateViewController.m */; };
 		94E3761618D495A5006756A3 /* GitUpdateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E3761418D495A5006756A3 /* GitUpdateViewController.xib */; };
 		94E6DB61152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */; };
@@ -1621,6 +1679,7 @@
 		94C8C68114FA57D60062750D /* ImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagePreviewController.h; path = CodeNavigator/ImagePreviewController.h; sourceTree = "<group>"; };
 		94C8C68214FA57D60062750D /* ImagePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagePreviewController.m; path = CodeNavigator/ImagePreviewController.m; sourceTree = "<group>"; };
 		94C8C68314FA57D60062750D /* ImagePreviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImagePreviewController.xib; path = CodeNavigator/ImagePreviewController.xib; sourceTree = "<group>"; };
+		94C95FEB198A8A8A005260B5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		94CB768017E21369009807F9 /* FileListBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileListBrowserController.h; path = FileListBrowser/FileListBrowserController.h; sourceTree = "<group>"; };
 		94CB768117E21369009807F9 /* FileListBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileListBrowserController.m; path = FileListBrowser/FileListBrowserController.m; sourceTree = "<group>"; };
 		94CB787E156E80C8009452D8 /* FileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileTableViewCell.xib; sourceTree = "<group>"; };
@@ -1636,6 +1695,55 @@
 		94D8703014A65888002F2DBB /* FilePathInfoPopupController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilePathInfoPopupController.xib; sourceTree = "<group>"; };
 		94DA0BBC14A624680035DB39 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		94DA0BBD14A624680035DB39 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		94DDE5D31997CAC20034B193 /* ChartBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartBoardViewController.h; sourceTree = "<group>"; };
+		94DDE5D41997CAC20034B193 /* ChartBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartBoardViewController.m; sourceTree = "<group>"; };
+		94DDE5D51997CAC20034B193 /* ChartBoardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartBoardViewController.xib; sourceTree = "<group>"; };
+		94DDE5D71997CAC20034B193 /* JBColorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBColorConstants.h; sourceTree = "<group>"; };
+		94DDE5D81997CAC20034B193 /* JBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBConstants.h; sourceTree = "<group>"; };
+		94DDE5D91997CAC20034B193 /* JBFontConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBFontConstants.h; sourceTree = "<group>"; };
+		94DDE5DA1997CAC20034B193 /* JBStringConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBStringConstants.h; sourceTree = "<group>"; };
+		94DDE5DB1997CAC20034B193 /* JBUIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBUIConstants.h; sourceTree = "<group>"; };
+		94DDE5DC1997CAC20034B193 /* DayChartControllerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayChartControllerHelper.h; sourceTree = "<group>"; };
+		94DDE5DD1997CAC20034B193 /* DayChartControllerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayChartControllerHelper.m; sourceTree = "<group>"; };
+		94DDE5DF1997CAC20034B193 /* JBBarChartFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBarChartFooterView.h; sourceTree = "<group>"; };
+		94DDE5E01997CAC20034B193 /* JBBarChartFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBarChartFooterView.m; sourceTree = "<group>"; };
+		94DDE5E11997CAC20034B193 /* JBLineChartFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartFooterView.h; sourceTree = "<group>"; };
+		94DDE5E21997CAC20034B193 /* JBLineChartFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartFooterView.m; sourceTree = "<group>"; };
+		94DDE5E41997CAC20034B193 /* JBChartHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartHeaderView.h; sourceTree = "<group>"; };
+		94DDE5E51997CAC20034B193 /* JBChartHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartHeaderView.m; sourceTree = "<group>"; };
+		94DDE5E71997CAC20034B193 /* JBBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBarChartView.h; sourceTree = "<group>"; };
+		94DDE5E81997CAC20034B193 /* JBBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBarChartView.m; sourceTree = "<group>"; };
+		94DDE5E91997CAC20034B193 /* JBChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartView.h; sourceTree = "<group>"; };
+		94DDE5EA1997CAC20034B193 /* JBChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartView.m; sourceTree = "<group>"; };
+		94DDE5EB1997CAC20034B193 /* JBLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartView.h; sourceTree = "<group>"; };
+		94DDE5EC1997CAC20034B193 /* JBLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartView.m; sourceTree = "<group>"; };
+		94DDE5EE1997CAC20034B193 /* JBChartInformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartInformationView.h; sourceTree = "<group>"; };
+		94DDE5EF1997CAC20034B193 /* JBChartInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartInformationView.m; sourceTree = "<group>"; };
+		94DDE5F01997CAC20034B193 /* JBChartTooltipTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartTooltipTipView.h; sourceTree = "<group>"; };
+		94DDE5F11997CAC20034B193 /* JBChartTooltipTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartTooltipTipView.m; sourceTree = "<group>"; };
+		94DDE5F21997CAC20034B193 /* JBChartTooltipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartTooltipView.h; sourceTree = "<group>"; };
+		94DDE5F31997CAC20034B193 /* JBChartTooltipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartTooltipView.m; sourceTree = "<group>"; };
+		94DDE5F51997CAC20034B193 /* SAResizibleBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAResizibleBubble.h; sourceTree = "<group>"; };
+		94DDE5F61997CAC20034B193 /* SAResizibleBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAResizibleBubble.m; sourceTree = "<group>"; };
+		94DDE5F71997CAC20034B193 /* SASliderLeft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASliderLeft.h; sourceTree = "<group>"; };
+		94DDE5F81997CAC20034B193 /* SASliderLeft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASliderLeft.m; sourceTree = "<group>"; };
+		94DDE5F91997CAC20034B193 /* SASliderRight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASliderRight.h; sourceTree = "<group>"; };
+		94DDE5FA1997CAC20034B193 /* SASliderRight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASliderRight.m; sourceTree = "<group>"; };
+		94DDE5FB1997CAC20034B193 /* SAVideoRangeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAVideoRangeSlider.h; sourceTree = "<group>"; };
+		94DDE5FC1997CAC20034B193 /* SAVideoRangeSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAVideoRangeSlider.m; sourceTree = "<group>"; };
+		94DDE5FD1997CAC20034B193 /* WeekChartControllerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekChartControllerHelper.h; sourceTree = "<group>"; };
+		94DDE5FE1997CAC20034B193 /* WeekChartControllerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekChartControllerHelper.m; sourceTree = "<group>"; };
+		94DDE6331997CAD40034B193 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		94DDE6341997CAD40034B193 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		94DDE6951997CD8D0034B193 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		94DDE6971997CD990034B193 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		94DDE6991997CDA10034B193 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		94DDE69B1997CDBA0034B193 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		94DDE69D1997CDC20034B193 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		94DDE69F1997CDCB0034B193 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		94DDE6A11997CDD70034B193 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		94DDE6A31997CDE00034B193 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		94DDE6A51997CDE90034B193 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		94E3761218D495A5006756A3 /* GitUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GitUpdateViewController.h; path = help/GitUpdateViewController.h; sourceTree = "<group>"; };
 		94E3761318D495A5006756A3 /* GitUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitUpdateViewController.m; path = help/GitUpdateViewController.m; sourceTree = "<group>"; };
 		94E3761418D495A5006756A3 /* GitUpdateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GitUpdateViewController.xib; path = help/GitUpdateViewController.xib; sourceTree = "<group>"; };
@@ -1682,6 +1790,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94618169155BF85800A25635 /* MessageUI.framework in Frameworks */,
+				94A5184B152DF30A0062DA65 /* Security.framework in Frameworks */,
+				94DDE69A1997CDA10034B193 /* libz.1.2.5.dylib in Frameworks */,
+				94DDE6981997CD990034B193 /* libicucore.dylib in Frameworks */,
+				94DDE6961997CD8E0034B193 /* CoreTelephony.framework in Frameworks */,
+				94205714157B938B00178CBF /* QuartzCore.framework in Frameworks */,
+				94BC575318D89B730027B383 /* SystemConfiguration.framework in Frameworks */,
+				94C95FEC198A8A8A005260B5 /* libsqlite3.dylib in Frameworks */,
 				940D94DD18F99D8F006D5D0D /* libObjectiveGit-iOS.a in Frameworks */,
 				94BC575518D89BFB0027B383 /* AdSupport.framework in Frameworks */,
 				94C7C171184E42B3003A8C03 /* Social.framework in Frameworks */,
@@ -1689,15 +1805,11 @@
 				94785A55184519660012988B /* libz.dylib in Frameworks */,
 				94785A421840FAB90012988B /* libiconv.dylib in Frameworks */,
 				9478C6DE15C8396300F443D9 /* Twitter.framework in Frameworks */,
-				94205714157B938B00178CBF /* QuartzCore.framework in Frameworks */,
-				94618169155BF85800A25635 /* MessageUI.framework in Frameworks */,
-				94A5184B152DF30A0062DA65 /* Security.framework in Frameworks */,
 				94BF7DA4150E727B00FCF653 /* libZip.a in Frameworks */,
 				9417EB7814AE118000224D2A /* iAd.framework in Frameworks */,
 				94B4038114A0ED4700E3A636 /* CFNetwork.framework in Frameworks */,
 				94B4036A14A0DE0300E3A636 /* libHttpService.a in Frameworks */,
 				9431D73914910B3000B0900E /* UIKit.framework in Frameworks */,
-				94BC575318D89B730027B383 /* SystemConfiguration.framework in Frameworks */,
 				9431D73B14910B3000B0900E /* Foundation.framework in Frameworks */,
 				94BC575018D8969B0027B383 /* libGoogleAnalyticsServices.a in Frameworks */,
 				9431D73D14910B3000B0900E /* CoreGraphics.framework in Frameworks */,
@@ -1860,6 +1972,7 @@
 				94CB767F17E20662009807F9 /* FileListBrowser */,
 				949CB5EA19630C0600A95AEC /* FileBrowserTreeView */,
 				94A430E5196EF2D1003497CB /* UploadFromITunes */,
+				94DDE5D11997CA820034B193 /* Tracking */,
 				9431D73E14910B3000B0900E /* CodeNavigator */,
 				9431D73714910B3000B0900E /* Frameworks */,
 				9431D73514910B3000B0900E /* Products */,
@@ -1879,6 +1992,16 @@
 		9431D73714910B3000B0900E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				94DDE6A51997CDE90034B193 /* AddressBook.framework */,
+				94DDE6A31997CDE00034B193 /* AssetsLibrary.framework */,
+				94DDE6A11997CDD70034B193 /* CoreText.framework */,
+				94DDE69F1997CDCB0034B193 /* MediaPlayer.framework */,
+				94DDE69D1997CDC20034B193 /* CoreLocation.framework */,
+				94DDE69B1997CDBA0034B193 /* CoreMotion.framework */,
+				94DDE6991997CDA10034B193 /* libz.1.2.5.dylib */,
+				94DDE6971997CD990034B193 /* libicucore.dylib */,
+				94DDE6951997CD8D0034B193 /* CoreTelephony.framework */,
+				94C95FEB198A8A8A005260B5 /* libsqlite3.dylib */,
 				94BC575418D89BFB0027B383 /* AdSupport.framework */,
 				94C7C170184E42B3003A8C03 /* Social.framework */,
 				94785A54184519660012988B /* libz.dylib */,
@@ -2678,6 +2801,117 @@
 			name = FileListBrowser;
 			sourceTree = "<group>";
 		};
+		94DDE5D11997CA820034B193 /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				94DDE6321997CAD40034B193 /* DBManager */,
+				94DDE5D21997CAC20034B193 /* ChartBoard */,
+			);
+			name = Tracking;
+			sourceTree = "<group>";
+		};
+		94DDE5D21997CAC20034B193 /* ChartBoard */ = {
+			isa = PBXGroup;
+			children = (
+				94DDE5D31997CAC20034B193 /* ChartBoardViewController.h */,
+				94DDE5D41997CAC20034B193 /* ChartBoardViewController.m */,
+				94DDE5D51997CAC20034B193 /* ChartBoardViewController.xib */,
+				94DDE5D61997CAC20034B193 /* Constants */,
+				94DDE5DC1997CAC20034B193 /* DayChartControllerHelper.h */,
+				94DDE5DD1997CAC20034B193 /* DayChartControllerHelper.m */,
+				94DDE5DE1997CAC20034B193 /* Footers */,
+				94DDE5E31997CAC20034B193 /* Headers */,
+				94DDE5E61997CAC20034B193 /* JBChartView */,
+				94DDE5ED1997CAC20034B193 /* Misc */,
+				94DDE5F41997CAC20034B193 /* SAVideoRangeSlider */,
+				94DDE5FD1997CAC20034B193 /* WeekChartControllerHelper.h */,
+				94DDE5FE1997CAC20034B193 /* WeekChartControllerHelper.m */,
+			);
+			path = ChartBoard;
+			sourceTree = "<group>";
+		};
+		94DDE5D61997CAC20034B193 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				94DDE5D71997CAC20034B193 /* JBColorConstants.h */,
+				94DDE5D81997CAC20034B193 /* JBConstants.h */,
+				94DDE5D91997CAC20034B193 /* JBFontConstants.h */,
+				94DDE5DA1997CAC20034B193 /* JBStringConstants.h */,
+				94DDE5DB1997CAC20034B193 /* JBUIConstants.h */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		94DDE5DE1997CAC20034B193 /* Footers */ = {
+			isa = PBXGroup;
+			children = (
+				94DDE5DF1997CAC20034B193 /* JBBarChartFooterView.h */,
+				94DDE5E01997CAC20034B193 /* JBBarChartFooterView.m */,
+				94DDE5E11997CAC20034B193 /* JBLineChartFooterView.h */,
+				94DDE5E21997CAC20034B193 /* JBLineChartFooterView.m */,
+			);
+			path = Footers;
+			sourceTree = "<group>";
+		};
+		94DDE5E31997CAC20034B193 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				94DDE5E41997CAC20034B193 /* JBChartHeaderView.h */,
+				94DDE5E51997CAC20034B193 /* JBChartHeaderView.m */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		94DDE5E61997CAC20034B193 /* JBChartView */ = {
+			isa = PBXGroup;
+			children = (
+				94DDE5E71997CAC20034B193 /* JBBarChartView.h */,
+				94DDE5E81997CAC20034B193 /* JBBarChartView.m */,
+				94DDE5E91997CAC20034B193 /* JBChartView.h */,
+				94DDE5EA1997CAC20034B193 /* JBChartView.m */,
+				94DDE5EB1997CAC20034B193 /* JBLineChartView.h */,
+				94DDE5EC1997CAC20034B193 /* JBLineChartView.m */,
+			);
+			path = JBChartView;
+			sourceTree = "<group>";
+		};
+		94DDE5ED1997CAC20034B193 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				94DDE5EE1997CAC20034B193 /* JBChartInformationView.h */,
+				94DDE5EF1997CAC20034B193 /* JBChartInformationView.m */,
+				94DDE5F01997CAC20034B193 /* JBChartTooltipTipView.h */,
+				94DDE5F11997CAC20034B193 /* JBChartTooltipTipView.m */,
+				94DDE5F21997CAC20034B193 /* JBChartTooltipView.h */,
+				94DDE5F31997CAC20034B193 /* JBChartTooltipView.m */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		94DDE5F41997CAC20034B193 /* SAVideoRangeSlider */ = {
+			isa = PBXGroup;
+			children = (
+				94DDE5F51997CAC20034B193 /* SAResizibleBubble.h */,
+				94DDE5F61997CAC20034B193 /* SAResizibleBubble.m */,
+				94DDE5F71997CAC20034B193 /* SASliderLeft.h */,
+				94DDE5F81997CAC20034B193 /* SASliderLeft.m */,
+				94DDE5F91997CAC20034B193 /* SASliderRight.h */,
+				94DDE5FA1997CAC20034B193 /* SASliderRight.m */,
+				94DDE5FB1997CAC20034B193 /* SAVideoRangeSlider.h */,
+				94DDE5FC1997CAC20034B193 /* SAVideoRangeSlider.m */,
+			);
+			path = SAVideoRangeSlider;
+			sourceTree = "<group>";
+		};
+		94DDE6321997CAD40034B193 /* DBManager */ = {
+			isa = PBXGroup;
+			children = (
+				94DDE6331997CAD40034B193 /* DBManager.h */,
+				94DDE6341997CAD40034B193 /* DBManager.m */,
+			);
+			path = DBManager;
+			sourceTree = "<group>";
+		};
 		94EED18916331CF1003D9CA3 /* FunctionList */ = {
 			isa = PBXGroup;
 			children = (
@@ -2798,6 +3032,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 9431D72914910B3000B0900E;
 			productRefGroup = 9431D73514910B3000B0900E /* Products */;
@@ -2974,6 +3209,7 @@
 				9478C6D615C8207600F443D9 /* appstore.png in Resources */,
 				9478C6D715C8207600F443D9 /* demoVideo.png in Resources */,
 				948C74051804491A00065E65 /* search.png in Resources */,
+				94DDE6021997CAC20034B193 /* ChartBoardViewController.xib in Resources */,
 				948C74221807091700065E65 /* Icon-50@2x.png in Resources */,
 				9478C6D815C8207600F443D9 /* share.png in Resources */,
 				9444596118D7508C008A02DB /* iRate.bundle in Resources */,
@@ -3056,6 +3292,7 @@
 				949DC23B1583E8CF00385796 /* mmFile.png in Resources */,
 				94B1DCDA191F6F5C00909C3E /* FileBrowserViewController.xib in Resources */,
 				949DC23C1583E8CF00385796 /* sFile.png in Resources */,
+				94DDE6041997CAC20034B193 /* ChartBoardViewController.xib in Resources */,
 				949DC23D1583E8CF00385796 /* back.png in Resources */,
 				949DC23E1583E8CF00385796 /* forward.png in Resources */,
 				949DC23F1583E8CF00385796 /* NewEntry.png in Resources */,
@@ -3205,6 +3442,7 @@
 				94D1BF7A153C56420007A8EB /* forward_history.png in Resources */,
 				94D1BF7D153C66A20007A8EB /* backward_history.png in Resources */,
 				94A0FAE4153DDA78004277BF /* cscope.png in Resources */,
+				94DDE6031997CAC20034B193 /* ChartBoardViewController.xib in Resources */,
 				94A0FAE7153DDAD9004277BF /* virtualize.png in Resources */,
 				94352108153EFC1E003F316A /* version_control.png in Resources */,
 				94B8EC221546F2B600931747 /* Mediation in Resources */,
@@ -3264,6 +3502,7 @@
 				9431D7B61494754900B0900E /* snprintf.c in Sources */,
 				9431D7B81494754900B0900E /* vpaccess.c in Sources */,
 				9431D7B91494754900B0900E /* vpfopen.c in Sources */,
+				94DDE60B1997CAC20034B193 /* JBLineChartFooterView.m in Sources */,
 				9431D7BA1494754900B0900E /* vpinit.c in Sources */,
 				9431D7BB1494754900B0900E /* vpopen.c in Sources */,
 				94B23AD81499025A00A83395 /* HistoryController.m in Sources */,
@@ -3272,6 +3511,7 @@
 				94EE32D3149FAE0B0088501D /* GotoLineViewController.m in Sources */,
 				9466466B14A2370700B30CD2 /* WebServiceController.m in Sources */,
 				94DA0BBE14A624690035DB39 /* Utils.m in Sources */,
+				94DDE62C1997CAC20034B193 /* SAVideoRangeSlider.m in Sources */,
 				94D8703114A65888002F2DBB /* FilePathInfoPopupController.m in Sources */,
 				94AB1E5214AF5E0300451020 /* UnSupportedParser.m in Sources */,
 				94FB0FEB14BDB3A50084E457 /* HighLightWordController.m in Sources */,
@@ -3281,6 +3521,7 @@
 				94422A3314DD87F50076AC66 /* VirtualizeViewController.m in Sources */,
 				94D822D814DEF451004FCDD1 /* VirtualizeWrapper.m in Sources */,
 				945428AF14F29A8D00353EC8 /* FileManagerController.m in Sources */,
+				94DDE6081997CAC20034B193 /* JBBarChartFooterView.m in Sources */,
 				945428B414F2B51600353EC8 /* ProjectListController.m in Sources */,
 				946F857818E841DF00CBFA19 /* ThemeManager.m in Sources */,
 				94C8C68414FA57D60062750D /* ImagePreviewController.m in Sources */,
@@ -3301,6 +3542,7 @@
 				94B69881180EEE7A009C7176 /* CSSParser.m in Sources */,
 				944DD7DA15277591000473BE /* dif_dir.c in Sources */,
 				944DD7DD152775FC000473BE /* analyze.c in Sources */,
+				94DDE6171997CAC20034B193 /* JBLineChartView.m in Sources */,
 				9478A461190ADFCD0093279F /* SelectGroupViewController.m in Sources */,
 				944DD7E115277625000473BE /* cmpbuf.c in Sources */,
 				944DD7E4152776D5000473BE /* version.c in Sources */,
@@ -3314,6 +3556,9 @@
 				944DD7F3152778B9000473BE /* ifdef.c in Sources */,
 				940BE0E21528CEF300CBAE18 /* GitDiffViewController.m in Sources */,
 				940BE0F01528E64600CBAE18 /* DiffFileListController.m in Sources */,
+				94DDE6261997CAC20034B193 /* SASliderLeft.m in Sources */,
+				94DDE61A1997CAC20034B193 /* JBChartInformationView.m in Sources */,
+				94DDE6201997CAC20034B193 /* JBChartTooltipView.m in Sources */,
 				94E6DB61152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */,
 				94A51850152DF8D70062DA65 /* DropBoxViewController.m in Sources */,
 				9457C78715307AF500BB9185 /* LocalFileControllerDelegate.m in Sources */,
@@ -3365,8 +3610,10 @@
 				9478595D162C5A08006E4575 /* jscript.c in Sources */,
 				9478595E162C5A08006E4575 /* keyword.c in Sources */,
 				94B40392194456F8002B8E26 /* MGSplitDividerView.m in Sources */,
+				94DDE61D1997CAC20034B193 /* JBChartTooltipTipView.m in Sources */,
 				9444595B18D72B8C008A02DB /* VersionViewController.m in Sources */,
 				9478595F162C5A08006E4575 /* lisp.c in Sources */,
+				94DDE6051997CAC20034B193 /* DayChartControllerHelper.m in Sources */,
 				94785960162C5A08006E4575 /* lregex.c in Sources */,
 				94785961162C5A08006E4575 /* lua.c in Sources */,
 				94785963162C5A08006E4575 /* make.c in Sources */,
@@ -3380,6 +3627,7 @@
 				9478596A162C5A08006E4575 /* php.c in Sources */,
 				9478596B162C5A08006E4575 /* python.c in Sources */,
 				9478596C162C5A08006E4575 /* read.c in Sources */,
+				94DDE60E1997CAC20034B193 /* JBChartHeaderView.m in Sources */,
 				94785971162C5A08006E4575 /* rexx.c in Sources */,
 				94785972162C5A08006E4575 /* routines.c in Sources */,
 				94A430E9196EF328003497CB /* UploadFromITunesViewController.m in Sources */,
@@ -3387,9 +3635,12 @@
 				949CB5EE19630C6500A95AEC /* FileBrowserTreeViewController.m in Sources */,
 				94B1DD2D192259FD00909C3E /* DisplayModeController.m in Sources */,
 				94785974162C5A08006E4575 /* scheme.c in Sources */,
+				94DDE6111997CAC20034B193 /* JBBarChartView.m in Sources */,
 				94785975162C5A08006E4575 /* sh.c in Sources */,
 				94785976162C5A08006E4575 /* slang.c in Sources */,
 				94785977162C5A08006E4575 /* sml.c in Sources */,
+				94DDE5FF1997CAC20034B193 /* ChartBoardViewController.m in Sources */,
+				94DDE6141997CAC20034B193 /* JBChartView.m in Sources */,
 				94785978162C5A08006E4575 /* sort.c in Sources */,
 				94785979162C5A08006E4575 /* sql.c in Sources */,
 				9478597A162C5A08006E4575 /* strlist.c in Sources */,
@@ -3401,9 +3652,11 @@
 				94B40390194456F8002B8E26 /* MGSplitCornersView.m in Sources */,
 				94785980162C5A08006E4575 /* vstring.c in Sources */,
 				94785981162C5A08006E4575 /* yacc.c in Sources */,
+				94DDE6291997CAC20034B193 /* SASliderRight.m in Sources */,
 				9471D4381630463100629F35 /* readtags.c in Sources */,
 				94EED18D16331D99003D9CA3 /* FunctionListViewController.m in Sources */,
 				94EED19116332147003D9CA3 /* FunctionListManager.m in Sources */,
+				94DDE6231997CAC20034B193 /* SAResizibleBubble.m in Sources */,
 				94C2CDC5167F55C9004FB1FB /* HtmlParser.m in Sources */,
 				9434A5A6174FC00D004B1A9D /* GitCloneViewController.m in Sources */,
 				94AB105517550CD500359AE8 /* HandleURLController.m in Sources */,
@@ -3416,9 +3669,11 @@
 				94B09BB517E77DC600789510 /* FileBrowserViewController.m in Sources */,
 				94F7B90D17F7487A00A506EE /* UploadSelectionViewController.m in Sources */,
 				9451D59417F9BD4C00BDAD5E /* MasterViewController.m in Sources */,
+				94DDE6351997CAD40034B193 /* DBManager.m in Sources */,
 				94BD81DD18014587002F8153 /* JavaParser.m in Sources */,
 				94BD81DE18014587002F8153 /* JavaScriptParser.m in Sources */,
 				94BD81E218014840002F8153 /* PHPParser.m in Sources */,
+				94DDE62F1997CAC20034B193 /* WeekChartControllerHelper.m in Sources */,
 				941E63E418019354008226F2 /* OpenAsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3429,6 +3684,7 @@
 			files = (
 				948E145F16416D2600CBBD5B /* readtags.h in Sources */,
 				948E146016416D2600CBBD5B /* ant.c in Sources */,
+				94DDE60A1997CAC20034B193 /* JBBarChartFooterView.m in Sources */,
 				948E146116416D2600CBBD5B /* args.c in Sources */,
 				948E146216416D2600CBBD5B /* args.h in Sources */,
 				94B1DD06191F71DA00909C3E /* UploadSelectionViewController.m in Sources */,
@@ -3436,24 +3692,30 @@
 				948E146316416D2600CBBD5B /* asm.c in Sources */,
 				948E146416416D2600CBBD5B /* asp.c in Sources */,
 				94B1DCCC191F6EC500909C3E /* DiffFileListController.m in Sources */,
+				94DDE61C1997CAC20034B193 /* JBChartInformationView.m in Sources */,
 				94B1DCFA191F714300909C3E /* HandleURLController.m in Sources */,
 				948E146516416D2600CBBD5B /* awk.c in Sources */,
 				948E146616416D2600CBBD5B /* basic.c in Sources */,
 				948E146716416D2600CBBD5B /* beta.c in Sources */,
 				948E146816416D2600CBBD5B /* c.c in Sources */,
+				94DDE61F1997CAC20034B193 /* JBChartTooltipTipView.m in Sources */,
 				948E146916416D2600CBBD5B /* cobol.c in Sources */,
 				948E146A16416D2600CBBD5B /* config.h in Sources */,
+				94DDE6221997CAC20034B193 /* JBChartTooltipView.m in Sources */,
 				948E146B16416D2600CBBD5B /* css.c in Sources */,
 				94B1DCD8191F6F4F00909C3E /* FileListBrowserController.m in Sources */,
+				94DDE6311997CAC20034B193 /* WeekChartControllerHelper.m in Sources */,
 				948E146C16416D2600CBBD5B /* ctags_main.c in Sources */,
 				94B1DCDF191F6F7D00909C3E /* ThemeSelectorViewController.m in Sources */,
 				948E146D16416D2600CBBD5B /* ctags_main.h in Sources */,
 				948E146E16416D2600CBBD5B /* ctags.h in Sources */,
+				94DDE6371997CAD40034B193 /* DBManager.m in Sources */,
 				948E146F16416D2600CBBD5B /* debug.c in Sources */,
 				948E147016416D2600CBBD5B /* debug.h in Sources */,
 				948E147116416D2600CBBD5B /* dosbatch.c in Sources */,
 				948E147216416D2600CBBD5B /* e_amiga.h in Sources */,
 				948E147316416D2600CBBD5B /* e_djgpp.h in Sources */,
+				94DDE6131997CAC20034B193 /* JBBarChartView.m in Sources */,
 				94B1DCE4191F6FF100909C3E /* OpenAsViewController.m in Sources */,
 				94B1DCDD191F6F7800909C3E /* ThemeManager.m in Sources */,
 				948E147416416D2600CBBD5B /* e_mac.h in Sources */,
@@ -3497,6 +3759,7 @@
 				948E149716416D2600CBBD5B /* python.c in Sources */,
 				94B1DD1D191F99E600909C3E /* FPPopoverController.m in Sources */,
 				94B1DCEC191F704900909C3E /* JavaScriptParser.m in Sources */,
+				94DDE6251997CAC20034B193 /* SAResizibleBubble.m in Sources */,
 				948E149816416D2600CBBD5B /* read.c in Sources */,
 				948E149916416D2600CBBD5B /* read.h in Sources */,
 				948E14A016416D2700CBBD5B /* rexx.c in Sources */,
@@ -3507,9 +3770,11 @@
 				948E14A516416D2700CBBD5B /* sh.c in Sources */,
 				948E14A616416D2700CBBD5B /* slang.c in Sources */,
 				948E14A716416D2700CBBD5B /* sml.c in Sources */,
+				94DDE6191997CAC20034B193 /* JBLineChartView.m in Sources */,
 				948E14A816416D2700CBBD5B /* sort.c in Sources */,
 				948E14A916416D2700CBBD5B /* sort.h in Sources */,
 				948E14AA16416D2700CBBD5B /* sql.c in Sources */,
+				94DDE62B1997CAC20034B193 /* SASliderRight.m in Sources */,
 				948E14AB16416D2700CBBD5B /* strlist.c in Sources */,
 				948E14AC16416D2700CBBD5B /* strlist.h in Sources */,
 				948E14AD16416D2700CBBD5B /* tcl.c in Sources */,
@@ -3526,6 +3791,7 @@
 				94B1DCF5191F70CB00909C3E /* SelectGroupViewController.m in Sources */,
 				949DC19C1583E8CF00385796 /* DetailViewController.m in Sources */,
 				949DC19D1583E8CF00385796 /* CodeParser.m in Sources */,
+				94DDE60D1997CAC20034B193 /* JBLineChartFooterView.m in Sources */,
 				949DC19E1583E8CF00385796 /* CPlusPlusParser.m in Sources */,
 				949DC19F1583E8CF00385796 /* Parser.m in Sources */,
 				949DC1A01583E8CF00385796 /* alloc.c in Sources */,
@@ -3535,6 +3801,7 @@
 				949DC1A41583E8CF00385796 /* compath.c in Sources */,
 				94B1DCBC191F5B0800909C3E /* VersionViewController.m in Sources */,
 				949DC1A51583E8CF00385796 /* crossref.c in Sources */,
+				94DDE6161997CAC20034B193 /* JBChartView.m in Sources */,
 				949DC1A61583E8CF00385796 /* cscope.c in Sources */,
 				9425885519532EB7006CD33B /* GoParser.m in Sources */,
 				949DC1A71583E8CF00385796 /* dir.c in Sources */,
@@ -3589,6 +3856,7 @@
 				949DC1D31583E8CF00385796 /* ObjectiveCParser.m in Sources */,
 				949DC1D41583E8CF00385796 /* CSharpParser.m in Sources */,
 				949DC1D51583E8CF00385796 /* DelphiParser.m in Sources */,
+				94DDE6281997CAC20034B193 /* SASliderLeft.m in Sources */,
 				949DC1D61583E8CF00385796 /* PythonParser.m in Sources */,
 				949DC1D71583E8CF00385796 /* RubyParser.m in Sources */,
 				949DC1D81583E8CF00385796 /* BashParser.m in Sources */,
@@ -3615,13 +3883,16 @@
 				949DC1F21583E8CF00385796 /* CommentManager.m in Sources */,
 				949DC1F31583E8CF00385796 /* NSObject+SBJson.m in Sources */,
 				949DC1F41583E8CF00385796 /* SBJsonParser.m in Sources */,
+				94DDE6071997CAC20034B193 /* DayChartControllerHelper.m in Sources */,
 				949DC1F51583E8CF00385796 /* SBJsonStreamParser.m in Sources */,
+				94DDE6101997CAC20034B193 /* JBChartHeaderView.m in Sources */,
 				949DC1F61583E8CF00385796 /* SBJsonStreamParserAccumulator.m in Sources */,
 				949DC1F71583E8CF00385796 /* SBJsonStreamParserAdapter.m in Sources */,
 				949DC1F81583E8CF00385796 /* SBJsonStreamParserState.m in Sources */,
 				94B1DCEE191F704F00909C3E /* JavaParser.m in Sources */,
 				949DC1F91583E8CF00385796 /* SBJsonStreamWriter.m in Sources */,
 				949DC1FA1583E8CF00385796 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				94DDE62E1997CAC20034B193 /* SAVideoRangeSlider.m in Sources */,
 				949DC1FB1583E8CF00385796 /* SBJsonStreamWriterState.m in Sources */,
 				949DC1FC1583E8CF00385796 /* SBJsonTokeniser.m in Sources */,
 				949DC1FD1583E8CF00385796 /* SBJsonUTF8Stream.m in Sources */,
@@ -3637,6 +3908,7 @@
 				948E1459164169F200CBBD5B /* FunctionListViewController.m in Sources */,
 				948E145B16416A0A00CBBD5B /* FunctionListManager.m in Sources */,
 				948E145D16416CE300CBBD5B /* readtags.c in Sources */,
+				94DDE6011997CAC20034B193 /* ChartBoardViewController.m in Sources */,
 				94C2CDC7167F55C9004FB1FB /* HtmlParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3651,6 +3923,8 @@
 				94B1DD02191F719200909C3E /* DisplayController.m in Sources */,
 				94D4ED7E1642B8AB00601FE4 /* args.h in Sources */,
 				94D4ED7F1642B8AB00601FE4 /* asm.c in Sources */,
+				94DDE60C1997CAC20034B193 /* JBLineChartFooterView.m in Sources */,
+				94DDE61E1997CAC20034B193 /* JBChartTooltipTipView.m in Sources */,
 				94D4ED801642B8AB00601FE4 /* asp.c in Sources */,
 				94D4ED811642B8AB00601FE4 /* awk.c in Sources */,
 				94D4ED821642B8AB00601FE4 /* basic.c in Sources */,
@@ -3662,6 +3936,7 @@
 				94D4ED861642B8AB00601FE4 /* config.h in Sources */,
 				94D4ED871642B8AB00601FE4 /* css.c in Sources */,
 				94D4ED881642B8AB00601FE4 /* ctags_main.c in Sources */,
+				94DDE6061997CAC20034B193 /* DayChartControllerHelper.m in Sources */,
 				94D4ED891642B8AB00601FE4 /* ctags_main.h in Sources */,
 				94D4ED8A1642B8AB00601FE4 /* ctags.h in Sources */,
 				94D4ED8B1642B8AB00601FE4 /* debug.c in Sources */,
@@ -3673,12 +3948,14 @@
 				94D4ED901642B8AB00601FE4 /* e_mac.h in Sources */,
 				94B1DCE0191F6F8400909C3E /* ThemeManager.m in Sources */,
 				94D4ED911642B8AB00601FE4 /* e_msoft.h in Sources */,
+				94DDE6091997CAC20034B193 /* JBBarChartFooterView.m in Sources */,
 				94D4ED921642B8AB00601FE4 /* e_os2.h in Sources */,
 				94D4ED931642B8AB00601FE4 /* e_qdos.h in Sources */,
 				94B1DCFD191F715F00909C3E /* ZipFileResolver.m in Sources */,
 				94D4ED941642B8AB00601FE4 /* e_riscos.h in Sources */,
 				94D4ED951642B8AB00601FE4 /* e_vms.h in Sources */,
 				94D4ED961642B8AB00601FE4 /* eiffel.c in Sources */,
+				94DDE6181997CAC20034B193 /* JBLineChartView.m in Sources */,
 				94D4ED971642B8AB00601FE4 /* entry.c in Sources */,
 				94D4ED981642B8AB00601FE4 /* entry.h in Sources */,
 				94D4ED991642B8AB00601FE4 /* erlang.c in Sources */,
@@ -3691,6 +3968,7 @@
 				94D4ED9F1642B8AB00601FE4 /* get.h in Sources */,
 				94D4EDA01642B8AB00601FE4 /* go.c in Sources */,
 				94D4EDA11642B8AB00601FE4 /* html.c in Sources */,
+				94DDE62A1997CAC20034B193 /* SASliderRight.m in Sources */,
 				94D4EDA21642B8AB00601FE4 /* jscript.c in Sources */,
 				94D4EDA31642B8AB00601FE4 /* keyword.c in Sources */,
 				94D4EDA41642B8AB00601FE4 /* keyword.h in Sources */,
@@ -3722,6 +4000,7 @@
 				94D4EDC31642B8AB00601FE4 /* sml.c in Sources */,
 				94D4EDC41642B8AB00601FE4 /* sort.c in Sources */,
 				94D4EDC51642B8AB00601FE4 /* sort.h in Sources */,
+				94DDE6001997CAC20034B193 /* ChartBoardViewController.m in Sources */,
 				94D4EDC61642B8AB00601FE4 /* sql.c in Sources */,
 				94D4EDC71642B8AB00601FE4 /* strlist.c in Sources */,
 				94D4EDC81642B8AB00601FE4 /* strlist.h in Sources */,
@@ -3733,6 +4012,7 @@
 				94D4EDCE1642B8AB00601FE4 /* vstring.c in Sources */,
 				94D4EDCF1642B8AB00601FE4 /* vstring.h in Sources */,
 				94B1DCEB191F704800909C3E /* JavaScriptParser.m in Sources */,
+				94DDE6211997CAC20034B193 /* JBChartTooltipView.m in Sources */,
 				94D4EDD01642B8AB00601FE4 /* yacc.c in Sources */,
 				94D3B87715E5344E006C28E4 /* HelpViewController.m in Sources */,
 				94ADF13F14BB27EE00BA807A /* main.m in Sources */,
@@ -3745,10 +4025,12 @@
 				94ADF14714BB27EE00BA807A /* basename.c in Sources */,
 				94ADF14814BB27EE00BA807A /* build.c in Sources */,
 				94ADF14914BB27EE00BA807A /* command.c in Sources */,
+				94DDE6271997CAC20034B193 /* SASliderLeft.m in Sources */,
 				94B1DCF4191F70CA00909C3E /* SelectGroupViewController.m in Sources */,
 				94ADF14A14BB27EE00BA807A /* compath.c in Sources */,
 				94ADF14B14BB27EE00BA807A /* crossref.c in Sources */,
 				94ADF14C14BB27EE00BA807A /* cscope.c in Sources */,
+				94DDE6151997CAC20034B193 /* JBChartView.m in Sources */,
 				94ADF14D14BB27EE00BA807A /* dir.c in Sources */,
 				94ADF14E14BB27EE00BA807A /* display.c in Sources */,
 				94ADF14F14BB27EE00BA807A /* edit.c in Sources */,
@@ -3764,6 +4046,8 @@
 				94B1DCFC191F715A00909C3E /* OtherFormatResolver.m in Sources */,
 				94ADF15714BB27EE00BA807A /* input.c in Sources */,
 				94ADF15814BB27EE00BA807A /* invlib.c in Sources */,
+				94DDE6241997CAC20034B193 /* SAResizibleBubble.m in Sources */,
+				94DDE60F1997CAC20034B193 /* JBChartHeaderView.m in Sources */,
 				94ADF15914BB27EE00BA807A /* logdir.c in Sources */,
 				94ADF15A14BB27EE00BA807A /* lookup.c in Sources */,
 				94ADF15B14BB27EE00BA807A /* mouse.c in Sources */,
@@ -3775,6 +4059,7 @@
 				94ADF16114BB27EE00BA807A /* vpinit.c in Sources */,
 				94B1DD03191F71BA00909C3E /* MasterViewController.m in Sources */,
 				94ADF16214BB27EE00BA807A /* vpopen.c in Sources */,
+				94DDE62D1997CAC20034B193 /* SAVideoRangeSlider.m in Sources */,
 				94ADF16314BB27EE00BA807A /* HistoryController.m in Sources */,
 				94ADF16414BB27EE00BA807A /* NavigationController.m in Sources */,
 				94B1DCDE191F6F7C00909C3E /* ThemeSelectorViewController.m in Sources */,
@@ -3797,8 +4082,10 @@
 				941657001515C3C200838005 /* GitLogViewCongroller.m in Sources */,
 				9497F3A4151A499D006BCBBF /* ObjectiveCParser.m in Sources */,
 				9497F3A9151B85C7006BCBBF /* CSharpParser.m in Sources */,
+				94DDE61B1997CAC20034B193 /* JBChartInformationView.m in Sources */,
 				94B1DCEF191F705500909C3E /* PHPParser.m in Sources */,
 				9497F3AE151B8EBA006BCBBF /* DelphiParser.m in Sources */,
+				94DDE6121997CAC20034B193 /* JBBarChartView.m in Sources */,
 				94B1DCBB191F5B0700909C3E /* VersionViewController.m in Sources */,
 				9497F3B5151BA606006BCBBF /* PythonParser.m in Sources */,
 				9497F3CC151CEC4F006BCBBF /* RubyParser.m in Sources */,
@@ -3814,6 +4101,7 @@
 				944DD7E5152776D5000473BE /* version.c in Sources */,
 				94B1DCED191F704E00909C3E /* JavaParser.m in Sources */,
 				944DD7E815277729000473BE /* side.c in Sources */,
+				94DDE6301997CAC20034B193 /* WeekChartControllerHelper.m in Sources */,
 				944DD7EB1527778E000473BE /* context.c in Sources */,
 				944DD7EE15277845000473BE /* ed.c in Sources */,
 				944DD7F115277877000473BE /* normal.c in Sources */,
@@ -3848,6 +4136,7 @@
 				94472085157534E9002EEA5A /* ManuallyParserViewController.m in Sources */,
 				9435320C157A861D0011A446 /* ManuallyParser.m in Sources */,
 				948E145E16416CE900CBBD5B /* readtags.c in Sources */,
+				94DDE6361997CAD40034B193 /* DBManager.m in Sources */,
 				94D4EDD11642B96400601FE4 /* FunctionListViewController.m in Sources */,
 				94D4EDD31642B97200601FE4 /* FunctionListManager.m in Sources */,
 				94C2CDC6167F55C9004FB1FB /* HtmlParser.m in Sources */,
@@ -4021,7 +4310,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/ShareSDK/Connection",
+					"$(PROJECT_DIR)/ShareSDK/Core",
+					"$(PROJECT_DIR)/ShareSDK/Extend/GooglePlusSDK",
+					"$(PROJECT_DIR)/ShareSDK",
+					"$(PROJECT_DIR)/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
@@ -4030,6 +4324,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
+					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
+					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4053,7 +4349,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/ShareSDK/Connection",
+					"$(PROJECT_DIR)/ShareSDK/Core",
+					"$(PROJECT_DIR)/ShareSDK/Extend/GooglePlusSDK",
+					"$(PROJECT_DIR)/ShareSDK",
+					"$(PROJECT_DIR)/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
@@ -4062,6 +4363,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
+					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
+					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4123,7 +4426,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/ShareSDK/Connection",
+					"$(PROJECT_DIR)/ShareSDK/Core",
+					"$(PROJECT_DIR)/ShareSDK/Extend/GooglePlusSDK",
+					"$(PROJECT_DIR)/ShareSDK",
+					"$(PROJECT_DIR)/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
@@ -4133,6 +4441,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
+					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
+					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4156,7 +4466,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/ShareSDK/Connection",
+					"$(PROJECT_DIR)/ShareSDK/Core",
+					"$(PROJECT_DIR)/ShareSDK/Extend/GooglePlusSDK",
+					"$(PROJECT_DIR)/ShareSDK",
+					"$(PROJECT_DIR)/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
@@ -4171,6 +4486,8 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
 					"$(PROJECT_DIR)/GoogleAnalytics",
+					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
+					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNav;
@@ -4195,7 +4512,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/ShareSDK/Connection",
+					"$(PROJECT_DIR)/ShareSDK/Core",
+					"$(PROJECT_DIR)/ShareSDK/Extend/GooglePlusSDK",
+					"$(PROJECT_DIR)/ShareSDK",
+					"$(PROJECT_DIR)/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
@@ -4206,6 +4528,8 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
 					"$(PROJECT_DIR)/GoogleAnalytics",
+					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
+					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNav;
@@ -4230,7 +4554,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/ShareSDK/Connection",
+					"$(PROJECT_DIR)/ShareSDK/Core",
+					"$(PROJECT_DIR)/ShareSDK/Extend/GooglePlusSDK",
+					"$(PROJECT_DIR)/ShareSDK",
+					"$(PROJECT_DIR)/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
@@ -4244,6 +4573,8 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
 					"$(PROJECT_DIR)/GoogleAnalytics",
+					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
+					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNav;
@@ -4264,7 +4595,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/ShareSDK/Connection",
+					"$(PROJECT_DIR)/ShareSDK/Core",
+					"$(PROJECT_DIR)/ShareSDK/Extend/GooglePlusSDK",
+					"$(PROJECT_DIR)/ShareSDK",
+					"$(PROJECT_DIR)/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
@@ -4280,6 +4616,8 @@
 					"$(SRCROOT)",
 					"/Users/lgz_software/Documents/iOS_Development/ios-openssl/lib",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
+					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
+					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNavigator;
@@ -4299,7 +4637,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/ShareSDK/Connection",
+					"$(PROJECT_DIR)/ShareSDK/Core",
+					"$(PROJECT_DIR)/ShareSDK/Extend/GooglePlusSDK",
+					"$(PROJECT_DIR)/ShareSDK",
+					"$(PROJECT_DIR)/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
@@ -4312,6 +4655,8 @@
 					"$(SRCROOT)",
 					"/Users/lgz_software/Documents/iOS_Development/ios-openssl/lib",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
+					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
+					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNavigator;
@@ -4331,7 +4676,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/ShareSDK/Connection",
+					"$(PROJECT_DIR)/ShareSDK/Core",
+					"$(PROJECT_DIR)/ShareSDK/Extend/GooglePlusSDK",
+					"$(PROJECT_DIR)/ShareSDK",
+					"$(PROJECT_DIR)/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
@@ -4347,6 +4697,8 @@
 					"$(SRCROOT)",
 					"/Users/lgz_software/Documents/iOS_Development/ios-openssl/lib",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
+					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
+					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNavigator;

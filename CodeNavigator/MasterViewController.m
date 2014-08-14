@@ -24,6 +24,7 @@
 #import "UploadSelectionViewController.h"
 #import "DisplayController.h"
 #import "UploadFromITunesViewController.h"
+#import "ChartBoardViewController.h"
 
 @interface MasterViewController ()
 
@@ -605,26 +606,29 @@
 }
 
 - (IBAction)gitClicked:(id)sender {
-    [[Utils getInstance] addGAEvent:@"Git" andAction:@"From Toolbar" andLabel:nil andValue:nil];
-    
-    // If in project list mode, means git clone a project from remote
-    if ([self.currentProjectPath length] == 0) {
-        [self showGitCloneView];
-        return;
-    }
-    
-#ifdef IPHONE_VERSION
-    GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewController-iPhone" bundle:[NSBundle mainBundle]];
-#else
-    GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewController" bundle:[NSBundle mainBundle]];
-#endif
-    NSString* gitFolder = [[Utils getInstance] getGitFolder:self.currentProjectPath];
-    if ([gitFolder length] != 0) {
-        [gitlogView gitLogForProject: gitFolder];
-        [gitlogView showModualView];
-    } else {
-        [self showGitCloneView];
-    }
+//    [[Utils getInstance] addGAEvent:@"Git" andAction:@"From Toolbar" andLabel:nil andValue:nil];
+//    
+//    // If in project list mode, means git clone a project from remote
+//    if ([self.currentProjectPath length] == 0) {
+//        [self showGitCloneView];
+//        return;
+//    }
+//    
+//#ifdef IPHONE_VERSION
+//    GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewController-iPhone" bundle:[NSBundle mainBundle]];
+//#else
+//    GitLogViewCongroller* gitlogView = [[GitLogViewCongroller alloc] initWithNibName:@"GitLogViewController" bundle:[NSBundle mainBundle]];
+//#endif
+//    NSString* gitFolder = [[Utils getInstance] getGitFolder:self.currentProjectPath];
+//    if ([gitFolder length] != 0) {
+//        [gitlogView gitLogForProject: gitFolder];
+//        [gitlogView showModualView];
+//    } else {
+//        [self showGitCloneView];
+//    }
+    ChartBoardViewController* viewController = [[ChartBoardViewController alloc] init];
+    viewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
 }
 
 - (IBAction)dropBoxClicked:(id)sender {

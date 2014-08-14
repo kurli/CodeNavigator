@@ -10,7 +10,7 @@
 
 @interface JBChartHeaderView : UIView
 
-@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UITextField *titleLabel;
 @property (nonatomic, strong) UILabel *subtitleLabel;
 @property (nonatomic, strong) UIColor *separatorColor;
 

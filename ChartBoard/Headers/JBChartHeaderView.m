@@ -41,14 +41,16 @@ static UIColor *kJBChartHeaderViewDefaultSeparatorColor = nil;
     {
         self.backgroundColor = [UIColor clearColor];
         
-        _titleLabel = [[UILabel alloc] init];
-        _titleLabel.numberOfLines = 1;
+        _titleLabel = [[UITextField alloc] init];
+//        _titleLabel.numberOfLines = 1;
         _titleLabel.adjustsFontSizeToFitWidth = YES;
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.font = kJBFontHeaderTitle;
         _titleLabel.textColor = [UIColor whiteColor];
-        _titleLabel.shadowColor = [UIColor blackColor];
-        _titleLabel.shadowOffset = CGSizeMake(0, 1);
+//        _titleLabel.shadowColor = [UIColor blackColor];
+        _titleLabel.layer.shadowColor = (__bridge CGColorRef)([UIColor blackColor]);
+        _titleLabel.layer.shadowOffset = CGSizeMake(0, 1);
+//        _titleLabel.shadowOffset = CGSizeMake(0, 1);
         _titleLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:_titleLabel];
         

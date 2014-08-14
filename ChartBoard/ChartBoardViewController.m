@@ -9,7 +9,7 @@
 #import "ChartBoardViewController.h"
 #import "WeekChartControllerHelper.h"
 #import "DayChartControllerHelper.h"
-#import <ShareSDK/ShareSDK.h>
+//#import <ShareSDK/ShareSDK.h>
 #import "Utils.h"
 
 @interface ChartBoardViewController () {
@@ -21,7 +21,10 @@
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 @property (nonatomic, strong) UIView* weekChartView;
 @property (nonatomic, strong) UIView* daysChartView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentController;
+@property (weak, nonatomic) IBOutlet UILabel *codeNavigatorLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @end
 
 @implementation ChartBoardViewController
@@ -43,12 +46,10 @@
     // Do any additional setup after loading the view from its nib.
     
 //    [self initWeekChartBoard];
-    [ShareSDK registerApp:@"2a54d22fd462"];
-    [ShareSDK waitAppSettingComplete:^{
-        NSLog(@"Ok");
-        //在这里面调用相关的ShareSDK功能接口代码
-        
-    }];
+//    [ShareSDK registerApp:@"2a54d22fd462"];
+//    [ShareSDK waitAppSettingComplete:^{
+//        [self.shareButton setEnabled:YES];
+//    }];
     self.view.backgroundColor = UIColorFromHex(0x313131);
     [[Utils getInstance].dbManager appEnded:nil];
 
@@ -73,7 +74,7 @@
         frame.size.height -= frame.origin.y;
         [self.weekChartView setFrame:frame];
         self.weekChartController = [[WeekChartControllerHelper alloc] init];
-        [self.weekChartController initView:self.weekChartView andToolHeight:0];
+        [self.weekChartController initView:self.weekChartView andToolHeight:0 andLabel:self.codeNavigatorLabel];
         [self.view addSubview:self.weekChartView];
     }
     [self.daysChartView setHidden:YES];
@@ -90,7 +91,7 @@
         frame.size.height -= frame.origin.y;
         [self.daysChartView setFrame:frame];
         self.daysChartController = [[DayChartControllerHelper alloc] init];
-        [self.daysChartController initView:self.daysChartView andToolHeight:0];
+        [self.daysChartController initView:self.daysChartView andToolHeight:0 andLabel:self.codeNavigatorLabel];
         [self.view addSubview:self.daysChartView];
     }
     [self.weekChartView setHidden:YES];
@@ -121,34 +122,73 @@
 }
 
 - (IBAction)shareButtonClicked:(id)sender {
+    UIImage* image;
+    switch (self.segmentController.selectedSegmentIndex) {
+        case 0:
+            image = [self.weekChartController screenshot];
+            break;
+        case 1:
+            image = [self.daysChartController screenshot];
+            break;
+        case 2:
+            break;
+        default:
+            break;
+    }
     
-    id<ISSContainer> container = [ShareSDK container];
-    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionDown];
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    [[Utils getInstance] alertWithTitle:@"Done" andMessage:@"Check your photo album.\nShare with your friends there. :-)"];
     
-    id<ISSContent> publishContent = [ShareSDK content:@"分享内容"
-                                       defaultContent:@"默认分享内容，没内容时显示"
-                                                image:[ShareSDK imageWithPath:nil]
-                                                title:@"ShareSDK"
-                                                  url:@"http://www.sharesdk.cn"
-                                          description:@"这是一条测试信息"
-                                            mediaType:SSPublishContentMediaTypeNews];
-
-    [ShareSDK showShareActionSheet:container
-                         shareList:nil
-                           content:publishContent
-                     statusBarTips:YES
-                       authOptions:nil
-                      shareOptions:nil
-                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                if (state == SSResponseStateSuccess)
-                                {
-                                    NSLog(@"分享成功");
-                                }
-                                else if (state == SSResponseStateFail)
-                                {
-                                    NSLog(@"分享失败,错误码:,错误描述:");
-                                }
-                            }];
+//    NSString* path = [self.daysChartController screenshot];
+//    
+//    id<ISSContainer> container = [ShareSDK container];
+//    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+//    
+//    id<ISSContent> publishContent = [ShareSDK content:@"分享内容"
+//                                       defaultContent:@"默认分享内容，没内容时显示"
+//                                                image:[ShareSDK imageWithPath:path]
+//                                                title:@"CodeNavigator"
+//                                                  url:@"http://guangzhen.cublog.cn"
+//                                          description:@""
+//                                            mediaType:SSPublishContentMediaTypeNews];
+//    
+//    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+//                                                         allowCallback:YES
+//                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+//                                                          viewDelegate:nil
+//                                               authManagerViewDelegate:nil];
+//    
+//    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+//                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
+//                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+//                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"CodeNavigator"],
+//                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+//                                    nil]];
+//    
+//    [ShareSDK showShareActionSheet:container
+//                         shareList:nil
+//                           content:publishContent
+//                     statusBarTips:YES
+//                       authOptions:authOptions
+//                      shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
+//                                                          oneKeyShareList:[NSArray defaultOneKeyShareList]
+//                                                           qqButtonHidden:NO
+//                                                    wxSessionButtonHidden:NO
+//                                                   wxTimelineButtonHidden:NO
+//                                                     showKeyboardOnAppear:NO
+//                                                        shareViewDelegate:nil
+//                                                      friendsViewDelegate:nil
+//                                                    picViewerViewDelegate:nil]
+//                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+//                                if (state == SSResponseStateSuccess)
+//                                {
+//                                    NSLog(@"分享成功");
+//                                }
+//                                else if (state == SSResponseStateFail)
+//                                {
+//                                    NSLog(@"分享失败,错误码:,错误描述:");
+//                                }
+//                            }];
 }
 
 @end
