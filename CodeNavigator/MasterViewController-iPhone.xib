@@ -83,9 +83,9 @@
         </view>
     </objects>
     <resources>
-        <image name="Comment.png" width="20" height="20"/>
+        <image name="Comment.png" width="26" height="26"/>
         <image name="cscope.png" width="20" height="20"/>
         <image name="help.png" width="22" height="22"/>
-        <image name="version_control.png" width="20" height="20"/>
+        <image name="version_control.png" width="26" height="26"/>
     </resources>
 </document>

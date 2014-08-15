@@ -1034,6 +1034,8 @@
 		94DDE69A1997CDA10034B193 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DDE6991997CDA10034B193 /* libz.1.2.5.dylib */; };
 		94E3761518D495A5006756A3 /* GitUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E3761318D495A5006756A3 /* GitUpdateViewController.m */; };
 		94E3761618D495A5006756A3 /* GitUpdateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E3761418D495A5006756A3 /* GitUpdateViewController.xib */; };
+		94E4C114199D1519003B0E82 /* CommentHide.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E4C113199D1519003B0E82 /* CommentHide.png */; };
+		94E4C115199D1519003B0E82 /* CommentHide.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E4C113199D1519003B0E82 /* CommentHide.png */; };
 		94E6DB61152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */; };
 		94E6DB62152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */; };
 		94E6DB63152C9EFF004DBD87 /* DiffInfoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */; };
@@ -1747,6 +1749,7 @@
 		94E3761218D495A5006756A3 /* GitUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GitUpdateViewController.h; path = help/GitUpdateViewController.h; sourceTree = "<group>"; };
 		94E3761318D495A5006756A3 /* GitUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitUpdateViewController.m; path = help/GitUpdateViewController.m; sourceTree = "<group>"; };
 		94E3761418D495A5006756A3 /* GitUpdateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GitUpdateViewController.xib; path = help/GitUpdateViewController.xib; sourceTree = "<group>"; };
+		94E4C113199D1519003B0E82 /* CommentHide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CommentHide.png; sourceTree = "<group>"; };
 		94E6DB5E152C9EFF004DBD87 /* DiffInfoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiffInfoListViewController.h; sourceTree = "<group>"; };
 		94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiffInfoListViewController.m; sourceTree = "<group>"; };
 		94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiffInfoListViewController.xib; sourceTree = "<group>"; };
@@ -2177,6 +2180,7 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				94E4C113199D1519003B0E82 /* CommentHide.png */,
 				9421EAC9196853D100EFD7E2 /* treeView.png */,
 				949CB5E11961A96200A95AEC /* back_arrow.png */,
 				9461D46C1960372100F0B0A1 /* hide_toolbar.png */,
@@ -3145,6 +3149,7 @@
 				94F9BB0B18EDDFC400CD7C2C /* SourceCodePro-Semibold.ttf in Resources */,
 				9424665F150383C2001701C4 /* File.png in Resources */,
 				94BA22D818D09212006CB7A8 /* GitBranchViewController.xib in Resources */,
+				94E4C114199D1519003B0E82 /* CommentHide.png in Resources */,
 				94246661150383C2001701C4 /* hFile.png in Resources */,
 				94246663150383C2001701C4 /* hppFile.png in Resources */,
 				94246665150383C2001701C4 /* javaFile.png in Resources */,
@@ -3361,6 +3366,7 @@
 				9461D46E1960372100F0B0A1 /* hide_toolbar.png in Resources */,
 				94D0A9341976E47A002EEFCE /* FileBrowser.png in Resources */,
 				94D3B87B15E53979006C28E4 /* demoVideo.png in Resources */,
+				94E4C115199D1519003B0E82 /* CommentHide.png in Resources */,
 				94D3B87A15E53928006C28E4 /* help.png in Resources */,
 				94D3B87915E53487006C28E4 /* HelpViewController.xib in Resources */,
 				94ADF17614BB27EE00BA807A /* lgz_javascript.js in Resources */,

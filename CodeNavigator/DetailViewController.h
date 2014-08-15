@@ -51,7 +51,8 @@ typedef enum _JSState {
     //end
     
     BOOL isVirtualizeDisplayed;
-    BOOL isFirstDisplay;    
+    BOOL isFirstDisplay;
+    BOOL showAllComments;
 }
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *navigateBarButtonItem;
 
@@ -65,7 +66,7 @@ typedef enum _JSState {
 
 @property (unsafe_unretained, nonatomic) IBOutlet UISegmentedControl *historyBar;
 
-@property (unsafe_unretained, nonatomic) IBOutlet UISegmentedControl *showCommentsSegment;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *showHideCommentsButton;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *fileBrowserButton;
 
@@ -221,5 +222,7 @@ typedef enum _JSState {
 #ifndef IPHONE_VERSION
 - (FileBrowserTreeViewController*) showFileBrowserTreeView:(BOOL)show;
 #endif
+
+-(void) forceShowComments;
 
 @end

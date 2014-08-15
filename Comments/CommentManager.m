@@ -268,10 +268,7 @@
         [[Utils getInstance].detailViewController gotoFile:sourceFullPath andLine:line andKeyword:nil];
         
         // Change comment segment if it's hide currently
-        if ([[Utils getInstance].detailViewController.showCommentsSegment selectedSegmentIndex] == 1) {
-            [[Utils getInstance].detailViewController.showCommentsSegment setSelectedSegmentIndex:0];
-            [[Utils getInstance].detailViewController showAllComments];
-        }
+        [[Utils getInstance].detailViewController forceShowComments];
         
 #ifdef IPHONE_VERSION
         //[self dismissModalViewControllerAnimated:NO];

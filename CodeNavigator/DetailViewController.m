@@ -66,7 +66,6 @@
 @synthesize virtualizeViewController;
 @synthesize highlightLineArray;
 @synthesize scrollBarTapRecognizer;
-@synthesize showCommentsSegment;
 @synthesize popoverController;
 
 #pragma mark - Managing the detail item
@@ -104,6 +103,7 @@
     shownToolBar = YES;
     self.activeWebView = self.webView;
     isFirstDisplay = YES;
+    showAllComments = YES;
     
     // show hide scrollbar
     scrollBarTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapInScrollView:)];
@@ -825,14 +825,23 @@
     }
 }
 
-- (IBAction)showCommentsClicked:(id)sender {
-    UISegmentedControl* controller = sender;
-    NSInteger index = [controller selectedSegmentIndex];
-    if (index == 0) {
+- (IBAction)showHideCommentsClicked:(id)sender {
+    UIBarButtonItem* toolBar = (UIBarButtonItem*)sender;
+    if (showAllComments) {
+        [toolBar setImage:[UIImage imageNamed:@"Comment.png"]];
+        [self hideAllComments];
+    } else {
+        [toolBar setImage:[UIImage imageNamed:@"CommentHide.png"]];
         [self showAllComments];
     }
-    else {
-        [self hideAllComments];
+    showAllComments = !showAllComments;
+}
+
+-(void) forceShowComments {
+    if (showAllComments == NO) {
+        showAllComments = YES;
+        [self.showHideCommentsButton setImage:[UIImage imageNamed:@"CommentHide.png"]];
+        [self showAllComments];
     }
 }
 
@@ -1558,7 +1567,7 @@
         [self.virtualizeViewController highlightAllChildrenKeyword];
     }
     
-    if ([showCommentsSegment selectedSegmentIndex] == 0) {
+    if (showAllComments == YES) {
         [self showAllComments];
     }
     if (shownToolBar) {
