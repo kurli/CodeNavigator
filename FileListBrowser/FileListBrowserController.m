@@ -166,20 +166,27 @@
             [cell setValue:fileIdentifier forKey:@"reuseIdentifier"];
         }
         imageView = (UIImageView*)[cell viewWithTag:101];
-        if (isCurrentProjectFolder == YES)
-        {
-            imageView.image = [UIImage imageNamed:@"project.png"];
-        }
-        else
-        {
-            imageView.image = [UIImage imageNamed:@"folder.png"];
-        }
+        
         NSString* fileName = [self.currentDirectories objectAtIndex:indexPath.row];
         ((UILabel*)[cell viewWithTag:102]).text = fileName;
         
         NSError* error;
         NSString* filePath = self.currentLocation;
         filePath = [filePath stringByAppendingPathComponent:fileName];
+        
+        if (isCurrentProjectFolder == YES)
+        {
+            if ([[Utils getInstance] getGitFolder:filePath] != nil) {
+                imageView.image = [UIImage imageNamed:@"projectGit.png"];
+            } else {
+                imageView.image = [UIImage imageNamed:@"project.png"];
+            }
+        }
+        else
+        {
+            imageView.image = [UIImage imageNamed:@"folder.png"];
+        }
+
         NSDictionary *attributes = [[NSFileManager defaultManager]
                                     attributesOfItemAtPath:filePath error:&error];
         
