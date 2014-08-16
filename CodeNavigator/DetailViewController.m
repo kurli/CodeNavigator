@@ -589,6 +589,8 @@
 
     }
     
+    [[Utils getInstance].dbManager startRecord:url andTime:nil];
+    
     NSString* extension = [url pathExtension];
     if (extension != nil && [extension compare:DISPLAY_FILE_EXTENTION] == NSOrderedSame)
     {

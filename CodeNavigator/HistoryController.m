@@ -51,6 +51,7 @@
 
 -(void) pushUrl:(NSString *)url
 {
+    [[Utils getInstance].dbManager startRecord:url andTime:nil];
     if (historyStack == nil)
     {
         index = 0;

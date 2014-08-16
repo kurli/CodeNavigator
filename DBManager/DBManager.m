@@ -8,6 +8,7 @@
 
 #import "DBManager.h"
 #import <sqlite3.h>
+#import "Utils.h"
 
 #define DBNAME     @"codenavigator.sqlite"
 
@@ -236,6 +237,14 @@
 }
 
 -(void) startRecord:(NSString*)project andTime:(NSDate*)date {
+    project = [[Utils getInstance] getProjectFolder:project];
+    if (project == nil) {
+        return;
+    }
+    project = [project lastPathComponent];
+    if ([project compare:@"Help.html"] == NSOrderedSame) {
+        return;
+    }
     // Update project
     int projId = [self updateProject:project];
     

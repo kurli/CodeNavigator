@@ -178,8 +178,6 @@ typedef enum _JSState {
 
 - (IBAction)showHideTopToolBarClicked:(id)sender;
 
-- (IBAction)showCommentsClicked:(id)sender;
-
 - (void)dismissPopovers;
 
 - (void)forceResultPopUp:(id)button;

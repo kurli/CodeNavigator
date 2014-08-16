@@ -134,6 +134,7 @@
 #ifdef LITE_VERSION
     [[[Utils getInstance] getBannerViewController] showBannerView];
 #endif
+    [[Utils getInstance].dbManager appEnded:nil];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -171,6 +172,7 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
+    [[Utils getInstance].dbManager appStarted:nil];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -180,6 +182,7 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+    [[Utils getInstance].dbManager appEnded:nil];
 }
 
 - (void) applicationDidReceiveMemoryWarning:(UIApplication *)application
