@@ -318,7 +318,6 @@
 		94785980162C5A08006E4575 /* vstring.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785944162C5A08006E4575 /* vstring.c */; };
 		94785981162C5A08006E4575 /* yacc.c in Sources */ = {isa = PBXBuildFile; fileRef = 94785946162C5A08006E4575 /* yacc.c */; };
 		94785A421840FAB90012988B /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94785A411840FAB90012988B /* libiconv.dylib */; };
-		94785A55184519660012988B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94785A54184519660012988B /* libz.dylib */; };
 		94785A59184B9F350012988B /* MyWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94785A58184B9F350012988B /* MyWebView.m */; };
 		9478A461190ADFCD0093279F /* SelectGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9478A45F190ADFCD0093279F /* SelectGroupViewController.m */; };
 		9478A462190ADFCD0093279F /* SelectGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9478A460190ADFCD0093279F /* SelectGroupViewController.xib */; };
@@ -1031,11 +1030,13 @@
 		94DDE6371997CAD40034B193 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE6341997CAD40034B193 /* DBManager.m */; };
 		94DDE6961997CD8E0034B193 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DDE6951997CD8D0034B193 /* CoreTelephony.framework */; };
 		94DDE6981997CD990034B193 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DDE6971997CD990034B193 /* libicucore.dylib */; };
-		94DDE69A1997CDA10034B193 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DDE6991997CDA10034B193 /* libz.1.2.5.dylib */; };
 		94E3761518D495A5006756A3 /* GitUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E3761318D495A5006756A3 /* GitUpdateViewController.m */; };
 		94E3761618D495A5006756A3 /* GitUpdateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E3761418D495A5006756A3 /* GitUpdateViewController.xib */; };
 		94E4C114199D1519003B0E82 /* CommentHide.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E4C113199D1519003B0E82 /* CommentHide.png */; };
 		94E4C115199D1519003B0E82 /* CommentHide.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E4C113199D1519003B0E82 /* CommentHide.png */; };
+		94E4C117199E7FDD003B0E82 /* projectGit.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E4C116199E7FDD003B0E82 /* projectGit.png */; };
+		94E4C119199E7FDD003B0E82 /* projectGit.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E4C116199E7FDD003B0E82 /* projectGit.png */; };
+		94E4C123199E8E50003B0E82 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94785A54184519660012988B /* libz.dylib */; };
 		94E6DB61152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */; };
 		94E6DB62152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */; };
 		94E6DB63152C9EFF004DBD87 /* DiffInfoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */; };
@@ -1750,6 +1751,7 @@
 		94E3761318D495A5006756A3 /* GitUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GitUpdateViewController.m; path = help/GitUpdateViewController.m; sourceTree = "<group>"; };
 		94E3761418D495A5006756A3 /* GitUpdateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GitUpdateViewController.xib; path = help/GitUpdateViewController.xib; sourceTree = "<group>"; };
 		94E4C113199D1519003B0E82 /* CommentHide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CommentHide.png; sourceTree = "<group>"; };
+		94E4C116199E7FDD003B0E82 /* projectGit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectGit.png; sourceTree = "<group>"; };
 		94E6DB5E152C9EFF004DBD87 /* DiffInfoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiffInfoListViewController.h; sourceTree = "<group>"; };
 		94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiffInfoListViewController.m; sourceTree = "<group>"; };
 		94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiffInfoListViewController.xib; sourceTree = "<group>"; };
@@ -1793,9 +1795,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94E4C123199E8E50003B0E82 /* libz.dylib in Frameworks */,
 				94618169155BF85800A25635 /* MessageUI.framework in Frameworks */,
 				94A5184B152DF30A0062DA65 /* Security.framework in Frameworks */,
-				94DDE69A1997CDA10034B193 /* libz.1.2.5.dylib in Frameworks */,
 				94DDE6981997CD990034B193 /* libicucore.dylib in Frameworks */,
 				94DDE6961997CD8E0034B193 /* CoreTelephony.framework in Frameworks */,
 				94205714157B938B00178CBF /* QuartzCore.framework in Frameworks */,
@@ -1805,7 +1807,6 @@
 				94BC575518D89BFB0027B383 /* AdSupport.framework in Frameworks */,
 				94C7C171184E42B3003A8C03 /* Social.framework in Frameworks */,
 				94BC575218D897EA0027B383 /* CoreData.framework in Frameworks */,
-				94785A55184519660012988B /* libz.dylib in Frameworks */,
 				94785A421840FAB90012988B /* libiconv.dylib in Frameworks */,
 				9478C6DE15C8396300F443D9 /* Twitter.framework in Frameworks */,
 				94BF7DA4150E727B00FCF653 /* libZip.a in Frameworks */,
@@ -2180,6 +2181,7 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				94E4C116199E7FDD003B0E82 /* projectGit.png */,
 				94E4C113199D1519003B0E82 /* CommentHide.png */,
 				9421EAC9196853D100EFD7E2 /* treeView.png */,
 				949CB5E11961A96200A95AEC /* back_arrow.png */,
@@ -3185,6 +3187,7 @@
 				9457C7981530BA3800BB9185 /* checkbox_no.png in Resources */,
 				948C740E1806E5A300065E65 /* Images.xcassets in Resources */,
 				9457C79A1530BA3800BB9185 /* checkbox_yes.png in Resources */,
+				94E4C117199E7FDD003B0E82 /* projectGit.png in Resources */,
 				948C740A180449AE00065E65 /* star@2x.png in Resources */,
 				94BF99BC1534887000F4EFFD /* refresh.png in Resources */,
 				94BF99BF15348A6700F4EFFD /* refresh_error.png in Resources */,
@@ -3347,6 +3350,7 @@
 				947D9F8C158BA930000B5136 /* ResultTableCellView.xib in Resources */,
 				94D0A9321976D27D002EEFCE /* hide_toolbar.png in Resources */,
 				94B1DD24191FE71900909C3E /* WebServiceControllerFormSheet-iPhone.xib in Resources */,
+				94E4C119199E7FDD003B0E82 /* projectGit.png in Resources */,
 				94B1DCD7191F6F1700909C3E /* GitUpdateViewController.xib in Resources */,
 				948E145A164169FD00CBBD5B /* FunctionListViewController.xib in Resources */,
 				948E145C16416A1200CBBD5B /* TagItemCell.xib in Resources */,
