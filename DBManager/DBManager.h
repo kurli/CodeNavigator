@@ -19,5 +19,6 @@
 -(NSDictionary*) getUsageTimePerDay:(NSDate*)from andEnd:(NSDate*)end andProject:(NSString*)project;
 -(NSDate*) getFirstRecordDay;
 -(NSArray*) getAllProjects;
+-(NSArray*) getUsageTimePerHour:(NSString*)project;
 
 @end

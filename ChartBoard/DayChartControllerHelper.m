@@ -108,6 +108,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
     } else {
         self.headerView.titleLabel.text = project;
     }
+    [self displayTotal];
 }
 
 -(void) refreshCharView:(NSString*)project {
@@ -170,7 +171,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
 //    [self debugLog];
 }
 
--(void) initView:(UIView*) parentView andToolHeight:(int)height andLabel:(UILabel*)codeNavigatorLabel {
+-(void) initView:(UIView*) parentView andToolHeight:(int)height {
     self.parentView = parentView;
     parentView.backgroundColor = kJBColorBarChartControllerBackground;
     
@@ -227,11 +228,13 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
     [self.informationView setSeparatorColor:kJBColorBarChartHeaderSeparatorColor];
     [parentView addSubview:self.informationView];
     
-    rect = codeNavigatorLabel.frame;
-    rect.origin.x = 10;
-    rect.origin.y = parentView.frame.size.height - rect.size.height - 10;
-    [codeNavigatorLabel setFrame:rect];
-    [parentView addSubview:codeNavigatorLabel];
+//    UILabel* codeNavigatorLabel = [[UILabel alloc] init];
+//    rect = codeNavigatorLabel.frame;
+//    rect.origin.x = 10;
+//    rect.origin.y = parentView.frame.size.height - rect.size.height - 10;
+//    [codeNavigatorLabel setFrame:rect];
+//    codeNavigatorLabel.text = @"By CodeNavigator";
+//    [parentView addSubview:codeNavigatorLabel];
     
     [self.lineChartView reloadData];
     

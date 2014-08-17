@@ -395,8 +395,7 @@
     if ([project length] == 0) {
         sqlQuery = [NSString stringWithFormat:@"SELECT * FROM RECORD_TABLE WHERE project_id<0 AND record_time>='%@' AND record_time <= '%@'", fromStr, endStr];
     } else {
-        int projectID = [self getIDForProject:project];
-        sqlQuery = [NSString stringWithFormat:@"SELECT * FROM RECORD_TABLE WHERE project_id<0 OR project_id=%d AND record_time>='%@' AND record_time <= '%@'", projectID, fromStr, endStr];
+        sqlQuery = [NSString stringWithFormat:@"SELECT * FROM RECORD_TABLE WHERE record_time>='%@' AND record_time <= '%@'", fromStr, endStr];
     }
 
     sqlite3_stmt * statement;
@@ -440,28 +439,18 @@
             }
         }
     } else {
+        int projectID = [self getIDForProject:project];
         int startTime = 0;
-        int recordProjectID = -10;
+//        int recordProjectID = -10;
         for (int i=0; i<[array count]; i++) {
             Record* record = [array objectAtIndex:i];
-            if (record._projectID == APP_STARTED) {
+            
+            if (record._projectID == projectID) {
                 startTime = [record.dateTime timeIntervalSinceReferenceDate];
-                recordProjectID = -10;
-            } else if (record._projectID == APP_ENDED) {
-                if (recordProjectID != -10) {
-                    int interval = [record.dateTime timeIntervalSinceReferenceDate] - startTime;
-                    NSDate* dateTime = [self dateToDay:record.dateTime];
-                    NSNumber* number = [dictionary objectForKey:dateTime];
-                    if (number == nil) {
-                        [dictionary setObject:[NSNumber numberWithInt:interval] forKey:dateTime];
-                    } else {
-                        [dictionary setObject:[NSNumber numberWithInt:interval + [number intValue]] forKey:dateTime];
-                    }
-                }
+            } else if (record._projectID == APP_STARTED) {
                 startTime = 0;
-                recordProjectID = -10;
             } else {
-                if (recordProjectID != -10) {
+                if (startTime > 0) {
                     int interval = [record.dateTime timeIntervalSinceReferenceDate] - startTime;
                     NSDate* dateTime = [self dateToDay:record.dateTime];
                     NSNumber* number = [dictionary objectForKey:dateTime];
@@ -470,10 +459,41 @@
                     } else {
                         [dictionary setObject:[NSNumber numberWithInt:interval + [number intValue]] forKey:dateTime];
                     }
+                    
+                    startTime = 0;
                 }
-                recordProjectID = record._projectID;
-                startTime = [record.dateTime timeIntervalSinceReferenceDate];
             }
+
+//            if (record._projectID == APP_STARTED) {
+//                startTime = [record.dateTime timeIntervalSinceReferenceDate];
+//                recordProjectID = -10;
+//            } else if (record._projectID == APP_ENDED) {
+//                if (recordProjectID != -10) {
+//                    int interval = [record.dateTime timeIntervalSinceReferenceDate] - startTime;
+//                    NSDate* dateTime = [self dateToDay:record.dateTime];
+//                    NSNumber* number = [dictionary objectForKey:dateTime];
+//                    if (number == nil) {
+//                        [dictionary setObject:[NSNumber numberWithInt:interval] forKey:dateTime];
+//                    } else {
+//                        [dictionary setObject:[NSNumber numberWithInt:interval + [number intValue]] forKey:dateTime];
+//                    }
+//                }
+//                startTime = 0;
+//                recordProjectID = -10;
+//            } else {
+//                if (recordProjectID != -10) {
+//                    int interval = [record.dateTime timeIntervalSinceReferenceDate] - startTime;
+//                    NSDate* dateTime = [self dateToDay:record.dateTime];
+//                    NSNumber* number = [dictionary objectForKey:dateTime];
+//                    if (number == nil) {
+//                        [dictionary setObject:[NSNumber numberWithInt:interval] forKey:dateTime];
+//                    } else {
+//                        [dictionary setObject:[NSNumber numberWithInt:interval + [number intValue]] forKey:dateTime];
+//                    }
+//                }
+//                recordProjectID = record._projectID;
+//                startTime = [record.dateTime timeIntervalSinceReferenceDate];
+//            }
         }
     }
     
@@ -482,9 +502,8 @@
 
 -(long)getDayWeek:(NSDate*)dateTime{
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
     NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-    comps = [calendar components:unitFlags fromDate:dateTime];
+    NSDateComponents* comps = [calendar components:unitFlags fromDate:dateTime];
     long weekNumber = [comps weekday];
 //    NSArray* weekArray = [[[NSDateFormatter alloc] init] shortWeekdaySymbols];
 //    if (weekNumber >0 && weekNumber < 8) {
@@ -515,6 +534,126 @@
         [recordForWeeks setObject:[NSNumber numberWithInt:tmp] atIndexedSubscript:weekDay];
     }
     return recordForWeeks;
+}
+
+-(void) recordForHour:(NSMutableArray*)hoursArray andStartTime:(NSDate*)startTime andEndTime:(NSDate*)endTime {
+    if (startTime == nil || endTime == nil) {
+        return;
+    }
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents* compsStart = [calendar components:unitFlags fromDate:startTime];
+    NSDateComponents* compsEnd= [calendar components:unitFlags fromDate:endTime];
+    
+    NSInteger startInterval = [startTime timeIntervalSinceReferenceDate];
+    NSInteger endInterval = [endTime timeIntervalSinceReferenceDate];
+    
+//    startInterval = startInterval % (24*60*60);
+//    endInterval = endInterval % (24*60*60);
+    
+    NSInteger startHour = [compsStart hour];
+    NSInteger endHour = [compsEnd hour];
+    
+    NSInteger startMinute = [compsStart minute]*60 + [compsStart second];
+    NSInteger endMinute = [compsEnd minute]*60 + [compsEnd second];
+    
+    NSInteger interval = 0;
+    NSInteger delta = endHour - startHour;
+    if (delta == 0) {
+        NSNumber* number = (NSNumber*)[hoursArray objectAtIndex:startHour];
+        interval = [number intValue];
+        interval += (endInterval - startInterval);
+        [hoursArray setObject:[NSNumber numberWithInteger:interval] atIndexedSubscript:startHour];
+    } else if (delta == 1) {
+        NSNumber* number = (NSNumber*)[hoursArray objectAtIndex:startHour];
+        interval = [number intValue];
+        interval += (60*60-startMinute);
+        [hoursArray setObject:[NSNumber numberWithInteger:interval] atIndexedSubscript:startHour];
+        
+        number = (NSNumber*)[hoursArray objectAtIndex:endHour];
+        interval = [number intValue];
+        interval += endMinute;
+        [hoursArray setObject:[NSNumber numberWithInteger:interval] atIndexedSubscript:endHour];
+    } else {
+        NSNumber* number = (NSNumber*)[hoursArray objectAtIndex:startHour];
+        interval = [number intValue];
+        interval += (60*60-startMinute);
+        [hoursArray setObject:[NSNumber numberWithInteger:interval] atIndexedSubscript:startHour];
+        
+        for (NSInteger i=startHour+1; i<endHour; i++) {
+            NSNumber* number = (NSNumber*)[hoursArray objectAtIndex:i];
+            interval = [number intValue];
+            interval += (60*60);
+            [hoursArray setObject:[NSNumber numberWithInteger:interval] atIndexedSubscript:i];
+        }
+        
+        number = (NSNumber*)[hoursArray objectAtIndex:endHour];
+        interval = [number intValue];
+        interval += endMinute;
+        [hoursArray setObject:[NSNumber numberWithInteger:interval] atIndexedSubscript:endHour];
+    }
+    
+//    NSLog(@"startInterval=%ld\nendInterval=%ld\nstartHour=%ld\nendHour=%ld\nstartMinute=%ld\nendMinute=%ld\n---", startInterval, endInterval, startHour, endHour, startMinute, endMinute);
+}
+
+-(NSArray*) getUsageTimePerHour:(NSString*)project {
+    NSString *sqlQuery;
+    
+    if ([project length] == 0) {
+        sqlQuery = [NSString stringWithFormat:@"SELECT * FROM RECORD_TABLE WHERE project_id<0"];
+    } else {
+        sqlQuery = [NSString stringWithFormat:@"SELECT * FROM RECORD_TABLE"];
+    }
+    
+    sqlite3_stmt * statement;
+    
+    NSMutableArray* array = [[NSMutableArray alloc] init];
+    
+    if (sqlite3_prepare_v2(db, [sqlQuery UTF8String], -1, &statement, nil) == SQLITE_OK) {
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            Record* record = [[Record alloc] init];
+            record._id = sqlite3_column_int(statement, 0);
+            record._projectID = sqlite3_column_int(statement, 1);
+            char* dateTime = (char*)sqlite3_column_text(statement, 2);
+            record.dateTime = [self stringToDate:[NSString stringWithCString:dateTime encoding:NSUTF8StringEncoding]];
+            [array addObject:record];
+        }
+    }
+    sqlite3_finalize(statement);
+
+    NSMutableArray* recordForHours = [[NSMutableArray alloc] initWithCapacity:24];
+    for (int i=0; i<24; i++) {
+        [recordForHours addObject:[NSNumber numberWithInt:0]];
+    }
+
+    NSDate* startTime = 0;
+    if ([project length] == 0) {
+        for (int i=0; i<[array count]; i++) {
+            Record* record = [array objectAtIndex:i];
+            if (record._projectID == APP_STARTED) {
+                startTime = record.dateTime;
+            } else if (record._projectID == APP_ENDED) {
+                [self recordForHour:recordForHours andStartTime:startTime andEndTime:record.dateTime];
+                startTime = nil;
+            }
+        }
+    } else {
+        int projectID = [self getIDForProject:project];
+        for (int i=0; i<[array count]; i++) {
+            Record* record = [array objectAtIndex:i];
+            if (record._projectID == projectID) {
+                startTime = record.dateTime;
+            } else if (record._projectID == APP_STARTED) {
+                startTime = nil;
+            } else {
+                if (startTime != nil) {
+                    [self recordForHour:recordForHours andStartTime:startTime andEndTime:record.dateTime];
+                    startTime = nil;
+                }
+            }
+        }
+    }
+    return recordForHours;
 }
 
 -(NSDate*) getFirstRecordDay {

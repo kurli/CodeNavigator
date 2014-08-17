@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) NSString* currentProject;
 
--(void) initView:(UIView*) parentView andToolHeight:(int)height andLabel:(UILabel*)codeNavigatorLabel;
+-(void) initView:(UIView*) parentView andToolHeight:(int)height;
 
 -(void) setHidden:(BOOL)hidden;
 

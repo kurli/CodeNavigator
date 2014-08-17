@@ -1043,6 +1043,9 @@
 		94E4C12A199FC1A6003B0E82 /* ProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E4C126199FC1A6003B0E82 /* ProjectViewController.xib */; };
 		94E4C12B199FC1A6003B0E82 /* ProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E4C126199FC1A6003B0E82 /* ProjectViewController.xib */; };
 		94E4C12C199FC1A6003B0E82 /* ProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E4C126199FC1A6003B0E82 /* ProjectViewController.xib */; };
+		94E4C13419A0E7AB003B0E82 /* HourChartControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E4C13319A0E7AB003B0E82 /* HourChartControllerHelper.m */; };
+		94E4C13519A0E7AB003B0E82 /* HourChartControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E4C13319A0E7AB003B0E82 /* HourChartControllerHelper.m */; };
+		94E4C13619A0E7AB003B0E82 /* HourChartControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E4C13319A0E7AB003B0E82 /* HourChartControllerHelper.m */; };
 		94E6DB61152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */; };
 		94E6DB62152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */; };
 		94E6DB63152C9EFF004DBD87 /* DiffInfoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */; };
@@ -1761,6 +1764,8 @@
 		94E4C124199FC1A6003B0E82 /* ProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectViewController.h; sourceTree = "<group>"; };
 		94E4C125199FC1A6003B0E82 /* ProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectViewController.m; sourceTree = "<group>"; };
 		94E4C126199FC1A6003B0E82 /* ProjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectViewController.xib; sourceTree = "<group>"; };
+		94E4C13219A0E7AB003B0E82 /* HourChartControllerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HourChartControllerHelper.h; sourceTree = "<group>"; };
+		94E4C13319A0E7AB003B0E82 /* HourChartControllerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HourChartControllerHelper.m; sourceTree = "<group>"; };
 		94E6DB5E152C9EFF004DBD87 /* DiffInfoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiffInfoListViewController.h; sourceTree = "<group>"; };
 		94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiffInfoListViewController.m; sourceTree = "<group>"; };
 		94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiffInfoListViewController.xib; sourceTree = "<group>"; };
@@ -2832,8 +2837,6 @@
 				94DDE5D41997CAC20034B193 /* ChartBoardViewController.m */,
 				94DDE5D51997CAC20034B193 /* ChartBoardViewController.xib */,
 				94DDE5D61997CAC20034B193 /* Constants */,
-				94DDE5DC1997CAC20034B193 /* DayChartControllerHelper.h */,
-				94DDE5DD1997CAC20034B193 /* DayChartControllerHelper.m */,
 				94DDE5DE1997CAC20034B193 /* Footers */,
 				94DDE5E31997CAC20034B193 /* Headers */,
 				94DDE5E61997CAC20034B193 /* JBChartView */,
@@ -2841,6 +2844,10 @@
 				94DDE5F41997CAC20034B193 /* SAVideoRangeSlider */,
 				94DDE5FD1997CAC20034B193 /* WeekChartControllerHelper.h */,
 				94DDE5FE1997CAC20034B193 /* WeekChartControllerHelper.m */,
+				94DDE5DC1997CAC20034B193 /* DayChartControllerHelper.h */,
+				94DDE5DD1997CAC20034B193 /* DayChartControllerHelper.m */,
+				94E4C13219A0E7AB003B0E82 /* HourChartControllerHelper.h */,
+				94E4C13319A0E7AB003B0E82 /* HourChartControllerHelper.m */,
 				94E4C124199FC1A6003B0E82 /* ProjectViewController.h */,
 				94E4C125199FC1A6003B0E82 /* ProjectViewController.m */,
 				94E4C126199FC1A6003B0E82 /* ProjectViewController.xib */,
@@ -3568,6 +3575,7 @@
 				94B69881180EEE7A009C7176 /* CSSParser.m in Sources */,
 				944DD7DA15277591000473BE /* dif_dir.c in Sources */,
 				944DD7DD152775FC000473BE /* analyze.c in Sources */,
+				94E4C13419A0E7AB003B0E82 /* HourChartControllerHelper.m in Sources */,
 				94DDE6171997CAC20034B193 /* JBLineChartView.m in Sources */,
 				9478A461190ADFCD0093279F /* SelectGroupViewController.m in Sources */,
 				944DD7E115277625000473BE /* cmpbuf.c in Sources */,
@@ -3828,6 +3836,7 @@
 				949DC1A41583E8CF00385796 /* compath.c in Sources */,
 				94B1DCBC191F5B0800909C3E /* VersionViewController.m in Sources */,
 				949DC1A51583E8CF00385796 /* crossref.c in Sources */,
+				94E4C13619A0E7AB003B0E82 /* HourChartControllerHelper.m in Sources */,
 				94DDE6161997CAC20034B193 /* JBChartView.m in Sources */,
 				949DC1A61583E8CF00385796 /* cscope.c in Sources */,
 				9425885519532EB7006CD33B /* GoParser.m in Sources */,
@@ -4024,6 +4033,7 @@
 				94D4EDBF1642B8AB00601FE4 /* ruby.c in Sources */,
 				94D4EDC01642B8AB00601FE4 /* scheme.c in Sources */,
 				94D4EDC11642B8AB00601FE4 /* sh.c in Sources */,
+				94E4C13519A0E7AB003B0E82 /* HourChartControllerHelper.m in Sources */,
 				94D4EDC21642B8AB00601FE4 /* slang.c in Sources */,
 				94D4EDC31642B8AB00601FE4 /* sml.c in Sources */,
 				94D4EDC41642B8AB00601FE4 /* sort.c in Sources */,
@@ -4339,11 +4349,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					"$(PROJECT_DIR)/ShareSDK/Connection",
-					"$(PROJECT_DIR)/ShareSDK/Core",
-					"$(PROJECT_DIR)/ShareSDK/Extend/GooglePlusSDK",
-					"$(PROJECT_DIR)/ShareSDK",
-					"$(PROJECT_DIR)/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
@@ -4352,8 +4357,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
-					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
-					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4378,11 +4381,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					"$(PROJECT_DIR)/ShareSDK/Connection",
-					"$(PROJECT_DIR)/ShareSDK/Core",
-					"$(PROJECT_DIR)/ShareSDK/Extend/GooglePlusSDK",
-					"$(PROJECT_DIR)/ShareSDK",
-					"$(PROJECT_DIR)/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
@@ -4391,8 +4389,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
-					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
-					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4455,11 +4451,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					"$(PROJECT_DIR)/ShareSDK/Connection",
-					"$(PROJECT_DIR)/ShareSDK/Core",
-					"$(PROJECT_DIR)/ShareSDK/Extend/GooglePlusSDK",
-					"$(PROJECT_DIR)/ShareSDK",
-					"$(PROJECT_DIR)/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
@@ -4469,8 +4460,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
-					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
-					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";

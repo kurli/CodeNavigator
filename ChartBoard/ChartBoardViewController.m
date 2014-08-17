@@ -9,6 +9,7 @@
 #import "ChartBoardViewController.h"
 #import "WeekChartControllerHelper.h"
 #import "DayChartControllerHelper.h"
+#import "HourChartControllerHelper.h"
 //#import <ShareSDK/ShareSDK.h>
 #import "Utils.h"
 #import <ProjectViewController.h>
@@ -19,11 +20,12 @@
 
 @property (nonatomic, strong) WeekChartControllerHelper* weekChartController;
 @property (nonatomic, strong) DayChartControllerHelper* daysChartController;
+@property (nonatomic, strong) HourChartControllerHelper* hoursChartController;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 @property (nonatomic, strong) UIView* weekChartView;
 @property (nonatomic, strong) UIView* daysChartView;
+@property (nonatomic, strong) UIView* hoursChartView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentController;
-@property (weak, nonatomic) IBOutlet UILabel *codeNavigatorLabel;
 
 @property (strong, nonatomic) UIPopoverController *projectPopoverController;
 @property (strong, nonatomic) NSString* currentProject;
@@ -82,12 +84,15 @@
         frame.size.height -= frame.origin.y;
         [self.weekChartView setFrame:frame];
         self.weekChartController = [[WeekChartControllerHelper alloc] init];
-        [self.weekChartController initView:self.weekChartView andToolHeight:0 andLabel:self.codeNavigatorLabel];
+        [self.weekChartController initView:self.weekChartView andToolHeight:0];
         [self.view addSubview:self.weekChartView];
     }
     [self.daysChartView setHidden:YES];
+    [self.hoursChartView setHidden:YES];
     [self.weekChartView setHidden:NO];
+    
     [self.daysChartController setHidden:YES];
+    [self.hoursChartController setHidden:YES];
     [self.weekChartController setHidden:NO];
 }
 
@@ -99,16 +104,36 @@
         frame.size.height -= frame.origin.y;
         [self.daysChartView setFrame:frame];
         self.daysChartController = [[DayChartControllerHelper alloc] init];
-        [self.daysChartController initView:self.daysChartView andToolHeight:0 andLabel:self.codeNavigatorLabel];
+        [self.daysChartController initView:self.daysChartView andToolHeight:0];
         [self.view addSubview:self.daysChartView];
     }
+    [self.hoursChartView setHidden:YES];
     [self.weekChartView setHidden:YES];
     [self.daysChartView setHidden:NO];
-    [self.daysChartController setHidden:NO];
+    
     [self.weekChartController setHidden:YES];
+    [self.hoursChartController setHidden:YES];
+    [self.daysChartController setHidden:NO];
 }
 
--(void)initHourChardBoard {
+-(void)initHourCharBoard {
+    if (self.hoursChartView == nil) {
+        self.hoursChartView = [[UIView alloc] init];
+        CGRect frame = self.view.frame;
+        frame.origin.y += (self.toolBar.frame.size.height * 2);
+        frame.size.height -= frame.origin.y;
+        [self.hoursChartView setFrame:frame];
+        self.hoursChartController = [[HourChartControllerHelper alloc] init];
+        [self.hoursChartController initView:self.hoursChartView andToolHeight:0];
+        [self.view addSubview:self.hoursChartView];
+    }
+    [self.daysChartView setHidden:YES];
+    [self.weekChartView setHidden:YES];
+    [self.hoursChartView setHidden:NO];
+    
+    [self.daysChartController setHidden:YES];
+    [self.weekChartController setHidden:YES];
+    [self.hoursChartController setHidden:NO];
 }
 
 - (IBAction)changeCharView:(id)sender {
@@ -133,7 +158,13 @@
             }
             break;
         case 2:
-            [self initHourChardBoard];
+            [self initHourCharBoard];
+            if (self.hoursChartController.currentProject != self.currentProject) {
+                if (self.hoursChartController.currentProject == nil ||
+                    [self.hoursChartController.currentProject compare:self.currentProject] != NSOrderedSame) {
+                    [self.hoursChartController reloadData:self.currentProject];
+                }
+            }
             break;
         default:
             break;
@@ -154,6 +185,7 @@
             [self.daysChartController reloadData:proj];
             break;
         case 2:
+            [self.hoursChartController reloadData:proj];
             break;
         default:
             break;
@@ -188,6 +220,7 @@
             image = [self.daysChartController screenshot];
             break;
         case 2:
+            image = [self.hoursChartController screenshot];
             break;
         default:
             break;
