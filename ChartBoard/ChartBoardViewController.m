@@ -11,6 +11,7 @@
 #import "DayChartControllerHelper.h"
 //#import <ShareSDK/ShareSDK.h>
 #import "Utils.h"
+#import <ProjectViewController.h>
 
 @interface ChartBoardViewController () {
     UIView* subView;
@@ -24,7 +25,11 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentController;
 @property (weak, nonatomic) IBOutlet UILabel *codeNavigatorLabel;
 
+@property (strong, nonatomic) UIPopoverController *projectPopoverController;
+@property (strong, nonatomic) NSString* currentProject;
+
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
+@property (weak, nonatomic) IBOutlet UIButton *projectButton;
 @end
 
 @implementation ChartBoardViewController
@@ -34,6 +39,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.currentProject = nil;
     }
     return self;
 }
@@ -54,6 +60,8 @@
     [[Utils getInstance].dbManager appEnded:nil];
 
     [self initWeekChartBoard];
+    
+    self.currentProject = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,7 +109,6 @@
 }
 
 -(void)initHourChardBoard {
-    
 }
 
 - (IBAction)changeCharView:(id)sender {
@@ -109,9 +116,21 @@
     switch (controller.selectedSegmentIndex) {
         case 0:
             [self initWeekChartBoard];
+            if (self.weekChartController.currentProject != self.currentProject) {
+                if (self.weekChartController.currentProject == nil ||
+                    [self.weekChartController.currentProject compare:self.currentProject] != NSOrderedSame) {
+                    [self.weekChartController reloadData:self.currentProject];
+                }
+            }
             break;
         case 1:
             [self initDayCharBoard];
+            if (self.daysChartController.currentProject != self.currentProject) {
+                if (self.daysChartController.currentProject == nil ||
+                    [self.daysChartController.currentProject compare:self.currentProject] != NSOrderedSame) {
+                    [self.daysChartController reloadData:self.currentProject];
+                }
+            }
             break;
         case 2:
             [self initHourChardBoard];
@@ -119,6 +138,44 @@
         default:
             break;
     }
+}
+
+-(void) projectSelectedDone:(NSString*)proj {
+    [self.projectPopoverController dismissPopoverAnimated:NO];
+    self.projectPopoverController = nil;
+    
+    self.currentProject = proj;
+    
+    switch (self.segmentController.selectedSegmentIndex) {
+        case 0:
+            [self.weekChartController reloadData:proj];
+            break;
+        case 1:
+            [self.daysChartController reloadData:proj];
+            break;
+        case 2:
+            break;
+        default:
+            break;
+    }
+
+    if (proj == nil) {
+        proj = @"All";
+    }
+    [self.projectButton setTitle:proj forState:UIControlStateNormal];
+}
+
+- (IBAction)projectSelected:(id)sender {
+    ProjectViewController* viewController = [[ProjectViewController alloc] init];
+    [viewController setViewController2:self];
+    [viewController setCurrentProject:self.currentProject];
+#ifdef IPHONE_VERSION
+    error
+#else
+    self.projectPopoverController = [[UIPopoverController alloc] initWithContentViewController:viewController];
+#endif
+    self.projectPopoverController.popoverContentSize = viewController.view.frame.size;
+    [self.projectPopoverController presentPopoverFromRect:self.projectButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
 - (IBAction)shareButtonClicked:(id)sender {

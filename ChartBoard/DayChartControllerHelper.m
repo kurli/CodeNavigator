@@ -23,12 +23,14 @@
 // Numerics
 CGFloat const kJBLineChartViewControllerChartHeight = 250.0f;
 CGFloat const kJBLineChartViewControllerChartPadding = 10.0f;
-CGFloat const kJBLineChartViewControllerChartHeaderHeight = 75.0f;
-CGFloat const kJBLineChartViewControllerChartHeaderPadding = 20.0f;
-CGFloat const kJBLineChartViewControllerChartFooterHeight = 20.0f;
+CGFloat const kJBLineChartViewControllerChartHeaderHeight = 80.0f;
+CGFloat const kJBLineChartViewControllerChartHeaderPadding = 10.0f;
+CGFloat const kJBLineChartViewControllerChartFooterHeight = 25.0f;
 CGFloat const kJBLineChartViewControllerChartSolidLineWidth = 6.0f;
 CGFloat const kJBLineChartViewControllerChartDashedLineWidth = 2.0f;
 NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
+
+#define TITLE_ALL @"Usage per days"
 
 @interface DayChartControllerHelper () <JBLineChartViewDelegate, JBLineChartViewDataSource, SAVideoRangeSliderDelegate>
 
@@ -44,8 +46,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
 @property (nonatomic, strong) NSDate* maxEndDate;
 @property (nonatomic, strong) UIView* parentView;
 
-// Helpers
-- (void)initData;
+@property (nonatomic, strong) JBChartHeaderView *headerView;
 
 @end
 
@@ -56,7 +57,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
     self = [super init];
     if (self)
     {
-        [self initData];
+        [self initData:nil];
     }
     return self;
 }
@@ -71,7 +72,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
     return date2;
 }
 
--(void) initData {
+-(void) initData:(NSString*) project {
     DBManager* dbManager = [Utils getInstance].dbManager;
 
     self.endDate = [self dateToDay:[NSDate date]];
@@ -90,7 +91,8 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
     self.maxEndDate = self.endDate;
     self.minStartDate = self.startDate;
 
-    [self refreshCharView];
+    self.currentProject = project;
+    [self refreshCharView:project];
 //    NSArray* array = [self.dbData allKeys];
 //    self.daysArray = [array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
 //        NSData* date1 = obj1;
@@ -99,7 +101,16 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
 //    }];
 }
 
--(void) refreshCharView {
+-(void) reloadData:(NSString*)project {
+    [self initData:project];
+    if (project == nil) {
+        self.headerView.titleLabel.text = TITLE_ALL;
+    } else {
+        self.headerView.titleLabel.text = project;
+    }
+}
+
+-(void) refreshCharView:(NSString*)project {
     DBManager* dbManager = [Utils getInstance].dbManager;
     NSMutableArray* array = [[NSMutableArray alloc] init];
     NSInteger interval = [self.endDate timeIntervalSinceReferenceDate] - [self.startDate timeIntervalSinceReferenceDate];
@@ -110,7 +121,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
     }
     self.daysArray = array;
     
-    self.dbData = [dbManager getUsageTimePerDay:self.startDate andEnd:[self.endDate dateByAddingTimeInterval:24*60*60] andProject:nil];
+    self.dbData = [dbManager getUsageTimePerDay:self.startDate andEnd:[self.endDate dateByAddingTimeInterval:24*60*60] andProject:project];
     [self.lineChartView reloadData];
 }
 
@@ -170,17 +181,17 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
     self.lineChartView.headerPadding = kJBLineChartViewControllerChartHeaderPadding;
     self.lineChartView.backgroundColor = kJBColorBarChartBackground;
     
-    JBChartHeaderView *headerView = [[JBChartHeaderView alloc] initWithFrame:CGRectMake(kJBLineChartViewControllerChartPadding, ceil(parentView.bounds.size.height * 0.5) - ceil(kJBLineChartViewControllerChartHeaderHeight * 0.5) + height, parentView.bounds.size.width - (kJBLineChartViewControllerChartPadding * 2), kJBLineChartViewControllerChartHeaderHeight)];
-    headerView.titleLabel.text = @"Usage per days";
+    self.headerView = [[JBChartHeaderView alloc] initWithFrame:CGRectMake(kJBLineChartViewControllerChartPadding, ceil(parentView.bounds.size.height * 0.5) - ceil(kJBLineChartViewControllerChartHeaderHeight * 0.5) + height, parentView.bounds.size.width - (kJBLineChartViewControllerChartPadding * 2), kJBLineChartViewControllerChartHeaderHeight)];
+    self.headerView.titleLabel.text = TITLE_ALL;
 //    headerView.titleLabel.textColor = kJBColorBarChartHeaderSeparatorColor;
 //    headerView.titleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
 //    headerView.titleLabel.shadowOffset = CGSizeMake(0, 1);
-    headerView.subtitleLabel.text = @"";
+    self.headerView.subtitleLabel.text = @"";
 //    headerView.subtitleLabel.textColor = kJBColorBarChartHeaderSeparatorColor;
 //    headerView.subtitleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
 //    headerView.subtitleLabel.shadowOffset = CGSizeMake(0, 1);
-    headerView.separatorColor = kJBColorBarChartHeaderSeparatorColor;
-    self.lineChartView.headerView = headerView;
+    self.headerView.separatorColor = kJBColorBarChartHeaderSeparatorColor;
+    self.lineChartView.headerView = self.headerView;
     
     JBLineChartFooterView *footerView = [[JBLineChartFooterView alloc] initWithFrame:CGRectMake(kJBLineChartViewControllerChartPadding, ceil(parentView.bounds.size.height * 0.5) - ceil(kJBLineChartViewControllerChartFooterHeight * 0.5) + height, parentView.bounds.size.width - (kJBLineChartViewControllerChartPadding * 2), kJBLineChartViewControllerChartFooterHeight)];
     footerView.backgroundColor = [UIColor clearColor];
@@ -381,7 +392,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
         }
     }
     
-    [self refreshCharView];
+    [self refreshCharView:self.currentProject];
     footerView.leftLabel.text = [self dateToString:self.startDate];
     footerView.rightLabel.text = [self dateToString:self.endDate];
     footerView.sectionCount = [self.daysArray count];

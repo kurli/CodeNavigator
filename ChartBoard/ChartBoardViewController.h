@@ -10,4 +10,6 @@
 
 @interface ChartBoardViewController : UIViewController
 
+-(void) projectSelectedDone:(NSString*)proj;
+
 @end

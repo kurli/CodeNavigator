@@ -27,6 +27,8 @@ NSInteger const kJBBarChartViewControllerNumBars = 7;
 NSInteger const kJBBarChartViewControllerMaxBarHeight = 10;
 NSInteger const kJBBarChartViewControllerMinBarHeight = 5;
 
+#define TITLE_ALL @"Weekly Usage"
+
 @interface WeekChartControllerHelper()
 
 @property (nonatomic, strong) JBBarChartView *barChartView;
@@ -34,6 +36,7 @@ NSInteger const kJBBarChartViewControllerMinBarHeight = 5;
 @property (nonatomic, strong) NSArray *chartData;
 @property (nonatomic, strong) NSArray *weeklySymbols;
 @property (nonatomic, strong) UIView* parentView;
+@property (nonatomic, strong) JBChartHeaderView* headerView;
 
 @end
 
@@ -44,14 +47,25 @@ NSInteger const kJBBarChartViewControllerMinBarHeight = 5;
     self = [super init];
     if (self)
     {
-        [self initData];
+        [self initData:nil];
     }
     return self;
 }
 
--(void) initData {
-    self.chartData = [[Utils getInstance].dbManager getUsageTimeForWeek:nil];
+-(void) initData:(NSString*)project {
+    self.chartData = [[Utils getInstance].dbManager getUsageTimeForWeek:project];
     self.weeklySymbols = [[[NSDateFormatter alloc] init] shortWeekdaySymbols];
+    self.currentProject = project;
+}
+
+-(void) reloadData:(NSString*)project {
+    [self initData:project];
+    if (project == nil) {
+        self.headerView.titleLabel.text = TITLE_ALL;
+    } else {
+        self.headerView.titleLabel.text = project;
+    }
+    [self.barChartView reloadData];
 }
 
 -(void) initView:(UIView*) parentView andToolHeight:(int)height andLabel:(UILabel*)codeNavigatorLabel {
@@ -67,12 +81,12 @@ NSInteger const kJBBarChartViewControllerMinBarHeight = 5;
     self.barChartView.minimumValue = 0.0f;
     self.barChartView.backgroundColor = kJBColorBarChartBackground;
     
-    JBChartHeaderView *headerView = [[JBChartHeaderView alloc] initWithFrame:CGRectMake(kJBBarChartViewControllerChartPadding, ceil(parentView.bounds.size.height * 0.5) - ceil(kJBBarChartViewControllerChartHeaderHeight * 0.5) + height, parentView.bounds.size.width - (kJBBarChartViewControllerChartPadding * 2), kJBBarChartViewControllerChartHeaderHeight)];
+    self.headerView = [[JBChartHeaderView alloc] initWithFrame:CGRectMake(kJBBarChartViewControllerChartPadding, ceil(parentView.bounds.size.height * 0.5) - ceil(kJBBarChartViewControllerChartHeaderHeight * 0.5) + height, parentView.bounds.size.width - (kJBBarChartViewControllerChartPadding * 2), kJBBarChartViewControllerChartHeaderHeight)];
 //    headerView.titleLabel.text = [kJBStringLabelAverageMonthlyTemperature uppercaseString];
-    headerView.titleLabel.text = @"Weekly Usage";
-    headerView.subtitleLabel.text = @"";
-    headerView.separatorColor = kJBColorBarChartHeaderSeparatorColor;
-    self.barChartView.headerView = headerView;
+    self.headerView.titleLabel.text = TITLE_ALL;
+    self.headerView.subtitleLabel.text = @"";
+    self.headerView.separatorColor = kJBColorBarChartHeaderSeparatorColor;
+    self.barChartView.headerView = self.headerView;
     
     JBBarChartFooterView *footerView = [[JBBarChartFooterView alloc] initWithFrame:CGRectMake(kJBBarChartViewControllerChartPadding, ceil(parentView.bounds.size.height * 0.5) - ceil(kJBBarChartViewControllerChartFooterHeight * 0.5) + height, parentView.bounds.size.width - (kJBBarChartViewControllerChartPadding * 2), kJBBarChartViewControllerChartFooterHeight)];
     footerView.padding = kJBBarChartViewControllerChartFooterPadding;

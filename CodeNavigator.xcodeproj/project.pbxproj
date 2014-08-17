@@ -1037,6 +1037,12 @@
 		94E4C117199E7FDD003B0E82 /* projectGit.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E4C116199E7FDD003B0E82 /* projectGit.png */; };
 		94E4C119199E7FDD003B0E82 /* projectGit.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E4C116199E7FDD003B0E82 /* projectGit.png */; };
 		94E4C123199E8E50003B0E82 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94785A54184519660012988B /* libz.dylib */; };
+		94E4C127199FC1A6003B0E82 /* ProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E4C125199FC1A6003B0E82 /* ProjectViewController.m */; };
+		94E4C128199FC1A6003B0E82 /* ProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E4C125199FC1A6003B0E82 /* ProjectViewController.m */; };
+		94E4C129199FC1A6003B0E82 /* ProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E4C125199FC1A6003B0E82 /* ProjectViewController.m */; };
+		94E4C12A199FC1A6003B0E82 /* ProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E4C126199FC1A6003B0E82 /* ProjectViewController.xib */; };
+		94E4C12B199FC1A6003B0E82 /* ProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E4C126199FC1A6003B0E82 /* ProjectViewController.xib */; };
+		94E4C12C199FC1A6003B0E82 /* ProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E4C126199FC1A6003B0E82 /* ProjectViewController.xib */; };
 		94E6DB61152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */; };
 		94E6DB62152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */; };
 		94E6DB63152C9EFF004DBD87 /* DiffInfoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */; };
@@ -1752,6 +1758,9 @@
 		94E3761418D495A5006756A3 /* GitUpdateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GitUpdateViewController.xib; path = help/GitUpdateViewController.xib; sourceTree = "<group>"; };
 		94E4C113199D1519003B0E82 /* CommentHide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CommentHide.png; sourceTree = "<group>"; };
 		94E4C116199E7FDD003B0E82 /* projectGit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectGit.png; sourceTree = "<group>"; };
+		94E4C124199FC1A6003B0E82 /* ProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectViewController.h; sourceTree = "<group>"; };
+		94E4C125199FC1A6003B0E82 /* ProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectViewController.m; sourceTree = "<group>"; };
+		94E4C126199FC1A6003B0E82 /* ProjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectViewController.xib; sourceTree = "<group>"; };
 		94E6DB5E152C9EFF004DBD87 /* DiffInfoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiffInfoListViewController.h; sourceTree = "<group>"; };
 		94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiffInfoListViewController.m; sourceTree = "<group>"; };
 		94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiffInfoListViewController.xib; sourceTree = "<group>"; };
@@ -2832,6 +2841,9 @@
 				94DDE5F41997CAC20034B193 /* SAVideoRangeSlider */,
 				94DDE5FD1997CAC20034B193 /* WeekChartControllerHelper.h */,
 				94DDE5FE1997CAC20034B193 /* WeekChartControllerHelper.m */,
+				94E4C124199FC1A6003B0E82 /* ProjectViewController.h */,
+				94E4C125199FC1A6003B0E82 /* ProjectViewController.m */,
+				94E4C126199FC1A6003B0E82 /* ProjectViewController.xib */,
 			);
 			path = ChartBoard;
 			sourceTree = "<group>";
@@ -3195,6 +3207,7 @@
 				948C740C1804555300065E65 /* screen.png in Resources */,
 				94F4249A15387E1E005FC4C8 /* show_masterview.png in Resources */,
 				94F9BB0A18EDDFC400CD7C2C /* SourceCodePro-Medium.ttf in Resources */,
+				94E4C12A199FC1A6003B0E82 /* ProjectViewController.xib in Resources */,
 				94D1BF79153C56420007A8EB /* forward_history.png in Resources */,
 				94D1BF7C153C66A20007A8EB /* backward_history.png in Resources */,
 				94A0FAE3153DDA78004277BF /* cscope.png in Resources */,
@@ -3336,6 +3349,7 @@
 				94B1DCE2191F6F8D00909C3E /* ThemeSelectorViewController.xib in Resources */,
 				94C07F16197FFF1200DC1A6D /* HelpViewController.xib in Resources */,
 				947F861215863579002EAA1E /* DetailViewController-iPhone.xib in Resources */,
+				94E4C12C199FC1A6003B0E82 /* ProjectViewController.xib in Resources */,
 				94B1DCBD191F62DB00909C3E /* VersionViewController.xib in Resources */,
 				947F861315863579002EAA1E /* MasterViewController-iPhone.xib in Resources */,
 				94B1DD0C191F738A00909C3E /* SourceCodePro-Black.ttf in Resources */,
@@ -3393,6 +3407,7 @@
 				94FAC80414C1649400B9A821 /* settings.png in Resources */,
 				9443BF5814D1A40200355278 /* HistoryListController.xib in Resources */,
 				9461D46519602BD800F0B0A1 /* show_toolbar.png in Resources */,
+				94E4C12B199FC1A6003B0E82 /* ProjectViewController.xib in Resources */,
 				94B1DD0B191F738A00909C3E /* SourceCodePro-Black.ttf in Resources */,
 				9429000514D4E16E002793BD /* PercentViewController.xib in Resources */,
 				94103DF114D86F1300212EBB /* bookmark.png in Resources */,
@@ -3534,6 +3549,7 @@
 				94DDE6081997CAC20034B193 /* JBBarChartFooterView.m in Sources */,
 				945428B414F2B51600353EC8 /* ProjectListController.m in Sources */,
 				946F857818E841DF00CBFA19 /* ThemeManager.m in Sources */,
+				94E4C127199FC1A6003B0E82 /* ProjectViewController.m in Sources */,
 				94C8C68414FA57D60062750D /* ImagePreviewController.m in Sources */,
 				941656FF1515C3C200838005 /* GitLogViewCongroller.m in Sources */,
 				9497F3A3151A499D006BCBBF /* ObjectiveCParser.m in Sources */,
@@ -3710,6 +3726,7 @@
 				948E146816416D2600CBBD5B /* c.c in Sources */,
 				94DDE61F1997CAC20034B193 /* JBChartTooltipTipView.m in Sources */,
 				948E146916416D2600CBBD5B /* cobol.c in Sources */,
+				94E4C129199FC1A6003B0E82 /* ProjectViewController.m in Sources */,
 				948E146A16416D2600CBBD5B /* config.h in Sources */,
 				94DDE6221997CAC20034B193 /* JBChartTooltipView.m in Sources */,
 				948E146B16416D2600CBBD5B /* css.c in Sources */,
@@ -3961,6 +3978,7 @@
 				94DDE6091997CAC20034B193 /* JBBarChartFooterView.m in Sources */,
 				94D4ED921642B8AB00601FE4 /* e_os2.h in Sources */,
 				94D4ED931642B8AB00601FE4 /* e_qdos.h in Sources */,
+				94E4C128199FC1A6003B0E82 /* ProjectViewController.m in Sources */,
 				94B1DCFD191F715F00909C3E /* ZipFileResolver.m in Sources */,
 				94D4ED941642B8AB00601FE4 /* e_riscos.h in Sources */,
 				94D4ED951642B8AB00601FE4 /* e_vms.h in Sources */,

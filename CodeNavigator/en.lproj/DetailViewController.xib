@@ -56,7 +56,7 @@
                     </connections>
                 </segmentedControl>
                 <webView multipleTouchEnabled="YES" contentMode="scaleAspectFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" id="378">
-                    <rect key="frame" x="0.0" y="757.00000003483149" width="708" height="10"/>
+                    <rect key="frame" x="0.0" y="757" width="708" height="10"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <dataDetectorType key="dataDetectorTypes"/>
                     <connections>
@@ -219,7 +219,7 @@
         <image name="binocular.png" width="30" height="30"/>
         <image name="bookmark.png" width="20" height="20"/>
         <image name="forward.png" width="40" height="43"/>
-        <image name="forward_history.png" width="128" height="128"/>
+        <image name="forward_history.png" width="64" height="64"/>
         <image name="hide_masterview.png" width="30" height="30"/>
         <image name="hide_toolbar.png" width="30" height="30"/>
         <image name="search.png" width="26" height="26"/>

@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChartBoardViewController">
             <connections>
                 <outlet property="codeNavigatorLabel" destination="OE4-xf-nES" id="UwR-OP-tIe"/>
+                <outlet property="projectButton" destination="nHD-eb-PAa" id="MSV-3m-6yM"/>
                 <outlet property="segmentController" destination="r7g-wT-tYb" id="uSY-tu-EL9"/>
                 <outlet property="shareButton" destination="3p6-Rr-wC6" id="gcg-4M-UAP"/>
                 <outlet property="toolBar" destination="sjR-Ef-1Qk" id="qEZ-Px-S3h"/>
@@ -22,7 +23,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="540" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <items>
-                        <barButtonItem title="Done" id="vOm-qt-Dxm">
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="PP8-EP-Mug"/>
+                        <barButtonItem systemItem="done" id="vOm-qt-Dxm">
                             <connections>
                                 <action selector="doneButtonClicked:" destination="-1" id="dNA-qk-FQY"/>
                             </connections>
@@ -58,6 +60,16 @@
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nHD-eb-PAa">
+                    <rect key="frame" x="227" y="51" width="189" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="All">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="projectSelected:" destination="-1" eventType="touchUpInside" id="b2r-aW-Xaw"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

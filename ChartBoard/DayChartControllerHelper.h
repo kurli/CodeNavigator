@@ -10,10 +10,14 @@
 
 @interface DayChartControllerHelper : NSObject
 
+@property (nonatomic, strong) NSString* currentProject;
+
 -(void) initView:(UIView*) parentView andToolHeight:(int)height andLabel:(UILabel*)codeNavigatorLabel;
 
 -(void) setHidden:(BOOL)hidden;
 
 -(UIImage*) screenshot;
+
+-(void) reloadData:(NSString*)project;
 
 @end

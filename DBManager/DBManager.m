@@ -331,6 +331,23 @@
     return _id;
 }
 
+-(NSArray*) getAllProjects {
+    NSString *sqlQuery = [NSString stringWithFormat:@"SELECT project_nickname FROM project_table"];
+    sqlite3_stmt * statement;
+    NSMutableArray* array = [[NSMutableArray alloc] init];
+    
+    NSString* proj;
+    if (sqlite3_prepare_v2(db, [sqlQuery UTF8String], -1, &statement, nil) == SQLITE_OK) {
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            const char* str = (const char*)sqlite3_column_text(statement, 0);
+            proj = [NSString stringWithUTF8String:str];
+            [array addObject:proj];
+        }
+    }
+    sqlite3_finalize(statement);
+    return array;
+}
+
 -(void)execSql:(NSString *)sql
 {
     char *err;
