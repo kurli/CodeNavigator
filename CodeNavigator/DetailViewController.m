@@ -34,6 +34,8 @@
 @implementation DetailViewController
 {
     int _bannerCounter;
+    BOOL currentUpStartRendering;
+    BOOL currentDownStartRendering;
 }
 
 @synthesize resultBarButton = _resultBarButton;
@@ -104,6 +106,8 @@
     self.activeWebView = self.webView;
     isFirstDisplay = YES;
     showAllComments = YES;
+    currentUpStartRendering = NO;
+    currentDownStartRendering = NO;
     
     // show hide scrollbar
     scrollBarTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapInScrollView:)];
@@ -924,15 +928,22 @@
     popoverController.border = NO;
     
     [codeNavigationController setCurrentSourcePath:projectPath];
-    [codeNavigationController setSearchKeyword:@""];
+    [codeNavigationController setSearchKeyword:searchWordU];
     [popoverController presentPopoverFromBarButtonItem:(UIBarButtonItem*)sender permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES andToolBar:self.bottomToolBar];
 #else
+    if (activeWebView == self.webView)
+    {
+        [codeNavigationController setSearchKeyword:searchWordU];
+    }
+    else
+    {
+        [codeNavigationController setSearchKeyword:searchWordD];
+    }
     // Setup the popover for use from the navigation bar.
 	popoverController = [[UIPopoverController alloc] initWithContentViewController:controller];
 	popoverController.popoverContentSize = CGSizeMake(320., 320.);
     
     [codeNavigationController setCurrentSourcePath:projectPath];
-    [codeNavigationController setSearchKeyword:@""];
     [popoverController presentPopoverFromBarButtonItem:(UIBarButtonItem*)sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 #endif
 }
@@ -1535,6 +1546,27 @@
 
 #pragma mark - WebView Delegate
 
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    if (webView == self.webView) {
+        [self setSearchWordU:nil];
+    } else {
+        [self setSearchWordD:nil];
+    }
+    
+    [[Utils getInstance] showAnalyzeIndicator:YES];
+    if (webView == self.webView) {
+        if (currentUpStartRendering) {
+            [[Utils getInstance] showAnalyzeIndicator:NO];
+        }
+        currentUpStartRendering = YES;
+    } else {
+        if (currentDownStartRendering) {
+            [[Utils getInstance] showAnalyzeIndicator:NO];
+        }
+        currentDownStartRendering = YES;
+    }
+}
+
 -(void) webViewDidFinishLoad:(UIWebView *)webView
 {
     NSString* js = @"";
@@ -1595,6 +1627,13 @@
     
     if ([Utils getInstance].currentThemeSetting.auto_fold_comments) {
         [webView stringByEvaluatingJavaScriptFromString:@"autoFold()"];
+    }
+    
+    [[Utils getInstance] showAnalyzeIndicator:NO];
+    if (self.webView == webView) {
+        currentUpStartRendering = NO;
+    } else {
+        currentDownStartRendering = NO;
     }
 }
 
@@ -1711,15 +1750,15 @@
         [scrollBackgroundView setBackgroundColor:[UIColor clearColor]];
         
         // set activeview
-//        if (self.secondWebView.frame.size.height > 10){
-//            if (self.webView == webView) {
-//                [self setUpWebViewAsActive];
-//                [self.webViewSegmentController setSelectedSegmentIndex:0];
-//            } else if (self.secondWebView == webView){
-//                [self setDownWebViewAsActive];
-//                [self.webViewSegmentController setSelectedSegmentIndex:1];
-//            }
-//        }
+        if (self.secondWebView.frame.size.height > 10){
+            if (self.webView == webView) {
+                [self setUpWebViewAsActive];
+                [self.webViewSegmentController setSelectedSegmentIndex:0];
+            } else if (self.secondWebView == webView){
+                [self setDownWebViewAsActive];
+                [self.webViewSegmentController setSelectedSegmentIndex:1];
+            }
+        }
         return NO;
     }
     

@@ -493,19 +493,26 @@ static Utils *static_utils;
 
 -(void) showAnalyzeIndicator:(BOOL)show
 {
+    static int animateCount = 0;
     if (show == YES)
     {
         if (self.cscopeIndicator == nil) {
             self.cscopeIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
             self.cscopeIndicator.hidesWhenStopped = YES;
         }
-        [self.cscopeIndicator startAnimating];
+        if (animateCount == 0) {
+            [self.cscopeIndicator startAnimating];
+        }
+        animateCount++;
         
         [self.detailViewController.analyzeInfoBarButton setCustomView:self.cscopeIndicator];
     }
     else
     {
-        [self.cscopeIndicator stopAnimating];
+        animateCount--;
+        if (animateCount == 0) {
+            [self.cscopeIndicator stopAnimating];
+        }
     }
 }
 
