@@ -887,15 +887,29 @@
     }
     [self releaseAllPopOver];
     
-#ifndef IPHONE_VERSION
-    MasterViewController* masterViewController = nil;
-    masterViewController = [Utils getInstance].masterViewController;
-#else
-    MasterViewController* masterViewController = [Utils getInstance].masterViewController;
-#endif
-    NSString* projectPath = [[Utils getInstance] getProjectFolder:[masterViewController getCurrentLocation]];
+//#ifndef IPHONE_VERSION
+//    MasterViewController* masterViewController = nil;
+//    masterViewController = [Utils getInstance].masterViewController;
+//#else
+//    MasterViewController* masterViewController = [Utils getInstance].masterViewController;
+//#endif
+    NSString* projectPath;
+    BOOL isFolder = false;
+    if (activeWebView == self.webView)
+    {
+        NSString* path = [self.upHistoryController pickTopLevelUrl];
+        path = [[Utils getInstance] getSourceFileByDisplayFile:path];
+        projectPath = [[Utils getInstance] getProjectFolder:path];
+    }
+    else
+    {
+        NSString* path = [self.downHistoryController pickTopLevelUrl];
+        path = [[Utils getInstance] getSourceFileByDisplayFile:path];
+        projectPath = [[Utils getInstance] getProjectFolder:path];
+    }
+    [[NSFileManager defaultManager] fileExistsAtPath:projectPath isDirectory:&isFolder];
     
-    if (projectPath == nil)
+    if (projectPath == nil || isFolder == NO)
     {
         [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Please select a project"];
         return;
@@ -903,7 +917,7 @@
     
     NavigationController* codeNavigationController= [[NavigationController alloc] init];
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:codeNavigationController];
-    codeNavigationController.title = @"Code Navigator";
+    codeNavigationController.title = [projectPath lastPathComponent];
 #ifdef IPHONE_VERSION
     popoverController = [[FPPopoverController alloc] initWithContentViewController:controller];
 	popoverController.popoverContentSize = CGSizeMake(320., 320.);
