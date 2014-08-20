@@ -97,6 +97,22 @@ CGFloat const kHourControllerChartFooterPadding = 5.0f;
     [parentView addSubview:self.informationView];
     
     [parentView addSubview:self.barChartView];
+    
+    UILabel* customLabel = [[UILabel alloc] init];
+    customLabel.frame = CGRectMake(10, parentView.frame.size.height - 30, 300, 30);
+    UIFont *font = [UIFont fontWithName:@"Helvetica-BoldOblique" size:15.0f];
+    [customLabel setFont:font];
+    customLabel.adjustsFontSizeToFitWidth = NO;
+    customLabel.textAlignment = NSTextAlignmentLeft;
+    customLabel.opaque = NO;
+    customLabel.backgroundColor = [UIColor clearColor];
+    customLabel.textColor = [UIColor lightGrayColor];
+#ifdef IPHONE_VERSION
+    customLabel.text = @"By CodeNavigator on iPhone";
+#else
+    customLabel.text = @"By CodeNavigator on iPad";
+#endif
+    [parentView addSubview:customLabel];
 
     [self.barChartView reloadData];
     
