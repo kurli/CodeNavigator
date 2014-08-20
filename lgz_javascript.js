@@ -72,30 +72,82 @@ function highlight_this_line_keyword(line, s){
 
 document.addEventListener('touchstart', function(event) {
     window.location.href= "lgz_touch_start";
+    clearPreTouches();
 }, false);
 
+var preTouches = new Array();
+var touchMode = 0;
+
+var TouchPoint = {
+    clientX:0,
+    clientY:0
+};
+
+function clearPreTouches() {
+    preTouches.pop();
+    preTouches.pop();
+    touchMode = 0;
+}
+
 document.addEventListener('touchmove', function(event) {
-    if (event.touches.length >= 2)
+    if (event.touches.length == 2)
     {
-        // use it to prevent default behavior
         event.preventDefault();
-        var touch = event.touches[0];
-        var value = "lgz_multi_touch_start:"+touch.clientX;
-        window.location.href = value;
+        if (preTouches.length == 0) {
+            var touch0 = Object.create(TouchPoint);
+            var touch1 = Object.create(TouchPoint);
+            touch0.clientX = event.touches[0].clientX;
+            touch0.clientY = event.touches[0].clientY;
+            touch1.clientX = event.touches[1].clientX;
+            touch1.clientY = event.touches[1].clientY;
+            preTouches.push(touch0);
+            preTouches.push(touch1);
+            return;
+        }
+        
+        var touch0 = event.touches[0];
+        var touch1 = event.touches[1];
+		
+		var finger0DistX = touch0.clientX - preTouches[0].clientX;
+		var finger1DistX = touch1.clientX - preTouches[1].clientX;
+		
+        if (touchMode != 1 && finger0DistX*finger1DistX>0) {
+            var value = "lgz_multi_touch_start:"+touch0.clientX;
+            window.location.href = value;
+            touchMode = 2;
+			return;
+        }
+        
+        var distX = preTouches[1].clientX-preTouches[0].clientX;
+        var distY = preTouches[1].clientY-preTouches[0].clientY;
+        var distPre = ~~Math.sqrt(distX*distX + distY*distY);
+        
+        distX = touch0.clientX-touch1.clientX;
+        distY = touch0.clientY-touch1.clientY;
+        var distNow = ~~Math.sqrt(distX*distX + distY*distY);
+		
+        if (touchMode != 2 && Math.abs(distPre-distNow) > 5) {
+            var value = "lgz_font_size_change:"+(distNow-distPre);
+            window.location.href = value;
+            touchMode = 1;
+            return;
+        }
     }
 }, false);
 
-//document.addEventListener('touchend', function(event) {
-//    var touch = event.touches[0];
-//    var str = "lgz_touch_end:" + touch.pageX;
-//    window.location.href= str;
-//}, false);
-//
-//document.addEventListener('touchcancel', function(event) {
-//    var touch = event.touches[0];
-//    var str = "lgz_touch_end:" + touch.pageX;
-//    window.location.href= str;
-//}, false);
+document.addEventListener('touchend', function(event) {
+    if (touchMode != 0) {
+        window.location.href= "lgz_touch_end";
+        clearPreTouches();
+    }
+}, false);
+
+document.addEventListener('touchcancel', function(event) {
+    if (touchMode != 0) {
+        window.location.href= "lgz_touch_end";
+        clearPreTouches();
+    }
+}, false);
 
 function currentYPosition() {
     // Firefox, Chrome, Opera, Safari
@@ -136,40 +188,6 @@ function highlight_keyword_by_lines(lines, s)
     return returnVal;
 }
 
-function smoothScrollToPosition(stopPosition)
-{
-    var startY = currentYPosition();
-    var stopY = stopPosition;
-    if (stopY < 0)
-        stopY = 0;
-    var distance = stopY > startY ? stopY - startY : startY - stopY;
-    if (distance == 0)
-        return;
-    if (distance < 100) {
-        scrollTo(0, stopY);
-        return;
-    }
-    if (distance > 1000){
-        scrollTo(0, stopY);
-        return;
-    }
-    var speed = Math.round(distance / 1000);
-    //if (speed >= 20) speed = 20;
-    var step = Math.round(distance / 5);
-    var leapY = stopY > startY ? startY + step : startY - step;
-    var timer = 0;
-    if (stopY > startY) {
-        for ( var i=startY; i<stopY; i+=step ) {
-            setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
-            leapY += step; if (leapY > stopY) leapY = stopY; timer++;
-        } return;
-    }
-    for ( var i=startY; i>stopY; i-=step ) {
-        setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
-        leapY -= step; if (leapY < stopY) leapY = stopY; timer++;
-    }
-}
-
 function deFocusLine(eID) {
     eID.style.backgroundColor = document.body.background;
 }
@@ -191,7 +209,6 @@ function smoothScroll(eID) {
     }
     else
         window.location.hash = str;
-    //smoothScrollToPosition(stopY);
 }
 
 function gotoLine(i)

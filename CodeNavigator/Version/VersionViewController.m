@@ -175,6 +175,7 @@
     //for javascript
     NSString* js = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/lgz_javascript.js"];
     NSString* jsPath = [[[NSBundle mainBundle] resourcePath]  stringByAppendingPathComponent:@"lgz_javascript.js"];
+    [[NSFileManager defaultManager] removeItemAtPath:js error:&error];
     [[NSFileManager defaultManager] copyItemAtPath:jsPath toPath:js error:&error];
 }
 
@@ -254,7 +255,7 @@
         return;
     }
     
-    if (integer < 2) {
+//    if (integer < 2) {
         // Generate theme file
         NSString* css = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/theme.css"];
         [ThemeManager generateCSSScheme:css andTheme:[Utils getInstance].currentThemeSetting];
@@ -264,12 +265,12 @@
         
         // Remove all display folder
         [self removeAllDisplayFiles];
-    }
-    
-    if (integer == 2) {
+//    }
+
+//    if (integer == 2) {
         // Remove all display folder
-        [self removeAllDisplayFiles];
-    }
+//        [self removeAllDisplayFiles];
+//    }
 
     // Write version code
     content = [NSString stringWithFormat:@"%d", RELEASE_VERSION];

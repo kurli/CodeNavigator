@@ -21,6 +21,7 @@
 #import "DisplayController.h"
 #import "ThemeSelectorViewController.h"
 #import <CommonCrypto/CommonDigest.h>
+#import "MBProgressHUD.h"
 
 #define TOOLBAR_X_MASTER_SHOW 55
 #define TOOLBAR_X_MASTER_HIDE 208
@@ -31,11 +32,20 @@
 #define LINE_DELTA 8
 #endif
 
+@interface DetailViewController()
+
+@property (nonatomic, strong) MBProgressHUD* fontSizeHUD;
+
+@end
+
 @implementation DetailViewController
 {
     int _bannerCounter;
     BOOL currentUpStartRendering;
     BOOL currentDownStartRendering;
+    
+    int multiTouchStarted;
+    int multiTouchState;//0:not defined 1: forward 2: backward
 }
 
 @synthesize resultBarButton = _resultBarButton;
@@ -108,6 +118,8 @@
     showAllComments = YES;
     currentUpStartRendering = NO;
     currentDownStartRendering = NO;
+    multiTouchStarted = 0;
+    multiTouchState = 0;
     
     // show hide scrollbar
     scrollBarTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapInScrollView:)];
@@ -1639,109 +1651,182 @@
 
 #define SWIPE_STEP 350
 
+-(void) multiTouchToBackwardForward:(NSString*)tmp {
+    tmp = [tmp lastPathComponent];
+    //TODO
+    NSArray* array = [tmp componentsSeparatedByString:@":"];
+    if ([array count] != 2) {
+        return;
+    }
+    int value = [[array objectAtIndex:1]intValue];
+    if (multiTouchStarted == 0) {
+        multiTouchStarted = value;
+    }
+    else {
+        CGRect rect = historySwipeImageView.frame;
+        int delta = value - multiTouchStarted;
+        if (multiTouchState == 0) {
+            if (delta > 10) {
+                //backward
+                if (value > self.view.frame.size.width/2) {
+                    multiTouchStarted = 0;
+                    return;
+                }
+                rect.origin.x = 0;
+                multiTouchState = 2;
+                [historySwipeImageView setImage:[UIImage imageNamed:@"backward_history.png"]];
+                [historySwipeImageView setFrame:rect];
+                [historySwipeImageView setHidden:NO];
+            } else if (delta < -10) {
+                //forward
+                if (value < self.view.frame.size.width/2) {
+                    multiTouchStarted = 0;
+                    return;
+                }
+                rect.origin.x = self.view.frame.size.width;
+                multiTouchState = 1;
+                [historySwipeImageView setImage:[UIImage imageNamed:@"forward_history.png"]];
+                [historySwipeImageView setFrame:rect];
+                [historySwipeImageView setHidden:NO];
+            }
+            return;
+        }
+        
+        int detailViewWidth = self.view.frame.size.width;
+        //change img position
+        if (multiTouchState == 2) {
+            //backward
+            rect.origin.x = (detailViewWidth - rect.size.width) * ((float)delta/(float)SWIPE_STEP);
+            [historySwipeImageView setFrame:rect];
+        } else {
+            //forward
+            rect.origin.x = detailViewWidth + detailViewWidth * ((float)delta/(float)SWIPE_STEP);
+            [historySwipeImageView setFrame:rect];
+        }
+        if (rect.origin.x < 0) {
+            rect.origin.x = 0;
+        }
+        //perform forward/backward
+        if (delta >= SWIPE_STEP) {
+            //NSLog(@"Touc Move Back %d :%d", value, delta);
+            multiTouchStarted = 0;
+            multiTouchState = 0;
+            [historySwipeImageView setHidden:YES];
+            [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(goBackHistory) userInfo:nil repeats:NO];
+        }
+        else if(delta <= -(SWIPE_STEP)) {
+            //NSLog(@"Touc Move Forward %d :%d", value, delta);
+            multiTouchStarted = 0;
+            multiTouchState = 0;
+            [historySwipeImageView setHidden:YES];
+            [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(goForwardHistory) userInfo:nil repeats:NO];
+        }
+    }
+}
+
+-(void) fontSizeChange:(NSString*)tmp {
+    tmp = [tmp lastPathComponent];
+    NSString* fontSizeStr = [Utils getInstance].currentThemeSetting.font_size;
+    NSInteger fontSize = [fontSizeStr intValue];
+    
+    NSArray* array = [tmp componentsSeparatedByString:@":"];
+    if ([array count] != 2) {
+        return;
+    }
+    NSInteger value = [[array objectAtIndex:1]intValue]/30;
+    
+    if (self.fontSizeHUD == nil) {
+        UILabel* customLabel = [[UILabel alloc] init];
+        customLabel.frame = CGRectMake(0, 0, 50, 50);
+        UIFont *font = [UIFont fontWithName:@"Source Code Pro" size:18.0f];
+        [customLabel setFont:font];
+        customLabel.adjustsFontSizeToFitWidth = NO;
+        customLabel.textAlignment = NSTextAlignmentCenter;
+        customLabel.opaque = NO;
+        customLabel.backgroundColor = [UIColor clearColor];
+        customLabel.textColor = [UIColor whiteColor];
+        customLabel.text = @"A";
+        self.fontSizeHUD = [[MBProgressHUD alloc] initWithView:self.view];
+        self.fontSizeHUD.customView = customLabel;
+        self.fontSizeHUD.mode = MBProgressHUDModeCustomView;
+        [self.view addSubview:self.fontSizeHUD];
+        [self.fontSizeHUD show:NO];
+    }
+    NSInteger adjustSize = fontSize + value;
+    if (adjustSize > 10 && adjustSize < 40) {
+        self.fontSizeHUD.labelText = [NSString stringWithFormat:@"%ld", adjustSize];
+        UILabel* customLabel = (UILabel*)self.fontSizeHUD.customView;
+        UIFont *font = [UIFont fontWithName:@"SourceCodePro-Regular" size:adjustSize];
+        [customLabel setFont:font];
+    }
+}
+
+-(void) fontSizeChangeDone {
+    NSInteger size = [self.fontSizeHUD.labelText intValue];
+    
+    if (size > 10 && size < 40) {
+        ThemeSchema* currentScheme = [Utils getInstance].currentThemeSetting;
+        currentScheme.font_size = [NSString stringWithFormat:@"%ld", size];
+        [[Utils getInstance] setCurrentThemeSetting:currentScheme];
+        NSString* css = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/theme.css"];
+        [ThemeManager generateCSSScheme:css andTheme:currentScheme];
+        [[Utils getInstance] incressCSSVersion];
+        [self reloadCurrentPage];
+        
+        NSString* themePath= [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.Themes/theme.plist"];
+        BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:themePath];
+        if (!isExist) {
+            [[Utils getInstance] alertWithTitle:@"Error" andMessage:@"ErrorCode = 2-1 \nPlease contact guangzhen@hotmail.com"];
+            return;
+        }
+        
+        // Update plist
+        ThemeSchema* colorScheme = [Utils getInstance].currentThemeSetting;
+        NSMutableDictionary *plist = [[NSMutableDictionary alloc] init];
+        [plist setValue:colorScheme.font_family forKey:@"font_family"];
+        [plist setValue:colorScheme.version forKey:@"version"];
+        [plist setValue:colorScheme.font_size forKey:@"font_size"];
+        [plist setValue:colorScheme.max_line_count forKey:@"max_line_count"];
+        [plist setValue:[NSNumber numberWithBool:colorScheme.auto_fold_comments] forKey:@"auto_fold_comments"];
+        [plist setValue:[NSNumber numberWithBool:colorScheme.display_linenumber] forKey:@"display_linenumber"];
+        [plist setValue:colorScheme.theme forKey:@"theme"];
+        [plist writeToFile:themePath atomically:YES];
+    }
+    
+    [self.fontSizeHUD hide:NO];
+    [self.fontSizeHUD setHidden:YES];
+    [self.fontSizeHUD removeFromSuperview];
+    [self setFontSizeHUD:nil];
+}
+
 -(BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    static int multiTouchStarted = 0;
-    static int multiTouchState = 0;//0:not defined 1: forward 2: backward
+
     NSString* tmp = [request.URL absoluteString];
     
     //multi touch start
     if ([tmp rangeOfString:@"lgz_multi_touch_start"].location != NSNotFound) {
-        tmp = [tmp lastPathComponent];
-        //TODO
-        NSArray* array = [tmp componentsSeparatedByString:@":"];
-        if ([array count] != 2) {
-            return NO;
-        }
-        int value = [[array objectAtIndex:1]intValue];
-        if (multiTouchStarted == 0) {
-            multiTouchStarted = value;
-        }
-        else {
-            CGRect rect = historySwipeImageView.frame;
-            int delta = value - multiTouchStarted;
-            if (multiTouchState == 0) {
-                if (delta > 10) {
-                    //backward
-                    if (value > self.view.frame.size.width/2) {
-                        multiTouchStarted = 0;
-                        return NO;
-                    }
-                    rect.origin.x = 0;
-                    multiTouchState = 2;
-                    [historySwipeImageView setImage:[UIImage imageNamed:@"backward_history.png"]];
-                    [historySwipeImageView setFrame:rect];
-                    [historySwipeImageView setHidden:NO];
-                } else if (delta < -10) {
-                    //forward
-                    if (value < self.view.frame.size.width/2) {
-                        multiTouchStarted = 0;
-                        return NO;
-                    }
-                    rect.origin.x = self.view.frame.size.width;
-                    multiTouchState = 1;
-                    [historySwipeImageView setImage:[UIImage imageNamed:@"forward_history.png"]];
-                    [historySwipeImageView setFrame:rect];
-                    [historySwipeImageView setHidden:NO];
-                }
-                return NO;
-            }
-            
-            int detailViewWidth = self.view.frame.size.width;
-            //change img position
-            if (multiTouchState == 2) {
-                //backward
-                rect.origin.x = (detailViewWidth - rect.size.width) * ((float)delta/(float)SWIPE_STEP);
-                [historySwipeImageView setFrame:rect];
-            } else {
-                //forward
-                rect.origin.x = detailViewWidth + detailViewWidth * ((float)delta/(float)SWIPE_STEP);
-                [historySwipeImageView setFrame:rect];
-            }
-            
-            //perform forward/backward
-            if (delta >= SWIPE_STEP) {
-                //NSLog(@"Touc Move Back %d :%d", value, delta);
-                multiTouchStarted = 0;
-                multiTouchState = 0;
-                [historySwipeImageView setHidden:YES];
-                [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(goBackHistory) userInfo:nil repeats:NO];      
-            }
-            else if(delta <= -(SWIPE_STEP)) {
-                //NSLog(@"Touc Move Forward %d :%d", value, delta);
-                multiTouchStarted = 0;
-                multiTouchState = 0;
-                [historySwipeImageView setHidden:YES];
-                [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(goForwardHistory) userInfo:nil repeats:NO];      
-            }
-        }
+        [self multiTouchToBackwardForward:tmp];
         return NO;
     }
     
-//    //multi touch end
-//    if ([tmp rangeOfString:@"lgz_touch_end"].location == 0) {
-//        if (multiTouchStarted == 0) {
-//            return NO;
-//        }
-//        NSArray* array = [tmp componentsSeparatedByString:@":"];
-//        if ([array count] != 2) {
-//            multiTouchStarted = 0;
-//            return NO;
-//        }
-//        int value = [[array objectAtIndex:1]intValue];
-//        
-//        NSLog(@"Ended %d %d", value, value - multiTouchStarted);
-//        if (value > 80) {
-//            [self goBackHistory];
-//        }
-//        else if (value < -80) {
-//            [self goForwardHistory];
-//        }
-//        multiTouchStarted = 0;
-//        return NO;
-//    }
+    //font size change
+    if ([tmp rangeOfString:@"lgz_font_size_change"].location != NSNotFound) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+            [self fontSizeChange:tmp];
+//        });
+        return NO;
+    }
     
-    //touch start
+    //multi touch end
+    if ([tmp rangeOfString:@"lgz_touch_end"].location != NSNotFound) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+            [self fontSizeChangeDone];
+//        });
+        return NO;
+    }
+    
+    //single touch start
     if ([[tmp lastPathComponent] compare:@"lgz_touch_start"] == NSOrderedSame) {
         multiTouchStarted = 0;
         multiTouchState = 0;

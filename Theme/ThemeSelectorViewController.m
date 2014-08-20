@@ -17,7 +17,7 @@
 #define LINE_WRAP_BG @"140"
 
 #define FONT_STANDARD @"monospace"
-#define FONT_SOURCE_CODE_PRO @"Source Code Pro"
+#define FONT_SOURCE_CODE_PRO @"SourceCodePro"
 
 #define DEMO_SOURCE_CODE @"\
 /* CodeNavigator ★★★★★\n\
@@ -30,7 +30,7 @@
 #include \"BetterAndBetter.h\"\n\
 \n\
 void main() {\n\
-	int action_ount = 1234567890;\n\
+	int action_ount = 888;\n\
 	\n\
 	unsigned char *action = \"Rate me to make me better\";\n\
     \n\
@@ -398,7 +398,7 @@ void main() {\n\
             [self.colorScheme setFont_family:@"monospace"];
             break;
         case 1:
-            [self.colorScheme setFont_family:@"Source Code Pro"];
+            [self.colorScheme setFont_family:@"SourceCodePro"];
             break;
         default:
             break;
