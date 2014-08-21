@@ -70,8 +70,7 @@
         return;
     }
     NSString *documents = [paths objectAtIndex:0];
-//    NSString *database_path = [documents stringByAppendingPathComponent:@".settings"];
-    NSString* database_path = documents;
+    NSString *database_path = [documents stringByAppendingPathComponent:@".settings"];
     database_path = [database_path stringByAppendingPathComponent:DBNAME];
     
 //    [[NSFileManager defaultManager] removeItemAtPath:database_path error:nil];
