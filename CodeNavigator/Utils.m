@@ -510,8 +510,9 @@ static Utils *static_utils;
     else
     {
         animateCount--;
-        if (animateCount == 0) {
+        if (animateCount <= 0) {
             [self.cscopeIndicator stopAnimating];
+            animateCount = 0;
         }
     }
 }
