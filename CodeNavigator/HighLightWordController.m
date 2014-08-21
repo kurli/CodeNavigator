@@ -90,8 +90,46 @@
     for (index = 0; index<[array count]; index++) {
         NSString* item = [array objectAtIndex:index];
         NSRange range;
-        range = [item rangeOfString:searchWord options:NSCaseInsensitiveSearch];
-        if (range.location != NSNotFound) {
+        
+        while ([item length] > 0) {
+            range = [item rangeOfString:searchWord options:NSCaseInsensitiveSearch];
+            if (range.location != NSNotFound) {
+                char tmp;
+                // Check left
+                if (range.location > 0) {
+                    tmp = [item characterAtIndex:range.location-1];
+                    if ((tmp>'a'&&tmp<'z') || (tmp>'A'&&tmp<'Z')) {
+                        // Check failed, check remaining str
+                        if (range.location + range.length < [item length]) {
+                            item = [item substringFromIndex:range.location + range.length];
+                            continue;
+                        } else {
+                            item = nil;
+                            break;
+                        }
+                    }
+                }
+                // Check right
+                if (range.location + range.length < [item length]) {
+                    tmp = [item characterAtIndex:range.location + range.length];
+                    if ((tmp>'a'&&tmp<'z') || (tmp>'A'&&tmp<'Z')) {
+                        // Check failed, check remaining str
+                        if (range.location +range.length < [item length]) {
+                            item = [item substringFromIndex:range.location + range.length];
+                            continue;
+                        } else {
+                            item = nil;
+                            break;
+                        }
+                    }
+                }
+                //Check succeed
+                break;
+            } else {
+                item = nil;
+            }
+        }
+        if ([item length] > 0) {
             [resultArray addObject:[NSString stringWithFormat:@"%d",index+1]];
         }
     }
