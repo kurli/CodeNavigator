@@ -72,8 +72,8 @@
         return;
     }
     if (branch.branchType == GTBranchTypeLocal) {
-        [repo checkoutReference:branch.reference strategy:GTCheckoutStrategySafe
-                    notifyFlags:GTCheckoutNotifyNone error:&error progressBlock:nil notifyBlock:nil];
+        [repo checkoutReference:branch.reference strategy:GTCheckoutStrategyForce
+                    notifyFlags:GTCheckoutNotifyNone error:&error progressBlock: nil notifyBlock:nil];
         [self checkoutDone];
         return;
     }
