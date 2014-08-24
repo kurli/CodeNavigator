@@ -9,7 +9,7 @@
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "icon-29@2.png",
+      "filename" : "icon-29@2x.png",
       "scale" : "2x"
     },
     {
@@ -27,25 +27,25 @@
     {
       "size" : "50x50",
       "idiom" : "ipad",
-      "filename" : "Icon-50.png",
+      "filename" : "icon-50.png",
       "scale" : "1x"
     },
     {
       "size" : "50x50",
       "idiom" : "ipad",
-      "filename" : "Icon-50@2x.png",
+      "filename" : "icon-50@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "72x72",
       "idiom" : "ipad",
-      "filename" : "Icon-72.png",
+      "filename" : "icon-72.png",
       "scale" : "1x"
     },
     {
       "size" : "72x72",
       "idiom" : "ipad",
-      "filename" : "Icon-72@2x.png",
+      "filename" : "icon-72@2x.png",
       "scale" : "2x"
     },
     {
@@ -57,7 +57,7 @@
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "icon-76@2.png",
+      "filename" : "icon-76@2x.png",
       "scale" : "2x"
     }
   ],
