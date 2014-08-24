@@ -694,7 +694,7 @@ static Utils *static_utils;
     
     if (forceCreate || isExist == NO || (isExist == YES && isFolder == YES))
     {
-        NSString* project = [projectFolder lastPathComponent];
+//        NSString* project = [projectFolder lastPathComponent];
         storedAnalyzePath = path;
         storedForceAnalyze = forceCreate;
         alertConfirmMode = ALERT_ANALYZE;

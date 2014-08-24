@@ -26,10 +26,6 @@
 		941657121516280200838005 /* GitLogTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941657111516280200838005 /* GitLogTableCell.xib */; };
 		941657131516280200838005 /* GitLogTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941657111516280200838005 /* GitLogTableCell.xib */; };
 		9417EB7814AE118000224D2A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9417EB7714AE118000224D2A /* iAd.framework */; };
-		9418F76714D9B0C4003134E6 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9418F76314D9B0C4003134E6 /* Icon-72.png */; };
-		9418F76814D9B0C4003134E6 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9418F76414D9B0C4003134E6 /* Icon-Small-50.png */; };
-		9418F76914D9B0C4003134E6 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9418F76514D9B0C4003134E6 /* Icon-Small.png */; };
-		9418F76A14D9B0C4003134E6 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 9418F76614D9B0C4003134E6 /* iTunesArtwork */; };
 		9419B87D14A4B3BE00AB679B /* ResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */; };
 		941B2AC01636D419000BBF59 /* TagItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941B2ABF1636D419000BBF59 /* TagItemCell.xib */; };
 		941E63E01801541C008226F2 /* BuildInParser in Resources */ = {isa = PBXBuildFile; fileRef = 941E63DF1801541C008226F2 /* BuildInParser */; };
@@ -145,10 +141,6 @@
 		9431D7C81494D1E300B0900E /* project.png in Resources */ = {isa = PBXBuildFile; fileRef = 9431D7C61494D1E300B0900E /* project.png */; };
 		9432E3AD149CF9CE00AB5BB7 /* NavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9432E3AC149CF9CE00AB5BB7 /* NavigationController.xib */; };
 		9432E3B0149D02D400AB5BB7 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9432E3AF149D02D400AB5BB7 /* NavigationController.m */; };
-		943486DF150A3D4000370AE3 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 943486DE150A3D4000370AE3 /* Default-Portrait~ipad.png */; };
-		943486E1150A3DA600370AE3 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 943486E0150A3DA600370AE3 /* Default-Landscape~ipad.png */; };
-		943486E2150A42A000370AE3 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 943486E0150A3DA600370AE3 /* Default-Landscape~ipad.png */; };
-		943486E3150A42A500370AE3 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 943486DE150A3D4000370AE3 /* Default-Portrait~ipad.png */; };
 		9434A5A6174FC00D004B1A9D /* GitCloneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9434A5A4174FC00D004B1A9D /* GitCloneViewController.m */; };
 		9434A5A7174FC00D004B1A9D /* GitCloneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9434A5A5174FC00D004B1A9D /* GitCloneViewController.xib */; };
 		94352107153EFC1E003F316A /* version_control.png in Resources */ = {isa = PBXBuildFile; fileRef = 94352106153EFC1E003F316A /* version_control.png */; };
@@ -262,7 +254,6 @@
 		9466466B14A2370700B30CD2 /* WebServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9466466914A2370700B30CD2 /* WebServiceController.m */; };
 		946F857818E841DF00CBFA19 /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 946F857718E841DF00CBFA19 /* ThemeManager.m */; };
 		9471D4381630463100629F35 /* readtags.c in Sources */ = {isa = PBXBuildFile; fileRef = 9471D4371630463100629F35 /* readtags.c */; };
-		9473AEF914DACD6A00D39E05 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 9473AEF514DACD6A00D39E05 /* iTunesArtwork */; };
 		94785947162C5A08006E4575 /* ant.c in Sources */ = {isa = PBXBuildFile; fileRef = 947858F1162C5A08006E4575 /* ant.c */; };
 		94785948162C5A08006E4575 /* args.c in Sources */ = {isa = PBXBuildFile; fileRef = 947858F2162C5A08006E4575 /* args.c */; };
 		94785949162C5A08006E4575 /* asm.c in Sources */ = {isa = PBXBuildFile; fileRef = 947858F4162C5A08006E4575 /* asm.c */; };
@@ -334,6 +325,10 @@
 		947D9F8C158BA930000B5136 /* ResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */; };
 		947F861215863579002EAA1E /* DetailViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947F861015863579002EAA1E /* DetailViewController-iPhone.xib */; };
 		947F861315863579002EAA1E /* MasterViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947F861115863579002EAA1E /* MasterViewController-iPhone.xib */; };
+		9487CF8B19AA0584005AAE16 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 943486E0150A3DA600370AE3 /* Default-Landscape~ipad.png */; };
+		9487CF8C19AA0587005AAE16 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 943486DE150A3D4000370AE3 /* Default-Portrait~ipad.png */; };
+		9487CF8F19AA05C2005AAE16 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 9487CF8D19AA05C2005AAE16 /* iTunesArtwork.png */; };
+		9487CF9019AA05C2005AAE16 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9487CF8E19AA05C2005AAE16 /* iTunesArtwork@2x.png */; };
 		9489196D1524CC9000AB9968 /* BashParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9489196C1524CC9000AB9968 /* BashParser.m */; };
 		9489196E1524CC9000AB9968 /* BashParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9489196C1524CC9000AB9968 /* BashParser.m */; };
 		948C73FC180443A700065E65 /* binocular.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C73FB180443A700065E65 /* binocular.png */; };
@@ -346,16 +341,6 @@
 		948C740A180449AE00065E65 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C7408180449AE00065E65 /* star@2x.png */; };
 		948C740C1804555300065E65 /* screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C740B1804555300065E65 /* screen.png */; };
 		948C740E1806E5A300065E65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 948C740D1806E5A300065E65 /* Images.xcassets */; };
-		948C741D1807090900065E65 /* icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C741B1807044400065E65 /* icon-29.png */; };
-		948C741E1807090C00065E65 /* icon-29@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C741C1807044400065E65 /* icon-29@2.png */; };
-		948C741F1807090F00065E65 /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C7419180703A600065E65 /* icon-40.png */; };
-		948C74201807091700065E65 /* icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C741A180703A600065E65 /* icon-40@2x.png */; };
-		948C74211807091700065E65 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C74171807036000065E65 /* Icon-50.png */; };
-		948C74221807091700065E65 /* Icon-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C74181807036000065E65 /* Icon-50@2x.png */; };
-		948C74231807091700065E65 /* icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C74131807011000065E65 /* icon-76.png */; };
-		948C74241807091700065E65 /* icon-76@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C74141807011000065E65 /* icon-76@2.png */; };
-		948C74251807091700065E65 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C74111806FF6A00065E65 /* Icon-72@2x.png */; };
-		948C74261807091700065E65 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9473AEF214DACD6A00D39E05 /* Icon-72.png */; };
 		948E1459164169F200CBBD5B /* FunctionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EED18B16331D99003D9CA3 /* FunctionListViewController.m */; };
 		948E145A164169FD00CBBD5B /* FunctionListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94EED18C16331D99003D9CA3 /* FunctionListViewController.xib */; };
 		948E145B16416A0A00CBBD5B /* FunctionListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EED19016332147003D9CA3 /* FunctionListManager.m */; };
@@ -1418,8 +1403,6 @@
 		946F857C18E8782900CBFA19 /* DisplayModeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DisplayModeController.xib; path = Theme/DisplayModeController.xib; sourceTree = SOURCE_ROOT; };
 		9471D4371630463100629F35 /* readtags.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = readtags.c; path = ctags/readtags.c; sourceTree = "<group>"; };
 		9471D4391630480E00629F35 /* readtags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = readtags.h; path = ctags/readtags.h; sourceTree = "<group>"; };
-		9473AEF214DACD6A00D39E05 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "icon/Icon-72.png"; sourceTree = "<group>"; };
-		9473AEF514DACD6A00D39E05 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = icon/iTunesArtwork; sourceTree = "<group>"; };
 		947858F1162C5A08006E4575 /* ant.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ant.c; path = ctags/ant.c; sourceTree = "<group>"; };
 		947858F2162C5A08006E4575 /* args.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = args.c; path = ctags/args.c; sourceTree = "<group>"; };
 		947858F3162C5A08006E4575 /* args.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = args.h; path = ctags/args.h; sourceTree = "<group>"; };
@@ -1525,6 +1508,8 @@
 		947F861015863579002EAA1E /* DetailViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DetailViewController-iPhone.xib"; sourceTree = "<group>"; };
 		947F861115863579002EAA1E /* MasterViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MasterViewController-iPhone.xib"; sourceTree = "<group>"; };
 		947F86181587A8C2002EAA1E /* WebServiceController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "WebServiceController-iPhone.xib"; path = "CodeNavigator/WebServiceController-iPhone.xib"; sourceTree = "<group>"; };
+		9487CF8D19AA05C2005AAE16 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iTunesArtwork.png; path = icon/iTunesArtwork.png; sourceTree = "<group>"; };
+		9487CF8E19AA05C2005AAE16 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@2x.png"; path = "icon/iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		9489196B1524CC9000AB9968 /* BashParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BashParser.h; path = CodeNavigator/BashParser.h; sourceTree = "<group>"; };
 		9489196C1524CC9000AB9968 /* BashParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BashParser.m; path = CodeNavigator/BashParser.m; sourceTree = "<group>"; };
 		9489196F1524CCB300AB9968 /* BashDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BashDefinition.h; path = CodeNavigator/BashDefinition.h; sourceTree = "<group>"; };
@@ -1538,15 +1523,6 @@
 		948C7408180449AE00065E65 /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
 		948C740B1804555300065E65 /* screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen.png; sourceTree = "<group>"; };
 		948C740D1806E5A300065E65 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		948C74111806FF6A00065E65 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "icon/Icon-72@2x.png"; sourceTree = "<group>"; };
-		948C74131807011000065E65 /* icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-76.png"; path = "icon/icon-76.png"; sourceTree = "<group>"; };
-		948C74141807011000065E65 /* icon-76@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-76@2.png"; path = "icon/icon-76@2.png"; sourceTree = "<group>"; };
-		948C74171807036000065E65 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-50.png"; path = "icon/Icon-50.png"; sourceTree = "<group>"; };
-		948C74181807036000065E65 /* Icon-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-50@2x.png"; path = "icon/Icon-50@2x.png"; sourceTree = "<group>"; };
-		948C7419180703A600065E65 /* icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-40.png"; path = "icon/icon-40.png"; sourceTree = "<group>"; };
-		948C741A180703A600065E65 /* icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-40@2x.png"; path = "icon/icon-40@2x.png"; sourceTree = "<group>"; };
-		948C741B1807044400065E65 /* icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-29.png"; path = "icon/icon-29.png"; sourceTree = "<group>"; };
-		948C741C1807044400065E65 /* icon-29@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-29@2.png"; path = "icon/icon-29@2.png"; sourceTree = "<group>"; };
 		948F1C7015583B7600AE4C99 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentViewController.h; path = Comments/CommentViewController.h; sourceTree = "<group>"; };
 		948F1C7115583B7600AE4C99 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentViewController.m; path = Comments/CommentViewController.m; sourceTree = "<group>"; };
 		948F1C7215583B7600AE4C99 /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentViewController.xib; path = Comments/CommentViewController.xib; sourceTree = "<group>"; };
@@ -1892,7 +1868,7 @@
 			children = (
 				940D94C718F99B75006D5D0D /* ObjectiveGit.framework */,
 				940D94CB18F99B75006D5D0D /* libObjectiveGit-iOS.a */,
-				940D94C918F99B75006D5D0D /* ObjectiveGitTests.octest */,
+				940D94C918F99B75006D5D0D /* ObjectiveGitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2560,17 +2536,8 @@
 		948C74101806FD6000065E65 /* iPad_icon */ = {
 			isa = PBXGroup;
 			children = (
-				948C741B1807044400065E65 /* icon-29.png */,
-				948C741C1807044400065E65 /* icon-29@2.png */,
-				948C7419180703A600065E65 /* icon-40.png */,
-				948C741A180703A600065E65 /* icon-40@2x.png */,
-				948C74171807036000065E65 /* Icon-50.png */,
-				948C74181807036000065E65 /* Icon-50@2x.png */,
-				948C74131807011000065E65 /* icon-76.png */,
-				948C74141807011000065E65 /* icon-76@2.png */,
-				948C74111806FF6A00065E65 /* Icon-72@2x.png */,
-				9473AEF214DACD6A00D39E05 /* Icon-72.png */,
-				9473AEF514DACD6A00D39E05 /* iTunesArtwork */,
+				9487CF8D19AA05C2005AAE16 /* iTunesArtwork.png */,
+				9487CF8E19AA05C2005AAE16 /* iTunesArtwork@2x.png */,
 				943486DE150A3D4000370AE3 /* Default-Portrait~ipad.png */,
 				943486E0150A3DA600370AE3 /* Default-Landscape~ipad.png */,
 				9418F76314D9B0C4003134E6 /* Icon-72.png */,
@@ -3093,10 +3060,10 @@
 			remoteRef = 940D94C618F99B75006D5D0D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		940D94C918F99B75006D5D0D /* ObjectiveGitTests.octest */ = {
+		940D94C918F99B75006D5D0D /* ObjectiveGitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = ObjectiveGitTests.octest;
+			path = ObjectiveGitTests.xctest;
 			remoteRef = 940D94C818F99B75006D5D0D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -3149,7 +3116,6 @@
 				9429000414D4E16E002793BD /* PercentViewController.xib in Resources */,
 				94F9BB0D18EDE0AE00CD7C2C /* SourceCodePro-Regular.ttf in Resources */,
 				94103DF014D86F1300212EBB /* bookmark.png in Resources */,
-				9473AEF914DACD6A00D39E05 /* iTunesArtwork in Resources */,
 				94422A3514DD87F50076AC66 /* VirtualizeViewController.xib in Resources */,
 				945428B614F2B51600353EC8 /* ProjectListController.xib in Resources */,
 				94A5079314F6AA1C00587A47 /* virbackground.png in Resources */,
@@ -3164,6 +3130,7 @@
 				9424662215034C52001701C4 /* EntryHBg.png in Resources */,
 				94246657150383C2001701C4 /* ccFile.png in Resources */,
 				94246659150383C2001701C4 /* cFile.png in Resources */,
+				9487CF8C19AA0587005AAE16 /* Default-Portrait~ipad.png in Resources */,
 				9424665B150383C2001701C4 /* cppFile.png in Resources */,
 				94F9BB0718EDDFC400CD7C2C /* SourceCodePro-Bold.ttf in Resources */,
 				9424665D150383C2001701C4 /* csFile.png in Resources */,
@@ -3182,13 +3149,9 @@
 				945AA3FA1507B13E006729C8 /* forward.png in Resources */,
 				945AA40E1508DE9C006729C8 /* NewEntry.png in Resources */,
 				945AA44B1508E3CA006729C8 /* max.png in Resources */,
-				948C74211807091700065E65 /* Icon-50.png in Resources */,
 				94A430EA196EF328003497CB /* UploadFromITunesViewController.xib in Resources */,
 				9421EACA196853D100EFD7E2 /* treeView.png in Resources */,
 				945AA45E150926A1006729C8 /* Help.html in Resources */,
-				948C741E1807090C00065E65 /* icon-29@2.png in Resources */,
-				943486E2150A42A000370AE3 /* Default-Landscape~ipad.png in Resources */,
-				943486E3150A42A500370AE3 /* Default-Portrait~ipad.png in Resources */,
 				941657011515C3C200838005 /* GitLogViewController.xib in Resources */,
 				941657121516280200838005 /* GitLogTableCell.xib in Resources */,
 				948C74001804460700065E65 /* seperate.png in Resources */,
@@ -3205,6 +3168,7 @@
 				9461D46419602BD800F0B0A1 /* show_toolbar.png in Resources */,
 				9457C7981530BA3800BB9185 /* checkbox_no.png in Resources */,
 				948C740E1806E5A300065E65 /* Images.xcassets in Resources */,
+				9487CF8F19AA05C2005AAE16 /* iTunesArtwork.png in Resources */,
 				9457C79A1530BA3800BB9185 /* checkbox_yes.png in Resources */,
 				94E4C117199E7FDD003B0E82 /* projectGit.png in Resources */,
 				948C740A180449AE00065E65 /* star@2x.png in Resources */,
@@ -3218,27 +3182,24 @@
 				94D1BF79153C56420007A8EB /* forward_history.png in Resources */,
 				94D1BF7C153C66A20007A8EB /* backward_history.png in Resources */,
 				94A0FAE3153DDA78004277BF /* cscope.png in Resources */,
-				948C741D1807090900065E65 /* icon-29.png in Resources */,
 				948C74061804491A00065E65 /* search@2x.png in Resources */,
 				94A0FAE6153DDAD9004277BF /* virtualize.png in Resources */,
 				94352107153EFC1E003F316A /* version_control.png in Resources */,
 				948C74021804489200065E65 /* settings@2x.png in Resources */,
-				948C74261807091700065E65 /* Icon-72.png in Resources */,
 				9443D1F0154EDA6A008CB52D /* SecurityViewController.xib in Resources */,
 				9443D1F3154FF4D8008CB52D /* Lock.png in Resources */,
 				948F1C7515583B7600AE4C99 /* CommentViewController.xib in Resources */,
 				9461817B155EEDAB00A25635 /* CommentManager.xib in Resources */,
+				9487CF8B19AA0584005AAE16 /* Default-Landscape~ipad.png in Resources */,
 				9456A93F15617BDC0092128D /* Comment.png in Resources */,
 				94CB787F156E80C8009452D8 /* FileTableViewCell.xib in Resources */,
 				94B7E5AC156FE2BB000F3F34 /* FileInfoViewController.xib in Resources */,
 				94472086157534E9002EEA5A /* ManuallyParserViewController.xib in Resources */,
 				9478C6D015C8093400F443D9 /* HelpViewController.xib in Resources */,
-				948C74251807091700065E65 /* Icon-72@2x.png in Resources */,
 				9478C6D615C8207600F443D9 /* appstore.png in Resources */,
 				9478C6D715C8207600F443D9 /* demoVideo.png in Resources */,
 				948C74051804491A00065E65 /* search.png in Resources */,
 				94DDE6021997CAC20034B193 /* ChartBoardViewController.xib in Resources */,
-				948C74221807091700065E65 /* Icon-50@2x.png in Resources */,
 				9478C6D815C8207600F443D9 /* share.png in Resources */,
 				9444596118D7508C008A02DB /* iRate.bundle in Resources */,
 				9478C6D915C8207600F443D9 /* twitter.png in Resources */,
@@ -3250,15 +3211,12 @@
 				94F9BAF918EC5BE100CD7C2C /* ThemeSelectorViewController.xib in Resources */,
 				941B2AC01636D419000BBF59 /* TagItemCell.xib in Resources */,
 				94BA22DD18D0CBB7006CB7A8 /* GitBranchsManagerViewController.xib in Resources */,
-				948C74231807091700065E65 /* icon-76.png in Resources */,
 				9434A5A7174FC00D004B1A9D /* GitCloneViewController.xib in Resources */,
-				948C741F1807090F00065E65 /* icon-40.png in Resources */,
-				948C74201807091700065E65 /* icon-40@2x.png in Resources */,
 				943D1FBD17E7695C00BD82E6 /* FileBrowser.png in Resources */,
 				94B09BB617E77DC600789510 /* FileBrowserViewController.xib in Resources */,
-				948C74241807091700065E65 /* icon-76@2.png in Resources */,
 				94F7B90E17F7487A00A506EE /* UploadSelectionViewController.xib in Resources */,
 				94F7B91617F84A7600A506EE /* WebServiceControllerFormSheet.xib in Resources */,
+				9487CF9019AA05C2005AAE16 /* iTunesArtwork@2x.png in Resources */,
 				941E63E01801541C008226F2 /* BuildInParser in Resources */,
 				9444595C18D72B8C008A02DB /* VersionViewController.xib in Resources */,
 				941E63E518019354008226F2 /* OpenAsViewController.xib in Resources */,
@@ -3418,10 +3376,6 @@
 				94B1DD0B191F738A00909C3E /* SourceCodePro-Black.ttf in Resources */,
 				9429000514D4E16E002793BD /* PercentViewController.xib in Resources */,
 				94103DF114D86F1300212EBB /* bookmark.png in Resources */,
-				9418F76714D9B0C4003134E6 /* Icon-72.png in Resources */,
-				9418F76814D9B0C4003134E6 /* Icon-Small-50.png in Resources */,
-				9418F76914D9B0C4003134E6 /* Icon-Small.png in Resources */,
-				9418F76A14D9B0C4003134E6 /* iTunesArtwork in Resources */,
 				94422A3614DD87F50076AC66 /* VirtualizeViewController.xib in Resources */,
 				945428B714F2B51600353EC8 /* ProjectListController.xib in Resources */,
 				94A5079414F6AA1C00587A47 /* virbackground.png in Resources */,
@@ -3450,8 +3404,6 @@
 				945AA40F1508DE9C006729C8 /* NewEntry.png in Resources */,
 				945AA44C1508E3CA006729C8 /* max.png in Resources */,
 				945AA45F150926A1006729C8 /* Help.html in Resources */,
-				943486DF150A3D4000370AE3 /* Default-Portrait~ipad.png in Resources */,
-				943486E1150A3DA600370AE3 /* Default-Landscape~ipad.png in Resources */,
 				941657021515C3C200838005 /* GitLogViewController.xib in Resources */,
 				941657131516280200838005 /* GitLogTableCell.xib in Resources */,
 				940BE0E51528CEF300CBAE18 /* GitDiffViewController.xib in Resources */,

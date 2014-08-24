@@ -10,7 +10,7 @@
 #import "Utils.h"
 #import "DisplayController.h"
 
-#define RELEASE_VERSION 3
+#define RELEASE_VERSION 4
 
 @interface VersionViewController ()
 
@@ -51,12 +51,10 @@
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.versionDetailView setText:@"New Features & updates:\n\n\
-     1. 'Go' language is now supported.\n\
-     2. Async parse source code.\n\
-     3. Improved beautiful code viewer.\n\
-     4. Folder Tree View is now supported.\n\
-     5. UI/UE enhancement.\n\
-     6. Bug fixes.\n\n\
+     1. Add new feature: Tracking, you can track your daily usage, and share with your friends.\n\
+     2. Zip, Git optimization and bug fix. \n\
+     3. UI enhancement \n\
+     4. New icon \n\
      More features will be comming soon. Enjoy it. :-)\n\n\
      Demos:\n\
      Youku (China): http://v.youku.com/v_show/id_XNzQwMDEyMjE2.html\n\
