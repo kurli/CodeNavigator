@@ -66,7 +66,7 @@
     return YES;
 }
 
--(void) doSearch: (BOOL)doScroll andWebView:(UIWebView *)webView
+-(void) doSearch: (BOOL)doScroll andWebView:(UIWebView *)webView andStrict:(BOOL)isStrick
 {
     NSString* currentDisplayFile;
     if (webView == detailViewController.webView) {
@@ -91,46 +91,53 @@
         NSString* item = [array objectAtIndex:index];
         NSRange range;
         
-        while ([item length] > 0) {
+        if (isStrick) {
+            while ([item length] > 0) {
+                range = [item rangeOfString:searchWord options:NSCaseInsensitiveSearch];
+                if (range.location != NSNotFound) {
+                    char tmp;
+                    // Check left
+                    if (range.location > 0) {
+                        tmp = [item characterAtIndex:range.location-1];
+                        if ((tmp>'a'&&tmp<'z') || (tmp>'A'&&tmp<'Z')) {
+                            // Check failed, check remaining str
+                            if (range.location + range.length < [item length]) {
+                                item = [item substringFromIndex:range.location + range.length];
+                                continue;
+                            } else {
+                                item = nil;
+                                break;
+                            }
+                        }
+                    }
+                    // Check right
+                    if (range.location + range.length < [item length]) {
+                        tmp = [item characterAtIndex:range.location + range.length];
+                        if ((tmp>'a'&&tmp<'z') || (tmp>'A'&&tmp<'Z')) {
+                            // Check failed, check remaining str
+                            if (range.location +range.length < [item length]) {
+                                item = [item substringFromIndex:range.location + range.length];
+                                continue;
+                            } else {
+                                item = nil;
+                                break;
+                            }
+                        }
+                    }
+                    //Check succeed
+                    break;
+                } else {
+                    item = nil;
+                }
+            }
+            if ([item length] > 0) {
+                [resultArray addObject:[NSString stringWithFormat:@"%d",index+1]];
+            }
+        } else {
             range = [item rangeOfString:searchWord options:NSCaseInsensitiveSearch];
             if (range.location != NSNotFound) {
-                char tmp;
-                // Check left
-                if (range.location > 0) {
-                    tmp = [item characterAtIndex:range.location-1];
-                    if ((tmp>'a'&&tmp<'z') || (tmp>'A'&&tmp<'Z')) {
-                        // Check failed, check remaining str
-                        if (range.location + range.length < [item length]) {
-                            item = [item substringFromIndex:range.location + range.length];
-                            continue;
-                        } else {
-                            item = nil;
-                            break;
-                        }
-                    }
-                }
-                // Check right
-                if (range.location + range.length < [item length]) {
-                    tmp = [item characterAtIndex:range.location + range.length];
-                    if ((tmp>'a'&&tmp<'z') || (tmp>'A'&&tmp<'Z')) {
-                        // Check failed, check remaining str
-                        if (range.location +range.length < [item length]) {
-                            item = [item substringFromIndex:range.location + range.length];
-                            continue;
-                        } else {
-                            item = nil;
-                            break;
-                        }
-                    }
-                }
-                //Check succeed
-                break;
-            } else {
-                item = nil;
+                [resultArray addObject:[NSString stringWithFormat:@"%d",index+1]];
             }
-        }
-        if ([item length] > 0) {
-            [resultArray addObject:[NSString stringWithFormat:@"%d",index+1]];
         }
     }
     self.detailViewController.highlightLineArray = resultArray;
@@ -205,7 +212,7 @@
         [searchBar setShowsCancelButton:NO animated:YES];
         [searchBar resignFirstResponder];
 //        [self.detailViewController releaseAllPopOver];
-        [self doSearch:TRUE andWebView:self.detailViewController.activeWebView];
+        [self doSearch:TRUE andWebView:self.detailViewController.activeWebView andStrict:NO];
     }
 #ifdef IPHONE_VERSION
     [self dismissViewControllerAnimated:NO completion:nil];

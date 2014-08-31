@@ -1893,7 +1893,7 @@
             }
             HighLightWordController* highlightTmp = [[HighLightWordController alloc] init];
             [highlightTmp setDetailViewController:self];
-            [highlightTmp doSearch:NO andWebView:webView];
+            [highlightTmp doSearch:NO andWebView:webView andStrict:YES];
             // end
         }
         return NO;

@@ -22,6 +22,6 @@
 
 - (IBAction)gotoHighlight:(id)sender;
 
--(void) doSearch: (BOOL)doScroll andWebView: (UIWebView*)webView;
+-(void) doSearch: (BOOL)doScroll andWebView:(UIWebView *)webView andStrict:(BOOL)isStrick;
 
 @end
