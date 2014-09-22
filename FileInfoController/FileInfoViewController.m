@@ -196,7 +196,6 @@
 }
 
 -(void) updateRepo {
-//    [[[Utils getInstance].splitViewController presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 #ifdef IPHONE_VERSION
     GitUpdateViewController* updateController = [[GitUpdateViewController alloc] initWithNibName:@"GitUpdateViewController-iPhone" bundle:[NSBundle mainBundle]];
 #else
@@ -208,7 +207,9 @@
 #ifdef IPHONE_VERSION
     [[Utils getInstance].masterViewController presentViewController:updateController animated:YES completion:nil];
 #else
-    [[Utils getInstance].splitViewController presentViewController:updateController animated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^(){
+        [[Utils getInstance].splitViewController presentViewController:updateController animated:YES completion:nil];
+    }];
 #endif
 }
 

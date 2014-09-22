@@ -83,14 +83,14 @@
     for (int i=0; i<[localBranchs count]; i++) {
         GTBranch* tmp = [localBranchs objectAtIndex:0];
         if ([tmp.shortName compare:branch.shortName] == NSOrderedSame) {
-            [repo checkoutReference:tmp.reference strategy:GTCheckoutStrategySafe
+            [repo checkoutReference:tmp.reference strategy:GTCheckoutStrategyForce
                         notifyFlags:GTCheckoutNotifyNone error:&error progressBlock:nil notifyBlock:nil];
             [self checkoutDone];
             return;
         }
     }
     GTBranch *newBranch = [repo createBranchNamed:branch.shortName fromOID:[[GTOID alloc] initWithSHA:branch.SHA] committer:nil message:nil error:&error];
-    [repo checkoutReference:newBranch.reference strategy:GTCheckoutStrategySafe
+    [repo checkoutReference:newBranch.reference strategy:GTCheckoutStrategyForce
                 notifyFlags:GTCheckoutNotifyNone error:&error progressBlock:nil notifyBlock:nil];
 
     [self checkoutDone];
@@ -345,7 +345,7 @@ static int cred_acquire_cb(git_cred **out,
                 return;
             }
         }
-        [repo checkoutReference:newBranch.reference strategy:GTCheckoutStrategySafe
+        [repo checkoutReference:newBranch.reference strategy:GTCheckoutStrategyForce
                 notifyFlags:GTCheckoutNotifyNone error:&error progressBlock:nil notifyBlock:nil];
         // Remove need updated branch
         [self.currentBranch deleteWithError:&error];
@@ -356,7 +356,7 @@ static int cred_acquire_cb(git_cred **out,
             [self appendLog:logView andStr:@"Merge failed.\nerr code:2\n"];
             return;
         }
-        [repo checkoutReference:self.currentBranch.reference strategy:GTCheckoutStrategySafe
+        [repo checkoutReference:self.currentBranch.reference strategy:GTCheckoutStrategyForce
                 notifyFlags:GTCheckoutNotifyNone error:&error progressBlock:nil notifyBlock:nil];
         // Delete tmp branch
         [newBranch deleteWithError:&error];

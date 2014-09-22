@@ -58,6 +58,9 @@
     self.splitViewController = [[MGSplitViewController alloc] init];
     [[Utils getInstance] setSplitViewController:self.splitViewController];
     self.splitViewController.splitDelegate = detailViewController;
+    [self.splitViewController addChildViewController:masterNavigationController];
+    [self.splitViewController addChildViewController:detailViewController];
+    
     self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailViewController, nil];
     [[Utils getInstance] setMasterViewController:masterViewController];
 #else
@@ -78,7 +81,7 @@
 #endif
     //end
 #ifndef IPHONE_VERSION
-    //[self.window addSubview:self.splitViewController.view];
+//    [self.window addSubview:self.splitViewController.view];
     [self.window setRootViewController:self.splitViewController];
     [self.window makeKeyAndVisible];
 #else
