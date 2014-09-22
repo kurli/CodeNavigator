@@ -557,6 +557,12 @@
     }
  }
 
+- (void) otherThread:(NSCondition*) condition {
+    [condition lock];
+    [condition signal];
+    [condition unlock];
+}
+
 - (void) restoreToHistory:(NSString *)history
 {
     NSString* url = nil;
@@ -585,24 +591,35 @@
         NSCondition* condition = [[NSCondition alloc] init];
         [condition lock];
         [[Utils getInstance] getDisplayFile:url andProjectBase:nil andFinishBlock:^(NSString* html) {
-            [condition lock];
-            [condition signal];
-            [condition unlock];
+            [NSThread detachNewThreadSelector:@selector(otherThread:) toTarget:self withObject:condition];
          }];
         [condition wait];
         [condition unlock];
-        NSString* url = nil;
+//        NSString* url = nil;
         BOOL isFolder;
         
         url = [[Utils getInstance] getDisplayFileBySourceFile:url];
         if (![[NSFileManager defaultManager] fileExistsAtPath:url isDirectory:&isFolder]){
             url = [[Utils getInstance] getSourceFileByDisplayFile:url];
-            NSString* filePathFromProject = [[Utils getInstance] getPathFromProject:url];
-            filePathFromProject = [[Utils getInstance] getSourceFileByDisplayFile:filePathFromProject];
-            [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:[NSString stringWithFormat:@"%@\n File not found",filePathFromProject]];
-            return;
+            url = [[Utils getInstance] getPathFromProject:url];
+            url = [[Utils getInstance] getFullFilePath:url];
+            NSCondition* condition = [[NSCondition alloc] init];
+            [condition lock];
+            [[Utils getInstance] getDisplayFile:url andProjectBase:nil andFinishBlock:^(NSString* html) {
+                [NSThread detachNewThreadSelector:@selector(otherThread:) toTarget:self withObject:condition];
+            }];
+            [condition wait];
+            [condition unlock];
+            
+            url = [[Utils getInstance] getDisplayFileBySourceFile:url];
+            if (![[NSFileManager defaultManager] fileExistsAtPath:url isDirectory:&isFolder]){
+                url = [[Utils getInstance] getSourceFileByDisplayFile:url];
+                NSString* filePathFromProject = [[Utils getInstance] getPathFromProject:url];
+                filePathFromProject = [[Utils getInstance] getSourceFileByDisplayFile:filePathFromProject];
+                [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:[NSString stringWithFormat:@"%@\n File not found",filePathFromProject]];
+                return;
+            }
         }
-
     }
     
     [[Utils getInstance].dbManager startRecord:url andTime:nil];

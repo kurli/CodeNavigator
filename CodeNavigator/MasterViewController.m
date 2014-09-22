@@ -910,6 +910,7 @@
         [[Utils getInstance] analyzeProject:path andForceCreate:NO];
     
     [self setCurrentPath:path];
+    [tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     
 //    MasterViewController* masterViewController;
 //#ifdef IPHONE_VERSION

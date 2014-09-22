@@ -151,6 +151,8 @@ typedef enum _SearchType{
 
 -(NSString*) getPathFromProject:(NSString*)path;
 
+-(NSString*) getFullFilePath:(NSString*)path;
+
 -(NSString*) getSourceFileByDisplayFile:(NSString*)displayFile;
 
 -(NSString*) getDisplayFileBySourceFile:(NSString*)source;

@@ -246,6 +246,12 @@ static Utils *static_utils;
     return returnPath;
 }
 
+-(NSString*) getFullFilePath:(NSString*)path {
+    NSString* str = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
+    str = [str stringByAppendingPathComponent:path];
+    return str;
+}
+
 -(NSString*) getSourceFileByDisplayFile:(NSString *)displayFile
 {
     return [[self getDisplayController] getSourceFileByDisplayFile:displayFile];

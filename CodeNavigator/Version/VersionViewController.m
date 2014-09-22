@@ -10,7 +10,7 @@
 #import "Utils.h"
 #import "DisplayController.h"
 
-#define RELEASE_VERSION 4
+#define RELEASE_VERSION 5
 
 @interface VersionViewController ()
 
@@ -51,10 +51,7 @@
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.versionDetailView setText:@"New Features & updates:\n\n\
-     1. Add new feature: Tracking, you can track your daily usage, and share with your friends.\n\
-     2. Zip, Git optimization and bug fix. \n\
-     3. UI enhancement \n\
-     4. New icon \n\
+     1. Adapt iOs 8 \n\
      More features will be comming soon. Enjoy it. :-)\n\n\
      Demos:\n\
      Youku (China): http://v.youku.com/v_show/id_XNzQwMDEyMjE2.html\n\
@@ -192,6 +189,19 @@
     }
 }
 
+-(void) removeHistory {
+    NSString* upFilePath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/upHistory.setting"];
+    NSString* downFilePath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/downHistory.setting"];
+    BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:upFilePath];
+    if (isExist) {
+        [[NSFileManager defaultManager] removeItemAtPath:upFilePath error:nil];
+    }
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:downFilePath];
+    if (isExist) {
+        [[NSFileManager defaultManager] removeItemAtPath:downFilePath error:nil];
+    }
+}
+
 -(void) checkVersion {
     NSError* error;
     BOOL isExist = false;
@@ -283,6 +293,7 @@
 //    [self createProjectFolder];
     
     [self initBuildInParser];
+    [self removeHistory];
 }
 
 @end
