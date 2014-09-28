@@ -10,7 +10,7 @@
 #import "Utils.h"
 #import "DisplayController.h"
 
-#define RELEASE_VERSION 5
+#define RELEASE_VERSION 6
 
 @interface VersionViewController ()
 

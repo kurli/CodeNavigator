@@ -72,6 +72,9 @@
     else if (Go == type) {
         parser = [[GoParser alloc] init];
     }
+    else if (ERLANG == type) {
+        parser = [[ErlangParser alloc] init];
+    }
 	else
     {
 		parser = nil;

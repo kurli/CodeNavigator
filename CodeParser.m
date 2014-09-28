@@ -262,6 +262,10 @@
 	return YES;
 }
 
+-(void) newLineStarted {
+    
+}
+
 -(void) parseLine: (NSString*) line lineNum:(int)lineNumber
 {
 	// if a blank line
@@ -274,6 +278,9 @@
 	needParseLine = [line mutableCopy];
 	unichar charTemp;
 	NSRange range;
+    
+    [self newLineStarted];
+    
 	while( [needParseLine length] > 0 )
 	{
 		charTemp = [needParseLine characterAtIndex:0];

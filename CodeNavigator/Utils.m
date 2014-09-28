@@ -337,6 +337,10 @@ static Utils *static_utils;
         return YES;
     else if ([extension isEqualToString:@"css"])
         return YES;
+    else if ([extension isEqualToString:@"erl"])
+        return YES;
+    else if ([extension isEqualToString:@"hrl"])
+    return YES;
     int index = [Parser checkManuallyParserIndex:extension];
     if (index != -1) {
         return YES;

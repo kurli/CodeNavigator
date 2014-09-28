@@ -74,6 +74,8 @@ typedef void (^ParseFinishedCallback)();
 
 -(BOOL) checkIsKeyword: (NSString*) word;
 
+-(void) newLineStarted;
+
 // end
 
 // ---------------- HTML Components ------------------- 

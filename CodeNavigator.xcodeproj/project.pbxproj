@@ -141,6 +141,9 @@
 		9431D7C81494D1E300B0900E /* project.png in Resources */ = {isa = PBXBuildFile; fileRef = 9431D7C61494D1E300B0900E /* project.png */; };
 		9432E3AD149CF9CE00AB5BB7 /* NavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9432E3AC149CF9CE00AB5BB7 /* NavigationController.xib */; };
 		9432E3B0149D02D400AB5BB7 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9432E3AF149D02D400AB5BB7 /* NavigationController.m */; };
+		9433581419D47F370051FCE0 /* ErlangParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9433581319D47F370051FCE0 /* ErlangParser.m */; };
+		9433581519D47F370051FCE0 /* ErlangParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9433581319D47F370051FCE0 /* ErlangParser.m */; };
+		9433581619D47F370051FCE0 /* ErlangParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9433581319D47F370051FCE0 /* ErlangParser.m */; };
 		9434A5A6174FC00D004B1A9D /* GitCloneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9434A5A4174FC00D004B1A9D /* GitCloneViewController.m */; };
 		9434A5A7174FC00D004B1A9D /* GitCloneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9434A5A5174FC00D004B1A9D /* GitCloneViewController.xib */; };
 		94352107153EFC1E003F316A /* version_control.png in Resources */ = {isa = PBXBuildFile; fileRef = 94352106153EFC1E003F316A /* version_control.png */; };
@@ -1304,6 +1307,9 @@
 		9432E3AC149CF9CE00AB5BB7 /* NavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationController.xib; sourceTree = "<group>"; };
 		9432E3AE149D02D400AB5BB7 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		9432E3AF149D02D400AB5BB7 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
+		9433581119D47F370051FCE0 /* ErlangDefination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ErlangDefination.h; path = CodeParser/ErlangDefination.h; sourceTree = "<group>"; };
+		9433581219D47F370051FCE0 /* ErlangParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ErlangParser.h; path = CodeParser/ErlangParser.h; sourceTree = "<group>"; };
+		9433581319D47F370051FCE0 /* ErlangParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ErlangParser.m; path = CodeParser/ErlangParser.m; sourceTree = "<group>"; };
 		943486DE150A3D4000370AE3 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		943486E0150A3DA600370AE3 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		9434A5A3174FC00D004B1A9D /* GitCloneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GitCloneViewController.h; path = ObjectiveGit/GitCloneViewController.h; sourceTree = "<group>"; };
@@ -2077,6 +2083,9 @@
 				94AB1E5114AF5E0300451020 /* UnSupportedParser.m */,
 				94D16DE514C9CC3B007439EB /* ImageParser.h */,
 				94D16DE614C9CC3B007439EB /* ImageParser.m */,
+				9433581119D47F370051FCE0 /* ErlangDefination.h */,
+				9433581219D47F370051FCE0 /* ErlangParser.h */,
+				9433581319D47F370051FCE0 /* ErlangParser.m */,
 				9425885119532EB7006CD33B /* GoParser.h */,
 				9425885219532EB7006CD33B /* GoParser.m */,
 				94B6987F180EEE7A009C7176 /* CSSParser.h */,
@@ -3457,6 +3466,7 @@
 				9431D74F14910B3000B0900E /* DetailViewController.m in Sources */,
 				9431D76C1493B36000B0900E /* CodeParser.m in Sources */,
 				9431D76D1493B36000B0900E /* CPlusPlusParser.m in Sources */,
+				9433581419D47F370051FCE0 /* ErlangParser.m in Sources */,
 				9431D76E1493B36000B0900E /* Parser.m in Sources */,
 				9431D79E1494754900B0900E /* alloc.c in Sources */,
 				9431D79F1494754900B0900E /* basename.c in Sources */,
@@ -3694,6 +3704,7 @@
 				94DDE6311997CAC20034B193 /* WeekChartControllerHelper.m in Sources */,
 				948E146C16416D2600CBBD5B /* ctags_main.c in Sources */,
 				94B1DCDF191F6F7D00909C3E /* ThemeSelectorViewController.m in Sources */,
+				9433581619D47F370051FCE0 /* ErlangParser.m in Sources */,
 				948E146D16416D2600CBBD5B /* ctags_main.h in Sources */,
 				948E146E16416D2600CBBD5B /* ctags.h in Sources */,
 				94DDE6371997CAD40034B193 /* DBManager.m in Sources */,
@@ -4012,6 +4023,7 @@
 				94ADF14414BB27EE00BA807A /* CPlusPlusParser.m in Sources */,
 				94ADF14514BB27EE00BA807A /* Parser.m in Sources */,
 				94ADF14614BB27EE00BA807A /* alloc.c in Sources */,
+				9433581519D47F370051FCE0 /* ErlangParser.m in Sources */,
 				94ADF14714BB27EE00BA807A /* basename.c in Sources */,
 				94ADF14814BB27EE00BA807A /* build.c in Sources */,
 				94ADF14914BB27EE00BA807A /* command.c in Sources */,
