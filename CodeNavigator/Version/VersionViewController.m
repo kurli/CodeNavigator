@@ -99,6 +99,13 @@
     NSString* buildInParserPath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/BuildInParser/"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:buildInParserPath isDirectory:&isFolder];
     NSString* buildInParserPathBundle = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/BuildInParser"];
+    
+//    if (isExist == YES)
+//    {
+//        [[NSFileManager defaultManager] removeItemAtPath:buildInParserPath error:nil];
+//    }
+//    [[NSFileManager defaultManager] copyItemAtPath:buildInParserPathBundle toPath:buildInParserPath error:&error];
+    
     if (isExist == NO || (isExist == YES && isFolder == NO))
     {
         [[NSFileManager defaultManager] copyItemAtPath:buildInParserPathBundle toPath:buildInParserPath error:&error];
@@ -108,18 +115,18 @@
         NSArray* contentsInBundle = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:buildInParserPathBundle error:&error];
         NSArray* contentsInSetting = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:buildInParserPath error:&error];
         for (NSString* str in contentsInBundle) {
-            int i;
-            for (i = 0; i < [contentsInSetting count]; i++) {
-                NSString* str2 = [contentsInSetting objectAtIndex:i];
-                if ([str isEqualToString:str2]) {
-                    break;
-                }
-            }
-            if (i == [contentsInSetting count]) {
+//            int i;
+//            for (i = 0; i < [contentsInSetting count]; i++) {
+//                NSString* str2 = [contentsInSetting objectAtIndex:i];
+//                if ([str isEqualToString:str2]) {
+//                    break;
+//                }
+//            }
+//            if (i == [contentsInSetting count]) {
                 NSString* srcPath = [buildInParserPathBundle stringByAppendingPathComponent:str];
                 NSString* desPath = [buildInParserPath stringByAppendingPathComponent:str];
                 [[NSFileManager defaultManager] copyItemAtPath:srcPath toPath:desPath error:&error];
-            }
+//            }
         }
     }
 }

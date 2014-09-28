@@ -80,8 +80,8 @@
     }
     int error = sqlite3_open([database_path UTF8String], &db);
     if (error != SQLITE_OK) {
-        database_path = [database_path stringByDeletingLastPathComponent];
-        [[NSFileManager defaultManager] createDirectoryAtPath:database_path withIntermediateDirectories:YES attributes:nil error:nil];
+        NSString* tmp = [database_path stringByDeletingLastPathComponent];
+        [[NSFileManager defaultManager] createDirectoryAtPath:tmp withIntermediateDirectories:YES attributes:nil error:nil];
         if (sqlite3_open([database_path UTF8String], &db) != SQLITE_OK) {
             [self closeDB];
             NSLog(@"init DB failed 1");

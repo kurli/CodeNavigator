@@ -370,7 +370,7 @@
 -(void)setFieldsEditable:(BOOL)editable
 {
     // Build in parser name can not be changed
-    if (currentEditItem < HTML) {
+    if (currentEditItem!=-1 && currentEditItem < HTML) {
         [self.nameField setEnabled:NO];
     } else {
         [self.nameField setEnabled:editable];

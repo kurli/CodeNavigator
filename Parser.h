@@ -25,7 +25,7 @@
 #define TYPE @"type"
 #define KEYWORDS @"keywords"
 
-#define PREDEF_PARSER @"C/C++", @"Objective-C", @"C#", @"Java", @"Delphi", @"Javascript", @"Python", @"Ruby", @"Bash", @"PHP", @"CSS", @"Go" @"Erlang"
+#define PREDEF_PARSER @"C/C++", @"Objective-C", @"C#", @"Java", @"Delphi", @"Javascript", @"Python", @"Ruby", @"Bash", @"PHP", @"CSS", @"Go", @"Erlang"
 
 typedef enum _ParserType
 {

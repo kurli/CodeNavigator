@@ -190,7 +190,7 @@
         NSDictionary *attributes = [[NSFileManager defaultManager]
                                     attributesOfItemAtPath:filePath error:&error];
         
-        NSDate* date = [attributes valueForKey:NSFileModificationDate];
+        NSDate* date = [attributes valueForKey:NSFileCreationDate];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yy/MM/dd HH:mm"];
         

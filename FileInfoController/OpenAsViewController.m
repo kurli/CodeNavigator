@@ -134,7 +134,7 @@
     [[NSFileManager defaultManager] removeItemAtPath:displayPath error:&error];
     
     [parser setFile: filePath andProjectBase:projPath];
-    [parser startParseAndWait];
+//    [parser startParseAndWait];
     [parser startParse:^(){
         dispatch_async(dispatch_get_main_queue(), ^{
         NSString* html = [parser getHtml];
@@ -184,14 +184,14 @@
 }
 
 - (IBAction)addButtonClicked:(id)sender {
-    ManuallyParserViewController* viewController = [[ManuallyParserViewController alloc] init];
-    viewController.modalPresentationStyle = UIModalPresentationFormSheet;
-    [viewController setFilePath:filePath];
-    [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
-    
     // Release popover controller
     MasterViewController* _masterViewController = nil;
     _masterViewController = [Utils getInstance].masterViewController;
     [_masterViewController releaseAllPopover];
+    
+    ManuallyParserViewController* viewController = [[ManuallyParserViewController alloc] init];
+    viewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [viewController setFilePath:filePath];
+    [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
 }
 @end
