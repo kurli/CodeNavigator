@@ -125,6 +125,7 @@
 //            if (i == [contentsInSetting count]) {
                 NSString* srcPath = [buildInParserPathBundle stringByAppendingPathComponent:str];
                 NSString* desPath = [buildInParserPath stringByAppendingPathComponent:str];
+                [[NSFileManager defaultManager] removeItemAtPath:desPath error:&error]; //TODO
                 [[NSFileManager defaultManager] copyItemAtPath:srcPath toPath:desPath error:&error];
 //            }
         }

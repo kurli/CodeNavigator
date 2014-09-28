@@ -902,7 +902,7 @@
 #else
     self.popoverController = [[UIPopoverController alloc] initWithContentViewController:filePathInfoController];
     NSString* realSourceFile = [[Utils getInstance] getPathFromProject:currentFile];
-    filePathInfoController.label.text = realSourceFile;
+    filePathInfoController.title = realSourceFile;
     self.popoverController.popoverContentSize = CGSizeMake(640., filePathInfoController.view.frame.size.height);
     [self.popoverController presentPopoverFromBarButtonItem:(UIBarButtonItem*)sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 #endif

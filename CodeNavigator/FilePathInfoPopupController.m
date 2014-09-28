@@ -10,6 +10,7 @@
 
 @implementation FilePathInfoPopupController
 @synthesize label;
+@synthesize title;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +27,11 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.label.text = title;
 }
 
 #pragma mark - View lifecycle

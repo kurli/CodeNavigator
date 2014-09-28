@@ -1,15 +1,15 @@
-#import "ErlangParser.h"
+#import "LuaParser.h"
 #import "FunctionListManager.h"
 
-@implementation ErlangParser
+@implementation LuaParser
 
 -(id) init
 {
-    [self setParserConfigName:@"Erlang"];
+    [self setParserConfigName:@"Lua"];
 	if ( (self = [super init])!=nil )
 	{
 //        //****
-//        NSString* keywords = @"after begin catch case cond end fun if let of query receive try when is_atom is_binary is_bitstring is_boolean is_float      is_function is_integer is_list is_number is_pid      is_port is_record is_reference is_tuple      atom binary bitstring boolean function integer list      number pid port record reference tuple abs adler32 adler32_combine alive apply atom_to_binary      atom_to_list binary_to_atom binary_to_existing_atom      binary_to_list binary_to_term bit_size bitstring_to_list      byte_size check_process_code contact_binary crc32      crc32_combine date decode_packet delete_module      disconnect_node element erase exit float float_to_list      garbage_collect get get_keys group_leader halt hd      integer_to_list internal_bif iolist_size iolist_to_binary      is_alive is_atom is_binary is_bitstring is_boolean      is_float is_function is_integer is_list is_number is_pid      is_port is_process_alive is_record is_reference is_tuple      length link list_to_atom list_to_binary list_to_bitstring      list_to_existing_atom list_to_float list_to_integer      list_to_pid list_to_tuple load_module make_ref module_loaded      monitor_node node node_link node_unlink nodes notalive      now open_port pid_to_list port_close port_command      port_connect port_control pre_loaded process_flag      process_info processes purge_module put register      registered round self setelement size spawn spawn_link      spawn_monitor spawn_opt split_binary statistics      term_to_binary time throw tl trunc tuple_size      tuple_to_list unlink unregister whereis";
+//        NSString* keywords = @" _G   _VERSION   assert   collectgarbage   dofile   error   getfenv   getmetatable   ipairs   load        loadfile   loadstring   module   next   pairs   pcall   print   rawequal   rawget   rawset   require        select   setfenv   setmetatable   tonumber   tostring   type   unpack   xpcall         create   resume   running   status   wrap   yield   coroutine       debug   getfenv   gethook   getinfo   getlocal   getmetatable        getregistry   getupvalue   setfenv   sethook   setlocal   setmetatable        setupvalue   traceback         close   flush   lines   read   seek   setvbuf   write         close   flush   input   lines   open   output   popen   read   stderr   stdin        stdout   tmpfile   type   write  io       abs   acos   asin   atan   atan2   ceil   cos   cosh   deg        exp   floor   fmod   frexp   huge   ldexp   log   log10   max        min   modf   pi   pow   rad   random   randomseed   sin   sinh        sqrt   tan   tanh  math       clock   date   difftime   execute   exit   getenv   remove   rename   setlocale        time   tmpname  os       cpath   loaded   loaders   loadlib   path   preload        seeall  package       byte   char   dump   find   format   gmatch   gsub        len   lower   match   rep   reverse   sub   upper  string       table.concat   table.insert   table.maxn   table.remove   table.sort        and   break   elseif   false   nil   not   or   return                             true   function    end    if    then    else    do                             while    repeat    until    for    in    local  ";
 //        NSArray* keywordsArray = [keywords componentsSeparatedByString:@" "];
 //        keywordsArray = [keywordsArray sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
 //            NSComparisonResult result = [a compare:b];
@@ -20,7 +20,7 @@
 //            [str appendFormat:@"%@ ",[keywordsArray objectAtIndex:i]];
 //        }
 //        NSLog(str);
-        //****
+//        //****
 	}
 	return self;
 }
@@ -68,16 +68,8 @@
 		NSRange commentSingleRange = [needParseLine rangeOfString: [self getSingleLineCommentsStr]];
 		NSRange commentMultiStartRange = [needParseLine rangeOfString: [self getMultiLineCommentsStartStr]];
 		NSRange commentEndRange = [needParseLine rangeOfString: [self getMultiLineCommentsEndStr]];
-		if ( commentSingleRange.location == 0 )
-        {
-			// it's comment line
-			[self commentStart];
-			[self addString: needParseLine addEnter:NO];
-			[self addEnd];
-			[needParseLine setString:@""];
-			return NO;
-        }
-		else if( commentMultiStartRange.location == 0 )
+
+		if( commentMultiStartRange.location == 0 )
         {
             [self bracesStarted:currentParseLine andToken:[self getMultiLineCommentsStartStr]];
 			// it's comment multi line
@@ -104,6 +96,14 @@
 
 				return YES;
             }
+        } else if ( commentSingleRange.location == 0 )
+        {
+            // it's comment line
+            [self commentStart];
+            [self addString: needParseLine addEnter:NO];
+            [self addEnd];
+            [needParseLine setString:@""];
+            return NO;
         }
 		return NO;
     }
@@ -382,26 +382,6 @@
     }
     [self addString:word addEnter:NO];
     [self addEnd];
-}
-
--(void) newLineStarted {
-    if ([needParseLine length] <= 0) {
-        return;
-    }
-    
-    unichar firstChar = [needParseLine characterAtIndex:0];
-    if (firstChar == '-') {
-        NSRange range = [needParseLine rangeOfString:@"("];
-        if (range.location != NSNotFound) {
-            NSString* subStr = [needParseLine substringToIndex:range.location];
-            [self headerStart];
-            [self addString:subStr addEnter:NO];
-            [self addEnd];
-            range.length = range.location;
-            range.location = 0;
-            [needParseLine deleteCharactersInRange:range];
-        }
-    }
 }
 
 @end

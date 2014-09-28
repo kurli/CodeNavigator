@@ -1,0 +1,6 @@
+{"keywords":"_G _VERSION abs acos and asin assert atan atan2 break byte ceil char clock close close collectgarbage coroutine cos cosh cpath create date debug deg difftime do dofile dump else elseif end error execute exit exp false find floor flush flush fmod for format frexp function getenv getfenv getfenv gethook getinfo getlocal getmetatable getmetatable getregistry getupvalue gmatch gsub huge if in input io ipairs ldexp len lines lines load loaded loaders loadfile loadlib loadstring local log log10 lower match math max min modf module next nil not open or os output package pairs path pcall pi popen pow preload print rad random randomseed rawequal rawget rawset read read remove rename rep repeat require resume return reverse running seeall seek select setfenv setfenv sethook setlocal setlocale setmetatable setmetatable setupvalue setvbuf sin sinh sqrt status stderr stdin stdout string sub table.concat table.insert table.maxn table.remove table.sort tan tanh then time tmpfile tmpname tonumber tostring traceback true type type unpack until upper while wrap write write xpcall yield",
+"extension":"lua",
+"multi_line_comments_start":"--[[",
+"single_line_comments":"--",
+"multi_line_comments_end":"]]",
+"type":"13"}

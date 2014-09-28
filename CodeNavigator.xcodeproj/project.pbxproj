@@ -16,6 +16,9 @@
 		940BE0F11528E64600CBAE18 /* DiffFileListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0EE1528E64600CBAE18 /* DiffFileListController.m */; };
 		940BE0F21528E64600CBAE18 /* DiffFileListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940BE0EF1528E64600CBAE18 /* DiffFileListController.xib */; };
 		940BE0F31528E64600CBAE18 /* DiffFileListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940BE0EF1528E64600CBAE18 /* DiffFileListController.xib */; };
+		940CDAE319D87C1300BF5DAB /* LuaParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CDAE219D87C1300BF5DAB /* LuaParser.m */; };
+		940CDAE419D87C1300BF5DAB /* LuaParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CDAE219D87C1300BF5DAB /* LuaParser.m */; };
+		940CDAE519D87C1300BF5DAB /* LuaParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CDAE219D87C1300BF5DAB /* LuaParser.m */; };
 		940D94DD18F99D8F006D5D0D /* libObjectiveGit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* libObjectiveGit-iOS.a */; };
 		94103DF014D86F1300212EBB /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 94103DEF14D86F1300212EBB /* bookmark.png */; };
 		94103DF114D86F1300212EBB /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 94103DEF14D86F1300212EBB /* bookmark.png */; };
@@ -1173,6 +1176,9 @@
 		940BE0ED1528E64600CBAE18 /* DiffFileListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiffFileListController.h; sourceTree = "<group>"; };
 		940BE0EE1528E64600CBAE18 /* DiffFileListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiffFileListController.m; sourceTree = "<group>"; };
 		940BE0EF1528E64600CBAE18 /* DiffFileListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiffFileListController.xib; sourceTree = "<group>"; };
+		940CDAE019D87C1300BF5DAB /* LuaDefination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LuaDefination.h; path = CodeParser/LuaDefination.h; sourceTree = "<group>"; };
+		940CDAE119D87C1300BF5DAB /* LuaParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LuaParser.h; path = CodeParser/LuaParser.h; sourceTree = "<group>"; };
+		940CDAE219D87C1300BF5DAB /* LuaParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LuaParser.m; path = CodeParser/LuaParser.m; sourceTree = "<group>"; };
 		940D94BB18F99B75006D5D0D /* ObjectiveGitFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveGitFramework.xcodeproj; path = "../objective-git/ObjectiveGitFramework.xcodeproj"; sourceTree = "<group>"; };
 		94103DEF14D86F1300212EBB /* bookmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookmark.png; sourceTree = "<group>"; };
 		941656FC1515C3C200838005 /* GitLogViewCongroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GitLogViewCongroller.h; path = CodeNavigator/Git/GitLogViewCongroller.h; sourceTree = "<group>"; };
@@ -2083,6 +2089,9 @@
 				94AB1E5114AF5E0300451020 /* UnSupportedParser.m */,
 				94D16DE514C9CC3B007439EB /* ImageParser.h */,
 				94D16DE614C9CC3B007439EB /* ImageParser.m */,
+				940CDAE019D87C1300BF5DAB /* LuaDefination.h */,
+				940CDAE119D87C1300BF5DAB /* LuaParser.h */,
+				940CDAE219D87C1300BF5DAB /* LuaParser.m */,
 				9433581119D47F370051FCE0 /* ErlangDefination.h */,
 				9433581219D47F370051FCE0 /* ErlangParser.h */,
 				9433581319D47F370051FCE0 /* ErlangParser.m */,
@@ -3560,6 +3569,7 @@
 				9457C78715307AF500BB9185 /* LocalFileControllerDelegate.m in Sources */,
 				9457C78B15307B1400BB9185 /* RemoteFileControllerDelegate.m in Sources */,
 				9443D1EE154EDA6A008CB52D /* SecurityViewController.m in Sources */,
+				940CDAE319D87C1300BF5DAB /* LuaParser.m in Sources */,
 				948F1C7315583B7600AE4C99 /* CommentViewController.m in Sources */,
 				94636B54155A91E700B1C37F /* CommentWrapper.m in Sources */,
 				94618179155EEDAB00A25635 /* CommentManager.m in Sources */,
@@ -3739,6 +3749,7 @@
 				948E148616416D2600CBBD5B /* jscript.c in Sources */,
 				948E148716416D2600CBBD5B /* keyword.c in Sources */,
 				948E148816416D2600CBBD5B /* keyword.h in Sources */,
+				940CDAE519D87C1300BF5DAB /* LuaParser.m in Sources */,
 				948E148916416D2600CBBD5B /* lisp.c in Sources */,
 				948E148A16416D2600CBBD5B /* lregex.c in Sources */,
 				948E148B16416D2600CBBD5B /* lua.c in Sources */,
@@ -4038,6 +4049,7 @@
 				94ADF14F14BB27EE00BA807A /* edit.c in Sources */,
 				94ADF15014BB27EE00BA807A /* egrep.c in Sources */,
 				94ADF15114BB27EE00BA807A /* exec.c in Sources */,
+				940CDAE419D87C1300BF5DAB /* LuaParser.m in Sources */,
 				94B1DCFF191F716500909C3E /* FileFormatResolver.m in Sources */,
 				94ADF15214BB27EE00BA807A /* find.c in Sources */,
 				94B1DCF2191F707700909C3E /* MBProgressHUD.m in Sources */,

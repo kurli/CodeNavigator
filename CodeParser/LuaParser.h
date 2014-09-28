@@ -1,8 +1,8 @@
 #import <Foundation/Foundation.h>
 #import "CodeParser.h"
-#import "ErlangDefination.h"
+#import "LuaDefination.h"
 
-@interface ErlangParser : CodeParser
+@interface LuaParser : CodeParser
 {
 }
 

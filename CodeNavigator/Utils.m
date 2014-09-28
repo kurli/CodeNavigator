@@ -340,7 +340,9 @@ static Utils *static_utils;
     else if ([extension isEqualToString:@"erl"])
         return YES;
     else if ([extension isEqualToString:@"hrl"])
-    return YES;
+        return YES;
+    else if ([extension isEqualToString:@"lua"])
+        return YES;
     int index = [Parser checkManuallyParserIndex:extension];
     if (index != -1) {
         return YES;

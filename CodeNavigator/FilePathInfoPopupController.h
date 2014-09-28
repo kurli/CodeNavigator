@@ -11,4 +11,7 @@
 @interface FilePathInfoPopupController : UIViewController
 
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *label;
+
+@property (strong, nonatomic) NSString* title;
+
 @end

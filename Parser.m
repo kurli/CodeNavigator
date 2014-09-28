@@ -75,6 +75,9 @@
     else if (ERLANG == type) {
         parser = [[ErlangParser alloc] init];
     }
+    else if (LUA == type) {
+        parser = [[LuaParser alloc] init];
+    }
 	else
     {
 		parser = nil;
