@@ -13,6 +13,9 @@
 //#import <ShareSDK/ShareSDK.h>
 #import "Utils.h"
 #import <ProjectViewController.h>
+#ifdef IPHONE_VERSION
+#import "FPPopoverController.h"
+#endif
 
 @interface ChartBoardViewController () {
     UIView* subView;
@@ -27,7 +30,11 @@
 @property (nonatomic, strong) UIView* hoursChartView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentController;
 
+#ifdef IPHONE_VERSION
+@property (strong, nonatomic) FPPopoverController *projectPopoverController;
+#else
 @property (strong, nonatomic) UIPopoverController *projectPopoverController;
+#endif
 @property (strong, nonatomic) NSString* currentProject;
 
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
@@ -48,9 +55,9 @@
 
 #define UIColorFromHex(hex) [UIColor colorWithRed:((float)((hex & 0xFF0000) >> 16))/255.0 green:((float)((hex & 0xFF00) >> 8))/255.0 blue:((float)(hex & 0xFF))/255.0 alpha:1.0]
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    [super viewWillAppear:animated];
     // Do any additional setup after loading the view from its nib.
     
 //    [self initWeekChartBoard];
@@ -64,6 +71,10 @@
     [self initWeekChartBoard];
     
     self.currentProject = nil;
+    
+#ifdef IPHONE_VERSION
+    [self.projectButton setHidden:YES];
+#endif
 }
 
 - (void)didReceiveMemoryWarning
@@ -202,7 +213,7 @@
     [viewController setViewController2:self];
     [viewController setCurrentProject:self.currentProject];
 #ifdef IPHONE_VERSION
-    error
+    self.projectPopoverController = [[FPPopoverController alloc] initWithViewController:viewController];
 #else
     self.projectPopoverController = [[UIPopoverController alloc] initWithContentViewController:viewController];
 #endif
@@ -279,6 +290,23 @@
 //                                    NSLog(@"分享失败,错误码:,错误描述:");
 //                                }
 //                            }];
+}
+
+- (BOOL) shouldAutorotate {
+#ifdef IPHONE_VERSION
+    return NO;
+#else
+    return YES;
+#endif
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+#ifdef IPHONE_VERSION
+    return UIInterfaceOrientationMaskPortrait;
+#else
+    return UIInterfaceOrientationMaskAll;
+#endif
 }
 
 @end

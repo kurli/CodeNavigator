@@ -626,9 +626,16 @@
 //    } else {
 //        [self showGitCloneView];
 //    }
+
+#ifdef IPHONE_VERSION
+    ChartBoardViewController* viewController = [[ChartBoardViewController alloc] initWithNibName:@"ChartBoardViewController-iPhone" bundle:nil];
+    viewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:viewController animated:YES completion:nil];
+#else
     ChartBoardViewController* viewController = [[ChartBoardViewController alloc] init];
     viewController.modalPresentationStyle = UIModalPresentationFormSheet;
     [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
+#endif
 }
 
 - (IBAction)dropBoxClicked:(id)sender {
@@ -1056,6 +1063,15 @@
 - (void) onFileClickedFromTreeView:(NSString*)selectedItem andPath:(NSString*)path {
     [self gotoFile:path andForce:YES];
     [self fileClickedDelegate:self.tableView andSelectedItem:selectedItem andPath:path];
+}
+
+-(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+#ifdef IPHONE_VERSION
+    // Work around black line when orientation change
+    [self.popOverController dismissPopoverAnimated:NO];
+    self.popOverController = nil;
+#endif
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 }
 
 @end

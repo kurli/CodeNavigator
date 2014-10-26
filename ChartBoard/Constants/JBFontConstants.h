@@ -18,8 +18,12 @@
 
 #pragma mark - Information
 
-#define kJBFontInformationTitle [UIFont fontWithName:@"HelveticaNeue" size:20]
+#ifdef IPHONE_VERSION
+#define kJBFontInformationValue [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:50]
+#else
 #define kJBFontInformationValue [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:100]
+#endif
+#define kJBFontInformationTitle [UIFont fontWithName:@"HelveticaNeue" size:20]
 #define kJBFontInformationUnit [UIFont fontWithName:@"HelveticaNeue" size:60]
 
 #pragma mark - Tooltip

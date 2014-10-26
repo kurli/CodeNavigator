@@ -10,7 +10,7 @@
 #import "Utils.h"
 #import "DisplayController.h"
 
-#define RELEASE_VERSION 6
+#define RELEASE_VERSION 7
 
 @interface VersionViewController ()
 
@@ -51,7 +51,9 @@
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.versionDetailView setText:@"New Features & updates:\n\n\
-     1. Adapt iOs 8 \n\
+     1. Adapt iOs 8. \n\
+     2. Add launguage support: Lua, erlang. \n\
+     3. Bug fixes. \n\
      More features will be comming soon. Enjoy it. :-)\n\n\
      Demos:\n\
      Youku (China): http://v.youku.com/v_show/id_XNzQwMDEyMjE2.html\n\

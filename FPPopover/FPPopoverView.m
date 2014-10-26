@@ -458,7 +458,7 @@
     {
         contentRect.origin = CGPointMake(10, 60);  
         contentRect.size = CGSizeMake(self.bounds.size.width-20, self.bounds.size.height-70);
-        _titleLabel.frame = CGRectMake(10, 30, self.bounds.size.width-20, 20);    
+        _titleLabel.frame = CGRectMake(10, 30, self.bounds.size.width-20, 20);
 		if (self.title==nil || self.title.length==0) {
 			contentRect.origin = CGPointMake(10, 30);
 			contentRect.size = CGSizeMake(self.bounds.size.width-20, self.bounds.size.height-40);

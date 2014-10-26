@@ -99,7 +99,6 @@ CGFloat const kHourControllerChartFooterPadding = 5.0f;
     [parentView addSubview:self.barChartView];
     
     UILabel* customLabel = [[UILabel alloc] init];
-    customLabel.frame = CGRectMake(10, parentView.frame.size.height - 30, 300, 30);
     UIFont *font = [UIFont fontWithName:@"Helvetica-BoldOblique" size:15.0f];
     [customLabel setFont:font];
     customLabel.adjustsFontSizeToFitWidth = NO;
@@ -108,8 +107,10 @@ CGFloat const kHourControllerChartFooterPadding = 5.0f;
     customLabel.backgroundColor = [UIColor clearColor];
     customLabel.textColor = [UIColor lightGrayColor];
 #ifdef IPHONE_VERSION
+    customLabel.frame = CGRectMake(10, parentView.frame.size.height - 20, 300, 20);
     customLabel.text = @"By CodeNavigator on iPhone";
 #else
+    customLabel.frame = CGRectMake(10, parentView.frame.size.height - 30, 300, 30);
     customLabel.text = @"By CodeNavigator on iPad";
 #endif
     [parentView addSubview:customLabel];
@@ -171,13 +172,13 @@ CGFloat const kHourControllerChartFooterPadding = 5.0f;
     NSInteger second = seconds;
     NSMutableString* str = [[NSMutableString alloc] init];
     if (hour > 0) {
-        [str appendFormat:@"%ldh ", hour];
+        [str appendFormat:@"%dh ", hour];
     }
     if (minute > 0) {
-        [str appendFormat:@"%ldm ", minute];
+        [str appendFormat:@"%dm ", minute];
     }
     if (second > 0) {
-        [str appendFormat:@"%lds", second];
+        [str appendFormat:@"%ds", second];
     }
     if ([str length] == 0) {
         return @"0";

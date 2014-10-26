@@ -358,6 +358,10 @@
 #ifdef LITE_VERSION
     [[[Utils getInstance] getBannerViewController] viewDidLayoutSubviews];
 #endif
+#else
+    // Work around black line when orientation change
+    [self.popoverController dismissPopoverAnimated:NO];
+    self.popoverController = nil;
 #endif
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 //    NSString *js1 = @"document.getElementsByTagName('link')[0].setAttribute('href','";
@@ -1150,7 +1154,7 @@
     
     [self releaseAllPopOver];
     HighLightWordController * highlightWordController;
-    highlightWordController = [[HighLightWordController alloc] init];
+    highlightWordController = [[HighLightWordController alloc] initWithNibName:@"HighLightWordController" bundle:nil];
     highlightWordController.detailViewController = self;
     
     UIBarButtonItem* barItem = (UIBarButtonItem*)sender;
@@ -1445,6 +1449,11 @@
     //    self.functionListPopover.popoverContentSize = self.historyListController.view.frame.size;
     self.popoverController.border = NO;
     self.popoverController.popoverContentSize = controller.view.frame.size;
+    if (self.popoverController.popoverContentSize.width > 300) {
+        CGSize size = controller.view.frame.size;
+        size.width = 300;
+        self.popoverController.popoverContentSize = size;
+    }
     
     [self.popoverController presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES andToolBar:self.topToolBar];
 #else

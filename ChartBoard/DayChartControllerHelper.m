@@ -117,7 +117,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
     NSInteger interval = [self.endDate timeIntervalSinceReferenceDate] - [self.startDate timeIntervalSinceReferenceDate];
     interval = interval/60/60/24;
     for (int i=0; i<=interval; i++) {
-        NSData* date = [self.startDate dateByAddingTimeInterval:24*60*60*i];
+        NSDate* date = [self.startDate dateByAddingTimeInterval:24*60*60*i];
         [array addObject:date];
     }
     self.daysArray = array;
@@ -290,13 +290,13 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
     NSInteger second = seconds;
     NSMutableString* str = [[NSMutableString alloc] init];
     if (hour > 0) {
-        [str appendFormat:@"%ldh ", hour];
+        [str appendFormat:@"%dh ", hour];
     }
     if (minute > 0) {
-        [str appendFormat:@"%ldm ", minute];
+        [str appendFormat:@"%dm ", minute];
     }
     if (second > 0) {
-        [str appendFormat:@"%lds", second];
+        [str appendFormat:@"%ds", second];
     }
     if ([str length] == 0) {
         return @"0";
