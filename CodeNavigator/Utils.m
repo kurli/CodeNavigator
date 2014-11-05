@@ -139,11 +139,11 @@ static Utils *static_utils;
     
     if (is_adMobON == NO) {
         _iAdView =  [[ADBannerView alloc] init];
-        _iAdView.requiredContentSizeIdentifiers = [NSSet setWithObjects: ADBannerContentSizeIdentifier480x32, nil];
+        [_iAdView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
         [_iAdView setHidden:YES];
     } else {
         _adModView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
-        _adModView.adUnitID = @"a14f96b923910f9";
+        _adModView.adUnitID = @"ca-app-pub-5702343634387916/1976704580";
         _adModView.rootViewController = self.splitViewController;
     }
     [_bannerViewController showBannerView];
@@ -591,7 +591,7 @@ static Utils *static_utils;
             {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[Utils getInstance] showPurchaseAlert];
-                    [self.analyzeInfoController finishAnalyze];
+                    [self showAnalyzeIndicator:NO];
                 });
                 [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
                 return;
@@ -604,7 +604,7 @@ static Utils *static_utils;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[Utils getInstance] showPurchaseAlert];
                     [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Maximum number of source files exceeded for Lite Version., Failed to analyze"];
-                    [self.analyzeInfoController finishAnalyze];
+                    [self showAnalyzeIndicator:NO];
                 });
                 [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
                 return;

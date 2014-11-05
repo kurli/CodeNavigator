@@ -16,7 +16,9 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+#ifndef LITE_VERSION
 @property (strong, nonatomic) HandleURLController* handleURLController;
+#endif
 
 @property (strong, nonatomic) MGSplitViewController *splitViewController;
 

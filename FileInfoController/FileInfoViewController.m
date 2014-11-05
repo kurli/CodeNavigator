@@ -12,9 +12,11 @@
 #import "MasterViewController.h"
 #import "OpenAsViewController.h"
 #import "GitLogViewCongroller.h"
+#ifndef LITE_VERSION
 #import "GitBranchController.h"
 #import "GitBranchViewController.h"
 #import "GitUpdateViewController.h"
+#endif
 
 //source wrapper
 #define RE_OPEN 0
@@ -163,6 +165,7 @@
 }
 
 -(void) presentGitLog {
+#ifndef LITE_VERSION
     NSString* gitFolder = [[Utils getInstance] getGitFolder:sourceFilePath];
     if ([gitFolder length] == 0) {
         return;
@@ -178,9 +181,11 @@
     [gitlogView gitLogForProject: proj];
     [gitlogView showModualView];
     [[Utils getInstance] addGAEvent:@"FileInfo" andAction:@"GitLog" andLabel:nil andValue:nil];
+#endif
 }
 
 -(void) switchBranch {
+#ifndef LITE_VERSION
     NSString* gitFolder = [[Utils getInstance] getGitFolder:sourceFilePath];
     GitBranchController* gitBranchController = [[GitBranchController alloc] init];
     BOOL isGitValid = [gitBranchController initWithProjectPath:gitFolder];
@@ -193,8 +198,10 @@
     viewController.contentSizeForViewInPopover = self.view.frame.size;
     [viewController setNeedSwitchBranch:YES];
     [navigationController pushViewController:viewController animated:YES];
+#endif
 }
 
+#ifndef LITE_VERSION
 -(void) updateRepo {
 #ifdef IPHONE_VERSION
     GitUpdateViewController* updateController = [[GitUpdateViewController alloc] initWithNibName:@"GitUpdateViewController-iPhone" bundle:[NSBundle mainBundle]];
@@ -212,6 +219,7 @@
     }];
 #endif
 }
+#endif
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -314,8 +322,10 @@
                 [self switchBranch];
                 [[Utils getInstance] addGAEvent:@"FileInfo" andAction:@"GitBranch" andLabel:nil andValue:nil];
             } else if (indexPath.row == PROJECT_GIT_UPDATE) {
+#ifndef LITE_VERSION
                 [self updateRepo];
                 [[Utils getInstance] addGAEvent:@"FileInfo" andAction:@"UpdateGit" andLabel:nil andValue:nil];
+#endif
             }
             break;
         default:

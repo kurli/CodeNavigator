@@ -55,7 +55,7 @@
     NSArray *toRecipients = [NSArray arrayWithObject:@"guangzhen@hotmail.com"];   
     [picker setToRecipients:toRecipients];
 #ifdef LITE_VERSION
-    [picker setSubject:@"CodeNavigatorLite v3.0 feedback"];
+    [picker setSubject:@"CodeNavigator Lite v5.1.1 feedback"];
 #else
 #ifdef IPHONE_VERSION
     [picker setSubject:@"CodeNavigator iPhone v5.1.1 feedback"];
@@ -84,7 +84,7 @@
         default:
             break;
     }
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 // Launches the Mail application on the device.
@@ -300,7 +300,7 @@
 {
     if (section == 4) {
 #ifdef LITE_VERSION
-        return @"CodeNavigatorLite 3.0 Guangzhen Li\n@2011-2013";
+        return @"CodeNavigatorLite 5.1.1 Guangzhen Li\n@2011-2014";
 #else
         return @"CodeNavigator 5.1.1 Guangzhen Li\n@2011-2014";
 #endif

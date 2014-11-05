@@ -11,15 +11,17 @@
 #import "DetailViewController.h"
 #import "WebServiceController.h"
 #import "cscope.h"
-#import "GitLogViewCongroller.h"
 #import "DropBoxViewController.h"
 #import "SecurityViewController.h"
 #import "CommentManager.h"
 
 #import "FileInfoViewController.h"
 #import "HelpViewController.h"
+#ifndef LITE_VERSION
 #import "git2.h"
 #import "GitCloneViewController.h"
+#import "GitLogViewCongroller.h"
+#endif
 #import "FileListBrowserController.h"
 #import "UploadSelectionViewController.h"
 #import "DisplayController.h"
@@ -43,10 +45,11 @@
 @synthesize analyzeButton = _analyzeButton;
 #ifdef LITE_VERSION
 @synthesize purchaseButton = _purchaseButton;
+#else
+@synthesize gitCloneViewController;
 #endif
 @synthesize popOverController;
 @synthesize fileListBrowserController;
-@synthesize gitCloneViewController;
 @synthesize toolBar;
 #ifndef IPHONE_VERSION
 @synthesize fileBrowserTreeViewController;
@@ -139,12 +142,13 @@
     [self setPopOverController: nil];
     [self setCurrentProjectPath:nil];
     [self setWebServiceController:nil];
-    [self setGitCloneViewController:nil];
     [self setTableView:nil];
     [self setAnalyzeButton:nil];
     [self setFileListBrowserController:nil];
 #ifdef LITE_VERSION
     [self setPurchaseButton:nil];
+#else
+    [self setGitCloneViewController:nil];
 #endif
 }
 
@@ -587,7 +591,8 @@
 }
 
 - (void) showGitCloneView
-{    
+{
+#ifndef LITE_VERSION
     [self releaseAllPopover];
     if (gitCloneViewController == NULL) {
 #ifdef IPHONE_VERSION
@@ -602,6 +607,7 @@
     [self presentViewController:gitCloneViewController animated:YES completion:nil];
 #else
     [[Utils getInstance].splitViewController presentViewController:gitCloneViewController animated:YES completion:nil];
+#endif
 #endif
 }
 
@@ -905,6 +911,7 @@
     }
 #endif
     
+#ifndef LITE_VERSION
     // When git clone in progress, stop entering this folder
     if ([fileListBrowserController getIsCurrentProjectFolder] &&
         [[gitCloneViewController cloneThread] isExecuting] &&
@@ -912,6 +919,7 @@
         [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Git clone in progress in this folder"];
         return;
     }
+#endif
     
     if ([fileListBrowserController getIsCurrentProjectFolder])
         [[Utils getInstance] analyzeProject:path andForceCreate:NO];
@@ -1020,6 +1028,7 @@
 }
 
 -(void) uploadFromITunes {
+#ifndef LITE_VERSION
     [self.popOverController dismissPopoverAnimated:YES];
     
 #ifdef IPHONE_VERSION
@@ -1032,6 +1041,7 @@
     [self presentViewController:controller animated:YES completion:nil];
 #else
     [[Utils getInstance].splitViewController presentViewController:controller animated:YES completion:nil];
+#endif
 #endif
 }
 

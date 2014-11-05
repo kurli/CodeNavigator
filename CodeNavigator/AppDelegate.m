@@ -14,7 +14,9 @@
 #import <DropboxSDK/DropboxSDK.h>
 #import "DropBoxViewController.h"
 #import "SecurityViewController.h"
+#ifndef LITE_VERSION
 #import "HandleURLController.h"
+#endif
 #import "iRate.h"
 
 #import "GAI.h"
@@ -25,7 +27,9 @@
 
 @synthesize window = _window;
 @synthesize splitViewController = _splitViewController;
+#ifndef LITE_VERSION
 @synthesize handleURLController;
+#endif
 #ifdef IPHONE_VERSION
 @synthesize masterNavigationController = _masterNavigationController;
 @synthesize detailViewController;
@@ -76,7 +80,8 @@
     
     //Banner support
 #ifdef LITE_VERSION
-    [[Utils getInstance] initBanner:detailViewController];
+    //Show banner
+    [[Utils getInstance] initBanner:masterViewController];
 //    [self.window addSubview:[[Utils getInstance] getBannerViewController].view];
 #endif
     //end
@@ -190,11 +195,14 @@
 
 - (void) applicationDidReceiveMemoryWarning:(UIApplication *)application
 {
+#ifndef LITE_VERSION
     [self setHandleURLController:nil];
+#endif
 }
 
 #pragma mark DropBox support
 
+#ifndef LITE_VERSION
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
 #ifndef IPHONE_VERSION
     if ([[DBSession sharedSession] handleOpenURL:url]) {
@@ -224,5 +232,6 @@
     // Add whatever other url handling code your app requires here
     return handled;
 }
+#endif
 
 @end

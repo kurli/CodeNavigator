@@ -8,14 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		94040588149659C4002A0C73 /* lgz_javascript.js in Resources */ = {isa = PBXBuildFile; fileRef = 9404058514964E56002A0C73 /* lgz_javascript.js */; };
+		940739101A091BB900EA3C28 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DDE69F1997CDCB0034B193 /* MediaPlayer.framework */; };
+		940739121A091BC500EA3C28 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940739111A091BC500EA3C28 /* EventKit.framework */; };
+		940739141A091BCF00EA3C28 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940739131A091BCF00EA3C28 /* EventKitUI.framework */; };
+		940739151A091EF500EA3C28 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BC575418D89BFB0027B383 /* AdSupport.framework */; };
+		940739171A091F1100EA3C28 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940739161A091F1100EA3C28 /* AVFoundation.framework */; };
+		940739181A091F2B00EA3C28 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DDE6951997CD8D0034B193 /* CoreTelephony.framework */; };
 		940BE0E21528CEF300CBAE18 /* GitDiffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0E01528CEF300CBAE18 /* GitDiffViewController.m */; };
-		940BE0E31528CEF300CBAE18 /* GitDiffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0E01528CEF300CBAE18 /* GitDiffViewController.m */; };
 		940BE0E41528CEF300CBAE18 /* GitDiffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940BE0E11528CEF300CBAE18 /* GitDiffViewController.xib */; };
-		940BE0E51528CEF300CBAE18 /* GitDiffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940BE0E11528CEF300CBAE18 /* GitDiffViewController.xib */; };
 		940BE0F01528E64600CBAE18 /* DiffFileListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0EE1528E64600CBAE18 /* DiffFileListController.m */; };
-		940BE0F11528E64600CBAE18 /* DiffFileListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0EE1528E64600CBAE18 /* DiffFileListController.m */; };
 		940BE0F21528E64600CBAE18 /* DiffFileListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940BE0EF1528E64600CBAE18 /* DiffFileListController.xib */; };
-		940BE0F31528E64600CBAE18 /* DiffFileListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940BE0EF1528E64600CBAE18 /* DiffFileListController.xib */; };
 		940CDAE319D87C1300BF5DAB /* LuaParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CDAE219D87C1300BF5DAB /* LuaParser.m */; };
 		940CDAE419D87C1300BF5DAB /* LuaParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CDAE219D87C1300BF5DAB /* LuaParser.m */; };
 		940CDAE519D87C1300BF5DAB /* LuaParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CDAE219D87C1300BF5DAB /* LuaParser.m */; };
@@ -23,11 +25,8 @@
 		94103DF014D86F1300212EBB /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 94103DEF14D86F1300212EBB /* bookmark.png */; };
 		94103DF114D86F1300212EBB /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 94103DEF14D86F1300212EBB /* bookmark.png */; };
 		941656FF1515C3C200838005 /* GitLogViewCongroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 941656FD1515C3C200838005 /* GitLogViewCongroller.m */; };
-		941657001515C3C200838005 /* GitLogViewCongroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 941656FD1515C3C200838005 /* GitLogViewCongroller.m */; };
 		941657011515C3C200838005 /* GitLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941656FE1515C3C200838005 /* GitLogViewController.xib */; };
-		941657021515C3C200838005 /* GitLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941656FE1515C3C200838005 /* GitLogViewController.xib */; };
 		941657121516280200838005 /* GitLogTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941657111516280200838005 /* GitLogTableCell.xib */; };
-		941657131516280200838005 /* GitLogTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941657111516280200838005 /* GitLogTableCell.xib */; };
 		9417EB7814AE118000224D2A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9417EB7714AE118000224D2A /* iAd.framework */; };
 		9419B87D14A4B3BE00AB679B /* ResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */; };
 		941B2AC01636D419000BBF59 /* TagItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941B2ABF1636D419000BBF59 /* TagItemCell.xib */; };
@@ -180,33 +179,19 @@
 		94472086157534E9002EEA5A /* ManuallyParserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94472083157534E9002EEA5A /* ManuallyParserViewController.xib */; };
 		94472087157534E9002EEA5A /* ManuallyParserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94472083157534E9002EEA5A /* ManuallyParserViewController.xib */; };
 		944DD7C2152772EF000473BE /* diff.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C1152772EF000473BE /* diff.c */; };
-		944DD7C3152772EF000473BE /* diff.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C1152772EF000473BE /* diff.c */; };
 		944DD7C71527731E000473BE /* getopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C61527731E000473BE /* getopt.c */; };
-		944DD7C81527731E000473BE /* getopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C61527731E000473BE /* getopt.c */; };
 		944DD7CA1527732C000473BE /* fnmatch.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C91527732C000473BE /* fnmatch.c */; };
-		944DD7CB1527732C000473BE /* fnmatch.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7C91527732C000473BE /* fnmatch.c */; };
 		944DD7D415277502000473BE /* util.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7D315277502000473BE /* util.c */; };
-		944DD7D515277502000473BE /* util.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7D315277502000473BE /* util.c */; };
 		944DD7D71527752D000473BE /* io.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7D61527752D000473BE /* io.c */; };
-		944DD7D81527752D000473BE /* io.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7D61527752D000473BE /* io.c */; };
 		944DD7DA15277591000473BE /* dif_dir.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7D915277591000473BE /* dif_dir.c */; };
-		944DD7DB15277591000473BE /* dif_dir.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7D915277591000473BE /* dif_dir.c */; };
 		944DD7DD152775FC000473BE /* analyze.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7DC152775FC000473BE /* analyze.c */; };
-		944DD7DE152775FC000473BE /* analyze.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7DC152775FC000473BE /* analyze.c */; };
 		944DD7E115277625000473BE /* cmpbuf.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7E015277625000473BE /* cmpbuf.c */; };
-		944DD7E215277625000473BE /* cmpbuf.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7E015277625000473BE /* cmpbuf.c */; };
 		944DD7E4152776D5000473BE /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7E3152776D5000473BE /* version.c */; };
-		944DD7E5152776D5000473BE /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7E3152776D5000473BE /* version.c */; };
 		944DD7E715277729000473BE /* side.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7E615277729000473BE /* side.c */; };
-		944DD7E815277729000473BE /* side.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7E615277729000473BE /* side.c */; };
 		944DD7EA1527778E000473BE /* context.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7E91527778E000473BE /* context.c */; };
-		944DD7EB1527778E000473BE /* context.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7E91527778E000473BE /* context.c */; };
 		944DD7ED15277845000473BE /* ed.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7EC15277845000473BE /* ed.c */; };
-		944DD7EE15277845000473BE /* ed.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7EC15277845000473BE /* ed.c */; };
 		944DD7F015277877000473BE /* normal.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7EF15277877000473BE /* normal.c */; };
-		944DD7F115277877000473BE /* normal.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7EF15277877000473BE /* normal.c */; };
 		944DD7F3152778B9000473BE /* ifdef.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7F2152778B9000473BE /* ifdef.c */; };
-		944DD7F4152778B9000473BE /* ifdef.c in Sources */ = {isa = PBXBuildFile; fileRef = 944DD7F2152778B9000473BE /* ifdef.c */; };
 		9451D59417F9BD4C00BDAD5E /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9451D59317F9BD4C00BDAD5E /* MasterViewController.m */; };
 		9452B1AA1588FA3C00B9A9F8 /* HighLightWordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */; };
 		9452B1AE1588FF4A00B9A9F8 /* CommentViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9452B1AD1588FF4A00B9A9F8 /* CommentViewController-iPhone.xib */; };
@@ -347,6 +332,8 @@
 		948C740A180449AE00065E65 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C7408180449AE00065E65 /* star@2x.png */; };
 		948C740C1804555300065E65 /* screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C740B1804555300065E65 /* screen.png */; };
 		948C740E1806E5A300065E65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 948C740D1806E5A300065E65 /* Images.xcassets */; };
+		948DC1B01A010FA000514398 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 948C740D1806E5A300065E65 /* Images.xcassets */; };
+		948DC1B71A013A1400514398 /* WebServiceControllerFormSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F7B91517F84A7600A506EE /* WebServiceControllerFormSheet.xib */; };
 		948E1459164169F200CBBD5B /* FunctionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EED18B16331D99003D9CA3 /* FunctionListViewController.m */; };
 		948E145A164169FD00CBBD5B /* FunctionListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94EED18C16331D99003D9CA3 /* FunctionListViewController.xib */; };
 		948E145B16416A0A00CBBD5B /* FunctionListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EED19016332147003D9CA3 /* FunctionListManager.m */; };
@@ -687,7 +674,6 @@
 		94ADF17C14BB27EE00BA807A /* NavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9432E3AC149CF9CE00AB5BB7 /* NavigationController.xib */; };
 		94ADF17D14BB27EE00BA807A /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94603D06149E041400D72561 /* ResultViewController.xib */; };
 		94ADF17E14BB27EE00BA807A /* GotoLineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94EE32D2149FAE0B0088501D /* GotoLineViewController.xib */; };
-		94ADF17F14BB27EE00BA807A /* WebServiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9466466A14A2370700B30CD2 /* WebServiceController.xib */; };
 		94ADF18014BB27EE00BA807A /* ResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9419B87C14A4B3BE00AB679B /* ResultTableCellView.xib */; };
 		94ADF18114BB27EE00BA807A /* FilePathInfoPopupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D8703014A65888002F2DBB /* FilePathInfoPopupController.xib */; };
 		94ADF18714BB27EE00BA807A /* linux_0.1 in Resources */ = {isa = PBXBuildFile; fileRef = 94557E5314B05E89004950B4 /* linux_0.1 */; };
@@ -735,7 +721,6 @@
 		94B1DCE4191F6FF100909C3E /* OpenAsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 941E63E218019354008226F2 /* OpenAsViewController.m */; };
 		94B1DCE5191F6FF900909C3E /* OpenAsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941E63E318019354008226F2 /* OpenAsViewController.xib */; };
 		94B1DCE6191F6FFA00909C3E /* OpenAsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941E63E318019354008226F2 /* OpenAsViewController.xib */; };
-		94B1DCE7191F6FFF00909C3E /* GitBranchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22D518D09212006CB7A8 /* GitBranchViewController.m */; };
 		94B1DCE8191F700000909C3E /* GitBranchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22D518D09212006CB7A8 /* GitBranchViewController.m */; };
 		94B1DCE9191F700400909C3E /* GitBranchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BA22D618D09212006CB7A8 /* GitBranchViewController.xib */; };
 		94B1DCEA191F700500909C3E /* GitBranchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BA22D618D09212006CB7A8 /* GitBranchViewController.xib */; };
@@ -803,6 +788,33 @@
 		94B40393194456F8002B8E26 /* MGSplitDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4038D194456F8002B8E26 /* MGSplitDividerView.m */; };
 		94B40394194456F8002B8E26 /* MGSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4038F194456F8002B8E26 /* MGSplitViewController.m */; };
 		94B40395194456F8002B8E26 /* MGSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4038F194456F8002B8E26 /* MGSplitViewController.m */; };
+		94B5FDA219FE88B20062F376 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94785A54184519660012988B /* libz.dylib */; };
+		94B5FDA419FE89060062F376 /* JTListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F9BAFB18EDA77700CD7C2C /* JTListView.m */; };
+		94B5FDA519FE89C00062F376 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C95FEB198A8A8A005260B5 /* libsqlite3.dylib */; };
+		94B5FDA619FE8D020062F376 /* FileBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B09BB317E77DC600789510 /* FileBrowserViewController.m */; };
+		94B5FDA719FE8D080062F376 /* FileBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B09BB417E77DC600789510 /* FileBrowserViewController.xib */; };
+		94B5FDA819FFD7760062F376 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C7C170184E42B3003A8C03 /* Social.framework */; };
+		94B5FDA919FFD86B0062F376 /* Themes in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BAF218EAF4F200CD7C2C /* Themes */; };
+		94B5FDAA19FFD8780062F376 /* BuildInParser in Resources */ = {isa = PBXBuildFile; fileRef = 941E63DF1801541C008226F2 /* BuildInParser */; };
+		94B5FDAB19FFD8E90062F376 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9444596018D7508C008A02DB /* iRate.bundle */; };
+		94B5FDAC19FFD8EE0062F376 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9444596018D7508C008A02DB /* iRate.bundle */; };
+		94B5FDAD19FFD8FB0062F376 /* VersionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9444595A18D72B8C008A02DB /* VersionViewController.xib */; };
+		94B5FDAE19FFD9B10062F376 /* 1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 94C7C1791850E170003A8C03 /* 1.jpeg */; };
+		94B5FDB019FFDF090062F376 /* projectGit.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E4C116199E7FDD003B0E82 /* projectGit.png */; };
+		94B5FDB119FFDF3F0062F376 /* binocular.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C73FB180443A700065E65 /* binocular.png */; };
+		94B5FDB219FFDF810062F376 /* screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C740B1804555300065E65 /* screen.png */; };
+		94B5FDB319FFDF860062F376 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C74031804491A00065E65 /* search.png */; };
+		94B5FDB419FFDF8B0062F376 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C74041804491A00065E65 /* search@2x.png */; };
+		94B5FDB519FFDFAB0062F376 /* seperate.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C73FF1804460700065E65 /* seperate.png */; };
+		94B5FDB619FFDFB60062F376 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C74011804489200065E65 /* settings@2x.png */; };
+		94B5FDB719FFDFB70062F376 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C74011804489200065E65 /* settings@2x.png */; };
+		94B5FDB819FFDFD80062F376 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C7407180449AE00065E65 /* star.png */; };
+		94B5FDBA19FFDFE10062F376 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C7408180449AE00065E65 /* star@2x.png */; };
+		94B5FDBB19FFDFE70062F376 /* text-list.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C73FD1804443700065E65 /* text-list.png */; };
+		94B5FDBD19FFE6180062F376 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 9487CF8D19AA05C2005AAE16 /* iTunesArtwork.png */; };
+		94B5FDBE19FFE61D0062F376 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9487CF8E19AA05C2005AAE16 /* iTunesArtwork@2x.png */; };
+		94B5FDBF19FFE6210062F376 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 943486DE150A3D4000370AE3 /* Default-Portrait~ipad.png */; };
+		94B5FDC019FFE6250062F376 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 943486E0150A3DA600370AE3 /* Default-Landscape~ipad.png */; };
 		94B69881180EEE7A009C7176 /* CSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B69880180EEE7A009C7176 /* CSSParser.m */; };
 		94B69882180EEE7A009C7176 /* CSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B69880180EEE7A009C7176 /* CSSParser.m */; };
 		94B7E5AA156FE2BA000F3F34 /* FileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B7E5A8156FE2BA000F3F34 /* FileInfoViewController.m */; };
@@ -810,7 +822,6 @@
 		94B7E5AC156FE2BB000F3F34 /* FileInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B7E5A9156FE2BA000F3F34 /* FileInfoViewController.xib */; };
 		94B7E5AD156FE2BB000F3F34 /* FileInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B7E5A9156FE2BA000F3F34 /* FileInfoViewController.xib */; };
 		94B8EC211546F2B600931747 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC1F1546F2B600931747 /* libGoogleAdMobAds.a */; settings = {ATTRIBUTES = (Required, ); }; };
-		94B8EC221546F2B600931747 /* Mediation in Resources */ = {isa = PBXBuildFile; fileRef = 94B8EC201546F2B600931747 /* Mediation */; };
 		94B8EC241546F2FD00931747 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC231546F2FD00931747 /* AudioToolbox.framework */; };
 		94B8EC261546F30900931747 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC251546F30900931747 /* MessageUI.framework */; };
 		94B8EC281546F31700931747 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC271546F31700931747 /* SystemConfiguration.framework */; };
@@ -851,7 +862,6 @@
 		94CB768317E21369009807F9 /* FileListBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CB768117E21369009807F9 /* FileListBrowserController.m */; };
 		94CB787F156E80C8009452D8 /* FileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CB787E156E80C8009452D8 /* FileTableViewCell.xib */; };
 		94CB7880156E80C8009452D8 /* FileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CB787E156E80C8009452D8 /* FileTableViewCell.xib */; };
-		94D0A9291976CE38002EEFCE /* UploadFromITunesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A430E7196EF328003497CB /* UploadFromITunesViewController.m */; };
 		94D0A9301976CE39002EEFCE /* UploadFromITunesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A430E7196EF328003497CB /* UploadFromITunesViewController.m */; };
 		94D0A9311976D277002EEFCE /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 949CB5E11961A96200A95AEC /* back_arrow.png */; };
 		94D0A9321976D27D002EEFCE /* hide_toolbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9461D46C1960372100F0B0A1 /* hide_toolbar.png */; };
@@ -1035,11 +1045,8 @@
 		94E4C13519A0E7AB003B0E82 /* HourChartControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E4C13319A0E7AB003B0E82 /* HourChartControllerHelper.m */; };
 		94E4C13619A0E7AB003B0E82 /* HourChartControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E4C13319A0E7AB003B0E82 /* HourChartControllerHelper.m */; };
 		94E6DB61152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */; };
-		94E6DB62152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6DB5F152C9EFF004DBD87 /* DiffInfoListViewController.m */; };
 		94E6DB63152C9EFF004DBD87 /* DiffInfoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */; };
-		94E6DB64152C9EFF004DBD87 /* DiffInfoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E6DB60152C9EFF004DBD87 /* DiffInfoListViewController.xib */; };
 		94E6DB66152CBF41004DBD87 /* GidDiffTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E6DB65152CBF41004DBD87 /* GidDiffTableCell.xib */; };
-		94E6DB67152CBF41004DBD87 /* GidDiffTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E6DB65152CBF41004DBD87 /* GidDiffTableCell.xib */; };
 		94EB3A3719F810BE00E45D7D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C95FEB198A8A8A005260B5 /* libsqlite3.dylib */; };
 		94EB3A3A19F8164400E45D7D /* ChartBoardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DDE5D51997CAC20034B193 /* ChartBoardViewController.xib */; };
 		94EB3A3B19F8182A00E45D7D /* ChartBoardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DDE5D51997CAC20034B193 /* ChartBoardViewController.xib */; };
@@ -1171,6 +1178,24 @@
 		9402E02D18140D70005A97D4 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../ios-openssl/lib/libssl.a"; sourceTree = "<group>"; };
 		9402E0311814147B005A97D4 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../ios-openssl/lib/libcrypto.a"; sourceTree = "<group>"; };
 		9404058514964E56002A0C73 /* lgz_javascript.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = lgz_javascript.js; sourceTree = "<group>"; };
+		940738FF1A09168000EA3C28 /* DFPBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFPBannerView.h; sourceTree = "<group>"; };
+		940739001A09168000EA3C28 /* DFPExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFPExtras.h; sourceTree = "<group>"; };
+		940739011A09168000EA3C28 /* DFPInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFPInterstitial.h; sourceTree = "<group>"; };
+		940739021A09168000EA3C28 /* DFPSwipeableBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFPSwipeableBannerView.h; sourceTree = "<group>"; };
+		940739031A09168000EA3C28 /* GADAdSizeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdSizeDelegate.h; sourceTree = "<group>"; };
+		940739041A09168000EA3C28 /* GADAppEventDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAppEventDelegate.h; sourceTree = "<group>"; };
+		940739051A09168000EA3C28 /* GADSwipeableBannerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADSwipeableBannerViewDelegate.h; sourceTree = "<group>"; };
+		940739071A09168000EA3C28 /* GADCustomEventBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADCustomEventBanner.h; sourceTree = "<group>"; };
+		940739081A09168000EA3C28 /* GADCustomEventBannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADCustomEventBannerDelegate.h; sourceTree = "<group>"; };
+		940739091A09168000EA3C28 /* GADCustomEventExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADCustomEventExtras.h; sourceTree = "<group>"; };
+		9407390A1A09168000EA3C28 /* GADCustomEventInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADCustomEventInterstitial.h; sourceTree = "<group>"; };
+		9407390B1A09168000EA3C28 /* GADCustomEventInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADCustomEventInterstitialDelegate.h; sourceTree = "<group>"; };
+		9407390C1A09168000EA3C28 /* GADCustomEventRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADCustomEventRequest.h; sourceTree = "<group>"; };
+		9407390E1A09168000EA3C28 /* GADSearchBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADSearchBannerView.h; sourceTree = "<group>"; };
+		9407390F1A09168000EA3C28 /* GADSearchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADSearchRequest.h; sourceTree = "<group>"; };
+		940739111A091BC500EA3C28 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		940739131A091BCF00EA3C28 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		940739161A091F1100EA3C28 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		940BE0DF1528CEF300CBAE18 /* GitDiffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitDiffViewController.h; sourceTree = "<group>"; };
 		940BE0E01528CEF300CBAE18 /* GitDiffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitDiffViewController.m; sourceTree = "<group>"; };
 		940BE0E11528CEF300CBAE18 /* GitDiffViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GitDiffViewController.xib; sourceTree = "<group>"; };
@@ -1637,7 +1662,6 @@
 		94B8EC1D1546F2B600931747 /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequest.h; sourceTree = "<group>"; };
 		94B8EC1E1546F2B600931747 /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequestError.h; sourceTree = "<group>"; };
 		94B8EC1F1546F2B600931747 /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
-		94B8EC201546F2B600931747 /* Mediation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Mediation; sourceTree = "<group>"; };
 		94B8EC231546F2FD00931747 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		94B8EC251546F30900931747 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		94B8EC271546F31700931747 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1855,11 +1879,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				94B8EC281546F31700931747 /* SystemConfiguration.framework in Frameworks */,
+				94B8EC261546F30900931747 /* MessageUI.framework in Frameworks */,
+				940739181A091F2B00EA3C28 /* CoreTelephony.framework in Frameworks */,
+				94ADF17414BB27EE00BA807A /* CoreGraphics.framework in Frameworks */,
+				940739171A091F1100EA3C28 /* AVFoundation.framework in Frameworks */,
+				94B8EC241546F2FD00931747 /* AudioToolbox.framework in Frameworks */,
+				940739151A091EF500EA3C28 /* AdSupport.framework in Frameworks */,
+				940739141A091BCF00EA3C28 /* EventKitUI.framework in Frameworks */,
+				940739121A091BC500EA3C28 /* EventKit.framework in Frameworks */,
+				940739101A091BB900EA3C28 /* MediaPlayer.framework in Frameworks */,
+				94B5FDA819FFD7760062F376 /* Social.framework in Frameworks */,
+				94B5FDA519FE89C00062F376 /* libsqlite3.dylib in Frameworks */,
+				94B5FDA219FE88B20062F376 /* libz.dylib in Frameworks */,
 				94407B1B16E7BCBD0011F941 /* CoreData.framework in Frameworks */,
 				94D3B87815E53469006C28E4 /* Twitter.framework in Frameworks */,
 				94205715157B939B00178CBF /* QuartzCore.framework in Frameworks */,
-				94B8EC261546F30900931747 /* MessageUI.framework in Frameworks */,
-				94B8EC241546F2FD00931747 /* AudioToolbox.framework in Frameworks */,
 				94A3B09B15447C7500C8E132 /* Security.framework in Frameworks */,
 				94ADF16E14BB27EE00BA807A /* iAd.framework in Frameworks */,
 				94ADF16F14BB27EE00BA807A /* libZip.a in Frameworks */,
@@ -1867,7 +1901,6 @@
 				94ADF17114BB27EE00BA807A /* libHttpService.a in Frameworks */,
 				94ADF17214BB27EE00BA807A /* UIKit.framework in Frameworks */,
 				94ADF17314BB27EE00BA807A /* Foundation.framework in Frameworks */,
-				94ADF17414BB27EE00BA807A /* CoreGraphics.framework in Frameworks */,
 				94BC575118D8969B0027B383 /* libGoogleAnalyticsServices.a in Frameworks */,
 				94A51849152DF2AC0062DA65 /* DropboxSDK.framework in Frameworks */,
 				94B8EC211546F2B600931747 /* libGoogleAdMobAds.a in Frameworks */,
@@ -1877,6 +1910,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		940738FD1A09168000EA3C28 /* Add-ons */ = {
+			isa = PBXGroup;
+			children = (
+				940738FE1A09168000EA3C28 /* DoubleClick */,
+				940739061A09168000EA3C28 /* Mediation */,
+				9407390D1A09168000EA3C28 /* Search */,
+			);
+			path = "Add-ons";
+			sourceTree = "<group>";
+		};
+		940738FE1A09168000EA3C28 /* DoubleClick */ = {
+			isa = PBXGroup;
+			children = (
+				940738FF1A09168000EA3C28 /* DFPBannerView.h */,
+				940739001A09168000EA3C28 /* DFPExtras.h */,
+				940739011A09168000EA3C28 /* DFPInterstitial.h */,
+				940739021A09168000EA3C28 /* DFPSwipeableBannerView.h */,
+				940739031A09168000EA3C28 /* GADAdSizeDelegate.h */,
+				940739041A09168000EA3C28 /* GADAppEventDelegate.h */,
+				940739051A09168000EA3C28 /* GADSwipeableBannerViewDelegate.h */,
+			);
+			path = DoubleClick;
+			sourceTree = "<group>";
+		};
+		940739061A09168000EA3C28 /* Mediation */ = {
+			isa = PBXGroup;
+			children = (
+				940739071A09168000EA3C28 /* GADCustomEventBanner.h */,
+				940739081A09168000EA3C28 /* GADCustomEventBannerDelegate.h */,
+				940739091A09168000EA3C28 /* GADCustomEventExtras.h */,
+				9407390A1A09168000EA3C28 /* GADCustomEventInterstitial.h */,
+				9407390B1A09168000EA3C28 /* GADCustomEventInterstitialDelegate.h */,
+				9407390C1A09168000EA3C28 /* GADCustomEventRequest.h */,
+			);
+			path = Mediation;
+			sourceTree = "<group>";
+		};
+		9407390D1A09168000EA3C28 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				9407390E1A09168000EA3C28 /* GADSearchBannerView.h */,
+				9407390F1A09168000EA3C28 /* GADSearchRequest.h */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		940D94BC18F99B75006D5D0D /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -2000,6 +2079,9 @@
 		9431D73714910B3000B0900E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				940739161A091F1100EA3C28 /* AVFoundation.framework */,
+				940739131A091BCF00EA3C28 /* EventKitUI.framework */,
+				940739111A091BC500EA3C28 /* EventKit.framework */,
 				94DDE6A51997CDE90034B193 /* AddressBook.framework */,
 				94DDE6A31997CDE00034B193 /* AssetsLibrary.framework */,
 				94DDE6A11997CDD70034B193 /* CoreText.framework */,
@@ -2725,6 +2807,7 @@
 		94B8EC151546F23500931747 /* GoogleAds */ = {
 			isa = PBXGroup;
 			children = (
+				940738FD1A09168000EA3C28 /* Add-ons */,
 				94B8EC161546F2B600931747 /* GADAdMobExtras.h */,
 				94B8EC171546F2B600931747 /* GADAdNetworkExtras.h */,
 				94B8EC181546F2B600931747 /* GADAdSize.h */,
@@ -2735,7 +2818,6 @@
 				94B8EC1D1546F2B600931747 /* GADRequest.h */,
 				94B8EC1E1546F2B600931747 /* GADRequestError.h */,
 				94B8EC1F1546F2B600931747 /* libGoogleAdMobAds.a */,
-				94B8EC201546F2B600931747 /* Mediation */,
 			);
 			name = GoogleAds;
 			sourceTree = "<group>";
@@ -3037,6 +3119,14 @@
 					949DC1911583E8CF00385796 = {
 						DevelopmentTeam = KTWHB3SHL5;
 					};
+					94ADF13914BB27EE00BA807A = {
+						DevelopmentTeam = KTWHB3SHL5;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
+					};
 				};
 			};
 			buildConfigurationList = 9431D72E14910B3000B0900E /* Build configuration list for PBXProject "CodeNavigator" */;
@@ -3286,6 +3376,7 @@
 				949DC2331583E8CF00385796 /* cppFile.png in Resources */,
 				949DC2341583E8CF00385796 /* csFile.png in Resources */,
 				949DC2351583E8CF00385796 /* File.png in Resources */,
+				94B5FDB719FFDFB70062F376 /* settings@2x.png in Resources */,
 				94B1DCEA191F700500909C3E /* GitBranchViewController.xib in Resources */,
 				94B1DCCD191F6ED400909C3E /* DiffFileListController.xib in Resources */,
 				949DC2361583E8CF00385796 /* hFile.png in Resources */,
@@ -3340,6 +3431,7 @@
 				947F861315863579002EAA1E /* MasterViewController-iPhone.xib in Resources */,
 				94B1DD0C191F738A00909C3E /* SourceCodePro-Black.ttf in Resources */,
 				94EB3A3B19F8182A00E45D7D /* ChartBoardViewController.xib in Resources */,
+				94B5FDAC19FFD8EE0062F376 /* iRate.bundle in Resources */,
 				94F6EEE11587BD30002DE115 /* ResultViewController-iPhone.xib in Resources */,
 				9452B1AE1588FF4A00B9A9F8 /* CommentViewController-iPhone.xib in Resources */,
 				94B1DD3119226C7B00909C3E /* HighLightWordController.xib in Resources */,
@@ -3362,14 +3454,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B5FDAE19FFD9B10062F376 /* 1.jpeg in Resources */,
+				94B5FDBD19FFE6180062F376 /* iTunesArtwork.png in Resources */,
+				94B5FDC019FFE6250062F376 /* Default-Landscape~ipad.png in Resources */,
+				94B5FDBF19FFE6210062F376 /* Default-Portrait~ipad.png in Resources */,
+				94B5FDAA19FFD8780062F376 /* BuildInParser in Resources */,
+				94B5FDA919FFD86B0062F376 /* Themes in Resources */,
 				94D3B88015E539B8006C28E4 /* share.png in Resources */,
 				94D3B87F15E539AD006C28E4 /* weibo.png in Resources */,
 				9421EACB196853D100EFD7E2 /* treeView.png in Resources */,
 				94D3B87E15E539A6006C28E4 /* twitter.png in Resources */,
+				94B5FDB619FFDFB60062F376 /* settings@2x.png in Resources */,
 				94D3B87D15E5399A006C28E4 /* appstore.png in Resources */,
 				94D3B87C15E53984006C28E4 /* feedback.png in Resources */,
 				9461D46E1960372100F0B0A1 /* hide_toolbar.png in Resources */,
 				94D0A9341976E47A002EEFCE /* FileBrowser.png in Resources */,
+				94B5FDBE19FFE61D0062F376 /* iTunesArtwork@2x.png in Resources */,
 				94D3B87B15E53979006C28E4 /* demoVideo.png in Resources */,
 				94E4C115199D1519003B0E82 /* CommentHide.png in Resources */,
 				94D3B87A15E53928006C28E4 /* help.png in Resources */,
@@ -3380,16 +3480,20 @@
 				94ADF17914BB27EE00BA807A /* DetailViewController.xib in Resources */,
 				94ADF17A14BB27EE00BA807A /* folder.png in Resources */,
 				94B1DD09191F738400909C3E /* SourceCodePro-Regular.ttf in Resources */,
+				94B5FDAD19FFD8FB0062F376 /* VersionViewController.xib in Resources */,
 				94ADF17B14BB27EE00BA807A /* project.png in Resources */,
 				94ADF17C14BB27EE00BA807A /* NavigationController.xib in Resources */,
 				94ADF17D14BB27EE00BA807A /* ResultViewController.xib in Resources */,
+				94B5FDB319FFDF860062F376 /* search.png in Resources */,
 				94ADF17E14BB27EE00BA807A /* GotoLineViewController.xib in Resources */,
 				94B1DCF6191F70D000909C3E /* SelectGroupViewController.xib in Resources */,
+				94B5FDB019FFDF090062F376 /* projectGit.png in Resources */,
 				949CB5F119630C6500A95AEC /* FileBrowserTreeViewController.xib in Resources */,
-				94ADF17F14BB27EE00BA807A /* WebServiceController.xib in Resources */,
+				94B5FDB819FFDFD80062F376 /* star.png in Resources */,
 				94ADF18014BB27EE00BA807A /* ResultTableCellView.xib in Resources */,
 				94B1DCE1191F6F8C00909C3E /* ThemeSelectorViewController.xib in Resources */,
 				94ADF18114BB27EE00BA807A /* FilePathInfoPopupController.xib in Resources */,
+				948DC1B71A013A1400514398 /* WebServiceControllerFormSheet.xib in Resources */,
 				94ADF18714BB27EE00BA807A /* linux_0.1 in Resources */,
 				94FAC80414C1649400B9A821 /* settings.png in Resources */,
 				9443BF5814D1A40200355278 /* HistoryListController.xib in Resources */,
@@ -3403,6 +3507,7 @@
 				94A5079414F6AA1C00587A47 /* virbackground.png in Resources */,
 				94C8C68714FA57D60062750D /* ImagePreviewController.xib in Resources */,
 				9424660D1502AA2F001701C4 /* ManuallAddChild.png in Resources */,
+				94B5FDB219FFDF810062F376 /* screen.png in Resources */,
 				949CB5E31961A96200A95AEC /* back_arrow.png in Resources */,
 				9424660F1502AA2F001701C4 /* manuallAddParent.png in Resources */,
 				942466121502D53A001701C4 /* EntryBg.png in Resources */,
@@ -3413,7 +3518,9 @@
 				9424665A150383C2001701C4 /* cFile.png in Resources */,
 				9424665C150383C2001701C4 /* cppFile.png in Resources */,
 				9424665E150383C2001701C4 /* csFile.png in Resources */,
+				94B5FDAB19FFD8E90062F376 /* iRate.bundle in Resources */,
 				94246660150383C2001701C4 /* File.png in Resources */,
+				94B5FDBB19FFDFE70062F376 /* text-list.png in Resources */,
 				94246662150383C2001701C4 /* hFile.png in Resources */,
 				94246664150383C2001701C4 /* hppFile.png in Resources */,
 				94246666150383C2001701C4 /* javaFile.png in Resources */,
@@ -3426,14 +3533,10 @@
 				945AA40F1508DE9C006729C8 /* NewEntry.png in Resources */,
 				945AA44C1508E3CA006729C8 /* max.png in Resources */,
 				945AA45F150926A1006729C8 /* Help.html in Resources */,
-				941657021515C3C200838005 /* GitLogViewController.xib in Resources */,
-				941657131516280200838005 /* GitLogTableCell.xib in Resources */,
-				940BE0E51528CEF300CBAE18 /* GitDiffViewController.xib in Resources */,
-				940BE0F31528E64600CBAE18 /* DiffFileListController.xib in Resources */,
-				94E6DB64152C9EFF004DBD87 /* DiffInfoListViewController.xib in Resources */,
-				94E6DB67152CBF41004DBD87 /* GidDiffTableCell.xib in Resources */,
 				94A51853152DF8D70062DA65 /* DropBoxViewController.xib in Resources */,
 				9457C78F153086FC00BB9185 /* masterView_bg.png in Resources */,
+				948DC1B01A010FA000514398 /* Images.xcassets in Resources */,
+				94B5FDA719FE8D080062F376 /* FileBrowserViewController.xib in Resources */,
 				9457C7921530923800BB9185 /* nav_backButton_icon.png in Resources */,
 				94B1DCE5191F6FF900909C3E /* OpenAsViewController.xib in Resources */,
 				9457C7951530B91600BB9185 /* SelectionTableCell.xib in Resources */,
@@ -3443,6 +3546,7 @@
 				94BF99BD1534887000F4EFFD /* refresh.png in Resources */,
 				94BF99C015348A6700F4EFFD /* refresh_error.png in Resources */,
 				94B1DD11191F739800909C3E /* SourceCodePro-Semibold.ttf in Resources */,
+				94B5FDB419FFDF8B0062F376 /* search@2x.png in Resources */,
 				94F4249915387E1E005FC4C8 /* hide_masterview.png in Resources */,
 				94F4249B15387E1E005FC4C8 /* show_masterview.png in Resources */,
 				94D1BF7A153C56420007A8EB /* forward_history.png in Resources */,
@@ -3451,19 +3555,21 @@
 				94DDE6031997CAC20034B193 /* ChartBoardViewController.xib in Resources */,
 				94A0FAE7153DDAD9004277BF /* virtualize.png in Resources */,
 				94352108153EFC1E003F316A /* version_control.png in Resources */,
-				94B8EC221546F2B600931747 /* Mediation in Resources */,
 				9443D1F1154EDA6A008CB52D /* SecurityViewController.xib in Resources */,
 				94B1DCE9191F700400909C3E /* GitBranchViewController.xib in Resources */,
+				94B5FDB519FFDFAB0062F376 /* seperate.png in Resources */,
 				9443D1F4154FF4D8008CB52D /* Lock.png in Resources */,
 				948F1C7615583B7600AE4C99 /* CommentViewController.xib in Resources */,
 				9461817C155EEDAB00A25635 /* CommentManager.xib in Resources */,
 				9456A94015617BDC0092128D /* Comment.png in Resources */,
 				94CB7880156E80C8009452D8 /* FileTableViewCell.xib in Resources */,
 				94B7E5AD156FE2BB000F3F34 /* FileInfoViewController.xib in Resources */,
+				94B5FDBA19FFDFE10062F376 /* star@2x.png in Resources */,
 				94472087157534E9002EEA5A /* ManuallyParserViewController.xib in Resources */,
 				9452B1AA1588FA3C00B9A9F8 /* HighLightWordController.xib in Resources */,
 				94D4EDD21642B96D00601FE4 /* FunctionListViewController.xib in Resources */,
 				94D4EDD41642B97700601FE4 /* TagItemCell.xib in Resources */,
+				94B5FDB119FFDF3F0062F376 /* binocular.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3975,7 +4081,6 @@
 				94D4ED981642B8AB00601FE4 /* entry.h in Sources */,
 				94D4ED991642B8AB00601FE4 /* erlang.c in Sources */,
 				94D4ED9A1642B8AB00601FE4 /* falcon.c in Sources */,
-				94D0A9291976CE38002EEFCE /* UploadFromITunesViewController.m in Sources */,
 				94D4ED9B1642B8AB00601FE4 /* flex.c in Sources */,
 				94D4ED9C1642B8AB00601FE4 /* fortran.c in Sources */,
 				94D4ED9D1642B8AB00601FE4 /* general.h in Sources */,
@@ -4056,6 +4161,7 @@
 				940CDAE419D87C1300BF5DAB /* LuaParser.m in Sources */,
 				94B1DCFF191F716500909C3E /* FileFormatResolver.m in Sources */,
 				94ADF15214BB27EE00BA807A /* find.c in Sources */,
+				94B5FDA619FE8D020062F376 /* FileBrowserViewController.m in Sources */,
 				94B1DCF2191F707700909C3E /* MBProgressHUD.m in Sources */,
 				94ADF15314BB27EE00BA807A /* fscanner.c in Sources */,
 				94ADF15414BB27EE00BA807A /* gscope.c in Sources */,
@@ -4068,6 +4174,7 @@
 				94DDE60F1997CAC20034B193 /* JBChartHeaderView.m in Sources */,
 				94ADF15914BB27EE00BA807A /* logdir.c in Sources */,
 				94ADF15A14BB27EE00BA807A /* lookup.c in Sources */,
+				94B5FDA419FE89060062F376 /* JTListView.m in Sources */,
 				94ADF15B14BB27EE00BA807A /* mouse.c in Sources */,
 				94ADF15C14BB27EE00BA807A /* mygetenv.c in Sources */,
 				94ADF15D14BB27EE00BA807A /* mypopen.c in Sources */,
@@ -4097,7 +4204,6 @@
 				945428B514F2B51600353EC8 /* ProjectListController.m in Sources */,
 				94C8C68514FA57D60062750D /* ImagePreviewController.m in Sources */,
 				94B1DCE3191F6FF000909C3E /* OpenAsViewController.m in Sources */,
-				941657001515C3C200838005 /* GitLogViewCongroller.m in Sources */,
 				9497F3A4151A499D006BCBBF /* ObjectiveCParser.m in Sources */,
 				9497F3A9151B85C7006BCBBF /* CSharpParser.m in Sources */,
 				94DDE61B1997CAC20034B193 /* JBChartInformationView.m in Sources */,
@@ -4108,25 +4214,8 @@
 				9497F3B5151BA606006BCBBF /* PythonParser.m in Sources */,
 				9497F3CC151CEC4F006BCBBF /* RubyParser.m in Sources */,
 				9489196E1524CC9000AB9968 /* BashParser.m in Sources */,
-				944DD7C3152772EF000473BE /* diff.c in Sources */,
-				944DD7C81527731E000473BE /* getopt.c in Sources */,
-				944DD7CB1527732C000473BE /* fnmatch.c in Sources */,
-				944DD7D515277502000473BE /* util.c in Sources */,
-				944DD7D81527752D000473BE /* io.c in Sources */,
-				944DD7DB15277591000473BE /* dif_dir.c in Sources */,
-				944DD7DE152775FC000473BE /* analyze.c in Sources */,
-				944DD7E215277625000473BE /* cmpbuf.c in Sources */,
-				944DD7E5152776D5000473BE /* version.c in Sources */,
 				94B1DCED191F704E00909C3E /* JavaParser.m in Sources */,
-				944DD7E815277729000473BE /* side.c in Sources */,
 				94DDE6301997CAC20034B193 /* WeekChartControllerHelper.m in Sources */,
-				944DD7EB1527778E000473BE /* context.c in Sources */,
-				944DD7EE15277845000473BE /* ed.c in Sources */,
-				944DD7F115277877000473BE /* normal.c in Sources */,
-				944DD7F4152778B9000473BE /* ifdef.c in Sources */,
-				940BE0E31528CEF300CBAE18 /* GitDiffViewController.m in Sources */,
-				940BE0F11528E64600CBAE18 /* DiffFileListController.m in Sources */,
-				94E6DB62152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */,
 				94A51851152DF8D70062DA65 /* DropBoxViewController.m in Sources */,
 				9457C78815307AF500BB9185 /* LocalFileControllerDelegate.m in Sources */,
 				9457C78C15307B1400BB9185 /* RemoteFileControllerDelegate.m in Sources */,
@@ -4159,7 +4248,6 @@
 				94D4EDD31642B97200601FE4 /* FunctionListManager.m in Sources */,
 				94C2CDC6167F55C9004FB1FB /* HtmlParser.m in Sources */,
 				94CB768317E21369009807F9 /* FileListBrowserController.m in Sources */,
-				94B1DCE7191F6FFF00909C3E /* GitBranchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4591,6 +4679,8 @@
 		94ADF18914BB27EE00BA807A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -4610,7 +4700,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "CodeNavigatorLite-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\\\\\"$(SRCROOT)/ObjectiveGit/libgit2\\\\\\\"",
@@ -4620,6 +4710,7 @@
 					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = CodeNavigator;
 				PROVISIONING_PROFILE = "";
@@ -4633,6 +4724,8 @@
 		94ADF18A14BB27EE00BA807A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -4649,7 +4742,7 @@
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "LITE_VERSION=1";
 				INFOPLIST_FILE = "CodeNavigatorLite-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\\\\\"$(SRCROOT)/ObjectiveGit/libgit2\\\\\\\"",
@@ -4672,8 +4765,10 @@
 		94ADF18B14BB27EE00BA807A /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4691,7 +4786,7 @@
 					"LITE_VERSION=1",
 				);
 				INFOPLIST_FILE = "CodeNavigatorLite-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\\\\\"$(SRCROOT)/ObjectiveGit/libgit2\\\\\\\"",
