@@ -322,6 +322,7 @@
                 [self switchBranch];
                 [[Utils getInstance] addGAEvent:@"FileInfo" andAction:@"GitBranch" andLabel:nil andValue:nil];
             } else if (indexPath.row == PROJECT_GIT_UPDATE) {
+                [masterViewController.popOverController dismissPopoverAnimated:YES];
 #ifndef LITE_VERSION
                 [self updateRepo];
                 [[Utils getInstance] addGAEvent:@"FileInfo" andAction:@"UpdateGit" andLabel:nil andValue:nil];

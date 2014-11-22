@@ -14,6 +14,7 @@
 		940739151A091EF500EA3C28 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BC575418D89BFB0027B383 /* AdSupport.framework */; };
 		940739171A091F1100EA3C28 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940739161A091F1100EA3C28 /* AVFoundation.framework */; };
 		940739181A091F2B00EA3C28 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DDE6951997CD8D0034B193 /* CoreTelephony.framework */; };
+		9407391C1A0A7E7D00EA3C28 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9407391B1A0A7E7D00EA3C28 /* StoreKit.framework */; };
 		940BE0E21528CEF300CBAE18 /* GitDiffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0E01528CEF300CBAE18 /* GitDiffViewController.m */; };
 		940BE0E41528CEF300CBAE18 /* GitDiffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940BE0E11528CEF300CBAE18 /* GitDiffViewController.xib */; };
 		940BE0F01528E64600CBAE18 /* DiffFileListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0EE1528E64600CBAE18 /* DiffFileListController.m */; };
@@ -692,7 +693,6 @@
 		94B1DCC5191F6D7F00909C3E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC271546F31700931747 /* SystemConfiguration.framework */; };
 		94B1DCC7191F6E8000909C3E /* GitLogViewCongroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 941656FD1515C3C200838005 /* GitLogViewCongroller.m */; };
 		94B1DCC8191F6E8700909C3E /* GitDiffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0E01528CEF300CBAE18 /* GitDiffViewController.m */; };
-		94B1DCC9191F6E9500909C3E /* GitLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941656FE1515C3C200838005 /* GitLogViewController.xib */; };
 		94B1DCCA191F6E9E00909C3E /* GitLogTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941657111516280200838005 /* GitLogTableCell.xib */; };
 		94B1DCCB191F6EBB00909C3E /* GitDiffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940BE0E11528CEF300CBAE18 /* GitDiffViewController.xib */; };
 		94B1DCCC191F6EC500909C3E /* DiffFileListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BE0EE1528E64600CBAE18 /* DiffFileListController.m */; };
@@ -1196,6 +1196,7 @@
 		940739111A091BC500EA3C28 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		940739131A091BCF00EA3C28 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		940739161A091F1100EA3C28 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9407391B1A0A7E7D00EA3C28 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		940BE0DF1528CEF300CBAE18 /* GitDiffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitDiffViewController.h; sourceTree = "<group>"; };
 		940BE0E01528CEF300CBAE18 /* GitDiffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitDiffViewController.m; sourceTree = "<group>"; };
 		940BE0E11528CEF300CBAE18 /* GitDiffViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GitDiffViewController.xib; sourceTree = "<group>"; };
@@ -1896,6 +1897,7 @@
 				94205715157B939B00178CBF /* QuartzCore.framework in Frameworks */,
 				94A3B09B15447C7500C8E132 /* Security.framework in Frameworks */,
 				94ADF16E14BB27EE00BA807A /* iAd.framework in Frameworks */,
+				9407391C1A0A7E7D00EA3C28 /* StoreKit.framework in Frameworks */,
 				94ADF16F14BB27EE00BA807A /* libZip.a in Frameworks */,
 				94ADF17014BB27EE00BA807A /* CFNetwork.framework in Frameworks */,
 				94ADF17114BB27EE00BA807A /* libHttpService.a in Frameworks */,
@@ -2079,6 +2081,7 @@
 		9431D73714910B3000B0900E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9407391B1A0A7E7D00EA3C28 /* StoreKit.framework */,
 				940739161A091F1100EA3C28 /* AVFoundation.framework */,
 				940739131A091BCF00EA3C28 /* EventKitUI.framework */,
 				940739111A091BC500EA3C28 /* EventKit.framework */,
@@ -3123,7 +3126,7 @@
 						DevelopmentTeam = KTWHB3SHL5;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -3368,7 +3371,6 @@
 				94D0A9331976D282002EEFCE /* show_toolbar.png in Resources */,
 				9445C8AF193CAF1C00924D41 /* Images.xcassets in Resources */,
 				94D0A9351976E47B002EEFCE /* FileBrowser.png in Resources */,
-				94B1DCC9191F6E9500909C3E /* GitLogViewController.xib in Resources */,
 				94D0A9311976D277002EEFCE /* back_arrow.png in Resources */,
 				94B1DCF7191F70D000909C3E /* SelectGroupViewController.xib in Resources */,
 				949DC2321583E8CF00385796 /* cFile.png in Resources */,
@@ -4769,7 +4771,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",

@@ -302,8 +302,8 @@ _diff (argv)
   /* Print any messages that were saved up for last.  */
   print_message_queue ();
 
-  check_stdout ();
   //lgz
+//    check_stdout ();
     //exit (val);
     //lgz
     free(switch_string);

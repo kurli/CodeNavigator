@@ -8,8 +8,6 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIcons</key>
-	<dict/>
 	<key>CFBundleIdentifier</key>
 	<string>com.guangzhen.CodeNavigatorLite</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -22,15 +20,6 @@
 	<string>5.1.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>db-bqhgzckmfs89awp</string>
-			</array>
-		</dict>
-	</array>
 	<key>CFBundleVersion</key>
 	<string>5.1.1</string>
 	<key>LSRequiresIPhoneOS</key>

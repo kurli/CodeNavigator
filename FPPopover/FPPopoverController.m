@@ -270,7 +270,10 @@
         //keep the first subview
         if(_window.subviews.count > 0)
         {
-            _parentView = [_window.subviews objectAtIndex:0];
+            _parentView= [[[UIApplication sharedApplication].windows sortedArrayUsingComparator:^NSComparisonResult(UIWindow *win1, UIWindow *win2) {
+                return win1.windowLevel - win2.windowLevel;
+            }] lastObject];
+//            _parentView = [_window.subviews lastObject];
             [_parentView addSubview:self.view];
             [_viewController viewDidAppear:YES];
         }
@@ -348,7 +351,6 @@
     }
      _window=nil;
      _parentView=nil;
-    
 }
 
 -(BOOL) isPopoverVisible {
@@ -394,6 +396,9 @@
 
 -(void)deviceOrientationDidChange:(NSNotification*)notification
 {
+    if (_window == nil && _parentView == nil) {
+        return;
+    }
 	_deviceOrientation = [UIDevice currentDevice].orientation;
 
 	BOOL shouldResetView = NO;

@@ -109,11 +109,11 @@ typedef enum _changeType
     self.popOverController = [[UIPopoverController alloc] initWithContentViewController:diffFileListController];
 #endif
     CGSize size = diffFileListController.view.frame.size;
-    size.width = size.width / 2;
-    size.height = size.height /2;
-    popOverController.popoverContentSize = size;
+//    size.width = size.width / 2;
+//    size.height = size.height / 2;
+    self.popOverController.popoverContentSize = size;
 #ifdef IPHONE_VERSION
-    [popOverController presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES andToolBar:self.toolBar];
+    [self.popOverController presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES andToolBar:self.toolBar];
 #else
     [popOverController presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 #endif
@@ -519,8 +519,8 @@ typedef enum _changeType
     self.popOverController = [[UIPopoverController alloc] initWithContentViewController:diffFileListController];
 #endif
     CGSize size = diffFileListController.view.frame.size;
-    size.width = size.width / 2;
-    size.height = size.height / 2;
+//    size.width = size.width / 2;
+//    size.height = size.height / 2;
     popOverController.popoverContentSize = size;
 #ifdef IPHONE_VERSION
     [popOverController presentPopoverFromBarButtonItem:barItem permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES andToolBar:self.toolBar];
