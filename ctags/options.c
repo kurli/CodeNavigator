@@ -490,7 +490,7 @@ extern void setDefaultTagFileName (void)
 	else if (Option.etags)
 		Option.tagFileName = stringCopy (ETAGS_FILE);
 	else
-        Option.tagFileName = stringCopy (fileName);
+        Option.tagFileName = stringCopy (ctag_fileName);
 }
 
 extern boolean filesRequired (void)

@@ -104,6 +104,9 @@ static struct { long files, lines, bytes; } Totals = { 0, 0, 0 };
   " "AUTHOR_NAME" $";
 #endif
 
+const char* ctag_fileName;
+
+
 /*
 *   FUNCTION PROTOTYPES
 */
@@ -524,7 +527,7 @@ static void makeTags (cookedArgs *args)
 
 int ctags_main (int argc, char **argv, const char* fn)
 {
-    fileName = fn;
+    ctag_fileName = fn;
 	cookedArgs *args;
     struct sExtFields *field = &Option.extensionFields;
 //    long *ddd = &(Option.debugLevel);

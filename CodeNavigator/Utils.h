@@ -173,6 +173,8 @@ typedef enum _SearchType{
 
 -(BOOL) isDocType:(NSString*)file;
 
+-(BOOL) isMarkDownType:(NSString*)file;
+
 -(BOOL) isWebType:(NSString*)file;
 
 -(BOOL) isProjectDatabaseFile:(NSString *)file;

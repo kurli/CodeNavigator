@@ -118,18 +118,34 @@
 
     NSDictionary *options = @{ GTRepositoryCloneOptionsCheckout: @YES , GTRepositoryCloneOptionsCredentialProvider: provider, GTRepositoryCloneOptionsTransportFlags : @YES};
     
-    repo = (GTRepository*)[GTRepository cloneFromURL:[NSURL URLWithString:remoteUrl] toWorkingDirectory:[NSURL fileURLWithPath:gitFolder] options:options error:&error transferProgressBlock:^(const git_transfer_progress *progress) {
+    repo = (GTRepository*)[GTRepository cloneFromURL:[NSURL URLWithString:remoteUrl] toWorkingDirectory:[NSURL fileURLWithPath:gitFolder] options:options error:&error transferProgressBlock:^(const git_transfer_progress *progress, BOOL *stop) {
             dispatch_sync(dispatch_get_main_queue(), ^{
-                NSString* log = [NSString stringWithFormat:@"remote: Counting objects: %.0f%% (%d/%d).", 100*((float)(progress->received_objects)/(float)(progress->total_objects)), progress->received_objects, progress->total_objects];
+                int mod = (progress->total_objects)/200;
+                if (mod > 0) {
+                    int mod2 = (progress->received_objects)%mod;
+                    if (mod2 != 0) {
+                        return;
+                    }
+                }
+                float percent = 100*((float)(progress->received_objects)/(float)(progress->total_objects));
+                NSString* log = [NSString stringWithFormat:@"remote: Counting objects: %.0f%% (%d/%d).", percent, progress->received_objects, progress->total_objects];
                 [self replaceLastLine:log];
             });
         } checkoutProgressBlock:^(NSString *path, NSUInteger completedSteps, NSUInteger totalSteps) {
             dispatch_sync(dispatch_get_main_queue(), ^{
-                NSString* log = [NSString stringWithFormat:@"Checking out:[%ld/%ld] %@", (unsigned long)completedSteps, totalSteps, path];
-                [self addLog:log andNewLine:YES];
+                NSString* path2 = [path stringByDeletingLastPathComponent];
+                if ([path2 pathComponents].count > 2) {
+                    path2 = [path2 stringByDeletingLastPathComponent];
+                }
+                if([self.lastPath isEqualToString:path2]) {
+                    return;
+                }
+                self.lastPath = path2;
+                NSString* log = [NSString stringWithFormat:@"Checking out:[%ld/%ld] %@", (unsigned long)completedSteps, (unsigned long)totalSteps, path];
+                [self replaceLastLine:log];
             });
         }];
-    
+
     if (error != NULL) {
         const git_error *gitLastError = giterr_last();
         dispatch_async(dispatch_get_main_queue(), ^{

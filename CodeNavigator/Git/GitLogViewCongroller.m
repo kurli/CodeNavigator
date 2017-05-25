@@ -241,7 +241,7 @@
     GTEnumerator* enumerator = [[GTEnumerator alloc] initWithRepository:repo error:NULL];
     [enumerator resetWithOptions:GTEnumeratorOptionsTimeSort];
     GTReference *headRef = [repo headReferenceWithError:NULL];
-    [enumerator pushSHA:headRef.targetSHA error:NULL];
+    [enumerator pushSHA:headRef.OID.SHA error:NULL];
     return [enumerator allObjects];
 }
 
@@ -395,15 +395,15 @@
 //            }
             PendingData *pending = [[PendingData alloc] init];
             switch (delta.type) {
-                case GTDiffFileDeltaAdded:
+                case GTDeltaTypeAdded:
                     [fileList appendFormat:@"[A] %@\n", newPath];
                     [pending setPath:newPath];
                     break;
-                case GTDiffFileDeltaModified:                    
+                case  GTDeltaTypeModified:
                     [fileList appendFormat:@"[M] %@\n", newPath];
                     [pending setPath:newPath];
                     break;
-                case GTDiffFileDeltaDeleted:
+                case GTDeltaTypeDeleted:
                     [fileList appendFormat:@"[D] %@\n", oldPath];
                     [pending setPath:oldPath];
                     break;

@@ -103,7 +103,7 @@
     }
     GTBranch* selectedBranch = [self.gitBranchController.branches objectAtIndex:indexPath.row];
     GTBranch* currentBranch = self.gitBranchController.currentBranch;
-    if ([selectedBranch.SHA compare:currentBranch.SHA] == NSOrderedSame) {
+    if ([selectedBranch.OID.SHA compare:currentBranch.OID.SHA] == NSOrderedSame) {
         if ([selectedBranch.name compare:currentBranch.name] == NSOrderedSame) {
             return;
         }

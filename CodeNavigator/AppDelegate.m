@@ -11,15 +11,15 @@
 #import "DetailViewController.h"
 #import "Utils.h"
 #import "MGSplitViewController.h"
-#import <DropboxSDK/DropboxSDK.h>
-#import "DropBoxViewController.h"
+//#import <DropboxSDK/DropboxSDK.h>
+//#import "DropBoxViewController.h"
 #import "SecurityViewController.h"
 #ifndef LITE_VERSION
 #import "HandleURLController.h"
 #endif
 #import "iRate.h"
 
-#import "GAI.h"
+//#import "GAI.h"
 
 @implementation AppDelegate
 {
@@ -104,20 +104,20 @@
     });
     
     // Google Analytics// Optional: automatically send uncaught exceptions to Google Analytics.
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
+//    [GAI sharedInstance].trackUncaughtExceptions = YES;
     // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
-    [GAI sharedInstance].dispatchInterval = 120;
+//    [GAI sharedInstance].dispatchInterval = 120;
     // Optional: set debug to YES for extra debugging information.
     // Create tracker instance.
 //    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
 
 #ifdef LITE_VERSION
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-39030094-1"];
+//    [[GAI sharedInstance] trackerWithTrackingId:@"UA-39030094-1"];
 #else
 #ifdef IPHONE_VERSION
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-39030094-5"];
+//    [[GAI sharedInstance] trackerWithTrackingId:@"UA-39030094-5"];
 #else
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-39030094-2"];
+//    [[GAI sharedInstance] trackerWithTrackingId:@"UA-39030094-2"];
 #endif
 #endif
     
@@ -205,13 +205,13 @@
 #ifndef LITE_VERSION
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
 #ifndef IPHONE_VERSION
-    if ([[DBSession sharedSession] handleOpenURL:url]) {
-        if ([[DBSession sharedSession] isLinked]) {
-            [[Utils getInstance].dropBoxViewController loginSucceed];
-            // At this point you can start making API calls
-        }
-        return YES;
-    }
+//    if ([[DBSession sharedSession] handleOpenURL:url]) {
+//        if ([[DBSession sharedSession] isLinked]) {
+//            [[Utils getInstance].dropBoxViewController loginSucceed];
+//            // At this point you can start making API calls
+//        }
+//        return YES;
+//    }
 #endif
     if (handleURLController == nil) {
         handleURLController = [[HandleURLController alloc] init];

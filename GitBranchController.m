@@ -25,7 +25,7 @@
     NSString* projPath = [[_repo gitDirectoryURL] path];
     projPath = [projPath stringByDeletingLastPathComponent];
     [self setProjectPath:projPath];
-    self.branches = [_repo allBranchesWithError:&error];
+    self.branches = [_repo branches:&error];
     if (error != nil || [self.branches count] == 0) {
         return NO;
     }
@@ -89,7 +89,7 @@
             return;
         }
     }
-    GTBranch *newBranch = [repo createBranchNamed:branch.shortName fromOID:[[GTOID alloc] initWithSHA:branch.SHA] committer:nil message:nil error:&error];
+    GTBranch *newBranch = [repo createBranchNamed:branch.shortName fromOID:[[GTOID alloc] initWithSHA:branch.OID.SHA] message:nil error:&error];
     [repo checkoutReference:newBranch.reference strategy:GTCheckoutStrategyForce
                 notifyFlags:GTCheckoutNotifyNone error:&error progressBlock:nil notifyBlock:nil];
 
@@ -113,7 +113,7 @@
 
 -(void) update {
     NSError* error;
-    self.branches = [self.repo allBranchesWithError:&error];
+    self.branches = [self.repo branches:&error];
     self.currentBranch = [self.repo currentBranchWithError:&error];
 }
 
@@ -275,7 +275,7 @@ static int cred_acquire_cb(git_cred **out,
     git_remote *remote = _remote.git_remote;
 	const git_transfer_progress *stats;
 	git_remote_callbacks callbacks = GIT_REMOTE_CALLBACKS_INIT;
-    git_remote_check_cert(remote, 0);
+//    git_remote_check_cert(remote, 0);
     
     struct GTUpdatePayload payload;
     payload.credAcquireCB = ^(git_cred **_out){
@@ -298,7 +298,7 @@ static int cred_acquire_cb(git_cred **out,
 	callbacks.sideband_progress = &progress_cb;
 	callbacks.credentials = &cred_acquire_cb;
     callbacks.payload = &payload;
-	git_remote_set_callbacks(remote, &callbacks);
+//	git_remote_set_callbacks(remote, &callbacks);
     
     stats = git_remote_stats(remote);
     
@@ -308,7 +308,7 @@ static int cred_acquire_cb(git_cred **out,
     [self appendLog:logView andStr:@"Connecting...\n"];
     [self appendLog:logView andStr:_remote.URLString];
     [self appendLog:logView andStr:@"\n"];
-	if (git_remote_connect(remote, GIT_DIRECTION_FETCH) < 0) {
+	if (git_remote_connect(remote, GIT_DIRECTION_FETCH, &callbacks, NULL, NULL) < 0) {
 		networkError = YES;
         [self appendLog:logView andStr:[NSString stringWithFormat:@"Can't connect to remote server:\n %@\n", _remote.URLString ]];
 	}
@@ -318,12 +318,14 @@ static int cred_acquire_cb(git_cred **out,
 	// inform the user about progress.
     if (!networkError) {
         [self appendLog:logView andStr:@"Checking & Downloading...\n"];
-        int ret = git_remote_download(remote);
+        git_fetch_options options = GIT_FETCH_OPTIONS_INIT;
+
+        int ret = git_remote_download(remote, NULL, &options);
         if (ret < 0) {
             [self appendLog:logView andStr:[NSString stringWithFormat:@"Internal error: %d\n", ret]];
         }
         git_remote_disconnect(remote);
-        git_remote_update_tips(remote, NULL, NULL);
+        git_remote_update_tips(remote, &callbacks, 1,  options.download_tags, NULL);
     }
 
     // Merge branch
@@ -334,12 +336,12 @@ static int cred_acquire_cb(git_cred **out,
         [self appendLog:logView andStr:@"Merging...\n"];
         NSString* newBranchName = [trackingBranch.shortName stringByAppendingString:@"--kurli"];
         // Checkout to tracking brnch
-        GTBranch *newBranch = [repo createBranchNamed:newBranchName fromOID:[[GTOID alloc] initWithSHA:trackingBranch.SHA] committer:nil message:nil error:&error];
+        GTBranch *newBranch = [repo createBranchNamed:newBranchName fromOID:[[GTOID alloc] initWithSHA:trackingBranch.OID.SHA] message:nil error:&error];
         if (newBranch == nil) {
             BOOL success = NO;
             GTBranch* tmpBranch = [repo lookUpBranchWithName:newBranchName type:GTBranchTypeLocal success:&success error:&error];
             [tmpBranch deleteWithError:&error];
-            newBranch = [repo createBranchNamed:newBranchName fromOID:[[GTOID alloc] initWithSHA:trackingBranch.SHA] committer:nil message:nil error:&error];
+            newBranch = [repo createBranchNamed:newBranchName fromOID:[[GTOID alloc] initWithSHA:trackingBranch.OID.SHA] message:nil error:&error];
             if (newBranch == nil) {
                 [self appendLog:logView andStr:@"Merge failed.\nerr code:1\n"];
                 return;
@@ -351,7 +353,7 @@ static int cred_acquire_cb(git_cred **out,
         [self.currentBranch deleteWithError:&error];
         // Checkout to new branch
         newBranchName = [newBranchName stringByReplacingOccurrencesOfString:@"--kurli" withString:@""];
-        self.currentBranch = [repo createBranchNamed:newBranchName fromOID:[[GTOID alloc] initWithSHA:trackingBranch.SHA] committer:nil message:nil error:&error];
+        self.currentBranch = [repo createBranchNamed:newBranchName fromOID:[[GTOID alloc] initWithSHA:trackingBranch.OID.SHA]  message:nil error:&error];
         if (self.currentBranch == nil) {
             [self appendLog:logView andStr:@"Merge failed.\nerr code:2\n"];
             return;

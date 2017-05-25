@@ -31,6 +31,8 @@
 
 @property (strong, nonatomic) NSString* needCloneProjectName;
 
+@property (strong, nonatomic) NSString* lastPath;
+
 @property (weak, nonatomic) IBOutlet UIButton *cloneButton;
 
 @property (unsafe_unretained, nonatomic) GTRepository* repo;

@@ -80,17 +80,11 @@
 #else
         case 2:
 #ifndef LITE_VERSION
-            [masterViewController dropBoxClicked:nil];
-            [[Utils getInstance] addGAEvent:@"Add" andAction:@"DropBox" andLabel:nil andValue:nil];
-#endif
-            break;
-        case 3:
-#ifndef LITE_VERSION
             [masterViewController downloadZipFromGitHub];
             [[Utils getInstance] addGAEvent:@"Add" andAction:@"GitHubZip" andLabel:nil andValue:nil];
 #endif
             break;
-        case 4:
+        case 3:
 #ifndef LITE_VERSION
             [masterViewController uploadFromITunes];
             [[Utils getInstance] addGAEvent:@"Add" andAction:@"iTunes Transfer" andLabel:nil andValue:nil];
@@ -103,11 +97,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#ifdef IPHONE_VERSION
     return 4;
-#else
-    return 5;
-#endif
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -144,19 +134,12 @@
     }
 #else
     } else if (indexPath.row == 2) {
-        //cell.imageView.image = [UIImage imageNamed:@"share.png"];
-        cell.textLabel.text = @"Dropbox";
-#ifdef LITE_VERSION
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        [cell.textLabel setTextColor: [UIColor grayColor]];
-#endif
-    } else if (indexPath.row == 3) {
         cell.textLabel.text = @"Download ZIP from GitHub";
 #ifdef LITE_VERSION
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell.textLabel setTextColor: [UIColor grayColor]];
 #endif
-    } else if (indexPath.row == 4) {
+    } else if (indexPath.row == 3) {
         cell.textLabel.text = @"iTunes Transfer";
 #ifdef LITE_VERSION
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];

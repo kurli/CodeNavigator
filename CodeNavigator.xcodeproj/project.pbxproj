@@ -22,7 +22,6 @@
 		940CDAE319D87C1300BF5DAB /* LuaParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CDAE219D87C1300BF5DAB /* LuaParser.m */; };
 		940CDAE419D87C1300BF5DAB /* LuaParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CDAE219D87C1300BF5DAB /* LuaParser.m */; };
 		940CDAE519D87C1300BF5DAB /* LuaParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 940CDAE219D87C1300BF5DAB /* LuaParser.m */; };
-		940D94DD18F99D8F006D5D0D /* libObjectiveGit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* libObjectiveGit-iOS.a */; };
 		94103DF014D86F1300212EBB /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 94103DEF14D86F1300212EBB /* bookmark.png */; };
 		94103DF114D86F1300212EBB /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 94103DEF14D86F1300212EBB /* bookmark.png */; };
 		941656FF1515C3C200838005 /* GitLogViewCongroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 941656FD1515C3C200838005 /* GitLogViewCongroller.m */; };
@@ -534,7 +533,6 @@
 		949DC2031583E8CF00385796 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94205713157B938B00178CBF /* QuartzCore.framework */; };
 		949DC2041583E8CF00385796 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC251546F30900931747 /* MessageUI.framework */; };
 		949DC2051583E8CF00385796 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A5184A152DF30A0062DA65 /* Security.framework */; };
-		949DC2071583E8CF00385796 /* libZip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434BFB314A389BE00B34419 /* libZip.a */; };
 		949DC2081583E8CF00385796 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9417EB7714AE118000224D2A /* iAd.framework */; };
 		949DC2091583E8CF00385796 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4038014A0ED4700E3A636 /* CFNetwork.framework */; };
 		949DC20A1583E8CF00385796 /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4033014A0D5EB00E3A636 /* libHttpService.a */; };
@@ -603,12 +601,9 @@
 		94A430EA196EF328003497CB /* UploadFromITunesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A430E8196EF328003497CB /* UploadFromITunesViewController.xib */; };
 		94A5079314F6AA1C00587A47 /* virbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5079214F6AA1C00587A47 /* virbackground.png */; };
 		94A5079414F6AA1C00587A47 /* virbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 94A5079214F6AA1C00587A47 /* virbackground.png */; };
-		94A51848152DF2AC0062DA65 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A51847152DF2AC0062DA65 /* DropboxSDK.framework */; };
 		94A51849152DF2AC0062DA65 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A51847152DF2AC0062DA65 /* DropboxSDK.framework */; };
 		94A5184B152DF30A0062DA65 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A5184A152DF30A0062DA65 /* Security.framework */; };
-		94A51850152DF8D70062DA65 /* DropBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A5184E152DF8D70062DA65 /* DropBoxViewController.m */; };
 		94A51851152DF8D70062DA65 /* DropBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A5184E152DF8D70062DA65 /* DropBoxViewController.m */; };
-		94A51852152DF8D70062DA65 /* DropBoxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A5184F152DF8D70062DA65 /* DropBoxViewController.xib */; };
 		94A51853152DF8D70062DA65 /* DropBoxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94A5184F152DF8D70062DA65 /* DropBoxViewController.xib */; };
 		94AB105517550CD500359AE8 /* HandleURLController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB105417550CD500359AE8 /* HandleURLController.m */; };
 		94AB10591755146E00359AE8 /* FileFormatResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB10581755146E00359AE8 /* FileFormatResolver.m */; };
@@ -685,7 +680,6 @@
 		94B1DCBB191F5B0700909C3E /* VersionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9444595918D72B8C008A02DB /* VersionViewController.m */; };
 		94B1DCBC191F5B0800909C3E /* VersionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9444595918D72B8C008A02DB /* VersionViewController.m */; };
 		94B1DCBD191F62DB00909C3E /* VersionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9444595A18D72B8C008A02DB /* VersionViewController.xib */; };
-		94B1DCC0191F64E100909C3E /* libObjectiveGit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* libObjectiveGit-iOS.a */; };
 		94B1DCC1191F650C00909C3E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94785A54184519660012988B /* libz.dylib */; };
 		94B1DCC2191F655100909C3E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94785A411840FAB90012988B /* libiconv.dylib */; };
 		94B1DCC3191F6D2700909C3E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94407B1A16E7BCBD0011F941 /* CoreData.framework */; };
@@ -832,7 +826,6 @@
 		94BA22DC18D0CBB7006CB7A8 /* GitBranchsManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22DA18D0CBB7006CB7A8 /* GitBranchsManagerViewController.m */; };
 		94BA22DD18D0CBB7006CB7A8 /* GitBranchsManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BA22DB18D0CBB7006CB7A8 /* GitBranchsManagerViewController.xib */; };
 		94BA22E118D1EDB1006CB7A8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BA22E018D1EDB1006CB7A8 /* MBProgressHUD.m */; };
-		94BC575018D8969B0027B383 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BC574F18D8969B0027B383 /* libGoogleAnalyticsServices.a */; };
 		94BC575118D8969B0027B383 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BC574F18D8969B0027B383 /* libGoogleAnalyticsServices.a */; };
 		94BC575218D897EA0027B383 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94407B1A16E7BCBD0011F941 /* CoreData.framework */; };
 		94BC575318D89B730027B383 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC271546F31700931747 /* SystemConfiguration.framework */; };
@@ -974,6 +967,7 @@
 		94D8703114A65888002F2DBB /* FilePathInfoPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D8702F14A65887002F2DBB /* FilePathInfoPopupController.m */; };
 		94D8703214A65888002F2DBB /* FilePathInfoPopupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D8703014A65888002F2DBB /* FilePathInfoPopupController.xib */; };
 		94DA0BBE14A624690035DB39 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DA0BBD14A624680035DB39 /* Utils.m */; };
+		94DC6E941E6AE99800D398E5 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94DC6E931E6AE99800D398E5 /* Launch Screen.storyboard */; };
 		94DDE5FF1997CAC20034B193 /* ChartBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5D41997CAC20034B193 /* ChartBoardViewController.m */; };
 		94DDE6001997CAC20034B193 /* ChartBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5D41997CAC20034B193 /* ChartBoardViewController.m */; };
 		94DDE6011997CAC20034B193 /* ChartBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DDE5D41997CAC20034B193 /* ChartBoardViewController.m */; };
@@ -1078,6 +1072,12 @@
 		94FB0FEB14BDB3A50084E457 /* HighLightWordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FB0FE914BDB3A50084E457 /* HighLightWordController.m */; };
 		94FB0FEC14BDB3A50084E457 /* HighLightWordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94FB0FE914BDB3A50084E457 /* HighLightWordController.m */; };
 		94FB0FED14BDB3A50084E457 /* HighLightWordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */; };
+		BC4A6E681ED48B86000A328A /* ObjectiveGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */; };
+		BC4A6E691ED48B86000A328A /* ObjectiveGit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BC4A6E841ED5E086000A328A /* markdown.min.js in Resources */ = {isa = PBXBuildFile; fileRef = BC4A6E831ED5E086000A328A /* markdown.min.js */; };
+		BC4A6E851ED6D71D000A328A /* ObjectiveGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */; };
+		BC4A6E861ED6D71D000A328A /* ObjectiveGit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BC4A6E8B1ED6D780000A328A /* libZip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434BFB314A389BE00B34419 /* libZip.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1100,13 +1100,6 @@
 			containerPortal = 940D94BB18F99B75006D5D0D /* ObjectiveGitFramework.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 04DB4645133AB57600D9C624;
-			remoteInfo = "ObjectiveGit-iOS";
-		};
-		940D94D318F99D70006D5D0D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 940D94BB18F99B75006D5D0D /* ObjectiveGitFramework.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 04DB4644133AB57600D9C624;
 			remoteInfo = "ObjectiveGit-iOS";
 		};
 		9434BFB214A389BE00B34419 /* PBXContainerItemProxy */ = {
@@ -1151,13 +1144,6 @@
 			remoteGlobalIDString = 94B4031A14A0D5EA00E3A636;
 			remoteInfo = HttpService;
 		};
-		94B1DCBE191F64D600909C3E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 940D94BB18F99B75006D5D0D /* ObjectiveGitFramework.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 04DB4644133AB57600D9C624;
-			remoteInfo = "ObjectiveGit-iOS";
-		};
 		94B4032F14A0D5EB00E3A636 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */;
@@ -1172,7 +1158,53 @@
 			remoteGlobalIDString = 94B4031A14A0D5EA00E3A636;
 			remoteInfo = HttpService;
 		};
+		94FF460D1E59CA9500B21AC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 940D94BB18F99B75006D5D0D /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F879D8361B4B7F7C002D5C07;
+			remoteInfo = "ObjectiveGit-iOSTests";
+		};
+		BC4A6E6A1ED48B86000A328A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 940D94BB18F99B75006D5D0D /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D01B6ED219F82E2000D411BC;
+			remoteInfo = "ObjectiveGit-iOS";
+		};
+		BC4A6E871ED6D71D000A328A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 940D94BB18F99B75006D5D0D /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D01B6ED219F82E2000D411BC;
+			remoteInfo = "ObjectiveGit-iOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BC4A6E6C1ED48B86000A328A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BC4A6E691ED48B86000A328A /* ObjectiveGit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC4A6E891ED6D71D000A328A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BC4A6E861ED6D71D000A328A /* ObjectiveGit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9402E02D18140D70005A97D4 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../ios-openssl/lib/libssl.a"; sourceTree = "<group>"; };
@@ -1721,6 +1753,7 @@
 		94D8703014A65888002F2DBB /* FilePathInfoPopupController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilePathInfoPopupController.xib; sourceTree = "<group>"; };
 		94DA0BBC14A624680035DB39 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		94DA0BBD14A624680035DB39 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		94DC6E931E6AE99800D398E5 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		94DDE5D31997CAC20034B193 /* ChartBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartBoardViewController.h; sourceTree = "<group>"; };
 		94DDE5D41997CAC20034B193 /* ChartBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartBoardViewController.m; sourceTree = "<group>"; };
 		94DDE5D51997CAC20034B193 /* ChartBoardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartBoardViewController.xib; sourceTree = "<group>"; };
@@ -1817,6 +1850,7 @@
 		94FB0FE814BDB3A50084E457 /* HighLightWordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighLightWordController.h; sourceTree = "<group>"; };
 		94FB0FE914BDB3A50084E457 /* HighLightWordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighLightWordController.m; sourceTree = "<group>"; };
 		94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HighLightWordController.xib; sourceTree = "<group>"; };
+		BC4A6E831ED5E086000A328A /* markdown.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = markdown.min.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1829,10 +1863,10 @@
 				94A5184B152DF30A0062DA65 /* Security.framework in Frameworks */,
 				94DDE6981997CD990034B193 /* libicucore.dylib in Frameworks */,
 				94DDE6961997CD8E0034B193 /* CoreTelephony.framework in Frameworks */,
+				BC4A6E681ED48B86000A328A /* ObjectiveGit.framework in Frameworks */,
 				94205714157B938B00178CBF /* QuartzCore.framework in Frameworks */,
 				94BC575318D89B730027B383 /* SystemConfiguration.framework in Frameworks */,
 				94C95FEC198A8A8A005260B5 /* libsqlite3.dylib in Frameworks */,
-				940D94DD18F99D8F006D5D0D /* libObjectiveGit-iOS.a in Frameworks */,
 				94C7C171184E42B3003A8C03 /* Social.framework in Frameworks */,
 				94BC575218D897EA0027B383 /* CoreData.framework in Frameworks */,
 				94785A421840FAB90012988B /* libiconv.dylib in Frameworks */,
@@ -1843,9 +1877,7 @@
 				94B4036A14A0DE0300E3A636 /* libHttpService.a in Frameworks */,
 				9431D73914910B3000B0900E /* UIKit.framework in Frameworks */,
 				9431D73B14910B3000B0900E /* Foundation.framework in Frameworks */,
-				94BC575018D8969B0027B383 /* libGoogleAnalyticsServices.a in Frameworks */,
 				9431D73D14910B3000B0900E /* CoreGraphics.framework in Frameworks */,
-				94A51848152DF2AC0062DA65 /* DropboxSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1853,21 +1885,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC4A6E8B1ED6D780000A328A /* libZip.a in Frameworks */,
 				94EB3A3719F810BE00E45D7D /* libsqlite3.dylib in Frameworks */,
 				94C07F17197FFF6500DC1A6D /* Social.framework in Frameworks */,
 				94B1DCC2191F655100909C3E /* libiconv.dylib in Frameworks */,
 				94B1DCC1191F650C00909C3E /* libz.dylib in Frameworks */,
-				94B1DCC0191F64E100909C3E /* libObjectiveGit-iOS.a in Frameworks */,
 				949DC2031583E8CF00385796 /* QuartzCore.framework in Frameworks */,
 				949DC2041583E8CF00385796 /* MessageUI.framework in Frameworks */,
 				94B1DCC4191F6D2B00909C3E /* Twitter.framework in Frameworks */,
 				94B1DCC5191F6D7F00909C3E /* SystemConfiguration.framework in Frameworks */,
 				949DC2051583E8CF00385796 /* Security.framework in Frameworks */,
-				949DC2071583E8CF00385796 /* libZip.a in Frameworks */,
 				949DC2081583E8CF00385796 /* iAd.framework in Frameworks */,
 				949DC2091583E8CF00385796 /* CFNetwork.framework in Frameworks */,
 				94B1DCC3191F6D2700909C3E /* CoreData.framework in Frameworks */,
 				949DC20A1583E8CF00385796 /* libHttpService.a in Frameworks */,
+				BC4A6E851ED6D71D000A328A /* ObjectiveGit.framework in Frameworks */,
 				949DC20B1583E8CF00385796 /* UIKit.framework in Frameworks */,
 				94B1DCF8191F711300909C3E /* libGoogleAnalyticsServices.a in Frameworks */,
 				949DC20C1583E8CF00385796 /* Foundation.framework in Frameworks */,
@@ -1962,8 +1994,9 @@
 			isa = PBXGroup;
 			children = (
 				940D94C718F99B75006D5D0D /* ObjectiveGit.framework */,
-				940D94CB18F99B75006D5D0D /* libObjectiveGit-iOS.a */,
-				940D94C918F99B75006D5D0D /* ObjectiveGitTests.xctest */,
+				940D94C918F99B75006D5D0D /* ObjectiveGit-MacTests.xctest */,
+				940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */,
+				94FF460E1E59CA9500B21AC4 /* ObjectiveGit-iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2147,6 +2180,7 @@
 				94EE32D2149FAE0B0088501D /* GotoLineViewController.xib */,
 				948C740D1806E5A300065E65 /* Images.xcassets */,
 				9431D73F14910B3000B0900E /* Supporting Files */,
+				94DC6E931E6AE99800D398E5 /* Launch Screen.storyboard */,
 			);
 			path = CodeNavigator;
 			sourceTree = "<group>";
@@ -2276,6 +2310,7 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BC4A6E831ED5E086000A328A /* markdown.min.js */,
 				94E4C116199E7FDD003B0E82 /* projectGit.png */,
 				94E4C113199D1519003B0E82 /* CommentHide.png */,
 				9421EAC9196853D100EFD7E2 /* treeView.png */,
@@ -3056,13 +3091,14 @@
 				9431D73014910B3000B0900E /* Sources */,
 				9431D73114910B3000B0900E /* Frameworks */,
 				9431D73214910B3000B0900E /* Resources */,
+				BC4A6E6C1ED48B86000A328A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				940D94D418F99D70006D5D0D /* PBXTargetDependency */,
 				9434BFCB14A38ACD00B34419 /* PBXTargetDependency */,
 				94B4035214A0D75B00E3A636 /* PBXTargetDependency */,
+				BC4A6E6B1ED48B86000A328A /* PBXTargetDependency */,
 			);
 			name = CodeNavigator;
 			productName = CodeNavigator;
@@ -3076,13 +3112,14 @@
 				949DC1981583E8CF00385796 /* Sources */,
 				949DC2021583E8CF00385796 /* Frameworks */,
 				949DC20F1583E8CF00385796 /* Resources */,
+				BC4A6E891ED6D71D000A328A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				94B1DCBF191F64D600909C3E /* PBXTargetDependency */,
 				949DC1941583E8CF00385796 /* PBXTargetDependency */,
 				949DC1961583E8CF00385796 /* PBXTargetDependency */,
+				BC4A6E881ED6D71D000A328A /* PBXTargetDependency */,
 			);
 			name = "CodeNavigator-iPhone";
 			productName = CodeNavigator;
@@ -3114,7 +3151,7 @@
 		9431D72B14910B3000B0900E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0820;
 				TargetAttributes = {
 					9431D73314910B3000B0900E = {
 						DevelopmentTeam = KTWHB3SHL5;
@@ -3174,17 +3211,17 @@
 			remoteRef = 940D94C618F99B75006D5D0D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		940D94C918F99B75006D5D0D /* ObjectiveGitTests.xctest */ = {
+		940D94C918F99B75006D5D0D /* ObjectiveGit-MacTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = ObjectiveGitTests.xctest;
+			path = "ObjectiveGit-MacTests.xctest";
 			remoteRef = 940D94C818F99B75006D5D0D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		940D94CB18F99B75006D5D0D /* libObjectiveGit-iOS.a */ = {
+		940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */ = {
 			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libObjectiveGit-iOS.a";
+			fileType = wrapper.framework;
+			path = ObjectiveGit.framework;
 			remoteRef = 940D94CA18F99B75006D5D0D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -3200,6 +3237,13 @@
 			fileType = archive.ar;
 			path = libHttpService.a;
 			remoteRef = 94B4032F14A0D5EB00E3A636 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		94FF460E1E59CA9500B21AC4 /* ObjectiveGit-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ObjectiveGit-iOSTests.xctest";
+			remoteRef = 94FF460D1E59CA9500B21AC4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -3257,6 +3301,7 @@
 				94246665150383C2001701C4 /* javaFile.png in Resources */,
 				94246667150383C2001701C4 /* mFile.png in Resources */,
 				94246669150383C2001701C4 /* mkFile.png in Resources */,
+				94DC6E941E6AE99800D398E5 /* Launch Screen.storyboard in Resources */,
 				9424666B150383C2001701C4 /* mmFile.png in Resources */,
 				9424666D150383C2001701C4 /* sFile.png in Resources */,
 				945AA3F81507B13E006729C8 /* back.png in Resources */,
@@ -3274,7 +3319,6 @@
 				94E6DB63152C9EFF004DBD87 /* DiffInfoListViewController.xib in Resources */,
 				94E6DB66152CBF41004DBD87 /* GidDiffTableCell.xib in Resources */,
 				94E3761618D495A5006756A3 /* GitUpdateViewController.xib in Resources */,
-				94A51852152DF8D70062DA65 /* DropBoxViewController.xib in Resources */,
 				9457C78E153086FC00BB9185 /* masterView_bg.png in Resources */,
 				94F9BAF318EAF4F200CD7C2C /* Themes in Resources */,
 				9457C7911530923800BB9185 /* nav_backButton_icon.png in Resources */,
@@ -3301,6 +3345,7 @@
 				94352107153EFC1E003F316A /* version_control.png in Resources */,
 				948C74021804489200065E65 /* settings@2x.png in Resources */,
 				9443D1F0154EDA6A008CB52D /* SecurityViewController.xib in Resources */,
+				BC4A6E841ED5E086000A328A /* markdown.min.js in Resources */,
 				9443D1F3154FF4D8008CB52D /* Lock.png in Resources */,
 				948F1C7515583B7600AE4C99 /* CommentViewController.xib in Resources */,
 				9461817B155EEDAB00A25635 /* CommentManager.xib in Resources */,
@@ -3677,7 +3722,6 @@
 				94DDE61A1997CAC20034B193 /* JBChartInformationView.m in Sources */,
 				94DDE6201997CAC20034B193 /* JBChartTooltipView.m in Sources */,
 				94E6DB61152C9EFF004DBD87 /* DiffInfoListViewController.m in Sources */,
-				94A51850152DF8D70062DA65 /* DropBoxViewController.m in Sources */,
 				9457C78715307AF500BB9185 /* LocalFileControllerDelegate.m in Sources */,
 				9457C78B15307B1400BB9185 /* RemoteFileControllerDelegate.m in Sources */,
 				9443D1EE154EDA6A008CB52D /* SecurityViewController.m in Sources */,
@@ -4256,11 +4300,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		940D94D418F99D70006D5D0D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ObjectiveGit-iOS";
-			targetProxy = 940D94D318F99D70006D5D0D /* PBXContainerItemProxy */;
-		};
 		9434BFCB14A38ACD00B34419 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Zip;
@@ -4286,15 +4325,20 @@
 			name = HttpService;
 			targetProxy = 94ADF13D14BB27EE00BA807A /* PBXContainerItemProxy */;
 		};
-		94B1DCBF191F64D600909C3E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ObjectiveGit-iOS";
-			targetProxy = 94B1DCBE191F64D600909C3E /* PBXContainerItemProxy */;
-		};
 		94B4035214A0D75B00E3A636 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = HttpService;
 			targetProxy = 94B4035114A0D75B00E3A636 /* PBXContainerItemProxy */;
+		};
+		BC4A6E6B1ED48B86000A328A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ObjectiveGit-iOS";
+			targetProxy = BC4A6E6A1ED48B86000A328A /* PBXContainerItemProxy */;
+		};
+		BC4A6E881ED6D71D000A328A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ObjectiveGit-iOS";
+			targetProxy = BC4A6E871ED6D71D000A328A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -4330,20 +4374,26 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -4358,7 +4408,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DHAVE_CONFIG_H";
 				PROVISIONING_PROFILE = "";
@@ -4372,19 +4422,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -4393,7 +4448,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = (
 					"-DHAVE_CONFIG_H",
 					"-DNS_BLOCK_ASSERTIONS=1",
@@ -4410,13 +4465,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = KTWHB3SHL5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -4424,17 +4478,19 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
 				);
 				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = com.guangzhen.CodeNavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
-				VALID_ARCHS = armv7;
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit ~/Documents/iOS_Development/CodeNavigator/CodeNavigator";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4443,13 +4499,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = KTWHB3SHL5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -4457,17 +4512,19 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
 				);
 				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = com.guangzhen.CodeNavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
-				VALID_ARCHS = armv7;
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/Classes ~/Documents/iOS_Development/CodeNavigator/CodeNavigator";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -4476,19 +4533,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Guangzhen Li (PQJKU5VVU3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Guangzhen Li (PQJKU5VVU3)";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -4497,7 +4559,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = (
 					"-DHAVE_CONFIG_H",
 					"-DNS_BLOCK_ASSERTIONS=1",
@@ -4514,13 +4576,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = KTWHB3SHL5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -4529,17 +4590,19 @@
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DISTRIBUTION=1";
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
 				);
 				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = com.guangzhen.CodeNavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
-				VALID_ARCHS = armv7;
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/Classes ~/Documents/iOS_Development/CodeNavigator/CodeNavigator";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;
@@ -4571,22 +4634,23 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "CodeNavigatoriPhone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
 					"$(PROJECT_DIR)/GoogleAnalytics",
 					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = com.guangzhen.codenavigatoriphone;
 				PRODUCT_NAME = CodeNav;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
-				VALID_ARCHS = armv7;
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4614,21 +4678,23 @@
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "IPHONE_VERSION=1";
 				INFOPLIST_FILE = "CodeNavigatoriPhone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
 					"$(PROJECT_DIR)/GoogleAnalytics",
 					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = com.guangzhen.codenavigatoriphone;
 				PRODUCT_NAME = CodeNav;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
-				VALID_ARCHS = armv7;
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -4659,21 +4725,23 @@
 					"IPHONE_VERSION=1",
 				);
 				INFOPLIST_FILE = "CodeNavigatoriPhone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/ObjectiveGit/libgit2\"",
 					"$(PROJECT_DIR)/GoogleAnalytics",
 					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = com.guangzhen.codenavigatoriphone;
 				PRODUCT_NAME = CodeNav;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include /Users/lgz_software/Documents/iOS_Development/objective-git/Classes";
-				VALID_ARCHS = armv7;
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;
@@ -4702,7 +4770,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "CodeNavigatorLite-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\\\\\"$(SRCROOT)/ObjectiveGit/libgit2\\\\\\\"",
@@ -4714,6 +4782,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = com.guangzhen.CodeNavigatorLite;
 				PRODUCT_NAME = CodeNavigator;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -4744,7 +4813,7 @@
 				GCC_PREFIX_HEADER = "CodeNavigator/CodeNavigator-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "LITE_VERSION=1";
 				INFOPLIST_FILE = "CodeNavigatorLite-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\\\\\"$(SRCROOT)/ObjectiveGit/libgit2\\\\\\\"",
@@ -4755,6 +4824,7 @@
 					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = com.guangzhen.CodeNavigatorLite;
 				PRODUCT_NAME = CodeNavigator;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -4788,7 +4858,7 @@
 					"LITE_VERSION=1",
 				);
 				INFOPLIST_FILE = "CodeNavigatorLite-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\\\\\"$(SRCROOT)/ObjectiveGit/libgit2\\\\\\\"",
@@ -4799,6 +4869,7 @@
 					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = com.guangzhen.CodeNavigatorLite;
 				PRODUCT_NAME = CodeNavigator;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

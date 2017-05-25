@@ -27,7 +27,7 @@ extern void addTotals (const unsigned int files, const long unsigned int lines, 
 extern boolean isDestinationStdout (void);
 int ctags_main (int argc, char **argv, const char* fileName);
 
-const char* fileName;
+extern const char* ctag_fileName;
 
 #endif  /* _MAIN_H */
 

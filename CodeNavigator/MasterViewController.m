@@ -646,11 +646,11 @@
 
 - (IBAction)dropBoxClicked:(id)sender {
 #ifndef IPHONE_VERSION
-    [self releaseAllPopover];
-    DropBoxViewController* dropBoxViewController = [[DropBoxViewController alloc] initWithNibName:@"DropBoxViewController" bundle:[NSBundle mainBundle]];
-    [[Utils getInstance] setDropBoxViewController:dropBoxViewController];
-    [dropBoxViewController showModualView];
-    dropBoxViewController = nil;
+//    [self releaseAllPopover];
+//    DropBoxViewController* dropBoxViewController = [[DropBoxViewController alloc] initWithNibName:@"DropBoxViewController" bundle:[NSBundle mainBundle]];
+//    [[Utils getInstance] setDropBoxViewController:dropBoxViewController];
+//    [dropBoxViewController showModualView];
+//    dropBoxViewController = nil;
 #endif
     [[Utils getInstance] addGAEvent:@"Dropbox" andAction:@"Clicked" andLabel:nil andValue:nil];
 }
@@ -985,6 +985,12 @@
         return;
     }
     
+    if ([[Utils getInstance] isMarkDownType:path])
+    {
+        [controller displayMarkDownTypeFile:path];
+        return;
+    }
+
     [[Utils getInstance] getDisplayFile:path andProjectBase:self.currentProjectPath andFinishBlock:^(NSString* html) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSString* displayPath;

@@ -478,6 +478,20 @@
     [self adjustTitle];
 }
 
+-(void) displayMarkDownTypeFile:(NSString *)path
+{
+    int location = [self getCurrentScrollLocation];
+    [self.historyController updateCurrentScrollLocation:location];
+    [self.historyController pushUrl:path];
+    
+    NSURL *url = [NSURL fileURLWithPath:path];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [self.activeWebView setScalesPageToFit:YES];
+    [self.activeWebView loadRequest:request];
+    [self adjustTitle];
+}
+
+
 -(void) displayHTMLString:(NSString *)content andBaseURL:(NSString *)baseURLStr
 {
     NSURL* baseURL;

@@ -136,6 +136,8 @@ typedef enum _JSState {
 
 - (void) displayDocTypeFile: (NSString*) path;
 
+- (void) displayMarkDownTypeFile: (NSString*) path;
+
 //- (void) displayHTMLString: (NSString*)content andBaseURL:(NSString*)baseURL;
 
 - (int) getCurrentScrollLocation;

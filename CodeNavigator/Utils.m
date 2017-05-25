@@ -25,7 +25,7 @@
 #import "DisplayController.h"
 
 #import "GAI.h"
-#import "GAIDictionaryBuilder.h"
+//#import "GAIDictionaryBuilder.h"
 
 @implementation BuildThreadData
 
@@ -401,6 +401,18 @@ static Utils *static_utils;
         return YES;
     else if ([extension isEqualToString:@"pages"])
         return YES;
+    return NO;
+}
+
+-(BOOL) isMarkDownType:(NSString*)file
+{
+    NSString* extension = [file pathExtension];
+    extension = [extension lowercaseString];
+    if (nil == extension || [extension length] == 0) {
+        return NO;
+    } else if ([extension isEqualToString:@"md"]) {
+        return YES;
+    }
     return NO;
 }
 
@@ -1252,12 +1264,12 @@ static Utils *static_utils;
 }
 
 -(void) addGAEvent:(NSString*) category andAction:(NSString*) action andLabel:(NSString*)label andValue:(NSNumber*)number {
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:category
-                                                          action:action
-                                                           label:label
-                                                           value:number] build]];
+//    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+//    
+//    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:category
+//                                                          action:action
+//                                                           label:label
+//                                                           value:number] build]];
 }
 
 -(NSString*) getFileContent:(NSString*)path {

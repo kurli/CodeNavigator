@@ -51,9 +51,8 @@
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.versionDetailView setText:@"New Features & updates:\n\n\
-     1. Adapt iOs 8. \n\
-     2. Add launguage support: Lua, erlang. \n\
-     3. Bug fixes. \n\
+     1. Bug fixes \n\
+     2. Optimized git clone \n\
      More features will be comming soon. Enjoy it. :-)\n\n\
      Demos:\n\
      Youku (China): http://v.youku.com/v_show/id_XNzQwMDEyMjE2.html\n\
