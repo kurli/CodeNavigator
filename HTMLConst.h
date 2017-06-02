@@ -30,7 +30,6 @@ background:-BGCOL-;\n\
 }\n\
 \
 table.code {\n\
- font-family: FONT_FAMILY;\n\
  font-size: FONT_SIZEpx;\n\
  table-layout: fixed;\n\
  -webkit-border-vertical-spacing: 0px\n\
@@ -57,6 +56,7 @@ text-decoration: none;\n\
 }\n\
 pre {\n\
 margin:0px;\n\
+font-family: \"FONT_FAMILY\";\n\
 }\n\
 .linenumber{\n\
  border-right: solid;\n\
