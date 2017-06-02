@@ -10,7 +10,7 @@
 #import "Utils.h"
 #import "DisplayController.h"
 
-#define RELEASE_VERSION 8
+#define RELEASE_VERSION 9
 
 @interface VersionViewController ()
 
@@ -51,7 +51,7 @@
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.versionDetailView setText:@"New Features & updates:\n\n\
-     1. Bug fixes \n\
+     1. Support markdown, swift, fortran syntax highlighting \n\
      2. Optimized git clone \n\
      More features will be comming soon. Enjoy it. :-)\n\n\
      Demos:\n\
@@ -230,6 +230,7 @@
     
     NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/version"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:versionFile];
+//    isExist = NO;
     
     if (isExist == NO)
     {

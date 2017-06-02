@@ -340,10 +340,17 @@
 {
     if (isCurrentSearchFileMode == YES)
     {
+#ifdef IPHONE_VERSION
+        return 55.f;
+#else
         return 65.0f;
+#endif
     }
-
+#ifdef IPHONE_VERSION
+    return 50.0f;
+#else
     return 60.0f;
+#endif
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

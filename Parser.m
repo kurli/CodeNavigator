@@ -80,7 +80,25 @@
     }
 	else
     {
-		parser = nil;
+        NSString* name = @"";
+        if (FORTRAN == type) {
+            name = @"Fortran";
+        } else if (SWIFT == type) {
+            name = @"Swift";
+        } else {
+            parser = nil;
+            return;
+        }
+        ManuallyParser* mParser = [[ManuallyParser alloc] init];
+        NSDictionary* dictionary = [Parser getBuildInParserByName:name];
+        
+        [mParser setName:name];
+        [mParser setExtensions:[dictionary objectForKey:EXTENSION]];
+        [mParser setSingleLineComments:[dictionary objectForKey:SINGLE_LINE_COMMENTS]];
+        [mParser setMultilineCommentsS:[dictionary objectForKey:MULTI_LINE_COMMENTS_START]];
+        [mParser setMultilineCommentsE:[dictionary objectForKey:MULTI_LINE_COMMENTS_END]];
+        [mParser setKeywords:[dictionary objectForKey:KEYWORDS]];
+        parser = mParser;
     }
 }
 

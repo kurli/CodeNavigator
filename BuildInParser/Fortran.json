@@ -1,0 +1,6 @@
+{"keywords":"abort abs abstract accept access achar acos adjustl adjustr aimag aint alarm all allocatable allocate allocated alog amax amin amod and anint any array asin assign associated asynchronous atan backspace besj besjn besy besyn bind bit_size block btest byte c_alert c_associated c_backspace c_bool c_carriage_return c_char c_double c_double_complex c_f_pointer c_float c_float_complex c_form_feed c_funloc c_funptr c_horizontal_tab c_int c_int16_t c_int32_t c_int64_t c_int8_t c_int_fast16_t c_int_fast32_t c_int_fast64_t c_int_fast8_t c_int_least16_t c_int_least32_t c_int_least64_t c_int_least8_t c_intmax_t c_intptr_t c_loc c_long c_long_double c_long_double_complex c_long_long c_new_line c_null_char c_null_funptr c_null_ptr c_ptr c_short c_signed_char c_size_t c_vertical_tab cabs call case ccos ceiling cexp char character chdir chmod class clog close cmplx command_argument_count common complex complex conjg contains continue cos cosh count cpu_time cshift csin csqrt ctime cycle dabs dacos dasin data datan date_an",
+"extension":"f90 f95 for f",
+"multi_line_comments_start":"/*",
+"single_line_comments":"!",
+"multi_line_comments_end":"*/",
+"type":"14"}

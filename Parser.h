@@ -44,6 +44,8 @@ typedef enum _ParserType
     Go,
     ERLANG,
     LUA,//End
+    FORTRAN,
+    SWIFT,
     HTML,
     IMAGE,
     UNKNOWN

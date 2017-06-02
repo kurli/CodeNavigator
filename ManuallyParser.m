@@ -374,6 +374,16 @@
 {
     keywords = _keywords;
     keywordsArray = [keywords componentsSeparatedByString:@" "];
+
+//            keywordsArray = [keywordsArray sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+//                NSComparisonResult result = [a compare:b];
+//                return result;
+//            }];
+//            NSMutableString* str = [[NSMutableString alloc] init];
+//            for (int i=0; i<[keywordsArray count]; i++) {
+//                [str appendFormat:@"%@ ",[keywordsArray objectAtIndex:i]];
+//            }
+//            NSLog(str);
 }
 
 @end

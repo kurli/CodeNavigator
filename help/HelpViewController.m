@@ -55,12 +55,12 @@
     NSArray *toRecipients = [NSArray arrayWithObject:@"guangzhen@hotmail.com"];   
     [picker setToRecipients:toRecipients];
 #ifdef LITE_VERSION
-    [picker setSubject:@"CodeNavigator Lite v5.1.1 feedback"];
+    [picker setSubject:@"CodeNavigator Lite v6.0.0 feedback"];
 #else
 #ifdef IPHONE_VERSION
-    [picker setSubject:@"CodeNavigator iPhone v5.1.1.2 feedback"];
+    [picker setSubject:@"CodeNavigator iPhone v6.0.0 feedback"];
 #else
-    [picker setSubject:@"CodeNavigator v5.1.1 feedback"];
+    [picker setSubject:@"CodeNavigator v6.0.0 feedback"];
 #endif
 #endif
     [self presentViewController:picker animated:YES completion:nil];
@@ -300,12 +300,12 @@
 {
     if (section == 4) {
 #ifdef LITE_VERSION
-        return @"CodeNavigatorLite 5.1.1 Guangzhen Li\n@2011-2014";
+        return @"CodeNavigatorLite 6.0.0 Guangzhen Li\n@2011-2017";
 #else
 #ifdef IPHONE_VERSION
-        return @"CodeNavigator 5.1.1.2 Guangzhen Li\n@2011-2014";
+        return @"CodeNavigator 6.0.0 Guangzhen Li\n@2011-2017";
 #else
-        return @"CodeNavigator 5.1.1 Guangzhen Li\n@2011-2014";
+        return @"CodeNavigator 6.0.0 Guangzhen Li\n@2011-2017";
 #endif
 #endif
     }

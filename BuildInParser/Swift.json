@@ -1,0 +1,6 @@
+{"keywords":"Any AnyObject Array Bool Character Dictionary Double Float Int Int16 Int32 Int64 Int8 Never Optional Protocol Self Set String Type UInt16 UInt32 UInt64 UInt8 Void __COLUMN__ __FILE__ __FUNCTION__ __LINE__ as assignment associatedtype associatedtype associativity break case catch class class continue convenience default defer deinit didSet do dynamic dynamicType else enum enum extension extension fallthrough fileprivate final for for func func get guard if import import in indirect infix init inout internal is lazy left let let mutating new none nonmutating open operator override postfix precedence precedencegroup prefix private protocol protocol public repeat required rethrows return right self set static struct struct subscript super switch throw throws try typealias typealias unowned unowned(safe) unowned(unsafe) var var weak where while willSet",
+"extension":"swift",
+"multi_line_comments_start":"/*",
+"single_line_comments":"//",
+"multi_line_comments_end":"*/",
+"type":"15"}

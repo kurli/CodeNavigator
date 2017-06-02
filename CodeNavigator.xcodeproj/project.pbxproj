@@ -731,7 +731,6 @@
 		94B1DCF5191F70CB00909C3E /* SelectGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9478A45F190ADFCD0093279F /* SelectGroupViewController.m */; };
 		94B1DCF6191F70D000909C3E /* SelectGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9478A460190ADFCD0093279F /* SelectGroupViewController.xib */; };
 		94B1DCF7191F70D000909C3E /* SelectGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9478A460190ADFCD0093279F /* SelectGroupViewController.xib */; };
-		94B1DCF8191F711300909C3E /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BC574F18D8969B0027B383 /* libGoogleAnalyticsServices.a */; };
 		94B1DCFA191F714300909C3E /* HandleURLController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB105417550CD500359AE8 /* HandleURLController.m */; };
 		94B1DCFB191F715800909C3E /* OtherFormatResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB10651756548000359AE8 /* OtherFormatResolver.m */; };
 		94B1DCFC191F715A00909C3E /* OtherFormatResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AB10651756548000359AE8 /* OtherFormatResolver.m */; };
@@ -1074,10 +1073,13 @@
 		94FB0FED14BDB3A50084E457 /* HighLightWordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */; };
 		BC4A6E681ED48B86000A328A /* ObjectiveGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */; };
 		BC4A6E691ED48B86000A328A /* ObjectiveGit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BC4A6E841ED5E086000A328A /* markdown.min.js in Resources */ = {isa = PBXBuildFile; fileRef = BC4A6E831ED5E086000A328A /* markdown.min.js */; };
-		BC4A6E851ED6D71D000A328A /* ObjectiveGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */; };
-		BC4A6E861ED6D71D000A328A /* ObjectiveGit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BC4A6E8B1ED6D780000A328A /* libZip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434BFB314A389BE00B34419 /* libZip.a */; };
+		BC4A6E951ED83107000A328A /* libZip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434BFB314A389BE00B34419 /* libZip.a */; };
+		BC4A6E961ED832FC000A328A /* ObjectiveGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */; };
+		BC4A6E971ED832FC000A328A /* ObjectiveGit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BC4A6EAD1ED84F70000A328A /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */; };
+		BC4A6EAE1ED84F70000A328A /* MMMarkdown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BC4A6EB11ED84F7A000A328A /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */; };
+		BC4A6EB21ED84F7A000A328A /* MMMarkdown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1172,12 +1174,61 @@
 			remoteGlobalIDString = D01B6ED219F82E2000D411BC;
 			remoteInfo = "ObjectiveGit-iOS";
 		};
-		BC4A6E871ED6D71D000A328A /* PBXContainerItemProxy */ = {
+		BC4A6E981ED832FC000A328A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 940D94BB18F99B75006D5D0D /* ObjectiveGitFramework.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = D01B6ED219F82E2000D411BC;
 			remoteInfo = "ObjectiveGit-iOS";
+		};
+		BC4A6EA31ED84F5A000A328A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BED7620F1B37810000687B36;
+			remoteInfo = "MMMarkdown (iOS)";
+		};
+		BC4A6EA51ED84F5A000A328A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BED761571B374D6700687B36;
+			remoteInfo = "MMMarkdown (OS X)";
+		};
+		BC4A6EA71ED84F5A000A328A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BE23E8F41C0CF3EF0087F587;
+			remoteInfo = "MMMarkdown (tvOS)";
+		};
+		BC4A6EA91ED84F5A000A328A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BE23E9131C0CF77D0087F587;
+			remoteInfo = "MMMarkdown (watchOS)";
+		};
+		BC4A6EAB1ED84F5A000A328A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BED761611B374D6700687B36;
+			remoteInfo = MMMarkdownTests;
+		};
+		BC4A6EAF1ED84F70000A328A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BED7620E1B37810000687B36;
+			remoteInfo = "MMMarkdown (iOS)";
+		};
+		BC4A6EB31ED84F7A000A328A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BED7620E1B37810000687B36;
+			remoteInfo = "MMMarkdown (iOS)";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1189,17 +1240,19 @@
 			dstSubfolderSpec = 10;
 			files = (
 				BC4A6E691ED48B86000A328A /* ObjectiveGit.framework in Embed Frameworks */,
+				BC4A6EB21ED84F7A000A328A /* MMMarkdown.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BC4A6E891ED6D71D000A328A /* Embed Frameworks */ = {
+		BC4A6E9A1ED832FC000A328A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BC4A6E861ED6D71D000A328A /* ObjectiveGit.framework in Embed Frameworks */,
+				BC4A6E971ED832FC000A328A /* ObjectiveGit.framework in Embed Frameworks */,
+				BC4A6EAE1ED84F70000A328A /* MMMarkdown.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1850,7 +1903,7 @@
 		94FB0FE814BDB3A50084E457 /* HighLightWordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighLightWordController.h; sourceTree = "<group>"; };
 		94FB0FE914BDB3A50084E457 /* HighLightWordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighLightWordController.m; sourceTree = "<group>"; };
 		94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HighLightWordController.xib; sourceTree = "<group>"; };
-		BC4A6E831ED5E086000A328A /* markdown.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = markdown.min.js; sourceTree = "<group>"; };
+		BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMMarkdown.xcodeproj; path = ../MMMarkdown/MMMarkdown.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1868,6 +1921,7 @@
 				94BC575318D89B730027B383 /* SystemConfiguration.framework in Frameworks */,
 				94C95FEC198A8A8A005260B5 /* libsqlite3.dylib in Frameworks */,
 				94C7C171184E42B3003A8C03 /* Social.framework in Frameworks */,
+				BC4A6EB11ED84F7A000A328A /* MMMarkdown.framework in Frameworks */,
 				94BC575218D897EA0027B383 /* CoreData.framework in Frameworks */,
 				94785A421840FAB90012988B /* libiconv.dylib in Frameworks */,
 				9478C6DE15C8396300F443D9 /* Twitter.framework in Frameworks */,
@@ -1885,7 +1939,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC4A6E8B1ED6D780000A328A /* libZip.a in Frameworks */,
 				94EB3A3719F810BE00E45D7D /* libsqlite3.dylib in Frameworks */,
 				94C07F17197FFF6500DC1A6D /* Social.framework in Frameworks */,
 				94B1DCC2191F655100909C3E /* libiconv.dylib in Frameworks */,
@@ -1898,10 +1951,11 @@
 				949DC2081583E8CF00385796 /* iAd.framework in Frameworks */,
 				949DC2091583E8CF00385796 /* CFNetwork.framework in Frameworks */,
 				94B1DCC3191F6D2700909C3E /* CoreData.framework in Frameworks */,
+				BC4A6EAD1ED84F70000A328A /* MMMarkdown.framework in Frameworks */,
+				BC4A6E951ED83107000A328A /* libZip.a in Frameworks */,
+				BC4A6E961ED832FC000A328A /* ObjectiveGit.framework in Frameworks */,
 				949DC20A1583E8CF00385796 /* libHttpService.a in Frameworks */,
-				BC4A6E851ED6D71D000A328A /* ObjectiveGit.framework in Frameworks */,
 				949DC20B1583E8CF00385796 /* UIKit.framework in Frameworks */,
-				94B1DCF8191F711300909C3E /* libGoogleAnalyticsServices.a in Frameworks */,
 				949DC20C1583E8CF00385796 /* Foundation.framework in Frameworks */,
 				949DC20D1583E8CF00385796 /* CoreGraphics.framework in Frameworks */,
 			);
@@ -2046,6 +2100,7 @@
 		9431D72914910B3000B0900E = {
 			isa = PBXGroup;
 			children = (
+				BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */,
 				940D94BB18F99B75006D5D0D /* ObjectiveGitFramework.xcodeproj */,
 				94407B1A16E7BCBD0011F941 /* CoreData.framework */,
 				94407B1216E7B2400011F941 /* GoogleAnalytics */,
@@ -2310,7 +2365,6 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BC4A6E831ED5E086000A328A /* markdown.min.js */,
 				94E4C116199E7FDD003B0E82 /* projectGit.png */,
 				94E4C113199D1519003B0E82 /* CommentHide.png */,
 				9421EAC9196853D100EFD7E2 /* treeView.png */,
@@ -3081,6 +3135,18 @@
 			path = Theme/FontSourceCodePro;
 			sourceTree = "<group>";
 		};
+		BC4A6E9C1ED84F59000A328A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */,
+				BC4A6EA61ED84F5A000A328A /* MMMarkdown.framework */,
+				BC4A6EA81ED84F5A000A328A /* MMMarkdown.framework */,
+				BC4A6EAA1ED84F5A000A328A /* MMMarkdown.framework */,
+				BC4A6EAC1ED84F5A000A328A /* MMMarkdownTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3099,6 +3165,7 @@
 				9434BFCB14A38ACD00B34419 /* PBXTargetDependency */,
 				94B4035214A0D75B00E3A636 /* PBXTargetDependency */,
 				BC4A6E6B1ED48B86000A328A /* PBXTargetDependency */,
+				BC4A6EB41ED84F7A000A328A /* PBXTargetDependency */,
 			);
 			name = CodeNavigator;
 			productName = CodeNavigator;
@@ -3112,14 +3179,15 @@
 				949DC1981583E8CF00385796 /* Sources */,
 				949DC2021583E8CF00385796 /* Frameworks */,
 				949DC20F1583E8CF00385796 /* Resources */,
-				BC4A6E891ED6D71D000A328A /* Embed Frameworks */,
+				BC4A6E9A1ED832FC000A328A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				949DC1941583E8CF00385796 /* PBXTargetDependency */,
 				949DC1961583E8CF00385796 /* PBXTargetDependency */,
-				BC4A6E881ED6D71D000A328A /* PBXTargetDependency */,
+				BC4A6E991ED832FC000A328A /* PBXTargetDependency */,
+				BC4A6EB01ED84F70000A328A /* PBXTargetDependency */,
 			);
 			name = "CodeNavigator-iPhone";
 			productName = CodeNavigator;
@@ -3186,6 +3254,10 @@
 					ProjectRef = 94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */;
 				},
 				{
+					ProductGroup = BC4A6E9C1ED84F59000A328A /* Products */;
+					ProjectRef = BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */;
+				},
+				{
 					ProductGroup = 940D94BC18F99B75006D5D0D /* Products */;
 					ProjectRef = 940D94BB18F99B75006D5D0D /* ObjectiveGitFramework.xcodeproj */;
 				},
@@ -3244,6 +3316,41 @@
 			fileType = wrapper.cfbundle;
 			path = "ObjectiveGit-iOSTests.xctest";
 			remoteRef = 94FF460D1E59CA9500B21AC4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMMarkdown.framework;
+			remoteRef = BC4A6EA31ED84F5A000A328A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BC4A6EA61ED84F5A000A328A /* MMMarkdown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMMarkdown.framework;
+			remoteRef = BC4A6EA51ED84F5A000A328A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BC4A6EA81ED84F5A000A328A /* MMMarkdown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMMarkdown.framework;
+			remoteRef = BC4A6EA71ED84F5A000A328A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BC4A6EAA1ED84F5A000A328A /* MMMarkdown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMMarkdown.framework;
+			remoteRef = BC4A6EA91ED84F5A000A328A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BC4A6EAC1ED84F5A000A328A /* MMMarkdownTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MMMarkdownTests.xctest;
+			remoteRef = BC4A6EAB1ED84F5A000A328A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -3345,7 +3452,6 @@
 				94352107153EFC1E003F316A /* version_control.png in Resources */,
 				948C74021804489200065E65 /* settings@2x.png in Resources */,
 				9443D1F0154EDA6A008CB52D /* SecurityViewController.xib in Resources */,
-				BC4A6E841ED5E086000A328A /* markdown.min.js in Resources */,
 				9443D1F3154FF4D8008CB52D /* Lock.png in Resources */,
 				948F1C7515583B7600AE4C99 /* CommentViewController.xib in Resources */,
 				9461817B155EEDAB00A25635 /* CommentManager.xib in Resources */,
@@ -4335,10 +4441,20 @@
 			name = "ObjectiveGit-iOS";
 			targetProxy = BC4A6E6A1ED48B86000A328A /* PBXContainerItemProxy */;
 		};
-		BC4A6E881ED6D71D000A328A /* PBXTargetDependency */ = {
+		BC4A6E991ED832FC000A328A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ObjectiveGit-iOS";
-			targetProxy = BC4A6E871ED6D71D000A328A /* PBXContainerItemProxy */;
+			targetProxy = BC4A6E981ED832FC000A328A /* PBXContainerItemProxy */;
+		};
+		BC4A6EB01ED84F70000A328A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "MMMarkdown (iOS)";
+			targetProxy = BC4A6EAF1ED84F70000A328A /* PBXContainerItemProxy */;
+		};
+		BC4A6EB41ED84F7A000A328A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "MMMarkdown (iOS)";
+			targetProxy = BC4A6EB31ED84F7A000A328A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -4480,10 +4596,8 @@
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.guangzhen.CodeNavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4514,16 +4628,13 @@
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.guangzhen.CodeNavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/Classes ~/Documents/iOS_Development/CodeNavigator/CodeNavigator";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit ~/Documents/iOS_Development/CodeNavigator/CodeNavigator";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4592,16 +4703,13 @@
 				INFOPLIST_FILE = "CodeNavigator/CodeNavigator-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.guangzhen.CodeNavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/Classes ~/Documents/iOS_Development/CodeNavigator/CodeNavigator";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit ~/Documents/iOS_Development/CodeNavigator/CodeNavigator";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4638,11 +4746,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/GoogleAnalytics",
 					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.guangzhen.codenavigatoriphone;
 				PRODUCT_NAME = CodeNav;
@@ -4682,7 +4789,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/GoogleAnalytics",
 					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
@@ -4729,7 +4835,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/GoogleAnalytics",
 					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
@@ -4776,7 +4881,6 @@
 					"\\\\\\\"$(SRCROOT)/ObjectiveGit/libgit2\\\\\\\"",
 					"$(SRCROOT)",
 					"/Users/lgz_software/Documents/iOS_Development/ios-openssl/lib",
-					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
 					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
@@ -4819,7 +4923,6 @@
 					"\\\\\\\"$(SRCROOT)/ObjectiveGit/libgit2\\\\\\\"",
 					"$(SRCROOT)",
 					"/Users/lgz_software/Documents/iOS_Development/ios-openssl/lib",
-					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
 					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
@@ -4864,7 +4967,6 @@
 					"\\\\\\\"$(SRCROOT)/ObjectiveGit/libgit2\\\\\\\"",
 					"$(SRCROOT)",
 					"/Users/lgz_software/Documents/iOS_Development/ios-openssl/lib",
-					/Users/lgz_software/Documents/iOS_Development/CodeNavigator/GoogleAnalytics,
 					"$(PROJECT_DIR)/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);

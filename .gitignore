@@ -22,6 +22,9 @@
 
 .DS_Store
 *.nib
+*.pbxproj
+*.storyboard
+*.xib
 
 # c.f. http://www.westwind.com/reference/os-x/invisibles.html
 

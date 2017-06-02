@@ -22,6 +22,7 @@
 #import "ThemeSelectorViewController.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "MBProgressHUD.h"
+#import <MMMarkdown/MMMarkdown.h>
 
 #define TOOLBAR_X_MASTER_SHOW 55
 #define TOOLBAR_X_MASTER_HIDE 208
@@ -484,10 +485,17 @@
     [self.historyController updateCurrentScrollLocation:location];
     [self.historyController pushUrl:path];
     
-    NSURL *url = [NSURL fileURLWithPath:path];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [self.activeWebView setScalesPageToFit:YES];
-    [self.activeWebView loadRequest:request];
+    NSURL* baseURL = [NSURL fileURLWithPath:[path stringByDeletingLastPathComponent]];
+    [self.activeWebView setScalesPageToFit:NO];
+    self.activeWebView.backgroundColor = [UIColor whiteColor];
+
+    NSStringEncoding encoding = NSUTF8StringEncoding;
+    NSError* error;
+    NSString *markdown   = [NSString stringWithContentsOfFile:path encoding:encoding error:&error];
+    NSString *htmlString = [MMMarkdown HTMLStringWithMarkdown:markdown extensions:MMMarkdownExtensionsGitHubFlavored error:NULL];
+
+    [self.activeWebView loadHTMLString:htmlString baseURL:baseURL];
+
     [self adjustTitle];
 }
 
