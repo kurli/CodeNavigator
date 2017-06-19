@@ -70,12 +70,16 @@
             break;
 #ifdef IPHONE_VERSION
         case 2:
+#ifndef LITE_VERSION
             [masterViewController downloadZipFromGitHub];
             [[Utils getInstance] addGAEvent:@"Add" andAction:@"GitHubZip" andLabel:nil andValue:nil];
+#endif
             break;
         case 3:
+#ifndef LITE_VERSION
             [masterViewController uploadFromITunes];
             [[Utils getInstance] addGAEvent:@"Add" andAction:@"iTunes Transfer" andLabel:nil andValue:nil];
+#endif
             break;
 #else
         case 2:

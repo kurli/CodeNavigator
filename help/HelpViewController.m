@@ -190,7 +190,11 @@
             break;
         case 2:
 #ifdef LITE_VERSION
+#ifdef IPHONE_VERSION
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/cn/app/codenavigator-for-iphone/id536268810?mt=8"]];
+#else
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/us/app/codenavigator/id492480832?mt=8"]];
+#endif
 #else
 #ifdef IPHONE_VERSION
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=536268810"]];

@@ -93,12 +93,6 @@
 
 - (void)viewDidLoad
 {
-#ifdef LITE_VERSION
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willBeginBannerViewActionNotification:) name:BannerViewActionWillBegin object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishBannerViewActionNotification:) name:BannerViewActionDidFinish object:nil];
-    _bannerCounter = 0;
-    isVirtualizeDisplayed = NO;
-#endif
     NSString* upFilePath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/upHistory.setting"];
     NSString* downFilePath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/downHistory.setting"];
 
@@ -356,9 +350,6 @@
     {
         [self showVirtualizeView];
     }
-#ifdef LITE_VERSION
-    [[[Utils getInstance] getBannerViewController] viewDidLayoutSubviews];
-#endif
 #else
     // Work around black line when orientation change
     [self.popoverController dismissPopoverAnimated:NO];
@@ -1530,9 +1521,6 @@
     //barButtonItem.title = NSLocalizedString(@"Project", @"Project");
     //[self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
     [hideMasterViewButton setImage:[UIImage imageNamed:@"show_masterview.png"]];
-#ifdef LITE_VERSION
-    [[[Utils getInstance] getBannerViewController] viewDidLayoutSubviews];
-#endif
     [self.fileBrowserButton setHidden:NO];
 }
 
@@ -1546,7 +1534,9 @@
 //    if (UIInterfaceOrientationIsPortrait(orientation)) {
 //        [[[Utils getInstance] getBannerViewController] hideBannerView];
 //    }
+#ifndef IPHONE_VERSION
     [[[Utils getInstance] getBannerViewController] viewDidLayoutSubviews];
+#endif
 #endif
     [self.fileBrowserButton setHidden:YES];
     [popoverController dismissPopoverAnimated:YES];

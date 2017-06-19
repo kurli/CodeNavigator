@@ -230,6 +230,7 @@
     
     NSString* versionFile = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/version"];
     isExist = [[NSFileManager defaultManager] fileExistsAtPath:versionFile];
+
 //    isExist = NO;
     
     if (isExist == NO)

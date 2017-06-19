@@ -16,7 +16,7 @@
 #define LINE_WRAP_SM @"80"
 #define LINE_WRAP_BG @"140"
 
-#define FONT_STANDARD @"-webkit-body"
+#define FONT_STANDARD @"monospace"
 #define FONT_SOURCE_CODE_PRO @"Source Code Pro"
 
 #define DEMO_SOURCE_CODE @"\
@@ -396,7 +396,7 @@ void main() {\n\
     UISegmentedControl* controller = (UISegmentedControl*)sender;
     switch (controller.selectedSegmentIndex) {
         case 0:
-            [self.colorScheme setFont_family:@"-webkit-body"];
+            [self.colorScheme setFont_family:@"monospace"];
             break;
         case 1:
             [self.colorScheme setFont_family:@"Source Code Pro"];

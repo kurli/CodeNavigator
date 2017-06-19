@@ -17,10 +17,6 @@
 #import "VirtualizeWrapper.h"
 #import "VersionViewController.h"
 
-#ifdef LITE_VERSION
-#import "GADBannerView.h"
-#endif
-
 #import "FunctionListManager.h"
 #import "DisplayController.h"
 
@@ -93,7 +89,10 @@ static Utils *static_utils;
     self = [super init];
     cssVersion = 1;
 #ifdef LITE_VERSION
-    is_adMobON = YES; 
+    is_adMobON = NO;
+#ifdef IPHONE_VERSION
+    is_adMobON = NO;
+#endif
 #endif
     self.dbManager = [[DBManager alloc] init];
     [self.dbManager appStarted:nil];
@@ -102,14 +101,6 @@ static Utils *static_utils;
 
 -(void)dealloc
 {
-#ifdef LITE_VERSION
-    _adModView.delegate = nil;
-#endif
-    _adModView = nil;
-#ifdef LITE_VERSION
-    _iAdView.delegate = nil;
-#endif
-    _iAdView = nil;
     [self setDropBoxViewController:nil];
     [self setDetailViewController:nil];
     [self setSplitViewController:nil];
@@ -125,28 +116,30 @@ static Utils *static_utils;
 -(void) initBanner:(UIViewController *)view
 {
 #ifdef LITE_VERSION
-    _bannerViewController = [[BannerViewController alloc] initWithContentViewController:view];
-
-    if([[[NSTimeZone localTimeZone] name] rangeOfString:@"America/"].location== 0 
-       || [[[NSTimeZone localTimeZone] name] rangeOfString:@"Pacific/"].location== 0 
-       || [[[NSTimeZone localTimeZone] name] rangeOfString:@"Europe/"].location== 0 
-       || [[[NSTimeZone localTimeZone] name] rangeOfString:@"Asia/Tokyo"].location== 0) 
-    {
-        is_adMobON = NO;
-    }
-    // do not support iAd
-    is_adMobON = YES;
-    
-    if (is_adMobON == NO) {
-        _iAdView =  [[ADBannerView alloc] init];
-        [_iAdView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
-        [_iAdView setHidden:YES];
-    } else {
-        _adModView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
-        _adModView.adUnitID = @"ca-app-pub-5702343634387916/1976704580";
-        _adModView.rootViewController = self.splitViewController;
-    }
-    [_bannerViewController showBannerView];
+#ifndef IPHONE_VERSION
+//    _bannerViewController = [[BannerViewController alloc] initWithContentViewController:view];
+//
+//    if([[[NSTimeZone localTimeZone] name] rangeOfString:@"America/"].location== 0 
+//       || [[[NSTimeZone localTimeZone] name] rangeOfString:@"Pacific/"].location== 0 
+//       || [[[NSTimeZone localTimeZone] name] rangeOfString:@"Europe/"].location== 0 
+//       || [[[NSTimeZone localTimeZone] name] rangeOfString:@"Asia/Tokyo"].location== 0) 
+//    {
+//        is_adMobON = NO;
+//    }
+//    // do not support iAd
+//    is_adMobON = YES;
+//    
+//    if (is_adMobON == NO) {
+//        _iAdView =  [[ADBannerView alloc] init];
+//        [_iAdView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+//        [_iAdView setHidden:YES];
+//    } else {
+//        _adModView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+//        _adModView.adUnitID = @"ca-app-pub-5702343634387916/1976704580";
+//        _adModView.rootViewController = self.splitViewController;
+//    }
+//    [_bannerViewController showBannerView];
+#endif
 #endif
 }
 
@@ -611,7 +604,7 @@ static Utils *static_utils;
         }
         else
         {
-            if (fileCount > 6)
+            if (fileCount > LITE_LIMIT)
             {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[Utils getInstance] showPurchaseAlert];
@@ -685,7 +678,11 @@ static Utils *static_utils;
 
 -(void) openPurchaseURL
 {
-    NSString* url = @"http://itunes.apple.com/us/app/codenavigator/id492480832?mt=8";
+#ifndef IPHONE_VERSION
+    NSString* url = @"http://itunes.apple.com/cn/app/codenavigator/id492480832?mt=8";
+#else
+    NSString* url = @"http://itunes.apple.com/cn/app/codenavigator-for-iphone/id536268810?mt=8";
+#endif
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 

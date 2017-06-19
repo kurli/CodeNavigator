@@ -475,7 +475,7 @@
                     if ([_nameWrapper rangeOfString:@"/.git/"].location != NSOrderedSame) {
                         liteLimitCount--;
                     }
-                    if (liteLimitCount > 5)
+                    if (liteLimitCount > LITE_LIMIT)
                     {
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [[Utils getInstance] showPurchaseAlert];
