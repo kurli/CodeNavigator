@@ -241,7 +241,7 @@
         return;
     }
     project = [project lastPathComponent];
-    if ([project compare:@"Help.html"] == NSOrderedSame) {
+    if ([project compare:@"OpenGrok.Club"] == NSOrderedSame) {
         return;
     }
     // Update project

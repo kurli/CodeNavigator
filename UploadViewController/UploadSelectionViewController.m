@@ -124,7 +124,7 @@
 #endif
 #ifdef IPHONE_VERSION
     } else if (indexPath.row == 2) {
-        cell.textLabel.text = @"Download ZIP from GitHub";
+        cell.textLabel.text = @"From OpenGrok.Club";
 #ifdef LITE_VERSION
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell.textLabel setTextColor: [UIColor grayColor]];
@@ -138,7 +138,7 @@
     }
 #else
     } else if (indexPath.row == 2) {
-        cell.textLabel.text = @"Download ZIP from GitHub";
+        cell.textLabel.text = @"From OpenGrok.Club";
 #ifdef LITE_VERSION
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell.textLabel setTextColor: [UIColor grayColor]];

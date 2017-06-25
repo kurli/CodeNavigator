@@ -9,8 +9,9 @@
 #import "VersionViewController.h"
 #import "Utils.h"
 #import "DisplayController.h"
+#import "MasterViewController.h"
 
-#define RELEASE_VERSION 9
+#define RELEASE_VERSION 10
 
 @interface VersionViewController ()
 
@@ -71,11 +72,11 @@
     [[NSFileManager defaultManager] createDirectoryAtPath:projectFolder withIntermediateDirectories:YES attributes:nil error:&error];
     
     // copy help files
-    NSString* settings = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/"];
-    NSString* helpHtml = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/Help.html"];
-    [[NSFileManager defaultManager] copyItemAtPath:helpHtml toPath:[projectFolder stringByAppendingPathComponent:@"Help.html"] error:&error];
-    NSString* jpg0 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/1.jpeg"];
-    [[NSFileManager defaultManager] copyItemAtPath:jpg0 toPath:[settings stringByAppendingPathComponent:@"1.jpeg"] error:&error];
+//    NSString* settings = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/"];
+    NSString* helpHtml = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/OpenGrok.Club"];
+    [[NSFileManager defaultManager] copyItemAtPath:helpHtml toPath:[projectFolder stringByAppendingPathComponent:@"OpenGrok.Club"] error:&error];
+//    NSString* jpg0 = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/1.jpeg"];
+//    [[NSFileManager defaultManager] copyItemAtPath:jpg0 toPath:[settings stringByAppendingPathComponent:@"1.jpeg"] error:&error];
 }
 
 -(void) copyDemoToProject {
@@ -143,12 +144,13 @@
 }
 
 -(void) displayVersionDialog {
-    double delayInSeconds = 10;
+    double delayInSeconds = 2;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        VersionViewController* viewController = [[VersionViewController alloc] init];
-        viewController.modalPresentationStyle = UIModalPresentationFormSheet;
-        [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
+//        VersionViewController* viewController = [[VersionViewController alloc] init];
+//        viewController.modalPresentationStyle = UIModalPresentationFormSheet;
+//        [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
+        [[Utils getInstance].masterViewController openGrokButtonClicked:@"http://opengrok.club/category/1/codenavigator-help"];
     });
 }
 
@@ -284,6 +286,7 @@
         
         // Remove all display folder
         [self removeAllDisplayFiles];
+        
 //    }
 
 //    if (integer == 2) {

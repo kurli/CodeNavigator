@@ -21,9 +21,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSString* lastUrl = [Utils getInstance].lastUrl;
-    if ([lastUrl length] == 0) {
-        lastUrl = @"http://opengrok.club:8080";
+    if (self.url != nil) {
+        lastUrl = self.url;
     }
+    if ([lastUrl length] == 0) {
+        lastUrl = self.url;
+    }
+    if ([lastUrl length] == 0) {
+        lastUrl = @"http://opengrok.club";
+    }
+
     NSURL *url = [NSURL URLWithString:lastUrl];
     self.webview.delegate = self;
     NSString *oldAgent = [self.webview stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
@@ -52,12 +59,21 @@
 - (IBAction)shareButtonClicked:(id)sender {
 }
 
-- (IBAction)backButtonClicked:(id)sender {
+- (void)backButtonClicked {
     [self.webview goBack];
 }
 
-- (IBAction)forwardButtonClicked:(id)sender {
+- (void)forwardButtonClicked {
     [self.webview goForward];
+}
+
+- (IBAction)backForwardClicked:(id)sender {
+    UISegmentedControl* controller = sender;
+    NSInteger index = [controller selectedSegmentIndex];
+    if (index == 0)
+        [self backButtonClicked];
+    else
+        [self forwardButtonClicked];
 }
 
 #pragma mark - webview代理方法

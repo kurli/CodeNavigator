@@ -249,6 +249,9 @@
         else if ([extension compare:@"mm"] == NSOrderedSame) {
             imageView.image = [UIImage imageNamed:@"mmFile.png"];
         }
+        else if ([fileName compare:@"OpenGrok.Club"] == NSOrderedSame) {
+            imageView.image = [UIImage imageNamed:@"open_grok.png"];
+        }
         else {
             NSString* name = [[fileName pathComponents] lastObject];
             name = [name lowercaseString];

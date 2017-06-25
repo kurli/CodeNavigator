@@ -22,7 +22,7 @@
 #import "ThemeSelectorViewController.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "MBProgressHUD.h"
-#import <MMMarkdown/MMMarkdown.h>
+#import <MMMarkdown.h>
 #import "OpenGrokViewController.h"
 
 #define TOOLBAR_X_MASTER_SHOW 55
@@ -220,24 +220,20 @@
     // Only show help html in the first time
     if (isFirstDisplay) {
         NSString* prevHistory = [upHistoryController pickTopLevelUrl];
-        NSString* help = [NSHomeDirectory() stringByAppendingString:@"/Documents/.Projects/Help.html"];
-        NSError *error;
-        NSStringEncoding encoding = NSUTF8StringEncoding;
-        NSString* html = [NSString stringWithContentsOfFile: help usedEncoding:&encoding error: &error];
+//        NSString* openGrokUrl = @"http://opengrok.club";
         if ([prevHistory length] != 0) {
             [self restoreToHistory:prevHistory];
         } else {
-            [self setTitle:@"Help.html" andPath:help andContent:html andBaseUrl:nil];
+//            [self setTitle:@"OpenGrok.Club" andPath:openGrokUrl andContent:nil andBaseUrl:nil];
         }
-        
+
         // Set second webview
-        self.activeWebView = secondWebView;
-        int location = [self getCurrentScrollLocation];
-        [self.downHistoryController updateCurrentScrollLocation:location];
-        [self.downHistoryController pushUrl:help];
-        [self displayHTMLString:html andBaseURL:nil];
-        html = nil;
-        self.activeWebView = _webView;
+//        self.activeWebView = secondWebView;
+//        int location = [self getCurrentScrollLocation];
+//        [self.downHistoryController updateCurrentScrollLocation:location];
+//        [self.downHistoryController pushUrl:openGrokUrl];
+//        [self displayHTMLString:html andBaseURL:nil];
+//        self.activeWebView = _webView;
         isFirstDisplay = NO;
     }
     [self adjustTitle];
@@ -453,7 +449,13 @@
     int location = [self getCurrentScrollLocation];
     [self.historyController updateCurrentScrollLocation:location];
     [self.historyController pushUrl:path];
-    [self displayHTMLString:content andBaseURL:baseURL];
+    if (content != nil) {
+        [self displayHTMLString:content andBaseURL:baseURL];
+    } else {
+        NSURL *url = [[NSURL alloc] initWithString:path];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        [self.activeWebView loadRequest:request];
+    }
     [self adjustTitle];
     content = nil;
 }
@@ -720,11 +722,11 @@
     NSString* currentDisplayFile = [self getCurrentDisplayFile];
     NSString* sourceFilePath = [[Utils getInstance] getSourceFileByDisplayFile:currentDisplayFile];
     NSString* filePath = [[Utils getInstance] getPathFromProject:sourceFilePath];
-    if ([filePath compare:@"Help.html"] == NSOrderedSame) {
+    if ([filePath compare:@"OpenGrok.Club"] == NSOrderedSame) {
         NSError *error;
         NSStringEncoding encoding = NSUTF8StringEncoding;
         NSString* html = [NSString stringWithContentsOfFile: sourceFilePath usedEncoding:&encoding error: &error];
-        [self setTitle:[sourceFilePath lastPathComponent] andPath:sourceFilePath andContent:html andBaseUrl:nil];
+        [self setTitle:@"OpenGrok.Club" andPath:sourceFilePath andContent:nil andBaseUrl:nil];
     } else {
         [[Utils getInstance] getDisplayFile:sourceFilePath andProjectBase:nil andFinishBlock:^(NSString* html) {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -2036,20 +2038,5 @@
     return nil;
 }
 #endif
-
-// Used on iPad
-- (IBAction)openGrokButtonClicked:(id)sender {
-    if ([popoverController isPopoverVisible]) {
-        [self releaseAllPopOver];
-        return;
-    }
-    
-    [self releaseAllPopOver];
-    
-    OpenGrokViewController* viewController = [[OpenGrokViewController alloc] initWithNibName:@"OpenGrokView-iPad" bundle:nil];
-    viewController.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self presentViewController:viewController animated:YES completion:nil];
-}
-
 
 @end

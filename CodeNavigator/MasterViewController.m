@@ -677,7 +677,7 @@
     [self gitClicked:sender];
 }
 
-- (IBAction)openGrokButtonClicked:(id)sender {
+- (IBAction)openGrokButtonClicked:(NSString*)url {
     if ([popOverController isPopoverVisible]) {
         [self releaseAllPopover];
         return;
@@ -685,13 +685,16 @@
     
     [self releaseAllPopover];
 
+#ifdef IPHONE_VERSION
     OpenGrokViewController* viewController = [[OpenGrokViewController alloc] initWithNibName:@"OpenGrokView" bundle:nil];
-//    viewController.modalPresentationStyle = UIModalPresentationFormSheet;
-    
-    [self.navigationController.navigationBar setHidden:YES];
-    [self.navigationController pushViewController:viewController animated:YES];
-    
-//    [self presentViewController:viewController animated:YES completion:nil];
+#else
+    OpenGrokViewController* viewController = [[OpenGrokViewController alloc] initWithNibName:@"OpenGrokView-iPad" bundle:nil];
+#endif
+
+    viewController.url = url;
+//    [self.navigationController.navigationBar setHidden:YES];
+//    [self.navigationController pushViewController:viewController animated:YES];
+    [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
 }
 
 - (IBAction)lockButtonClicked:(id)sender {
@@ -994,11 +997,9 @@
 #endif
     
     //Help.html special case
-    if ([fileListBrowserController getIsCurrentProjectFolder] == YES && [selectedItem compare:@"Help.html"] == NSOrderedSame) {
-        NSError *error;
-        NSStringEncoding encoding = NSUTF8StringEncoding;
-        html = [NSString stringWithContentsOfFile: path usedEncoding:&encoding error: &error];
-        [controller setTitle:selectedItem andPath:path andContent:html andBaseUrl:nil];
+    if ([fileListBrowserController getIsCurrentProjectFolder] == YES && [selectedItem compare:@"OpenGrok.Club"] == NSOrderedSame) {
+//        [controller setTitle:@"OpenGrok.Club" andPath:@"http://opengrok.club" andContent:nil andBaseUrl:nil];
+        [self openGrokButtonClicked:nil];
         return;
     }
     
@@ -1053,7 +1054,7 @@
 
 -(void) downloadZipFromGitHub {
     [self releaseAllPopover];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.github.com"]];
+    [self openGrokButtonClicked:@"http://opengrok.club/category/3/opensource-projects-sharing"];
 }
 
 -(void) uploadFromITunes {

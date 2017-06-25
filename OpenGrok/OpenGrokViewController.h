@@ -10,4 +10,6 @@
 
 @interface OpenGrokViewController : UIViewController <UIWebViewDelegate>
 
+@property (strong, nonatomic) NSString* url;
+
 @end

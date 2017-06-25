@@ -110,5 +110,7 @@
 
 - (void) showGitCloneViewWithUrl:(NSString*) url;
 
+- (IBAction)openGrokButtonClicked:(id)sender;
+
 @end
 

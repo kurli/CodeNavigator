@@ -237,17 +237,12 @@
 }
 
 - (void) fileClickedDelegate:(UITableView*) tableView andSelectedItem:(NSString*)selectedItem andPath:(NSString*)path
-{
-    NSString* html;
-    
+{    
     DetailViewController* controller = [Utils getInstance].detailViewController;
     
     //Help.html special case
-    if ([fileListBrowserController getIsCurrentProjectFolder] == YES && [selectedItem compare:@"Help.html"] == NSOrderedSame) {
-        NSError *error;
-        NSStringEncoding encoding = NSUTF8StringEncoding;
-        html = [NSString stringWithContentsOfFile: path usedEncoding:&encoding error: &error];
-        [controller setTitle:selectedItem andPath:path andContent:html andBaseUrl:nil];
+    if ([fileListBrowserController getIsCurrentProjectFolder] == YES && [selectedItem compare:@"OpenGrok.Club"] == NSOrderedSame) {
+        [controller setTitle:@"OpenGrok.Club" andPath:@"http://opengrok.club" andContent:nil andBaseUrl:nil];
         return;
     }
     

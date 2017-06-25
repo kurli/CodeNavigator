@@ -227,8 +227,8 @@
 		945AA40F1508DE9C006729C8 /* NewEntry.png in Resources */ = {isa = PBXBuildFile; fileRef = 945AA40D1508DE9C006729C8 /* NewEntry.png */; };
 		945AA44B1508E3CA006729C8 /* max.png in Resources */ = {isa = PBXBuildFile; fileRef = 945AA44A1508E3CA006729C8 /* max.png */; };
 		945AA44C1508E3CA006729C8 /* max.png in Resources */ = {isa = PBXBuildFile; fileRef = 945AA44A1508E3CA006729C8 /* max.png */; };
-		945AA45E150926A1006729C8 /* Help.html in Resources */ = {isa = PBXBuildFile; fileRef = 945AA453150926A1006729C8 /* Help.html */; };
-		945AA45F150926A1006729C8 /* Help.html in Resources */ = {isa = PBXBuildFile; fileRef = 945AA453150926A1006729C8 /* Help.html */; };
+		945AA45E150926A1006729C8 /* OpenGrok.Club in Resources */ = {isa = PBXBuildFile; fileRef = 945AA453150926A1006729C8 /* OpenGrok.Club */; };
+		945AA45F150926A1006729C8 /* OpenGrok.Club in Resources */ = {isa = PBXBuildFile; fileRef = 945AA453150926A1006729C8 /* OpenGrok.Club */; };
 		94603D07149E041400D72561 /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94603D05149E041400D72561 /* ResultViewController.m */; };
 		94603D08149E041400D72561 /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94603D06149E041400D72561 /* ResultViewController.xib */; };
 		94618169155BF85800A25635 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC251546F30900931747 /* MessageUI.framework */; };
@@ -535,7 +535,6 @@
 		949DC2051583E8CF00385796 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A5184A152DF30A0062DA65 /* Security.framework */; };
 		949DC2081583E8CF00385796 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9417EB7714AE118000224D2A /* iAd.framework */; };
 		949DC2091583E8CF00385796 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4038014A0ED4700E3A636 /* CFNetwork.framework */; };
-		949DC20A1583E8CF00385796 /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4033014A0D5EB00E3A636 /* libHttpService.a */; };
 		949DC20B1583E8CF00385796 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9431D73814910B3000B0900E /* UIKit.framework */; };
 		949DC20C1583E8CF00385796 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9431D73A14910B3000B0900E /* Foundation.framework */; };
 		949DC20D1583E8CF00385796 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9431D73C14910B3000B0900E /* CoreGraphics.framework */; };
@@ -571,7 +570,7 @@
 		949DC23E1583E8CF00385796 /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 945AA3F71507B13E006729C8 /* forward.png */; };
 		949DC23F1583E8CF00385796 /* NewEntry.png in Resources */ = {isa = PBXBuildFile; fileRef = 945AA40D1508DE9C006729C8 /* NewEntry.png */; };
 		949DC2401583E8CF00385796 /* max.png in Resources */ = {isa = PBXBuildFile; fileRef = 945AA44A1508E3CA006729C8 /* max.png */; };
-		949DC2411583E8CF00385796 /* Help.html in Resources */ = {isa = PBXBuildFile; fileRef = 945AA453150926A1006729C8 /* Help.html */; };
+		949DC2411583E8CF00385796 /* OpenGrok.Club in Resources */ = {isa = PBXBuildFile; fileRef = 945AA453150926A1006729C8 /* OpenGrok.Club */; };
 		949DC24B1583E8CF00385796 /* masterView_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9457C78D153086FC00BB9185 /* masterView_bg.png */; };
 		949DC24C1583E8CF00385796 /* nav_backButton_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9457C7901530923800BB9185 /* nav_backButton_icon.png */; };
 		949DC24E1583E8CF00385796 /* checkbox_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 9457C7961530BA3800BB9185 /* checkbox_no.png */; };
@@ -755,7 +754,6 @@
 		94B1DD12191F739900909C3E /* SourceCodePro-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BB0518EDDFC400CD7C2C /* SourceCodePro-Semibold.ttf */; };
 		94B1DD13191F7EFE00909C3E /* Themes in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BAF218EAF4F200CD7C2C /* Themes */; };
 		94B1DD14191F7F2200909C3E /* BuildInParser in Resources */ = {isa = PBXBuildFile; fileRef = 941E63DF1801541C008226F2 /* BuildInParser */; };
-		94B1DD15191F973B00909C3E /* 1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 94C7C1791850E170003A8C03 /* 1.jpeg */; };
 		94B1DD1D191F99E600909C3E /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B1DD18191F99E600909C3E /* FPPopoverController.m */; };
 		94B1DD1E191F99E600909C3E /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B1DD1A191F99E600909C3E /* FPPopoverView.m */; };
 		94B1DD1F191F99E600909C3E /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B1DD1C191F99E600909C3E /* FPTouchView.m */; };
@@ -770,7 +768,6 @@
 		94B1DD3219226C9F00909C3E /* text-list.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C73FD1804443700065E65 /* text-list.png */; };
 		94B1DD3319226CCE00909C3E /* binocular.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C73FB180443A700065E65 /* binocular.png */; };
 		94B23AD81499025A00A83395 /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B23AD71499025A00A83395 /* HistoryController.m */; };
-		94B4036A14A0DE0300E3A636 /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4033014A0D5EB00E3A636 /* libHttpService.a */; };
 		94B4038114A0ED4700E3A636 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4038014A0ED4700E3A636 /* CFNetwork.framework */; };
 		94B40390194456F8002B8E26 /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4038B194456F8002B8E26 /* MGSplitCornersView.m */; };
 		94B40391194456F8002B8E26 /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B4038B194456F8002B8E26 /* MGSplitCornersView.m */; };
@@ -789,7 +786,6 @@
 		94B5FDAB19FFD8E90062F376 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9444596018D7508C008A02DB /* iRate.bundle */; };
 		94B5FDAC19FFD8EE0062F376 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9444596018D7508C008A02DB /* iRate.bundle */; };
 		94B5FDAD19FFD8FB0062F376 /* VersionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9444595A18D72B8C008A02DB /* VersionViewController.xib */; };
-		94B5FDAE19FFD9B10062F376 /* 1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 94C7C1791850E170003A8C03 /* 1.jpeg */; };
 		94B5FDB019FFDF090062F376 /* projectGit.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E4C116199E7FDD003B0E82 /* projectGit.png */; };
 		94B5FDB119FFDF3F0062F376 /* binocular.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C73FB180443A700065E65 /* binocular.png */; };
 		94B5FDB219FFDF810062F376 /* screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C740B1804555300065E65 /* screen.png */; };
@@ -838,7 +834,6 @@
 		94C2CDC6167F55C9004FB1FB /* HtmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2CDC4167F55C9004FB1FB /* HtmlParser.m */; };
 		94C2CDC7167F55C9004FB1FB /* HtmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2CDC4167F55C9004FB1FB /* HtmlParser.m */; };
 		94C7C171184E42B3003A8C03 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C7C170184E42B3003A8C03 /* Social.framework */; };
-		94C7C17A1850E170003A8C03 /* 1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 94C7C1791850E170003A8C03 /* 1.jpeg */; };
 		94C8C68414FA57D60062750D /* ImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C8C68214FA57D60062750D /* ImagePreviewController.m */; };
 		94C8C68514FA57D60062750D /* ImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C8C68214FA57D60062750D /* ImagePreviewController.m */; };
 		94C8C68614FA57D60062750D /* ImagePreviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94C8C68314FA57D60062750D /* ImagePreviewController.xib */; };
@@ -848,6 +843,9 @@
 		94CB768317E21369009807F9 /* FileListBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94CB768117E21369009807F9 /* FileListBrowserController.m */; };
 		94CB787F156E80C8009452D8 /* FileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CB787E156E80C8009452D8 /* FileTableViewCell.xib */; };
 		94CB7880156E80C8009452D8 /* FileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CB787E156E80C8009452D8 /* FileTableViewCell.xib */; };
+		94CBEF751EFFC01D0082FF9A /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94CBEF6C1EFFBFDF0082FF9A /* MMMarkdown.framework */; };
+		94CBEF761EFFC01D0082FF9A /* MMMarkdown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 94CBEF6C1EFFBFDF0082FF9A /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		94CBEF871EFFC4950082FF9A /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9497FA281EFFA56E000CDE41 /* libHttpService.a */; };
 		94D0A9301976CE39002EEFCE /* UploadFromITunesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A430E7196EF328003497CB /* UploadFromITunesViewController.m */; };
 		94D0A9311976D277002EEFCE /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 949CB5E11961A96200A95AEC /* back_arrow.png */; };
 		94D0A9321976D27D002EEFCE /* hide_toolbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9461D46C1960372100F0B0A1 /* hide_toolbar.png */; };
@@ -1067,10 +1065,7 @@
 		94FB0FED14BDB3A50084E457 /* HighLightWordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */; };
 		BC33DCBA1EE2E510006EC4E1 /* ObjectiveGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */; };
 		BC33DCBB1EE2E510006EC4E1 /* ObjectiveGit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BC33DCBE1EE2E71D006EC4E1 /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4033014A0D5EB00E3A636 /* libHttpService.a */; };
 		BC33DCBF1EE2E71D006EC4E1 /* libZip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434BFB314A389BE00B34419 /* libZip.a */; };
-		BC33DCC01EE2E768006EC4E1 /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */; };
-		BC33DCC11EE2E768006EC4E1 /* MMMarkdown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BC33DCC41EE2E80E006EC4E1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B8EC251546F30900931747 /* MessageUI.framework */; };
 		BC33DCC71EE2F25A006EC4E1 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94DC6E931E6AE99800D398E5 /* Launch Screen.storyboard */; };
 		BC4583CE1EE1B10600982965 /* readtags.h in Sources */ = {isa = PBXBuildFile; fileRef = 9471D4391630480E00629F35 /* readtags.h */; };
@@ -1317,14 +1312,11 @@
 		BC4584C01EE1B10600982965 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9417EB7714AE118000224D2A /* iAd.framework */; };
 		BC4584C11EE1B10600982965 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4038014A0ED4700E3A636 /* CFNetwork.framework */; };
 		BC4584C21EE1B10600982965 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94407B1A16E7BCBD0011F941 /* CoreData.framework */; };
-		BC4584C31EE1B10600982965 /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */; };
 		BC4584C41EE1B10600982965 /* libZip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434BFB314A389BE00B34419 /* libZip.a */; };
 		BC4584C51EE1B10600982965 /* ObjectiveGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */; };
-		BC4584C61EE1B10600982965 /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B4033014A0D5EB00E3A636 /* libHttpService.a */; };
 		BC4584C71EE1B10600982965 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9431D73814910B3000B0900E /* UIKit.framework */; };
 		BC4584C81EE1B10600982965 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9431D73A14910B3000B0900E /* Foundation.framework */; };
 		BC4584C91EE1B10600982965 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9431D73C14910B3000B0900E /* CoreGraphics.framework */; };
-		BC4584CB1EE1B10600982965 /* 1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 94C7C1791850E170003A8C03 /* 1.jpeg */; };
 		BC4584CC1EE1B10600982965 /* BuildInParser in Resources */ = {isa = PBXBuildFile; fileRef = 941E63DF1801541C008226F2 /* BuildInParser */; };
 		BC4584CD1EE1B10600982965 /* Themes in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BAF218EAF4F200CD7C2C /* Themes */; };
 		BC4584CE1EE1B10600982965 /* lgz_javascript.js in Resources */ = {isa = PBXBuildFile; fileRef = 9404058514964E56002A0C73 /* lgz_javascript.js */; };
@@ -1381,7 +1373,7 @@
 		BC4585011EE1B10600982965 /* ThemeSelectorViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B1DD2F19225C7D00909C3E /* ThemeSelectorViewController-iPhone.xib */; };
 		BC4585021EE1B10600982965 /* max.png in Resources */ = {isa = PBXBuildFile; fileRef = 945AA44A1508E3CA006729C8 /* max.png */; };
 		BC4585031EE1B10600982965 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94F9BB0C18EDE0AE00CD7C2C /* SourceCodePro-Regular.ttf */; };
-		BC4585041EE1B10600982965 /* Help.html in Resources */ = {isa = PBXBuildFile; fileRef = 945AA453150926A1006729C8 /* Help.html */; };
+		BC4585041EE1B10600982965 /* OpenGrok.Club in Resources */ = {isa = PBXBuildFile; fileRef = 945AA453150926A1006729C8 /* OpenGrok.Club */; };
 		BC4585051EE1B10600982965 /* masterView_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9457C78D153086FC00BB9185 /* masterView_bg.png */; };
 		BC4585061EE1B10600982965 /* UploadFromITunesViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94D0A9361976E8D3002EEFCE /* UploadFromITunesViewController-iPhone.xib */; };
 		BC4585071EE1B10600982965 /* nav_backButton_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9457C7901530923800BB9185 /* nav_backButton_icon.png */; };
@@ -1432,16 +1424,11 @@
 		BC4585341EE1B10600982965 /* FunctionListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94EED18C16331D99003D9CA3 /* FunctionListViewController.xib */; };
 		BC4585351EE1B10600982965 /* TagItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941B2ABF1636D419000BBF59 /* TagItemCell.xib */; };
 		BC4585371EE1B10600982965 /* ObjectiveGit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BC4585381EE1B10600982965 /* MMMarkdown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BC4A6E681ED48B86000A328A /* ObjectiveGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */; };
 		BC4A6E691ED48B86000A328A /* ObjectiveGit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BC4A6E951ED83107000A328A /* libZip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9434BFB314A389BE00B34419 /* libZip.a */; };
 		BC4A6E961ED832FC000A328A /* ObjectiveGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */; };
 		BC4A6E971ED832FC000A328A /* ObjectiveGit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 940D94CB18F99B75006D5D0D /* ObjectiveGit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BC4A6EAD1ED84F70000A328A /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */; };
-		BC4A6EAE1ED84F70000A328A /* MMMarkdown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BC4A6EB11ED84F7A000A328A /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */; };
-		BC4A6EB21ED84F7A000A328A /* MMMarkdown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BC8D36DF1EF8133100A56252 /* open_grok.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8D36DD1EF8107D00A56252 /* open_grok.png */; };
 		BC8D36E01EF8133200A56252 /* open_grok.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8D36DD1EF8107D00A56252 /* open_grok.png */; };
 		BC8D36E51EF81C7200A56252 /* OpenGrokViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8D36E41EF81C7200A56252 /* OpenGrokViewController.m */; };
@@ -1492,19 +1479,19 @@
 			remoteGlobalIDString = 9434BF9D14A389BC00B34419;
 			remoteInfo = Zip;
 		};
+		9497FA271EFFA56E000CDE41 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9497FA231EFFA56E000CDE41 /* HttpService.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 94B4031B14A0D5EA00E3A636;
+			remoteInfo = HttpService;
+		};
 		949DC1951583E8CF00385796 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9434BFAE14A389BC00B34419 /* Zip.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 9434BF9D14A389BC00B34419;
 			remoteInfo = Zip;
-		};
-		949DC1971583E8CF00385796 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 94B4031A14A0D5EA00E3A636;
-			remoteInfo = HttpService;
 		};
 		94ADF13B14BB27EE00BA807A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1513,26 +1500,19 @@
 			remoteGlobalIDString = 9434BF9D14A389BC00B34419;
 			remoteInfo = Zip;
 		};
-		94ADF13D14BB27EE00BA807A /* PBXContainerItemProxy */ = {
+		94CBEF6B1EFFBFDF0082FF9A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 94B4031A14A0D5EA00E3A636;
-			remoteInfo = HttpService;
-		};
-		94B4032F14A0D5EB00E3A636 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */;
+			containerPortal = 94CBEF631EFFBFDF0082FF9A /* MMMarkdown.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 94B4031B14A0D5EA00E3A636;
-			remoteInfo = HttpService;
+			remoteGlobalIDString = BED7620F1B37810000687B36;
+			remoteInfo = "MMMarkdown (iOS)";
 		};
-		94B4035114A0D75B00E3A636 /* PBXContainerItemProxy */ = {
+		94CBEF771EFFC01D0082FF9A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */;
+			containerPortal = 94CBEF631EFFBFDF0082FF9A /* MMMarkdown.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 94B4031A14A0D5EA00E3A636;
-			remoteInfo = HttpService;
+			remoteGlobalIDString = BED7620E1B37810000687B36;
+			remoteInfo = "MMMarkdown (iOS)";
 		};
 		94FF460D1E59CA9500B21AC4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1548,13 +1528,6 @@
 			remoteGlobalIDString = D01B6ED219F82E2000D411BC;
 			remoteInfo = "ObjectiveGit-iOS";
 		};
-		BC33DCC21EE2E768006EC4E1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BED7620E1B37810000687B36;
-			remoteInfo = "MMMarkdown (iOS)";
-		};
 		BC4583C61EE1B10600982965 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9434BFAE14A389BC00B34419 /* Zip.xcodeproj */;
@@ -1562,26 +1535,12 @@
 			remoteGlobalIDString = 9434BF9D14A389BC00B34419;
 			remoteInfo = Zip;
 		};
-		BC4583C81EE1B10600982965 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 94B4031A14A0D5EA00E3A636;
-			remoteInfo = HttpService;
-		};
 		BC4583CA1EE1B10600982965 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 940D94BB18F99B75006D5D0D /* ObjectiveGitFramework.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = D01B6ED219F82E2000D411BC;
 			remoteInfo = "ObjectiveGit-iOS";
-		};
-		BC4583CC1EE1B10600982965 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BED7620E1B37810000687B36;
-			remoteInfo = "MMMarkdown (iOS)";
 		};
 		BC4A6E6A1ED48B86000A328A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1597,55 +1556,6 @@
 			remoteGlobalIDString = D01B6ED219F82E2000D411BC;
 			remoteInfo = "ObjectiveGit-iOS";
 		};
-		BC4A6EA31ED84F5A000A328A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BED7620F1B37810000687B36;
-			remoteInfo = "MMMarkdown (iOS)";
-		};
-		BC4A6EA51ED84F5A000A328A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BED761571B374D6700687B36;
-			remoteInfo = "MMMarkdown (OS X)";
-		};
-		BC4A6EA71ED84F5A000A328A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BE23E8F41C0CF3EF0087F587;
-			remoteInfo = "MMMarkdown (tvOS)";
-		};
-		BC4A6EA91ED84F5A000A328A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BE23E9131C0CF77D0087F587;
-			remoteInfo = "MMMarkdown (watchOS)";
-		};
-		BC4A6EAB1ED84F5A000A328A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BED761611B374D6700687B36;
-			remoteInfo = MMMarkdownTests;
-		};
-		BC4A6EAF1ED84F70000A328A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BED7620E1B37810000687B36;
-			remoteInfo = "MMMarkdown (iOS)";
-		};
-		BC4A6EB31ED84F7A000A328A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BED7620E1B37810000687B36;
-			remoteInfo = "MMMarkdown (iOS)";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1656,7 +1566,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				BC33DCBB1EE2E510006EC4E1 /* ObjectiveGit.framework in Embed Frameworks */,
-				BC33DCC11EE2E768006EC4E1 /* MMMarkdown.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1668,7 +1577,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				BC4585371EE1B10600982965 /* ObjectiveGit.framework in Embed Frameworks */,
-				BC4585381EE1B10600982965 /* MMMarkdown.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1680,7 +1588,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				BC4A6E691ED48B86000A328A /* ObjectiveGit.framework in Embed Frameworks */,
-				BC4A6EB21ED84F7A000A328A /* MMMarkdown.framework in Embed Frameworks */,
+				94CBEF761EFFC01D0082FF9A /* MMMarkdown.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1692,7 +1600,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				BC4A6E971ED832FC000A328A /* ObjectiveGit.framework in Embed Frameworks */,
-				BC4A6EAE1ED84F70000A328A /* MMMarkdown.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1945,7 +1852,7 @@
 		945AA3F71507B13E006729C8 /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward.png; sourceTree = "<group>"; };
 		945AA40D1508DE9C006729C8 /* NewEntry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewEntry.png; sourceTree = "<group>"; };
 		945AA44A1508E3CA006729C8 /* max.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = max.png; sourceTree = "<group>"; };
-		945AA453150926A1006729C8 /* Help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Help.html; sourceTree = "<group>"; };
+		945AA453150926A1006729C8 /* OpenGrok.Club */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OpenGrok.Club; sourceTree = "<group>"; };
 		94603D04149E041400D72561 /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
 		94603D05149E041400D72561 /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
 		94603D06149E041400D72561 /* ResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
@@ -2105,6 +2012,7 @@
 		9497F3C9151CEC4F006BCBBF /* RubyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RubyParser.h; path = CodeNavigator/RubyParser.h; sourceTree = "<group>"; };
 		9497F3CA151CEC4F006BCBBF /* RubyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RubyParser.m; path = CodeNavigator/RubyParser.m; sourceTree = "<group>"; };
 		9497F3CD151CEC6A006BCBBF /* RubbyDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RubbyDefinition.h; path = CodeNavigator/RubbyDefinition.h; sourceTree = "<group>"; };
+		9497FA231EFFA56E000CDE41 /* HttpService.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HttpService.xcodeproj; path = HttpService/HttpService.xcodeproj; sourceTree = "<group>"; };
 		949CB5E11961A96200A95AEC /* back_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_arrow.png; sourceTree = "<group>"; };
 		949CB5EB19630C6500A95AEC /* FileBrowserTreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileBrowserTreeViewController.h; path = FileBrowserTreeView/FileBrowserTreeViewController.h; sourceTree = "<group>"; };
 		949CB5EC19630C6500A95AEC /* FileBrowserTreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileBrowserTreeViewController.m; path = FileBrowserTreeView/FileBrowserTreeViewController.m; sourceTree = "<group>"; };
@@ -2155,7 +2063,6 @@
 		94B1DD2F19225C7D00909C3E /* ThemeSelectorViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "ThemeSelectorViewController-iPhone.xib"; path = "Theme/ThemeSelectorViewController-iPhone.xib"; sourceTree = SOURCE_ROOT; };
 		94B23AD61499025A00A83395 /* HistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryController.h; path = CodeNavigator/HistoryController.h; sourceTree = "<group>"; };
 		94B23AD71499025A00A83395 /* HistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryController.m; path = CodeNavigator/HistoryController.m; sourceTree = "<group>"; };
-		94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HttpService.xcodeproj; path = HttpService/HttpService.xcodeproj; sourceTree = "<group>"; };
 		94B4037614A0E33000E3A636 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncSocket.h; path = HttpService/HttpService/AsyncSocket.h; sourceTree = "<group>"; };
 		94B4037714A0E33000E3A636 /* DDData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDData.h; path = HttpService/HttpService/DDData.h; sourceTree = "<group>"; };
 		94B4037814A0E33000E3A636 /* DDNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDNumber.h; path = HttpService/HttpService/DDNumber.h; sourceTree = "<group>"; };
@@ -2226,7 +2133,6 @@
 		94C2CDC4167F55C9004FB1FB /* HtmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HtmlParser.m; sourceTree = "<group>"; };
 		94C2CDC8167F5991004FB1FB /* HTMLDefination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLDefination.h; sourceTree = "<group>"; };
 		94C7C170184E42B3003A8C03 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		94C7C1791850E170003A8C03 /* 1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpeg; sourceTree = "<group>"; };
 		94C8C68114FA57D60062750D /* ImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagePreviewController.h; path = CodeNavigator/ImagePreviewController.h; sourceTree = "<group>"; };
 		94C8C68214FA57D60062750D /* ImagePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagePreviewController.m; path = CodeNavigator/ImagePreviewController.m; sourceTree = "<group>"; };
 		94C8C68314FA57D60062750D /* ImagePreviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImagePreviewController.xib; path = CodeNavigator/ImagePreviewController.xib; sourceTree = "<group>"; };
@@ -2234,6 +2140,7 @@
 		94CB768017E21369009807F9 /* FileListBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileListBrowserController.h; path = FileListBrowser/FileListBrowserController.h; sourceTree = "<group>"; };
 		94CB768117E21369009807F9 /* FileListBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileListBrowserController.m; path = FileListBrowser/FileListBrowserController.m; sourceTree = "<group>"; };
 		94CB787E156E80C8009452D8 /* FileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileTableViewCell.xib; sourceTree = "<group>"; };
+		94CBEF631EFFBFDF0082FF9A /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMMarkdown.xcodeproj; path = ../MMMarkdown/MMMarkdown.xcodeproj; sourceTree = "<group>"; };
 		94D0A9361976E8D3002EEFCE /* UploadFromITunesViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "UploadFromITunesViewController-iPhone.xib"; path = "UploadFromITunes/UploadFromITunesViewController-iPhone.xib"; sourceTree = "<group>"; };
 		94D16DE514C9CC3B007439EB /* ImageParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageParser.h; sourceTree = "<group>"; };
 		94D16DE614C9CC3B007439EB /* ImageParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageParser.m; sourceTree = "<group>"; };
@@ -2344,9 +2251,7 @@
 		94FB0FE914BDB3A50084E457 /* HighLightWordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighLightWordController.m; sourceTree = "<group>"; };
 		94FB0FEA14BDB3A50084E457 /* HighLightWordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HighLightWordController.xib; sourceTree = "<group>"; };
 		BC45853D1EE1B10600982965 /* CodeNavigator-iPhone-Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CodeNavigator-iPhone-Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC45853E1EE1B10700982965 /* CodeNavigator-iPhone copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CodeNavigator-iPhone copy-Info.plist"; path = "/Users/guangzhen/Documents/iOS_Development/CodeNavigator/CodeNavigator-iPhone copy-Info.plist"; sourceTree = "<absolute>"; };
 		BC45854C1EE1B49E00982965 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
-		BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMMarkdown.xcodeproj; path = ../MMMarkdown/MMMarkdown.xcodeproj; sourceTree = "<group>"; };
 		BC8D36DD1EF8107D00A56252 /* open_grok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = open_grok.png; sourceTree = "<group>"; };
 		BC8D36E31EF81C7200A56252 /* OpenGrokViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenGrokViewController.h; path = OpenGrok/OpenGrokViewController.h; sourceTree = "<group>"; };
 		BC8D36E41EF81C7200A56252 /* OpenGrokViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenGrokViewController.m; path = OpenGrok/OpenGrokViewController.m; sourceTree = "<group>"; };
@@ -2359,6 +2264,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94CBEF871EFFC4950082FF9A /* libHttpService.a in Frameworks */,
 				94E4C123199E8E50003B0E82 /* libz.dylib in Frameworks */,
 				94618169155BF85800A25635 /* MessageUI.framework in Frameworks */,
 				94A5184B152DF30A0062DA65 /* Security.framework in Frameworks */,
@@ -2369,14 +2275,13 @@
 				94BC575318D89B730027B383 /* SystemConfiguration.framework in Frameworks */,
 				94C95FEC198A8A8A005260B5 /* libsqlite3.dylib in Frameworks */,
 				94C7C171184E42B3003A8C03 /* Social.framework in Frameworks */,
-				BC4A6EB11ED84F7A000A328A /* MMMarkdown.framework in Frameworks */,
 				94BC575218D897EA0027B383 /* CoreData.framework in Frameworks */,
 				94785A421840FAB90012988B /* libiconv.dylib in Frameworks */,
 				9478C6DE15C8396300F443D9 /* Twitter.framework in Frameworks */,
+				94CBEF751EFFC01D0082FF9A /* MMMarkdown.framework in Frameworks */,
 				94BF7DA4150E727B00FCF653 /* libZip.a in Frameworks */,
 				9417EB7814AE118000224D2A /* iAd.framework in Frameworks */,
 				94B4038114A0ED4700E3A636 /* CFNetwork.framework in Frameworks */,
-				94B4036A14A0DE0300E3A636 /* libHttpService.a in Frameworks */,
 				9431D73914910B3000B0900E /* UIKit.framework in Frameworks */,
 				9431D73B14910B3000B0900E /* Foundation.framework in Frameworks */,
 				9431D73D14910B3000B0900E /* CoreGraphics.framework in Frameworks */,
@@ -2399,10 +2304,8 @@
 				949DC2081583E8CF00385796 /* iAd.framework in Frameworks */,
 				949DC2091583E8CF00385796 /* CFNetwork.framework in Frameworks */,
 				94B1DCC3191F6D2700909C3E /* CoreData.framework in Frameworks */,
-				BC4A6EAD1ED84F70000A328A /* MMMarkdown.framework in Frameworks */,
 				BC4A6E951ED83107000A328A /* libZip.a in Frameworks */,
 				BC4A6E961ED832FC000A328A /* ObjectiveGit.framework in Frameworks */,
-				949DC20A1583E8CF00385796 /* libHttpService.a in Frameworks */,
 				949DC20B1583E8CF00385796 /* UIKit.framework in Frameworks */,
 				949DC20C1583E8CF00385796 /* Foundation.framework in Frameworks */,
 				949DC20D1583E8CF00385796 /* CoreGraphics.framework in Frameworks */,
@@ -2414,8 +2317,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC33DCC41EE2E80E006EC4E1 /* MessageUI.framework in Frameworks */,
-				BC33DCBE1EE2E71D006EC4E1 /* libHttpService.a in Frameworks */,
-				BC33DCC01EE2E768006EC4E1 /* MMMarkdown.framework in Frameworks */,
 				BC33DCBF1EE2E71D006EC4E1 /* libZip.a in Frameworks */,
 				94B8EC281546F31700931747 /* SystemConfiguration.framework in Frameworks */,
 				940739181A091F2B00EA3C28 /* CoreTelephony.framework in Frameworks */,
@@ -2459,10 +2360,8 @@
 				BC4584C01EE1B10600982965 /* iAd.framework in Frameworks */,
 				BC4584C11EE1B10600982965 /* CFNetwork.framework in Frameworks */,
 				BC4584C21EE1B10600982965 /* CoreData.framework in Frameworks */,
-				BC4584C31EE1B10600982965 /* MMMarkdown.framework in Frameworks */,
 				BC4584C41EE1B10600982965 /* libZip.a in Frameworks */,
 				BC4584C51EE1B10600982965 /* ObjectiveGit.framework in Frameworks */,
-				BC4584C61EE1B10600982965 /* libHttpService.a in Frameworks */,
 				BC4584C71EE1B10600982965 /* UIKit.framework in Frameworks */,
 				BC4584C81EE1B10600982965 /* Foundation.framework in Frameworks */,
 				BC4584C91EE1B10600982965 /* CoreGraphics.framework in Frameworks */,
@@ -2574,7 +2473,8 @@
 		9431D72914910B3000B0900E = {
 			isa = PBXGroup;
 			children = (
-				BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */,
+				94CBEF631EFFBFDF0082FF9A /* MMMarkdown.xcodeproj */,
+				9497FA231EFFA56E000CDE41 /* HttpService.xcodeproj */,
 				940D94BB18F99B75006D5D0D /* ObjectiveGitFramework.xcodeproj */,
 				94407B1A16E7BCBD0011F941 /* CoreData.framework */,
 				94407B1216E7B2400011F941 /* GoogleAnalytics */,
@@ -2586,7 +2486,6 @@
 				94A5184A152DF30A0062DA65 /* Security.framework */,
 				94A51847152DF2AC0062DA65 /* DropboxSDK.framework */,
 				9434BFAE14A389BC00B34419 /* Zip.xcodeproj */,
-				94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */,
 				948C74101806FD6000065E65 /* iPad_icon */,
 				948C740F1806FD3D00065E65 /* iPhone_icon */,
 				947858F0162C59EA006E4575 /* ctags */,
@@ -2628,7 +2527,6 @@
 				9431D73E14910B3000B0900E /* CodeNavigator */,
 				9431D73714910B3000B0900E /* Frameworks */,
 				9431D73514910B3000B0900E /* Products */,
-				BC45853E1EE1B10700982965 /* CodeNavigator-iPhone copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3049,8 +2947,7 @@
 		945AA44D150926A1006729C8 /* help */ = {
 			isa = PBXGroup;
 			children = (
-				94C7C1791850E170003A8C03 /* 1.jpeg */,
-				945AA453150926A1006729C8 /* Help.html */,
+				945AA453150926A1006729C8 /* OpenGrok.Club */,
 			);
 			path = help;
 			sourceTree = "<group>";
@@ -3253,6 +3150,14 @@
 			name = Comment;
 			sourceTree = "<group>";
 		};
+		9497FA241EFFA56E000CDE41 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9497FA281EFFA56E000CDE41 /* libHttpService.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		949CB5EA19630C0600A95AEC /* FileBrowserTreeView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3330,14 +3235,6 @@
 				94B1DD1B191F99E600909C3E /* FPTouchView.h */,
 			);
 			name = FPPopover;
-			sourceTree = "<group>";
-		};
-		94B4032C14A0D5EA00E3A636 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				94B4033014A0D5EB00E3A636 /* libHttpService.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		94B4037514A0E2C400E3A636 /* HttpServiceInc */ = {
@@ -3459,6 +3356,14 @@
 				94F7B90617F5E21F00A506EE /* FileBrowserViewProtocol.h */,
 			);
 			name = FileListBrowser;
+			sourceTree = "<group>";
+		};
+		94CBEF641EFFBFDF0082FF9A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				94CBEF6C1EFFBFDF0082FF9A /* MMMarkdown.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		94DDE5D11997CA820034B193 /* Tracking */ = {
@@ -3614,18 +3519,6 @@
 			path = Theme/FontSourceCodePro;
 			sourceTree = "<group>";
 		};
-		BC4A6E9C1ED84F59000A328A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */,
-				BC4A6EA61ED84F5A000A328A /* MMMarkdown.framework */,
-				BC4A6EA81ED84F5A000A328A /* MMMarkdown.framework */,
-				BC4A6EAA1ED84F5A000A328A /* MMMarkdown.framework */,
-				BC4A6EAC1ED84F5A000A328A /* MMMarkdownTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		BC8D36E11EF81B7500A56252 /* OpenGrok */ = {
 			isa = PBXGroup;
 			children = (
@@ -3653,9 +3546,8 @@
 			);
 			dependencies = (
 				9434BFCB14A38ACD00B34419 /* PBXTargetDependency */,
-				94B4035214A0D75B00E3A636 /* PBXTargetDependency */,
 				BC4A6E6B1ED48B86000A328A /* PBXTargetDependency */,
-				BC4A6EB41ED84F7A000A328A /* PBXTargetDependency */,
+				94CBEF781EFFC01D0082FF9A /* PBXTargetDependency */,
 			);
 			name = CodeNavigator;
 			productName = CodeNavigator;
@@ -3675,9 +3567,7 @@
 			);
 			dependencies = (
 				949DC1941583E8CF00385796 /* PBXTargetDependency */,
-				949DC1961583E8CF00385796 /* PBXTargetDependency */,
 				BC4A6E991ED832FC000A328A /* PBXTargetDependency */,
-				BC4A6EB01ED84F70000A328A /* PBXTargetDependency */,
 			);
 			name = "CodeNavigator-iPhone";
 			productName = CodeNavigator;
@@ -3697,9 +3587,7 @@
 			);
 			dependencies = (
 				94ADF13A14BB27EE00BA807A /* PBXTargetDependency */,
-				94ADF13C14BB27EE00BA807A /* PBXTargetDependency */,
 				BC33DCBD1EE2E510006EC4E1 /* PBXTargetDependency */,
-				BC33DCC31EE2E768006EC4E1 /* PBXTargetDependency */,
 			);
 			name = CodeNavigatorLite;
 			productName = CodeNavigator;
@@ -3719,9 +3607,7 @@
 			);
 			dependencies = (
 				BC4583C51EE1B10600982965 /* PBXTargetDependency */,
-				BC4583C71EE1B10600982965 /* PBXTargetDependency */,
 				BC4583C91EE1B10600982965 /* PBXTargetDependency */,
-				BC4583CB1EE1B10600982965 /* PBXTargetDependency */,
 			);
 			name = "CodeNavigator-iPhone-Lite";
 			productName = CodeNavigator;
@@ -3768,12 +3654,12 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 94B4032C14A0D5EA00E3A636 /* Products */;
-					ProjectRef = 94B4032B14A0D5EA00E3A636 /* HttpService.xcodeproj */;
+					ProductGroup = 9497FA241EFFA56E000CDE41 /* Products */;
+					ProjectRef = 9497FA231EFFA56E000CDE41 /* HttpService.xcodeproj */;
 				},
 				{
-					ProductGroup = BC4A6E9C1ED84F59000A328A /* Products */;
-					ProjectRef = BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */;
+					ProductGroup = 94CBEF641EFFBFDF0082FF9A /* Products */;
+					ProjectRef = 94CBEF631EFFBFDF0082FF9A /* MMMarkdown.xcodeproj */;
 				},
 				{
 					ProductGroup = 940D94BC18F99B75006D5D0D /* Products */;
@@ -3823,11 +3709,18 @@
 			remoteRef = 9434BFB214A389BE00B34419 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		94B4033014A0D5EB00E3A636 /* libHttpService.a */ = {
+		9497FA281EFFA56E000CDE41 /* libHttpService.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libHttpService.a;
-			remoteRef = 94B4032F14A0D5EB00E3A636 /* PBXContainerItemProxy */;
+			remoteRef = 9497FA271EFFA56E000CDE41 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		94CBEF6C1EFFBFDF0082FF9A /* MMMarkdown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMMarkdown.framework;
+			remoteRef = 94CBEF6B1EFFBFDF0082FF9A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		94FF460E1E59CA9500B21AC4 /* ObjectiveGit-iOSTests.xctest */ = {
@@ -3835,41 +3728,6 @@
 			fileType = wrapper.cfbundle;
 			path = "ObjectiveGit-iOSTests.xctest";
 			remoteRef = 94FF460D1E59CA9500B21AC4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = MMMarkdown.framework;
-			remoteRef = BC4A6EA31ED84F5A000A328A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BC4A6EA61ED84F5A000A328A /* MMMarkdown.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = MMMarkdown.framework;
-			remoteRef = BC4A6EA51ED84F5A000A328A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BC4A6EA81ED84F5A000A328A /* MMMarkdown.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = MMMarkdown.framework;
-			remoteRef = BC4A6EA71ED84F5A000A328A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BC4A6EAA1ED84F5A000A328A /* MMMarkdown.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = MMMarkdown.framework;
-			remoteRef = BC4A6EA91ED84F5A000A328A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BC4A6EAC1ED84F5A000A328A /* MMMarkdownTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = MMMarkdownTests.xctest;
-			remoteRef = BC4A6EAB1ED84F5A000A328A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -3937,7 +3795,7 @@
 				945AA44B1508E3CA006729C8 /* max.png in Resources */,
 				94A430EA196EF328003497CB /* UploadFromITunesViewController.xib in Resources */,
 				9421EACA196853D100EFD7E2 /* treeView.png in Resources */,
-				945AA45E150926A1006729C8 /* Help.html in Resources */,
+				945AA45E150926A1006729C8 /* OpenGrok.Club in Resources */,
 				941657011515C3C200838005 /* GitLogViewController.xib in Resources */,
 				941657121516280200838005 /* GitLogTableCell.xib in Resources */,
 				948C74001804460700065E65 /* seperate.png in Resources */,
@@ -3992,7 +3850,6 @@
 				9478C6DA15C8207600F443D9 /* weibo.png in Resources */,
 				9478C6DC15C8213100F443D9 /* feedback.png in Resources */,
 				9478C6E015C859F000F443D9 /* help.png in Resources */,
-				94C7C17A1850E170003A8C03 /* 1.jpeg in Resources */,
 				94EED18E16331D99003D9CA3 /* FunctionListViewController.xib in Resources */,
 				94F9BAF918EC5BE100CD7C2C /* ThemeSelectorViewController.xib in Resources */,
 				941B2AC01636D419000BBF59 /* TagItemCell.xib in Resources */,
@@ -4014,7 +3871,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94B1DD15191F973B00909C3E /* 1.jpeg in Resources */,
 				94B1DD14191F7F2200909C3E /* BuildInParser in Resources */,
 				94B1DD13191F7EFE00909C3E /* Themes in Resources */,
 				949DC2101583E8CF00385796 /* lgz_javascript.js in Resources */,
@@ -4072,7 +3928,7 @@
 				94B1DD3019225C7D00909C3E /* ThemeSelectorViewController-iPhone.xib in Resources */,
 				949DC2401583E8CF00385796 /* max.png in Resources */,
 				94B1DD0A191F738500909C3E /* SourceCodePro-Regular.ttf in Resources */,
-				949DC2411583E8CF00385796 /* Help.html in Resources */,
+				949DC2411583E8CF00385796 /* OpenGrok.Club in Resources */,
 				949DC24B1583E8CF00385796 /* masterView_bg.png in Resources */,
 				94D0A9371976E8D3002EEFCE /* UploadFromITunesViewController-iPhone.xib in Resources */,
 				949DC24C1583E8CF00385796 /* nav_backButton_icon.png in Resources */,
@@ -4131,7 +3987,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC33DCC71EE2F25A006EC4E1 /* Launch Screen.storyboard in Resources */,
-				94B5FDAE19FFD9B10062F376 /* 1.jpeg in Resources */,
 				94B5FDBD19FFE6180062F376 /* iTunesArtwork.png in Resources */,
 				94B5FDC019FFE6250062F376 /* Default-Landscape~ipad.png in Resources */,
 				94B5FDBF19FFE6210062F376 /* Default-Portrait~ipad.png in Resources */,
@@ -4210,7 +4065,7 @@
 				945AA3FB1507B13E006729C8 /* forward.png in Resources */,
 				945AA40F1508DE9C006729C8 /* NewEntry.png in Resources */,
 				945AA44C1508E3CA006729C8 /* max.png in Resources */,
-				945AA45F150926A1006729C8 /* Help.html in Resources */,
+				945AA45F150926A1006729C8 /* OpenGrok.Club in Resources */,
 				94A51853152DF8D70062DA65 /* DropBoxViewController.xib in Resources */,
 				9457C78F153086FC00BB9185 /* masterView_bg.png in Resources */,
 				948DC1B01A010FA000514398 /* Images.xcassets in Resources */,
@@ -4256,7 +4111,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC4584CB1EE1B10600982965 /* 1.jpeg in Resources */,
 				BC4584CC1EE1B10600982965 /* BuildInParser in Resources */,
 				BC4584CD1EE1B10600982965 /* Themes in Resources */,
 				BC4584CE1EE1B10600982965 /* lgz_javascript.js in Resources */,
@@ -4314,7 +4168,7 @@
 				BC4585011EE1B10600982965 /* ThemeSelectorViewController-iPhone.xib in Resources */,
 				BC4585021EE1B10600982965 /* max.png in Resources */,
 				BC4585031EE1B10600982965 /* SourceCodePro-Regular.ttf in Resources */,
-				BC4585041EE1B10600982965 /* Help.html in Resources */,
+				BC4585041EE1B10600982965 /* OpenGrok.Club in Resources */,
 				BC4585051EE1B10600982965 /* masterView_bg.png in Resources */,
 				BC4585061EE1B10600982965 /* UploadFromITunesViewController-iPhone.xib in Resources */,
 				BC4585071EE1B10600982965 /* nav_backButton_icon.png in Resources */,
@@ -5300,55 +5154,30 @@
 			name = Zip;
 			targetProxy = 949DC1951583E8CF00385796 /* PBXContainerItemProxy */;
 		};
-		949DC1961583E8CF00385796 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = HttpService;
-			targetProxy = 949DC1971583E8CF00385796 /* PBXContainerItemProxy */;
-		};
 		94ADF13A14BB27EE00BA807A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Zip;
 			targetProxy = 94ADF13B14BB27EE00BA807A /* PBXContainerItemProxy */;
 		};
-		94ADF13C14BB27EE00BA807A /* PBXTargetDependency */ = {
+		94CBEF781EFFC01D0082FF9A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = HttpService;
-			targetProxy = 94ADF13D14BB27EE00BA807A /* PBXContainerItemProxy */;
-		};
-		94B4035214A0D75B00E3A636 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = HttpService;
-			targetProxy = 94B4035114A0D75B00E3A636 /* PBXContainerItemProxy */;
+			name = "MMMarkdown (iOS)";
+			targetProxy = 94CBEF771EFFC01D0082FF9A /* PBXContainerItemProxy */;
 		};
 		BC33DCBD1EE2E510006EC4E1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ObjectiveGit-iOS";
 			targetProxy = BC33DCBC1EE2E510006EC4E1 /* PBXContainerItemProxy */;
 		};
-		BC33DCC31EE2E768006EC4E1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "MMMarkdown (iOS)";
-			targetProxy = BC33DCC21EE2E768006EC4E1 /* PBXContainerItemProxy */;
-		};
 		BC4583C51EE1B10600982965 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Zip;
 			targetProxy = BC4583C61EE1B10600982965 /* PBXContainerItemProxy */;
 		};
-		BC4583C71EE1B10600982965 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = HttpService;
-			targetProxy = BC4583C81EE1B10600982965 /* PBXContainerItemProxy */;
-		};
 		BC4583C91EE1B10600982965 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ObjectiveGit-iOS";
 			targetProxy = BC4583CA1EE1B10600982965 /* PBXContainerItemProxy */;
-		};
-		BC4583CB1EE1B10600982965 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "MMMarkdown (iOS)";
-			targetProxy = BC4583CC1EE1B10600982965 /* PBXContainerItemProxy */;
 		};
 		BC4A6E6B1ED48B86000A328A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5359,16 +5188,6 @@
 			isa = PBXTargetDependency;
 			name = "ObjectiveGit-iOS";
 			targetProxy = BC4A6E981ED832FC000A328A /* PBXContainerItemProxy */;
-		};
-		BC4A6EB01ED84F70000A328A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "MMMarkdown (iOS)";
-			targetProxy = BC4A6EAF1ED84F70000A328A /* PBXContainerItemProxy */;
-		};
-		BC4A6EB41ED84F7A000A328A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "MMMarkdown (iOS)";
-			targetProxy = BC4A6EB31ED84F7A000A328A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -5517,7 +5336,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit ~/Documents/iOS_Development/CodeNavigator/CodeNavigator";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit ~/Documents/iOS_Development/CodeNavigator/CodeNavigator ~/Documents/iOS_Development/MMMarkdown/Source";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -5548,7 +5367,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit ~/Documents/iOS_Development/CodeNavigator/CodeNavigator";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit ~/Documents/iOS_Development/CodeNavigator/CodeNavigator ~/Documents/iOS_Development/MMMarkdown/Source";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -5623,7 +5442,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit ~/Documents/iOS_Development/CodeNavigator/CodeNavigator";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit ~/Documents/iOS_Development/CodeNavigator/CodeNavigator ~/Documents/iOS_Development/MMMarkdown/Source";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

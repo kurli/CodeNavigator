@@ -7,9 +7,9 @@
 //
 
 #import "HelpViewController.h"
+#import "MasterViewController.h"
 #import "Utils.h"
 
-#define ALERT_DEMO_VIDEO 0
 #define ALERT_TWITTER_FOLLOW 1
 #define ALERT_WEIBO_FOLLOW 2
 #define ALERT_WEIBO_SHARE 3
@@ -177,13 +177,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIAlertView* alertConfirmView;
+    MasterViewController* master;
     switch (indexPath.section) {
         case 0:
-            [[Utils getInstance] addGAEvent:@"Help" andAction:@"Demo Video" andLabel:nil andValue:nil];
             //demoVideo
-            alertType = ALERT_DEMO_VIDEO;
-            alertConfirmView = [[UIAlertView alloc] initWithTitle:@"Do you want to open this link in Safari?" message:@"http://v.youku.com/v_show/id_XNzQwMDEyMjE2.html" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
-            [alertConfirmView show];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            master = [Utils getInstance].masterViewController;
+            [master openGrokButtonClicked:@"http://opengrok.club/category/1/codenavigator-help"];
             break;
         case 1:
             [self sendButtonClicked:nil];
@@ -255,7 +255,7 @@
     switch (indexPath.section) {
         case 0:
             cell.imageView.image = [UIImage imageNamed:@"demoVideo.png"];
-            cell.textLabel.text = @"Demo Video";
+            cell.textLabel.text = @"Online Help  -- http://opengrok.club";
             break;
         case 1:
             cell.imageView.image = [UIImage imageNamed:@"feedback.png"];
@@ -349,9 +349,6 @@
     NSString* url = @"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=492480832";
 #endif
     switch (alertType) {
-        case ALERT_DEMO_VIDEO:
-            url = @"http://v.youku.com/v_show/id_XNzQwMDEyMjE2.html";
-            break;
         case ALERT_TWITTER_FOLLOW:
             url = @"http://twitter.com/intent/user?screen_name=CodeNavigator";
             break;
