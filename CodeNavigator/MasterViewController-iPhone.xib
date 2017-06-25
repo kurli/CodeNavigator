@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MasterViewController">
             <connections>
-                <outlet property="analyzeButton" destination="10" id="12"/>
                 <outlet property="commentButton" destination="25" id="VsJ-FX-psA"/>
                 <outlet property="fileSearchBar" destination="19" id="20"/>
                 <outlet property="tableView" destination="5" id="22"/>
@@ -53,12 +52,6 @@
                                 <action selector="addFileToolBarClicked:" destination="-1" id="13"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="zcz-jJ-fIi"/>
-                        <barButtonItem image="open_grok.png" id="Dfu-BN-4Rr">
-                            <connections>
-                                <action selector="openGrokButtonClicked:" destination="-1" id="IxM-Ae-fBo"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="xWa-z4-Vt5"/>
                         <barButtonItem image="version_control.png" style="plain" id="n8x-dJ-lqN">
                             <connections>
@@ -69,12 +62,6 @@
                         <barButtonItem image="Comment.png" style="plain" id="25">
                             <connections>
                                 <action selector="commentClicked:" destination="-1" id="26"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="27"/>
-                        <barButtonItem image="cscope.png" style="plain" id="10">
-                            <connections>
-                                <action selector="analyzeButtonClicked:" destination="-1" id="14"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Rux-bJ-C3B"/>
@@ -92,9 +79,7 @@
     </objects>
     <resources>
         <image name="Comment.png" width="26" height="26"/>
-        <image name="cscope.png" width="20" height="20"/>
         <image name="help.png" width="22" height="22"/>
-        <image name="open_grok.png" width="26" height="26"/>
         <image name="version_control.png" width="26" height="26"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

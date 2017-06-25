@@ -1046,6 +1046,46 @@
 		94F4249A15387E1E005FC4C8 /* show_masterview.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F4249715387E1E005FC4C8 /* show_masterview.png */; };
 		94F4249B15387E1E005FC4C8 /* show_masterview.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F4249715387E1E005FC4C8 /* show_masterview.png */; };
 		94F6EEE11587BD30002DE115 /* ResultViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F6EEE01587BD30002DE115 /* ResultViewController-iPhone.xib */; };
+		94F752F31F000460006BA5D5 /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94CBEF6C1EFFBFDF0082FF9A /* MMMarkdown.framework */; };
+		94F752F41F000460006BA5D5 /* MMMarkdown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 94CBEF6C1EFFBFDF0082FF9A /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		94F752FF1F000468006BA5D5 /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94CBEF6C1EFFBFDF0082FF9A /* MMMarkdown.framework */; };
+		94F753001F000468006BA5D5 /* MMMarkdown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 94CBEF6C1EFFBFDF0082FF9A /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		94F753031F0004FC006BA5D5 /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9497FA281EFFA56E000CDE41 /* libHttpService.a */; };
+		94F753041F000502006BA5D5 /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9497FA281EFFA56E000CDE41 /* libHttpService.a */; };
+		94F7530B1F001510006BA5D5 /* git_clone.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F7530A1F001510006BA5D5 /* git_clone.png */; };
+		94F7530D1F00154C006BA5D5 /* web_upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F7530C1F00154C006BA5D5 /* web_upload.png */; };
+		94F7530E1F0015AB006BA5D5 /* web_upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F7530C1F00154C006BA5D5 /* web_upload.png */; };
+		94F7530F1F0015AC006BA5D5 /* web_upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F7530C1F00154C006BA5D5 /* web_upload.png */; };
+		94F753101F0015AC006BA5D5 /* web_upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F7530C1F00154C006BA5D5 /* web_upload.png */; };
+		94F753111F0015B0006BA5D5 /* git_clone.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F7530A1F001510006BA5D5 /* git_clone.png */; };
+		94F753121F0015B0006BA5D5 /* git_clone.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F7530A1F001510006BA5D5 /* git_clone.png */; };
+		94F753131F0015B1006BA5D5 /* git_clone.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F7530A1F001510006BA5D5 /* git_clone.png */; };
+		94F753151F0015C9006BA5D5 /* itunes_transfer.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F753141F0015C9006BA5D5 /* itunes_transfer.png */; };
+		94F753161F0015CD006BA5D5 /* itunes_transfer.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F753141F0015C9006BA5D5 /* itunes_transfer.png */; };
+		94F753171F0015CD006BA5D5 /* itunes_transfer.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F753141F0015C9006BA5D5 /* itunes_transfer.png */; };
+		94F753181F0015CE006BA5D5 /* itunes_transfer.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F753141F0015C9006BA5D5 /* itunes_transfer.png */; };
+		94F7531A1F0016BE006BA5D5 /* open_grok_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F753191F0016BE006BA5D5 /* open_grok_2.png */; };
+		94F7531B1F001996006BA5D5 /* open_grok_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F753191F0016BE006BA5D5 /* open_grok_2.png */; };
+		94F7531C1F001997006BA5D5 /* open_grok_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F753191F0016BE006BA5D5 /* open_grok_2.png */; };
+		94F7531D1F001997006BA5D5 /* open_grok_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F753191F0016BE006BA5D5 /* open_grok_2.png */; };
+		94F7531E1F001A28006BA5D5 /* feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6DB15C8213100F443D9 /* feedback.png */; };
+		94F7531F1F001A28006BA5D5 /* feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6DB15C8213100F443D9 /* feedback.png */; };
+		94F753201F001A45006BA5D5 /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D115C8207600F443D9 /* appstore.png */; };
+		94F753211F001A46006BA5D5 /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D115C8207600F443D9 /* appstore.png */; };
+		94F753221F001A5B006BA5D5 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D415C8207600F443D9 /* twitter.png */; };
+		94F753231F001A5C006BA5D5 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D415C8207600F443D9 /* twitter.png */; };
+		94F753241F001A62006BA5D5 /* weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D515C8207600F443D9 /* weibo.png */; };
+		94F753251F001A62006BA5D5 /* weibo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D515C8207600F443D9 /* weibo.png */; };
+		94F753261F001A80006BA5D5 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D315C8207600F443D9 /* share.png */; };
+		94F753271F001A80006BA5D5 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 9478C6D315C8207600F443D9 /* share.png */; };
+		94F753281F001AFF006BA5D5 /* screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C740B1804555300065E65 /* screen.png */; };
+		94F753291F001B00006BA5D5 /* screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C740B1804555300065E65 /* screen.png */; };
+		94F7532A1F001B02006BA5D5 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C74031804491A00065E65 /* search.png */; };
+		94F7532B1F001B03006BA5D5 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C74031804491A00065E65 /* search.png */; };
+		94F7532C1F001B05006BA5D5 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C74041804491A00065E65 /* search@2x.png */; };
+		94F7532D1F001B06006BA5D5 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C74041804491A00065E65 /* search@2x.png */; };
+		94F7532E1F001B09006BA5D5 /* seperate.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C73FF1804460700065E65 /* seperate.png */; };
+		94F7532F1F001B0A006BA5D5 /* seperate.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C73FF1804460700065E65 /* seperate.png */; };
 		94F7B90D17F7487A00A506EE /* UploadSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F7B90B17F7487A00A506EE /* UploadSelectionViewController.m */; };
 		94F7B90E17F7487A00A506EE /* UploadSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F7B90C17F7487A00A506EE /* UploadSelectionViewController.xib */; };
 		94F7B91617F84A7600A506EE /* WebServiceControllerFormSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F7B91517F84A7600A506EE /* WebServiceControllerFormSheet.xib */; };
@@ -1514,6 +1554,20 @@
 			remoteGlobalIDString = BED7620E1B37810000687B36;
 			remoteInfo = "MMMarkdown (iOS)";
 		};
+		94F752F51F000460006BA5D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94CBEF631EFFBFDF0082FF9A /* MMMarkdown.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BED7620E1B37810000687B36;
+			remoteInfo = "MMMarkdown (iOS)";
+		};
+		94F753011F000468006BA5D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94CBEF631EFFBFDF0082FF9A /* MMMarkdown.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BED7620E1B37810000687B36;
+			remoteInfo = "MMMarkdown (iOS)";
+		};
 		94FF460D1E59CA9500B21AC4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 940D94BB18F99B75006D5D0D /* ObjectiveGitFramework.xcodeproj */;
@@ -1577,6 +1631,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				BC4585371EE1B10600982965 /* ObjectiveGit.framework in Embed Frameworks */,
+				94F753001F000468006BA5D5 /* MMMarkdown.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1600,6 +1655,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				BC4A6E971ED832FC000A328A /* ObjectiveGit.framework in Embed Frameworks */,
+				94F752F41F000460006BA5D5 /* MMMarkdown.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2230,6 +2286,10 @@
 		94F4249715387E1E005FC4C8 /* show_masterview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = show_masterview.png; sourceTree = "<group>"; };
 		94F6EEE01587BD30002DE115 /* ResultViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ResultViewController-iPhone.xib"; sourceTree = "<group>"; };
 		94F6EEE21587C19A002DE115 /* HighLightWordController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "HighLightWordController-iPhone.xib"; sourceTree = "<group>"; };
+		94F7530A1F001510006BA5D5 /* git_clone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = git_clone.png; sourceTree = "<group>"; };
+		94F7530C1F00154C006BA5D5 /* web_upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = web_upload.png; sourceTree = "<group>"; };
+		94F753141F0015C9006BA5D5 /* itunes_transfer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunes_transfer.png; sourceTree = "<group>"; };
+		94F753191F0016BE006BA5D5 /* open_grok_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = open_grok_2.png; sourceTree = "<group>"; };
 		94F7B90617F5E21F00A506EE /* FileBrowserViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileBrowserViewProtocol.h; path = FileListBrowser/FileBrowserViewProtocol.h; sourceTree = "<group>"; };
 		94F7B90A17F7487A00A506EE /* UploadSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadSelectionViewController.h; path = UploadViewController/UploadSelectionViewController.h; sourceTree = "<group>"; };
 		94F7B90B17F7487A00A506EE /* UploadSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadSelectionViewController.m; path = UploadViewController/UploadSelectionViewController.m; sourceTree = "<group>"; };
@@ -2292,7 +2352,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94F753031F0004FC006BA5D5 /* libHttpService.a in Frameworks */,
 				94EB3A3719F810BE00E45D7D /* libsqlite3.dylib in Frameworks */,
+				94F752F31F000460006BA5D5 /* MMMarkdown.framework in Frameworks */,
 				94C07F17197FFF6500DC1A6D /* Social.framework in Frameworks */,
 				94B1DCC2191F655100909C3E /* libiconv.dylib in Frameworks */,
 				94B1DCC1191F650C00909C3E /* libz.dylib in Frameworks */,
@@ -2348,7 +2410,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94F753041F000502006BA5D5 /* libHttpService.a in Frameworks */,
 				BC4584B71EE1B10600982965 /* libsqlite3.dylib in Frameworks */,
+				94F752FF1F000468006BA5D5 /* MMMarkdown.framework in Frameworks */,
 				BC4584B81EE1B10600982965 /* Social.framework in Frameworks */,
 				BC4584B91EE1B10600982965 /* libiconv.dylib in Frameworks */,
 				BC4584BA1EE1B10600982965 /* libz.dylib in Frameworks */,
@@ -2741,6 +2805,10 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				94F753191F0016BE006BA5D5 /* open_grok_2.png */,
+				94F753141F0015C9006BA5D5 /* itunes_transfer.png */,
+				94F7530C1F00154C006BA5D5 /* web_upload.png */,
+				94F7530A1F001510006BA5D5 /* git_clone.png */,
 				BC8D36DD1EF8107D00A56252 /* open_grok.png */,
 				94E4C116199E7FDD003B0E82 /* projectGit.png */,
 				94E4C113199D1519003B0E82 /* CommentHide.png */,
@@ -3568,6 +3636,7 @@
 			dependencies = (
 				949DC1941583E8CF00385796 /* PBXTargetDependency */,
 				BC4A6E991ED832FC000A328A /* PBXTargetDependency */,
+				94F752F61F000460006BA5D5 /* PBXTargetDependency */,
 			);
 			name = "CodeNavigator-iPhone";
 			productName = CodeNavigator;
@@ -3608,6 +3677,7 @@
 			dependencies = (
 				BC4583C51EE1B10600982965 /* PBXTargetDependency */,
 				BC4583C91EE1B10600982965 /* PBXTargetDependency */,
+				94F753021F000468006BA5D5 /* PBXTargetDependency */,
 			);
 			name = "CodeNavigator-iPhone-Lite";
 			productName = CodeNavigator;
@@ -3749,6 +3819,7 @@
 				94EE32D4149FAE0B0088501D /* GotoLineViewController.xib in Resources */,
 				9419B87D14A4B3BE00AB679B /* ResultTableCellView.xib in Resources */,
 				9478A462190ADFCD0093279F /* SelectGroupViewController.xib in Resources */,
+				94F7530D1F00154C006BA5D5 /* web_upload.png in Resources */,
 				94D8703214A65888002F2DBB /* FilePathInfoPopupController.xib in Resources */,
 				948C7409180449AE00065E65 /* star.png in Resources */,
 				94557E5414B05E89004950B4 /* linux_0.1 in Resources */,
@@ -3788,7 +3859,9 @@
 				94246669150383C2001701C4 /* mkFile.png in Resources */,
 				94DC6E941E6AE99800D398E5 /* Launch Screen.storyboard in Resources */,
 				9424666B150383C2001701C4 /* mmFile.png in Resources */,
+				94F753151F0015C9006BA5D5 /* itunes_transfer.png in Resources */,
 				9424666D150383C2001701C4 /* sFile.png in Resources */,
+				94F7530B1F001510006BA5D5 /* git_clone.png in Resources */,
 				945AA3F81507B13E006729C8 /* back.png in Resources */,
 				945AA3FA1507B13E006729C8 /* forward.png in Resources */,
 				945AA40E1508DE9C006729C8 /* NewEntry.png in Resources */,
@@ -3853,6 +3926,7 @@
 				94EED18E16331D99003D9CA3 /* FunctionListViewController.xib in Resources */,
 				94F9BAF918EC5BE100CD7C2C /* ThemeSelectorViewController.xib in Resources */,
 				941B2AC01636D419000BBF59 /* TagItemCell.xib in Resources */,
+				94F7531A1F0016BE006BA5D5 /* open_grok_2.png in Resources */,
 				94BA22DD18D0CBB7006CB7A8 /* GitBranchsManagerViewController.xib in Resources */,
 				9434A5A7174FC00D004B1A9D /* GitCloneViewController.xib in Resources */,
 				943D1FBD17E7695C00BD82E6 /* FileBrowser.png in Resources */,
@@ -3874,6 +3948,7 @@
 				94B1DD14191F7F2200909C3E /* BuildInParser in Resources */,
 				94B1DD13191F7EFE00909C3E /* Themes in Resources */,
 				949DC2101583E8CF00385796 /* lgz_javascript.js in Resources */,
+				94F7532A1F001B02006BA5D5 /* search.png in Resources */,
 				949DC2111583E8CF00385796 /* InfoPlist.strings in Resources */,
 				949DC2141583E8CF00385796 /* folder.png in Resources */,
 				949DC2151583E8CF00385796 /* project.png in Resources */,
@@ -3881,13 +3956,18 @@
 				949DC2161583E8CF00385796 /* NavigationController.xib in Resources */,
 				949DC21D1583E8CF00385796 /* linux_0.1 in Resources */,
 				949DC2211583E8CF00385796 /* settings.png in Resources */,
+				94F753241F001A62006BA5D5 /* weibo.png in Resources */,
 				94B1DD12191F739900909C3E /* SourceCodePro-Semibold.ttf in Resources */,
 				949DC2241583E8CF00385796 /* bookmark.png in Resources */,
+				94F7532E1F001B09006BA5D5 /* seperate.png in Resources */,
+				94F753121F0015B0006BA5D5 /* git_clone.png in Resources */,
 				949DC2291583E8CF00385796 /* VirtualizeViewController.xib in Resources */,
 				94B1DD3219226C9F00909C3E /* text-list.png in Resources */,
+				94F7530F1F0015AC006BA5D5 /* web_upload.png in Resources */,
 				94B1DCE6191F6FFA00909C3E /* OpenAsViewController.xib in Resources */,
 				949DC22A1583E8CF00385796 /* ProjectListController.xib in Resources */,
 				949DC22B1583E8CF00385796 /* virbackground.png in Resources */,
+				94F753201F001A45006BA5D5 /* appstore.png in Resources */,
 				949DC22C1583E8CF00385796 /* ImagePreviewController.xib in Resources */,
 				949DC22D1583E8CF00385796 /* ManuallAddChild.png in Resources */,
 				94B1DD0E191F739000909C3E /* SourceCodePro-Bold.ttf in Resources */,
@@ -3901,6 +3981,7 @@
 				94D0A9351976E47B002EEFCE /* FileBrowser.png in Resources */,
 				94D0A9311976D277002EEFCE /* back_arrow.png in Resources */,
 				94B1DCF7191F70D000909C3E /* SelectGroupViewController.xib in Resources */,
+				94F7531E1F001A28006BA5D5 /* feedback.png in Resources */,
 				949DC2321583E8CF00385796 /* cFile.png in Resources */,
 				94B1DCCA191F6E9E00909C3E /* GitLogTableCell.xib in Resources */,
 				949DC2331583E8CF00385796 /* cppFile.png in Resources */,
@@ -3908,10 +3989,12 @@
 				949DC2351583E8CF00385796 /* File.png in Resources */,
 				94B5FDB719FFDFB70062F376 /* settings@2x.png in Resources */,
 				94B1DCEA191F700500909C3E /* GitBranchViewController.xib in Resources */,
+				94F7531C1F001997006BA5D5 /* open_grok_2.png in Resources */,
 				94B1DCCD191F6ED400909C3E /* DiffFileListController.xib in Resources */,
 				949DC2361583E8CF00385796 /* hFile.png in Resources */,
 				94B1DD2C19213DC200909C3E /* GitUpdateViewController-iPhone.xib in Resources */,
 				949DC2371583E8CF00385796 /* hppFile.png in Resources */,
+				94F7532C1F001B05006BA5D5 /* search@2x.png in Resources */,
 				949DC2381583E8CF00385796 /* javaFile.png in Resources */,
 				94B1DD08191F71E200909C3E /* UploadSelectionViewController.xib in Resources */,
 				94B1DD10191F739500909C3E /* SourceCodePro-Medium.ttf in Resources */,
@@ -3929,8 +4012,10 @@
 				949DC2401583E8CF00385796 /* max.png in Resources */,
 				94B1DD0A191F738500909C3E /* SourceCodePro-Regular.ttf in Resources */,
 				949DC2411583E8CF00385796 /* OpenGrok.Club in Resources */,
+				94F753261F001A80006BA5D5 /* share.png in Resources */,
 				949DC24B1583E8CF00385796 /* masterView_bg.png in Resources */,
 				94D0A9371976E8D3002EEFCE /* UploadFromITunesViewController-iPhone.xib in Resources */,
+				94F753281F001AFF006BA5D5 /* screen.png in Resources */,
 				949DC24C1583E8CF00385796 /* nav_backButton_icon.png in Resources */,
 				949DC24E1583E8CF00385796 /* checkbox_no.png in Resources */,
 				949DC24F1583E8CF00385796 /* checkbox_yes.png in Resources */,
@@ -3958,6 +4043,7 @@
 				94B1DCE2191F6F8D00909C3E /* ThemeSelectorViewController.xib in Resources */,
 				94C07F16197FFF1200DC1A6D /* HelpViewController.xib in Resources */,
 				947F861215863579002EAA1E /* DetailViewController-iPhone.xib in Resources */,
+				94F753221F001A5B006BA5D5 /* twitter.png in Resources */,
 				94E4C12C199FC1A6003B0E82 /* ProjectViewController.xib in Resources */,
 				94B1DCBD191F62DB00909C3E /* VersionViewController.xib in Resources */,
 				947F861315863579002EAA1E /* MasterViewController-iPhone.xib in Resources */,
@@ -3972,6 +4058,7 @@
 				94B1DCCF191F6EE900909C3E /* DiffInfoListViewController.xib in Resources */,
 				94B1DCD2191F6EFF00909C3E /* GitCloneViewController.xib in Resources */,
 				94A404CF158A635C0084F645 /* CodeNavigatoriPhone-info.plist in Resources */,
+				94F753171F0015CD006BA5D5 /* itunes_transfer.png in Resources */,
 				947D9F8C158BA930000B5136 /* ResultTableCellView.xib in Resources */,
 				94D0A9321976D27D002EEFCE /* hide_toolbar.png in Resources */,
 				94B1DD24191FE71900909C3E /* WebServiceControllerFormSheet-iPhone.xib in Resources */,
@@ -3994,9 +4081,11 @@
 				94B5FDA919FFD86B0062F376 /* Themes in Resources */,
 				94D3B88015E539B8006C28E4 /* share.png in Resources */,
 				94D3B87F15E539AD006C28E4 /* weibo.png in Resources */,
+				94F7530E1F0015AB006BA5D5 /* web_upload.png in Resources */,
 				9421EACB196853D100EFD7E2 /* treeView.png in Resources */,
 				94D3B87E15E539A6006C28E4 /* twitter.png in Resources */,
 				94B5FDB619FFDFB60062F376 /* settings@2x.png in Resources */,
+				94F753111F0015B0006BA5D5 /* git_clone.png in Resources */,
 				94D3B87D15E5399A006C28E4 /* appstore.png in Resources */,
 				94D3B87C15E53984006C28E4 /* feedback.png in Resources */,
 				9461D46E1960372100F0B0A1 /* hide_toolbar.png in Resources */,
@@ -4059,6 +4148,7 @@
 				94246666150383C2001701C4 /* javaFile.png in Resources */,
 				94246668150383C2001701C4 /* mFile.png in Resources */,
 				9424666A150383C2001701C4 /* mkFile.png in Resources */,
+				94F7531B1F001996006BA5D5 /* open_grok_2.png in Resources */,
 				9424666C150383C2001701C4 /* mmFile.png in Resources */,
 				9424666E150383C2001701C4 /* sFile.png in Resources */,
 				945AA3F91507B13E006729C8 /* back.png in Resources */,
@@ -4077,6 +4167,7 @@
 				9457C79B1530BA3800BB9185 /* checkbox_yes.png in Resources */,
 				94B1DD0F191F739400909C3E /* SourceCodePro-Medium.ttf in Resources */,
 				94BF99BD1534887000F4EFFD /* refresh.png in Resources */,
+				94F753161F0015CD006BA5D5 /* itunes_transfer.png in Resources */,
 				94BF99C015348A6700F4EFFD /* refresh_error.png in Resources */,
 				94B1DD11191F739800909C3E /* SourceCodePro-Semibold.ttf in Resources */,
 				94B5FDB419FFDF8B0062F376 /* search@2x.png in Resources */,
@@ -4114,6 +4205,7 @@
 				BC4584CC1EE1B10600982965 /* BuildInParser in Resources */,
 				BC4584CD1EE1B10600982965 /* Themes in Resources */,
 				BC4584CE1EE1B10600982965 /* lgz_javascript.js in Resources */,
+				94F7532B1F001B03006BA5D5 /* search.png in Resources */,
 				BC4584CF1EE1B10600982965 /* InfoPlist.strings in Resources */,
 				BC4584D01EE1B10600982965 /* folder.png in Resources */,
 				BC4584D11EE1B10600982965 /* project.png in Resources */,
@@ -4121,13 +4213,18 @@
 				BC4584D31EE1B10600982965 /* NavigationController.xib in Resources */,
 				BC4584D41EE1B10600982965 /* linux_0.1 in Resources */,
 				BC4584D51EE1B10600982965 /* settings.png in Resources */,
+				94F753251F001A62006BA5D5 /* weibo.png in Resources */,
 				BC4584D61EE1B10600982965 /* SourceCodePro-Semibold.ttf in Resources */,
 				BC4584D71EE1B10600982965 /* bookmark.png in Resources */,
+				94F7532F1F001B0A006BA5D5 /* seperate.png in Resources */,
+				94F753131F0015B1006BA5D5 /* git_clone.png in Resources */,
 				BC4584D81EE1B10600982965 /* VirtualizeViewController.xib in Resources */,
 				BC4584D91EE1B10600982965 /* text-list.png in Resources */,
+				94F753101F0015AC006BA5D5 /* web_upload.png in Resources */,
 				BC4584DA1EE1B10600982965 /* OpenAsViewController.xib in Resources */,
 				BC4584DB1EE1B10600982965 /* ProjectListController.xib in Resources */,
 				BC4584DC1EE1B10600982965 /* virbackground.png in Resources */,
+				94F753211F001A46006BA5D5 /* appstore.png in Resources */,
 				BC4584DD1EE1B10600982965 /* ImagePreviewController.xib in Resources */,
 				BC4584DE1EE1B10600982965 /* ManuallAddChild.png in Resources */,
 				BC4584DF1EE1B10600982965 /* SourceCodePro-Bold.ttf in Resources */,
@@ -4141,6 +4238,7 @@
 				BC4584E71EE1B10600982965 /* FileBrowser.png in Resources */,
 				BC4584E81EE1B10600982965 /* back_arrow.png in Resources */,
 				BC4584E91EE1B10600982965 /* SelectGroupViewController.xib in Resources */,
+				94F7531F1F001A28006BA5D5 /* feedback.png in Resources */,
 				BC4584EA1EE1B10600982965 /* cFile.png in Resources */,
 				BC4584EB1EE1B10600982965 /* GitLogTableCell.xib in Resources */,
 				BC4584EC1EE1B10600982965 /* cppFile.png in Resources */,
@@ -4148,10 +4246,12 @@
 				BC4584EE1EE1B10600982965 /* File.png in Resources */,
 				BC4584EF1EE1B10600982965 /* settings@2x.png in Resources */,
 				BC4584F01EE1B10600982965 /* GitBranchViewController.xib in Resources */,
+				94F7531D1F001997006BA5D5 /* open_grok_2.png in Resources */,
 				BC4584F11EE1B10600982965 /* DiffFileListController.xib in Resources */,
 				BC4584F21EE1B10600982965 /* hFile.png in Resources */,
 				BC4584F31EE1B10600982965 /* GitUpdateViewController-iPhone.xib in Resources */,
 				BC4584F41EE1B10600982965 /* hppFile.png in Resources */,
+				94F7532D1F001B06006BA5D5 /* search@2x.png in Resources */,
 				BC4584F51EE1B10600982965 /* javaFile.png in Resources */,
 				BC4584F61EE1B10600982965 /* UploadSelectionViewController.xib in Resources */,
 				BC4584F71EE1B10600982965 /* SourceCodePro-Medium.ttf in Resources */,
@@ -4169,8 +4269,10 @@
 				BC4585021EE1B10600982965 /* max.png in Resources */,
 				BC4585031EE1B10600982965 /* SourceCodePro-Regular.ttf in Resources */,
 				BC4585041EE1B10600982965 /* OpenGrok.Club in Resources */,
+				94F753271F001A80006BA5D5 /* share.png in Resources */,
 				BC4585051EE1B10600982965 /* masterView_bg.png in Resources */,
 				BC4585061EE1B10600982965 /* UploadFromITunesViewController-iPhone.xib in Resources */,
+				94F753291F001B00006BA5D5 /* screen.png in Resources */,
 				BC4585071EE1B10600982965 /* nav_backButton_icon.png in Resources */,
 				BC4585081EE1B10600982965 /* checkbox_no.png in Resources */,
 				BC4585091EE1B10600982965 /* checkbox_yes.png in Resources */,
@@ -4198,6 +4300,7 @@
 				BC45851E1EE1B10600982965 /* ThemeSelectorViewController.xib in Resources */,
 				BC45851F1EE1B10600982965 /* HelpViewController.xib in Resources */,
 				BC4585201EE1B10600982965 /* DetailViewController-iPhone.xib in Resources */,
+				94F753231F001A5C006BA5D5 /* twitter.png in Resources */,
 				BC4585211EE1B10600982965 /* ProjectViewController.xib in Resources */,
 				BC4585221EE1B10600982965 /* VersionViewController.xib in Resources */,
 				BC4585231EE1B10600982965 /* MasterViewController-iPhone.xib in Resources */,
@@ -4212,6 +4315,7 @@
 				BC45852C1EE1B10600982965 /* DiffInfoListViewController.xib in Resources */,
 				BC45852D1EE1B10600982965 /* GitCloneViewController.xib in Resources */,
 				BC45852E1EE1B10600982965 /* CodeNavigatoriPhone-info.plist in Resources */,
+				94F753181F0015CE006BA5D5 /* itunes_transfer.png in Resources */,
 				BC45852F1EE1B10600982965 /* ResultTableCellView.xib in Resources */,
 				BC4585301EE1B10600982965 /* hide_toolbar.png in Resources */,
 				BC4585311EE1B10600982965 /* WebServiceControllerFormSheet-iPhone.xib in Resources */,
@@ -5164,6 +5268,16 @@
 			name = "MMMarkdown (iOS)";
 			targetProxy = 94CBEF771EFFC01D0082FF9A /* PBXContainerItemProxy */;
 		};
+		94F752F61F000460006BA5D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "MMMarkdown (iOS)";
+			targetProxy = 94F752F51F000460006BA5D5 /* PBXContainerItemProxy */;
+		};
+		94F753021F000468006BA5D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "MMMarkdown (iOS)";
+			targetProxy = 94F753011F000468006BA5D5 /* PBXContainerItemProxy */;
+		};
 		BC33DCBD1EE2E510006EC4E1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ObjectiveGit-iOS";
@@ -5489,7 +5603,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit ~/Documents/iOS_Development/MMMarkdown/Source";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -5532,7 +5646,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit ~/Documents/iOS_Development/MMMarkdown/Source";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -5578,7 +5692,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit ~/Documents/iOS_Development/MMMarkdown/Source";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -5766,7 +5880,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit ~/Documents/iOS_Development/MMMarkdown/Source";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -5815,7 +5929,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit ~/Documents/iOS_Development/MMMarkdown/Source";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -5865,7 +5979,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/usr/local/include ~/Documents/iOS_Development/objective-git/External/libgit2/deps/regex ~/Documents/iOS_Development/objective-git/External/libgit2/include ~/Documents/iOS_Development/objective-git/ObjectiveGit ~/Documents/iOS_Development/MMMarkdown/Source";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

@@ -92,7 +92,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.contentSizeForViewInPopover = self.view.frame.size;
+    self.preferredContentSize = self.view.frame.size;
 }
 
 #pragma TableView
@@ -195,7 +195,7 @@
     UINavigationController* navigationController = [self navigationController];
     GitBranchViewController* viewController = [[GitBranchViewController alloc] init];
     [viewController setGitBranchController:gitBranchController];
-    viewController.contentSizeForViewInPopover = self.view.frame.size;
+    viewController.preferredContentSize = self.view.frame.size;
     [viewController setNeedSwitchBranch:YES];
     [navigationController pushViewController:viewController animated:YES];
 #endif

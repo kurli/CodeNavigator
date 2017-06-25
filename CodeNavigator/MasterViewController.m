@@ -694,7 +694,12 @@
     viewController.url = url;
 //    [self.navigationController.navigationBar setHidden:YES];
 //    [self.navigationController pushViewController:viewController animated:YES];
+#ifndef IPHONE_VERSION
     [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
+#else
+    [self presentViewController:viewController animated:YES completion:nil];
+#endif
+
 }
 
 - (IBAction)lockButtonClicked:(id)sender {
@@ -979,14 +984,8 @@
 
 - (void) fileClickedDelegate:(UITableView*) tableView andSelectedItem:(NSString*)selectedItem andPath:(NSString*)path
 {
-    NSString* html;
-    
     DetailViewController* controller = [Utils getInstance].detailViewController;
     
-
-#ifdef IPHONE_VERSION
-    [self presentViewController:[Utils getInstance].detailViewController animated:YES completion:nil];
-#endif
     
 #ifndef IPHONE_VERSION
     // Close file browser tree view
@@ -1003,6 +1002,10 @@
         return;
     }
     
+#ifdef IPHONE_VERSION
+    [self presentViewController:[Utils getInstance].detailViewController animated:YES completion:nil];
+#endif
+
     if ([[Utils getInstance] isDocType:path])
     {
         [controller displayDocTypeFile:path];

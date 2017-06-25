@@ -115,9 +115,12 @@
     if (indexPath.row == 0) {
         //cell.imageView.image = [UIImage imageNamed:@"twitter.png"];
         cell.textLabel.text = @"Web Upload Service";
+        cell.imageView.image = [UIImage imageNamed:@"web_upload.png"];
     } else if (indexPath.row == 1) {
         //cell.imageView.image = [UIImage imageNamed:@"share.png"];
         cell.textLabel.text = @"Git Clone";
+        cell.imageView.image = [UIImage imageNamed:@"git_clone.png"];
+
 #ifdef LITE_VERSION
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell.textLabel setTextColor: [UIColor grayColor]];
@@ -125,12 +128,14 @@
 #ifdef IPHONE_VERSION
     } else if (indexPath.row == 2) {
         cell.textLabel.text = @"From OpenGrok.Club";
+        cell.imageView.image = [UIImage imageNamed:@"open_grok_2.png"];
 #ifdef LITE_VERSION
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell.textLabel setTextColor: [UIColor grayColor]];
 #endif
     } else {
         cell.textLabel.text = @"iTunes Transfer";
+        cell.imageView.image = [UIImage imageNamed:@"itunes_transfer"];
 #ifdef LITE_VERSION
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell.textLabel setTextColor: [UIColor grayColor]];
@@ -139,18 +144,31 @@
 #else
     } else if (indexPath.row == 2) {
         cell.textLabel.text = @"From OpenGrok.Club";
+        cell.imageView.image = [UIImage imageNamed:@"open_grok_2.png"];
 #ifdef LITE_VERSION
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell.textLabel setTextColor: [UIColor grayColor]];
 #endif
     } else if (indexPath.row == 3) {
         cell.textLabel.text = @"iTunes Transfer";
+        cell.imageView.image = [UIImage imageNamed:@"itunes_transfer"];
 #ifdef LITE_VERSION
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell.textLabel setTextColor: [UIColor grayColor]];
 #endif
     }
 #endif
+CGSize itemSize = CGSizeMake(35, 35);
+
+UIGraphicsBeginImageContext(itemSize);
+
+CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+
+[cell.imageView.image drawInRect:imageRect];
+
+cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+UIGraphicsEndImageContext();
+
     return cell;
 }
 

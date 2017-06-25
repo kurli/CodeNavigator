@@ -11,7 +11,7 @@
 #import "DisplayController.h"
 #import "MasterViewController.h"
 
-#define RELEASE_VERSION 10
+#define RELEASE_VERSION 12
 
 @interface VersionViewController ()
 
@@ -262,9 +262,7 @@
         // Remove analyze file
         [self removeAnalyzeDB];
         
-#ifndef IPHONE_VERSION
         [self displayVersionDialog];
-#endif
         return;
     }
     // Check version file
@@ -275,7 +273,12 @@
     if (integer == RELEASE_VERSION) {
         return;
     }
-    
+    NSString* projectFolder = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/.Projects"];
+
+    NSString* helpHtml = [[[NSBundle mainBundle] resourcePath] stringByAppendingFormat:@"/OpenGrok.Club"];
+    [[NSFileManager defaultManager] copyItemAtPath:helpHtml toPath:[projectFolder stringByAppendingPathComponent:@"OpenGrok.Club"] error:&error];
+    [[NSFileManager defaultManager] removeItemAtPath:[projectFolder stringByAppendingPathComponent:@"Help.html"] error:nil];
+
 //    if (integer < 2) {
         // Generate theme file
         NSString* css = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/theme.css"];

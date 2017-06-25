@@ -45,6 +45,8 @@
     // Do any additional setup after loading the view from its nib.
     if ([[Utils getInstance] getResultViewTableViewMode] != tableviewMode)
     {
+        [[Utils getInstance] setResultViewTableViewMode:tableviewMode];
+
         currentFileIndex = [[Utils getInstance] getResultViewFileIndex];
         if (self.lineModeViewController == nil)
 #ifdef IPHONE_VERSION
@@ -55,12 +57,13 @@
         [self.lineModeViewController setTableViewMode:TABLEVIEW_CONTENT];
         [self.lineModeViewController setDetailViewController:self.detailViewController];
         [self.lineModeViewController setFileIndex:currentFileIndex];
+
 //        [self.lineModeViewController.tableView reloadData];
         [self.lineModeViewController setTitle:((ResultFile*)[[Utils getInstance].resultFileList objectAtIndex:currentFileIndex]).fileName];
         CGSize size = self.detailViewController.view.frame.size;
         size.height = size.height/3+39;
         size.width = size.width;
-        self.lineModeViewController.contentSizeForViewInPopover = size;
+        self.lineModeViewController.preferredContentSize = size;
         [self.navigationController pushViewController:self.lineModeViewController animated:YES];
     }
 }
@@ -87,13 +90,13 @@
     CGSize size = self.detailViewController.view.frame.size;
     size.height = size.height/3+39;
     size.width = size.width;
-    self.contentSizeForViewInPopover = size;
+    self.preferredContentSize = size;
     [_tableView reloadData];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [[Utils getInstance] setResultViewTableViewMode:tableviewMode];
+    //[[Utils getInstance] setResultViewTableViewMode:tableviewMode];
 }
 
 #pragma TableView delegate
@@ -256,7 +259,7 @@
         CGSize size = self.detailViewController.view.frame.size;
         size.height = size.height/3+39;
         size.width = size.width;
-        self.lineModeViewController.contentSizeForViewInPopover = size;
+        self.lineModeViewController.preferredContentSize = size;
         [self.navigationController pushViewController:self.lineModeViewController animated:YES];
     }
     else

@@ -254,7 +254,7 @@
     }
     switch (indexPath.section) {
         case 0:
-            cell.imageView.image = [UIImage imageNamed:@"demoVideo.png"];
+            cell.imageView.image = [UIImage imageNamed:@"open_grok.png"];
             cell.textLabel.text = @"Online Help  -- http://opengrok.club";
             break;
         case 1:

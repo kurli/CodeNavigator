@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController">
@@ -27,7 +31,7 @@
                 <webView multipleTouchEnabled="YES" contentMode="scaleAspectFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" id="7">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <dataDetectorType key="dataDetectorTypes"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="22"/>
@@ -37,7 +41,7 @@
                     <rect key="frame" x="0.0" y="438" width="43" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <state key="normal" image="back_arrow.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="filesButtonClicked:" destination="-1" eventType="touchUpInside" id="43"/>
@@ -49,7 +53,7 @@
                     <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                     <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                     <state key="normal" image="FileBrowser.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="fileBrowserButtonClicked:" destination="-1" eventType="touchUpInside" id="Meo-YJ-zjZ"/>
@@ -64,32 +68,40 @@
                                 <action selector="filesButtonClicked:" destination="-1" id="25"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem enabled="NO" style="plain" id="x4s-D0-uHJ"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Wqu-MK-WRr"/>
+                        <barButtonItem enabled="NO" style="plain" id="x4s-D0-uHJ"/>
+                        <barButtonItem image="Comment.png" style="plain" id="m7n-CL-5Ft">
+                            <connections>
+                                <action selector="filesButtonClicked:" destination="-1" id="czr-LR-CUc"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="l5X-eW-3gx"/>
                         <barButtonItem style="plain" id="9">
-                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" momentary="YES" id="8">
-                                <rect key="frame" x="79" y="7" width="110" height="30"/>
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" momentary="YES" id="8">
+                                <rect key="frame" x="99" y="7.5" width="80" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
-                                    <segment title="&lt;"/>
-                                    <segment title="&gt;"/>
+                                    <segment title="" image="forward.png"/>
+                                    <segment title="" image="back.png"/>
                                 </segments>
                                 <connections>
                                     <action selector="historyClicked:" destination="-1" eventType="valueChanged" id="16"/>
                                 </connections>
                             </segmentedControl>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="9GM-N1-DZF"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="C2L-iF-Yq5"/>
                         <barButtonItem image="settings.png" style="plain" id="23">
                             <connections>
                                 <action selector="displayModeClicked:" destination="-1" id="24"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="search" id="10">
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="HzG-Z9-iU1"/>
+                        <barButtonItem image="search.png" style="plain" id="10">
                             <connections>
                                 <action selector="navigationButtonClicked:" destination="-1" id="14"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="YpX-pc-dJa"/>
                         <barButtonItem style="plain" systemItem="bookmarks" id="11">
                             <connections>
                                 <action selector="resultPopUp:" destination="-1" id="15"/>
@@ -104,20 +116,20 @@
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="d7p-KA-foW">
                             <rect key="frame" x="0.0" y="174" width="39" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                             <state key="normal" title="三"/>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="33">
                     <rect key="frame" x="283" y="-19" width="30" height="55"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <inset key="contentEdgeInsets" minX="0.0" minY="25" maxX="0.0" maxY="0.0"/>
                     <state key="normal" image="hide_toolbar.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="showHideTopToolBarClicked:" destination="-1" eventType="touchUpInside" id="36"/>
@@ -140,21 +152,25 @@
                     </items>
                 </toolbar>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
+        <image name="Comment.png" width="26" height="26"/>
         <image name="FileBrowser.png" width="26" height="26"/>
+        <image name="back.png" width="40" height="43"/>
         <image name="back_arrow.png" width="15" height="22"/>
         <image name="binocular.png" width="30" height="30"/>
+        <image name="forward.png" width="40" height="43"/>
         <image name="hide_toolbar.png" width="30" height="30"/>
+        <image name="search.png" width="26" height="26"/>
         <image name="settings.png" width="26" height="26"/>
         <image name="text-list.png" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
 </document>
