@@ -23,6 +23,7 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "MBProgressHUD.h"
 #import <MMMarkdown/MMMarkdown.h>
+#import "OpenGrokViewController.h"
 
 #define TOOLBAR_X_MASTER_SHOW 55
 #define TOOLBAR_X_MASTER_HIDE 208
@@ -2035,5 +2036,20 @@
     return nil;
 }
 #endif
+
+// Used on iPad
+- (IBAction)openGrokButtonClicked:(id)sender {
+    if ([popoverController isPopoverVisible]) {
+        [self releaseAllPopOver];
+        return;
+    }
+    
+    [self releaseAllPopOver];
+    
+    OpenGrokViewController* viewController = [[OpenGrokViewController alloc] initWithNibName:@"OpenGrokView-iPad" bundle:nil];
+    viewController.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
 
 @end

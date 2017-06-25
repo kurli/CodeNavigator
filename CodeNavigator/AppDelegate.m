@@ -234,4 +234,15 @@
 }
 #endif
 
+-(BOOL)application:(UIApplication*)app openURL:(NSURL*)url options:(NSDictionary<NSString*,id>*)options{
+    NSString* gitClonePrefix = @"codenavigator://git.clone?";
+    NSString* urlStr = [url absoluteString];
+    if ([urlStr hasPrefix:gitClonePrefix]) {
+        urlStr = [urlStr stringByReplacingOccurrencesOfString:gitClonePrefix withString:@""];
+        [[Utils getInstance].masterViewController showGitCloneViewWithUrl:urlStr];
+        return YES;
+    }
+    return NO ;
+}
+
 @end

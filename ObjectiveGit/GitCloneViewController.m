@@ -15,6 +15,8 @@
 #define KEY @"CodeNavigator--lgz_SePeRator--"
 
 @interface GitCloneViewController ()
+@property (strong, nonatomic) NSString* startUpUrl;
+@property (strong, nonatomic) NSString* startUpProj;
 @end
 
 @implementation GitCloneViewController
@@ -32,6 +34,14 @@
     self.passwordTextField.text = @"";
     
     [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+}
+
+- (void) setCloneUrl:url {
+    if ([url length] != 0) {
+        self.startUpUrl = url;
+        NSString* projName = [[url lastPathComponent] stringByDeletingPathExtension];
+        self.startUpProj = projName;
+    }
 }
 
 - (IBAction)saveClicked:(id)sender {
@@ -80,6 +90,13 @@
     [self.usernameTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
     [self.passwordTextField setSpellCheckingType:UITextSpellCheckingTypeNo];
     [self.passwordTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
+    
+    if ([self.startUpUrl length] != 0) {
+        self.urlTextField.text = self.startUpUrl;
+    }
+    if ([self.startUpProj length] != 0) {
+        self.projectNameTextField.text = self.startUpProj;
+    }
 }
 
 - (void) gitClone

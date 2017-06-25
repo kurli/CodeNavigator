@@ -27,6 +27,7 @@
 #import "DisplayController.h"
 #import "UploadFromITunesViewController.h"
 #import "ChartBoardViewController.h"
+#import "OpenGrokViewController.h"
 
 @interface MasterViewController ()
 
@@ -590,8 +591,7 @@
     [[Utils getInstance] analyzeProject:self.currentProjectPath andForceCreate:YES];
 }
 
-- (void) showGitCloneView
-{
+- (void) showGitCloneViewWithUrl:(NSString*) url {
 #ifndef LITE_VERSION
     [self releaseAllPopover];
     if (gitCloneViewController == NULL) {
@@ -603,12 +603,18 @@
     }
     gitCloneViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     //[[Utils getInstance].splitViewController presentModalViewController:viewController animated:YES];
+    [gitCloneViewController setCloneUrl:url];
 #ifdef IPHONE_VERSION
     [self presentViewController:gitCloneViewController animated:YES completion:nil];
 #else
     [[Utils getInstance].splitViewController presentViewController:gitCloneViewController animated:YES completion:nil];
 #endif
 #endif
+}
+
+- (void) showGitCloneView
+{
+    [self showGitCloneViewWithUrl: nil];
 }
 
 - (IBAction)gitClicked:(id)sender {
@@ -669,6 +675,23 @@
     
     [self releaseAllPopover];
     [self gitClicked:sender];
+}
+
+- (IBAction)openGrokButtonClicked:(id)sender {
+    if ([popOverController isPopoverVisible]) {
+        [self releaseAllPopover];
+        return;
+    }
+    
+    [self releaseAllPopover];
+
+    OpenGrokViewController* viewController = [[OpenGrokViewController alloc] initWithNibName:@"OpenGrokView" bundle:nil];
+//    viewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    
+    [self.navigationController.navigationBar setHidden:YES];
+    [self.navigationController pushViewController:viewController animated:YES];
+    
+//    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 - (IBAction)lockButtonClicked:(id)sender {

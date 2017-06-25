@@ -629,7 +629,7 @@ static Utils *static_utils;
             //if (self.analyzeInfoPopover.isPopoverVisible)
             {
                 [self showAnalyzeIndicator:NO];
-                [self alertWithTitle:@"CodeNavigator" andMessage:[NSString stringWithFormat:@"Analyze \"%@\" finished", [projectFolder lastPathComponent]]];
+//                [self alertWithTitle:@"CodeNavigator" andMessage:[NSString stringWithFormat:@"Analyze \"%@\" finished", [projectFolder lastPathComponent]]];
             }
         });
     }

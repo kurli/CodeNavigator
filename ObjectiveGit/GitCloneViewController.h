@@ -19,6 +19,8 @@
 
 - (IBAction)discardClicked:(id)sender;
 
+- (void) setCloneUrl:url;
+
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
 
 @property (weak, nonatomic) IBOutlet UITextField *projectNameTextField;

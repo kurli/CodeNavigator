@@ -108,5 +108,7 @@
 
 - (void) uploadFromITunes;
 
+- (void) showGitCloneViewWithUrl:(NSString*) url;
+
 @end
 

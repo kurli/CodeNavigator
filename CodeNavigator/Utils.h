@@ -125,6 +125,8 @@ typedef enum _SearchType{
 
 @property (strong, nonatomic) DBManager* dbManager;
 
+@property (strong, nonatomic) NSString* lastUrl;
+
 +(Utils*)getInstance;
 
 -(BOOL) isAdModOn;

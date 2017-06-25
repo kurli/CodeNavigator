@@ -1442,6 +1442,18 @@
 		BC4A6EAE1ED84F70000A328A /* MMMarkdown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BC4A6EB11ED84F7A000A328A /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */; };
 		BC4A6EB21ED84F7A000A328A /* MMMarkdown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC4A6EA41ED84F5A000A328A /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BC8D36DF1EF8133100A56252 /* open_grok.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8D36DD1EF8107D00A56252 /* open_grok.png */; };
+		BC8D36E01EF8133200A56252 /* open_grok.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8D36DD1EF8107D00A56252 /* open_grok.png */; };
+		BC8D36E51EF81C7200A56252 /* OpenGrokViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8D36E41EF81C7200A56252 /* OpenGrokViewController.m */; };
+		BC8D36E61EF81C7200A56252 /* OpenGrokViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8D36E41EF81C7200A56252 /* OpenGrokViewController.m */; };
+		BC8D36E71EF81C7200A56252 /* OpenGrokViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8D36E41EF81C7200A56252 /* OpenGrokViewController.m */; };
+		BC8D36E81EF81C7200A56252 /* OpenGrokViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8D36E41EF81C7200A56252 /* OpenGrokViewController.m */; };
+		BC8D36EC1EF81CB200A56252 /* OpenGrokView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8D36E91EF81CB200A56252 /* OpenGrokView.xib */; };
+		BC8D36ED1EF81CB200A56252 /* OpenGrokView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8D36E91EF81CB200A56252 /* OpenGrokView.xib */; };
+		BC8D36EE1EF83E9000A56252 /* open_grok.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8D36DD1EF8107D00A56252 /* open_grok.png */; };
+		BC8D36EF1EF83E9100A56252 /* open_grok.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8D36DD1EF8107D00A56252 /* open_grok.png */; };
+		BC8D36F11EF8437F00A56252 /* OpenGrokView-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8D36F01EF8437F00A56252 /* OpenGrokView-iPad.xib */; };
+		BC8D36F21EF8437F00A56252 /* OpenGrokView-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8D36F01EF8437F00A56252 /* OpenGrokView-iPad.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2335,6 +2347,11 @@
 		BC45853E1EE1B10700982965 /* CodeNavigator-iPhone copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CodeNavigator-iPhone copy-Info.plist"; path = "/Users/guangzhen/Documents/iOS_Development/CodeNavigator/CodeNavigator-iPhone copy-Info.plist"; sourceTree = "<absolute>"; };
 		BC45854C1EE1B49E00982965 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		BC4A6E9B1ED84F59000A328A /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMMarkdown.xcodeproj; path = ../MMMarkdown/MMMarkdown.xcodeproj; sourceTree = "<group>"; };
+		BC8D36DD1EF8107D00A56252 /* open_grok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = open_grok.png; sourceTree = "<group>"; };
+		BC8D36E31EF81C7200A56252 /* OpenGrokViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenGrokViewController.h; path = OpenGrok/OpenGrokViewController.h; sourceTree = "<group>"; };
+		BC8D36E41EF81C7200A56252 /* OpenGrokViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenGrokViewController.m; path = OpenGrok/OpenGrokViewController.m; sourceTree = "<group>"; };
+		BC8D36E91EF81CB200A56252 /* OpenGrokView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OpenGrokView.xib; path = OpenGrok/OpenGrokView.xib; sourceTree = "<group>"; };
+		BC8D36F01EF8437F00A56252 /* OpenGrokView-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "OpenGrokView-iPad.xib"; path = "OpenGrok/OpenGrokView-iPad.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2607,6 +2624,7 @@
 				949CB5EA19630C0600A95AEC /* FileBrowserTreeView */,
 				94A430E5196EF2D1003497CB /* UploadFromITunes */,
 				94DDE5D11997CA820034B193 /* Tracking */,
+				BC8D36E11EF81B7500A56252 /* OpenGrok */,
 				9431D73E14910B3000B0900E /* CodeNavigator */,
 				9431D73714910B3000B0900E /* Frameworks */,
 				9431D73514910B3000B0900E /* Products */,
@@ -2825,6 +2843,7 @@
 		9431D7C01494CEC300B0900E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BC8D36DD1EF8107D00A56252 /* open_grok.png */,
 				94E4C116199E7FDD003B0E82 /* projectGit.png */,
 				94E4C113199D1519003B0E82 /* CommentHide.png */,
 				9421EAC9196853D100EFD7E2 /* treeView.png */,
@@ -3607,6 +3626,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		BC8D36E11EF81B7500A56252 /* OpenGrok */ = {
+			isa = PBXGroup;
+			children = (
+				BC8D36F01EF8437F00A56252 /* OpenGrokView-iPad.xib */,
+				BC8D36E31EF81C7200A56252 /* OpenGrokViewController.h */,
+				BC8D36E41EF81C7200A56252 /* OpenGrokViewController.m */,
+				BC8D36E91EF81CB200A56252 /* OpenGrokView.xib */,
+			);
+			name = OpenGrok;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3896,6 +3926,7 @@
 				94246663150383C2001701C4 /* hppFile.png in Resources */,
 				94246665150383C2001701C4 /* javaFile.png in Resources */,
 				94246667150383C2001701C4 /* mFile.png in Resources */,
+				BC8D36F11EF8437F00A56252 /* OpenGrokView-iPad.xib in Resources */,
 				94246669150383C2001701C4 /* mkFile.png in Resources */,
 				94DC6E941E6AE99800D398E5 /* Launch Screen.storyboard in Resources */,
 				9424666B150383C2001701C4 /* mmFile.png in Resources */,
@@ -3917,6 +3948,7 @@
 				94E3761618D495A5006756A3 /* GitUpdateViewController.xib in Resources */,
 				9457C78E153086FC00BB9185 /* masterView_bg.png in Resources */,
 				94F9BAF318EAF4F200CD7C2C /* Themes in Resources */,
+				BC8D36EF1EF83E9100A56252 /* open_grok.png in Resources */,
 				9457C7911530923800BB9185 /* nav_backButton_icon.png in Resources */,
 				9457C7941530B91600BB9185 /* SelectionTableCell.xib in Resources */,
 				9461D46419602BD800F0B0A1 /* show_toolbar.png in Resources */,
@@ -4029,6 +4061,7 @@
 				94B1DD10191F739500909C3E /* SourceCodePro-Medium.ttf in Resources */,
 				949DC2391583E8CF00385796 /* mFile.png in Resources */,
 				949DC23A1583E8CF00385796 /* mkFile.png in Resources */,
+				BC8D36EC1EF81CB200A56252 /* OpenGrokView.xib in Resources */,
 				949DC23B1583E8CF00385796 /* mmFile.png in Resources */,
 				94B1DCDA191F6F5C00909C3E /* FileBrowserViewController.xib in Resources */,
 				949DC23C1583E8CF00385796 /* sFile.png in Resources */,
@@ -4062,6 +4095,7 @@
 				94B1DCD0191F6EF100909C3E /* GidDiffTableCell.xib in Resources */,
 				949DC2601583E8CF00385796 /* Lock.png in Resources */,
 				949DC2631583E8CF00385796 /* Comment.png in Resources */,
+				BC8D36DF1EF8133100A56252 /* open_grok.png in Resources */,
 				949DC2641583E8CF00385796 /* FileTableViewCell.xib in Resources */,
 				949DC2651583E8CF00385796 /* FileInfoViewController.xib in Resources */,
 				94B1DCD5191F6F0E00909C3E /* GitBranchsManagerViewController.xib in Resources */,
@@ -4115,6 +4149,7 @@
 				94B5FDBE19FFE61D0062F376 /* iTunesArtwork@2x.png in Resources */,
 				94D3B87B15E53979006C28E4 /* demoVideo.png in Resources */,
 				94E4C115199D1519003B0E82 /* CommentHide.png in Resources */,
+				BC8D36EE1EF83E9000A56252 /* open_grok.png in Resources */,
 				94D3B87A15E53928006C28E4 /* help.png in Resources */,
 				94D3B87915E53487006C28E4 /* HelpViewController.xib in Resources */,
 				94ADF17614BB27EE00BA807A /* lgz_javascript.js in Resources */,
@@ -4207,6 +4242,7 @@
 				9456A94015617BDC0092128D /* Comment.png in Resources */,
 				94CB7880156E80C8009452D8 /* FileTableViewCell.xib in Resources */,
 				94B7E5AD156FE2BB000F3F34 /* FileInfoViewController.xib in Resources */,
+				BC8D36F21EF8437F00A56252 /* OpenGrokView-iPad.xib in Resources */,
 				94B5FDBA19FFDFE10062F376 /* star@2x.png in Resources */,
 				94472087157534E9002EEA5A /* ManuallyParserViewController.xib in Resources */,
 				9452B1AA1588FA3C00B9A9F8 /* HighLightWordController.xib in Resources */,
@@ -4267,6 +4303,7 @@
 				BC4584F71EE1B10600982965 /* SourceCodePro-Medium.ttf in Resources */,
 				BC4584F81EE1B10600982965 /* mFile.png in Resources */,
 				BC4584F91EE1B10600982965 /* mkFile.png in Resources */,
+				BC8D36ED1EF81CB200A56252 /* OpenGrokView.xib in Resources */,
 				BC4584FA1EE1B10600982965 /* mmFile.png in Resources */,
 				BC4584FB1EE1B10600982965 /* FileBrowserViewController.xib in Resources */,
 				BC4584FC1EE1B10600982965 /* sFile.png in Resources */,
@@ -4300,6 +4337,7 @@
 				BC4585181EE1B10600982965 /* GidDiffTableCell.xib in Resources */,
 				BC4585191EE1B10600982965 /* Lock.png in Resources */,
 				BC45851A1EE1B10600982965 /* Comment.png in Resources */,
+				BC8D36E01EF8133200A56252 /* open_grok.png in Resources */,
 				BC45851B1EE1B10600982965 /* FileTableViewCell.xib in Resources */,
 				BC45851C1EE1B10600982965 /* FileInfoViewController.xib in Resources */,
 				BC45851D1EE1B10600982965 /* GitBranchsManagerViewController.xib in Resources */,
@@ -4361,6 +4399,7 @@
 				9431D7AC1494754900B0900E /* gscope.c in Sources */,
 				9431D7AD1494754900B0900E /* help.c in Sources */,
 				9431D7AE1494754900B0900E /* history.c in Sources */,
+				BC8D36E51EF81C7200A56252 /* OpenGrokViewController.m in Sources */,
 				9431D7AF1494754900B0900E /* input.c in Sources */,
 				94E3761518D495A5006756A3 /* GitUpdateViewController.m in Sources */,
 				9431D7B01494754900B0900E /* invlib.c in Sources */,
@@ -4676,6 +4715,7 @@
 				949DC1A41583E8CF00385796 /* compath.c in Sources */,
 				94B1DCBC191F5B0800909C3E /* VersionViewController.m in Sources */,
 				949DC1A51583E8CF00385796 /* crossref.c in Sources */,
+				BC8D36E71EF81C7200A56252 /* OpenGrokViewController.m in Sources */,
 				94E4C13619A0E7AB003B0E82 /* HourChartControllerHelper.m in Sources */,
 				94DDE6161997CAC20034B193 /* JBChartView.m in Sources */,
 				949DC1A61583E8CF00385796 /* cscope.c in Sources */,
@@ -4817,6 +4857,7 @@
 				94D4ED8A1642B8AB00601FE4 /* ctags.h in Sources */,
 				94D4ED8B1642B8AB00601FE4 /* debug.c in Sources */,
 				94D4ED8C1642B8AB00601FE4 /* debug.h in Sources */,
+				BC8D36E61EF81C7200A56252 /* OpenGrokViewController.m in Sources */,
 				94D4ED8D1642B8AB00601FE4 /* dosbatch.c in Sources */,
 				9425885419532EB7006CD33B /* GoParser.m in Sources */,
 				94D4ED8E1642B8AB00601FE4 /* e_amiga.h in Sources */,
@@ -5132,6 +5173,7 @@
 				BC4584451EE1B10600982965 /* compath.c in Sources */,
 				BC4584461EE1B10600982965 /* VersionViewController.m in Sources */,
 				BC4584471EE1B10600982965 /* crossref.c in Sources */,
+				BC8D36E81EF81C7200A56252 /* OpenGrokViewController.m in Sources */,
 				BC4584481EE1B10600982965 /* HourChartControllerHelper.m in Sources */,
 				BC4584491EE1B10600982965 /* JBChartView.m in Sources */,
 				BC45844A1EE1B10600982965 /* cscope.c in Sources */,
