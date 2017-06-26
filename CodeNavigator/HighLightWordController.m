@@ -93,7 +93,7 @@
         
         if (isStrick) {
             while ([item length] > 0) {
-                range = [item rangeOfString:searchWord options:NSCaseInsensitiveSearch];
+                range = [item rangeOfString:searchWord options:NSLiteralSearch];
                 if (range.location != NSNotFound) {
                     char tmp;
                     // Check left
@@ -152,7 +152,9 @@
     [str appendString:@"L"];
     [str appendString:[resultArray objectAtIndex:[resultArray count]-1]];
     //clear highlight
-    //[webView stringByEvaluatingJavaScriptFromString:@"clearHighlight()"];
+    if (!isStrick) {
+        [webView stringByEvaluatingJavaScriptFromString:@"clearHighlight()"];
+    }
     NSString* highlightJS = [NSString stringWithFormat:@"highlight_keyword_by_lines('%@','%@')",str, searchWord];
     // HAKE way to scroll to position
     NSString* returnVal = [webView stringByEvaluatingJavaScriptFromString:highlightJS];

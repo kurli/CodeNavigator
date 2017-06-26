@@ -90,6 +90,7 @@
             [myAlertView addSubview:myTextField];
             [myAlertView show];
         }
+        [self.commentViewController dismissGroupView];
     } else {
         currentGroup = [groups objectAtIndex:indexPath.row - 1];
         [commentViewController groupSelected:currentGroup];

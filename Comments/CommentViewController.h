@@ -32,4 +32,6 @@
 - (void) initWithFileName:(NSString *)_fileName;
 
 -(void) groupSelected:(NSString*)group;
+    
+-(void) dismissGroupView;
 @end

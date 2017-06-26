@@ -435,6 +435,10 @@ padding-right: 20px;\
     [self.popoverController dismissPopoverAnimated:YES];
 }
 
+-(void) dismissGroupView {
+    [self.popoverController dismissPopoverAnimated:YES];
+}
+    
 - (IBAction)selectGroupClicked:(id)sender {
     SelectGroupViewController* controller = [[SelectGroupViewController alloc] init];
     [controller setCommentViewController:self];
