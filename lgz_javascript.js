@@ -59,14 +59,42 @@ function clearHighlight() {
     }
 }
 
-function highlight_this_line_keyword(line, s){
+function highlight_this_line_keyword(line, s, color){
     s=encode(s);
     var obj = document.getElementById(line);
     var cnt=loopSearch(s,obj);
-    t=obj.innerHTML
-    var r=/{searchHL}(({(?!\/searchHL})|[^{])*){\/searchHL}/g
-    t=t.replace(r,"<span class='highlight'>$1</span>");
-    obj.innerHTML=t;
+    var t=obj.innerHTML;
+    if (cnt > 0) {
+        var r=/{searchHL}(({(?!\/searchHL})|[^{])*){\/searchHL}/g
+        if (color === undefined || color === null) {
+            t=t.replace(r,"<span class='highlight'>$1</span>");
+        } else {
+            t=t.replace(r,"<span class='highlight' style='background:" + color + "'>$1</span>");
+        }
+        obj.innerHTML=t;
+    } else {
+        // CLear highlights
+        while(1) {
+            var objs = obj.getElementsByClassName('highlight');
+            var index = 0;
+            for (index=0; index<objs.length; index++) {
+                if (objs[index].innerText == s) {
+                    break;
+                }
+            }
+            if (index >= objs.length) {
+                break;
+            }
+            
+            var childs = objs[index].parentNode.childNodes;
+            var i = 0;
+            for (i=0; i<childs.length; i++) {
+                if (childs[i] == objs[index] && s == childs[i].innerText){
+                    childs[i].outerHTML = objs[index].innerText;
+                }
+            }
+        }
+    }
     return cnt;
 }
 
@@ -166,6 +194,16 @@ function elmYPosition(eID) {
     } return y;
 }
 
+function randomColor() {
+    var color = Math.round(Math.random() * 0xffffff);
+    
+    color = "00000"+color.toString(16);
+    
+    color = color.substring(color.length - 6);
+    
+    return '#' + color;
+}
+
 function highlight_keyword_by_lines(lines, s)
 {
     // input as "L0,L1,L2..."
@@ -175,9 +213,10 @@ function highlight_keyword_by_lines(lines, s)
     var obj;
     var curY = currentYPosition();
     var returnVal = -1;
+    var color = randomColor();
     for (i=0; i<lineArray.length; i++) {
         lineID = lineArray[i];
-        highlight_this_line_keyword(lineID, s);
+        highlight_this_line_keyword(lineID, s, color);
         obj = document.getElementById(lineID);
         if (returnVal == -1)
         {

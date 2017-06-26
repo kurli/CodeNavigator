@@ -99,7 +99,7 @@
                     // Check left
                     if (range.location > 0) {
                         tmp = [item characterAtIndex:range.location-1];
-                        if ((tmp>'a'&&tmp<'z') || (tmp>'A'&&tmp<'Z')) {
+                        if ((tmp>'a'&&tmp<'z') || (tmp>'A'&&tmp<'Z') || tmp == '_') {
                             // Check failed, check remaining str
                             if (range.location + range.length < [item length]) {
                                 item = [item substringFromIndex:range.location + range.length];
@@ -113,7 +113,7 @@
                     // Check right
                     if (range.location + range.length < [item length]) {
                         tmp = [item characterAtIndex:range.location + range.length];
-                        if ((tmp>'a'&&tmp<'z') || (tmp>'A'&&tmp<'Z')) {
+                        if ((tmp>'a'&&tmp<'z') || (tmp>'A'&&tmp<'Z') || tmp == '_') {
                             // Check failed, check remaining str
                             if (range.location +range.length < [item length]) {
                                 item = [item substringFromIndex:range.location + range.length];
@@ -152,7 +152,7 @@
     [str appendString:@"L"];
     [str appendString:[resultArray objectAtIndex:[resultArray count]-1]];
     //clear highlight
-    [webView stringByEvaluatingJavaScriptFromString:@"clearHighlight()"];
+    //[webView stringByEvaluatingJavaScriptFromString:@"clearHighlight()"];
     NSString* highlightJS = [NSString stringWithFormat:@"highlight_keyword_by_lines('%@','%@')",str, searchWord];
     // HAKE way to scroll to position
     NSString* returnVal = [webView stringByEvaluatingJavaScriptFromString:highlightJS];

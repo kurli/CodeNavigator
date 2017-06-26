@@ -1086,6 +1086,8 @@
 		94F7532D1F001B06006BA5D5 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C74041804491A00065E65 /* search@2x.png */; };
 		94F7532E1F001B09006BA5D5 /* seperate.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C73FF1804460700065E65 /* seperate.png */; };
 		94F7532F1F001B0A006BA5D5 /* seperate.png in Resources */ = {isa = PBXBuildFile; fileRef = 948C73FF1804460700065E65 /* seperate.png */; };
+		94F753301F002649006BA5D5 /* CommentHide.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E4C113199D1519003B0E82 /* CommentHide.png */; };
+		94F753311F002649006BA5D5 /* CommentHide.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E4C113199D1519003B0E82 /* CommentHide.png */; };
 		94F7B90D17F7487A00A506EE /* UploadSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F7B90B17F7487A00A506EE /* UploadSelectionViewController.m */; };
 		94F7B90E17F7487A00A506EE /* UploadSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F7B90C17F7487A00A506EE /* UploadSelectionViewController.xib */; };
 		94F7B91617F84A7600A506EE /* WebServiceControllerFormSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F7B91517F84A7600A506EE /* WebServiceControllerFormSheet.xib */; };
@@ -3978,6 +3980,7 @@
 				949DC2311583E8CF00385796 /* ccFile.png in Resources */,
 				94D0A9331976D282002EEFCE /* show_toolbar.png in Resources */,
 				9445C8AF193CAF1C00924D41 /* Images.xcassets in Resources */,
+				94F753301F002649006BA5D5 /* CommentHide.png in Resources */,
 				94D0A9351976E47B002EEFCE /* FileBrowser.png in Resources */,
 				94D0A9311976D277002EEFCE /* back_arrow.png in Resources */,
 				94B1DCF7191F70D000909C3E /* SelectGroupViewController.xib in Resources */,
@@ -4235,6 +4238,7 @@
 				BC4584E41EE1B10600982965 /* ccFile.png in Resources */,
 				BC4584E51EE1B10600982965 /* show_toolbar.png in Resources */,
 				BC4584E61EE1B10600982965 /* Images.xcassets in Resources */,
+				94F753311F002649006BA5D5 /* CommentHide.png in Resources */,
 				BC4584E71EE1B10600982965 /* FileBrowser.png in Resources */,
 				BC4584E81EE1B10600982965 /* back_arrow.png in Resources */,
 				BC4584E91EE1B10600982965 /* SelectGroupViewController.xib in Resources */,

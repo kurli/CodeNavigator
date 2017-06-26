@@ -18,6 +18,7 @@
                 <outlet property="navigateBarButtonItem" destination="10" id="OjY-1F-UtJ"/>
                 <outlet property="scrollBackgroundView" destination="29" id="31"/>
                 <outlet property="scrollItem" destination="d7p-KA-foW" id="cMO-DR-whn"/>
+                <outlet property="showHideCommentsButton" destination="m7n-CL-5Ft" id="a1v-Yx-H8X"/>
                 <outlet property="topToolBar" destination="34" id="44"/>
                 <outlet property="view" destination="1" id="12"/>
                 <outlet property="webView" destination="7" id="13"/>
@@ -72,7 +73,7 @@
                         <barButtonItem enabled="NO" style="plain" id="x4s-D0-uHJ"/>
                         <barButtonItem image="Comment.png" style="plain" id="m7n-CL-5Ft">
                             <connections>
-                                <action selector="filesButtonClicked:" destination="-1" id="czr-LR-CUc"/>
+                                <action selector="showHideCommentsClicked:" destination="-1" id="jPh-xQ-ez2"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="l5X-eW-3gx"/>

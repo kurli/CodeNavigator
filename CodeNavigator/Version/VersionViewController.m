@@ -11,7 +11,7 @@
 #import "DisplayController.h"
 #import "MasterViewController.h"
 
-#define RELEASE_VERSION 12
+#define RELEASE_VERSION 13
 
 @interface VersionViewController ()
 
@@ -115,7 +115,7 @@
     // Append mode
     if (isExist == YES) {
         NSArray* contentsInBundle = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:buildInParserPathBundle error:&error];
-        NSArray* contentsInSetting = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:buildInParserPath error:&error];
+        //NSArray* contentsInSetting = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:buildInParserPath error:&error];
         for (NSString* str in contentsInBundle) {
 //            int i;
 //            for (i = 0; i < [contentsInSetting count]; i++) {
