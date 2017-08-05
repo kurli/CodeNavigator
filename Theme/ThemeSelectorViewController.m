@@ -13,8 +13,14 @@
 #import "DisplayController.h"
 
 #define LINE_WRAP_NA @"999999"
+
+#ifdef IPHONE_VERSION
+#define LINE_WRAP_SM @"40"
+#define LINE_WRAP_BG @"80"
+#else
 #define LINE_WRAP_SM @"80"
 #define LINE_WRAP_BG @"140"
+#endif
 
 #define FONT_STANDARD @"monospace"
 #define FONT_SOURCE_CODE_PRO @"Source Code Pro"

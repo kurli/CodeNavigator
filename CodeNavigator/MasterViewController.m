@@ -677,7 +677,7 @@
     [self gitClicked:sender];
 }
 
-- (IBAction)openGrokButtonClicked:(NSString*)url {
+- (IBAction)openGrokButtonClicked:(NSString*)url andTitle:(NSString*)title {
     if ([popOverController isPopoverVisible]) {
         [self releaseAllPopover];
         return;
@@ -692,12 +692,14 @@
 #endif
 
     viewController.url = url;
-//    [self.navigationController.navigationBar setHidden:YES];
-//    [self.navigationController pushViewController:viewController animated:YES];
+    viewController.titleBarStr = title;
 #ifndef IPHONE_VERSION
     [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
 #else
-    [self presentViewController:viewController animated:YES completion:nil];
+        [self.navigationController.navigationBar setHidden:YES];
+        [self.navigationController pushViewController:viewController animated:YES];
+
+//    [self presentViewController:viewController animated:YES completion:nil];
 #endif
 
 }
@@ -998,7 +1000,7 @@
     //Help.html special case
     if ([fileListBrowserController getIsCurrentProjectFolder] == YES && [selectedItem compare:@"OpenGrok.Club"] == NSOrderedSame) {
 //        [controller setTitle:@"OpenGrok.Club" andPath:@"http://opengrok.club" andContent:nil andBaseUrl:nil];
-        [self openGrokButtonClicked:nil];
+        [self openGrokButtonClicked:nil andTitle:@"OpenGrok.Club"];
         return;
     }
     
@@ -1057,7 +1059,7 @@
 
 -(void) downloadZipFromGitHub {
     [self releaseAllPopover];
-    [self openGrokButtonClicked:@"http://opengrok.club/category/3/opensource-projects-sharing"];
+    [self openGrokButtonClicked:@"http://opengrok.club/category/3/opensource-projects-sharing" andTitle:@"Project sharing"];
 }
 
 -(void) uploadFromITunes {
@@ -1116,5 +1118,12 @@
 #endif
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 }
+
+#ifdef IPHONE_VERSION
+- (IBAction)themeSettingClicked:(id)sender {
+    [[Utils getInstance].detailViewController displayModeClicked:nil];
+}
+
+#endif
 
 @end

@@ -13,6 +13,7 @@
 @interface OpenGrokViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *titleBar;
 
 @end
 
@@ -32,6 +33,11 @@
     }
 
     NSURL *url = [NSURL URLWithString:lastUrl];
+    [self loadUrl:url];
+    self.titleBar.title = self.titleBarStr;
+}
+
+-(void) loadUrl:(NSURL*) url {
     self.webview.delegate = self;
     NSString *oldAgent = [self.webview stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
     NSString *newAgent = [oldAgent stringByAppendingString:@" CodeNavigator6"];
@@ -53,7 +59,12 @@
 }
 
 - (IBAction)openWithSafari:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.webview.request.URL.absoluteString]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.webview.request.URL.absoluteString]];
+    NSURL *url = [NSURL URLWithString:@"http://opengrok.club"];
+    if (self.url != nil) {
+        url =  [NSURL URLWithString:self.url];
+    }
+    [self loadUrl:url];
 }
 
 - (IBAction)shareButtonClicked:(id)sender {
@@ -89,8 +100,12 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSString* tmp = [request.URL absoluteString];
+    tmp = [tmp stringByReplacingOccurrencesOfString:@"codenavigator://git.clone?" withString:@""];
     // treat git repo
     if ([[tmp pathExtension] isEqualToString:@"git"]) {
+//#ifdef IPHONE_VERSION
+        [self doneButtonClicked:nil];
+//#endif
         [[Utils getInstance].masterViewController showGitCloneViewWithUrl:tmp];
         return NO;
     }

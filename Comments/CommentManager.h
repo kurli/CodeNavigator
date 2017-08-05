@@ -23,9 +23,9 @@ typedef enum _CommentManagerMode{
 }
 
 @property (nonatomic, strong) MasterViewController* masterViewController;
-@property (nonatomic, strong) NSArray* fileArray;
-@property (nonatomic, strong) NSArray* commentsArray;
-@property (nonatomic, strong) NSArray* groupsArray;
+@property (nonatomic, strong) NSMutableArray* fileArray;
+@property (nonatomic, strong) NSMutableArray* commentsArray;
+@property (nonatomic, strong) NSMutableArray* groupsArray;
 @property (nonatomic, strong) CommentManager* commentManager;
 @property (nonatomic, strong) NSString* currentGroup;
 @property (nonatomic, strong) NSString* currentFile;

@@ -57,7 +57,7 @@
     NSString* projCommentPath = [masterViewController.currentProjectPath stringByAppendingPathComponent:@"lgz_projects.lgz_comment"];
     
     NSString* projCommentContent = [NSString stringWithContentsOfFile:projCommentPath encoding:NSUTF8StringEncoding error:&error];
-    self.fileArray = [projCommentContent componentsSeparatedByString:@"\n"];
+    self.fileArray = [[NSMutableArray alloc] initWithArray:[projCommentContent componentsSeparatedByString:@"\n"]];
     if ([self.fileArray count] == 0) {
         return;
     }
@@ -94,7 +94,7 @@
             [result appendFormat:@"%@\n", [self.fileArray objectAtIndex:i]];
         }
     }
-    self.fileArray = [result componentsSeparatedByString:@"\n"];
+    self.fileArray = [[NSMutableArray alloc] initWithArray:[result componentsSeparatedByString:@"\n"]];
     [result writeToFile:projCommentPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
 
@@ -272,9 +272,51 @@
         
 #ifdef IPHONE_VERSION
         //[self dismissModalViewControllerAnimated:NO];
-        [self presentModalViewController:[Utils getInstance].detailViewController animated:YES];
+        [self presentViewController:[Utils getInstance].detailViewController animated:YES completion:nil];
 #endif
     }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (currentMode == COMMENT_MANAGER_FILE) {
+        return false;
+    } else if(currentMode == COMMENT_MANAGER_GROUP) {
+        if (indexPath.row == 0) {
+            return false;
+        }
+        return true;
+    }
+    return true;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    CommentWrapper* wrapper = [[CommentWrapper alloc] init];
+    if(currentMode == COMMENT_MANAGER_GROUP) {
+        if (indexPath.row > [groupsArray count]) {
+            return;
+        }
+        NSString* projCommentPath = [masterViewController.currentProjectPath stringByAppendingPathComponent:@"._nothing_lgz"];
+        [wrapper readFromFile:projCommentPath];
+
+        BOOL success = [wrapper removeGroup: indexPath.row - 1];
+        if (success) {
+            [groupsArray removeObjectAtIndex:indexPath.row];
+            [self.tableView reloadData];
+        }
+    } else {
+        if (indexPath.row > [commentsArray count]) {
+            return;
+        }
+        [wrapper readFromFile:currentFile];
+
+        BOOL success = [wrapper removeComment: indexPath.row];
+        if (success) {
+            [commentsArray removeObjectAtIndex:indexPath.row];
+            [self.tableView reloadData];
+        }
+    }
+    [self.tableView reloadData];
 }
 
 - (void) setCurrentModeComments
@@ -292,9 +334,9 @@
     CommentWrapper* commentWrapper = [[CommentWrapper alloc] init];
     [commentWrapper readFromFile:path];
     if ([currentGroup isEqualToString:@"All"]) {
-        self.commentsArray = [commentWrapper getCommentsByGroup:nil];
+        self.commentsArray = [[NSMutableArray alloc] initWithArray: [commentWrapper getCommentsByGroup:nil]];
     } else {
-        self.commentsArray = [commentWrapper getCommentsByGroup:currentGroup];
+        self.commentsArray = [[NSMutableArray alloc] initWithArray: [commentWrapper getCommentsByGroup:currentGroup]];
     }
 }
 
@@ -303,7 +345,7 @@
     NSString* projCommentPath = [masterViewController.currentProjectPath stringByAppendingPathComponent:@"lgz_projects.lgz_comment"];
     
     NSString* projCommentContent = [NSString stringWithContentsOfFile:projCommentPath encoding:NSUTF8StringEncoding error:&error];
-    self.fileArray = [projCommentContent componentsSeparatedByString:@"\n"];
+    self.fileArray = [[NSMutableArray alloc] initWithArray: [projCommentContent componentsSeparatedByString:@"\n"]];
     if ([self.fileArray count] == 0) {
         return;
     }

@@ -150,7 +150,7 @@
 //        VersionViewController* viewController = [[VersionViewController alloc] init];
 //        viewController.modalPresentationStyle = UIModalPresentationFormSheet;
 //        [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];
-        [[Utils getInstance].masterViewController openGrokButtonClicked:@"http://opengrok.club/category/1/codenavigator-help"];
+        [[Utils getInstance].masterViewController openGrokButtonClicked:@"http://opengrok.club/category/1/codenavigator-help" andTitle:@"Help"];
     });
 }
 

@@ -249,6 +249,9 @@
                         }
                     });
                 }];
+#ifdef IPHONE_VERSION
+                [[Utils getInstance].masterViewController presentViewController:[Utils getInstance].detailViewController animated:YES completion:nil];
+#endif
 
                 [[Utils getInstance] addGAEvent:@"FileInfo" andAction:@"Refresh" andLabel:nil andValue:nil];
             }
@@ -270,6 +273,9 @@
             if (indexPath.row == OPEN_AS_SOURCE) {
                 if ([[Utils getInstance] isWebType:sourceFilePath])
                 {
+#ifdef IPHONE_VERSION
+                    [[Utils getInstance].masterViewController presentViewController:[Utils getInstance].detailViewController animated:YES completion:nil];
+#endif
                     NSString* projPath = [[Utils getInstance] getProjectFolder:sourceFilePath];
                     [[Utils getInstance] getDisplayFile:sourceFilePath andProjectBase:projPath andFinishBlock:^(NSString* html) {
                         dispatch_async(dispatch_get_main_queue(), ^{
@@ -287,6 +293,9 @@
                 NSError *error;
                 NSStringEncoding encoding = NSUTF8StringEncoding;
                 NSString* html = [NSString stringWithContentsOfFile: sourceFilePath usedEncoding:&encoding error: &error];
+#ifdef IPHONE_VERSION
+                [[Utils getInstance].masterViewController presentViewController:[Utils getInstance].detailViewController animated:YES completion:nil];
+#endif
                 [controller setTitle:[sourceFilePath lastPathComponent] andPath:sourceFilePath andContent:html andBaseUrl:[sourceFilePath stringByDeletingLastPathComponent]];
             }
             else if (indexPath.row == WEB_DELETE) {

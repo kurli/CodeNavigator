@@ -137,6 +137,7 @@ padding-right: 20px;\
     NSString* group = [self.commentWrapper getCommentGroupByLine:line];
     if ([group length] != 0) {
         [self.groupButton setTitle:group forState:UIControlStateNormal];
+        self.currentGroup = group;
 #ifdef IPHONE_VERSION
         self.groupButtonItem.title = group;
 #endif

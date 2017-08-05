@@ -44,4 +44,10 @@
 
 -(NSString*) getCommentGroupByLine:(NSInteger)line;
 
+-(BOOL) removeGroup:(NSInteger) index;
+
+-(BOOL) removeFile:(NSInteger) index;
+
+-(BOOL) removeComment:(NSInteger)index;
+
 @end

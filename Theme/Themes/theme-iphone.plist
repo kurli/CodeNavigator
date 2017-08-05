@@ -9,7 +9,7 @@
 	<key>font_size</key>
 	<string>15</string>
 	<key>max_line_count</key>
-	<string>80</string>
+	<string>40</string>
 	<key>theme</key>
 	<string>lesser-dark</string>
 	<key>auto_fold_comments</key>

@@ -1261,7 +1261,7 @@
     ThemeSelectorViewController* viewController = [[ThemeSelectorViewController alloc] init];
 #endif
 #ifdef IPHONE_VERSION
-    [self presentViewController:viewController animated:YES completion:nil];
+    [[Utils getInstance].masterViewController presentViewController:viewController animated:YES completion:nil];
 #else
     viewController.modalPresentationStyle = UIModalPresentationFormSheet;
     [[Utils getInstance].splitViewController presentViewController:viewController animated:YES completion:nil];

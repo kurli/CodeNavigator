@@ -11,5 +11,6 @@
 @interface OpenGrokViewController : UIViewController <UIWebViewDelegate>
 
 @property (strong, nonatomic) NSString* url;
+@property (strong, nonatomic) NSString* titleBarStr;
 
 @end

@@ -241,8 +241,9 @@
         urlStr = [urlStr stringByReplacingOccurrencesOfString:gitClonePrefix withString:@""];
         [[Utils getInstance].masterViewController showGitCloneViewWithUrl:urlStr];
         return YES;
+    } else {
+        return [self application:app handleOpenURL:url];
     }
-    return NO ;
 }
 
 @end

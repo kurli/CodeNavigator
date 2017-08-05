@@ -247,6 +247,17 @@
         [[NSFileManager defaultManager] removeItemAtPath:projCommentPath error:&error];
         [tmp writeToFile:projCommentPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
     }
+    // Only group changed, noghing changed
+    else {
+        NSMutableString* tmp = [[NSMutableString alloc] init];
+        NSString* str = [self getGroupsStrContent];
+        [tmp appendFormat:@"%@\n", str];
+        for (int i=1; i<[array count]; i++) {
+            [tmp appendFormat:@"%@\n", [array objectAtIndex:i]];
+        }
+        [[NSFileManager defaultManager] removeItemAtPath:projCommentPath error:&error];
+        [tmp writeToFile:projCommentPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    }
     
     if ([commentArray count] == 0) {
         return;
@@ -325,5 +336,68 @@
     }
     return array;
 }
+
+-(NSArray*) getAllCommentFileArray {
+    // Tread group
+    NSString* projCommentPath = [[Utils getInstance] getProjectFolder:filePath];
+    projCommentPath = [projCommentPath stringByAppendingPathComponent:@"lgz_projects.lgz_comment"];
+    NSString* projCommentContent = [NSString stringWithContentsOfFile:projCommentPath encoding:NSUTF8StringEncoding error:nil];
+    NSMutableArray* fileArray = [[NSMutableArray alloc] initWithArray: [projCommentContent componentsSeparatedByString:@"\n"]];
+    if ([fileArray count] == 0) {
+        return nil;
+    }
+    [fileArray removeObjectAtIndex:0];
+    return fileArray;
+}
+
+-(BOOL) removeGroup:(NSInteger) index {
+    if (index >= [self.groups count]) {
+        return NO;
+    }
+    NSString* groupName = [self.groups objectAtIndex:index];
+    [self.groups removeObjectAtIndex:index];
+    [self saveToFile];
+    // Remove comments
+    NSArray* fileArray = [self getAllCommentFileArray];
+    for (int i=0; i<[fileArray count]; i++) {
+        if ([[fileArray objectAtIndex:i] length] == 0) {
+            continue;
+        }
+        NSString* path = NSHomeDirectory();
+        path = [path stringByAppendingPathComponent:@"Documents"];
+        path = [path stringByAppendingPathComponent:@".Projects"];
+        path = [path stringByAppendingPathComponent:[fileArray objectAtIndex:i]];
+        [self readFromFile:path];
+        NSInteger j = 0;
+        while(1) {
+            if ([commentArray count] == 0 || j >= [commentArray count]) {
+                break;
+            }
+            CommentItem* item = [commentArray objectAtIndex:j];
+            if ([item.group isEqualToString:groupName]) {
+                [commentArray removeObjectAtIndex:j];
+                j = 0;
+                continue;
+            }
+            j++;
+        }
+        [self saveToFile];
+    }
+    return YES;
+}
+
+-(BOOL) removeFile:(NSInteger) file {
+    return true;
+}
+
+-(BOOL) removeComment:(NSInteger)index {
+    if (index >= [commentArray count]) {
+        return NO;
+    }
+    [commentArray removeObjectAtIndex:index];
+    [self saveToFile];
+    return true;
+}
+
 
 @end
