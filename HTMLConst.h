@@ -47,7 +47,7 @@ table.code tbody th :link, table.code tbody th :visited {\n\
 }\n\
 table.code td {\n\
  padding: 1px 2px;\n\
- color: #808080;\n\
+ color: -OTHER-;\n\
  vertical-align: top;\n\
 }\n\
 a {\n\

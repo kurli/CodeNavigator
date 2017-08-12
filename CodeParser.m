@@ -279,6 +279,17 @@
 	unichar charTemp;
 	NSRange range;
     
+    // For iPhone space 4 to space 2
+    while (true) {
+        NSRange range = [needParseLine rangeOfString:@"    "];
+        if (range.location == NSNotFound || range.location != 0) {
+            break;
+        } else {
+            [self addString:@"  " addEnter:NO];
+            [needParseLine deleteCharactersInRange:range];
+        }
+    }
+
     [self newLineStarted];
     
 	while( [needParseLine length] > 0 )
@@ -293,7 +304,7 @@
 		}
 		else if( charTemp == '\t' )
 		{
-            [self addString: @"    " addEnter:NO];
+            [self addString: SPACE addEnter:NO];
 			range.location = 0;
 			range.length = 1;
 			[needParseLine deleteCharactersInRange:range];

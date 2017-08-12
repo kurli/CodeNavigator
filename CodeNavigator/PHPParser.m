@@ -129,7 +129,7 @@
         }
 		else if( charTemp == '\t' )
 		{
-			[self addString: @"    " addEnter:NO];
+			[self addString: SPACE addEnter:NO];
 			range.location = 0;
 			range.length = 1;
 			[needParseLine deleteCharactersInRange:range];

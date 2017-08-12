@@ -4,6 +4,12 @@
 #define BREAK_STR @"lgz_BR_lgz"
 #define BUILDIN_PARSER_PATH @"/Documents/.settings/BuildInParser"
 
+#ifdef IPHONE_VERSION
+#define SPACE @"  "
+#else
+#define SPACE @"    "
+#endif
+
 typedef void (^ParseFinishedCallback)();
 
 @interface CodeParser : NSObject

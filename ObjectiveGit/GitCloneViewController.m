@@ -11,9 +11,6 @@
 #import "MasterViewController.h"
 #import "GTCredential.h"
 
-#define SEPERATOR @"--lgz_SePeRator--"
-#define KEY @"CodeNavigator--lgz_SePeRator--"
-
 @interface GitCloneViewController ()
 @property (strong, nonatomic) NSString* startUpUrl;
 @property (strong, nonatomic) NSString* startUpProj;
@@ -25,15 +22,9 @@
 @synthesize repo;
 
 - (IBAction)discardClicked:(id)sender {
-    NSString* path = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/git.config"];
-    NSError* error;
-
-    [[Utils getInstance] setGitUsername:nil];
-    [[Utils getInstance] setGitPassword:nil];
+    [[Utils getInstance] setGitUserName:@"" andPassword:@"" andHost:self.urlTextField.text];
     self.usernameTextField.text = @"";
     self.passwordTextField.text = @"";
-    
-    [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
 }
 
 - (void) setCloneUrl:url {
@@ -45,45 +36,10 @@
 }
 
 - (IBAction)saveClicked:(id)sender {
-    NSError* error;
-    NSString* path = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/git.config"];
-    NSString* username = self.usernameTextField.text;
-    NSString* password = self.passwordTextField.text;
-    [[Utils getInstance] setGitUsername:username];
-    [[Utils getInstance] setGitPassword:password];
-    
-    if (username.length == 0 || password.length == 0) {
-        [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
-        return;
-    }
-    
-    username = [Utils HloveyRC4:username key:KEY];
-    password = [Utils HloveyRC4:password key:KEY];
-    
-    [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
-    NSString* content = [NSString stringWithFormat:@"%@%@%@", username, SEPERATOR, password];
-    [content writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    NSError* error;
-    // Get username and paaasword from file
-    NSString* path = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/git.config"];
-    NSString* content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
-    // Parse content
-    NSArray* array = [content componentsSeparatedByString:SEPERATOR];
-    if ([array count] == 2) {
-        [[Utils getInstance] setGitUsername:[Utils HloveyRC4:[array objectAtIndex:0] key:KEY]];
-        [[Utils getInstance] setGitPassword:[Utils HloveyRC4:[array objectAtIndex:1] key:KEY]];
-    } else {
-        [[Utils getInstance] setGitUsername:@""];
-        [[Utils getInstance] setGitPassword:@""];
-        [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
-    }
-    self.usernameTextField.text = [Utils getInstance].gitUsername;
-    self.passwordTextField.text = [Utils getInstance].gitPassword;
-    
     [self.urlTextField setSpellCheckingType:UITextSpellCheckingTypeNo];
     [self.urlTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
     [self.usernameTextField setSpellCheckingType:UITextSpellCheckingTypeNo];
@@ -97,6 +53,11 @@
     if ([self.startUpProj length] != 0) {
         self.projectNameTextField.text = self.startUpProj;
     }
+    
+    NSString* str = self.urlTextField.text;
+    str = [[str lastPathComponent] stringByDeletingPathExtension];
+    self.usernameTextField.text = [[Utils getInstance] getGitUserName:str];
+    self.passwordTextField.text = [[Utils getInstance] getGitUserPwd:str];
 }
 
 - (void) gitClone
@@ -129,7 +90,7 @@
     
     GTCredentialProvider* provider = [GTCredentialProvider providerWithBlock:^GTCredential *(GTCredentialType type, NSString *URL, NSString *userName) {
         NSError* error;
-        GTCredential* credental = [GTCredential credentialWithUserName:[Utils getInstance].gitUsername password:[Utils getInstance].gitPassword error:&error];
+        GTCredential* credental = [GTCredential credentialWithUserName:self.usernameTextField.text password:self.passwordTextField.text error:&error];
             return credental;
     }];
 
@@ -269,7 +230,7 @@
 #endif
 }
 
-- (NSUInteger)supportedInterfaceOrientations
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
 #ifdef IPHONE_VERSION
     return UIInterfaceOrientationMaskPortrait;
@@ -333,8 +294,6 @@
 //        [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"SSH connection is not supported"];
 //        return;
 //    }
-    [[Utils getInstance] setGitUsername:self.usernameTextField.text];
-    [[Utils getInstance] setGitPassword:self.passwordTextField.text];
     
     NSString* projectName = [remoteURL lastPathComponent];
     projectName = [projectName stringByDeletingPathExtension];
@@ -345,6 +304,8 @@
     else
         projectName = self.projectNameTextField.text;
     
+    [[Utils getInstance] setGitUserName:self.usernameTextField.text andPassword:self.passwordTextField.text andHost:projectName];
+
     // clear info
     [self.infoTextView setText:@""];
     
@@ -385,8 +346,6 @@
     [self setCloneButton:nil];
     [self setUsernameTextField:nil];
     [self setPasswordTextField:nil];
-    [[Utils getInstance] setGitUsername:nil];
-    [[Utils getInstance] setGitPassword:nil];
     [self setCloningIndicator:nil];
     [super viewDidUnload];
 }

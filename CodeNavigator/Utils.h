@@ -117,10 +117,6 @@ typedef enum _SearchType{
 @property (strong, nonatomic) DropBoxViewController* dropBoxViewController;
 @property (strong, nonatomic) FunctionListManager* functionListManager;
 
-@property (strong, nonatomic) NSString* gitUsername;
-
-@property (strong, nonatomic) NSString* gitPassword;
-
 @property (strong, nonatomic) UIActivityIndicatorView* cscopeIndicator;
 
 @property (strong, nonatomic) DBManager* dbManager;
@@ -232,5 +228,10 @@ typedef enum _SearchType{
 -(void) addGAEvent:(NSString*) category andAction:(NSString*) action andLabel:(NSString*)label andValue:(NSNumber*)number;
 
 -(NSString*) getFileContent:(NSString*)path;
+
+-(NSString*) getGitUserName:(NSString*)host;
+-(NSString*) getGitUserPwd:(NSString*)host;
+
+-(void) setGitUserName:(NSString*)userName andPassword:(NSString*)password andHost:(NSString*)host;
 
 @end

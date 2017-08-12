@@ -42,22 +42,10 @@
     GTBranch* currentBranch = [self.gitBranchController currentBranch];
     GTBranch* trackingBranch = [self.gitBranchController getCurrentTrackingBranch];
     
-    NSError* error;
-    NSString* path = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/.settings/git.config"];
-    NSString* content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
-    // Parse content
-    NSArray* array = [content componentsSeparatedByString:SEPERATOR];
-    if ([array count] == 2) {
-        [[Utils getInstance] setGitUsername:[Utils HloveyRC4:[array objectAtIndex:0] key:KEY]];
-        [[Utils getInstance] setGitPassword:[Utils HloveyRC4:[array objectAtIndex:1] key:KEY]];
-    } else {
-        [[Utils getInstance] setGitUsername:@""];
-        [[Utils getInstance] setGitPassword:@""];
-        [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
-    }
+    NSString* str = [[self.gitBranchController.projectPath lastPathComponent] stringByDeletingPathExtension];
     
-    self.username.text = [Utils getInstance].gitUsername;
-    self.password.text = [Utils getInstance].gitPassword;
+    self.username.text = [[Utils getInstance] getGitUserName:str];
+    self.password.text = [[Utils getInstance] getGitUserPwd:str];
     if ([currentBranch.shortName length] == 0) {
         self.currentBranch.text = currentBranch.name;
     } else {
@@ -77,7 +65,7 @@
 #endif
 }
 
-- (NSUInteger)supportedInterfaceOrientations
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
 #ifdef IPHONE_VERSION
     return UIInterfaceOrientationMaskPortrait;

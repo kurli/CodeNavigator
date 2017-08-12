@@ -30,9 +30,10 @@
 
 //project wrapper
 #define PROJECT_DELETE 0
-#define PROJECT_GIT_LOG 1
-#define PROJECT_GIT_BRANCH 2
-#define PROJECT_GIT_UPDATE 3
+#define PROJECT_RE_ANALYZE 1
+#define PROJECT_GIT_LOG 2
+#define PROJECT_GIT_BRANCH 3
+#define PROJECT_GIT_UPDATE 4
 
 //web wrapper
 #define OPEN_AS_SOURCE 0
@@ -92,7 +93,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.preferredContentSize = self.view.frame.size;
+//    self.preferredContentSize = self.view.frame.size;
 }
 
 #pragma TableView
@@ -153,7 +154,7 @@
 -(void) deleteFile
 {
     UIAlertView *confirmAlert = [[UIAlertView alloc] initWithTitle:@"CodeNavigator" message:@"Would you like to delete this?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes", nil];
-     [confirmAlert show];
+    [confirmAlert show];
 }
 
 -(void) presentOpenAsView
@@ -214,9 +215,9 @@
 #ifdef IPHONE_VERSION
     [[Utils getInstance].masterViewController presentViewController:updateController animated:YES completion:nil];
 #else
-    [self dismissViewControllerAnimated:YES completion:^(){
+//    [self dismissViewControllerAnimated:YES completion:^(){
         [[Utils getInstance].splitViewController presentViewController:updateController animated:YES completion:nil];
-    }];
+//    }];
 #endif
 }
 #endif
@@ -324,6 +325,11 @@
             if (indexPath.row == PROJECT_DELETE) {
                 [masterViewController.popOverController dismissPopoverAnimated:YES];
                 [self deleteFile];
+            } else if (indexPath.row == PROJECT_RE_ANALYZE) {
+                [masterViewController.popOverController dismissPopoverAnimated:YES];
+                [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Analyzing in background"];
+                NSString* proj = [[Utils getInstance] getProjectFolder:sourceFilePath];
+                [[Utils getInstance] analyzeProject:proj andForceCreate:YES];
             } else if (indexPath.row == PROJECT_GIT_LOG) {
                 [masterViewController.popOverController dismissPopoverAnimated:YES];
                 [self presentGitLog];
@@ -380,9 +386,9 @@
         if (isFolder && [path compare:proj] == NSOrderedSame) {
             fileInfoType = FILEINFO_PROJECT;
             if ([gitFolder length] == 0) {
-                selectionList = [[NSMutableArray alloc] initWithObjects:@"Delete", nil];
+                selectionList = [[NSMutableArray alloc] initWithObjects:@"Delete", @"Re Analyze", nil];
             } else {
-                selectionList = [[NSMutableArray alloc] initWithObjects:@"Delete", @"Git Log & Manage", @"Switch to Branch", @"Update", nil];
+                selectionList = [[NSMutableArray alloc] initWithObjects:@"Delete", @"Re Analyze", @"Git Log & Manage", @"Switch to Branch", @"Update", nil];
             }
             return;
         } else if (isFolder) {

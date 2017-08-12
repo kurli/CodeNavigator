@@ -71,8 +71,6 @@ static Utils *static_utils;
 @synthesize dropBoxViewController;
 @synthesize masterViewController;
 @synthesize functionListManager;
-@synthesize gitPassword;
-@synthesize gitUsername;
 @synthesize cscopeIndicator;
 @synthesize currentThemeSetting;
 
@@ -1312,6 +1310,81 @@ static Utils *static_utils;
             fileContent = @"File Format not supported yet!";
     }
     return fileContent;
+}
+
+#define KEY @"CodeNavigator--lgz_SePeRator--"
+#define PATH @"/Documents/.settings/git.config.v2"
+#define KEY_HOST @"host"
+#define KEY_USERNAME @"username"
+#define KEY_PWD @"password"
+
+-(NSString*) getGitUserName:(NSString*)host {
+    if ([host length] == 0) {
+        return @"";
+    }
+    NSString* path = [NSHomeDirectory() stringByAppendingFormat:PATH];
+    NSMutableArray* array = [NSMutableArray arrayWithContentsOfFile:path];
+    if (array == nil || [array count] == 0) {
+        return @"";
+    }
+    for (NSInteger i=0; i<[array count]; i++) {
+        NSDictionary* item = [array objectAtIndex:i];
+        NSString* hostItem = [item valueForKey:KEY_HOST];
+        if ([host isEqualToString:hostItem]) {
+            return [item objectForKey:KEY_USERNAME];
+        }
+    }
+    return @"";
+}
+
+-(NSString*) getGitUserPwd:(NSString*)host {
+    if ([host length] == 0) {
+        return @"";
+    }
+    NSString* path = [NSHomeDirectory() stringByAppendingFormat:PATH];
+    NSMutableArray* array = [NSMutableArray arrayWithContentsOfFile:path];
+    if (array == nil || [array count] == 0) {
+        return @"";
+    }
+    for (NSInteger i=0; i<[array count]; i++) {
+        NSDictionary* item = [array objectAtIndex:i];
+        NSString* hostItem = [item valueForKey:KEY_HOST];
+        if ([host isEqualToString:hostItem]) {
+            return [item objectForKey:KEY_PWD];
+        }
+    }
+    return @"";
+}
+
+-(void) setGitUserName:(NSString*)username andPassword:(NSString*)pwd andHost:(NSString*)host {
+    if ([host length] == 0) {
+        return;
+    }
+    NSString* path = [NSHomeDirectory() stringByAppendingFormat:PATH];
+    NSMutableArray* array = [NSMutableArray arrayWithContentsOfFile:path];
+    if (array == nil || [array count] == 0) {
+        array = [[NSMutableArray alloc] init];
+    }
+    for (NSInteger i=0; i<[array count]; i++) {
+        NSMutableDictionary* item = [array objectAtIndex:i];
+        NSString* hostItem = [item valueForKey:KEY_HOST];
+        if ([host isEqualToString:hostItem]) {
+            if ([username length] == 0 && [pwd length] == 0) {
+                [array removeObject:item];
+            } else {
+                [item setValue:username forKey:KEY_USERNAME];
+                [item setValue:pwd forKey:KEY_PWD];
+            }
+            [array writeToFile:path atomically:YES];
+            return;
+        }
+    }
+    NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
+    [dic setValue:host forKey:KEY_HOST];
+    [dic setValue:username forKey:KEY_USERNAME];
+    [dic setValue:pwd forKey:KEY_PWD];
+    [array addObject:dic];
+    [array writeToFile:path atomically:YES];
 }
 
 @end

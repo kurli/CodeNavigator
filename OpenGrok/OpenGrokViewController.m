@@ -89,6 +89,7 @@
 
 #pragma mark - webview代理方法
 - (void)webViewDidStartLoad:(UIWebView *)webView {
+    
     [self.indicator setHidden:NO];
     [self.indicator startAnimating];
 }
