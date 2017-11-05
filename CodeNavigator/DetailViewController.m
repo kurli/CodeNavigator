@@ -473,6 +473,10 @@
     [self adjustTitle];
 }
 
+static void extracted(DetailViewController *object, NSURL *baseURL, NSString *htmlString) {
+    [object.activeWebView loadHTMLString:htmlString baseURL:baseURL];
+}
+
 -(void) displayMarkDownTypeFile:(NSString *)path
 {
     int location = [self getCurrentScrollLocation];
@@ -488,7 +492,7 @@
     NSString *markdown   = [NSString stringWithContentsOfFile:path encoding:encoding error:&error];
     NSString *htmlString = [MMMarkdown HTMLStringWithMarkdown:markdown extensions:MMMarkdownExtensionsGitHubFlavored error:NULL];
 
-    [self.activeWebView loadHTMLString:htmlString baseURL:baseURL];
+    extracted(self, baseURL, htmlString);
 
     [self adjustTitle];
 }

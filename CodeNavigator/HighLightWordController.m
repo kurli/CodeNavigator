@@ -58,6 +58,7 @@
     }
     [self.searchBarUI setSpellCheckingType:UITextSpellCheckingTypeNo];
     [self.searchBarUI setAutocorrectionType:UITextAutocorrectionTypeNo];
+    [self.searchBarUI setAutocapitalizationType:UITextAutocapitalizationTypeNone];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -232,6 +233,10 @@
 }
 #endif
 - (IBAction)gotoHighlight:(id)sender {
+    if ([self.detailViewController.highlightLineArray count] == 0) {
+        [self searchBarSearchButtonClicked:searchBarUI];
+        return;
+    }
     [self.detailViewController gotoHighlight:sender];
 }
 @end

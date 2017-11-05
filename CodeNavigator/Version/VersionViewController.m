@@ -11,7 +11,7 @@
 #import "DisplayController.h"
 #import "MasterViewController.h"
 
-#define RELEASE_VERSION 14
+#define RELEASE_VERSION 16
 
 @interface VersionViewController ()
 

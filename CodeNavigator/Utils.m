@@ -578,9 +578,9 @@ static Utils *static_utils;
                 {
                     [self showAnalyzeIndicator:NO];
                     [self alertWithTitle:@"CodeNavigator" andMessage:@"No source file found, stop analyzing"];
+                    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
                 }
             });
-            [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
             [@"" writeToFile:databaseFile atomically:YES encoding:NSUTF8StringEncoding error:&error];
             return;
         }
@@ -595,8 +595,8 @@ static Utils *static_utils;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[Utils getInstance] showPurchaseAlert];
                     [self showAnalyzeIndicator:NO];
+                    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
                 });
-                [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
                 return;
             }
         }
@@ -608,8 +608,8 @@ static Utils *static_utils;
                     [[Utils getInstance] showPurchaseAlert];
                     [[Utils getInstance] alertWithTitle:@"CodeNavigator" andMessage:@"Maximum number of source files exceeded for Lite Version., Failed to analyze"];
                     [self showAnalyzeIndicator:NO];
+                    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
                 });
-                [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
                 return;
             }
         }
@@ -632,7 +632,9 @@ static Utils *static_utils;
         });
     }
     }
-    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+    });
 }
 
 -(void) analyzeProjectConfirmed:(NSString *)path andForceCreate:(BOOL)forceCreate
@@ -810,7 +812,9 @@ static Utils *static_utils;
     }
     else if ([list count] == 1)
     {
-        [[Utils getInstance] alertWithTitle:@"Result" andMessage:@"No Result Found"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[Utils getInstance] alertWithTitle:@"Result" andMessage:@"No Result Found"];
+        });
         return NO;
     }
     return YES;

@@ -77,6 +77,12 @@
       "idiom" : "ipad",
       "filename" : "icon-168.png",
       "scale" : "2x"
+    },
+    {
+      "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "iTunesArtwork copy.png",
+      "scale" : "1x"
     }
   ],
   "info" : {

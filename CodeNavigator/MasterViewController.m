@@ -515,7 +515,7 @@
             leftButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];
             [leftButton.titleLabel setTextAlignment:NSTextAlignmentLeft];
             [leftButton setTitleColor:[UIColor colorWithRed:86/255.0 green:121/255.0 blue:183/255.0 alpha:1.0] forState:UIControlStateNormal];
-            leftButton.frame = CGRectMake(0, 0, buttonImage.size.width*6, buttonImage.size.height);
+            leftButton.frame = CGRectMake(0, 0, buttonImage.size.width*7, buttonImage.size.height);
             [leftButton addTarget:self action:@selector(leftNavigationButtonClicked:)
                     forControlEvents:UIControlEventTouchUpInside];
             

@@ -240,14 +240,18 @@ function FocusLine(eID) {
 function smoothScroll(eID) {
     //    var stopY = elmYPosition(eID) - 200;
     //    scrollTo(0, stopY);
-    var str = "#"+eID;
-    if (window.location.hash == str)
-    {
-        window.location.hash = 0;
-        window.location.hash = str;
+//    var str = "#"+eID;
+//    if (window.location.hash == str)
+//    {
+//        window.location.hash = 0;
+//        window.location.hash = str;
+//    }
+//    else
+//        window.location.hash = str;
+    var node = document.getElementById(eID);
+    if (node) {
+        node.scrollIntoView();
     }
-    else
-        window.location.hash = str;
 }
 
 function gotoLine(i)

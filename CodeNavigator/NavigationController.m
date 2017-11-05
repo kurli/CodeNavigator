@@ -64,10 +64,14 @@
 {
     if ([searchKeyword length] != 0)
         [self setSearchItemText:searchKeyword];
+    else
+        [self setSearchItemText:@""];
     [super viewWillAppear:animated];
     
     [self.searchBar setSpellCheckingType:UITextSpellCheckingTypeNo];
     [self.searchBar setAutocorrectionType:UITextAutocorrectionTypeNo];
+    [self.searchBar setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+
     if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
         self.edgesForExtendedLayout = UIRectEdgeNone;
 }
