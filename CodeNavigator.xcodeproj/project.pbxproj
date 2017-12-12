@@ -174,6 +174,9 @@
 		9444596118D7508C008A02DB /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9444596018D7508C008A02DB /* iRate.bundle */; };
 		9445C8AF193CAF1C00924D41 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 948C740D1806E5A300065E65 /* Images.xcassets */; };
 		9445C8B7193CB85200924D41 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 9445C8B6193CB85200924D41 /* Icon-120.png */; };
+		9446BA6E1FAF2C9800C68885 /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94CBEF6C1EFFBFDF0082FF9A /* MMMarkdown.framework */; };
+		9446BA6F1FAF2C9800C68885 /* MMMarkdown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 94CBEF6C1EFFBFDF0082FF9A /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9446BA721FAF2F1800C68885 /* libHttpService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9497FA281EFFA56E000CDE41 /* libHttpService.a */; };
 		94472084157534E9002EEA5A /* ManuallyParserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94472082157534E9002EEA5A /* ManuallyParserViewController.m */; };
 		94472085157534E9002EEA5A /* ManuallyParserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94472082157534E9002EEA5A /* ManuallyParserViewController.m */; };
 		94472086157534E9002EEA5A /* ManuallyParserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94472083157534E9002EEA5A /* ManuallyParserViewController.xib */; };
@@ -1521,6 +1524,13 @@
 			remoteGlobalIDString = 9434BF9D14A389BC00B34419;
 			remoteInfo = Zip;
 		};
+		9446BA701FAF2C9800C68885 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94CBEF631EFFBFDF0082FF9A /* MMMarkdown.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BED7620E1B37810000687B36;
+			remoteInfo = "MMMarkdown (iOS)";
+		};
 		9497FA271EFFA56E000CDE41 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9497FA231EFFA56E000CDE41 /* HttpService.xcodeproj */;
@@ -1622,6 +1632,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				BC33DCBB1EE2E510006EC4E1 /* ObjectiveGit.framework in Embed Frameworks */,
+				9446BA6F1FAF2C9800C68885 /* MMMarkdown.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2380,7 +2391,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9446BA721FAF2F1800C68885 /* libHttpService.a in Frameworks */,
 				BC33DCC41EE2E80E006EC4E1 /* MessageUI.framework in Frameworks */,
+				9446BA6E1FAF2C9800C68885 /* MMMarkdown.framework in Frameworks */,
 				BC33DCBF1EE2E71D006EC4E1 /* libZip.a in Frameworks */,
 				94B8EC281546F31700931747 /* SystemConfiguration.framework in Frameworks */,
 				940739181A091F2B00EA3C28 /* CoreTelephony.framework in Frameworks */,
@@ -3659,6 +3672,7 @@
 			dependencies = (
 				94ADF13A14BB27EE00BA807A /* PBXTargetDependency */,
 				BC33DCBD1EE2E510006EC4E1 /* PBXTargetDependency */,
+				9446BA711FAF2C9800C68885 /* PBXTargetDependency */,
 			);
 			name = CodeNavigatorLite;
 			productName = CodeNavigator;
@@ -5257,6 +5271,11 @@
 			name = Zip;
 			targetProxy = 9434BFCA14A38ACD00B34419 /* PBXContainerItemProxy */;
 		};
+		9446BA711FAF2C9800C68885 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "MMMarkdown (iOS)";
+			targetProxy = 9446BA701FAF2C9800C68885 /* PBXContainerItemProxy */;
+		};
 		949DC1941583E8CF00385796 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Zip;
@@ -5743,6 +5762,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SKIP_INSTALL = NO;
+				USER_HEADER_SEARCH_PATHS = "~/Documents/iOS_Development/MMMarkdown/Source";
 				VALID_ARCHS = "armv7 arm64 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -5788,6 +5808,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SKIP_INSTALL = NO;
+				USER_HEADER_SEARCH_PATHS = "~/Documents/iOS_Development/MMMarkdown/Source";
 				VALID_ARCHS = "armv7 arm64 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -5834,6 +5855,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SKIP_INSTALL = NO;
+				USER_HEADER_SEARCH_PATHS = "~/Documents/iOS_Development/MMMarkdown/Source";
 				VALID_ARCHS = "armv7 arm64 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

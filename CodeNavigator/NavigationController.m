@@ -49,6 +49,10 @@
     selectedItem = 0;
 }
 
+-(void)viewDidAppear:(BOOL)animate {
+    [super viewDidDisappear:animate];
+}
+
 - (void)viewDidUnload
 {
     [self setSearchKeyword:nil];

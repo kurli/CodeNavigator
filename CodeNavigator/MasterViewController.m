@@ -592,6 +592,10 @@
 }
 
 - (void) showGitCloneViewWithUrl:(NSString*) url {
+#ifdef LITE_VERSION
+    [[Utils getInstance] showPurchaseAlert];
+#endif
+
 #ifndef LITE_VERSION
     [self releaseAllPopover];
     if (gitCloneViewController == NULL) {

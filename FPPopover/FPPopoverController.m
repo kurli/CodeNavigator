@@ -230,21 +230,24 @@
 }
 
 - (void)presentPopoverFromBarButtonItem:(UIBarButtonItem *)item permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections animated:(BOOL)animated andToolBar:(UIToolbar*) toolBar {
-    UIButton *button = nil;
+    UIView *button = nil;
     for (UIView *subview in toolBar.subviews) {
-        if ([[subview class].description isEqualToString:@"UIToolbarButton"] ||
-            [[subview class].description isEqualToString:@"UIToolbarTextButton"])
-        {
-            for (id target in [(UIButton *)subview allTargets])
-            {
-                if (target == item)
-                {
-                    button = (UIButton *)subview;
-                    break;
-                }
-            }
-        }
+        button =subview;
+        break;
+//        if ([[subview class].description isEqualToString:@"UIToolbarButton"] ||
+//            [[subview class].description isEqualToString:@"UIToolbarTextButton"])
+//        {
+//            for (id target in [(UIButton *)subview allTargets])
+//            {
+//                if (target == item)
+//                {
+//                    button = (UIButton *)subview;
+//                    break;
+//                }
+//            }
+//        }
     }
+//    UIView *view= (UIView *)[toolBar.subviews objectAtIndex:0];
     [self presentPopoverFromView:button];
 }
 
@@ -270,10 +273,11 @@
         //keep the first subview
         if(_window.subviews.count > 0)
         {
-            _parentView= [[[UIApplication sharedApplication].windows sortedArrayUsingComparator:^NSComparisonResult(UIWindow *win1, UIWindow *win2) {
-                return win1.windowLevel - win2.windowLevel;
-            }] lastObject];
+//            _parentView= [[[UIApplication sharedApplication].windows sortedArrayUsingComparator:^NSComparisonResult(UIWindow *win1, UIWindow *win2) {
+//                return win1.windowLevel - win2.windowLevel;
+//            }] lastObject];
 //            _parentView = [_window.subviews lastObject];
+            _parentView = [UIApplication sharedApplication].windows[0];
             [_parentView addSubview:self.view];
             [_viewController viewDidAppear:YES];
         }
@@ -330,6 +334,9 @@
     {
         p.x = fromView.frame.origin.x;
         p.y = fromView.frame.origin.y + fromView.frame.size.height/2.0;
+    } else {
+        p.x = 0;
+        p.y = 0;
     }
 
     return p;

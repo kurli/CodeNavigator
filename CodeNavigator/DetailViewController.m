@@ -22,7 +22,7 @@
 #import "ThemeSelectorViewController.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "MBProgressHUD.h"
-#import <MMMarkdown.h>
+#import "MMMarkdown.h"
 #import "OpenGrokViewController.h"
 
 #define TOOLBAR_X_MASTER_SHOW 55
@@ -473,10 +473,6 @@
     [self adjustTitle];
 }
 
-static void extracted(DetailViewController *object, NSURL *baseURL, NSString *htmlString) {
-    [object.activeWebView loadHTMLString:htmlString baseURL:baseURL];
-}
-
 -(void) displayMarkDownTypeFile:(NSString *)path
 {
     int location = [self getCurrentScrollLocation];
@@ -492,7 +488,7 @@ static void extracted(DetailViewController *object, NSURL *baseURL, NSString *ht
     NSString *markdown   = [NSString stringWithContentsOfFile:path encoding:encoding error:&error];
     NSString *htmlString = [MMMarkdown HTMLStringWithMarkdown:markdown extensions:MMMarkdownExtensionsGitHubFlavored error:NULL];
 
-    extracted(self, baseURL, htmlString);
+    [self.activeWebView loadHTMLString:htmlString baseURL:baseURL];
 
     [self adjustTitle];
 }
